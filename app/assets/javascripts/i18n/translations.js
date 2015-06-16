@@ -2369,6 +2369,12 @@ I18n.translations["en"] = {
   "managers_controller": {
     "in_stack": "Your message has been queued for sending."
   },
+  "members_in_courses": {
+    "create": {
+      "enrolled": "You have enllored in the course",
+      "request_send": "Request sent"
+    }
+  },
   "messages": {
     "index": {
       "no_member": "You are not a part of the group!",
@@ -2405,19 +2411,19 @@ I18n.translations["en"] = {
   },
   "modal": {
     "delivery_modal": {
-      "hmwrk_not_found": "not PASS."
+      "hmwrk_not_found": "The homework you are trying to view no longer exists, contact the course teacher"
     },
     "discussion_modal": {
-      "discussion_not_found": "not PASS."
+      "discussion_not_found": "The discussion you are trying to view no longer exists, contact the teacher course"
     },
     "google_form_modal": {
-      "form_not_found": "not PASS."
+      "form_not_found": "The form you are trying to view no longer exists, contact the course teacher"
     },
     "reported_content_modal": {
-      "publ_not_found": "not PASS."
+      "publ_not_found": "The post you are trying to denounce no longer exists"
     },
     "survey_modal": {
-      "no_modal_found": "not PASS."
+      "no_modal_found": "The survey you are trying to view no longer exists"
     }
   },
   "networks": {
@@ -2430,7 +2436,7 @@ I18n.translations["en"] = {
       "log_in": "Log in",
       "send": "We have sent to the instructions to activate your account."
     },
-    "create": "not PASS.",
+    "create": "A network has been created",
     "form": {
       "api_key": "API Key:",
       "authorization_keyword": "Authorization Keyword",
@@ -2701,8 +2707,8 @@ I18n.translations["en"] = {
     "update": "Your profile has been successfully updated"
   },
   "reported_contents": {
-    "denounce_fail": "not PASS.",
-    "denounce_success": "not PASS.",
+    "denounce_fail": "Something happened that your complaint could not be saved",
+    "denounce_success": "Your complaint has been completed successfully!",
     "shared": {
       "reported_content_modal": {
         "comment": "Write a comment",
@@ -3219,7 +3225,7 @@ I18n.translations["en"] = {
   "surveys": {
     "ajax": {
       "surveys_paginate_ajax": {
-        "no_more_quest": "not PASS."
+        "no_more_quest": "No more past surveys were found."
       }
     },
     "answer_fields": {
@@ -3227,8 +3233,8 @@ I18n.translations["en"] = {
       "delete": "Delete",
       "response": "Type answer"
     },
-    "correct_create": "not PASS.",
-    "correct_edit": "not PASS.",
+    "correct_create": "Survey successfully created",
+    "correct_edit": "Survey correctly edited",
     "form": {
       "add_quest": "Add question",
       "attempts": "Attempts",
@@ -3265,7 +3271,7 @@ I18n.translations["en"] = {
       "add_answer": "Add anwser",
       "quest1": "Add question"
     },
-    "select_course": "not PASS.",
+    "select_course": "Select a course to publish survey",
     "shared": {
       "survey_card": {
         "edit": "Edit test",
@@ -3430,7 +3436,7 @@ I18n.translations["en"] = {
       "net": "my networks"
     },
     "pendding_friends": {
-      "no_request": "not PASS"
+      "no_request": "There are no pending friendship requests"
     },
     "set_password_form": {
       "pwd": "Type password",
@@ -5832,6 +5838,12 @@ I18n.translations["es"] = {
   },
   "managers_controller": {
     "in_stack": "Su correo se ha puesto en cola para enviar."
+  },
+  "members_in_courses": {
+    "create": {
+      "enrolled": "Te has inscrito",
+      "request_send": "Solicitud enviada"
+    }
   },
   "messages": {
     "index": {
@@ -9244,6 +9256,12 @@ I18n.translations["es_meems"] = {
   "managers_controller": {
     "in_stack": "Su correo se ha puesto en cola para enviar."
   },
+  "members_in_courses": {
+    "create": {
+      "enrolled": "Te has inscrito",
+      "request_send": "Solicitud enviada"
+    }
+  },
   "messages": {
     "index": {
       "no_member": "No eres parte del grupo!",
@@ -12653,6 +12671,12 @@ I18n.translations["devise"] = {
   },
   "managers_controller": {
     "in_stack": "Su correo se ha puesto en cola para enviar."
+  },
+  "members_in_courses": {
+    "create": {
+      "enrolled": "Te has inscrito",
+      "request_send": "Solicitud enviada"
+    }
   },
   "messages": {
     "index": {
