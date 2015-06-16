@@ -40,12 +40,12 @@
                 %h5
                   = t('.no_member')
                 %p
-                  = t('.dropdown_v.goto_section') 
+                  = t('.dropdown_v.goto_section')
                   #{link_to 'Cursos', courses_path}
               - else
-                %h5 
+                %h5
                   = t('.dropdown_v.no_course')
-                %p= link_to t('.return'), new_course_path
+                %p= link_to t('.create_course'), new_course_path
           - if hasCourses && hasPublic
             %li
               #box-return-dd.return-dd
@@ -78,7 +78,7 @@
         var $this     = $(this),
             checkbox  = $this.find('input[type="checkbox"]'),
             isPublicCheckbox = dropdown.find('.target-selector input[name=is_public]');
-        
+
         dropdown.find('#icon-dd-public').removeClass('active');
         isPublicCheckbox.val(0);
         titleDropdown.text('Cursos').prepend( $('<i class="i i-course-new-publication"></i>') );
