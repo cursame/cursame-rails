@@ -31,4 +31,4 @@ en:
     messages:
       update:
         success: "Settings successfully saved"
-
+    create: 'A network has been created'
