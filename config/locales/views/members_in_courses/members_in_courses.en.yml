@@ -1,0 +1,5 @@
+en:
+  members_in_courses:
+    create:
+      request_send: 'Request sent'
+      enrolled: 'You have enllored in the course'
