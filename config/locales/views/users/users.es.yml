@@ -119,3 +119,5 @@ es:
       friends: Amigos en espera
       waiting_friends: Esperando aceptación de
       request: Este usuario te ha solicitado amistad
+    pendding_friends:
+      no_request: 'No hay solicitudes de amistad pendientes.'

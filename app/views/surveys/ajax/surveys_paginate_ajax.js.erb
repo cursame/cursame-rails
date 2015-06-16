@@ -6,6 +6,6 @@ console.log('<%= @surveys.current_page %>', '<%= @surveys.num_pages %>');
 	var loadMoreContent = '<%= escape_javascript( render( partial: "surveys/shared/surveys_paginate_button", locals: { page: @next_page, type: @type, course: @course }) )%>';
 	$('div.load-more').replaceWith( loadMoreContent );
 <% else %>
-	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: "No se encontraron más cuestionarios pasados." } ) )%>';
+	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: t('.no_more_quest') } ) )%>';
 	$('div.load-more div.col-inner').html( message )
 <% end %>

@@ -118,3 +118,5 @@ en:
       friends: Friends waiting
       waiting_friends: Waiting to accept your request
       request: This user has sent you a friend request
+    pendding_friends:
+      no_request: 'There are no pending friendship requests'

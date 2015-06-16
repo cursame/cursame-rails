@@ -1,0 +1,19 @@
+es:
+  modal:
+    survey_modal:
+      no_modal_found: 'El cuestionario que tratas de ver ya no existe,
+                   ponte en contacto con el profesor del curso.'
+    reported_content_modal:
+      publ_not_found: 'La publicación que tratas de denunciar ya no
+                   existe.'
+    google_form_modal:
+      form_not_found: 'El formulario que tratas de ver ya no existe,
+                   ponte en contacto con el profesor del curso.'
+    discussion_modal:
+      discussion_not_found: 'La discusión que tratas de ver ya no
+                         existe, ponte en contacto con el profesor
+                         del curso.'
+    delivery_modal:
+      hmwrk_not_found: 'La tarea que tratas de ver ya no existe,
+                    ponte en contacto con el profesor del curso.'
+

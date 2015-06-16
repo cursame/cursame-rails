@@ -74,3 +74,9 @@ en:
       past: past tests section
     surveys_course_lapsed:
       quest: No past tests found.
+    correct_edit: 'Survey correctly edited'
+    correct_create: 'Survey successfully created'
+    select_course: 'Select a course to publish survey'
+    ajax:
+      surveys_paginate_ajax:
+        no_more_quest: 'No more past surveys were found.'

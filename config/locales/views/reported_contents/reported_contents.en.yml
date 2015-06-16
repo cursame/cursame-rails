@@ -7,4 +7,5 @@ en:
         why_no_content: "Why don't you want to see this content?"
         comment: "Write a comment"
         send: "Send"
-        
+    denounce_success: 'Your complaint has been completed successfully!'
+    denounce_fail: 'Something happened that your complaint could not be saved'

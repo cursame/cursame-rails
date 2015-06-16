@@ -1,0 +1,5 @@
+es_meems:
+  members_in_courses:
+    create:
+      request_send: 'Solicitud enviada'
+      enrolled: 'Te has inscrito'

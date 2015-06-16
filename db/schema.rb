@@ -441,7 +441,7 @@ ActiveRecord::Schema.define(:version => 20150603234557) do
     t.datetime "updated_at",              :null => false
   end
 
-  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "index_members_in_course_criteria_on_evaluation_criterium_id"
+  add_index "members_in_course_criteria", ["evaluation_criterium_id"], :name => "member_criterium_i"
   add_index "members_in_course_criteria", ["members_in_course_id"], :name => "index_members_in_course_criteria_on_members_in_course_id"
 
   create_table "members_in_courses", :force => true do |t|
@@ -480,11 +480,11 @@ ActiveRecord::Schema.define(:version => 20150603234557) do
     t.datetime "updated_at",                                                                                                                                                                                                                                      :null => false
     t.integer  "population"
     t.boolean  "public_register",      :default => true
-    t.boolean  "register_form"
+    t.boolean  "register_form",        :default => false
     t.text     "welcom_message"
-    t.string   "image_front"
-    t.string   "logo"
-    t.string   "logo_type"
+    t.string   "image_front",          :default => "background-restore.jpg"
+    t.string   "logo",                 :default => "logo.png"
+    t.string   "logo_type",            :default => "128x26"
     t.text     "titles",               :default => "user: Usuario, profesor: Maestro, student: Alumno, admin: Administrador, course: Curso, courses: Cursos, friend: Amigo, friends: Amigos, comunity: Comunidad, students: Estudiantes, profesores: Profesores"
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
@@ -506,13 +506,6 @@ ActiveRecord::Schema.define(:version => 20150603234557) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "active",           :default => true
-  end
-
-  create_table "p_id_to_h_ids", :force => true do |t|
-    t.integer  "p_id"
-    t.integer  "h_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "permissionings", :force => true do |t|
@@ -585,7 +578,7 @@ ActiveRecord::Schema.define(:version => 20150603234557) do
     t.integer  "evaluation_criterium_id"
   end
 
-  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "index_response_to_the_evaluations_on_evaluation_criterium_id"
+  add_index "response_to_the_evaluations", ["evaluation_criterium_id"], :name => "criterium_index"
   add_index "response_to_the_evaluations", ["feedbackable_id", "feedbackable_type"], :name => "feedbackable_index"
 
   create_table "role_id_and_permission_ids", :force => true do |t|

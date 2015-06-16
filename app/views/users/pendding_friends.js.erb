@@ -1,5 +1,5 @@
 <% unless @friends.blank? %>
   $('#friends-list-js').html("<%= escape_javascript(render partial: 'users/shared/users_cards_list', locals: { users: @friends })%>");
 <% else %>
-  $('#friends-list-js').html('<div class="no-content-section"><h4>No hay solicitudes de amistad pendientes.</h4></div>')
+  $('#friends-list-js').html('<div class="no-content-section"><h4><%= t('.no_request')%></h4></div>')
 <% end %>
