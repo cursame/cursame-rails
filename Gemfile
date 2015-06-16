@@ -51,6 +51,7 @@ gem 'mixpanel-ruby'
 gem 'ruby_parser'
 gem 'rails_config'
 gem 'multi_logger'
+gem 'mail_view', '~> 2.0.4'
 
 group :assets do
   gem 'sass', '3.2.13'

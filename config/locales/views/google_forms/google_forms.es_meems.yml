@@ -20,6 +20,11 @@ es_meems:
       dropdown:
         courses: "Centros Emprendedores"
         public: "Público"
+        return: 'Regresar'
+        create_course: 'Crear Centro de Emprendedores'
+        dropdown_v:
+          no_course: 'No has creado ningún Centro de
+                  Emprendedores'
       google_form_modal:
         the_form: 'El formulario '
         was_created: ' fue creado por'
