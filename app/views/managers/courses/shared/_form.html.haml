@@ -29,7 +29,7 @@
       = f.label :init_date, t('.init_date')
     .form-group-main
       .form-unit
-        = f.text_field :init_date, :placeholder => t('.init_date2'), :class => "date-picker", :value => (f.object.init_date ? f.object.init_date.strftime('%m/%d/%Y') : f.object.init_date), :required => "required", :autocomplete => "off"
+        = f.text_field :init_date, :placeholder => t('.init_date2'), :class => "date-picker", :value => (f.object.init_date.strftime('%d/%m/%Y') if !f.object.init_date.nil?  ), :required => "required", :autocomplete => "off"
 
   .form-group.label-on-top.l-label
     .form-group-label
