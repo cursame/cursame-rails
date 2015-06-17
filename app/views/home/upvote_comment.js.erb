@@ -3,6 +3,6 @@ var comment = $('[data-child-comment-id="<%= @publication.id%>"]'),
     votesCountMeta = comment.find('.votes-count-child-comment-js');
 
 voteLinkMeta.attr('href', '<%= escape_javascript(downvote_comment_path(@publication.id)) %>');
-voteLinkMeta.text('Ya no me gusta')
+voteLinkMeta.text(I18n.t("home.unlike", {locale: "<%= I18n.locale %>"}))
 
 votesCountMeta.html('<%= escape_javascript( render( partial: "comments/shared/child_comment_votes_count", locals: { comment: @publication } ) ) %>');
