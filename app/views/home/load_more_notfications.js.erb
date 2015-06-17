@@ -7,4 +7,4 @@ $('#notifications_list').parent().animate({
   scrollTop: $('#notifications_list').height()
 });
 
-$('#load-more-notifications').html('<a href="/home/load_more_notfications?page=<%=@page + 1%>" data-remote="true" title="Ver más notificaciones">Ver más notificaciones</a>');
+$('#load-more-notifications').html('<a href="/home/load_more_notfications?page=<%=@page + 1%>" data-remote="true" title="Ver más notificaciones"><%= t('.load_more_notifications') %></a>');
