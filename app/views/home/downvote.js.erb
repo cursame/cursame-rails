@@ -2,6 +2,6 @@ var likeLink = $('div[data-wall-like-id="<%= @publication.id%>"] > a'),
     peopleWhoLiked = $('[data-wall-id="<%= @publication.id%>"]').find('div.post-box-likes');
 
 likeLink.attr('href', '<%= escape_javascript(upvote_path(@publication.id)) %>');
-likeLink.text('Me gusta');
+likeLink.text(I18n.t("home.like", {locale: "<%= I18n.locale %>"}));
 
 peopleWhoLiked.html('<%= escape_javascript(render(partial: "shared/posts/post_people_who_liked", locals: { wall: @publication, post: @publication.publication })) %>')

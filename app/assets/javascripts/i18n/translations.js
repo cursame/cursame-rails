@@ -1440,7 +1440,12 @@ I18n.translations["en"] = {
       },
       "dropdown": {
         "courses": "Courses",
-        "public": "Public"
+        "create_course": "Create course",
+        "dropdown_v": {
+          "no_course": "You have not created a course yet"
+        },
+        "public": "Public",
+        "return": "Return"
       },
       "form": {
         "cancel": "Cancel",
@@ -1741,6 +1746,7 @@ I18n.translations["en"] = {
         "title4": "Parents"
       }
     },
+    "like": "Like",
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -1893,6 +1899,7 @@ I18n.translations["en"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "unlike": "Unlike",
     "wall": {
       "comment": "Comentar"
     }
@@ -4928,7 +4935,12 @@ I18n.translations["es"] = {
       },
       "dropdown": {
         "courses": "Cursos",
-        "public": "Público"
+        "create_course": "Crear curso",
+        "dropdown_v": {
+          "no_course": "No has creado ningún curso"
+        },
+        "public": "Público",
+        "return": "Regresar"
       },
       "form": {
         "cancel": "Cancelar",
@@ -5211,6 +5223,7 @@ I18n.translations["es"] = {
         "title4": "Padres"
       }
     },
+    "like": "Me gusta",
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -5363,6 +5376,7 @@ I18n.translations["es"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
     }
@@ -5737,7 +5751,7 @@ I18n.translations["es"] = {
       "managers_user_header": {
         "admin": "Administrador",
         "edit": "Editar perfil",
-        "exit": "Salir del aministrador",
+        "exit": "Salir del administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -6695,7 +6709,7 @@ I18n.translations["es"] = {
       "save": "Guardar Cuestionario",
       "support": "Material de soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuesitonario",
+      "timer": "Tiempo para resolución del cuestionario",
       "title": "Titulo del cuestionario"
     },
     "index": {
@@ -8344,7 +8358,12 @@ I18n.translations["es_meems"] = {
       },
       "dropdown": {
         "courses": "Centros Emprendedores",
-        "public": "Público"
+        "create_course": "Crear Centro de Emprendedores",
+        "dropdown_v": {
+          "no_course": "No has creado ningún Centro de Emprendedores"
+        },
+        "public": "Público",
+        "return": "Regresar"
       },
       "form": {
         "cancel": "Cancelar",
@@ -8628,6 +8647,7 @@ I18n.translations["es_meems"] = {
         "title4": "Padres"
       }
     },
+    "like": "Me gusta",
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -8780,6 +8800,7 @@ I18n.translations["es_meems"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
     }
@@ -9154,7 +9175,7 @@ I18n.translations["es_meems"] = {
       "managers_user_header": {
         "admin": "MEEMS",
         "edit": "Editar perfil",
-        "exit": "Salir del aministrador",
+        "exit": "Salir del administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -11761,7 +11782,12 @@ I18n.translations["devise"] = {
       },
       "dropdown": {
         "courses": "Cursos",
-        "public": "Público"
+        "create_course": "Crear curso",
+        "dropdown_v": {
+          "no_course": "No has creado ningún curso"
+        },
+        "public": "Público",
+        "return": "Regresar"
       },
       "form": {
         "cancel": "Cancelar",
@@ -12044,6 +12070,7 @@ I18n.translations["devise"] = {
         "title4": "Padres"
       }
     },
+    "like": "Me gusta",
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -12196,6 +12223,7 @@ I18n.translations["devise"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
     }
@@ -12570,7 +12598,7 @@ I18n.translations["devise"] = {
       "managers_user_header": {
         "admin": "Administrador",
         "edit": "Editar perfil",
-        "exit": "Salir del aministrador",
+        "exit": "Salir del administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -13528,7 +13556,7 @@ I18n.translations["devise"] = {
       "save": "Guardar Cuestionario",
       "support": "Material de soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuesitonario",
+      "timer": "Tiempo para resolución del cuestionario",
       "title": "Titulo del cuestionario"
     },
     "index": {

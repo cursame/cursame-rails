@@ -3,3 +3,5 @@ es_meems:
     delete_publication: "Se ha borrado correctamente la publicación."
     demo: "Solictud de demo"
     contact: "Contacto"
+    unlike: 'Ya no me gusta'
+    like: 'Me gusta'
