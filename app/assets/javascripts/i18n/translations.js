@@ -1799,6 +1799,7 @@ I18n.translations["en"] = {
       "text4": "required fields.",
       "title": "Ask for a demo"
     },
+    "send": "not PASS.",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -5277,6 +5278,7 @@ I18n.translations["es"] = {
       "text4": "son requeridos.",
       "title": "Solicitar Demo"
     },
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -8702,6 +8704,7 @@ I18n.translations["es_meems"] = {
       "text4": "son requeridos.",
       "title": "Solicitar Demo"
     },
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -12126,6 +12129,7 @@ I18n.translations["devise"] = {
       "text4": "son requeridos.",
       "title": "Solicitar Demo"
     },
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
