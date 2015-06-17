@@ -1,7 +1,8 @@
 en:
   home:
     delete_publication: "We have successfully deleted the publication."
-    demo: "Demo request"
+    demo: "Request a Demo"
     contact: "Contact"
     unlike: 'Unlike'
     like: 'Like'
+    thnx: 'Thank you for using Cúrsame'

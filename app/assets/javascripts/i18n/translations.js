@@ -1564,7 +1564,7 @@ I18n.translations["en"] = {
       }
     },
     "delete_publication": "We have successfully deleted the publication.",
-    "demo": "Demo request",
+    "demo": "Request a Demo",
     "features": {
       "features_content": {
         "characteristic_chat": "Some of its characteristics:",
@@ -1899,6 +1899,7 @@ I18n.translations["en"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Thank you for using Cúrsame",
     "unlike": "Unlike",
     "wall": {
       "comment": "Comentar"
@@ -5376,6 +5377,7 @@ I18n.translations["es"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Gracias por usar Cúrsame.",
     "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
@@ -8800,6 +8802,7 @@ I18n.translations["es_meems"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Gracias por usar Cúrsame.",
     "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
@@ -12223,6 +12226,7 @@ I18n.translations["devise"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Gracias por usar Cúrsame.",
     "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
