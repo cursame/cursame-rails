@@ -1,0 +1,4 @@
+es_meems:
+  friendships:
+    send_friendship: 'Se ha enviado una solicitud de amistad'
+    new_friendship: 'Has agregado un nuevo amigo'

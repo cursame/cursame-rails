@@ -1428,6 +1428,10 @@ I18n.translations["en"] = {
     "true": "Sí",
     "update": "Guardar %{model}"
   },
+  "friendships": {
+    "new_friendship": "not PASS.",
+    "send_friendship": "not PASS."
+  },
   "friendships_controller": {
     "delete_usr": "The user has been deleted from your friends",
     "error_usr": "Failed to delete the user from your friends"
@@ -4930,6 +4934,10 @@ I18n.translations["es"] = {
     "true": "Sí",
     "update": "Guardar %{model}"
   },
+  "friendships": {
+    "new_friendship": "Has agregado un nuevo amigo",
+    "send_friendship": "Se ha enviado una solicitud de amistad"
+  },
   "friendships_controller": {
     "delete_usr": "Se ha eliminado al usuario de tus amigos",
     "error_usr": "Error al eliminar al usuario de tus amigos"
@@ -8359,6 +8367,10 @@ I18n.translations["es_meems"] = {
     "submit": "Aceptar",
     "true": "Sí",
     "update": "Guardar %{model}"
+  },
+  "friendships": {
+    "new_friendship": "Has agregado un nuevo amigo",
+    "send_friendship": "Se ha enviado una solicitud de amistad"
   },
   "friendships_controller": {
     "delete_usr": "Se ha eliminado al usuario de tus amigos",
@@ -11790,6 +11802,10 @@ I18n.translations["devise"] = {
     "submit": "Aceptar",
     "true": "Sí",
     "update": "Guardar %{model}"
+  },
+  "friendships": {
+    "new_friendship": "Has agregado un nuevo amigo",
+    "send_friendship": "Se ha enviado una solicitud de amistad"
   },
   "friendships_controller": {
     "delete_usr": "Se ha eliminado al usuario de tus amigos",

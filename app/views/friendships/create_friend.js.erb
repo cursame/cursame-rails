@@ -1,2 +1,2 @@
 $('div[data-user-id="<%= @user.id %>"]').replaceWith('<%= escape_javascript(render(:partial => "users/shared/user_card", :locals => { f: @user }))%>');
-Notice('success', 'Se ha enviado una solicitud de amistad.')
+Notice('success', I18n.t("friendships.send_friendship", {locale: "<%= I18n.locale %>"}))
