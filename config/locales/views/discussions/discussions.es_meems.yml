@@ -37,3 +37,5 @@ es_meems:
       no_discuss: No se encontraron más discusiones.
     index:
       no_discuss: No se encontraron más discusiones.
+    correct_edit: 'Discusión editada correctamente'
+    create_discuss: 'Discusión creada correctamente'

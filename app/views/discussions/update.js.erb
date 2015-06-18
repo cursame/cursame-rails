@@ -2,4 +2,4 @@ var postBox = $('div[data-wall-id="<%= @wall_publication.id %>"]'),
     newPostBoxContent = '<%= escape_javascript(render( partial: "discussions/shared/discussion_card", locals: { discussion: @discussion, card_type: :post_publication, wall: @wall_publication } ))%>';
 
 postBox.replaceWith(newPostBoxContent);
-Notice('success', 'Discusión editada correctamente.');
+Notice('success', I18n.t("discussions.correct_edit", {locale: "<%= I18n.locale %>"}));

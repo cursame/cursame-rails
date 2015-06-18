@@ -1142,6 +1142,8 @@ I18n.translations["en"] = {
     }
   },
   "discussions": {
+    "correct_edit": "not PASS.",
+    "create_discuss": "not PASS.",
     "discussions_course": {
       "no_discuss": "No more discussions to show."
     },
@@ -4669,6 +4671,8 @@ I18n.translations["es"] = {
     }
   },
   "discussions": {
+    "correct_edit": "Discusión editada correctamente",
+    "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -8103,6 +8107,8 @@ I18n.translations["es_meems"] = {
     }
   },
   "discussions": {
+    "correct_edit": "Discusión editada correctamente",
+    "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -11538,6 +11544,8 @@ I18n.translations["devise"] = {
     }
   },
   "discussions": {
+    "correct_edit": "Discusión editada correctamente",
+    "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
