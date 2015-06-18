@@ -354,5 +354,7 @@ es:
       text3: 'Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!'
     load_more_notfications:
       load_more_notifications: 'Ver más notificaciones'
+    edit_comment: 'Comentario editado correctamente.'
+    new_comment: 'Se ha creado un comentario'
 
 

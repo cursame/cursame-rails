@@ -1565,6 +1565,7 @@ I18n.translations["en"] = {
     },
     "delete_publication": "We have successfully deleted the publication.",
     "demo": "Request a Demo",
+    "edit_comment": "not PASS.",
     "features": {
       "features_content": {
         "characteristic_chat": "Some of its characteristics:",
@@ -1747,6 +1748,9 @@ I18n.translations["en"] = {
       }
     },
     "like": "Like",
+    "load_more_notfications": {
+      "load_more_notifications": "not PASS."
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -1766,6 +1770,7 @@ I18n.translations["en"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "not PASS.",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -5044,6 +5049,7 @@ I18n.translations["es"] = {
     },
     "delete_publication": "Se ha borrado correctamente la publicación.",
     "demo": "Solictud de demo",
+    "edit_comment": "Comentario editado correctamente.",
     "features": {
       "features_content": {
         "characteristic_chat": "Algunas de sus características son:",
@@ -5226,6 +5232,9 @@ I18n.translations["es"] = {
       }
     },
     "like": "Me gusta",
+    "load_more_notfications": {
+      "load_more_notifications": "Ver más notificaciones"
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -5245,6 +5254,7 @@ I18n.translations["es"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -8470,6 +8480,7 @@ I18n.translations["es_meems"] = {
     },
     "delete_publication": "Se ha borrado correctamente la publicación.",
     "demo": "Solictud de demo",
+    "edit_comment": "Comentario editado correctamente",
     "features": {
       "features_content": {
         "characteristic_chat": "Algunas de sus características son:",
@@ -8652,6 +8663,9 @@ I18n.translations["es_meems"] = {
       }
     },
     "like": "Me gusta",
+    "load_more_notfications": {
+      "load_more_notifications": "Ver más notificaciones"
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -8671,6 +8685,7 @@ I18n.translations["es_meems"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -11895,6 +11910,7 @@ I18n.translations["devise"] = {
     },
     "delete_publication": "Se ha borrado correctamente la publicación.",
     "demo": "Solictud de demo",
+    "edit_comment": "Comentario editado correctamente.",
     "features": {
       "features_content": {
         "characteristic_chat": "Algunas de sus características son:",
@@ -12077,6 +12093,9 @@ I18n.translations["devise"] = {
       }
     },
     "like": "Me gusta",
+    "load_more_notfications": {
+      "load_more_notifications": "Ver más notificaciones"
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -12096,6 +12115,7 @@ I18n.translations["devise"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
