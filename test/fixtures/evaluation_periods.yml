@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  course_id: 1
+  name: MyString
+  order: 1
+  short_name: MyString
+
+two:
+  course_id: 1
+  name: MyString
+  order: 1
+  short_name: MyString
