@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   helper_method :get_commentable
   prepend_before_filter :require_no_authentication, only: [:action1, :action2]
   respond_to :html, :json, :js
+  layout 'errors', only: [:not_found, :server_error]
 
   def index
     if user_signed_in?
