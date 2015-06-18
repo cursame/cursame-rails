@@ -902,6 +902,8 @@ I18n.translations["en"] = {
     }
   },
   "deliveries": {
+    "correct_create": "not PASS.",
+    "correct_edit": "not PASS.",
     "deliveries_course": {
       "hmwrks": "Homework that must be turned in in three days or more",
       "hmwrks_last": "past homeworks in the Past section",
@@ -940,6 +942,7 @@ I18n.translations["en"] = {
     "lapsed": {
       "no_hmwrks": "We could not find any previous homework."
     },
+    "select_course": "not PASS.",
     "shared": {
       "deliveries_course_header": {
         "active": "Active",
@@ -1142,6 +1145,11 @@ I18n.translations["en"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "not PASS."
+      }
+    },
     "correct_edit": "not PASS.",
     "create_discuss": "not PASS.",
     "discussions_course": {
@@ -4473,6 +4481,8 @@ I18n.translations["es"] = {
     }
   },
   "deliveries": {
+    "correct_create": "Tarea creada correctamente",
+    "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
@@ -4511,6 +4521,7 @@ I18n.translations["es"] = {
     "lapsed": {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
+    "select_course": "Selecciona un curso para publicar tu tarea",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -4671,6 +4682,11 @@ I18n.translations["es"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "No se encontraron más discusiones"
+      }
+    },
     "correct_edit": "Discusión editada correctamente",
     "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
@@ -7909,6 +7925,8 @@ I18n.translations["es_meems"] = {
     }
   },
   "deliveries": {
+    "correct_create": "Tarea creada correctamente",
+    "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
@@ -7947,6 +7965,7 @@ I18n.translations["es_meems"] = {
     "lapsed": {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
+    "select_course": "Selecciona un curso para publicar tu tarea",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -8107,6 +8126,11 @@ I18n.translations["es_meems"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "No se encontraron más discusiones"
+      }
+    },
     "correct_edit": "Discusión editada correctamente",
     "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
@@ -11346,6 +11370,8 @@ I18n.translations["devise"] = {
     }
   },
   "deliveries": {
+    "correct_create": "Tarea creada correctamente",
+    "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
@@ -11384,6 +11410,7 @@ I18n.translations["devise"] = {
     "lapsed": {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
+    "select_course": "Selecciona un curso para publicar tu tarea",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -11544,6 +11571,11 @@ I18n.translations["devise"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "No se encontraron más discusiones"
+      }
+    },
     "correct_edit": "Discusión editada correctamente",
     "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
