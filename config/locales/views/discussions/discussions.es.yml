@@ -39,3 +39,6 @@ es:
       no_discuss: No se encontraron más discusiones.
     correct_edit: 'Discusión editada correctamente'
     create_discuss: 'Discusión creada correctamente'
+    ajax:
+      discussions_paginate_ajax:
+        no_more_records_found: 'No se encontraron más discusiones'
