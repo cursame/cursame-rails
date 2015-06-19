@@ -21,6 +21,7 @@ class Course < ActiveRecord::Base
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
   has_many :wufoo_forms, as: :showable, dependent: :destroy
   has_many :files, class_name: 'LibraryFile', through: :library
+  has_many :evaluation_periods, dependent: :destroy
 
   belongs_to :network
   belongs_to :school
