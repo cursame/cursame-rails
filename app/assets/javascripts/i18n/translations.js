@@ -630,6 +630,9 @@ I18n.translations["en"] = {
       "text2": "Cúrsame will not be made responsible for the content submitted by users, or any copyright infractions. Each user is 100% responsible for his content. If you have any problem of this kind please be dure to report it",
       "upload": "Upload file"
     },
+    "library_pagination": {
+      "no_more_records": "not PASS."
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Grading criterion",
       "descrip": "Description",
@@ -666,6 +669,7 @@ I18n.translations["en"] = {
     "new": {
       "new_course": "New Course"
     },
+    "new_course": "not PASS.",
     "old_course": {
       "activate": "Activate course",
       "antique": "Previous courses",
@@ -902,6 +906,11 @@ I18n.translations["en"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "not PASS"
+      }
+    },
     "correct_create": "not PASS.",
     "correct_edit": "not PASS.",
     "deliveries_course": {
@@ -4209,6 +4218,9 @@ I18n.translations["es"] = {
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
+    "library_pagination": {
+      "no_more_records": "No hay más archivos que mostrar"
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
       "descrip": "Descripción de entrega",
@@ -4245,6 +4257,7 @@ I18n.translations["es"] = {
     "new": {
       "new_course": "Curso nuevo"
     },
+    "new_course": "Se ha creado un curso nuevo",
     "old_course": {
       "activate": "activar curso",
       "antique": "Cursos antiguos",
@@ -4481,6 +4494,11 @@ I18n.translations["es"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "No se encontraron tareas pasadas"
+      }
+    },
     "correct_create": "Tarea creada correctamente",
     "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
@@ -7653,6 +7671,9 @@ I18n.translations["es_meems"] = {
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
+    "library_pagination": {
+      "no_more_records": "No hay más archivos que mostrar"
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
       "descrip": "Descripción de entrega",
@@ -7689,6 +7710,7 @@ I18n.translations["es_meems"] = {
     "new": {
       "new_course": "Centro Emprendedor nuevo"
     },
+    "new_course": "Se ha creado un curso nuevo",
     "old_course": {
       "activate": "activar Centros Emprendedor",
       "antique": "Centros Emprendedores antiguos",
@@ -7925,6 +7947,11 @@ I18n.translations["es_meems"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "No se encontraron tareas pasadas"
+      }
+    },
     "correct_create": "Tarea creada correctamente",
     "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
@@ -11098,6 +11125,9 @@ I18n.translations["devise"] = {
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
+    "library_pagination": {
+      "no_more_records": "No hay más archivos que mostrar"
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
       "descrip": "Descripción de entrega",
@@ -11134,6 +11164,7 @@ I18n.translations["devise"] = {
     "new": {
       "new_course": "Curso nuevo"
     },
+    "new_course": "Se ha creado un curso nuevo",
     "old_course": {
       "activate": "activar curso",
       "antique": "Cursos antiguos",
@@ -11370,6 +11401,11 @@ I18n.translations["devise"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "No se encontraron tareas pasadas"
+      }
+    },
     "correct_create": "Tarea creada correctamente",
     "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {

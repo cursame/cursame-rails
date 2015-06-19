@@ -288,3 +288,4 @@ es_meems:
         library: "Biblioteca"
     library_pagination:
       no_more_records: 'No hay más archivos que mostrar'
+    new_course: 'Se ha creado un curso nuevo'
