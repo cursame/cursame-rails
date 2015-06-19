@@ -286,3 +286,5 @@ es:
         info: "Información"
         members: "Miembros"
         library: "Biblioteca"
+    library_pagination:
+      no_more_records: 'No hay más archivos que mostrar'
