@@ -5,7 +5,7 @@ $('div.cards-list .cols-12').append( content );
 	var loadMoreContent = '<%= escape_javascript( render( partial: "community/shared/community_paginate_button", locals: { page: @next_page, role: @role }) )%>';
 	$('div.load-more').html( loadMoreContent );
 <% else %>
-	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: "No hay más usuarios por mostrar." } ) )%>';
+	var message = '<%= escape_javascript( render( partial: "shared/no_more_records_found", locals: { message: t('.no_more_records_found') } ) )%>';
 	$('div.load-more div.col-inner').html( message )
 <% end %>
 
