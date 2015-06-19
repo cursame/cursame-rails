@@ -232,7 +232,6 @@ class Managers::BitCoursesController < Managers::BaseController
       order: bit_period['orden'],
       short_name: bit_period['abreviatura']
     )
-
   end
 
   def create_student(bit_user)
