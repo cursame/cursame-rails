@@ -497,6 +497,8 @@ I18n.translations["en"] = {
         "send": "delivered"
       }
     },
+    "correct_active": "not PASS.",
+    "correct_inactive": "not PASS.",
     "courses_search": {
       "courses_search": "Search course…",
       "search": "Search"
@@ -4086,6 +4088,8 @@ I18n.translations["es"] = {
         "send": "Entrego"
       }
     },
+    "correct_active": "Se ha activado correctamente el curso",
+    "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
       "courses_search": "Buscar curso...",
       "search": "Buscar"
@@ -7540,6 +7544,8 @@ I18n.translations["es_meems"] = {
         "send": "Entrego"
       }
     },
+    "correct_active": "Se ha activado correctamente el curso",
+    "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
       "courses_search": "Buscar Centros Emprendedor...",
       "search": "Buscar"
@@ -10995,6 +11001,8 @@ I18n.translations["devise"] = {
         "send": "Entrego"
       }
     },
+    "correct_active": "Se ha activado correctamente el curso",
+    "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
       "courses_search": "Buscar curso...",
       "search": "Buscar"
