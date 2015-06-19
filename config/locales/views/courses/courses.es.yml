@@ -292,3 +292,6 @@ es:
     deliver_hmwrk: 'Se ha cargado una entrega de tarea'
     correct_active: 'Se ha activado correctamente el curso'
     correct_inactive: 'Se ha desactivado correctamente el curso'
+    ajax:
+      courses_paginate_ajax:
+        no_more_records_found: 'No hay más cursos para mostrar'
