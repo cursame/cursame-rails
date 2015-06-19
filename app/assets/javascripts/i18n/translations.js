@@ -281,6 +281,7 @@ I18n.translations["en"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "not PASS.",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancel",
@@ -387,6 +388,11 @@ I18n.translations["en"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "not PASS."
+      }
+    },
     "all": {
       "no_records": "No more users to show...",
       "no_usr": "No users not found in this network."
@@ -446,6 +452,11 @@ I18n.translations["en"] = {
       "back_to": "Back to course",
       "more_act": "Upload more activities",
       "select_act": "Select activity."
+    },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "not PASS."
+      }
     },
     "all_courses": {
       "no_records": "No more courses to show."
@@ -3872,6 +3883,7 @@ I18n.translations["es"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "Se ha calificado la tarea",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancelar",
@@ -3978,6 +3990,11 @@ I18n.translations["es"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "No hay más usuarios por mostrar"
+      }
+    },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
       "no_usr": "No se encontraron usarios en tu red."
@@ -4037,6 +4054,11 @@ I18n.translations["es"] = {
       "back_to": "Regresar al curso",
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
+    },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "No hay más cursos para mostrar"
+      }
     },
     "all_courses": {
       "no_records": "No hay más cursos para mostrar."
@@ -7328,6 +7350,7 @@ I18n.translations["es_meems"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "Se ha calificado la tarea",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancelar",
@@ -7434,6 +7457,11 @@ I18n.translations["es_meems"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "No hay más usuarios por mostrar"
+      }
+    },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
       "no_usr": "No se encontraron usarios en tu red."
@@ -7493,6 +7521,11 @@ I18n.translations["es_meems"] = {
       "back_to": "Regresar al Centros Emprendedor",
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
+    },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "No hay más cursos para mostrar"
+      }
     },
     "all_courses": {
       "no_records": "No hay más Centros Emprendedores para mostrar."
@@ -10785,6 +10818,7 @@ I18n.translations["devise"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "Se ha calificado la tarea",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancelar",
@@ -10891,6 +10925,11 @@ I18n.translations["devise"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "No hay más usuarios por mostrar"
+      }
+    },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
       "no_usr": "No se encontraron usarios en tu red."
@@ -10950,6 +10989,11 @@ I18n.translations["devise"] = {
       "back_to": "Regresar al curso",
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
+    },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "No hay más cursos para mostrar"
+      }
     },
     "all_courses": {
       "no_records": "No hay más cursos para mostrar."

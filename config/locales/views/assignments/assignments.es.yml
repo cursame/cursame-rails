@@ -13,3 +13,4 @@ es:
     messages:
       create:
         success: "Se ha entregado tu tarea"
+    correct_hmwrk: 'Se ha calificado la tarea'
