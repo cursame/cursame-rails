@@ -289,3 +289,4 @@ es_meems:
     library_pagination:
       no_more_records: 'No hay más archivos que mostrar'
     new_course: 'Se ha creado un curso nuevo'
+    deliver_hmwrk: 'Se ha cargado una entrega de tarea'

@@ -511,6 +511,7 @@ I18n.translations["en"] = {
       "inactive": "Inactive",
       "monitor": "Activity monitor"
     },
+    "deliver_hmwrk": "not PASS.",
     "edit": {
       "edit": "Edit course"
     },
@@ -4099,6 +4100,7 @@ I18n.translations["es"] = {
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
+    "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
       "edit": "Editar curso"
     },
@@ -7552,6 +7554,7 @@ I18n.translations["es_meems"] = {
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
+    "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
       "edit": "Editar Centros Emprendedor"
     },
@@ -11006,6 +11009,7 @@ I18n.translations["devise"] = {
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
+    "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
       "edit": "Editar curso"
     },
