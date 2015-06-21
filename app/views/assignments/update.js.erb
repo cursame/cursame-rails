@@ -1,4 +1,4 @@
-$('#i_rub_l_<%= @assignment.id%>').html('');
+ $('#i_rub_l_<%= @assignment.id%>').html('');
 $('#i_rub_l_<%= @assignment.id%>').html("<%= @assignment.accomplishment %>%");
 
-Notice('success', 'Se ha calificado la tarea.');
+Notice('success', I18n.t("assignments.correct_hmwrk", {locale: "<%= I18n.locale %>"}));

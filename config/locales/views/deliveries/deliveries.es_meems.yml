@@ -57,3 +57,9 @@ es_meems:
       past_hmwrks: tareas pasadas en la sección Pasadas
     lapsed:
       no_hmwrks: No se encontraron más tareas pasadas.
+    select_course: 'Selecciona un curso para publicar tu tarea'
+    correct_create: 'Tarea creada correctamente'
+    correct_edit: 'Tarea editada correctamente'
+    ajax:
+      deliveries_paginate_ajax:
+        no_more_records_found: 'No se encontraron tareas pasadas'

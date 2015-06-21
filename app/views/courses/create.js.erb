@@ -6,7 +6,7 @@ $('#timeline').effect("highlight", {}, 1000);
 $('#box-course').html("<%= escape_javascript(render :partial => '/courses/courses', :locals => {:courses => @courses})%>");
 
 <%end%>
-Notice('success', 'Se ha creado un curso nuevo.');
+Notice('success', I18n.t("courses.new_course", {locale: "<%= I18n.locale %>"}));
 
 $('#box-course').html("<%= escape_javascript(render :partial => '/courses/courses', :locals => {:courses => @courses})%>");
 $( "#tabs-courses" ).tabs();

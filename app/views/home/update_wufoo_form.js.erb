@@ -2,6 +2,6 @@
   console.log( "<%= @error %>" );
 <% else %>
   removeModalAction( $('.overlay'), function() {
-    Notice('success', 'Gracias por usar Cúrsame.')
+    Notice('success', I18n.t("home.thnx", {locale: "<%= I18n.locale %>"}))
   });
 <% end %>

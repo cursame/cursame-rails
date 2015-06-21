@@ -1,2 +1,2 @@
 $('div[data-user-id="<%= @user.id %>"]').replaceWith('<%= escape_javascript(render(partial: "users/shared/user_card", locals: { f: @user }))%>');
-Notice('success', 'Has agregado un nuevo amigo.')
+Notice('success', I18n.t("friendships.new_friendship", {locale: "<%= I18n.locale %>"}))

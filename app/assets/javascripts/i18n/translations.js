@@ -281,6 +281,7 @@ I18n.translations["en"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "not PASS.",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancel",
@@ -387,6 +388,11 @@ I18n.translations["en"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "not PASS."
+      }
+    },
     "all": {
       "no_records": "No more users to show...",
       "no_usr": "No users not found in this network."
@@ -447,6 +453,11 @@ I18n.translations["en"] = {
       "more_act": "Upload more activities",
       "select_act": "Select activity."
     },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "not PASS."
+      }
+    },
     "all_courses": {
       "no_records": "No more courses to show."
     },
@@ -497,6 +508,8 @@ I18n.translations["en"] = {
         "send": "delivered"
       }
     },
+    "correct_active": "not PASS.",
+    "correct_inactive": "not PASS.",
     "courses_search": {
       "courses_search": "Search course…",
       "search": "Search"
@@ -511,6 +524,7 @@ I18n.translations["en"] = {
       "inactive": "Inactive",
       "monitor": "Activity monitor"
     },
+    "deliver_hmwrk": "not PASS.",
     "edit": {
       "edit": "Edit course"
     },
@@ -630,6 +644,9 @@ I18n.translations["en"] = {
       "text2": "Cúrsame will not be made responsible for the content submitted by users, or any copyright infractions. Each user is 100% responsible for his content. If you have any problem of this kind please be dure to report it",
       "upload": "Upload file"
     },
+    "library_pagination": {
+      "no_more_records": "not PASS."
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Grading criterion",
       "descrip": "Description",
@@ -666,6 +683,7 @@ I18n.translations["en"] = {
     "new": {
       "new_course": "New Course"
     },
+    "new_course": "not PASS.",
     "old_course": {
       "activate": "Activate course",
       "antique": "Previous courses",
@@ -902,6 +920,13 @@ I18n.translations["en"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "not PASS"
+      }
+    },
+    "correct_create": "not PASS.",
+    "correct_edit": "not PASS.",
     "deliveries_course": {
       "hmwrks": "Homework that must be turned in in three days or more",
       "hmwrks_last": "past homeworks in the Past section",
@@ -940,6 +965,7 @@ I18n.translations["en"] = {
     "lapsed": {
       "no_hmwrks": "We could not find any previous homework."
     },
+    "select_course": "not PASS.",
     "shared": {
       "deliveries_course_header": {
         "active": "Active",
@@ -1142,6 +1168,13 @@ I18n.translations["en"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "not PASS."
+      }
+    },
+    "correct_edit": "not PASS.",
+    "create_discuss": "not PASS.",
     "discussions_course": {
       "no_discuss": "No more discussions to show."
     },
@@ -1428,6 +1461,10 @@ I18n.translations["en"] = {
     "true": "Sí",
     "update": "Guardar %{model}"
   },
+  "friendships": {
+    "new_friendship": "not PASS.",
+    "send_friendship": "not PASS."
+  },
   "friendships_controller": {
     "delete_usr": "The user has been deleted from your friends",
     "error_usr": "Failed to delete the user from your friends"
@@ -1440,7 +1477,12 @@ I18n.translations["en"] = {
       },
       "dropdown": {
         "courses": "Courses",
-        "public": "Public"
+        "create_course": "Create course",
+        "dropdown_v": {
+          "no_course": "You have not created a course yet"
+        },
+        "public": "Public",
+        "return": "Return"
       },
       "form": {
         "cancel": "Cancel",
@@ -1559,7 +1601,8 @@ I18n.translations["en"] = {
       }
     },
     "delete_publication": "We have successfully deleted the publication.",
-    "demo": "Demo request",
+    "demo": "Request a Demo",
+    "edit_comment": "not PASS.",
     "features": {
       "features_content": {
         "characteristic_chat": "Some of its characteristics:",
@@ -1741,6 +1784,10 @@ I18n.translations["en"] = {
         "title4": "Parents"
       }
     },
+    "like": "Like",
+    "load_more_notfications": {
+      "load_more_notifications": "not PASS."
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -1760,6 +1807,7 @@ I18n.translations["en"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "not PASS.",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -1793,6 +1841,7 @@ I18n.translations["en"] = {
       "text4": "required fields.",
       "title": "Ask for a demo"
     },
+    "send": "not PASS.",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -1893,6 +1942,8 @@ I18n.translations["en"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Thank you for using Cúrsame",
+    "unlike": "Unlike",
     "wall": {
       "comment": "Comentar"
     }
@@ -3832,6 +3883,7 @@ I18n.translations["es"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "Se ha calificado la tarea",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancelar",
@@ -3938,6 +3990,11 @@ I18n.translations["es"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "No hay más usuarios por mostrar"
+      }
+    },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
       "no_usr": "No se encontraron usarios en tu red."
@@ -3998,6 +4055,11 @@ I18n.translations["es"] = {
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
     },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "No hay más cursos para mostrar"
+      }
+    },
     "all_courses": {
       "no_records": "No hay más cursos para mostrar."
     },
@@ -4048,6 +4110,8 @@ I18n.translations["es"] = {
         "send": "Entrego"
       }
     },
+    "correct_active": "Se ha activado correctamente el curso",
+    "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
       "courses_search": "Buscar curso...",
       "search": "Buscar"
@@ -4062,6 +4126,7 @@ I18n.translations["es"] = {
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
+    "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
       "edit": "Editar curso"
     },
@@ -4181,6 +4246,9 @@ I18n.translations["es"] = {
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
+    "library_pagination": {
+      "no_more_records": "No hay más archivos que mostrar"
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
       "descrip": "Descripción de entrega",
@@ -4217,6 +4285,7 @@ I18n.translations["es"] = {
     "new": {
       "new_course": "Curso nuevo"
     },
+    "new_course": "Se ha creado un curso nuevo",
     "old_course": {
       "activate": "activar curso",
       "antique": "Cursos antiguos",
@@ -4453,6 +4522,13 @@ I18n.translations["es"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "No se encontraron tareas pasadas"
+      }
+    },
+    "correct_create": "Tarea creada correctamente",
+    "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
@@ -4491,6 +4567,7 @@ I18n.translations["es"] = {
     "lapsed": {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
+    "select_course": "Selecciona un curso para publicar tu tarea",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -4651,6 +4728,13 @@ I18n.translations["es"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "No se encontraron más discusiones"
+      }
+    },
+    "correct_edit": "Discusión editada correctamente",
+    "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -4916,6 +5000,10 @@ I18n.translations["es"] = {
     "true": "Sí",
     "update": "Guardar %{model}"
   },
+  "friendships": {
+    "new_friendship": "Has agregado un nuevo amigo",
+    "send_friendship": "Se ha enviado una solicitud de amistad"
+  },
   "friendships_controller": {
     "delete_usr": "Se ha eliminado al usuario de tus amigos",
     "error_usr": "Error al eliminar al usuario de tus amigos"
@@ -4928,7 +5016,12 @@ I18n.translations["es"] = {
       },
       "dropdown": {
         "courses": "Cursos",
-        "public": "Público"
+        "create_course": "Crear curso",
+        "dropdown_v": {
+          "no_course": "No has creado ningún curso"
+        },
+        "public": "Público",
+        "return": "Regresar"
       },
       "form": {
         "cancel": "Cancelar",
@@ -5030,6 +5123,7 @@ I18n.translations["es"] = {
     },
     "delete_publication": "Se ha borrado correctamente la publicación.",
     "demo": "Solictud de demo",
+    "edit_comment": "Comentario editado correctamente.",
     "features": {
       "features_content": {
         "characteristic_chat": "Algunas de sus características son:",
@@ -5211,6 +5305,10 @@ I18n.translations["es"] = {
         "title4": "Padres"
       }
     },
+    "like": "Me gusta",
+    "load_more_notfications": {
+      "load_more_notifications": "Ver más notificaciones"
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -5230,6 +5328,7 @@ I18n.translations["es"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -5263,6 +5362,7 @@ I18n.translations["es"] = {
       "text4": "son requeridos.",
       "title": "Solicitar Demo"
     },
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -5363,6 +5463,8 @@ I18n.translations["es"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Gracias por usar Cúrsame.",
+    "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
     }
@@ -5737,7 +5839,7 @@ I18n.translations["es"] = {
       "managers_user_header": {
         "admin": "Administrador",
         "edit": "Editar perfil",
-        "exit": "Salir del aministrador",
+        "exit": "Salir del administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -6695,7 +6797,7 @@ I18n.translations["es"] = {
       "save": "Guardar Cuestionario",
       "support": "Material de soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuesitonario",
+      "timer": "Tiempo para resolución del cuestionario",
       "title": "Titulo del cuestionario"
     },
     "index": {
@@ -7248,6 +7350,7 @@ I18n.translations["es_meems"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "Se ha calificado la tarea",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancelar",
@@ -7354,6 +7457,11 @@ I18n.translations["es_meems"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "No hay más usuarios por mostrar"
+      }
+    },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
       "no_usr": "No se encontraron usarios en tu red."
@@ -7414,6 +7522,11 @@ I18n.translations["es_meems"] = {
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
     },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "No hay más cursos para mostrar"
+      }
+    },
     "all_courses": {
       "no_records": "No hay más Centros Emprendedores para mostrar."
     },
@@ -7464,6 +7577,8 @@ I18n.translations["es_meems"] = {
         "send": "Entrego"
       }
     },
+    "correct_active": "Se ha activado correctamente el curso",
+    "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
       "courses_search": "Buscar Centros Emprendedor...",
       "search": "Buscar"
@@ -7478,6 +7593,7 @@ I18n.translations["es_meems"] = {
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
+    "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
       "edit": "Editar Centros Emprendedor"
     },
@@ -7597,6 +7713,9 @@ I18n.translations["es_meems"] = {
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
+    "library_pagination": {
+      "no_more_records": "No hay más archivos que mostrar"
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
       "descrip": "Descripción de entrega",
@@ -7633,6 +7752,7 @@ I18n.translations["es_meems"] = {
     "new": {
       "new_course": "Centro Emprendedor nuevo"
     },
+    "new_course": "Se ha creado un curso nuevo",
     "old_course": {
       "activate": "activar Centros Emprendedor",
       "antique": "Centros Emprendedores antiguos",
@@ -7869,6 +7989,13 @@ I18n.translations["es_meems"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "No se encontraron tareas pasadas"
+      }
+    },
+    "correct_create": "Tarea creada correctamente",
+    "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
@@ -7907,6 +8034,7 @@ I18n.translations["es_meems"] = {
     "lapsed": {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
+    "select_course": "Selecciona un curso para publicar tu tarea",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -8067,6 +8195,13 @@ I18n.translations["es_meems"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "No se encontraron más discusiones"
+      }
+    },
+    "correct_edit": "Discusión editada correctamente",
+    "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -8332,6 +8467,10 @@ I18n.translations["es_meems"] = {
     "true": "Sí",
     "update": "Guardar %{model}"
   },
+  "friendships": {
+    "new_friendship": "Has agregado un nuevo amigo",
+    "send_friendship": "Se ha enviado una solicitud de amistad"
+  },
   "friendships_controller": {
     "delete_usr": "Se ha eliminado al usuario de tus amigos",
     "error_usr": "Error al eliminar al usuario de tus amigos"
@@ -8344,7 +8483,12 @@ I18n.translations["es_meems"] = {
       },
       "dropdown": {
         "courses": "Centros Emprendedores",
-        "public": "Público"
+        "create_course": "Crear Centro de Emprendedores",
+        "dropdown_v": {
+          "no_course": "No has creado ningún Centro de Emprendedores"
+        },
+        "public": "Público",
+        "return": "Regresar"
       },
       "form": {
         "cancel": "Cancelar",
@@ -8447,6 +8591,7 @@ I18n.translations["es_meems"] = {
     },
     "delete_publication": "Se ha borrado correctamente la publicación.",
     "demo": "Solictud de demo",
+    "edit_comment": "Comentario editado correctamente",
     "features": {
       "features_content": {
         "characteristic_chat": "Algunas de sus características son:",
@@ -8628,6 +8773,10 @@ I18n.translations["es_meems"] = {
         "title4": "Padres"
       }
     },
+    "like": "Me gusta",
+    "load_more_notfications": {
+      "load_more_notifications": "Ver más notificaciones"
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -8647,6 +8796,7 @@ I18n.translations["es_meems"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -8680,6 +8830,7 @@ I18n.translations["es_meems"] = {
       "text4": "son requeridos.",
       "title": "Solicitar Demo"
     },
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -8780,6 +8931,8 @@ I18n.translations["es_meems"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Gracias por usar Cúrsame.",
+    "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
     }
@@ -9154,7 +9307,7 @@ I18n.translations["es_meems"] = {
       "managers_user_header": {
         "admin": "MEEMS",
         "edit": "Editar perfil",
-        "exit": "Salir del aministrador",
+        "exit": "Salir del administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -10665,6 +10818,7 @@ I18n.translations["devise"] = {
   },
   "assignments": {
     "correct": "Se ha calificado correctamente la tarea.",
+    "correct_hmwrk": "Se ha calificado la tarea",
     "error": "Ha ocurrido un error al calificar la tarea.",
     "form_for_delivery": {
       "cancel": "Cancelar",
@@ -10771,6 +10925,11 @@ I18n.translations["devise"] = {
     }
   },
   "community": {
+    "ajax": {
+      "paginate_ajax": {
+        "no_more_records_found": "No hay más usuarios por mostrar"
+      }
+    },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
       "no_usr": "No se encontraron usarios en tu red."
@@ -10831,6 +10990,11 @@ I18n.translations["devise"] = {
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
     },
+    "ajax": {
+      "courses_paginate_ajax": {
+        "no_more_records_found": "No hay más cursos para mostrar"
+      }
+    },
     "all_courses": {
       "no_records": "No hay más cursos para mostrar."
     },
@@ -10881,6 +11045,8 @@ I18n.translations["devise"] = {
         "send": "Entrego"
       }
     },
+    "correct_active": "Se ha activado correctamente el curso",
+    "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
       "courses_search": "Buscar curso...",
       "search": "Buscar"
@@ -10895,6 +11061,7 @@ I18n.translations["devise"] = {
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
+    "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
       "edit": "Editar curso"
     },
@@ -11014,6 +11181,9 @@ I18n.translations["devise"] = {
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
+    "library_pagination": {
+      "no_more_records": "No hay más archivos que mostrar"
+    },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
       "descrip": "Descripción de entrega",
@@ -11050,6 +11220,7 @@ I18n.translations["devise"] = {
     "new": {
       "new_course": "Curso nuevo"
     },
+    "new_course": "Se ha creado un curso nuevo",
     "old_course": {
       "activate": "activar curso",
       "antique": "Cursos antiguos",
@@ -11286,6 +11457,13 @@ I18n.translations["devise"] = {
     }
   },
   "deliveries": {
+    "ajax": {
+      "deliveries_paginate_ajax": {
+        "no_more_records_found": "No se encontraron tareas pasadas"
+      }
+    },
+    "correct_create": "Tarea creada correctamente",
+    "correct_edit": "Tarea editada correctamente",
     "deliveries_course": {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
@@ -11324,6 +11502,7 @@ I18n.translations["devise"] = {
     "lapsed": {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
+    "select_course": "Selecciona un curso para publicar tu tarea",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -11484,6 +11663,13 @@ I18n.translations["devise"] = {
     }
   },
   "discussions": {
+    "ajax": {
+      "discussions_paginate_ajax": {
+        "no_more_records_found": "No se encontraron más discusiones"
+      }
+    },
+    "correct_edit": "Discusión editada correctamente",
+    "create_discuss": "Discusión creada correctamente",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -11749,6 +11935,10 @@ I18n.translations["devise"] = {
     "true": "Sí",
     "update": "Guardar %{model}"
   },
+  "friendships": {
+    "new_friendship": "Has agregado un nuevo amigo",
+    "send_friendship": "Se ha enviado una solicitud de amistad"
+  },
   "friendships_controller": {
     "delete_usr": "Se ha eliminado al usuario de tus amigos",
     "error_usr": "Error al eliminar al usuario de tus amigos"
@@ -11761,7 +11951,12 @@ I18n.translations["devise"] = {
       },
       "dropdown": {
         "courses": "Cursos",
-        "public": "Público"
+        "create_course": "Crear curso",
+        "dropdown_v": {
+          "no_course": "No has creado ningún curso"
+        },
+        "public": "Público",
+        "return": "Regresar"
       },
       "form": {
         "cancel": "Cancelar",
@@ -11863,6 +12058,7 @@ I18n.translations["devise"] = {
     },
     "delete_publication": "Se ha borrado correctamente la publicación.",
     "demo": "Solictud de demo",
+    "edit_comment": "Comentario editado correctamente.",
     "features": {
       "features_content": {
         "characteristic_chat": "Algunas de sus características son:",
@@ -12044,6 +12240,10 @@ I18n.translations["devise"] = {
         "title4": "Padres"
       }
     },
+    "like": "Me gusta",
+    "load_more_notfications": {
+      "load_more_notifications": "Ver más notificaciones"
+    },
     "login_form": {
       "log_in": "Iniciar Sesión",
       "pwd": "Olvidé mi contraseña",
@@ -12063,6 +12263,7 @@ I18n.translations["devise"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -12096,6 +12297,7 @@ I18n.translations["devise"] = {
       "text4": "son requeridos.",
       "title": "Solicitar Demo"
     },
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -12196,6 +12398,8 @@ I18n.translations["devise"] = {
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
       "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
     },
+    "thnx": "Gracias por usar Cúrsame.",
+    "unlike": "Ya no me gusta",
     "wall": {
       "comment": "Comentar"
     }
@@ -12570,7 +12774,7 @@ I18n.translations["devise"] = {
       "managers_user_header": {
         "admin": "Administrador",
         "edit": "Editar perfil",
-        "exit": "Salir del aministrador",
+        "exit": "Salir del administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -13528,7 +13732,7 @@ I18n.translations["devise"] = {
       "save": "Guardar Cuestionario",
       "support": "Material de soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuesitonario",
+      "timer": "Tiempo para resolución del cuestionario",
       "title": "Titulo del cuestionario"
     },
     "index": {

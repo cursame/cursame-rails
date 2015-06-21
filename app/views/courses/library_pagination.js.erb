@@ -2,12 +2,12 @@
   <% @name =  "#{cf.file}" %>
   <% @sintetic_name = @name.split('/').last%>
   <% @termination = @name.split('.').last %>
-         
+
   $(".library-items-list").append('<%= escape_javascript( render( :partial => "course_files/library_item", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }))%>');
 <% end %>
 
 <% if @files.num_pages > @files.current_page %>
   $(".library-paginator").html('<%= link_to "Cargar archivos anteriores", library_in_course_pagination_path(:page => @next), :id => "paginador", :remote => true%>');
 <% else %>
-  $(".library-paginator").html('<span>No hay mas archivos que mostrar.');
+  $(".library-paginator").html('<span><%= t('.no_more_records') %>');
 <% end %>

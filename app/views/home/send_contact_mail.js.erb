@@ -4,5 +4,5 @@ $('.other-lms').hide();
 <% if @mkt.present? %>
   window.location = "<%= mkt_thanks_url %>?success=1";
 <% else %>
-  alert('Tu mensaje se ha enviado!');
+  alert(I18n.t("home.send", {locale: "<%= I18n.locale %>"});
 <% end %>

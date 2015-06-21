@@ -14,19 +14,19 @@
     if ( $('div.overlay').length ) {
       overlayPositioning( $('div.overlay') );
     };
-    
+
   <% end %>
 
   <% if @comment.commentable_type == 'User' %>
 
     <%
-      @user_show = true 
+      @user_show = true
       @user_l = @comment.commentable
     %>
 
   <% end %>
 
-  Notice('success', 'Se ha creado un comentario');
+  Notice('success', I18n.t("home.new_comment", {locale: "<%= I18n.locale %>"}));
   newPublicationCleaner();
 
 <% else # Es editar %>
@@ -34,6 +34,6 @@
     newPostBoxContent = '<%= escape_javascript(render( partial: "comments/shared/comment_card", locals: { post_comment: @publication.publication, card_type: :post_publication, wall: @publication } ))%>';
 
   postBox.replaceWith(newPostBoxContent);
-  Notice('success', 'Comentario editado correctamente.');
+  Notice('success', I18n.t("home.edit_comment", {locale: "<%= I18n.locale %>"}));
 
 <% end %>

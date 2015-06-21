@@ -2,4 +2,4 @@ $("#locomotion_<%=@data%>delivery").html('');
 $('#locomotion_<%=@data%><%= @typeo %>').effect("highlight", {}, 1000);
 $("#locomotion_<%=@data%><%= @typeo %>").html('<%= escape_javascript(render(partial: "courses/light_box_dashboard_delivery", :locals => {:assignment => @assignment})) %>');
 
-Notice('success', 'Se ha cargado una entrega de tarea');
+Notice('success', I18n.t("courses.deliver_hmwrk", {locale: "<%= I18n.locale %>"}));
