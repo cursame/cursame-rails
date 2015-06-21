@@ -15,3 +15,4 @@ bit:
     groups: /v1/grupos
     group_students: /v1/alumnos
     group_teachers: /v1/profesores
+    group_evaluations: /v1/evaluaciones

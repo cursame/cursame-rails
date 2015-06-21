@@ -20,6 +20,7 @@ class Managers::BitCoursesController < Managers::BaseController
     teachers = cursame_teachers(bit_teachers)
     @course.members_in_courses =
       @course.add_teachers(teachers) + @course.add_students(students)
+    @course.evaluation_periods = evaluation_periods(params[:folio], @course.id)
     @course.save!
     link_course_to_group(@course.id, params[:folio])
     inf_flash = { success: t('.managers.bit.success_importing_group') }
@@ -105,6 +106,14 @@ class Managers::BitCoursesController < Managers::BaseController
     )
   end
 
+  def build_uri_group_evaluations
+    URI::HTTP.build(
+      host: Settings.bit.host,
+      port: Settings.bit.port,
+      path: Settings.bit.path.group_evaluations
+    )
+  end
+
   def authorization
     authorization_keyword = current_network.bit_setting.authorization_keyword
     api_key = current_network.bit_setting.api_key
@@ -140,6 +149,17 @@ class Managers::BitCoursesController < Managers::BaseController
       headers: { 'Authorization' => authorization },
       timeout: 180)
     mess = 'Error getting group teachers from bit: '
+    response.code == 200 ? response : raise_error_response(uri, response, mess)
+  end
+
+  def bit_evaluation_periods(folio)
+    uri = build_uri_group_evaluations
+    uri.path = uri.path + '/' + folio
+    response = HTTParty.get(
+      uri,
+      headers: { 'Authorization' => authorization },
+      timeout: 180)
+    mess = 'Error getting evaluation_periods group from bit: '
     response.code == 200 ? response : raise_error_response(uri, response, mess)
   end
 
@@ -205,6 +225,15 @@ class Managers::BitCoursesController < Managers::BaseController
     )
   end
 
+  def new_evaluation_period(bit_period, id)
+    EvaluationPeriod.new(
+      course_id: id,
+      name: bit_period['nombre'],
+      order: bit_period['orden'],
+      short_name: bit_period['abreviatura']
+    )
+  end
+
   def create_student(bit_user)
     user = new_user_student(bit_user)
     user.permissionings = [new_permissioning_student(user.id)]
@@ -257,5 +286,10 @@ class Managers::BitCoursesController < Managers::BaseController
       user = User.find_by_email bit_teacher['sCorreo']
       user.nil? ? create_teacher(bit_teacher) : user
     end
+  end
+
+  def evaluation_periods(folio, id)
+    periods = bit_evaluation_periods(folio)
+    periods.map { |period| new_evaluation_period(period, id) }
   end
 end
