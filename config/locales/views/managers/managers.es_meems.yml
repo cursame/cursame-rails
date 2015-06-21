@@ -61,7 +61,7 @@ es_meems:
       edit:
         edit1: Editar Centro Emprendedor
       index:
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         create: Crear Centros Emprendedor
         name: Nombre
         teachers: Líder multiplicadores
@@ -149,7 +149,7 @@ es_meems:
       managers_sidebar:
         stat: Estadisticas
         usr: Usuarios
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         hmwrk: Tareas
         quest: Cuestionarios
         discuss: Discusiones
@@ -209,7 +209,7 @@ es_meems:
         edit1: Editar Usuario
       import:
         import2: Importar Usuarios
-        import3: Importa los usuarios de tu red de emprendedores desde una base de datos.
+        import3: Importa los miembros desde una base de datos.
         import4: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.
         text1: El role puede ser Emprendedor o Líder multiplicador.
         text2: El email debe de ser el email del usuario.
@@ -249,14 +249,14 @@ es_meems:
       config: Configuración
       masive: Correo Masivo
       import_usr: Importar usuarios
-      import_cur: Importar Centros Emprendedores
+      import_cur: Importar Centros de Emprendedores
       import_std: Importar emprendedores de Centros Emprendedor
     import_members:
       import1: Importar miembros
-      import2: Importa los miembros de los Centros Emprendedores desde una base de datos.
-      download: Descargar archivo de Centros Emprendedores
+      import2: Importa los miembros de los Centros de Emprendedores desde una base de datos.
+      download: Descargar archivo de Centros de Emprendedores
       import3: Importar lista de usuarios
-      text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros Emprendedores.
+      text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros de Emprendedores.
       text2: 'Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centros Emprendedor mientras que 1 es para especificar que solo es un miembro del Centros Emprendedor nada más.'
       text3: El Email debe de ser el correo asociado al usuario.
       no_file: NO SE ENCONTRO EL ARCHIVO
@@ -268,14 +268,14 @@ es_meems:
       pop: Población esperada
       actual: Actual
       usr: Usuarios
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       hmwrks: Tareas
       comments: Comentarios
       exams: Examenes
       discuss: Discusiones
     mailer:
       masive: Mail Masivo
-      masive2: Envía un mail a todos los miembros de tu red de emprendedores.
+      masive2: Envía un mail a todos los miembros.
       subject: Asunto
       example: Ejemplo
       example2: Ceremonia de clausura

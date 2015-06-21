@@ -18,7 +18,7 @@ es_meems:
         public: "Público"
         publish: "Publicar"
       dropdown:
-        courses: "Centros Emprendedores"
+        courses: "Centros de Emprendedores"
         public: "Público"
         return: 'Regresar'
         create_course: 'Crear Centro de Emprendedores'

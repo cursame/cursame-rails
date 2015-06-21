@@ -28,25 +28,25 @@ es_meems:
         no_rate: Sin calificar
     index:
       student_courses_index:
-        no_courses: No hay Centros Emprendedores.
-        no_show: No hay más Centros Emprendedores para mostrar.
+        no_courses: No hay Centros de Emprendedores.
+        no_show: No hay más Centros de Emprendedores para mostrar.
       student_header:
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         course: Cursando
         regist: Inscríbete
         request: Solicitudes
       teacher_courses_index:
-        no_courses: No hay Centros Emprendedores.
-        no_show: No hay más Centros Emprendedores para mostrar.
+        no_courses: No hay Centros de Emprendedores.
+        no_show: No hay más Centros de Emprendedores para mostrar.
       teacher_header:
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         create_course: Crear Centros Emprendedor nuevo
         new: Nuevo
         active: Activos
         finalize: Finalizados
     members_in_courses:
       course_view_call:
-        no_courses: No hay Centros Emprendedores.
+        no_courses: No hay Centros de Emprendedores.
       owner_partial_for_member:
         teacher: Líder multiplicador
         student: Emprendedor
@@ -62,7 +62,7 @@ es_meems:
     search:
       courses_search_results:
         search: "Busqueda:"
-        no_records: No se encontraron Centros Emprendedores con el criterio de busqueda.
+        no_records: No se encontraron Centros de Emprendedores con el criterio de busqueda.
     shared:
       course_card:
         member: Miembro
@@ -108,7 +108,7 @@ es_meems:
       courses_search: Buscar Centros Emprendedor...
       search: Buscar
     dashboard_deliver:
-      access: Acceso rápido de administración de Centros Emprendedores
+      access: Acceso rápido de administración de Centros de Emprendedores
       desactivate: Desactivar
       activate: activar Centros Emprendedor
       inactive: Inactivo
@@ -121,7 +121,7 @@ es_meems:
       descrip: Descripción
       publish_date: Día de pubicación
       delivery_day: Ultimo día de entrega
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       publish: Publicar
     evaluation:
       no_group: No eres parte del grupo!
@@ -147,13 +147,13 @@ es_meems:
       hmwrk: Tarea
     form:
       name: Nombre del
-      example: "Ejemplo: Matemáticas I"
+      example: "Emprendedores CBTA No. 72"
       descrip: Descripción del
       descrip2: Descripción
       privacy: Privacidad
       public: Público
       private: Privado
-      init_date: Fecha de inicio
+      init_date: Fecha en la que se recibió la transferencia
       teachers: Líderes Multiplicadores
       students: Emprendedores
       first_name: Escribe un nombre o apellido.
@@ -184,7 +184,7 @@ es_meems:
       eval_hmwrk: Calificar tarea
       score: Calificación
     old_course:
-      antique: Centros Emprendedores antiguos
+      antique: Centros de Emprendedores antiguos
       deactivate: desactivar Centros Emprendedor
       activate: activar Centros Emprendedor
     survey_results:
@@ -203,16 +203,16 @@ es_meems:
       more_act: Cargar más actividades
       select_act: Selecciona una actividad.
     all_courses:
-      no_records: No hay más Centros Emprendedores para mostrar.
+      no_records: No hay más Centros de Emprendedores para mostrar.
     clone_course_view:
       clone: Clonar Centros Emprendedor
       data_course: Datos del Centros Emprendedor
       info_new_course: Cambia la información para el nuevo Centros Emprendedor.
       name: Nombre del
-      example: "Ejemplo: Matemáticas I"
+      example: "Emprendedores CBTA No. 72"
       descrip: Descripción
       dates: Fechas
-      init_date: Fecha de inicio
+      init_date: Fecha en la que se recibió la transferencia
       privacy: Privacidad
       public: Público
       private: Privado
@@ -270,7 +270,7 @@ es_meems:
       quest: CUESTIONARIO
       in_course: En el Centros Emprendedor
     unpublished_courses:
-      no_courses: No hay más Centros Emprendedores para mostrar.
+      no_courses: No hay más Centros de Emprendedores para mostrar.
     show:
       course-header:
         update: "Actualizar portada"
