@@ -13,25 +13,25 @@
       <ul class="section-list navigation">
         <li>
           <%= link_to '/' do %>
-            <%= icon 'home-w' %><%= t('.sidebar_section.initiation')%>
+            <%= icon 'home-w' %><%= t('.sidebar_section.initiation', locale: locale)%>
           <% end %>
         </li>
         <% if current_role == 'student' %>
           <% if current_network.evaluable? %>
             <li>
               <%= link_to deliveries_path do %>
-                <%= icon 'homeworks-w' %><%= t('.sidebar_section.homework')%>
+                <%= icon 'homeworks-w' %><%= t('.sidebar_section.homework', locale: locale)%>
               <%end%>
             </li>
             <li>
               <%= link_to surveys_path do %>
-                <%= icon 'questionaries-w' %><%= t('.sidebar_section.questionnaire')%>
+                <%= icon 'questionaries-w' %><%= t('.sidebar_section.questionnaire', locale: locale)%>
               <%end%>
             </li>
           <% end %>
           <li>
             <%= link_to discussions_path do %>
-              <%= icon 'discussions-w' %><%= t('.sidebar_section.discussion')%>
+              <%= icon 'discussions-w' %><%= t('.sidebar_section.discussion', locale: locale)%>
             <%end%>
           </li>
         <% end %>
@@ -39,7 +39,7 @@
         <% if ((current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin') and current_network.evaluable?) %>
           <li>
             <%= link_to evaluate_activities_path do %>
-              <%= icon 'evaluate-w' %><%= t('.sidebar_section.activities')%>
+              <%= icon 'evaluate-w' %><%= t('.sidebar_section.activities', locale: locale)%>
             <%end%>
           </li>
         <% end %>
@@ -51,21 +51,21 @@
         <% if current_network.evaluable? %>
           <li>
             <%= link_to califications_path do %>
-              <%= icon 'stats-w' %> <%= t('.sidebar_section.ratings')%>
+              <%= icon 'stats-w' %> <%= t('.sidebar_section.ratings', locale: locale)%>
             <%end%>
           </li>
         <% end %>
         <% if current_network.evaluable? %>
           <li>
             <%= link_to calendar_path, :data => "menu" do %>
-              <%= icon 'calendar-w' %> <%= t('.sidebar_section.calendar')%>
+              <%= icon 'calendar-w' %> <%= t('.sidebar_section.calendar', locale: locale)%>
             <% end %>
             </a>
           </li>
         <% end %>
         <li>
           <%= link_to library_path(current_network.library), :data => "menu" do %>
-            <%= icon 'library-w' %><%=t('.sidebar_section.library')%>
+            <%= icon 'library-w' %><%=t('.sidebar_section.library', locale: locale)%>
           <% end %>
         </li>
         <li>
@@ -76,20 +76,20 @@
         <% if current_network.radar_token? %>
           <li>
             <%= link_to(radar_path, target: '_blank', id: 'radar_link') do %>
-              <%= icon 'radar' %><%= t('.sidebar_section.radar')%>
+              <%= icon 'radar' %><%= t('.sidebar_section.radar', locale: locale)%>
             <% end %>
           </li>
         <% end %>
         <% if !current_network.find_setting(:vlex_sso).nil? && current_network.find_setting(:vlex_sso).value == 't' %>
           <li>
             <%= link_to vlex_remote_auth, target: '_blank' do %>
-              <%= icon 'vlex' %><%= t('.sidebar_section.vLex')%>
+              <%= icon 'vlex' %><%= t('.sidebar_section.vLex', locale: locale)%>
             <% end %>
           </li>
         <% end %>
         <li class="chat-link">
           <%= link_to chat_path, :data => "menu" do %>
-            <%= icon 'messages-w' %><%= t('.sidebar_section.chat')%>
+            <%= icon 'messages-w' %><%= t('.sidebar_section.chat', locale: locale)%>
           <% end %>
         </li>
       </ul>
@@ -116,8 +116,8 @@
         <% else %>
           <div class="inner-no-content">
             <% if current_role == 'student' %>
-              <h5><%= t('.sidebar_section.no_member')%></h5>
-              <p><%= t('.sidebar_section.course_message') %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
+              <h5><%= t('.sidebar_section.no_member', locale: locale)%></h5>
+              <p><%= t('.sidebar_section.course_message', locale: locale) %> <%= link_to(t('.sidebar_section.course_href', locale: locale), courses_path, class: 'underline') %></p>
             <% else %>
               <h5><%= t('.sidebar_section.no_course', locale: locale)%></h5>
               <p><%= link_to(t('.sidebar_section.no_course_href', locale: locale), new_course_path, class: 'underline') %></p>
@@ -130,11 +130,11 @@
 
   <div class="sidebar-section sidebar-chat tabs">
     <div class="sidebar-section-header s-unit">
-      <h3><%= t('.sidebar_section.chat')%></h3>
+      <h3><%= t('.sidebar_section.chat', locale: locale)%></h3>
 
       <div class="chat-switch-wrap tabs-buttons">
         <div class="chat-switch tab active" data-id-target="chat-group-friends">
-          <%= icon('friends-12') %> <span><%= t('.sidebar_section.friends')%></span>
+          <%= icon('friends-12') %> <span><%= t('.sidebar_section.friends', locale: locale)%></span>
         </div>
         <div class="chat-switch tab" data-id-target="chat-group-courses">
           <%= icon('courses-12') %> <span><%= t('.sidebar_section.courses', locale: locale)%></span>
@@ -157,7 +157,7 @@
                     <% end %>
 
                     <%= truncate("#{user.name}", :omission => "...", :length => 20) || user.email %>
-                    <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? t('.sidebar_section.disp_usr'): t('.sidebar_section.no_disp_usr')%>"></div>
+                    <div class="<%= user.online ? 'user-online': 'user-offline' %>" id ="chat-list-user-<%= user.id %>" title="<%= user.online ? t('.sidebar_section.disp_usr', locale: locale): t('.sidebar_section.no_disp_usr', locale: locale)%>"></div>
 
                   <% end %>
                 </li>
@@ -165,8 +165,8 @@
             </ul>
           <% else %>
             <div class="inner-no-content">
-              <h5><%= t('.sidebar_section.no_friends')%></h5>
-              <p><%= t('.sidebar_section.add_friends')%> <%= link_to( t('.sidebar_section.community_href'), network_comunity_path, class: 'underline') %></p>
+              <h5><%= t('.sidebar_section.no_friends', locale: locale)%></h5>
+              <p><%= t('.sidebar_section.add_friends', locale: locale)%> <%= link_to( t('.sidebar_section.community_href', locale: locale), network_comunity_path, class: 'underline') %></p>
             </div>
           <% end %>
 
@@ -191,7 +191,7 @@
               <div class="inner-no-content">
                 <% if current_role == 'student' %>
                   <h5><%= t('.sidebar_section.no_member', locale: locale)%></h5>
-                  <p><%= t('.sidebar_section.course_message', locale: locale) %> <%= link_to(t('.sidebar_section.course_href'), courses_path, class: 'underline') %></p>
+                  <p><%= t('.sidebar_section.course_message', locale: locale) %> <%= link_to(t('.sidebar_section.course_href', locale: locale), courses_path, class: 'underline') %></p>
                 <% else %>
                   <h5><%= t('.sidebar_section.no_course', locale: locale)%></h5>
                   <p><%= link_to(t('.sidebar_section.no', locale: locale), new_course_path, class: 'underline') %></p>
