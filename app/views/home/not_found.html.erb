@@ -1,18 +1,21 @@
 <div class="error-res"></div>
-	<div style="font-size:30px; padding:10px; font-height:bold; margin-top: 100px;">
-	  <div class="Sorry" style="font-family: 'Roboto', sans-serif; font-weight: lighter; font-size: 30px; text-align: center; margin: 0 auto;">
-	  	<%=t('.not_found2')%>
-	  </div>
+<div style="font-size:30px; padding:10px; font-height:bold; margin-top: 100px;">
+	<div class="Sorry" style="font-family: 'Roboto', sans-serif; font-weight: lighter; font-size: 30px; text-align: center; margin: 0 auto;">
+		<%=t('.not_found2')%>
 	</div>
-	<div style="font-size:40px; padding:100px; width:700px; font-height:bold; color:#fff; margin: 0 auto;">
-		<center>
-			<div style="background:url('/assets/five.jpg'); padding:5px; width:220px; float:left;">4</div>
-			<div style="background:url('/assets/restore_mail.jpg'); padding:5px; width:220px; float:left;">0</div>
-			<div style="background:url('/assets/four.jpg'); padding:5px; width:220px; float:left;">4</div>
-		</center>
-	</div>
-	<div style="font-size:20px; font-height:bold; margin-top:30px;">
-		<center>
-			<img src="/assets/back_icon.png" style="margin-left: -35px; margin-top: -1px; position: absolute; display: inline-block;"><%= link_to t('.return'), "http://#{current_network.subdomain}.#{links}" %>
-		</center>
-	</div>
+</div>
+<div style="font-size:40px; padding:100px; width:700px; font-height:bold; color:#fff; margin: 0 auto;">
+	<center>
+	<div style="background:url('/assets/five.jpg'); padding:5px; width:220px; float:left;">4</div>
+	<div style="background:url('/assets/restore_mail.jpg'); padding:5px; width:220px; float:left;">0</div>
+	<div style="background:url('/assets/four.jpg'); padding:5px; width:220px; float:left;">4</div>
+	</center>
+</div>
+<div style="font-size:20px; font-height:bold; margin-top:30px;">
+	<center>
+	<img src="/assets/back_icon.png" style="margin-left: -35px; margin-top: -1px; position: absolute; display: inline-block;"><%= link_to t('.return'), "http://#{current_network.subdomain}.#{links}" %>
+	</center>
+</div>
+<div style="width:100%; font-size: 20px; text-align:center; margin-top:35px;">
+<a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> <%= t('.activity_notifications.help')%></a>
+</div>

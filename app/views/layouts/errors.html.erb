@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cúrsame</title>
+    <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= stylesheet_link_tag "application", :media => "all", :debug => true %>
+    <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
+  </head>
+  <body>
+    <%= yield %>
+    <%= yield :javascripts %>
+  </body>
+  <script type="text/javascript">
+  if (typeof(Zenbox) !== "undefined") {
+  Zenbox.init({
+  dropboxID:   "20290348",
+  url:         "https://cursame.zendesk.com",
+  hide_tab:   "true",
+  tabTooltip:  "Soporte",
+  tabImageURL: "https://assets.zendesk.com/external/zenbox/images/tab_es_support.png",
+  tabColor:    "black",
+  tabPosition: "Left"
+  });
+  };
+  </script>
+</html>
