@@ -194,7 +194,8 @@ class User < ActiveRecord::Base
 
   # Returns true if the user has admin role.
   def admin?
-    self.roles.include? Role.find_by_title 'admin' || self.superadmin?
+      self.roles.include?(Role.find_by_title 'admin') ||
+      self.superadmin?
   end
 
   def role_title
@@ -208,7 +209,8 @@ class User < ActiveRecord::Base
 
   # Returns true if the user has teacher role.
   def teacher?
-    self.roles.include? Role.find_by_title 'teacher'
+    self.roles.include?(Role.find_by_title 'teacher') ||
+      self.roles.include?(Role.find_by_title 'operator')
   end
 
   # Returns true if the user has superadmin role.
@@ -306,7 +308,7 @@ class User < ActiveRecord::Base
       |x,y|
       x.to_s <=> y.to_s
     }
-    
+
     return ordered_friends.compact
   end
   ######## cikica todos lo amigos #########
