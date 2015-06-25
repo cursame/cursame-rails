@@ -25,10 +25,7 @@
         = f.label :public_status, t('.privacy')
       .form-group-main
         .form-unit
-          - if @course.public_status == 'public'
-            = f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']])
-          - else
-            = f.select :public_status, options_for_select([[t('.private'), 'Private'],[t('.public'), 'public']])
+          = f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']], @course.public_status)
 
     .form-group
       .form-group-label
