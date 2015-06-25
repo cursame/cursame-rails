@@ -208,7 +208,7 @@ class Comment < ActiveRecord::Base
   end
 
   def owner?(role,user)
-    if role == "admin" || role == "superadmin" || user_id == user.id then
+    if role == "admin" || role == "superadmin" || role == "operator" || user_id == user.id
       return true
     end
 

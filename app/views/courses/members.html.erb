@@ -15,35 +15,34 @@
   </div>
 
   <div class="wrapper">
-    <% case %>
-      <% when current_role == "admin" %>
-        <% if @member.owner == true %>
-           <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
-         <%else%>
-           <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
-        <%end%>   
+      <% if current_user.admin? %>
+          <% if @member.owner %>
+              <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
+          <%else%>
+              <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
+          <%end%>
 
-      <% when current_role == "teacher" %>
-        <% if @member.owner == true%>
+      <% elsif current_user.teacher? %>
+        <% if @member.owner %>
            <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
          <%else%>
            <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
         <%end%>
 
-      <% when current_role == "student" %>
+      <% elsif current_user.student? %>
         <% if @member.owner == true%>
            <%= render partial: '/courses/members_in_courses/owner_partial_for_member', :locals => {:course => @course, :member => @member} %>
          <%else%>
            <%= render partial: '/courses/members_in_courses/partial_for_members', :locals => {:course => @course, :member => @member} %>
-        <%end%> 
-    <%end%>
+        <%end%>
+      <%end%>
   </div>
 
 <% else %>
-  
+
   <div class="no-content-section">
     <h4><%=t('.no_members')%></h4>
     <p><%=t('.no_records')%></p>
-  </div> 
+  </div>
 
 <% end %>

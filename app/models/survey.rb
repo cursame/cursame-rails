@@ -81,7 +81,7 @@ class Survey < ActiveRecord::Base
 
   def after_update_survey
     self.user_surveys.each {|user_survey| user_survey.destroy }
- 
+
     event = Event.find_by_schedule_id_and_schedule_type(self.id, self.class.name)
     event.update_attributes(title: self.name, starts_at: self.publish_date, ends_at: self.end_date)
 
@@ -107,7 +107,7 @@ class Survey < ActiveRecord::Base
   end
 
   def owner?(role,user)
-    if role == "admin" || role == "superadmin" then
+    if role == "admin" || role == "superadmin" || role == "operator"
       return true
     end
     return (user_id == user.id or self.courses.first.owner?(role,user))

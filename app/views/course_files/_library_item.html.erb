@@ -1,4 +1,4 @@
-<% 
+<%
   file_types = [
     'pdf','xls','xlsx','ppt','txt','pptx','doc','docx', 'odt', 'adp', 'ade',
     'png','jpg','jpeg','gif','tif','bmp',
@@ -7,7 +7,7 @@
   ];
 %>
 
-<div class="library-item" id="<%=cf.id%>">    
+<div class="library-item" id="<%=cf.id%>">
   <div class="library-item-icon">
     <% if file_types.include? @termination %>
       <%= icon("type-#{@termination}") %>
@@ -19,7 +19,7 @@
     <%= link_to truncate("#{@sintetic_name}", :omission => "...", :length => 95), cf.file.to_s, download: @sintetic_name %>
     <br>
     <span class="meta-info"><%= es_current_date("#{cf.created_at.strftime('%B')}", "#{cf.created_at.strftime('%d')}", "#{cf.created_at.strftime('%Y')}" , "#{cf.created_at.strftime('%l:%M%P')}",'latin_string') %></span>
-    <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
+    <% if (current_user.admin? && !current_user.operator?) || !@member.nil? && !@member.owner.nil? && @member.owner %>
       <%= link_to t('.delete'), course_file_path(cf.id, course: course.id), confirm: t('.confirm'), method: :delete, :remote => true %>
     <% end %>
   </div>

@@ -36,7 +36,7 @@
           </li>
         <% end %>
 
-        <% if ((current_role == 'teacher' || current_role == 'admin' || current_role == 'superadmin') and current_network.evaluable?) %>
+        <% if (current_user.teacher? || current_user.admin?) and current_network.evaluable? %>
           <li>
             <%= link_to evaluate_activities_path do %>
               <%= icon 'evaluate-w' %><%= t('.sidebar_section.activities', locale: locale)%>
@@ -145,7 +145,7 @@
     <div class="sidebar-section-main scroller s-to-f scrollbar">
       <div class="tabs-main">
         <div id="chat-group-friends" class="tab-content">
-          <% if current_user.count_friendships != 0 || current_user.admin? || current_user.superadmin? %>
+          <% if current_user.count_friendships != 0 || current_user.admin? %>
             <ul class="section-list side-courses">
               <% @friends_online.each do |user|%>
                 <li>
@@ -174,7 +174,7 @@
 
         <div id="chat-group-courses" class="tab-content" style="display: none;">
           <ul class="section-list side-courses courses-online-js">
-            <% if !current_user_courses.empty? || current_user.permissionings.first.role_id == 1 || current_user.permissionings.first.role_id == 4 %>
+            <% if !current_user_courses.empty? || current_user.admin? %>
               <% @courses_online.each do |course|%>
                 <li>
                   <%= link_to open_channel_path(course.id,"course" => true), :remote => true, id: course.id do %>

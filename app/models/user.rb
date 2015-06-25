@@ -194,10 +194,14 @@ class User < ActiveRecord::Base
 
   # Returns true if the user has admin role.
   def admin?
-      self.roles.include?(Role.find_by_title 'admin') ||
+    self.roles.include?(Role.find_by_title 'admin') ||
+      self.roles.include?(Role.find_by_title 'operator') ||
       self.superadmin?
   end
 
+  def operator?
+    self.roles.include? Role.find_by_title 'operator'
+  end
   def role_title
     self.roles.first.title
   end
@@ -209,8 +213,7 @@ class User < ActiveRecord::Base
 
   # Returns true if the user has teacher role.
   def teacher?
-    self.roles.include?(Role.find_by_title 'teacher') ||
-      self.roles.include?(Role.find_by_title 'operator')
+    self.roles.include? Role.find_by_title 'teacher'
   end
 
   # Returns true if the user has superadmin role.

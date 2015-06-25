@@ -37,7 +37,7 @@
                 <% else %>
 
                   <% case current_user.who_sent?(f) %>
-                    <% when current_user #El usuario envio la solicitud %> 
+                    <% when current_user #El usuario envio la solicitud %>
                       <div class="dropdown-wrap">
                         <div class="dropdown-pull btn btn-secondary btn-small">
                           <%=t('.send_request')%> <%= icon 'drop-arrow' %>
@@ -51,7 +51,7 @@
                           </ul>
                         </div>
                       </div>
-                      
+
                     <% when f #Tiene una solicitud pendiente a responder %>
                       <div class="dropdown-wrap">
                         <div class="dropdown-pull btn btn-secondary btn-small">
@@ -84,9 +84,9 @@
         <div class="user-info">
           <span class="user-role">
             <% user_role = f.roles.first.title %>
-            <%= t('.teacher') if user_role === 'teacher' %>
-            <%= t('.student') if user_role === 'student' %>
-            <%= t('.admin') if user_role === 'admin' %>
+            <%= t('.teacher') if current_user.teacher? %>
+            <%= t('.student') if current_user.student? %>
+            <%= t('.admin') if current_user.admin? %>
           </span>
         </div>
       </div>

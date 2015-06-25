@@ -28,10 +28,9 @@
                 </div>
                 <div class="user-info">
                   <span class="user-role">
-                    <% user_role = @member_it.roles.first.title %>
-                    <%= t('.teacher') if user_role === 'teacher' %>
-                    <%= t('.student') if user_role === 'student' %>
-                    <%= t('.admin') if user_role === 'admin' %>
+                    <%= t('.teacher') if current_user.teacher? %>
+                    <%= t('.student') if current_user.student? %>
+                    <%= t('.admin') if current_user.admin?  %>
                   </span>
                 </div>
               </div>

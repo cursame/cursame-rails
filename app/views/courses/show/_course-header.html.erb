@@ -10,7 +10,7 @@
           <div class="profile-header <%= header_style %>">
             <% unless header_style == :super_compact || header_style == :compact %>
               <div class="profile-banner" style="background-image: url(<%= @course.coverphoto.blank? ? "/assets/#{@course.image_coursex}" : @course.coverphoto %>)">
-                <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                <% if current_user.admin? || @member.owner %>
                   <div class="profile-cover-loading spinner"></div>
                   <div class="update-cover-pic">
                     <%= form_tag update_course_cover_pic_path, multipart: true, remote: true do %>
@@ -26,7 +26,7 @@
                 <% end %>
 
                 <div class="profile-avatar">
-                  <% if current_role == 'admin' || @member.owner != nil && @member.owner == true %>
+                  <% if current_user.admin? || @member.owner %>
                     <%= form_tag update_course_profile_pic_path, multipart: true, remote: true do %>
                       <%= hidden_field_tag 'course', @course.id %>
                       <div class="profile-avatar-loading spinner"></div>
@@ -45,9 +45,9 @@
                     </span>
                   <% end %>
                 </div>
-              </div>  
+              </div>
             <% end %>
-            
+
             <div class="profile-info">
               <div class="profile-title">
                 <% if header_style == :super_compact || header_style == :compact %>
@@ -62,7 +62,7 @@
                 <%= link_to course_path(@course.id) do %>
                   <h1><%= @course.title %></h1>
                 <% end %>
-                
+
                 <% permitted_to? :create, :courses do %>
                   <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
                     <div class="admin-buttons">

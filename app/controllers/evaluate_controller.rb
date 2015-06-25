@@ -7,12 +7,9 @@ class EvaluateController < ApplicationController
 
   def index
 
-    case current_role
-    when 'teacher'
+    if current_user.teacher?
       courses = teacher_published_courses
-    when 'admin'
-      courses = current_network.courses
-    when 'superadmin'
+    elsif current_user.admin?
       courses = current_network.courses
     else
       redirect_to root_path, flash: { notice: t('.evaluate_controller.only_teachers') } and return
@@ -100,12 +97,9 @@ class EvaluateController < ApplicationController
 
   def inactive
 
-    case current_role
-    when 'teacher'
+    if current_user.teacher?
       courses = teacher_published_courses
-    when 'admin'
-      courses = current_network.courses
-    when 'superadmin'
+    elsif current_user.admin?
       courses = current_network.courses
     else
       redirect_to root_path, flash: { notice: t('.evaluate_controller.only_teachers') } and return

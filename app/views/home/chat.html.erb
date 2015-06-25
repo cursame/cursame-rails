@@ -20,7 +20,7 @@ background-white
     </div>
     <div class="chat-sidebar-container tabs-main">
       <div id="JustFriends" class="tab-content scrollbar">
-        <% if current_user.count_friendships != 0 || current_user.superadmin? || current_user.admin? %>
+        <% if current_user.count_friendships != 0 || current_user.admin? %>
           <ul class="chat-list">
             <% @friends_online.each do |user| %>
               <li>
@@ -69,7 +69,7 @@ background-white
         <% end %>
       </div>
     </div>
-  
+
   </div>
 
   <div id="chat" class="chat-main">
