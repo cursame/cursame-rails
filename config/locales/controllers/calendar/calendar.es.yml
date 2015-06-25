@@ -1,0 +1,6 @@
+es:
+  calendar:
+    three_days: 'en 3 días'
+    two_days: 'en 2 días'
+    tomorrow: 'mañana'
+    today: 'hoy'
