@@ -24,6 +24,8 @@ class UserCsvWorker
         user.permissionings.first.role = Role.find_by_title 'teacher'
       when /alumno/
         user.permissionings.first.role = Role.find_by_title 'student'
+      when /operador/
+        user.permissionings.first.role = Role.find_by_title 'operator'
       end
       user.save
       new_users << user

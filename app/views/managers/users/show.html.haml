@@ -30,6 +30,7 @@
         - when 'admin' then role_name = 'Administrador'
         - when 'superadmin' then role_name = 'Super Administrador'
         - when 'supervisor' then role_name = 'Supervisor'
+        - when 'operator'   then role_name = 'Operador'
 
         %br/
         %span.meta-info= t('.type')
@@ -52,7 +53,7 @@
         %p= @user.last_sign_in_at
 
         %br/
-        
+
         - if @user.student?
           %span.meta-info= t('.deliveries')
           %p= @user.assignments.count

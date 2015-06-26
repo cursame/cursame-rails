@@ -8,37 +8,37 @@
   <%= javascript_include_tag('application.js') %>
   <%= javascript_include_tag('fullcalendar.js') %>
   <%= favicon_link_tag '/favicon.ico' %>
-  
+
   <%# yield :javascript_includes %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-    
+
 <!-- header -->
 <header id="user_nav" class="topbar" >
   <div class="center-div">
-     <% if current_network == nil%> 
+     <% if current_network == nil%>
        <%= link_to image_tag("logo.png", :class => "brand"), root_path %>
      <%else%>
        <%= link_to image_tag("logo.png", :class => "brand"), "http://#{current_network.subdomain}.#{links}/"%>
      <%end%>
     <div class="menu-user">
       <% if user_signed_in? %>
-      	
+
           <%=t('.hello')%><%= link_to image_tag("/assets/icons/logout-mini-high.png", :border => 0), destroy_user_session_path, :method => :delete, :class => 'logout' %>
-          
+
           <span> <%= link_to "#{current_user.name} (#{current_role})", show_user_path(current_user.personal_url) %> </span>
           <%= link_to image_tag(current_user.avatar.mini, :class => "avatar-mini avatar"), show_user_path(current_user.personal_url)%>
                  <%#=  debug current_role %>
-          <% if current_role == "admin"%>
+          <% if current_user.admin? %>
              <%= link_to t('.admin'), managers_wall_path %>
            <%end%>
       <% else %>
           <%= link_to "Sign up", registration_mask_path %> or <%= link_to "sign in", new_user_session_path %>
       <% end %>
     </div>
-    <div id="notifications">    
+    <div id="notifications">
       <%= render :partial => '/shared/notifications' %>
     </div>
 
@@ -58,7 +58,7 @@
              <li class="super-admin-list"> <%= link_to t('.course_admin'), superadmnin_courses_sintetic_view_and_edit_path%></li>
              <li class="super-admin-list"> <%= link_to t('.statics'), superadmnin_statistics_path%></li>
              <li class="super-admin-list"> <%= link_to t('.usr'), superadmnin_users_path%></li>
-             
+
           </ul>
       </div>
       <div class="lateral-content">

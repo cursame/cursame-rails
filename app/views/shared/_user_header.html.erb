@@ -22,7 +22,7 @@
               <div class="activity-block support-buttton">
                 <a href="http://myaccount.zendesk.com/account/dropboxes/2830039812" onClick="script: Zenbox.show(); return false;"><%= icon('support') %> <%= t('.activity_notifications.help')%></a>
               </div>
-              
+
               <div id="message_notifications" class="activity-block">
                 <%= render :partial => '/shared/chat/message_notifications' %>
               </div>
@@ -39,7 +39,7 @@
                   <div class="dropdown-v right">
                     <i class="tip"></i>
                     <ul>
-                      <% if current_role == "admin" || current_role == "superadmin" %>
+                      <% if current_user.admin? && !current_user.operator? %>
                         <li>
                           <%= link_to(t('.activity_block.admin_href'), managers_path) %>
                         </li>

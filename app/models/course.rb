@@ -225,7 +225,7 @@ class Course < ActiveRecord::Base
   end
 
   def owner?(role,user)
-    if role == "admin" || role == "superadmin" then
+    if role == "admin" || role == "superadmin" || role == "operator"
       return true
     end
     members = members_in_courses

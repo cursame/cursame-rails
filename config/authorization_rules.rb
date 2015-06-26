@@ -30,6 +30,11 @@ authorization do
     has_permission_on [:surveys], to: [:manage, :survey_add_attemp]
   end
 
+  role :operator do
+    includes :teacher
+  end
+
+
   role :admin do
     includes :teacher
 

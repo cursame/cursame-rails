@@ -9,20 +9,14 @@ class CoursesController < ApplicationController
 
   def index
     @member = MembersInCourse.new
-    # if current_role == "teacher" || current_role == "admin"
-    #   @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    # else
-    #   @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    # end
 
-    case current_role
-    when 'superadmin'
+    if current_user.superadmin?
       @courses = published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    when 'admin'
+    elsif current_user.admin?
       @courses = published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    when 'teacher'
+    elsif current_user.teacher?
       @courses = teacher_published_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-    else # 'student'
+    elsif current_user.student?
       @courses = student_subscribed_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
     end
 
@@ -66,18 +60,18 @@ class CoursesController < ApplicationController
     @member = MembersInCourse.new
     @next_page = page.to_i + 1
 
-    case current_role
-    when 'admin', 'superadmin'
+    if current_user.admin?
       @courses = published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
-    when 'teacher'
+    elsif current_user.teacher?
       @courses = teacher_published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
-    else 'student'
+    elsif current_user.student?
       if params[:state] == 'not_subscribed'
         @courses = network_courses_not_subscribed.paginate(per_page: COURSES_PER_PAGE, page: page)
       elsif params[:state] == 'subscribed'
         @courses = student_subscribed_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
       end
     end
+
     respond_to do |format|
       format.js { render 'courses/ajax/courses_paginate_ajax' }
     end
@@ -91,12 +85,12 @@ class CoursesController < ApplicationController
 
     @member = MembersInCourse.new
 
-    case current_role
-    when 'teacher'
+
+    if current_user.teacher?
       @courses = current_user.courses.search(query)
-    when 'student'
+    elsif current_user.student?
       @courses = current_network.courses.search(query)
-    when 'admin' || 'superadmin'
+    elsif current_user.admin?
       @courses = current_network.courses.search(query)
     end
 
@@ -312,13 +306,10 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
-    if current_role == 'admin' || current_role == 'superadmin'
+
+    if current_user.admin?
       @member = MembersInCourse.new
       @member.owner = true
-    else
-      if @member.owner == true || current_role == "admin"
-      else
-      end
     end
   end
 
@@ -406,7 +397,7 @@ class CoursesController < ApplicationController
   def filter_protection
     @course = Course.find_by_id params[:id]
     @member = @course.nil? ? nil : obtainMember(@course.id, current_user.id)
-    unless current_role == "admin" || current_role == "superadmin" || @member.nil? || @member.accepted?
+    unless current_user.admin? || @member.nil? || @member.accepted?
       redirect_to courses_path, :notice => t('.courses_controller.no_accepted') and return
     end
   end
@@ -635,13 +626,10 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_user_id_and_course_id(current_user.id, current_course.id)
 
-    if current_role == 'admin' || current_role == 'superadmin'
+    if current_user.admin?
       @member.owner = true
-    else
-      if @member.owner == true || current_role == "admin"
-      else
-        redirect_to course_path(@course)
-      end
+    elsif !@member.owner && !current_user.admin?
+      redirect_to course_path(@course)
     end
   end
 
@@ -1089,10 +1077,8 @@ class CoursesController < ApplicationController
   def obtainMember(course_id, user_id)
     member = MembersInCourse.find_by_course_id_and_user_id(course_id,user_id)
 
-    if (member.nil?)
-      superadmin = current_role == "superadmin"
-      admin = current_role == "admin"
-      if (superadmin || admin)
+    if member.nil?
+      if current_user.admin?
         member = MembersInCourse.new
         member.course_id = @course.id
         member.user_id = current_user.id

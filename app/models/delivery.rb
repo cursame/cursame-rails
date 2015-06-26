@@ -95,7 +95,7 @@ class Delivery < ActiveRecord::Base
 
     Wall.create! :users => self.users, :publication => self, :network => self.network, :courses => self.courses
     Event.create title: self.title, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Delivery", network_id: self.network_id
-    
+
     if self.publish_date > DateTime.now
       ScheduledJob::NotificationsWorker.perform_at(self.publish_date, self.id, self.class.name, 'new_delivery_on_course')
       ScheduledJob::SendMailsWorker.perform_at(self.publish_date, self.id, self.class.name)
@@ -172,7 +172,7 @@ class Delivery < ActiveRecord::Base
   end
 
   def owner?(role, user)
-    if role == "admin" || role == "superadmin" then
+    if role == "admin" || role == "superadmin" || role == "operator"
       return true
     end
     return (user_id == user.id or self.courses.first.owner?(role,user))

@@ -101,7 +101,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def owner?(role,user)
-    if role == "admin" || role == "superadmin" then
+    if role == "admin" || role == "superadmin" || role == "operator"
       return true
     end
 
@@ -151,7 +151,7 @@ class Discussion < ActiveRecord::Base
     end
     return users
   end
-  
+
   private
   def track_mixpanel_discussion
     public_discussion = self.courses.blank?
