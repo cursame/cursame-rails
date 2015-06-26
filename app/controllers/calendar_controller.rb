@@ -37,7 +37,7 @@ class CalendarController < ApplicationController
                               id: d.id,
                               course: c.id,
                               type: "Delivery",
-                              expira: "en 3 días"
+                              expira: t('.calendar.three_days', locale: locale)
             })
           when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && d.state == 'published'
             activities.push({
@@ -45,7 +45,7 @@ class CalendarController < ApplicationController
                               id: d.id,
                               course: c.id,
                               type: "Delivery",
-                              expira: "en 2 días"
+                              expira: t('.calendar.two_days', locale: locale)
             })
           when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && d.state == 'published'
             activities.push({
@@ -53,7 +53,7 @@ class CalendarController < ApplicationController
                               id: d.id,
                               course: c.id,
                               type: "Delivery",
-                              expira: "mañana"
+                              expira: t('.calendar.tomorrow', locale: locale)
             })
           when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && d.state == 'published'
             activities.push({
@@ -61,7 +61,7 @@ class CalendarController < ApplicationController
                               id: d.id,
                               course: c.id,
                               type: "Delivery",
-                              expira: "hoy"
+                              expira: t('.calendar.today', locale: locale)
             })
           end
         end
@@ -79,7 +79,7 @@ class CalendarController < ApplicationController
                               id: s.id,
                               course: c.id,
                               type: "Survey",
-                              expira: "en 3 días"
+                              expira: t('.calendar.three_days', locale: locale)
             })
           when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && s.state == 'published'
             activities.push({
@@ -87,7 +87,7 @@ class CalendarController < ApplicationController
                               id: s.id,
                               course: c.id,
                               type: "Survey",
-                              expira: "en 2 días"
+                              expira: t('.calendar.two_days', locale: locale)
             })
           when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && s.state == 'published'
             activities.push({
@@ -95,7 +95,7 @@ class CalendarController < ApplicationController
                               id: s.id,
                               course: c.id,
                               type: "Survey",
-                              expira: "mañana"
+                              expira: t('.calendar.tomorrow', locale: locale)
             })
           when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && s.state == 'published'
             activities.push({
@@ -103,7 +103,7 @@ class CalendarController < ApplicationController
                               id: s.id,
                               course: c.id,
                               type: "Survey",
-                              expira: "hoy"
+                              expira: t('.calendar.today', locale: locale)
             })
           end
         end
