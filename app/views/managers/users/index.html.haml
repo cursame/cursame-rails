@@ -16,7 +16,7 @@
             %th= t('.type')
             %th= t('.actions')
         %tbody
-          - @users.each do |user| 
+          - @users.each do |user|
             - permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
             - role = Role.find(permissioning.role_id)
             - case role.title
@@ -25,6 +25,7 @@
             - when 'admin' then role_name = 'Administrador'
             - when 'superadmin' then role_name = 'Super Administrador'
             - when 'supervisor' then role_name = 'Supervisor'
+            - when 'operator' then  role_name = 'Operador'
             %tr
               %td
                 = avatar('user', '30', "no", user.id, "avatar avatar-30", "no", "no")

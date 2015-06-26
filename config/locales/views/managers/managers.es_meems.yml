@@ -114,6 +114,7 @@ es_meems:
         descrip: Descripción
         course: Centro Emprendedor
         teacher: Líder multiplicador
+        operator: Operador
     discussions:
       index:
         discuss: Discusiones
@@ -145,6 +146,7 @@ es_meems:
         course: Centro Emprendedor
         public: Publica
         teacher: Líder multiplicador
+        operator: Operador
     shared:
       managers_sidebar:
         stat: Estadisticas
@@ -188,6 +190,7 @@ es_meems:
         state: Estado
         course: Centro Emprendedor
         teacher: Líder multiplicador
+        operador: Operador
     users:
       shared:
         form:
@@ -199,6 +202,7 @@ es_meems:
           admin: MEEMS
           student: Emprendedor
           teacher: Líder multiplicador
+          operator: Operador
           cancel: Cancelar
           create: Crear Usuario
           save: Guardar cambios
