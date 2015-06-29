@@ -1,4 +1,4 @@
- 
+
 = form_for [:managers, user], html: { class: 'form-validate-js' } do |f|
   = f.hidden_field :self_register, value: false
 
@@ -36,7 +36,10 @@
           - networks = user.permissionings.build
         = f.fields_for :permissionings do |permissioning|
           = permissioning.hidden_field :network_id, :value => current_network.id
-          = permissioning.select :role_id, options_for_select([[t('.admin'), '1'], [t('.student'), '2'], [t('.teacher'), '3']], user.permissionings.first.role_id), required: "required", autocomplete: "off"
+          - options = [[t('.admin'), '1'], [t('.student'), '2'], [t('.teacher'), '3']]
+          - if I18n.locale == :es_meems
+            - options.push [t('.operator'), '6']
+          = permissioning.select :role_id, options_for_select(options, user.permissionings.first.role_id), required: "required", autocomplete: "off"
   %br/
   %br/
   %ul.list-buttons.left
