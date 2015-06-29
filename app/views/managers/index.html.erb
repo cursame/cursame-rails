@@ -29,10 +29,6 @@
       <div class="admin-chart">
 
         <h5><%=t('.usr')%></h5>
-        <% @counter_students = current_network.permissionings.where(:role_id => 2).count %>
-        <% @counter_teachers = current_network.permissionings.where(:role_id => 3).count %>
-        <% @counter_admins = current_network.permissionings.where(:role_id => 1).count %>
-
         <div id="profiles_graph" style="height:227px; weight:279px;" ></div>
 
         <script class="text/javascript">
@@ -42,6 +38,9 @@
               {label: "<%= current_network.students_tag %>", value:<%= @counter_students %> },
               {label: "<%= current_network.professors_tag %>", value:<%= @counter_teachers %>},
               {label: "<%= current_network.admin_tag %>", value:<%= @counter_admins %> }
+                <% if current_network.subdomain == "meems" %>
+                , {label: "operador", value: <%= @counter_operators %> }
+                <% end %>
             ]
           });
         </script>

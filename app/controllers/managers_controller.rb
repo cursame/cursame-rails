@@ -20,6 +20,13 @@ class ManagersController < ApplicationController
     @close_deliveries =  @deliveries.where(:state => 'unpublish')
     @published_deliveries_count =  @open_deliveries.count
     @unpublished_deliveries_count =  @close_deliveries.count
+    @counter_students = current_network.permissionings.where(:role_id => 2).count
+    @counter_teachers = current_network.permissionings.where(:role_id => 3).count
+    @counter_admins = current_network.permissionings.where(:role_id => 1).count
+
+    if current_network.subdomain == "meems"
+      @counter_operators = current_network.permissionings.where(:role_id => 6).count
+    end
   end
 
   def publications
@@ -45,11 +52,11 @@ class ManagersController < ApplicationController
 
   def upload_users_a
 
-    user_info = User.find_by_email("info@cursa.me") 
+    user_info = User.find_by_email("info@cursa.me")
     network = params[:red]
     user_admin = user_info
 
-    lastFile = Dir.glob("public/imports/import_users_*")    
+    lastFile = Dir.glob("public/imports/import_users_*")
     lastFile = lastFile.sort.map{|x| x.gsub(/[^0-9]/, '')}.map{|x| x.to_i}.sort.last
     if lastFile.nil? then
       name = "import_users_1.csv"
@@ -67,10 +74,10 @@ class ManagersController < ApplicationController
       f = File.open(path,'w+')
       f.write(text)
       f.close
-      
+
       domain = params["domain"]
       subdomain = network.subdomain
-      
+
       user_info.delay.import(path,network,user_info,domain,subdomain)
     #user_info.import(path,network,user_admin,domain,subdomain)
 
@@ -153,5 +160,5 @@ class ManagersController < ApplicationController
     send_file "assets/plantillas/usuarios_plantilla.csv"
     redirect_to :managers_import_users_path
   end
-  
+
 end
