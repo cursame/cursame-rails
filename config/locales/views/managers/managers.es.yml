@@ -9,7 +9,7 @@ es:
         create_date: Fecha de creación
         actions: Acciones
         no_user: No tiene usuario
-        public: Publico
+        public: Público
         user: Usuario
         course: Curso
         discuss: Discusión
@@ -17,16 +17,16 @@ es:
         hmwrk: Tarea
         view: Ver
         delete: Borrar
-        confirm: Estas seguro de borrar este comentario.
+        confirm: ¿Estás seguro de borrar este comentario?
       show:
         back: ← Regresar
         delete: Borrar
-        confirm: Estas seguro de borrar este comentario.
+        confirm: ¿Estás seguro de borrar este comentario?
         author: Autor
         create_date: Fecha de Creación
         comment: Comentario
         comment_in: Comentario en
-        public: Publico
+        public: Público
         user: Usuario
         course: Curso
         discuss: Discusión
@@ -44,15 +44,15 @@ es:
           public: Público
           private: Privado
           init_date: Fecha de Inicio
-          init_date2: Fecha inicio
+          init_date2: Fecha de inicio
           teachers: Profesores
           last_name: Escribe un nombre o apellido.
           add: Agrega profesores al curso.
           find: Busca profesores para administrar el curso.
           students: Alumnos
           write_name: Escribe un nombre o apellido.
-          enroll: Inscribe estudiantes a tu curso.
-          find2: Busca estudiantes para unirlos automaticamente al curso.
+          enroll: Inscribe estudiantes al curso.
+          find2: Busca estudiantes para unirlos automáticamente al curso.
           cancel: Cancelar
           create: Crear Curso
           save: Guardar cambios
@@ -70,7 +70,7 @@ es:
         actions: Acciones
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este curso.
+        sure: ¿Estás seguro de borrar este curso?
         import_bit_courses: Importar curso Bit
       new:
         create_course: Crear Curso
@@ -78,7 +78,7 @@ es:
         return: ← Regresar
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este curso.
+        sure: ¿Estás seguro de borrar este curso?
         create_date: Fecha de Creación
         descrip: Descripción
         teachers: Maestros
@@ -99,16 +99,16 @@ es:
         actions: Acciones
         published: Publicada
         unpublished: Sin Publicar
-        no_user: No tiene usuario
+        no_user: No tiene usuarios
         view: Ver
         delete: Borrar
-        sure: Estas seguro de borrar esta tarea.
+        sure: ¿Estás seguro de borrar esta tarea?
       show:
         return: ← Regresar
         delete: Borrar
-        sure: Estas seguro de borrar este cuestionario.
+        sure: ¿Estás seguro de borrar este cuestionario?
         init_date: Fecha de Creación
-        end_date: Fecha de finalización
+        end_date: Fecha de Finalización
         state: Estado
         published: Publicada
         unpublished: Sin Publicar
@@ -130,11 +130,11 @@ es:
         non_eval: No Evaluable
         view: Ver
         delete: Borrar
-        sure: Estas seguro de borrar esta discusión.
+        sure: ¿Estás seguro de borrar esta discusión?
       show:
         return: ← Regresar
         delete: Borrar
-        sure: Estas seguro de borrar esta discusión.
+        sure: ¿Estás seguro de borrar esta discusión?
         init_date: Fecha de Creación
         state: Estado
         published: Publicada
@@ -144,11 +144,11 @@ es:
         non_eval: No Evaluable
         descrip: Descripción
         course: Curso
-        public: Publica
+        public: Publicar
         teacher: Maestro
     shared:
       managers_sidebar:
-        stat: Estadisticas
+        stat: Estadísticas
         usr: Usuarios
         courses: Cursos
         hmwrk: Tareas
@@ -161,7 +161,7 @@ es:
       managers_user_header:
         admin: Administrador
         help: Ayuda
-        exit: Salir del administrador
+        exit: Salir del Administrador
         edit: Editar perfil
         log_out: Cerrar sesión
     surveys:
@@ -176,14 +176,14 @@ es:
         actions: Acciones
         published: Publicada
         unpublished: Sin Publicar
-        no_user: No tiene usuario
+        no_user: No tiene usuarios
         view: Ver
         delete: Borrar
-        sure: Estas seguro de borrar este cuestionario.
+        sure: ¿Estás seguro de borrar este cuestionario?
       show:
         return: ← Regresar
         delete: Borrar
-        sure: Estas seguro de borrar esta tarea.
+        sure: ¿Estás seguro de borrar esta tarea?
         init_date: Fecha de creación
         end_date: Fecha de finalización
         state: Estado
@@ -213,9 +213,9 @@ es:
         import3: Importa los usuarios de tu comunidad desde una base de datos.
         import4: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.
         text1: El role puede ser estudiante o maestro.
-        text2: El email debe de ser el email del usuario.
+        text2: El email debe ser el email del usuario.
         download: Descargar archivo de usuarios
-        no_find: NO SE ENCONTRO UN ARCHIVO
+        no_find: NO SE ENCONTRÓ UN ARCHIVO
         import5: Importar archivo de usuarios
       index:
         usr: Usuarios
@@ -228,22 +228,22 @@ es:
         view: Ver
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este usuario.
+        sure: ¿Estás seguro de borrar este usuario?
       new:
         create: Crear Usuario
       show:
         return: ← Regresar
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este usuario.
+        sure: ¿Estás seguro de borrar este usuario?
         email: Correo electrónico
         type: Tipo de usuario
-        bio: Biografia
-        last: Ultimo inicio de sesión
+        bio: Biografía
+        last: Último inicio de sesión
         deliveries: Tareas entregadas
-        quest: Cuestionarios contestados
-        eval: Participación en discusiones evaluables
-        info: Si información
+        quest: Cuestionarios Respondidos
+        eval: Participación en Discusiones evaluables
+        info: Sin información
     menu:
       admin: Administración
       usr: Usuarios
@@ -258,25 +258,25 @@ es:
       download: Descargar archivo de cursos
       import3: Importar lista de usuarios
       text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los cursos.
-      text2: 'Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que solo es un miembro del curso nada más.'
+      text2: 'Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que es un miembro del curso.'
       text3: El Email debe de ser el correo asociado al usuario.
-      no_file: NO SE ENCONTRO EL ARCHIVO
+      no_file: NO SE ENCONTRÓ EL ARCHIVO
       list: Lista donde se puede importar.
-      course: Course
+      course: Curso
       import4: ¿Importar?
     index:
-      stat: Estadisticas
+      stat: Estadísticas
       pop: Población esperada
       actual: Actual
       usr: Usuarios
       courses: Cursos
       hmwrks: Tareas
       comments: Comentarios
-      exams: Examenes
+      exams: Exámenes
       discuss: Discusiones
     mailer:
-      masive: Mail Masivo
-      masive2: Envía un mail a todos los miembros de tu comunidad.
+      masive: Mensaje Masivo
+      masive2: Envía un mensaje de correo electrónico a todos los miembros de tu comunidad.
       subject: Asunto
       example: Ejemplo
       example2: Ceremonia de clausura
@@ -293,9 +293,9 @@ es:
         actions: "Acciones"
         view: "Ver"
         delete_content: "Borrar Contenido"
-        sure: "¿Está seguro de borrar este contenido?"
+        sure: "¿Estás seguro de borrar este contenido?"
         delete_report: "Borrar Reporte"
-        sure2: "¿Está seguro de borrar este reporte?, el contenido no será borrado."
+        sure2: "¿Estás seguro de borrar este reporte?, el contenido no será borrado."
     bit_courses:
       index:
         courses: Cursos

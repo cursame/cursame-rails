@@ -8,10 +8,10 @@ es_meems:
     - dom
     - lun
     - mar
-    - mié
+    - mie
     - jue
     - vie
-    - sáb
+    - sab
     abbr_month_names:
     -
     - ene

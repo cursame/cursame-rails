@@ -1,5 +1,5 @@
 es_meems:
   messages:
     index:
-      no_member: No eres parte del grupo!
+      no_member: ¡No eres parte del grupo!
       send: Enviar Mensaje

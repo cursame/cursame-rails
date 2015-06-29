@@ -7,7 +7,7 @@ es_meems:
       import: Importar archivo de usuarios
     masive_mailer:
       text1: title
-      text2: titulo
+      text2: título
       text3: message
       text4: number of users when yo want send
       text5: number
@@ -15,4 +15,4 @@ es_meems:
       send_msg: Enviar mensajes
       forward: Reenviar el mensaje a la siguiente cantidad de usuarios con la clave de mensaje
       massive_email: Enviar mensajes masivos a los siguientes usuarios
-      mail: Se activará el formulario de reenvio cuando la cuenta de mailers masivos se mayor a 0
+      mail: Se activará el formulario de reenvío cuando la cuenta de mailers masivos sea mayor a 0

@@ -3,7 +3,7 @@ es:
     closure:
       closure_members:
         final_scores: Calificaciones finales
-        send_scores: Envia la calificación final a los estudiantes del grupo.
+        send_scores: Envía la calificación final a los estudiantes del grupo.
         members: Miembros
         score: "Calificación:"
         no_score: Sin calificar
@@ -13,11 +13,11 @@ es:
         criterium: Criterio
         score: Calificación Obtenida
         hmwrk: Tareas
-        send: Entrego
+        send: Entrega
         of: de
         percent: "Porcentaje:"
         quest: Cuestionarios
-        respond: Contesto
+        respond: Contestar
         discuss: Discusiones
         participate: Participo en
         example8: "Ejemplo: 8"
@@ -61,8 +61,8 @@ es:
         no_request: No hay más solicitudes pendientes.
     search:
       courses_search_results:
-        search: "Busqueda:"
-        no_records: No se encontraron cursos con el criterio de busqueda.
+        search: "Búsqueda:"
+        no_records: No se encontraron cursos con el criterio de búsqueda.
     shared:
       course_card:
         member: Miembro
@@ -76,7 +76,7 @@ es:
         finalize: Finalizar
         active: Activar
         enroll: Estás inscrito
-        confirm: ¿Esta seguro de querer abandonar este curso?
+        confirm: ¿Estás seguro de abandonar este curso?
         leave: Abandonar curso
         request_send: Solicitud enviada
         send_request: Enviar solicitud
@@ -86,7 +86,7 @@ es:
         hmwrks: Tareas
         quest: Cuestionarios
         discuss: Discusiones
-        criterium: ¿Que criterio se evaluará?
+        criterium: ¿Qué criterio se evaluará?
         percent: Porcentaje asignado
       courses_paginate_button:
         load_more: Cargar más...
@@ -117,18 +117,18 @@ es:
       calif: Calificaciones
       count_test: Contador de examenes respondidos
     edit_delivery_access:
-      hmwrk_title: Titulo de la tarea
+      hmwrk_title: Título de la tarea
       descrip: Descripción
-      publish_date: Día de pubicación
-      delivery_day: Ultimo día de entrega
+      publish_date: Día de publicación
+      delivery_day: Último día de entrega
       courses: Cursos
       publish: Publicar
     evaluation:
-      no_group: No eres parte del grupo!
-      no_member: No has sido aceptado en el grupo!
+      no_group: ¡No eres parte del grupo!
+      no_member: ¡No has sido aceptado en el grupo!
       course_score: Calificaciones del curso
       pdf: Descargar (PDF)
-      score: Calificacion
+      score: Calificación
       student: Alumno
       deliver: Entrega
       items: Rubros
@@ -158,11 +158,11 @@ es:
       students: Estudiantes
       first_name: Escribe un nombre o apellido.
       add_students: Inscribe estudiantes a tu curso.
-      find_students: Busca estudiantes para unirlos automaticamente al curso.
+      find_students: Busca estudiantes para unirlos automáticamente al curso.
       create: Crear
       save: Guardar cambios
       delete: Eliminar curso permanente.
-      confirm: ¿Esta seguro que desea eliminar este curso?
+      confirm: ¿Estás seguro de eliminar este curso?
     form_course:
       update: Actualizar
       return: Regresar al
@@ -174,7 +174,7 @@ es:
       private: Privado
     light_box_dashboard_delivery:
       student: Alumno
-      title: Titulo de entrega
+      title: Título de entrega
       descrip: Descripción de entrega
       files: Archivos de la entrega
       criterium: Criterios de calificación
@@ -188,7 +188,7 @@ es:
       deactivate: desactivar curso
       activate: activar curso
     survey_results:
-      back: Atras
+      back: Atrás
       student: Alumno
       result: Resultado obtenido
       respose: Respuesta
@@ -224,8 +224,8 @@ es:
     edit:
       edit: Editar curso
     evaluation_download:
-      no_part: No eres parte del grupo!
-      no_accept: No has sido aceptado en el grupo!
+      no_part: ¡No eres parte del cursoo!
+      no_accept: No has sido aceptado en el curso!
       exam: Examen
       calif: Calificación
       student: Alumno
@@ -239,7 +239,7 @@ es:
       eval_percent: de la Evaluación
       obtain_percent: Obtenido
       not_resolved: Sin resolver
-      obtain_percent2: obtenido
+      obtain_percent2: Obtenido
     evaluation_schema:
       text1: 'Especifica como quieres evaluar este curso, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame.'
       criterium: Criterio
@@ -264,7 +264,7 @@ es:
     members:
       mem: Miembros
       no_members: Curso sin miembros.
-      no_records: Este curso todavia no tiene miembros en el.
+      no_records: Este curso todavía no tiene miembros en él.
     new:
       new_course: Curso nuevo
     statics:

@@ -15,7 +15,7 @@ es_meems:
     network_mask:
       enroll: Registrar usuario
     alertmethod:
-      text1: 'Se ha encontrado que usted no es miembro de la red a al que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá loguearse.'
+      text1: 'Se ha encontrado que usted no es miembro de la red a la que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá ingresar.'
       net: Ir a la red a la que pertenezco
     awaiting_confirmation:
       email: Revisa tu correo electrónico

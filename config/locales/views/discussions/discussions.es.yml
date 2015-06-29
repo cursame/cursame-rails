@@ -19,7 +19,7 @@ es:
       discussions_paginate_button:
         load: Cargar más...
     form_for_discussion:
-      discuss: Tema de la discusión
+      discuss: Tema de la Discusión
       example: "Ejemplo: Números primos"
       descrip: Descripción
       support: Material de soporte
@@ -33,7 +33,7 @@ es:
       evaluation_periods: Periodos de evaluación
       public: Público
       create_discuss: Crear Discusión
-      save_discuss: Guardar discusión
+      save_discuss: Guardar Discusión
     discussions_course:
       no_discuss: No se encontraron más discusiones.
     index:

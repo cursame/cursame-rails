@@ -14,18 +14,18 @@ es:
       email: Correo electrónico
       example: Ejemplo
       dir: Dirección
-      text1: Recuerda no colocar espacios ni simbolos como
-      text2: ya que no se aceptará tu url
+      text1: Recuerda no colocar espacios ni símbolos como
+      text2: ya que no se aceptará tu URL
       pwd: Nueva contraseña
       confirm: Confirmar nueva contraseña
       down: ¿Quieres darte de baja?
       cancel: Cancelar mi cuenta
-      confirm: ¿Estas seguro de que quieres darte de baja de Cúrsame?
+      confirm: ¿Estás seguro de que quieres darte de baja de Cúrsame?
       cancel2: Cancelar
       pwd: Escribe tu contraseña para guardar
       update: Actualizar perfil
     new:
-      text1: Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.
+      text1: Lo sentimos pero la red a la que estás intentado ingresar no permite el registro público. Pregunta a un encargado de tu escuela, él sabrá ayudarte.
       text2: Ir a la página principal
       teacher: Regístrate Profesor
       student: Regístrate Alumno
@@ -40,4 +40,4 @@ es:
       terms: Términos y Condiciones
       sign_in: Registrarme
     send_confirmation:
-      send_confirmation: Se envio la confirmacion
+      send_confirmation: Se envió la confirmación

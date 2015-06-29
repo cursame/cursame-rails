@@ -4,7 +4,7 @@ es_meems:
       send: Se ha enviado un correo a
       confirm: Esperando confirmación
       init_session: Iniciar sesión
-      email: Correo electrónico
+      email: Correo Electrónico
       pwd: Contraseña
       remember: Recordarme
 

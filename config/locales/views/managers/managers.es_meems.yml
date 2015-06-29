@@ -9,7 +9,7 @@ es_meems:
         create_date: Fecha de creación
         actions: Acciones
         no_user: No tiene usuario
-        public: Publico
+        public: Público
         user: Usuario
         course: Centro Emprendedor
         discuss: Discusión
@@ -17,16 +17,16 @@ es_meems:
         hmwrk: Tarea
         view: Ver
         delete: Borrar
-        confirm: Estas seguro de borrar este comentario.
+        confirm: ¿Estás seguro de borrar este comentario?
       show:
         back: ← Regresar
         delete: Borrar
-        confirm: Estas seguro de borrar este comentario.
+        confirm: ¿Estás seguro de borrar este comentario?
         author: Autor
         create_date: Fecha de Creación
         comment: Comentario
         comment_in: Comentario en
-        public: Publico
+        public: Público
         user: Usuario
         course: Centro Emprendedor
         discuss: Discusión
@@ -45,14 +45,14 @@ es_meems:
           private: Privado
           init_date: Fecha de Inicio
           init_date2: Fecha inicio
-          teachers: Líderes multiplicadores
+          teachers: Líderes Multiplicadores
           last_name: Escribe un nombre o apellido.
-          add: Agrega Líderes multiplicadores al Centros Emprendedor.
-          find: Busca Líderes multiplicadores para administrar el Centros Emprendedor.
+          add: Agrega Líderes Multiplicadores al Centro Emprendedor.
+          find: Busca Líderes Multiplicadores para administrar el Centro Emprendedor.
           students: Emprendedores
           write_name: Escribe un nombre o apellido.
-          enroll: Inscribe emprendedores a tu Centros Emprendedor.
-          find2: Busca emprendedores para unirlos automaticamente al Centros Emprendedor.
+          enroll: Inscribe Emprendedores a tu Centro Emprendedor.
+          find2: Busca Emprendedores para unirlos automaticamente al Centro Emprendedor.
           cancel: Cancelar
           create: Crear Centro Emprendedor
           save: Guardar cambios
@@ -61,10 +61,10 @@ es_meems:
       edit:
         edit1: Editar Centro Emprendedor
       index:
-        courses: Centros de Emprendedores
-        create: Crear Centros Emprendedor
+        courses: Centros Emprendedores
+        create: Crear Centro Emprendedor
         name: Nombre
-        teachers: Líderes multiplicadores
+        teachers: Líderes Multiplicadores
         students: Emprendedores
         inte_date: Fecha de creación
         actions: Acciones
@@ -78,7 +78,7 @@ es_meems:
         return: ← Regresar
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este Centros Emprendedor.
+        sure: ¿Estás seguro de borrar este Centro Emprendedor?
         create_date: Fecha de Creación
         descrip: Descripción
         teachers: Líderes Multiplicadores
@@ -99,14 +99,14 @@ es_meems:
         actions: Acciones
         published: Publicada
         unpublished: Sin Publicar
-        no_user: No tiene usuario
+        no_user: No tiene usuarios
         view: Ver
         delete: Borrar
-        sure: Estas seguro de borrar esta tarea.
+        sure: ¿Estás seguro de borrar esta tarea?
       show:
         return: ← Regresar
         delete: Borrar
-        sure: Estas seguro de borrar este cuestionario.
+        sure: ¿Estás seguro de borrar este cuestionario?
         init_date: Fecha de Creación
         end_date: Fecha de finalización
         state: Estado
@@ -131,11 +131,11 @@ es_meems:
         non_eval: No Evaluable
         view: Ver
         delete: Borrar
-        sure: Estas seguro de borrar esta discusión.
+        sure: ¿Estás seguro de borrar esta discusión?
       show:
         return: ← Regresar
         delete: Borrar
-        sure: Estas seguro de borrar esta discusión.
+        sure: ¿Estás seguro de borrar esta discusión?
         init_date: Fecha de Creación
         state: Estado
         published: Publicada
@@ -150,9 +150,9 @@ es_meems:
         operator: Operador
     shared:
       managers_sidebar:
-        stat: Estadisticas
+        stat: Estadísticas
         usr: Usuarios
-        courses: Centros de Emprendedores
+        courses: Centros Emprendedores
         hmwrk: Tareas
         quest: Cuestionarios
         discuss: Discusiones
@@ -161,7 +161,7 @@ es_meems:
         config: Configuración
         report_content: "Contenido Reportado"
       managers_user_header:
-        admin: MEEMS
+        admin: Administrador
         help: Ayuda
         exit: Salir del administrador
         edit: Editar perfil
@@ -178,14 +178,14 @@ es_meems:
         actions: Acciones
         published: Publicada
         unpublished: Sin Publicar
-        no_user: No tiene usuario
+        no_user: No tiene usuarios
         view: Ver
         delete: Borrar
-        sure: Estas seguro de borrar este cuestionario.
+        sure: ¿Estás seguro de borrar este cuestionario?
       show:
         return: ← Regresar
         delete: Borrar
-        sure: Estas seguro de borrar esta tarea.
+        sure: ¿Estás seguro de borrar esta tarea?
         init_date: Fecha de creación
         end_date: Fecha de finalización
         state: Estado
@@ -199,8 +199,8 @@ es_meems:
           name: Nombre(s)
           last_names: Apellidos
           pwd: Contraseña
-          type: Tipo de usuario
-          admin: MEEMS
+          type: Tipo de Usuario
+          admin: Administrador
           student: Emprendedor
           teacher: Líder multiplicador
           operator: Operador
@@ -214,12 +214,12 @@ es_meems:
         edit1: Editar Usuario
       import:
         import2: Importar Usuarios
-        import3: Importa los miembros desde una base de datos.
+        import3: Importa los usuarios de tu red de emprendedores desde una base de datos.
         import4: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.
-        text1: El role puede ser Emprendedor o Líder multiplicador.
+        text1: El role puede ser Emprendedor o Líder Multiplicador.
         text2: El email debe de ser el email del usuario.
         download: Descargar archivo de usuarios
-        no_find: NO SE ENCONTRO UN ARCHIVO
+        no_find: NO SE ENCONTRÓ UN ARCHIVO
         import5: Importar archivo de usuarios
       index:
         usr: Usuarios
@@ -232,55 +232,55 @@ es_meems:
         view: Ver
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este usuario.
+        sure: ¿Estás seguro de borrar este usuario?
       new:
         create: Crear Usuario
       show:
         return: ← Regresar
         edit: Editar
         delete: Borrar
-        sure: Estas seguro de borrar este usuario.
+        sure: ¿Estás seguro de borrar este usuario?
         email: Correo electrónico
         type: Tipo de usuario
-        bio: Biografia
-        last: Ultimo inicio de sesión
+        bio: Biografía
+        last: Último inicio de sesión
         deliveries: Tareas entregadas
-        quest: Cuestionarios contestados
+        quest: Cuestionarios respondidos
         eval: Participación en discusiones evaluables
-        info: Si información
+        info: Sin información
     menu:
       admin: Administración
       usr: Usuarios
       config: Configuración
       masive: Correo Masivo
       import_usr: Importar usuarios
-      import_cur: Importar Centros de Emprendedores
-      import_std: Importar emprendedores de Centros Emprendedor
+      import_cur: Importar Centros Emprendedores
+      import_std: Importar Emprendedores de Centros Emprendedores
     import_members:
       import1: Importar miembros
-      import2: Importa los miembros de los Centros de Emprendedores desde una base de datos.
-      download: Descargar archivo de Centros de Emprendedores
+      import2: Importa los miembros de los Centros Emprendedores desde una base de datos.
+      download: Descargar archivo de Centros Emprendedores
       import3: Importar lista de usuarios
-      text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros de Emprendedores.
-      text2: 'Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centros Emprendedor mientras que 1 es para especificar que solo es un miembro del Centros Emprendedor nada más.'
-      text3: El Email debe de ser el correo asociado al usuario.
-      no_file: NO SE ENCONTRO EL ARCHIVO
+      text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros Emprendedores.
+      text2: 'Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centro Emprendedor mientras que 1 es para especificar que es un miembro del Centro Emprendedor.'
+      text3: El Email debe ser el correo asociado al usuario.
+      no_file: NO SE ENCONTRÓ EL ARCHIVO
       list: Lista donde se puede importar.
-      course: Course
+      course: Centro Emprendedor
       import4: ¿Importar?
     index:
-      stat: Estadisticas
+      stat: Estadísticas
       pop: Población esperada
       actual: Actual
       usr: Usuarios
-      courses: Centros de Emprendedores
+      courses: Centros Emprendedores
       hmwrks: Tareas
       comments: Comentarios
-      exams: Examenes
+      exams: Exámenes
       discuss: Discusiones
     mailer:
-      masive: Mail Masivo
-      masive2: Envía un mail a todos los miembros.
+      masive: Mensaje Masivo
+      masive2: Envía un mensaje de correo electrónico a todos los miembros de tu Red de Emprendedores.
       subject: Asunto
       example: Ejemplo
       example2: Ceremonia de clausura
@@ -297,9 +297,9 @@ es_meems:
         actions: "Acciones"
         view: "Ver"
         delete_content: "Borrar Contenido"
-        sure: "¿Está seguro de borrar este contenido?"
+        sure: "¿Estás seguro de borrar este contenido?"
         delete_report: "Borrar Reporte"
-        sure2: "¿Está seguro de borrar este reporte?, el contenido no será borrado."
+        sure2: "¿Estás seguro de borrar este reporte?, el contenido no será borrado."
     bit_courses:
       index:
         courses: Cursos

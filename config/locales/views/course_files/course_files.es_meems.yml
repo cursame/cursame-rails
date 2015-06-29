@@ -2,5 +2,5 @@ es_meems:
   course_files:
     library_item:
       delete: Borrar
-      confirm: ¿Estas seguro de querer eliminar este archivo?
+      confirm: ¿Estás seguro de querer eliminar este archivo?
 

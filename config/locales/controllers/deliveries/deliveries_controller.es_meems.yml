@@ -1,5 +1,5 @@
 es_meems:
   deliveries_controller:
-    access_denied: "Estas tratando de ver Tareas de un Centros Emprendedor donde no has sido aceptado."
-    register: "Estas tratando de ver Tareas de un Centros Emprendedor donde no estas inscrito."
+    access_denied: "Estás tratando de ver Tareas de un Centro Emprendedor donde no has sido aceptado."
+    register: "Estás tratando de ver Tareas de un Centro Emprendedor donde no estás inscrito."
 

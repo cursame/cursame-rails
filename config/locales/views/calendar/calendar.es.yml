@@ -11,10 +11,9 @@ es:
       sunday: Domingo
       monday: Lunes
       tuesday: Martes
-      wednesday: Miercoles
+      wednesday: 'Miércoles'
       thursday: Jueves
       friday: Viernes
-      saturday: Sabado
+      saturday: 'Sábado'
       back_month: ← Mes anterior
       next_month: Mes siguiente →
-      

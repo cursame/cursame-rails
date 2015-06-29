@@ -3,7 +3,7 @@ es_meems:
     shared:
       form:
         name: "Nombre: "
-        lib_name: "Titulo de la biblioteca"
+        lib_name: "Título de la biblioteca"
         descrip: "Descripción: "
         lib_descrip: "Descripción de la biblioteca"
         send: "Enviar"

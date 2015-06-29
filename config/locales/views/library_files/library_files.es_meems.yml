@@ -4,8 +4,8 @@ es_meems:
       card:
         download_file: "Descargar Archivo"
       form:
-        file_name: "Titulo del Archivo: "
-        file_name2: "Titulo del Archivo"
+        file_name: "Título del Archivo: "
+        file_name2: "Título del Archivo"
         descrip: "Descripción: "
         descrip_file: "Descripción del Archivo"
         file: "Archivo"

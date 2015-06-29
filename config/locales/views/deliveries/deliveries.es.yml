@@ -34,7 +34,7 @@ es:
       criterium: Criterios a evaluar
       add_criterium: Agregar criterio
       support: Material de soporte
-      integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.'
+      integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada. Sugerimos que si necesitas agregar alguno de éstos, elimines la actividad y vuelvas a cargarla.'
       cancel: Cancelar
       courses: Cursos
       evaluation_periods: Periodos de evaluación
@@ -53,7 +53,7 @@ es:
       hmwrks: Tareas para entregar Hoy
       tomorrow_hmwrks: Tareas para entregar Mañana
       deliver_hmwrks: Tareas para entregar en 3 días o más
-      no_hmwrks: No tienes tarean pendientes por entregar.
+      no_hmwrks: No tienes tareas pendientes por entregar.
       no_deliver: 'Has entregado todas las tareas, puedes ver las'
       past_hmwrks: tareas pasadas en la sección Pasadas
     lapsed:

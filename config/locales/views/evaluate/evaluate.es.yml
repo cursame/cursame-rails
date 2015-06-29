@@ -8,12 +8,12 @@ es:
         deliver: Entrega
         scored: Calificar
         student: Alumno
-        title: Titulo
+        title: Título
         message: Mensaje
         attachments: Archivos adjuntos
         example: Ejemplo
         feedback: Retroalimentación
-        comments: Envia comentarios en base a los criterios de la actividad.
+        comments: Envía comentarios en base a los criterios de la actividad.
         check_hmwrk: Calificar tarea
         deliveries: Entregas
       evaluate_deliveries:
@@ -21,26 +21,26 @@ es:
         score: "Calificación:"
         no_score: Sin calificar
         no_deliveries: Sin Entregas.
-        no_deliveries_record: Todavia no hay ninguna entrega en esta tarea.
+        no_deliveries_record: Todavía no hay ninguna entrega en esta tarea.
     discussions:
       evaluate_discussions_header:
         course: Curso
         members: Participantes
         publish_date: Fecha de publicación
-        limit_publish_date: Fecha limite para participar
+        limit_publish_date: Fecha límite para participar
       discussion_user_response:
         no_score: Sin Calificar
         comments: Comentarios
         score: Calificación
         example: Ejemplo
         feedback: Retroalimentación
-        send: Envia comentarios en base a los criterios de la actividad.
+        send: Envía comentarios en base a los criterios de la actividad.
         rate_student: Calificar alumno
       evaluate_discussions:
         discuss: Discusión
         comment: Comentario
         comments: Comentarios
-        nothing: Nadie a participado en esta discusión.
+        nothing: Nadie ha participado en esta discusión.
     shared:
       delivery_activity:
         of: de
@@ -79,14 +79,14 @@ es:
         delivery: Entregas
         obtain: Obtenido
         no_deliveries: Sin Entregas.
-        no_answer: Todavia ningún alumno ha contestado este cuestionario.
+        no_answer: Todavía ningún alumno ha respondido este cuestionario.
       survey_user_response:
         obtain: Obtenido
         delivery: Entregado
         answers: Respuestas
         feedback: Retroalimentación
         reply: Respuesta
-        comments: Envia comentarios al alumno.
+        comments: Envía comentarios al alumno.
         send: Enviar comentario
         delivery: Entregas
         obtain: Obtenido
@@ -100,10 +100,10 @@ es:
       activity_for_days: Actividades para calificar en 3 dias o más
       no_activity: No tienes actividades por calificar.
       all: 'Todas las actividades de tu curso estan calificadas, puedes ver'
-      past_activity: actividades pasas en la seccion de Pasadas
+      past_activity: actividades pasadas en la seccion de Pasadas
     course_inactive:
       no_score: Aún no tienes calificaciones.
-      enrollment: Necesitas estar inscrito en al menos un curso para tener calificaiones.
+      enrollment: Necesitas estar inscrito en al menos un curso para tener calificaciones.
     inactive:
       no_activity: No tienes actividades pasadas.
       no_act: No has creado ninguna actividad.

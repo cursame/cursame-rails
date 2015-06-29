@@ -7,7 +7,7 @@ es_meems:
         last: Pasadas
       deliveries_filter_course:
         filter: "Filtrar: "
-        select: Selecciona un Centros Emprendedor
+        select: Selecciona un Centro Emprendedor
       deliveries_header:
         hmwrks: Tareas
         deliver: Entregar
@@ -18,7 +18,7 @@ es_meems:
         hmwrk: Ver Tarea
         edit_hmwrk: Editar Tarea
       delivery_modal:
-        hmwrk: Tarea en el Centros Emprendedor
+        hmwrk: Tarea en el Centro Emprendedor
         deliver: Entregar antes del
         deliver_hmwrk: Entregar Tarea
         final_score: Calificación final obtenida
@@ -34,7 +34,7 @@ es_meems:
       criterium: Criterios a evaluar
       add_criterium: Agregar criterio
       support: Material de soporte
-      integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.'
+      integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada. Sugerimos que si necesitas agregar alguno de estos, elimines la actividad y vuelvas a cargarla.'
       cancel: Cancelar
       courses: Centros de Emprendedores
       evaluation_periods: Periodos de evaluación
@@ -44,7 +44,7 @@ es_meems:
       today_hmwrk: Tareas para entregar Hoy
       tomorrow_hmwrks: Tareas para entregar Mañana
       hmwrks: Tareas para entregar en 3 días o más
-      no_hmwrks: No tienes tareas pendientes por entregar en este Centros Emprendedor.
+      no_hmwrks: No tienes tareas pendientes por entregar en este Centro Emprendedor.
       no_deliver: 'Has entregado todas las tareas, puedes ver las'
       hmwrks_last: tareas pasadas en la sección Pasadas
     deliveries_courses_lapsed:
@@ -53,7 +53,7 @@ es_meems:
       hmwrks: Tareas para entregar Hoy
       tomorrow_hmwrks: Tareas para entregar Mañana
       deliver_hmwrks: Tareas para entregar en 3 días o más
-      no_hmwrks: No tienes tarean pendientes por entregar.
+      no_hmwrks: No tienes tareas pendientes por entregar.
       no_deliver: 'Has entregado todas las tareas, puedes ver las'
       past_hmwrks: tareas pasadas en la sección Pasadas
     lapsed:

@@ -1,4 +1,3 @@
 es:
   ajax_controller:
-    error1: "Ocurrió un error, porfavor inténtalo de nuevo."
-    
+    error1: "Ocurrió un error, por favor inténtalo de nuevo."

@@ -5,15 +5,15 @@ es_meems:
         view_discuss: Ver Discusión
         edit_discuss: Editar Discusión
       discussion_modal:
-        init_discuss: ha inicidado una discusión
-        in_course: en el Centros Emprendedor
+        init_discuss: ha iniciado una discusión
+        in_course: en el Centro Emprendedor
         criterium: Criterios a evaluar
         grade: Calificación Obtenida
       discussions_course_header:
         discuss: Discusiones
       discussions_filter_course:
         filter: "Filtrar:"
-        select: Selecciona un Centros Emprendedor
+        select: Selecciona un Centro Emprendedor
       discussions_header:
         discuss: Discusiones
       discussions_paginate_button:
@@ -33,7 +33,7 @@ es_meems:
       evaluation_periods: Periodos de evaluación
       public: Público
       create_discuss: Crear Discusión
-      save_discuss: Guardar discusión
+      save_discuss: Guardar Discusión
     discussions_course:
       no_discuss: No se encontraron más discusiones.
     index:

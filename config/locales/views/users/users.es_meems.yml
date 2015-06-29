@@ -2,8 +2,8 @@ es_meems:
   users:
     califications:
       ratings: "Calificaciones"
-      no_score: "Aún no tienes calificaciones."
-      enroll: "Necesitas estar inscrito en al menos un Centros Emprendedor para tener calificaciones."
+      no_score: "Aún no tienes Calificaciones."
+      enroll: "Necesitas estar inscrito en al menos un Centro Emprendedor para tener Calificaciones."
       deliveries_table:
         hmwrk: Tareas
         percent: 'Porcentaje: %{number}%'
@@ -11,16 +11,16 @@ es_meems:
         score: Calificación
         no_deliver: No entregada
         no_score: No calificada
-        avg: Calificación promedio en tareas
-        no_hmwrks: Aún no hay tareas en este Centros Emprendedor.
+        avg: Calificación promedio en Tareas
+        no_hmwrks: Aún no hay Tareas en este Centro Emprendedor.
       discussions_table:
         discuss: Discusiones
         discuss2: Discusión
         score: Calificación
         no_part: Sin participación
         no_score: No calificada
-        avg_score: Calificación promedio en discusiones
-        no_discuss: Aún no hay discusiones evaluables en este Centros Emprendedor.
+        avg_score: Calificación promedio en Discusiones
+        no_discuss: Aún no hay Discusiones evaluables en este Centro Emprendedor.
         percent: 'Porcentaje: %{number}%'
       surveys_table:
         quest: Cuestionarios
@@ -28,8 +28,8 @@ es_meems:
         exam: Examen
         score: Calificación
         no_answered: No resuelto
-        quest2: Calificación promedio en cuestionarios
-        quest3: Aún no hay cuestionarios en este Centros Emprendedor.
+        quest2: Calificación promedio en Cuestionarios
+        quest3: Aún no hay Cuestionarios en este Centro Emprendedor.
     shared:
       user_card:
         friends: Amigos
@@ -40,25 +40,25 @@ es_meems:
         confirm: Confirmar solicitud de amistad
         delete2: Eliminar solicitud de amistad
         add_friends: Agregar a mis amigos
-        teacher: Líder multiplicador
+        teacher: Líder Multiplicador
         student: Emprendedor
-        admin: MEEMS
+        admin: AdministradorS
       user_profile_header:
         update: Actualizar portada
         edit: Editar Perfil
-        cancel: Cancelar solictud de amistad
+        cancel: Cancelar Solictud de amistad
         send: Solicitud enviada
         ignore: Ignorar
-        accept: Aceptar solicitud de amistad
+        accept: Aceptar Solicitud de Amistad
         add_friends: Añadir a mis amigos
         update_photo: Actualizar foto
         publications: Publicaciones
-        courses: Centros de Emprendedores
+        courses: Centros Emprendedores
         friends: Amigos
         info: Información
     evaluation:
-      score: Calificacion
-      no_members: Este Centro Emprendedor no tiene miembros
+      score: Calificación
+      no_members: Este Centro Emprendedor no tiene usuarios
     form_course:
       create: Crear nuevo
       load: Cargando ...
@@ -68,35 +68,35 @@ es_meems:
       private: Privado
       public: Público
       create2: Crear
-      cancel: Cancel
+      cancel: Cancelar
     friends_first_user:
       friend_req: Solicitud de amistad
       pendent: Solicitudes pendientes
       friends: Amigos
       send: Solicitud de amistad enviada
     menu_member:
-      net: mis redes
-      enroll: inscribirse a una red
-      friends: mis amigos
+      net: Mis redes
+      enroll: Inscribirse a una red
+      friends: Mis amigos
     set_password_form:
-      set_pwd: Establece tu contraseña
-      welcome: 'Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro.'
-      pwd: Ingresa una contraseña.
-      save: Guardar contraseña
+      set_pwd: Establece tu Contraseña
+      welcome: 'Bienvenido a Cúrsame, es necesario que establezcas una Contraseña para terminar con el proceso de registro.'
+      pwd: Ingresa una Contraseña.
+      save: Guardar Contraseña
     courses:
-      courses2: Centros de Emprendedores
+      courses2: Centros Emprendedores
       no_registered: Aún no estas inscrito en ningún Centro Emprendedor.
-      find: Busca Centros de Emprendedores en la sección de
+      find: Busca Centros Emprendedores en la sección de
       no_members: Este usuario no esta inscrito en ningún Centro Emprendedor.
     dashboard:
       select: Seleccionador de redes
-      goto: Ir al super MEEMS
-      text1: Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema
+      goto: Ir al Súper Administrador
+      text1: Cuando usted seleccione la Redk deberá iniciar sesión en la Red a la que se le dirija ya que es una célula independiente del sistema
       log_out: Salir de mi sesión
     friends:
       no_friends: Aún no tienes amigos.
       find: Busca a tus amigos en la sección de
-      comunity: Miembros
+      comunity: Red de Emprendedores
       no_friends2: Este usuario no tiene amigos aún.
       friends_subtitle:
         friends1: Amigos
@@ -106,9 +106,9 @@ es_meems:
       all: Todos los usuarios
     info:
       info2: Información
-      bio: Biografia
-      no_bio: Este usuario no cuenta con biografia.
-      email: Correo Electronico
+      bio: Biografía
+      no_bio: Este usuario no cuenta con biografía.
+      email: Correo Electrónico
     show:
       no_friend: No eres amigo del usuario
       add: Agrégalo para poder postear en su muro.
@@ -118,6 +118,6 @@ es_meems:
     waiting_friends:
       friends: Amigos en espera
       waiting_friends: Esperando aceptación de
-      request: Este usuario te ha solicitado amistad
+      request: Este usuario te ha enviado una solicitud de amistad
     pendding_friends:
       no_request: 'No hay solicitudes de amistad pendientes.'

@@ -2,8 +2,8 @@ es:
   users:
     califications:
       ratings: "Calificaciones"
-      no_score: "Aún no tienes calificaciones."
-      enroll: "Necesitas estar inscrito en al menos un curso para tener calificaciones."
+      no_score: "Aún no tienes Calificaciones."
+      enroll: "Necesitas estar inscrito en al menos un curso para tener Calificaciones."
       deliveries_table:
         hmwrk: Tareas
         percent: 'Porcentaje: %{number}%'
@@ -11,16 +11,16 @@ es:
         score: Calificación
         no_deliver: No entregada
         no_score: No calificada
-        avg: Calificación promedio en tareas
-        no_hmwrks: Aún no hay tareas en este curso.
+        avg: Calificación promedio en Tareas
+        no_hmwrks: Aún no hay Tareas en este curso.
       discussions_table:
         discuss: Discusiones
         discuss2: Discusión
         score: Calificación
         no_part: Sin participación
         no_score: No calificada
-        avg_score: Calificación promedio en discusiones
-        no_discuss: Aún no hay discusiones evaluables en este curso.
+        avg_score: Calificación promedio en Discusiones
+        no_discuss: Aún no hay Discusiones evaluables en este curso.
         percent: 'Porcentaje: %{number}%'
       surveys_table:
         quest: Cuestionarios
@@ -28,8 +28,8 @@ es:
         exam: Examen
         score: Calificación
         no_answered: No resuelto
-        quest2: Calificación promedio en cuestionarios
-        quest3: Aún no hay cuestionarios en este curso.
+        quest2: Calificación promedio en Cuestionarios
+        quest3: Aún no hay Cuestionarios en este Curso.
     shared:
       user_card:
         friends: Amigos
@@ -57,7 +57,7 @@ es:
         friends: Amigos
         info: Información
     evaluation:
-      score: Calificacion
+      score: Calificación
       no_members: Este curso no tiene miembros
     form_course:
       create: Crear nuevo
@@ -75,23 +75,23 @@ es:
       friends: Amigos
       send: Solicitud de amistad enviada
     menu_member:
-      net: mis redes
-      enroll: inscribirse a una red
-      friends: mis amigos
+      net: Mis redes
+      enroll: Inscribirse a una red
+      friends: Mis amigos
     set_password_form:
-      set_pwd: Establece tu contraseña
+      set_pwd: Establece tu Contraseña
       welcome: 'Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro.'
-      pwd: Ingresa una contraseña.
-      save: Guardar contraseña
+      pwd: Ingresa una Contraseña.
+      save: Guardar Contraseña
     courses:
       courses2: Cursos
       no_registered: Aún no estas inscrito en ningún curso.
-      find: Busca cursos en la sección de
-      no_members: Este usuario no esta inscrito en ningún curso.
+      find: Busca Cursos en la sección de
+      no_members: Este usuario no esta inscrito en ningún Curso.
     dashboard:
-      select: Seleccionador de redes
-      goto: Ir al super administrador
-      text1: Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema
+      select: Seleccionador de Redes
+      goto: Ir al Súper Administrador
+      text1: Cuando usted seleccione la Red deberá iniciar sesión en la Red a la que se le dirija ya que es una célula independiente del sistema
       log_out: Salir de mi sesión
     friends:
       no_friends: Aún no tienes amigos.
@@ -106,9 +106,9 @@ es:
       all: Todos los usuarios
     info:
       info2: Información
-      bio: Biografia
-      no_bio: Este usuario no cuenta con biografia.
-      email: Correo Electronico
+      bio: Biografía
+      no_bio: Este usuario no cuenta con biografía.
+      email: Correo Electrónico
     show:
       no_friend: No eres amigo del usuario
       add: Agrégalo para poder postear en su muro.
@@ -118,6 +118,6 @@ es:
     waiting_friends:
       friends: Amigos en espera
       waiting_friends: Esperando aceptación de
-      request: Este usuario te ha solicitado amistad
+      request: Este usuario te ha enviado una solicitud de amistad
     pendding_friends:
       no_request: 'No hay solicitudes de amistad pendientes.'
