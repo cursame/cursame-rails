@@ -6,15 +6,15 @@ en:
       button: "If the button below doesn’t work click here"
     csv_import_email:
       hello: Hello
-      results: We have annexed the results of the users import 
+      results: We have annexed the results of the users import
       success: Success
       error: Erros
     masive_mailer_for_super_admin:
       user: Dear Cursame Users
-    new_delivey_notification:
+    new_delivery_notification:
       course_notif: Current homework
       deliver: Deadline
-      button: "If the button below doesn’t work click here"    
+      button: "If the button below doesn’t work click here"
     new_discussion_notification:
       discuss: Course discussion
       button: "If the button above doesn’t work click here"

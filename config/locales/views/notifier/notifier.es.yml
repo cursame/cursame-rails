@@ -11,7 +11,7 @@ es:
       error: ¡Error!
     masive_mailer_for_super_admin:
       user: Estimados usuarios de Cúrsame
-    new_delivey_notification:
+    new_delivery_notification:
       course_notif: Tarea en el curso
       deliver: Entregar antes del
       button: 'Si el botón superior no funciona, haz click aquí'
