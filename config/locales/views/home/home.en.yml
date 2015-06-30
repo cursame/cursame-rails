@@ -23,7 +23,7 @@ en:
         title3: Students
         text3: 'Interact with your classmates and teachers. Solve your questions, learn and hand in your dead lines at any place or time.'
         title4: Parents
-        text4: Keep an update of your child’s school activities and advances in real time. 
+        text4: Keep an update of your child’s school activities and advances in real time.
       social_impact:
         header: Social impact and compromise
         description: 'We want to create a possitive impact on society by improving the quality of education, reduce the digital gap and quickly detect the alarms in student communities.'
@@ -54,7 +54,7 @@ en:
         title2: Subdirector Académico Universidad Tecnológica Emiliano Zapata
         description3: 'La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.'
         name3: Lic. Katia Águila
-        title3: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior           
+        title3: Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior
     features:
       features_title:
         title1: Method
@@ -68,7 +68,7 @@ en:
         network: Community
         results: Grades
         statisdics: Statistics
-      features_content: 
+      features_content:
         homeworks: Homework
         description_homework: It allows teachers to create academic activities for students to respond to from any place without the need of paper and boosting their productivity.
         characteristic_homework: 'Some of these characteristics are:'
@@ -78,7 +78,7 @@ en:
         feature4_homework: Recomended content
         feature5_homework: Evaluation
         surveys: Tests
-        description_survey: 'Through online tests, teachers are able to evaluate their students in an easy and automatic way. This means they no longer lose class time grading save a great amount of paper.'  
+        description_survey: 'Through online tests, teachers are able to evaluate their students in an easy and automatic way. This means they no longer lose class time grading save a great amount of paper.'
         characteristic_survey: 'Some of its characteristics:'
         feature1_survey: Creation of one or more courses
         feature2_survey: Deadlines
@@ -152,7 +152,7 @@ en:
         testimonial_tecnica_df: '“Cúrsame  has been a fundamental development tool. It compliments day by day classwork and increases the effective time inside the classroom. Also, it allows us save paper by uploading our readings, which is a great benefit."'
         testimonial_tecnica_df_name: Lic. Francisco Fabián Brizuela
         testimonial_tecnica_df_title: Director del Centro de Innovación Tecnológica Educativa Secundarias Técnicas Distrito Federal
-        emprendedores: Higher Secondary Education Enterpreneurs 
+        emprendedores: Higher Secondary Education Enterpreneurs
         description_emprendedores: 'This project was created along with the Subsecretary of Higher Secondary Education, Angel Ventures and Ashoka. Cúrsame gives education to enterpreneurs in over 100 high-school campuses throughout the country. It is currently in an expansion process and is willing to reach 1000 campuses in 2014.'
         testimonial_emprendedores: '“It is the best tool for education. In our experience with higher education, we have tried to implement technology to teaching without having much success until we started working with Cúrsame, we are very pleased with the results.”'
         testimonial_emprendedores_name: Lic. Katia Águila
@@ -171,13 +171,13 @@ en:
       description2_mission: 'To democratize the access to a quality technological education, creating a change in the every day and professional lives of students and teachers by bringing the close to technology and its benefits.'
       philosophy: 'Philosophy:'
       description1_philosophy: 'In Cúrsame we believe that the learning conception is constructed is not only constructed by one’s own being, but that it deals with more social aspects inside learning communities.'
-      description2_philosophy: 'To us, the possibility of interaction with others with an educational purpose through technology tools, becomes a very efficient way to favor a possitive and effective educational encounter.' 
+      description2_philosophy: 'To us, the possibility of interaction with others with an educational purpose through technology tools, becomes a very efficient way to favor a possitive and effective educational encounter.'
       objectives: 'Objectives:'
       description1_objetives: 'To achieve better learning results in the student’s learning while bringing digital inclusion to teachers, students and family members.'
-      description2_objetives: To promote knowledge exchange in learning communities through diverse communication channels that facilitate the information flow. 
+      description2_objetives: To promote knowledge exchange in learning communities through diverse communication channels that facilitate the information flow.
       description3_objetives: Improve time class by making its management more efficient and giving follow up to all activities.
       description4_objetives: 'Allowing access to a technological quality education to all schools, regardless of their economic or social situation. '
-      our_team: 
+      our_team:
         title: Cúrsame
         description: 'Cúrsame is made up of a passionate group of entrepreneurs, our goal is to generate a positive impact in society through education and technology.'
     jobs:
@@ -192,8 +192,8 @@ en:
         requeriments: 'Requeriments:'
         we_offer: 'We offer:'
         apply_for_job: 'Apply for job!'
-        description1_senior_developer: We are looking to have the best team to offer our users the best educational platform on the market and create a possitive impact in the educational quality of our country. 
-        description2_senior_developer: We are looking for a someone that has experience in system management and development.   
+        description1_senior_developer: We are looking to have the best team to offer our users the best educational platform on the market and create a possitive impact in the educational quality of our country.
+        description2_senior_developer: We are looking for a someone that has experience in system management and development.
         responsibility1_senior_developer: + Planning and managing the Road Map Development of the platform and int new products.
         responsibility2_senior_developer: + Establish agile work methods for our team.
         responsibility3_senior_developer: + Organization in the work roles of every team memeber to cover the areas needed.
@@ -228,11 +228,14 @@ en:
       text1: Press
       text2: What the press says about Cúrsame.
     privacidad:
-      title: Privacy 
+      title: Privacy
       who_are_we: Who are we?
       description1_who_are_we: 'Redes Sociales de Aprendizaje SAPI de CV, better known as Cúrsame'
       description2_who_are_we: ', is located at'
       description3_who_are_we: 'Pomona 7, Roma Norte, in Mexico City. Zip. 06100, To access our website'
       description4_who_are_we: ' it is responsible for its own use and data protection, which is why we inform you:'
-
+    load_more_notfications:
+      load_more_notifications: 'display more notifications'
+    edit_comment: 'Comment edited.'
+    new_comment: 'comment created'
 

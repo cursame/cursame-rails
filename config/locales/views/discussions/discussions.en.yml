@@ -37,4 +37,8 @@ en:
       no_discuss: No more discussions to show.
     index:
       no_discuss: No more discussions to show.
-
+    correct_edit: 'Discussion edited'
+    create_discuss: 'Discussion created'
+    ajax:
+      discussions_paginate_ajax:
+        no_more_records_found: 'No discussions found'

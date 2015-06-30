@@ -286,3 +286,12 @@ en:
         info: "Information"
         members: "Members"
         library: "Library"
+    library_pagination:
+      no_more_records: 'No more files left to display"'
+    new_course: 'New Course created'
+    deliver_hmwrk: 'Homework successfully loaded'
+    correct_active: 'Course Activated'
+    correct_inactive: 'Course Deactivated'
+    ajax:
+      courses_paginate_ajax:
+        no_more_records_found: 'No more courses to display'

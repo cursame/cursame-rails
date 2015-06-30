@@ -13,3 +13,4 @@ en:
     messages:
       create:
         success: "Your homework has been delivered"
+    correct_hmwrk: 'Homework has been graded'
