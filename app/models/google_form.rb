@@ -35,7 +35,7 @@ class GoogleForm < ActiveRecord::Base
       for_teachers?
     when Role::STUDENT
       for_students?
-    when Role::ADMIN, Role::SUPERADMIN
+    when Role::ADMIN, Role::SUPERADMIN, Role::OPERATOR
       true
     else
       false
