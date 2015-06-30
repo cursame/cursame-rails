@@ -42,7 +42,7 @@ es_meems:
         add_friends: Agregar a mis amigos
         teacher: Líder Multiplicador
         student: Emprendedor
-        admin: AdministradorS
+        admin: Administrador
       user_profile_header:
         update: Actualizar portada
         edit: Editar Perfil
