@@ -59,7 +59,7 @@ en:
       no_hmwrks: We could not find any previous homework.
     select_course: 'Select a course to publish your task'
     correct_create: 'Task created'
-    correct_edit: 'Task created"
+    correct_edit: 'Task created'
     ajax:
       deliveries_paginate_ajax:
         no_more_records_found: 'No tasks found'
