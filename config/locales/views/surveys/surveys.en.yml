@@ -4,8 +4,10 @@ en:
       survey_card:
         quest: See test
         edit: Edit test
-        solve_time: Minits
+        solve_time: 'Minutes'
         no_limit_time: You not have more time to answer
+        notice_helper: 'You have'
+        notice_helper2: 'minutes to solve this questionnaire'
       survey_modal:
         quest: Course test
         response: Answer before
