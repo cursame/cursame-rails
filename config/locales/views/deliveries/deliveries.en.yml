@@ -40,7 +40,7 @@ en:
       publish: Publish
       save: Save Homework
     deliveries_course:
-      today_hmwrk: Homework that must be turned in today 
+      today_hmwrk: Homework that must be turned in today
       tomorrow_hmwrks: Homework that must be turned in tomorrow
       hmwrks: Homework that must be turned in in three days or more
       no_hmwrks: No pending homework for this course
@@ -57,3 +57,9 @@ en:
       past_hmwrks: "past homeworks in the Past section"
     lapsed:
       no_hmwrks: We could not find any previous homework.
+    select_course: 'Select a course to publish your task'
+    correct_create: 'Task created'
+    correct_edit: 'Task created'
+    ajax:
+      deliveries_paginate_ajax:
+        no_more_records_found: 'No tasks found'

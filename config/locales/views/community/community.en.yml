@@ -23,3 +23,6 @@ en:
     teachers:
       no_more_usr: No more users to show...
       no_students: There are still no teachers in your network.
+    ajax:
+      paginate_ajax:
+        no_more_records_found: 'No more users to display'
