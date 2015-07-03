@@ -19,8 +19,8 @@
     .eva-percenage-input
       %span %
       = f.text_field :evaluation_percentage, placeholder: t('.percent'), autocomplete: 'off', required: true, digits: true, min: 0, max: 100, class: 'course-evaluation-item-value-js'
-    = f.hidden_field :evaluable_id, :value => @course.id
-    = f.hidden_field :evaluable_type, :value => "Course"
+    = f.hidden_field :evaluable_id, :value => (@course.evaluation_periods.blank? ? @course.id : f.object.evaluable.id)
+    = f.hidden_field :evaluable_type, :value => (@course.evaluation_periods.blank? ? "Course" : "EvaluationPeriod")
     = f.hidden_field :_destroy, class: '_destroy'
     .eva-delete-criteria
       = link_to icon('w-cross-9-gray'), '#', class: "delete-eva-criteria" unless ['cursame_deliveries','cursame_surveys','cursame_discussions'].include? f.object.name

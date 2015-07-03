@@ -1,0 +1,29 @@
+- content_for :javascripts do
+  = javascript_include_tag 'courses/course-evaluation-schema'
+
+= render :partial => 'courses/show/course-header', locals: { header_style: :super_compact }
+.wrapper
+  .cols-12
+    .col.col-12
+      .col-inner
+        .section-help
+          = icon 'pie-chart'
+          %p= t('.text1')
+        .course-evaluation-schema
+          = form_for @course, method: :put, html: { class: 'evaluation-form-js' } do |f|
+            = f.fields_for :evaluation_periods do |period|
+              .course-evaluation-schema-list
+                %table.table-schema
+                  %thead
+                    %td= period.object.name
+                  %thead
+                    %td= t('.criterium')
+                    %td= t('.percent')
+                  %tr
+                  = period.fields_for :evaluation_criteria do |builder|
+                    = render 'courses/shared/course_evaluation_schema_fields', f: builder
+            .course-evaluation-schema-footer
+              %ul.list-buttons.right.fr
+                %li= link_to t('.cancel'), course_path(@course), class: 'btn btn-medium btn-secondary'
+                %li
+                  %span.btn.btn-medium.btn-primary.input-btn= submit_tag t('.save')

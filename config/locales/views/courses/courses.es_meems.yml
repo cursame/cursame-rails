@@ -247,6 +247,12 @@ es_meems:
       add_criterium: Agregar criterio de evaluación
       cancel: Cancelar
       save: Guardar
+    evaluation_schema_periods:
+      text1: 'Especifica como quieres evaluar este curso.'
+      criterium: Criterio
+      percent: Porcentaje
+      cancel: Cancelar
+      save: Guardar
     library:
       biblio: Biblioteca
       file: Archivo

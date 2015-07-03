@@ -22,6 +22,7 @@ class Managers::BitCoursesController < Managers::BaseController
       @course.add_teachers(teachers) + @course.add_students(students)
     @course.evaluation_periods = evaluation_periods(params[:folio], @course.id)
     @course.save!
+    @course.new_evaluation_criteria
     link_course_to_group(@course.id, params[:folio])
     inf_flash = { success: t('.managers.bit.success_importing_group') }
     redirect_to index_managers_bit_courses_path, flash: inf_flash

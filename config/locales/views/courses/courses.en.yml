@@ -247,6 +247,12 @@ en:
       add_criterium: Add evaluation criterion
       cancel: Cancel
       save: Save
+    evaluation_schema_periods:
+      text1: "Please specify how you want this course to be evaluated"
+      criterium: Criterion
+      percent: Percentage
+      cancel: Cancel
+      save: Save
     library:
       biblio: Library
       file: File

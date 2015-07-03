@@ -7,6 +7,8 @@ class CoursesController < ApplicationController
   before_filter :validations, only: :evaluation_schema
   filter_access_to :show
 
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+
   def index
     @member = MembersInCourse.new
 
@@ -369,6 +371,7 @@ class CoursesController < ApplicationController
   def evaluation_schema
     user_is_owner?(@course, current_user, current_role)
     @member = obtainMember(@course.id, current_user.id)
+    render "evaluation_schema_periods" unless @course.evaluation_periods.blank?
   end
 
   def closure
@@ -1103,4 +1106,8 @@ class CoursesController < ApplicationController
     end
   end
 
+  def error_connection
+    info_flash = { error: "Ocurrio un error, no se pudo enviar la información a Bit" }
+    redirect_to :back, flash: info_flash
+  end
 end

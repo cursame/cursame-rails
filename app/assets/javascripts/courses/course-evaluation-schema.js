@@ -16,6 +16,19 @@ function totalEvaluation(form) {
   return total;
 }
 
+function validTotalPercentage(form) {
+  var lists = $(form).find('div.course-evaluation-schema-list'),
+      flag = true,
+      percentageList = 0;
+  $.each(lists, function(index, list) {
+    percentageList = totalEvaluation(list)
+    if (percentageList != 100 ) {
+      flag = false;
+    };
+  })
+  return flag;
+}
+
 function validateNameEval(form) {
   var fields = $(form).find('tr.course-evaluation-item-js');
   var flag = true;
@@ -56,8 +69,9 @@ $(function() {
     submitHandler: function(form) {
       var userSelectionTotal = totalEvaluation(form);
       var validateName = validateNameEval(form);
+      var validPercentage = validTotalPercentage(form);
 
-      if ( userSelectionTotal == 100 ) {
+      if ( validPercentage ) {
         if ( validateName ) {
           form.submit();
         }
@@ -87,10 +101,10 @@ $(function() {
 
   $('form.evaluation-form-js').on('blur', 'input.course-evaluation-item-value-js', function(e) {
     var form =  e.delegateTarget,
-        userSelectionTotal = totalEvaluation(form),
+        validPercentage = validTotalPercentage(form),
         cursameValue = 100 - userSelectionTotal;
 
-    if ( userSelectionTotal <= 100 && userSelectionTotal >= 0 ) {
+    if ( validPercentage ) {
       $(form).find('h5.cursame-evaluation-percentage span').text(cursameValue);
     } else {
       Notice('error', 'Por favor verifica que el porcentaje total sea 100%.');

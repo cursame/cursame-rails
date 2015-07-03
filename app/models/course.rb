@@ -21,7 +21,7 @@ class Course < ActiveRecord::Base
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
   has_many :wufoo_forms, as: :showable, dependent: :destroy
   has_many :files, class_name: 'LibraryFile', through: :library
-  has_many :evaluation_periods, dependent: :destroy
+  has_many :evaluation_periods, dependent: :destroy, order: "id ASC"
 
   belongs_to :network
   belongs_to :school
@@ -41,6 +41,10 @@ class Course < ActiveRecord::Base
   attr_accessible :evaluation_criteria_attributes
 
   accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
+
+  attr_accessible :evaluation_periods_attributes
+
+  accepts_nested_attributes_for :evaluation_periods, allow_destroy: true
 
 #gemas
   acts_as_votable
@@ -318,6 +322,10 @@ class Course < ActiveRecord::Base
       teachers.push MembersInCourse.new(owner: true, course: self, user: user, network_id: self.network, accepted: true) unless user.nil?
     end
     return teachers
+  end
+
+  def new_evaluation_criteria
+    evaluation_periods.map { |period| period.new_evaluation_criteria }
   end
 
   def cursame_criteria
