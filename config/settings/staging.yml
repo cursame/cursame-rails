@@ -16,3 +16,4 @@ bit:
     group_students: /v1/alumnos
     group_teachers: /v1/profesores
     group_evaluations: /v1/evaluaciones
+    evaluation: /v1/escalaRubrica
