@@ -686,12 +686,26 @@ class ApplicationController < ActionController::Base
     when "meems"
       meems_locale
     else
-      I18n.locale = params[:locale]
+      default_locale
+    end
+  end
+
+  def default_locale
+    locale = (params[:locale].blank?) ? :es : params[:locale].to_sym
+    if I18n.available_locales.include? locale then
+      I18n.locale = locale
+    else
+      I18n.locale = :es
     end
   end
 
   def meems_locale
     I18n.locale = :es_meems
+  end
+
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    { locale: I18n.locale }
   end
 
   # TODO: Es preferible utilizar este método en lugar de redirect_to :back,
