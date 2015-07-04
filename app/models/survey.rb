@@ -1,4 +1,7 @@
 class Survey < ActiveRecord::Base
+
+  attr_accessible :evaluation_period, :evaluation_period_id
+
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :assets, through: :survey_assets
   has_many :comments, dependent: :destroy
@@ -15,6 +18,7 @@ class Survey < ActiveRecord::Base
   belongs_to :network
   belongs_to :poll
   belongs_to :user
+  belongs_to :evaluation_period
 
   validates_presence_of :courses
   validates_presence_of :questions

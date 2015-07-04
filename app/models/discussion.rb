@@ -13,12 +13,13 @@ class Discussion < ActiveRecord::Base
   has_many :reported_contents, as: :reportable, dependent: :destroy
 
 
-  attr_accessible :evaluation_criteria, :title, :description, :publish_date, :end_date, :evaluable
-  attr_accessible :evaluation_criteria_attributes
-  attr_accessible :contents_attributes
+  attr_accessible :evaluation_criteria, :title, :description, :publish_date,
+                  :end_date, :evaluable, :evaluation_criteria_attributes,
+                  :contents_attributes, :evaluation_period, :evaluation_period_id
 
   belongs_to :network
   belongs_to :user
+  belongs_to :evaluation_period
 
   validate :max_courses
   validates_presence_of :user

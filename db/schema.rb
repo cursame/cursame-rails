@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150618163421) do
+ActiveRecord::Schema.define(:version => 20150704194852) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -243,12 +243,13 @@ ActiveRecord::Schema.define(:version => 20150618163421) do
     t.text     "description"
     t.datetime "publish_date"
     t.datetime "end_date"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.integer  "user_id"
     t.string   "state"
     t.integer  "network_id"
     t.text     "description_html"
+    t.integer  "evaluation_period_id"
   end
 
   create_table "deliveries_courses", :force => true do |t|
@@ -295,14 +296,15 @@ ActiveRecord::Schema.define(:version => 20150618163421) do
   create_table "discussions", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.integer  "network_id"
     t.integer  "user_id"
     t.text     "description_html"
-    t.boolean  "evaluable",        :default => false
+    t.boolean  "evaluable",            :default => false
     t.datetime "publish_date"
     t.datetime "end_date"
+    t.integer  "evaluation_period_id"
   end
 
   create_table "evaluation_criteria", :force => true do |t|
@@ -646,8 +648,8 @@ ActiveRecord::Schema.define(:version => 20150618163421) do
   create_table "surveys", :force => true do |t|
     t.string   "name"
     t.integer  "course_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "network_id"
@@ -656,7 +658,8 @@ ActiveRecord::Schema.define(:version => 20150618163421) do
     t.string   "state"
     t.boolean  "publish"
     t.integer  "likes"
-    t.integer  "timer",        :default => 0
+    t.integer  "timer",                :default => 0
+    t.integer  "evaluation_period_id"
   end
 
   create_table "time_trying_surveys", :force => true do |t|
