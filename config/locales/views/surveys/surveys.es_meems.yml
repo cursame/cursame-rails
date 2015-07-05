@@ -47,6 +47,7 @@ es_meems:
       support: Material de soporte
       cancel: Cancelar
       courses: Centros de Emprendedores
+      evaluation_periods: Periodos de evaluación
       save: Guardar Cuestionario
       create: Crear Cuestionario
       non_mins: Sin límite de tiempo

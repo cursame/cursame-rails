@@ -366,7 +366,8 @@ I18n.translations["en"] = {
         "member": "Member",
         "members": "Members",
         "no_courses": "Not enough courses to see grades.",
-        "select_course": "Select Course"
+        "select_course": "Select Course",
+        "select_evaluation_period": "Select Evaluation Period"
       },
       "califications_header": {
         "active_courses": "Ongoing Courses",
@@ -970,6 +971,8 @@ I18n.translations["en"] = {
       "no_hmwrks": "We could not find any previous homework."
     },
     "select_course": "Select a course to publish your task",
+    "select_evaluation_period": "Select Evaluation Period",
+
     "shared": {
       "deliveries_course_header": {
         "active": "Active",
@@ -1179,6 +1182,7 @@ I18n.translations["en"] = {
     },
     "correct_edit": "Discussion edited",
     "create_discuss": "Discussion created",
+    "select_evaluation_period": "Select Evaluation Period",
     "discussions_course": {
       "no_discuss": "No more discussions to show."
     },
@@ -1187,6 +1191,7 @@ I18n.translations["en"] = {
       "calif": "Grade",
       "cancel": "Cancel",
       "create_discuss": "Create discussion",
+      "select_evaluation_period": "Select Evaluation Period",
       "criterium": "Evaluation criterion",
       "dates": "Date",
       "deliver_date": "Due date",
@@ -3052,7 +3057,8 @@ I18n.translations["en"] = {
     "publications_filter": {
       "filter_by_course_publications": {
         "filtrate": "Filter",
-        "select_course": "Select course"
+         "select_course": "Select course",
+         "select_evaluation_period": "Select Evaluation Period"
       }
     },
     "sessions": {
@@ -3327,6 +3333,8 @@ I18n.translations["en"] = {
       "quest1": "Add question"
     },
     "select_course": "Select a course to publish survey",
+    "select_evaluation_period": "Select Evaluation Period",
+
     "shared": {
       "survey_card": {
         "edit": "Edit test",
@@ -3972,7 +3980,8 @@ I18n.translations["es"] = {
         "member": "Miembro",
         "members": "Miembros",
         "no_courses": "No hay cursos para ver calificaciones.",
-        "select_course": "Selecciona un curso"
+        "select_course": "Selecciona un curso",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       },
       "califications_header": {
         "active_courses": "Cursos activos",
@@ -4576,6 +4585,7 @@ I18n.translations["es"] = {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
     "select_course": "Selecciona un curso para publicar tu tarea",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -4743,6 +4753,7 @@ I18n.translations["es"] = {
     },
     "correct_edit": "Discusión editada correctamente",
     "create_discuss": "Discusión creada correctamente",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -4751,6 +4762,7 @@ I18n.translations["es"] = {
       "calif": "Calificable",
       "cancel": "Cancelar",
       "create_discuss": "Crear Discusión",
+      "select_evaluation_period": "Selecciona un periodo de evaluación",
       "criterium": "Criterios a evaluar",
       "dates": "Fechas",
       "deliver_date": "Fecha de entrega",
@@ -6552,7 +6564,8 @@ I18n.translations["es"] = {
     "publications_filter": {
       "filter_by_course_publications": {
         "filtrate": "Filtrar",
-        "select_course": "Selecciona un curso"
+        "select_course": "Selecciona un curso",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       }
     },
     "sessions": {
@@ -6827,6 +6840,7 @@ I18n.translations["es"] = {
       "quest1": "Ingresar pregunta"
     },
     "select_course": "Selecciona un curso para publicar tu cuestionario.",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
@@ -7443,7 +7457,8 @@ I18n.translations["es_meems"] = {
         "member": "Miembro",
         "members": "Miembros",
         "no_courses": "No hay Centros de Emprendedores para ver calificaciones.",
-        "select_course": "Selecciona un Centros Emprendedor"
+        "select_course": "Selecciona un Centros Emprendedor",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       },
       "califications_header": {
         "active_courses": "Centros de Emprendedores activos",
@@ -8047,6 +8062,7 @@ I18n.translations["es_meems"] = {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
     "select_course": "Selecciona un curso para publicar tu tarea",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -8214,6 +8230,7 @@ I18n.translations["es_meems"] = {
     },
     "correct_edit": "Discusión editada correctamente",
     "create_discuss": "Discusión creada correctamente",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -8222,6 +8239,7 @@ I18n.translations["es_meems"] = {
       "calif": "Calificable",
       "cancel": "Cancelar",
       "create_discuss": "Crear Discusión",
+      "select_evaluation_period": "Selecciona un periodo de evaluación",
       "criterium": "Criterios a evaluar",
       "dates": "Fechas",
       "deliver_date": "Fecha de entrega",
@@ -10028,7 +10046,8 @@ I18n.translations["es_meems"] = {
     "publications_filter": {
       "filter_by_course_publications": {
         "filtrate": "Filtrar",
-        "select_course": "Selecciona un Centro Emprendedor"
+        "select_course": "Selecciona un Centro Emprendedor",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       }
     },
     "sessions": {
@@ -10303,6 +10322,7 @@ I18n.translations["es_meems"] = {
       "quest1": "Ingresar pregunta"
     },
     "select_course": "Selecciona un Centro Emprendedor para publicar tu cuestionario.",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
@@ -10919,7 +10939,8 @@ I18n.translations["devise"] = {
         "member": "Miembro",
         "members": "Miembros",
         "no_courses": "No hay cursos para ver calificaciones.",
-        "select_course": "Selecciona un curso"
+        "select_course": "Selecciona un curso",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       },
       "califications_header": {
         "active_courses": "Cursos activos",
@@ -11523,6 +11544,7 @@ I18n.translations["devise"] = {
       "no_hmwrks": "No se encontraron más tareas pasadas."
     },
     "select_course": "Selecciona un curso para publicar tu tarea",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "deliveries_course_header": {
         "active": "Activas",
@@ -11690,6 +11712,7 @@ I18n.translations["devise"] = {
     },
     "correct_edit": "Discusión editada correctamente",
     "create_discuss": "Discusión creada correctamente",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "discussions_course": {
       "no_discuss": "No se encontraron más discusiones."
     },
@@ -11698,6 +11721,7 @@ I18n.translations["devise"] = {
       "calif": "Calificable",
       "cancel": "Cancelar",
       "create_discuss": "Crear Discusión",
+      "select_evaluation_period": "Selecciona un periodo de evaluación",
       "criterium": "Criterios a evaluar",
       "dates": "Fechas",
       "deliver_date": "Fecha de entrega",
@@ -13499,7 +13523,8 @@ I18n.translations["devise"] = {
     "publications_filter": {
       "filter_by_course_publications": {
         "filtrate": "Filtrar",
-        "select_course": "Selecciona un curso"
+        "select_course": "Selecciona un curso",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       }
     },
     "sessions": {
@@ -13774,6 +13799,7 @@ I18n.translations["devise"] = {
       "quest1": "Ingresar pregunta"
     },
     "select_course": "Selecciona un curso para publicar tu cuestionario.",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",

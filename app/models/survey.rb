@@ -1,4 +1,8 @@
 class Survey < ActiveRecord::Base
+
+  attr_accessible :evaluation_period, :evaluation_period_id, :name, :publish_date, :end_date,
+                  :questions_attributes, :timer
+
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :assets, through: :survey_assets
   has_many :comments, dependent: :destroy
@@ -15,14 +19,14 @@ class Survey < ActiveRecord::Base
   belongs_to :network
   belongs_to :poll
   belongs_to :user
+  belongs_to :evaluation_period
 
   validates_presence_of :courses
   validates_presence_of :questions
   validates_presence_of :user
   validates_presence_of :publish_date
   validates_presence_of :end_date
-
-
+  validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.evaluation_periods.empty? }
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :assets

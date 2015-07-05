@@ -93,7 +93,7 @@ class DeliveriesController < ApplicationController
     end
 
     @deliveries = deliveries_raw.paginate(per_page: CARDS_PER_PAGE, page: page)
-    
+
     respond_to do |format|
       format.js { render 'deliveries/ajax/deliveries_paginate_ajax' }
     end
@@ -122,7 +122,6 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-    puts params[:asset]
     courses = courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
     @publication = []
     @error = false
@@ -132,6 +131,11 @@ class DeliveriesController < ApplicationController
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
         @delivery.courses = [Course.find_by_id(course)]
+
+        if params[:delivery][:evaluation_period_id]
+          @delivery.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+        end
+
         if @delivery.save
           @typed = "Delivery"
           @az = @delivery
@@ -143,10 +147,13 @@ class DeliveriesController < ApplicationController
               @delivery.assets.push(@asset)
             end
           end
+
+        else
+          @error_evaluation_period = true
         end
       end
     else
-      @error = true
+      @error_course = true
     end
     respond_to do |format|
       format.js
@@ -156,7 +163,7 @@ class DeliveriesController < ApplicationController
   def update
     @delivery = Delivery.find_by_id(params[:id])
     @wall_publication = Wall.find_by_publication_type_and_publication_id("Delivery", @delivery.id)
-    
+
     respond_to do |format|
       if @delivery.update_attributes(params[:delivery])
         format.html { redirect_to @delivery, notice: 'Delivery was successfully updated.' }
@@ -225,7 +232,7 @@ class DeliveriesController < ApplicationController
       end
     end
   end
-  
+
   def validations
     @delivery = Delivery.find_by_id(params[:id])
     redirect_to root_path, flash: { error: "La tarea que intentas ver no existe ah sido borrada."} and return if @delivery.nil?

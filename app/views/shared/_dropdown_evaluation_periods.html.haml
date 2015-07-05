@@ -1,0 +1,62 @@
+- if !course.evaluation_periods.empty?
+
+  - random_id = "#{random}"
+
+  .inline-block
+    .dropdown-wrap.target-dropdown{id: "drop-down-#{random_id}"}
+      .dropdown-pull.btn.btn-secondary
+        %span#title-dd
+          = icon(default_icon)
+          = defaultText
+        %span.arrow
+      .dropdown-v.right
+        %i.tip
+
+        %ul#box-course-dd.dropdown.target-courses-selector{style: ("")}
+          - course.evaluation_periods.each do |evaluation_period|
+            %li
+              %label
+                = avatar('course', '25', "no", evaluation_period.id, "avatar avatar-24", "no", "no")
+                = check_box_tag 'delivery[evaluation_period_id][]', evaluation_period.id, false, class: "evaluation-period-selector-js-#{course.id}"
+                = truncate( evaluation_period.name, omission: "...", length: 17)
+                = icon('checked-16')
+:javascript
+  $(document).ready(function() {
+      var dropdown      = $('#drop-down-#{random_id}'),
+          titleDropdown = dropdown.find('#title-dd');
+
+      dropdown.find('#icon-dd-course').click(function() {
+        dropdown.find('#box-selector-dd').hide();
+        dropdown.find('#box-course-dd').show();
+      });
+
+      dropdown.find('#box-return-dd').click(function(e) {
+        dropdown.find('#box-selector-dd').show();
+        dropdown.find('#box-course-dd').hide();
+        e.preventDefault();
+      });
+
+      dropdown.find('.target-courses-selector > li label').click(function(e) {
+        var $this       = $(this),
+            checkbox    = $this.find('input[type="checkbox"]'),
+            checkboxesLabels  = dropdown.find('.target-courses-selector > li label'),
+            checkboxesInputs  = dropdown.find(".evaluation-period-selector-js-#{course.id}");
+
+        titleDropdown.text('Periodos de evaluación').prepend( $('<i class="i i-course-new-publication"></i>') );
+
+        if ( checkbox.is(':checked') ) {
+          checkboxesLabels.removeClass('active');
+          checkboxesInputs.attr('checked', false);
+
+        } else {
+          checkboxesLabels.removeClass('active');
+          checkboxesInputs.attr('checked', false);
+
+          checkbox.attr('checked', true);
+          $this.addClass('active');
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+      });
+  });

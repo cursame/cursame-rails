@@ -1,14 +1,16 @@
 class Delivery < ActiveRecord::Base
-  attr_accessible :description, :title, :create, :update, :edit, :network_id, :user_id, :end_date, :publish_date,
-    :assets_attributes, :course_ids, :network_id, :deliveries_courses, :courses,:contents, :contents_attributes, :expired?
-
-  attr_accessible :evaluation_criteria_attributes
+  attr_accessible :description, :title, :create, :update, :edit, :network_id,
+                  :user_id, :end_date, :publish_date, :assets_attributes, :course_ids,
+                  :network_id, :deliveries_courses, :courses,:contents, :contents_attributes,
+                  :expired?, :evaluation_criteria_attributes, :evaluation_period,
+                  :evaluation_period_id
 
   scope :active_inactive
   scope :courses
   scope :contents
 
   belongs_to :user
+  belongs_to :evaluation_period
 
   has_many :deliveries_courses, :dependent => :destroy
   has_many :courses, :through => :deliveries_courses
@@ -36,6 +38,8 @@ class Delivery < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :courses
   validates_presence_of :user
+
+  validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.evaluation_periods.empty? }
 
   acts_as_commentable
   acts_as_votable

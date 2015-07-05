@@ -1,12 +1,14 @@
 class EvaluationPeriod < ActiveRecord::Base
-  attr_accessible :course_id, :name, :order, :short_name
+  attr_accessible :course_id, :name, :order, :short_name, :deliveries,
+                  :surveys, :discussions, :evaluation_criteria_attributes
 
   belongs_to :course
   validates_associated :course
 
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
-
-  attr_accessible :evaluation_criteria_attributes
+  has_many :surveys, dependent: :destroy
+  has_many :deliveries, dependent: :destroy
+  has_many :discussions, dependent: :destroy
 
   accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
 

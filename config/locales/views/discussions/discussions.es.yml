@@ -30,6 +30,7 @@ es:
       criterium: Criterios a evaluar
       add_comment: Agregar criterio
       cancel: Cancelar
+      evaluation_periods: Periodos de evaluación
       public: Público
       create_discuss: Crear Discusión
       save_discuss: Guardar discusión

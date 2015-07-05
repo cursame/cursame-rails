@@ -37,6 +37,7 @@ es_meems:
       integrity: 'Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.'
       cancel: Cancelar
       courses: Centros de Emprendedores
+      evaluation_periods: Periodos de evaluación
       publish: Publicar
       save: Guardar Tarea
     deliveries_course:
