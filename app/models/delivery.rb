@@ -39,6 +39,8 @@ class Delivery < ActiveRecord::Base
   validates_presence_of :courses
   validates_presence_of :user
 
+  validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.evaluation_periods.empty? }
+
   acts_as_commentable
   acts_as_votable
 

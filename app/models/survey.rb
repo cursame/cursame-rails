@@ -26,8 +26,7 @@ class Survey < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :publish_date
   validates_presence_of :end_date
-
-
+  validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.evaluation_periods.empty? }
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :assets

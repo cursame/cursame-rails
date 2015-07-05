@@ -130,8 +130,12 @@ class DeliveriesController < ApplicationController
       @course = Course.find_by_id(courses[0])
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
-        @delivery.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         @delivery.courses = [Course.find_by_id(course)]
+
+        if params[:delivery][:evaluation_period_id]
+          @delivery.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+        end
+
         if @delivery.save
           @typed = "Delivery"
           @az = @delivery
@@ -143,10 +147,13 @@ class DeliveriesController < ApplicationController
               @delivery.assets.push(@asset)
             end
           end
+
+        else
+          @error_evaluation_period = true
         end
       end
     else
-      @error = true
+      @error_course = true
     end
     respond_to do |format|
       format.js

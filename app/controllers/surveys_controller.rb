@@ -118,7 +118,10 @@ class SurveysController < ApplicationController
     @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
-    @survey.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+
+    if params[:delivery][:evaluation_period_id]
+      @survey.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+    end
 
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
 
@@ -139,9 +142,11 @@ class SurveysController < ApplicationController
         @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
         @typed = "Survey"
         activation_activity
+      else
+        @error_evaluation_period = true
       end
     else
-      @error = true
+      @error_course = true
     end
 
     respond_to do |format|

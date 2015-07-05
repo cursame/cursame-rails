@@ -73,17 +73,22 @@ class DiscussionsController < ApplicationController
 
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
-        @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find(courseId)]
 
+        if params[:delivery][:evaluation_period_id]
+          @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+        end
 
-        if @discussion.save! then
+
+        if @discussion.save
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
           @az = @discussion
           @typed = "Discussion"
           activation_activity
+        else
+          @error_evaluation_period = true
         end
       end
 
@@ -114,10 +119,13 @@ class DiscussionsController < ApplicationController
       @course = Course.find_by_id(courses[0])
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
-        @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find_by_id(courseId)]
+
+        if params[:delivery][:evaluation_period_id]
+          @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+        end
 
         if @discussion.save
           @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
@@ -125,7 +133,7 @@ class DiscussionsController < ApplicationController
           @typed = "Discussion"
           activation_activity
         else
-          redirect_to :back, notice: 'No se pudo crear la discusión'
+          @error_evaluation_period = true
         end
       end
 
@@ -134,17 +142,17 @@ class DiscussionsController < ApplicationController
       @discussion.user = current_user
       @discussion.network = current_network
 
-      if @discussion.save!
+      if @discussion.save
         @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
         @az = @discussion
         @typed = "Discussion"
         activation_activity
       else
-        redirect_to :back, notice: t('.discussions_controller.no_discussion')
+        @error_evaluation_period = true
       end
     end
 
-    if params[:files]
+    if params[:files] && !@error_evaluation_period
       params[:files].each do |asset_id|
         @asset = Asset.find_by_id asset_id
         @discussion.assets.push @asset unless @asset.nil?

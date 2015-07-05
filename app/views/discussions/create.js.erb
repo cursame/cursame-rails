@@ -1,3 +1,9 @@
+<% if !@error_evaluation_period %>
+
 $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @publication, :visible_for => "network"} ))%>');
 Notice('success', I18n.t("discussions.create_discuss", {locale: "<%= I18n.locale %>"}));
 newPublicationCleaner();
+
+<% else %>
+  Notice('error', I18n.t("discussions.select_evaluation_period", {locale: "<%= I18n.locale %>"}));
+<% end %>
