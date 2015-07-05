@@ -16,14 +16,13 @@ class Managers::BitCoursesController < Managers::BaseController
   def import
     group = bit_course
     @course = new_course(group)
-    students = cursame_students(bit_students)
     teachers = cursame_teachers(bit_teachers)
-    @course.members_in_courses =
-      @course.add_teachers(teachers) + @course.add_students(students)
+    @course.members_in_courses = @course.add_teachers(teachers)
     @course.evaluation_periods = evaluation_periods(params[:folio], @course.id)
     @course.save!
-    @course.new_evaluation_criteria
     link_course_to_group(@course.id, params[:folio])
+    @course.new_evaluation_criteria
+    members_in_courses(@course.id, bit_students)
     inf_flash = { success: t('.managers.bit.success_importing_group') }
     redirect_to index_managers_bit_courses_path, flash: inf_flash
   end
@@ -184,19 +183,6 @@ class Managers::BitCoursesController < Managers::BaseController
     )
   end
 
-  def new_user_student(bit_user)
-    last_name = bit_user['apellidoPaterno'] + ' ' + bit_user['apellidoMaterno']
-    User.new(
-      email: bit_user['correo'],
-      password: Devise.friendly_token,
-      first_name: bit_user['nombre'],
-      last_name: last_name,
-      personal_url: SecureRandom.uuid,
-      subdomain: current_network.subdomain,
-      domain: request.domain
-    )
-  end
-
   def new_user_teacher(bit_user)
     last_name = bit_user['apellidoPaterno'] + ' ' + bit_user['apellidoMaterno']
     User.new(
@@ -218,14 +204,6 @@ class Managers::BitCoursesController < Managers::BaseController
     )
   end
 
-  def new_permissioning_student(id)
-    Permissioning.new(
-      user_id:  id,
-      role_id: '2',
-      network_id: current_network.id
-    )
-  end
-
   def new_evaluation_period(bit_period, id)
     EvaluationPeriod.new(
       course_id: id,
@@ -235,30 +213,12 @@ class Managers::BitCoursesController < Managers::BaseController
     )
   end
 
-  def create_student(bit_user)
-    user = new_user_student(bit_user)
-    user.permissionings = [new_permissioning_student(user.id)]
-    user.save!
-    link_student(user.id, bit_user['idAlumno'])
-    user
-  end
-
   def create_teacher(bit_user)
     user = new_user_teacher(bit_user)
     user.permissionings = [new_permissioning_teacher(user.id)]
     user.save!
     link_teacher(user.id, bit_user['idProfesor'])
     user
-  end
-
-  def link_student(id, bit_id)
-    uri = build_uri_group_students
-    response = HTTParty.post(
-      uri,
-      headers: { 'Authorization' => authorization },
-      body: { 'alumnos' => [{ 'idAlumno' => bit_id, 'idExterno' => id }] },
-      timeout: 180)
-    raise_error_link_user(uri, response, id) unless response.code == 200
   end
 
   def link_teacher(id, bit_id)
@@ -275,13 +235,6 @@ class Managers::BitCoursesController < Managers::BaseController
     bit_courses.select { |course| course['folio'] == params[:folio] }.first
   end
 
-  def cursame_students(bit_students)
-    bit_students.map do |bit_student|
-      user = User.find_by_email bit_student['correo']
-      user.nil? ? create_student(bit_student) : user
-    end
-  end
-
   def cursame_teachers(bit_teachers)
     bit_teachers.map do |bit_teacher|
       user = User.find_by_email bit_teacher['sCorreo']
@@ -292,5 +245,9 @@ class Managers::BitCoursesController < Managers::BaseController
   def evaluation_periods(folio, id)
     periods = bit_evaluation_periods(folio)
     periods.map { |period| new_evaluation_period(period, id) }
+  end
+
+  def members_in_courses(id, bit_students)
+    bit_students.each { |student| Bit::AddStudentsCourseWorker.perform_async(id, student, request.domain) }
   end
 end
