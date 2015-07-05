@@ -37,6 +37,7 @@ en:
       integrity: 'For the integrity of this activity, you are not allowed to modify files, content and criterion after they have been created. For this reason, if you request any modification we kindly ask you to delete the activity and upload it again. '
       cancel: Cancel
       courses: Courses
+      evaluation_periods: Evaluation periods
       publish: Publish
       save: Save Homework
     deliveries_course:

@@ -118,6 +118,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(params[:survey])
     @survey.user = current_user
     @survey.network = current_network
+    @survey.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
 
     courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
 

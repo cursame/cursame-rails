@@ -16,7 +16,7 @@
     <% contents = @delivery.contents.build %>
     <%= f.hidden_field :network_id, value: current_network.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    
+
     <div class="form-group">
       <div class="form-group-label">
         <%= f.label :title, "#{t('.hmwrk_theme')}:".html_safe %>
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="form-group">
       <div class="form-group-label">
         <%= f.label :publish_date, "#{t('.dates')}:" %>
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="form-group">
       <div class="form-group-label">
         <%= f.label :description, "#{t('.descrip')}:" %>
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <% if active_edit == false %>  
+    <% if active_edit == false %>
       <div class="form-group">
         <div class="form-group-label label-no-p">
           <%= f.label '', "#{t('.criterium')}:" %>
@@ -78,7 +78,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="form-group">
         <div class="form-group-label label-no-p">
           <%= f.label "", t('.support') %>
@@ -97,13 +97,13 @@
           </div>
         </div>
       </div>
-      
+
     <% end %>
   </div>
-  
+
   <% if active_edit %>
     <p><%=t('.integrity')%> </p></br>
-    <% unless delivery.evaluation_criteria.empty? %>    
+    <% unless delivery.evaluation_criteria.empty? %>
       <br>
     <% end %>
   <% end %>
@@ -117,15 +117,18 @@
         <li>
           <% if in_form != 'course'%>
             <%= render :partial => "shared/dropdown", :locals => { :hasPublic => false, :hasCourses => true, :defaultText => t('.courses'), :default_icon => 'course-new-publication', :in_type => in_type } %>
+          <% elsif !@course.evaluation_periods.empty? %>
+              <%= render partial: "shared/dropdown_evaluation_periods",
+                         locals: { defaultText: t('.evaluation_periods'), default_icon: 'course-new-publication', in_type: in_type, course: @course } %>
+              <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
           <% else %>
-            <%# courses = @discussion.courses.build %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
           <%end%>
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">
             <%= f.submit t('.publish'), :id => 'comment-post-form', :class => "activable"%>
-          </span> 
+          </span>
         </li>
       </ul>
     <% else %>
@@ -140,8 +143,8 @@
         </li>
       </ul>
   <%end%>
-  </div> 
-          
+  </div>
+
 <% end %>
 
 <script type="text/javascript">

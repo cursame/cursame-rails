@@ -32,7 +32,7 @@ en:
     website:
       cta_request_demo:
         request_demo: Request a demo for your campus!
-      other_contact_ways: 
+      other_contact_ways:
         text1: Other ways to contact us
         follow_us_on_twitter: Follow us on Twitter
         follow_us_on_facebook: Follow us on Facebook
@@ -48,6 +48,7 @@ en:
       dropdown_v:
         public: Public
         courses: Courses
+        evaluation_periods: Evaluation periods
         no_member: You are not a member of any course.
         goto_section: Become a part of the
         no_course: You have not created a course yet.
@@ -137,7 +138,7 @@ en:
         new_course: New public course
         go_course: Go to course
       delivery:
-        new_homework: New homework to turn 
+        new_homework: New homework to turn
         delivery_txt: Turn in before
         open_hmwk: Open homework
       discussion:
@@ -181,7 +182,7 @@ en:
     tour:
       survey_first_login:
         title: Help us improve
-        title2: "In Cúrsame, your participation is of most importance. Here you will find a few questions that will allow us to improve and offer the best possible tools to fit your needs." 
+        title2: "In Cúrsame, your participation is of most importance. Here you will find a few questions that will allow us to improve and offer the best possible tools to fit your needs."
         title3: "In Cúrsame, your participation is of most importance. Here you will find a few questions that will allow us to get to know you better. Your answers are confidential and will be used to continuously improve."
         thnx: Thanks.
         quest: Send survey
@@ -234,7 +235,7 @@ en:
       evaluates: evaluation
       reply: Anwser
       edit_delivery: Edit turn in
-      no_evaluation: This homework will not be graded A 
+      no_evaluation: This homework will not be graded A
       category: category
       final_eval: Final evaluation
       view_delivery: See homework
@@ -248,7 +249,7 @@ en:
         welcome: "Welcome to Cúrsame"
         description: In this tour we will show you the new design and tools you will now be able to use in our platform.
         courses: Course creation
-        description_courses: When you click on the create button (+) the creation form will appear for you give. 
+        description_courses: When you click on the create button (+) the creation form will appear for you give.
         menu: Menu
         menu_description: 'You can create comments, homework, discussions and tests in one single place.'
         text1: Publish your courses

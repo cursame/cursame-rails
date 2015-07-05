@@ -4,7 +4,7 @@
   <% @discussion=Discussion.new %>
 <% end %>
 
-<%= form_for(@discussion, remote: true, html: { class: "new-discussion-form discussion-form-js", id: form_reference_id, data: { post_type: 'Discussion' } }) do |f| %> 
+<%= form_for(@discussion, remote: true, html: { class: "new-discussion-form discussion-form-js", id: form_reference_id, data: { post_type: 'Discussion' } }) do |f| %>
   <%= hidden_field_tag 'in_form', in_form%>
   <% if @discussion.errors.any? %>
     <div id="error_explanation">
@@ -16,9 +16,9 @@
       </ul>
     </div>
   <% end %>
-  
+
   <% contents = @discussion.contents.build %>
-  
+
   <div class="new-publication-form-content">
 
     <div class="form-group">
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    
+
     <% if active_edit == false %>
 
       <div class="form-group ">
@@ -63,13 +63,13 @@
           </div>
         </div>
       </div>
-      
+
       <% if (current_role != 'student' and current_network.evaluable?) %>
         <div class="form-group">
           <div class="form-group-main">
             <div class="form-unit">
               <label>
-                <%= f.check_box :evaluable, class: 'evaluable-fields-trigger-js' %> 
+                <%= f.check_box :evaluable, class: 'evaluable-fields-trigger-js' %>
                 <%=t('.calif')%>
               </label>
             </div>
@@ -130,9 +130,12 @@
         </li>
         <li>
           <% if in_form != 'course'%>
-            <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => t('.public'), :default_icon => 'public-new-publication', :in_type => in_type } %>
+              <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => t('.public'), :default_icon => 'public-new-publication', :in_type => in_type } %>
+          <% elsif !@course.evaluation_periods.empty? %>
+              <%= render partial: "shared/dropdown_evaluation_periods",
+                         locals: { defaultText: t('.evaluation_periods'), default_icon: 'course-new-publication', in_type: in_type, course: @course } %>
+              <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
           <% else %>
-            <% courses = @discussion.courses.build %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
           <%end%>
         </li>

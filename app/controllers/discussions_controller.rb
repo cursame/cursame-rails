@@ -73,6 +73,7 @@ class DiscussionsController < ApplicationController
 
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
+        @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find(courseId)]
@@ -113,6 +114,7 @@ class DiscussionsController < ApplicationController
       @course = Course.find_by_id(courses[0])
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
+        @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find_by_id(courseId)]
@@ -198,12 +200,12 @@ class DiscussionsController < ApplicationController
     permissioning = Permissioning.find_by_user_id_and_network_id current_user.id, current_network.id
     unless discussion.courses.nil? || discussion.courses.empty?
       discussion.courses.each do |course|
-        mixpanel_properties = { 
+        mixpanel_properties = {
           'Network' => current_network.name.capitalize,
           'Subdomain' => current_network.subdomain,
-          'Course' => course.title.capitalize, 
-          'Role' => permissioning.role.title.capitalize, 
-          'Evaluable' => discussion.evaluable? 
+          'Course' => course.title.capitalize,
+          'Role' => permissioning.role.title.capitalize,
+          'Evaluable' => discussion.evaluable?
         }
       end
     else
