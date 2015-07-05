@@ -112,7 +112,8 @@ end
     <% unless active_edit %>
     <li>
       <% if in_form != 'course' %>
-          <%= render partial: "shared/dropdown", locals: { hasPublic: false, hasCourses: true, defaultText: t('.courses'), default_icon: 'course-new-publication', in_type: in_type } %>
+          <%= render partial: "shared/dropdown", locals: { hasPublic: false, isActivity: true, hasCourses: true,
+                                                          defaultText: t('.courses'), default_icon: 'course-new-publication', in_type: in_type } %>
       <% elsif !@course.evaluation_periods.empty? %>
           <%= render partial: "shared/dropdown_evaluation_periods",
                      locals: { defaultText: t('.evaluation_periods'), default_icon: 'course-new-publication', in_type: in_type, course: @course } %>

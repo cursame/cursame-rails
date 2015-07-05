@@ -115,35 +115,60 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(params[:survey])
-    @survey.user = current_user
-    @survey.network = current_network
+    @publication = []
 
-    if params[:delivery][:evaluation_period_id]
-      @survey.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
+    if params[:delivery] && params[:delivery]["course_ids"]
+      courses = params[:delivery]["course_ids"]
+    else
+      courses = []
     end
 
-    courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
+    if params[:delivery]
+      evaluation_periods_ids = params[:delivery].delete("evaluation_periods")
+    else
+      evaluation_periods_ids = []
+    end
 
-    if courses && !courses.empty?
-      @course = Course.find_by_id(courses[0])
-      courses.each { |course_id| @survey.courses.push(Course.find_by_id(course_id)) }
+    evaluation_period_by_course = {}
+    if evaluation_periods_ids
+      evaluation_periods_ids.each do |id|
+        evaluation_period = EvaluationPeriod.find_by_id(id)
+        courses.push(evaluation_period.course_id)
+        evaluation_period_by_course[evaluation_period.course_id] = id
+      end
+    end
 
-      if @survey.save
+    courses.uniq!
 
-        if params[:files]
-          params[:files].each do |asset_id|
-            @asset = Asset.find_by_id asset_id
-            @survey.assets.push @asset unless @asset.nil?
-          end
+    if !courses.empty?
+      courses.each do |courseId|
+
+        @survey = Survey.new(params[:survey])
+        @survey.user = current_user
+        @survey.network = current_network
+        @survey.courses = [Course.find_by_id(courseId)]
+
+        @survey.evaluation_period_id = evaluation_period_by_course[courseId]
+
+        if params[:delivery][:evaluation_period_id]
+          @survey.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         end
 
-        @az = @survey
-        @publication = Wall.find_by_publication_type_and_publication_id("Survey",@survey.id)
-        @typed = "Survey"
-        activation_activity
-      else
-        @error_evaluation_period = true
+        if @survey.save
+
+          if params[:files]
+            params[:files].each do |asset_id|
+              @asset = Asset.find_by_id asset_id
+              @survey.assets.push @asset unless @asset.nil?
+            end
+          end
+          @publication.push(Wall.find_by_publication_type_and_publication_id("Survey",@survey.id))
+          @typed = "Survey"
+          @az = @survey
+          activation_activity
+        else
+          @error_evaluation_period = true
+        end
       end
     else
       @error_course = true

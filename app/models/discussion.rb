@@ -23,7 +23,7 @@ class Discussion < ActiveRecord::Base
 
   validate :max_courses
   validates_presence_of :user
-  validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.evaluation_periods.empty? }
+  validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.nil? || self.courses.first.evaluation_periods.empty? }
 
   accepts_nested_attributes_for :contents
   accepts_nested_attributes_for :evaluation_criteria
