@@ -2,6 +2,9 @@
 class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
+  include BitUtils
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+
   def index
     @assignments = Assignment.all
 
@@ -80,6 +83,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find_by_id params[:id]
 
     if @assignment.update_attributes params[:assignment]
+      sending_grade_delivery_to_bit(@assignment) unless @assignment.delivery.evaluation_period_id.nil?
       Notification.create users: [@assignment.user], notificator: @assignment, kind: 'new_accomplishment_on_assignment'
       the_flash = { success: t('.assignments.correct') }
     else
@@ -103,5 +107,10 @@ class AssignmentsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def error_connection
+    info_flash = { error: "Ocurrio un error, No se pudo enviar la informacion a Bit." }
+    redirect_to :back, flash: info_flash
   end
 end

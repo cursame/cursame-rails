@@ -5,6 +5,9 @@ class EvaluateController < ApplicationController
   include FiltersUtils
   before_filter :only_teachers
 
+  include BitUtils
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+
   def index
 
     if current_user.teacher?
@@ -289,6 +292,7 @@ class EvaluateController < ApplicationController
     @discussion_response = DiscussionResponse.find_by_id(params[:id])
 
     if  @discussion_response.update_attributes params[:discussion_response]
+      sending_grade_discussion_to_bit(@discussion_response) unless @discussion_response.discussion.evaluation_period_id.nil?
       Notification.create users: [@discussion_response.user], notificator: @discussion_response.grade, kind: 'new_score_on_discussion_response'
       redirect_to evaluate_discussion_response_path(@discussion_response), flash: { success: t('.evaluate_controller.correct') }
     else
@@ -296,4 +300,8 @@ class EvaluateController < ApplicationController
     end
   end
 
+  def error_connection
+    info_flash = { error: "Ocurrio un error, No se pudo enviar la informacion a Bit." }
+    redirect_to :back, flash: info_flash
+  end
 end

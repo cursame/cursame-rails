@@ -264,6 +264,7 @@ class SurveysController < ApplicationController
       end
       # Evaluation del examen
       @user_survey.evaluation
+      sending_grade_survey_to_bit(@user_survey) unless @user_survey.survey.evaluation_period_id.nil?
       respond_to do |format|
         format.js
       end
@@ -329,6 +330,7 @@ class SurveysController < ApplicationController
 
   def error_connection
     @error_link_to_bit = true
+    @error = true
     respond_to do |format|
       format.js
     end
