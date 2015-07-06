@@ -1,6 +1,6 @@
 <% if !@error_course && !@error_evaluation_period %>
 
-  $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => [@publication], :visible_for => "network"} ))%>');
+  $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @publication, :visible_for => "network"} ))%>');
   Notice('success', I18n.t("surveys.correct_create", {locale: "<%= I18n.locale %>" }));
   newPublicationCleaner();
 

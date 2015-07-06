@@ -21,7 +21,7 @@ function newCommentFormCleaner(form) {
 
   var courseSelector = form.find('.target-dropdown');
   cleanCoursesSelectorDropdown(courseSelector);
-  
+
   courseSelector.find('.return-dd').trigger('click');
   courseSelector.find('.world-dd').trigger('click');
 };
@@ -60,7 +60,7 @@ function newSurveyFormCleaner(form) {
   form.find('.support-material').html('');
   cleanCoursesSelectorDropdown(form.find('.target-dropdown'));
 
-  var questionsBox = $('.new-survey-questions #box-question-'), 
+  var questionsBox = $('.new-survey-questions #box-question-'),
       questionClone = questionsBox.find('.question-field:first-child').clone(true);
 
   questionsBox.html('').append(questionClone);
@@ -78,6 +78,10 @@ function newSurveyFormCleaner(form) {
 function cleanCoursesSelectorDropdown(dropdown) {
   dropdown.find('.target-courses-selector .course-selector-js').each(function(index, checkbox) {
     $(checkbox).prop('checked', false).parent('label').removeClass('active');
+  });
+
+  dropdown.find('.evaluation-period-selector-js').each(function(index, checkbox) {
+    $(checkbox).attr('checked', false).parent('label').removeClass('active');
   });
 };
 

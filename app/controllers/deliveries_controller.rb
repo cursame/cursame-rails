@@ -122,21 +122,46 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-    courses = courses = params[:delivery] ? params[:delivery]["course_ids"] : nil
+
+    if params[:delivery] && params[:delivery]["course_ids"]
+      courses = params[:delivery]["course_ids"]
+    else
+      courses = []
+    end
+
     @publication = []
     @error = false
 
-    if courses && !courses.empty?
-      @course = Course.find_by_id(courses[0])
+    if params[:delivery]
+      evaluation_periods_ids = params[:delivery].delete("evaluation_periods")
+    else
+      evaluation_periods_ids = []
+    end
+
+    evaluation_period_by_course = {}
+    if evaluation_periods_ids
+      evaluation_periods_ids.each do |id|
+        evaluation_period = EvaluationPeriod.find_by_id(id)
+        courses.push(evaluation_period.course_id)
+        evaluation_period_by_course[evaluation_period.course_id] = id.to_i
+      end
+    end
+
+    courses.uniq!
+    params[:delivery].delete("course_ids")
+
+    if !courses.empty?
       courses.each do |course|
         @delivery = Delivery.new(params[:delivery])
         @delivery.courses = [Course.find_by_id(course)]
+
+        @delivery.evaluation_period_id = evaluation_period_by_course[course.to_i]
 
         if params[:delivery][:evaluation_period_id]
           @delivery.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
         end
 
-        if @delivery.save
+        if @delivery.save!
           @typed = "Delivery"
           @az = @delivery
           @publication.push(Wall.find_by_publication_type_and_publication_id("Delivery",@delivery.id))

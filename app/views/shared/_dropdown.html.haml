@@ -1,5 +1,5 @@
 - random_id = "#{random}"
-- hasSomeLocals = ( hasPublic && hasCourses) ? true : false
+- isActivity = !isActivity.nil?
 
 .inline-block
   .dropdown-wrap.target-dropdown{id: "drop-down-#{random_id}"}
@@ -31,19 +31,33 @@
               %li
                 %label
                   = avatar('course', '25', "no", course.id, "avatar avatar-24", "no", "no")
-                  = check_box_tag 'delivery[course_ids][]', course.id, false, class: 'course-selector-js'
-                  = truncate( course.title, omission: "...", length: 17)
+                  - if !course.evaluation_periods.empty? && isActivity
+                    = check_box_tag 'delivery[course_ids][]', course.id, false, class: ""
+                  - else
+                    = check_box_tag 'delivery[course_ids][]', course.id, false, class: 'course-selector-js'
+                  = truncate(course.title, omission: "...", length: 17)
                   = icon('checked-16')
+                  - if !course.evaluation_periods.empty? && isActivity
+                    - course.evaluation_periods.each do |evaluation_period|
+                      - course_id = "#{course.id}"
+                      %ul#box-course-dd.dropdown.target-courses-selector.evaluation-periods-selector{style: "display: block;", course_id: course_id, class: course_id }
+                        %li
+                          %label{class: course_id }
+                            = avatar('course', '25', "no", evaluation_period.id, "avatar avatar-24", "no", "no")
+                            = check_box_tag 'delivery[evaluation_periods][]', evaluation_period.id, false, class: "evaluation-period-selector-js #{course.id}"
+                            = truncate evaluation_period.name, omission: "...", length: 17
+                            = icon('checked-16')
+
           - else
             .inner-no-content
               - if is_student
                 %h5
                   = t('.dropdown_v.no_member')
                 %p
-                  = t('.dropdown_v.goto_section') 
+                  = t('.dropdown_v.goto_section')
                   #{link_to 'Cursos', courses_path}
               - else
-                %h5 
+                %h5
                   = t('.dropdown_v.no_course')
                 %p= link_to t('.dropdown_v.return'), new_course_path
           - if hasCourses && hasPublic
@@ -54,7 +68,7 @@
 :javascript
   $(document).ready(function() {
       var dropdown      = $('#drop-down-#{random_id}'),
-          titleDropdown = dropdown.find('#title-dd');2
+          titleDropdown = dropdown.find('#title-dd');
 
       dropdown.find('#icon-dd-public').click(function() {
         cleanCoursesSelectorDropdown(dropdown);
@@ -74,24 +88,56 @@
         e.preventDefault();
       });
 
-      dropdown.find('.target-courses-selector > li label').click(function(e) {
-        var $this     = $(this),
-            checkbox  = $this.find('input[type="checkbox"]'),
+      dropdown.find('.target-courses-selector.evaluation-periods-selector > li label').click(function(e) {
+        var $this            = $(this),
+            course_id        = $this.parent().parent().attr('course_id'),
+            checkboxesLabels = dropdown.find(".target-courses-selector.evaluation-periods-selector > li label." + course_id),
+            checkboxesInputs = dropdown.find(".evaluation-period-selector-js." + course_id),
+            checkbox         =  $this.find('input[type="checkbox"].evaluation-period-selector-js'),
             isPublicCheckbox = dropdown.find('.target-selector input[name=is_public]');
-        
+
         dropdown.find('#icon-dd-public').removeClass('active');
         isPublicCheckbox.val(0);
         titleDropdown.text('Cursos').prepend( $('<i class="i i-course-new-publication"></i>') );
 
         if ( checkbox.is(':checked') ) {
+          checkboxesLabels.removeClass('active');
+          checkboxesInputs.attr('checked', false);
+
           checkbox.attr('checked', false);
           $this.removeClass('active');
         } else {
+          checkboxesLabels.removeClass('active');
+          checkboxesInputs.attr('checked', false);
+
           checkbox.attr('checked', true);
           $this.addClass('active');
         }
 
         e.preventDefault();
         e.stopPropagation();
+      });
+
+      dropdown.find('.target-courses-selector > li label').click(function(e) {
+        var $this      = $(this),
+            checkbox   = $this.find('input[type="checkbox"].course-selector-js'),
+            isPublicCheckbox = dropdown.find('.target-selector input[name=is_public]');
+
+        if (checkbox.length != 0) {
+          dropdown.find('#icon-dd-public').removeClass('active');
+          isPublicCheckbox.val(0);
+          titleDropdown.text('Cursos').prepend( $('<i class="i i-course-new-publication"></i>') );
+
+          if ( checkbox.is(':checked') ) {
+            checkbox.attr('checked', false);
+            $this.removeClass('active');
+          } else {
+            checkbox.attr('checked', true);
+            $this.addClass('active');
+          }
+
+          e.preventDefault();
+          e.stopPropagation();
+        };
       });
   });

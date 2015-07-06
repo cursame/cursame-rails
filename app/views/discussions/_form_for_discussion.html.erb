@@ -130,7 +130,8 @@
         </li>
         <li>
           <% if in_form != 'course'%>
-              <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, :hasCourses => true, :defaultText => t('.public'), :default_icon => 'public-new-publication', :in_type => in_type } %>
+              <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, isActivity: true, :hasCourses => true,
+                                                                    :defaultText => t('.public'), :default_icon => 'public-new-publication', :in_type => in_type } %>
           <% elsif !@course.evaluation_periods.empty? %>
               <%= render partial: "shared/dropdown_evaluation_periods",
                          locals: { defaultText: t('.evaluation_periods'), default_icon: 'course-new-publication', in_type: in_type, course: @course } %>

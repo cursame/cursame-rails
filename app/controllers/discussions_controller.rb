@@ -115,13 +115,28 @@ class DiscussionsController < ApplicationController
     @publication = []
 
     unless params[:delivery] == nil
-      courses = params[:delivery]["course_ids"]
-      @course = Course.find_by_id(courses[0])
+
+      courses = params[:delivery]["course_ids"] ? params[:delivery]["course_ids"] : []
+      evaluation_periods_ids = params[:delivery].delete("evaluation_periods")
+
+      evaluation_period_by_course = {}
+      if evaluation_periods_ids
+        evaluation_periods_ids.each do |id|
+          evaluation_period = EvaluationPeriod.find_by_id(id)
+          courses.push(evaluation_period.course_id)
+          evaluation_period_by_course[evaluation_period.course_id] = id
+        end
+      end
+
+      courses.uniq!
+
       courses.each do |courseId|
         @discussion = Discussion.new(params[:discussion])
         @discussion.user = current_user
         @discussion.network = current_network
         @discussion.courses = [Course.find_by_id(courseId)]
+
+        @discussion.evaluation_period_id = evaluation_period_by_course[courseId]
 
         if params[:delivery][:evaluation_period_id]
           @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
