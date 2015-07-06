@@ -7,9 +7,9 @@
       %table.data-table
         %thead
           %tr
-            %th Asignatura
-            %th Plan de estudios
-            %th Nombre Completo
+            %th= t('.subject')
+            %th= t('.curriculum')
+            %th= t('.full_name')
             %th= t('.actions')
         %tbody
           - @bit_courses.each do |course|

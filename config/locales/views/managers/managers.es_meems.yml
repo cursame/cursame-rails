@@ -71,6 +71,7 @@ es_meems:
         edit: Editar
         delete: Borrar
         sure: Estas seguro de borrar este Centros Emprendedor.
+        import_bit_courses: Importar curso Bit
       new:
         create_course: Crear Centro Emprendedor
       show:
@@ -299,3 +300,19 @@ es_meems:
         sure: "¿Está seguro de borrar este contenido?"
         delete_report: "Borrar Reporte"
         sure2: "¿Está seguro de borrar este reporte?, el contenido no será borrado."
+    bit_courses:
+      index:
+        courses: Cursos
+        actions: Acciones
+        subject: Asignatura
+        curriculum: Plan de Estudios
+        full_name: Nombre Completo
+        show: Ver
+        import: Importar
+      show:
+        return: Regresar
+        import: Importar
+        subject: Asignatura
+        network: Escuela
+        teachers: Profesores
+        students: Alumnos
