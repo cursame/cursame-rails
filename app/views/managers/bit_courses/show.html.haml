@@ -6,13 +6,11 @@
           %ul.list-buttons.left
             %li= link_to t('.return').html_safe, index_managers_bit_courses_path, class: 'btn btn-secondary'
             %li= link_to t('.import'), import_managers_bit_course_path(@course['folio']), class: 'btn btn-primary'
-  /           %li= link_to t('.delete'), managers_course_path(@course), class: 'btn btn-primary', method: :delete, confirm: t('.sure')
-
   .cols-12
     .col.col-8.alpha.omega
       .col-inner
 
-        %span.meta-info= t('.asignatura')
+        %span.meta-info= t('.subject')
         %p= @course['asignatura']
 
         %br/
@@ -22,26 +20,9 @@
         %br/
         %span.meta-info= t('.teachers')
         - @teachers.each do |teacher|
-          %p= teacher['nombre']
+          %p= teacher['nombre'] + ' ' + teacher['apellidoPaterno'] + ' ' + teacher['apellidoMaterno']
 
         %br/
         %span.meta-info= t('.students')
         - @students.each do |student|
-          %p= student['nombre']
-
-  /       %br/
-  /       %span.meta-info= t('.comments')
-  /       %p= @course.comments.count
-
-  /       %br/
-  /       %span.meta-info= t('.hmwrks')
-  /       %p= @course.deliveries.count
-
-  /       %br/
-  /       %span.meta-info= t('.quest')
-  /       %p= @course.surveys.count
-
-  /       %br/
-  /       %span.meta-info= t('.files')
-  /       - @course.course_files.each do |file|
-  /         %p= file.attributes['file']
+          %p= student['nombre'] + ' ' + student['apellidoPaterno'] + ' ' + student['apellidoMaterno']
