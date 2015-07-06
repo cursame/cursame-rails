@@ -5,6 +5,12 @@ class DiscussionsController < ApplicationController
   include DiscussionsUtils
   before_filter :validations, only: :show
 
+  before_filter :only_students, only: [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
+  before_filter :validations, only: :show
+
+  include BitUtils
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+
   def index
     discussions = student_discussions.paginate(per_page: CARDS_PER_PAGE, page: 1)
     @discussions = discussions.keep_if {|discussion| discussion.publish_date < DateTime.now}
@@ -147,6 +153,7 @@ class DiscussionsController < ApplicationController
           @az = @discussion
           @typed = "Discussion"
           activation_activity
+          link_discussion_to_bit(@discussion) unless @discussion.evaluation_period_id.nil?
         else
           @error_evaluation_period = true
         end
@@ -243,4 +250,10 @@ class DiscussionsController < ApplicationController
     track_event current_user.id, 'Discussions', mixpanel_properties
   end
 
+  def error_connection
+    @error_link_to_bit = true
+    respond_to do |format|
+      format.js
+    end
+  end
 end

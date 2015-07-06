@@ -5,6 +5,9 @@ class SurveysController < ApplicationController
   before_filter :only_students, only: [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
   before_filter :validations, only: :show
 
+  include BitUtils
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+
   def index
     courses = student_subscribed_courses
 
@@ -166,6 +169,7 @@ class SurveysController < ApplicationController
           @typed = "Survey"
           @az = @survey
           activation_activity
+          link_survey_to_bit(@survey) unless @survey.evaluation_period_id.nil?
         else
           @error_evaluation_period = true
         end
@@ -321,5 +325,12 @@ class SurveysController < ApplicationController
     @survey = Survey.find_by_id(params[:id])
     redirect_to root_path, flash: { error: t('.surveys_controller.no_exist')} and return if @survey.nil?
     course_member?(current_user, @survey.courses.first)
+  end
+
+  def error_connection
+    @error_link_to_bit = true
+    respond_to do |format|
+      format.js
+    end
   end
 end
