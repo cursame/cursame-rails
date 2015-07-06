@@ -6,6 +6,9 @@ class DeliveriesController < ApplicationController
   before_filter :validations, only: :show
   before_filter :only_students, :only => [:index, :lapsed, :deliveries_course, :deliveries_course_lapsed]
 
+  include BitUtils
+  rescue_from Errors::ErrorResponseAppBit, with: :error_connection
+
   def index
     courses = student_subscribed_courses
 
@@ -172,7 +175,7 @@ class DeliveriesController < ApplicationController
               @delivery.assets.push(@asset)
             end
           end
-
+          link_delivery_to_bit(@delivery) unless @delivery.evaluation_period_id.nil?
         else
           @error_evaluation_period = true
         end
@@ -264,4 +267,10 @@ class DeliveriesController < ApplicationController
     #course_member?(current_user, @delivery.courses.first)
   end
 
+  def error_connection
+    @error_link_to_bit = true
+    respond_to do |format|
+      format.js
+    end
+  end
 end
