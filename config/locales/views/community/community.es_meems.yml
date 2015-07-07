@@ -5,7 +5,7 @@ es_meems:
         community: Miembros
         all: Todos
         students: Emprendedores
-        teacher: Líder multiplicadores
+        teacher: Líderes multiplicadores
       community_paginate_button:
         load_more: Cargar más...
       users_search:
