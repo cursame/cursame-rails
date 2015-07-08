@@ -45,7 +45,7 @@ es_meems:
           private: Privado
           init_date: Fecha de Inicio
           init_date2: Fecha inicio
-          teachers: Líder multiplicadores
+          teachers: Líderes multiplicadores
           last_name: Escribe un nombre o apellido.
           add: Agrega Líderes multiplicadores al Centros Emprendedor.
           find: Busca Líderes multiplicadores para administrar el Centros Emprendedor.
@@ -64,7 +64,7 @@ es_meems:
         courses: Centros de Emprendedores
         create: Crear Centros Emprendedor
         name: Nombre
-        teachers: Líder multiplicadores
+        teachers: Líderes multiplicadores
         students: Emprendedores
         inte_date: Fecha de creación
         actions: Acciones
