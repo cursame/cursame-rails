@@ -656,7 +656,7 @@ I18n.translations["en"] = {
       "upload": "Upload file"
     },
     "library_pagination": {
-      "no_more_records": "No more files left to display"
+      "no_more_records": "No more files left to display\""
     },
     "light_box_dashboard_delivery": {
       "criterium": "Grading criterion",
@@ -1799,7 +1799,7 @@ I18n.translations["en"] = {
     },
     "like": "Like",
     "load_more_notfications": {
-      "load_more_notifications": "Ver más notificaciones"
+      "load_more_notifications": "display more notifications"
     },
     "login_form": {
       "log_in": "Iniciar Sesión",
@@ -1820,7 +1820,7 @@ I18n.translations["en"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
-    "new_comment": "Se ha creado un comentario",
+    "new_comment": "comment created",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -1854,7 +1854,7 @@ I18n.translations["en"] = {
       "text4": "required fields.",
       "title": "Ask for a demo"
     },
-    "send": "¡Tu mensaje se ha enviado!",
+    "send": "Your message has been sent!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -6888,8 +6888,7 @@ I18n.translations["es"] = {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
-    "select_course": "Selecciona un curso para publicar tu Cuestionario.",
-    "select_evaluation_period": "Selecciona un periodo de evaluación",
+    "select_course": "Selecciona un Curso para publicar tu Cuestionario.",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
@@ -7506,8 +7505,7 @@ I18n.translations["es_meems"] = {
         "member": "Miembro",
         "members": "Miembros",
         "no_courses": "No hay Centros de Emprendedores para ver calificaciones.",
-        "select_course": "Selecciona un Centro Emprendedor",
-        "select_evaluation_period": "Selecciona un periodo de evaluación"
+        "select_course": "Selecciona un Centro Emprendedor"
       },
       "califications_header": {
         "active_courses": "Centros de Emprendedores activos",
@@ -7549,7 +7547,7 @@ I18n.translations["es_meems"] = {
     "shared": {
       "community_header": {
         "all": "Todos",
-        "community": "Miembros",
+        "community": "Red de Emprendedores",
         "students": "Emprendedores",
         "teacher": "Líderes multiplicadores"
       },
@@ -7614,7 +7612,7 @@ I18n.translations["es_meems"] = {
       "dates": "Fechas",
       "delivery_date": "Fecha Entrega",
       "descrip": "Descripción",
-      "example": "Emprendedores CBTA No. 72",
+      "example": "Ejemplo: Matemáticas I",
       "hmwrks": "Tareas",
       "info_new_course": "Edita la información para el nuevo Centro Emprendedor.",
       "init_date": "Fecha de inicio",
@@ -7660,7 +7658,7 @@ I18n.translations["es_meems"] = {
       "search": "Buscar"
     },
     "dashboard_deliver": {
-      "access": "Acceso rápido de administración de Centros Emprendedores",
+      "access": "Acceso rápido de administración de Centros de Emprendedores",
       "activate": "activar Centro Emprendedor",
       "calif": "Calificaciones",
       "count_test": "Contador de exámenes respondidos",
@@ -7674,7 +7672,7 @@ I18n.translations["es_meems"] = {
       "edit": "Editar Centro Emprendedor"
     },
     "edit_delivery_access": {
-      "courses": "Centros Emprendedores",
+      "courses": "Centros de Emprendedores",
       "delivery_day": "Último día de entrega",
       "descrip": "Descripción",
       "hmwrk_title": "Título de la tarea",
@@ -7742,10 +7740,10 @@ I18n.translations["es_meems"] = {
       "delete": "Eliminar Centro Emprendedor.",
       "descrip": "Descripción del",
       "descrip2": "Descripción",
-      "example": "Emprendedores CBTA No. 72",
-      "find_students": "Busca emprendedores para unirlos automaticamente al Centros Emprendedor.",
+      "example": "Ejemplo: Matemáticas I",
+      "find_students": "Busca Emprendedores para unirlos automáticamente al Centro Emprendedor.",
       "first_name": "Escribe un nombre o apellido.",
-      "init_date": "Fecha en la que se recibió la transferencia",
+      "init_date": "Fecha de inicio",
       "name": "Nombre del",
       "privacy": "Privacidad",
       "private": "Privado",
@@ -7781,7 +7779,7 @@ I18n.translations["es_meems"] = {
       },
       "teacher_header": {
         "active": "Activos",
-        "courses": "Centros Emprendedores",
+        "courses": "Centros de Emprendedores",
         "create_course": "Crear nuevo Centro Emprendedor",
         "finalize": "Finalizados",
         "new": "Nuevo"
@@ -7837,9 +7835,8 @@ I18n.translations["es_meems"] = {
     },
     "new_course": "Se ha creado un curso nuevo",
     "old_course": {
-
       "activate": "Activar Centro Emprendedor",
-      "antique": "Centros Emprendedores antiguos",
+      "antique": "Centros de Emprendedores antiguos",
       "deactivate": "Desactivar Centro Emprendedor"
     },
     "pending": {
@@ -7849,7 +7846,7 @@ I18n.translations["es_meems"] = {
     },
     "search": {
       "courses_search_results": {
-        "no_records": "No se encontraron Centros Emprendedores con el criterio de búsqueda.",
+        "no_records": "No se encontraron Centros de Emprendedores con el criterio de búsqueda.",
         "search": "Búsqueda:"
       }
     },
@@ -8650,10 +8647,10 @@ I18n.translations["es_meems"] = {
       "text3": "Próximamente"
     },
     "chat": {
-      "Centros de Emprendedores": "Centros de Emprendedores",
+      "Centros Emprendedores": "Centros de Emprendedores",
       "add_friends": "Agrega a tus amigos en la sección de",
       "community": "Red de Emprendedores",
-      "courses": "Centros Emprendedores",
+      "courses": "Centros de Emprendedores",
       "create": "Crear Centro Emprendedor ahora →",
       "cursos": "Cursos",
       "friends": "Amigos",
@@ -8702,14 +8699,14 @@ I18n.translations["es_meems"] = {
         "feature1_chat": "Chat individual con amigos y compañeros",
         "feature1_comment": "Públicos o Privados",
         "feature1_discussion": "Públicas o Privadas",
-        "feature1_homework": "Creación de uno o varios Centros Emprendedores",
+        "feature1_homework": "Creación de uno o varios Centros de Emprendedores",
         "feature1_network": "Encontrar amigos",
         "feature1_result": "Calificaciones por Centro Emprendedor",
         "feature1_statisdic": "Uso de las herramientas de la plataforma",
-        "feature1_survey": "Creación de uno o varios Centros Emprendedores",
+        "feature1_survey": "Creación de uno o varios Centros de Emprendedores",
         "feature2_chat": "Salas de chat grupal por Centro Emprendedor",
-        "feature2_comment": "A uno o varios Centros Emprendedores",
-        "feature2_discussion": "A uno o varios Centros Emprendedores",
+        "feature2_comment": "A uno o varios Centros de Emprendedores",
+        "feature2_discussion": "A uno o varios Centros de Emprendedores",
         "feature2_homework": "Fecha límite y hora de entrega",
         "feature2_network": "Encontrar compañeros de clase y Líderes Multiplicadores",
         "feature2_result": "Calificaciones individuales",
@@ -8732,7 +8729,7 @@ I18n.translations["es_meems"] = {
         "feature5_homework": "Rubros de evaluación",
         "feature5_statisdic": "Por Emprendedor",
         "homeworks": "Tareas",
-        "network": "Miembros",
+        "network": "Red de Emprendedores",
         "results": "Calificaciones",
         "statisdics": "Estadísticas:",
         "surveys": "Cuestionarios"
@@ -8742,7 +8739,7 @@ I18n.translations["es_meems"] = {
         "comments": "Comentarios",
         "discussions": "Discusiones",
         "homeworks": "Tareas",
-        "network": "Miembros",
+        "network": "Red de Emprendedores",
         "results": "Calificaciones",
         "statisdics": "Estadísticas",
         "surveys": "Cuestionarios"
@@ -8989,8 +8986,8 @@ I18n.translations["es_meems"] = {
       "terms73f": "Acceso e interferencia",
       "terms73x": "Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame",
       "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
-      "terms75": "Mal uso de los Centros Emprendedores del sistema",
-      "terms75f": "El Cliente no deberá hacer mal uso de los Centros Emprendedores, que incluyan pero que no se limiten a empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
+      "terms75": "Mal uso de los Centros de Emprendedores del sistema",
+      "terms75f": "El Cliente no deberá hacer mal uso de los Centros de Emprendedores, que incluyan pero que no se limiten a empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
       "terms76": "Otras actividades",
       "terms76f": "Ya sea lícito o ilícito, Cúrsame se reserva el derecho a determinar qué es perjudicial para sus Clientes, operaciones o reputación, incluyendo actividades que restrinjan o inhiban a algún otro usuario del uso o placer de disfrutar el Servicio o Internet.",
       "terms76x": "Por favor, sea consciente que Cúrsame se reserva el derecho de supervisar, suspender, restringir, suprimir, modificar, o terminar cualquier contenido o transmisión de la cuenta que se considere viola cualquiera de las políticas anteriormente dichas. Si se da el caso, Cúrsame formulará las denuncias pertinentes a las autoridades responsables de la aplicación de la ley, y en tal caso, Cúrsame ayudará activamente a las entidades responsables de aplicar la ley y con la investigación y el proceso de cualquier actividad, incluyendo la entrega de las cuentas de los clientes y de sus datos personales.",
@@ -9058,8 +9055,8 @@ I18n.translations["es_meems"] = {
       "activities": "Actividades",
       "admin": "Administración",
       "admin_net": "Administrar redes",
-      "course_admin": "MEEMS de Centros de Emprendedores",
-      "hello": "hola",
+      "course_admin": "Administradores de Centros de Emprendedores",
+      "hello": "Hola",
       "statics": "Estadísticas",
       "super_adm": "Super admins",
       "usr": "Usuarios"
@@ -9201,7 +9198,7 @@ I18n.translations["es_meems"] = {
       },
       "index": {
         "actions": "Acciones",
-        "courses": "Centros Emprendedores",
+        "courses": "Centros de Emprendedores",
         "create": "Crear Centro Emprendedor",
         "delete": "Borrar",
         "edit": "Editar",
@@ -9209,7 +9206,7 @@ I18n.translations["es_meems"] = {
         "inte_date": "Fecha de creación",
         "name": "Nombre",
         "students": "Emprendedores",
-        "sure": "¿Estás seguro de borrar este Centro Emprendedor?",
+        "sure": "Estas seguro de borrar este Centros Emprendedor.",
         "teachers": "Líderes Multiplicadores"
       },
       "new": {
@@ -9292,7 +9289,7 @@ I18n.translations["es_meems"] = {
         "return": "← Regresar",
         "state": "Estado",
         "sure": "¿Estás seguro de borrar este cuestionario?",
-        "teacher": "Líder Multiplicador",
+        "teacher": "Líder multiplicador",
         "unpublished": "Sin Publicar"
       }
     },
@@ -9326,7 +9323,7 @@ I18n.translations["es_meems"] = {
         "return": "← Regresar",
         "state": "Estado",
         "sure": "¿Estás seguro de borrar esta discusión?",
-        "teacher": "Líder Multiplicador",
+        "teacher": "Líder multiplicador",
         "type": "Tipo",
         "unpublished": "Sin Publicar"
       }
@@ -9339,14 +9336,14 @@ I18n.translations["es_meems"] = {
     "hmwrk_delete": "Tarea borrada correctamente.",
     "import_members": {
       "course": "Centro Emprendedor",
-      "download": "Descargar archivo de Centros Emprendedores",
+      "download": "Descargar archivo de Centros de Emprendedores",
       "import1": "Importar miembros",
       "import2": "Importa los miembros de los Centros de Emprendedores desde una base de datos.",
       "import3": "Importar lista de usuarios",
       "import4": "¿Importar?",
       "list": "Lista donde se puede importar.",
       "no_file": "NO SE ENCONTRÓ EL ARCHIVO",
-      "text1": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros Emprendedores.",
+      "text1": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros de Emprendedores.",
       "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centro Emprendedor mientras que 1 es para especificar que es un miembro del Centro Emprendedor.",
       "text3": "El Email debe ser el correo asociado al usuario."
     },
@@ -9373,8 +9370,8 @@ I18n.translations["es_meems"] = {
     "menu": {
       "admin": "Administración",
       "config": "Configuración",
-      "import_cur": "Importar Centros Emprendedores",
-      "import_std": "Importar Emprendedores de Centros Emprendedores",
+      "import_cur": "Importar Centros de Emprendedores",
+      "import_std": "Importar Emprendedores de Centros de Emprendedores",
       "import_usr": "Importar usuarios",
       "masive": "Correo Masivo",
       "usr": "Usuarios"
@@ -9447,7 +9444,7 @@ I18n.translations["es_meems"] = {
         "return": "← Regresar",
         "state": "Estado",
         "sure": "¿Estás seguro de borrar esta tarea?",
-        "teacher": "Líder Multiplicador"
+        "teacher": "Líder multiplicador"
       }
     },
     "users": {
@@ -9457,7 +9454,7 @@ I18n.translations["es_meems"] = {
       "import": {
         "download": "Descargar archivo de usuarios",
         "import2": "Importar Usuarios",
-        "import3": "Importa los miembros desde una base de datos.",
+        "import3": "Importa los usuarios de tu red de emprendedores desde una base de datos.",
         "import4": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.",
         "import5": "Importar archivo de usuarios",
         "no_find": "NO SE ENCONTRÓ UN ARCHIVO",
@@ -9492,7 +9489,7 @@ I18n.translations["es_meems"] = {
           "pwd": "Contraseña",
           "save": "Guardar cambios",
           "student": "Emprendedor",
-          "teacher": "Líder Multiplicador",
+          "teacher": "Líder multiplicador",
           "type": "Tipo de Usuario"
         },
         "managers_users_subnav": {
@@ -9624,6 +9621,11 @@ I18n.translations["es_meems"] = {
       "user": "Estimados usuarios de Cúrsame"
     },
     "new_delivery_notification": {
+      "button": "Si el botón superior no funciona, haz click aquí",
+      "course_notif": "Tarea en el curso",
+      "deliver": "Entregar antes del"
+    },
+    "new_delivey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "course_notif": "Tarea en el Centro Emprendedor",
       "deliver": "Entregar antes del"
@@ -9956,22 +9958,22 @@ I18n.translations["es_meems"] = {
     },
     "network_joyride": {
       "joyride_tip_content": {
-        "courses": "Creación de Centros Emprendedores",
+        "courses": "Creación de Centros de Emprendedores",
         "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podrás utilizar dentro de nuestra plataforma.",
-        "description_courses": "Al dar click en el botón Crear (+) aparecerá el formulario de creación para los Centros Emprendedores que lideras.",
+        "description_courses": "Al dar click en el botón Crear (+) aparecerá el formulario de creación para los Centros de Emprendedores que lideras.",
         "menu": "Menú de creación",
         "menu_description": "En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.",
         "text1": "Público o a tus Centros de Emprendedores",
-        "text10": "En esta sección podrás ver a tus amigos",
+        "text10": "En esta sección podrás ver a tus amigos, o ingresar a la \"Red de Emprendedores\" para agregarlos",
         "text11": "Menú interactivo",
         "text12": "Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.",
         "text13": "Video tutoriales de ayuda",
         "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click podrás ver un video sobre como usar dicha función.",
-        "text2": "Podrás elegir si tus publicaciones son para toda la red o para uno o varios de tus Centros Emprendedores.",
-        "text3": "Uno o varios Centros Emprendedores",
-        "text4": "¡Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o a todos los Centros Emprendedores! .",
+        "text2": "Podrás elegir si tus publicaciones son para toda la red o para uno o varios de tus Centros de Emprendedores.",
+        "text3": "Uno o varios Centros de Emprendedores",
+        "text4": "¡Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o a todos los Centros de Emprendedores! .",
         "text5": "Muro principal",
-        "text6": "En el muro principal aparecerán todas las publicaciones de tus Centros Emprendedores y amigos.",
+        "text6": "En el muro principal aparecerán todas las publicaciones de tus Centros de Emprendedores y amigos.",
         "text7": "Filtrado de publicaciones",
         "text8": "Con el menú de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
         "text9": "Amigos",
@@ -10144,8 +10146,8 @@ I18n.translations["es_meems"] = {
         "add_friends": "Agrega a tus amigos en la sección de",
         "calendar": "Calendario",
         "chat": "Chat",
-        "community": "Miembros",
-        "community_href": "Miembros",
+        "community": "Red de Emprendedores",
+        "community_href": "Red de Emprendedores",
         "course_href": "Centros de Emprendedores",
         "course_message": "Únete a uno en la sección de",
         "courses": "Centros de Emprendedores",
@@ -10228,8 +10230,8 @@ I18n.translations["es_meems"] = {
     "user_joyride": {
       "content": "Creación de contenido",
       "content_area": "Esta es el área de Creación de Contenido.",
-      "courses": "Centros Emprendedores",
-      "courses_area": "Esta es el área de tus Centros Emprendedores.",
+      "courses": "Centros de Emprendedores",
+      "courses_area": "Esta es el área de tus Centros de Emprendedores.",
       "edit_prof": "Editar Perfil",
       "friends": "Amigos",
       "friends_list": "Aquí encontrarás un listado de tus Amigos",
@@ -10294,7 +10296,7 @@ I18n.translations["es_meems"] = {
       "hmwrks": "Tareas",
       "hmwrks_delivery": "Entregas de Tarea",
       "quest": "Cuestionarios",
-      "show": "Muestra los Centros Emprendedores de las Redes, sus Miembros y sus Actividades",
+      "show": "Muestra los Centros de Emprendedores de las Redes, sus Miembros y sus Actividades",
       "show2": "Mostrar Tareas",
       "show3": "Mostrar Cuestionarios",
       "show4": "Mostrar estadísticas del Centro Emprendedor",
@@ -10368,7 +10370,7 @@ I18n.translations["es_meems"] = {
       "courses": "Centros de Emprendedores",
       "create": "Crear Cuestionario",
       "dates": "Fechas",
-      "deliver_date": "Fecha de entrega",
+      "deliver_date": "Fecha de Entrega",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
@@ -10399,7 +10401,6 @@ I18n.translations["es_meems"] = {
       "quest1": "Ingresar pregunta"
     },
     "select_course": "Selecciona un Centro Emprendedor para publicar tu Cuestionario.",
-    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
@@ -10505,8 +10506,8 @@ I18n.translations["es_meems"] = {
       }
     },
     "courses": {
-      "courses2": "Centros Emprendedores",
-      "find": "Busca Centros Emprendedores en la sección de",
+      "courses2": "Centros de Emprendedores",
+      "find": "Busca Centros de Emprendedores en la sección de",
       "no_members": "Este usuario no esta inscrito en ningún Centro Emprendedor.",
       "no_registered": "Aún no estas inscrito en ningún Centro Emprendedor."
     },
@@ -10532,7 +10533,7 @@ I18n.translations["es_meems"] = {
       "public": "Público"
     },
     "friends": {
-      "comunity": "Miembros",
+      "comunity": "Red de Emprendedores",
       "find": "Busca a tus amigos en la sección de",
       "friends_subtitle": {
         "all_friends": "Todos mis amigos",
@@ -10589,7 +10590,7 @@ I18n.translations["es_meems"] = {
         "accept": "Aceptar Solicitud de Amistad",
         "add_friends": "Añadir a mis amigos",
         "cancel": "Cancelar Solictud de amistad",
-        "courses": "Centros Emprendedores",
+        "courses": "Centros de Emprendedores",
         "edit": "Editar Perfil",
         "friends": "Amigos",
         "ignore": "Ignorar",
@@ -13902,7 +13903,6 @@ I18n.translations["devise"] = {
       "quest1": "Ingresar pregunta"
     },
     "select_course": "Selecciona un Curso para publicar tu Cuestionario.",
-    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",

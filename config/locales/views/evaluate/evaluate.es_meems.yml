@@ -52,7 +52,7 @@ es_meems:
         members: Participantes
         no_score: Sin Calificar
       evaluate_course_filter:
-        all: Todos los Centros Emprendedores
+        all: Todos los Centros de Emprendedores
       evaluation_criterium_feedback:
         feedback: Retroalimentación
       header_activity_delivery:
