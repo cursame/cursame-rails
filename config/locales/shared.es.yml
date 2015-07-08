@@ -5,7 +5,7 @@ es:
         msg: Escribe un mensaje y presiona Enter.
       chat:
         more_msg: Cargar más mensajes...
-        select: Selecciona a un amigo o curso para enviar mensaje.
+        select: Selecciona un amigo o curso para enviar mensaje.
       load_more_messages:
         more_msg: Cargar más mensajes...
       message_notifications:
@@ -28,7 +28,7 @@ es:
         text2: Encuentra tu red
         text3: Escribe tu correo electrónico para accesar a la red de tu institución.
         search_network: Busca tu red
-        notif: Oops! al parecer tu correo no pertenece a niguna red.
+        notif: ¡Oops! al parecer tu correo electrónico no pertenece a ninguna red.
     website:
       cta_request_demo:
         request_demo: ¡Solicita un demo en tu plantel!
@@ -51,7 +51,7 @@ es:
         evaluation_periods: Periodos de evaluación
         no_member: No eres miembro de ningún curso.
         goto_section: Únete a uno en la sección de
-        no_course: No has creado ningún curso todavia.
+        no_course: No has creado ningún curso todavía.
         new_course: Crear curso ahora →
         return: Volver
       return: Volver
@@ -80,7 +80,7 @@ es:
         no_friends: No tienes amigos.
         add_friends: Agrega a tus amigos en la sección de
         community_href: Comunidad
-        return: volver
+        return: Volver
         disp_usr: Usuario conectado
         no_disp_usr: Usuario desconectado
       upcomming_deliveries_widget:
@@ -115,7 +115,7 @@ es:
         not_like: Ya no me gusta
       post_comments:
         view_comments: Ver comentarios anteriores
-        like: me gusta
+        like: Me gusta
         delete: Borrar
         write_comment: Escribe un comentario
         comment: Comentar
@@ -144,7 +144,7 @@ es:
       discussion:
         new: Nueva discusión
         in_course: en el curso
-        open_discuss: Abrir discusion
+        open_discuss: Abrir discusión
       meta_data:
         like: Me gusta
         comments: Comentarios
@@ -152,7 +152,7 @@ es:
         at: a las
       owner_edit_publications:
         delete: Borrar
-        confirm: ¿Estas seguro de borrar esto?
+        confirm: ¿Estás seguro de borrar esto?
         edit: Editar
       people_who_likes:
         users: Usuarios a los que les gusta esto
@@ -176,14 +176,14 @@ es:
         log_in: ¿Ya eres usuario? Ingresa →
       network_not_exist:
         ops: ¡Oops!
-        no_network: No ingresaste el subdominio de la red a la que quieres acceder.
+        no_network: No ingresaste el subdominio de la red a la que quieres ingresar.
         search_school: Busca tu escuela aquí →
-        no_net_exists: Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.
+        no_net_exists: Parece que la red a la que quieres ingresar no existe. Pregunta a un encargado de tu escuela, él sabrá ayudarte.
     tour:
       survey_first_login:
         title: Ayúdanos a mejorar
-        title2: 'Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.'
-        title3: 'Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente.'
+        title2: 'Para Cúrsame es muy importante su participación, a continuación presentamos algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.'
+        title3: 'Para Cúrsame es muy importante tu participación, a continuación presentamos algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se utilizarán con el fin de mejorar continuamente.'
         thnx: Gracias.
         quest: Enviar Encuesta
         text4: Tus datos son confidenciales y serán utilizados con el fin de
@@ -191,7 +191,7 @@ es:
         priv: Aviso de Privacidad
       video_tour_first_time:
         welcome: Bienvenido al nuevo Cúrsame
-        wel_text: Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.
+        wel_text: Por favor revisa con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.
         wel_text1: En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.
         wel_text2: En este video de introducción te mostramos las principales secciones y características del curso.
         loading_tour: Cargando tour...
@@ -222,7 +222,7 @@ es:
         descrip: Descripción
         course_descrip: Aquí va la descripción del curso.
         course_edit: Editar el curso
-        text_edit_course: Aqui puedes editar el curso.
+        text_edit_course: Aquí puedes editar el curso.
         friends: Amigos
         friends_list: Aquí encontrarás un listado de tus amigos
         create_content: Creación de contenido
@@ -232,11 +232,11 @@ es:
     delivery_publication_tpl:
       end_delivery: Entregar antes de
       files: Archivos
-      evaluates: Se evalua
+      evaluates: Se evalúa
       reply: Responder
       edit_delivery: Editar Entrega
       no_evaluation: A esta tarea no se le han asignado áreas de evaluación
-      category: rubro
+      category: Rubro
       final_eval: Evaluación final
       view_delivery: Ver entrega de tarea
       no_reply: No se han encontrado respuestas a esta tarea
@@ -247,25 +247,25 @@ es:
     network_joyride:
       joyride_tip_content:
         welcome: Bienvenido a Cúrsame
-        description: En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.
+        description: En este tour te mostraremos el nuevo diseño y las herramientas que podrás utilizar dentro de nuestra plataforma.
         courses: Creación de cursos
-        description_courses: Al dar click en el bootón Crear (+) aparecera el formulario de creación para los cursos que impartes.
+        description_courses: Al dar click en el botón Crear (+) aparecerá el formulario de creación para los cursos que impartes.
         menu: Menú de creación
         menu_description: 'En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.'
         text1: Público o a tus cursos
         text2: Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus cursos.
         text3: Uno o varios cursos
-        text4: '!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .'
+        text4: '¡Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .'
         text5: Muro principal
         text6: En el muro principal aparecerán todas las publicaciones de tus cursos y amigos.
-        text7: Filtrado de publiciones
-        text8: Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.
+        text7: Filtrado de publicaciones
+        text8: Con el menú de filtrado podrás escoger que tipo de publicación quieres ver en el muro.
         text9: Amigos
         text10: 'En esta sección podrás ver a tus amigos, o ingresar a la "Comunidad" para agregarlos'
         text11: Menú interactivo
         text12: Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.
         text13: Video tutoriales de ayuda
-        text14: 'En cada sección donde veas un signo de interrogación "?", al dar click en el podras ver un video sobre como usar dicha función.'
+        text14: 'En cada sección donde veas un signo de interrogación "?", al dar click podrás ver un video sobre como usar dicha función.'
     notification_type:
       activity_feed:
         lookup_usr: Ver usuario
@@ -274,32 +274,32 @@ es:
         new_course: Nuevo curso
         in_network: en tu red
         accept_course: Has sido aceptado en el curso
-        new_homework: Nueva tarea
+        new_homework: Nueva Tarea
         in_course: en tu curso
-        new_discus: Nueva discusion
+        new_discus: Nueva Discusión
         in_course1: en tu curso
-        new_question: Nuevo cuestionario
+        new_question: Nuevo Cuestionario
         in_course2: en tu curso
         one_usr: Un usuario
         response_homework: ha respondido la tarea
         homework_calif: Han calificado tu tarea
         coursework: del curso
         friend_notif: ha solicitado ser su amigo
-        friend_req: ha aceptado su solicitud de amistad.
-        discuss_comment: comentó en tu discusión
-        comment_to_comment: ha comentado en un comentario que hiciste.
-        comment_profile: ha comentado en tu perfil.
-        comment_to_homework: ha comentado en la tarea
-        add_to_course: ha solicitado entrar al curso
-        quest_response: ha respondido el cuestionario
+        friend_req: ha aceptado tu solicitud de amistad.
+        discuss_comment: comentó en tu Discusión
+        comment_to_comment: ha comentado tu Publicación.
+        comment_profile: ha comentado en tu Perfil.
+        comment_to_homework: ha comentado en la Tarea
+        add_to_course: ha solicitado entrar al Curso
+        quest_response: ha respondido el Cuestionario
         the_course: El curso
         course_expired: ha llegado a su fecha final. Por favor desactívalo.
-        quest_feedback: Has recibido retroalimentación en el cuestionario
+        quest_feedback: Has recibido retroalimentación en el Cuestionario
         text15: El curso
         text16: ha sido
         active: activado
         ended: finalizado
-        text17: Han calificado tu participacion en la discusión
+        text17: Han calificado tu participacion en la Discusión
         course_calif: Se ha calificado el curso
         activities_p_user: Una actividad por
         view_usr: Ver usuario
@@ -310,7 +310,7 @@ es:
         more_notif: Ver más notificaciones
     post_comments:
       last_comments: Ver comentarios anteriores
-      like: me gusta
+      like: Me gusta
       delte: Borrar
       write_comment: Escribe un comentario
       comment: Comentar
@@ -319,21 +319,21 @@ es:
       respond_quest: Cuestionario respondido
     user_joyride:
       welcome_prof: Bienvenido a tu perfil
-      text_prof: En este lugar podrás ver todo lo que pasa en tu red cursame.
+      text_prof: En este lugar podrás ver todo lo que pasa en tu red Cúrsame.
       notif: Notificaciones
-      text_notif: Esta es el area de notificaciones.
+      text_notif: Esta es el área de Notificaciones.
       prof: Perfil
-      prof_photo: Aqui ver la foto de tu perfil.
+      prof_photo: Aquí puedes ver la foto de tu Perfil.
       edit_prof: Editar perfil
-      text_edit_prof: Aqui puedes editar tu perfil.
+      text_edit_prof: Aquí puedes editar tu Perfil.
       courses: Cursos
-      courses_area: Esta es el area de tus cursos.
+      courses_area: Esta es el área de tus cursos.
       friends: Amigos
-      friends_list: Aqui encontraras un listado de tus amigos
-      content: Creación de contenido
-      content_area: Esta es el area de creación de contenido.
-      publ: Publiciones
-      publ_area: Aqui encontraras todas las publicaciones de la red.
+      friends_list: Aquí encontraras un listado de tus Amigos
+      content: Creación de Contenido
+      content_area: Esta es el área de Creación de Contenido.
+      publ: Publicaciones
+      publ_area: Aquí encontraras todas las publicaciones de la red.
     wall_filters:
       all: Todos
       discuss: Discusiones

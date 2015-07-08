@@ -3,9 +3,9 @@ es:
     shared:
       reported_content_modal:
         help_us: "Ayúdanos a entender qué sucede"
-        reported_content: "Ya has reportado este contenido, el administrador de la red tomará acciones."
+        reported_content: "Has reportado este contenido, el administrador de la red tomará acciones."
         why_no_content: "¿Por qué no quieres ver este contenido?"
         comment: "Escribe un comentario"
         send: "Enviar"
     denounce_success: 'Tu denuncia ha sido realizada con éxito.'
-    denounce_fail: 'Algo sucedió que no se pudo guardar tu denuncia.'
+    denounce_fail: 'Algo sucedió, no se pudo guardar tu denuncia.'

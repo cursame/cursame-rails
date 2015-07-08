@@ -1,11 +1,11 @@
 es_meems:
   evaluate_controller:
     correct: "Calificación asignada correctamente."
-    only_teachers: "Estas intentando entrar en una sección solo para Líderes multiplicadores."
-    no_evaluate: "Estas tratando de calificar un Centros Emprendedor que no te pertenece."
-    no_activity: "Estas tratando de ver una actividad que no te pertenece."
+    only_teachers: "Estás intentando entrar en una sección solo para Líderes multiplicadores."
+    no_evaluate: "Estás tratando de calificar un Centro Emprendedor que no te pertenece."
+    no_activity: "Estás tratando de ver una actividad que no te pertenece."
     send_comment: "Comentario enviado correctamente."
-    no_exist: "La discusión que intentas ver no existe o ah sido borrada."
+    no_exist: "La discusión que intentas ver no existe o ha sido borrada."
     no_calificable: "La discusión que intentas ver no es calificable."
     error: "Ha ocurrido un error al calificar la discusión."
 

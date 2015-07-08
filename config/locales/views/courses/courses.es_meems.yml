@@ -3,57 +3,57 @@ es_meems:
     closure:
       closure_members:
         final_scores: Calificaciones finales
-        send_scores: Envia la calificación final a los emprendedores del grupo.
+        send_scores: Envía la calificación final a los emprendedores de este Centro.
         members: Miembros
         score: "Calificación:"
         no_score: Sin calificar
-        no_members: No hay miembros en el Centros Emprendedor.
-        invite: Invita a tus emprendedores que se unan a tu Centros Emprendedor.
+        no_members: No hay miembros en el Centro Emprendedor.
+        invite: Invita a tus emprendedores a que se unan a tu Centro Emprendedor.
       user_closure_overview:
         criterium: Criterio
         score: Calificación Obtenida
         hmwrk: Tareas
-        send: Entrego
+        send: Entrega
         of: de
         percent: "Porcentaje:"
         quest: Cuestionarios
-        respond: Contesto
+        respond: Respondió
         discuss: Discusiones
-        participate: Participo en
+        participate: Participó en
         example8: "Ejemplo: 8"
         final_score: Calificación Final
-        rate_student: Calificar emprendedor
+        rate_student: Calificar Emprendedor
         members: Miembros
         calif: "Calificación:"
         no_rate: Sin calificar
     index:
       student_courses_index:
-        no_courses: No hay Centros de Emprendedores.
-        no_show: No hay más Centros de Emprendedores para mostrar.
+        no_courses: No hay Centros Emprendedores.
+        no_show: No hay más Centros Emprendedores para mostrar.
       student_header:
-        courses: Centros de Emprendedores
+        courses: Centros Emprendedores
         course: Cursando
         regist: Inscríbete
         request: Solicitudes
       teacher_courses_index:
-        no_courses: No hay Centros de Emprendedores.
-        no_show: No hay más Centros de Emprendedores para mostrar.
+        no_courses: No hay Centros Emprendedores.
+        no_show: No hay más Centros Emprendedores para mostrar.
       teacher_header:
-        courses: Centros de Emprendedores
-        create_course: Crear Centros Emprendedor nuevo
+        courses: Centros Emprendedores
+        create_course: Crear nuevo Centro Emprendedor
         new: Nuevo
         active: Activos
         finalize: Finalizados
     members_in_courses:
       course_view_call:
-        no_courses: No hay Centros de Emprendedores.
+        no_courses: No hay Centros Emprendedores.
       owner_partial_for_member:
         teacher: Líder multiplicador
         student: Emprendedor
         admin: MEEMS
       permissionings_edit:
         delete_group: Eliminar del grupo
-        confirm: ¿Estás seguro de querer eliminar este usuario del Centros Emprendedor?
+        confirm: ¿Estás seguro de eliminar este usuario del Centro Emprendedor?
         delete: Eliminar
         usr_accept: Aceptar Usuario
     pending:
@@ -61,8 +61,8 @@ es_meems:
         no_request: No hay más solicitudes pendientes.
     search:
       courses_search_results:
-        search: "Busqueda:"
-        no_records: No se encontraron Centros de Emprendedores con el criterio de busqueda.
+        search: "Búsqueda:"
+        no_records: No se encontraron Centros Emprendedores con el criterio de búsqueda.
     shared:
       course_card:
         member: Miembro
@@ -76,17 +76,17 @@ es_meems:
         finalize: Finalizar
         active: Activar
         enroll: Estás inscrito
-        confirm: ¿Esta seguro de querer abandonar este Centros Emprendedor?
-        leave: Abandonar Centros Emprendedor
+        confirm: ¿Estás seguro de abandonar este Centro Emprendedor?
+        leave: Abandonar Centro Emprendedor
         request_send: Solicitud enviada
         send_request: Enviar solicitud
       course_card_post:
-        new_course: Nuevo Centros Emprendedor público
+        new_course: Nuevo Centro Emprendedor público
       course_evaluation_schema_fields:
         hmwrks: Tareas
         quest: Cuestionarios
         discuss: Discusiones
-        criterium: ¿Que criterio se evaluará?
+        criterium: ¿Qué criterio se evaluará?
         percent: Porcentaje asignado
       courses_paginate_button:
         load_more: Cargar más...
@@ -105,30 +105,30 @@ es_meems:
         members: Miembros
         library: Biblioteca
     courses_search:
-      courses_search: Buscar Centros Emprendedor...
+      courses_search: Buscar Centro Emprendedor...
       search: Buscar
     dashboard_deliver:
-      access: Acceso rápido de administración de Centros de Emprendedores
+      access: Acceso rápido de administración de Centros Emprendedores
       desactivate: Desactivar
-      activate: activar Centros Emprendedor
+      activate: activar Centro Emprendedor
       inactive: Inactivo
       monitor: Monitor de actividades
-      hmwrks_course: Tareas en el Centros Emprendedor
+      hmwrks_course: Tareas en el Centro Emprendedor
       calif: Calificaciones
-      count_test: Contador de examenes respondidos
+      count_test: Contador de exámenes respondidos
     edit_delivery_access:
-      hmwrk_title: Titulo de la tarea
+      hmwrk_title: Título de la tarea
       descrip: Descripción
-      publish_date: Día de pubicación
-      delivery_day: Ultimo día de entrega
-      courses: Centros de Emprendedores
+      publish_date: Día de publicación
+      delivery_day: Último día de entrega
+      courses: Centros Emprendedores
       publish: Publicar
     evaluation:
-      no_group: No eres parte del grupo!
-      no_member: No has sido aceptado en el grupo!
-      course_score: Calificaciones del Centros Emprendedor
+      no_group: ¡No eres parte del curso!
+      no_member: ¡No has sido aceptado en el curso!
+      course_score: Calificaciones del Centro Emprendedor
       pdf: Descargar (PDF)
-      score: Calificacion
+      score: Calificación
       student: Emprendedor
       deliver: Entrega
       items: Rubros
@@ -140,29 +140,29 @@ es_meems:
       total_score: Calificación Total
       obtained: Obtenido
       unresolved: Sin resolver
-      course_score: Calificación del Centros Emprendedor
+      course_score: Calificación del Centro Emprendedor
       student: "Emprendedor:"
-      percent_obtain: "% obtenido"
+      percent_obtain: "% Obtenido"
       percent_obtain1: "% Obtenido"
       hmwrk: Tarea
     form:
       name: Nombre del
-      example: "Emprendedores CBTA No. 72"
+      example: "Ejemplo: Matemáticas I"
       descrip: Descripción del
       descrip2: Descripción
       privacy: Privacidad
       public: Público
       private: Privado
-      init_date: Fecha en la que se recibió la transferencia
+      init_date: Fecha de inicio
       teachers: Líderes Multiplicadores
       students: Emprendedores
       first_name: Escribe un nombre o apellido.
-      add_students: Inscribe emprendedores a tu Centros Emprendedor.
-      find_students: Busca emprendedores para unirlos automaticamente al Centros Emprendedor.
+      add_students: Inscribe Emprendedores a tu Centro Emprendedor.
+      find_students: Busca Emprendedores para unirlos automáticamente al Centro Emprendedor.
       create: Crear
       save: Guardar cambios
-      delete: Eliminar Centros Emprendedor permanente.
-      confirm: ¿Esta seguro que desea eliminar este Centros Emprendedor?
+      delete: Eliminar Centro Emprendedor.
+      confirm: ¿Estás seguro de eliminar este Centro Emprendedor?
     form_course:
       update: Actualizar
       return: Regresar al
@@ -174,8 +174,8 @@ es_meems:
       private: Privado
     light_box_dashboard_delivery:
       student: Emprendedor
-      title: Titulo de entrega
-      descrip: Descripción de entrega
+      title: Título de la entrega
+      descrip: Descripción de la entrega
       files: Archivos de la entrega
       criterium: Criterios de calificación
       percent: Por favor selecciona un porcentaje de 1 a 100 para calificar esta tarea
@@ -184,11 +184,11 @@ es_meems:
       eval_hmwrk: Calificar tarea
       score: Calificación
     old_course:
-      antique: Centros de Emprendedores antiguos
-      deactivate: desactivar Centros Emprendedor
-      activate: activar Centros Emprendedor
+      antique: Centros Emprendedores antiguos
+      deactivate: Desactivar Centro Emprendedor
+      activate: Activar Centro Emprendedor
     survey_results:
-      back: Atras
+      back: Atrás
       student: Emprendedor
       result: Resultado obtenido
       respose: Respuesta
@@ -196,36 +196,36 @@ es_meems:
       course_info: Información del Centro Emprendedor
       info: Información.
       init_date: Fecha de incio
-      admins: MEEMS del Centros Emprendedor
+      admins: Administradores del Centro Emprendedor
     activities_depot:
-      back_to: Regresar al Centros Emprendedor
+      back_to: Regresar al Centro Emprendedor
       act: Actividades
       more_act: Cargar más actividades
       select_act: Selecciona una actividad.
     all_courses:
-      no_records: No hay más Centros de Emprendedores para mostrar.
+      no_records: No hay más Centros Emprendedores para mostrar.
     clone_course_view:
-      clone: Clonar Centros Emprendedor
-      data_course: Datos del Centros Emprendedor
-      info_new_course: Cambia la información para el nuevo Centros Emprendedor.
+      clone: Clonar Centro Emprendedor
+      data_course: Datos del Centro Emprendedor
+      info_new_course: Edita la información para el nuevo Centro Emprendedor.
       name: Nombre del
-      example: "Emprendedores CBTA No. 72"
+      example: "Ejemplo: Matemáticas I"
       descrip: Descripción
       dates: Fechas
-      init_date: Fecha en la que se recibió la transferencia
+      init_date: Fecha de inicio
       privacy: Privacidad
       public: Público
       private: Privado
       hmwrks: Tareas
-      clone_hmwrks: Selecciona las tareas que quieres clonar para el nuevo Centros Emprendedor.
+      clone_hmwrks: Selecciona las tareas que quieres clonar para el nuevo Centro Emprendedor.
       publish_date: Fecha de publicación
       delivery_date: Fecha Entrega
-      clone2: "(clonado)"
+      clone2: "(Clonado)"
     edit:
-      edit: Editar Centros Emprendedor
+      edit: Editar Centro Emprendedor
     evaluation_download:
-      no_part: No eres parte del grupo!
-      no_accept: No has sido aceptado en el grupo!
+      no_part: ¡No eres parte del curso!
+      no_accept: ¡No has sido aceptado en el curso!
       exam: Examen
       calif: Calificación
       student: Emprendedor
@@ -237,11 +237,11 @@ es_meems:
       undelivered: Sin entregar
       total_score: Calificación Total
       eval_percent: de la Evaluación
-      obtain_percent: Obtenido
+      obtain_percent: "% Obtenido"
       not_resolved: Sin resolver
-      obtain_percent2: obtenido
+      obtain_percent2: "% Obtenido"
     evaluation_schema:
-      text1: 'Especifica como quieres evaluar este Centros Emprendedor, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame.'
+      text1: 'Especifica como quieres evaluar este Centro Emprendedor, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame.'
       criterium: Criterio
       percent: Porcentaje
       add_criterium: Agregar criterio de evaluación
@@ -259,24 +259,24 @@ es_meems:
       files: Archivos
       upload: Subir archivo
       load: Cargar más archivos
-      no_files: Este Centros Emprendedor no tiene archivos en su librería.
+      no_files: Este Centro Emprendedor no tiene archivos en su librería.
       text2: 'Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo'
     members:
       mem: Miembros
       no_members: Centro Emprendedor sin miembros.
-      no_records: Este Centros Emprendedor todavia no tiene miembros en el.
+      no_records: Este Centro Emprendedor todavia no tiene miembros en el.
     new:
-      new_course: Centro Emprendedor nuevo
+      new_course: Nuevo Centro Emprendedor 
     statics:
       activity: ACTIVIDADES
       generate: Se han generado
       active_hmwrk: TAREAS ACTIVAS
-      total: totales
+      total: TOTALESs
       discuss: DISCUSIONES
       quest: CUESTIONARIO
-      in_course: En el Centros Emprendedor
+      in_course: En el Centro Emprendedor
     unpublished_courses:
-      no_courses: No hay más Centros de Emprendedores para mostrar.
+      no_courses: No hay más Centros Emprendedores para mostrar.
     show:
       course-header:
         update: "Actualizar portada"
@@ -293,7 +293,7 @@ es_meems:
         members: "Miembros"
         library: "Biblioteca"
     library_pagination:
-      no_more_records: 'No hay más archivos que mostrar'
+      no_more_records: 'No hay más archivos para mostrar'
     new_course: 'Se ha creado un curso nuevo'
     deliver_hmwrk: 'Se ha cargado una entrega de tarea'
     correct_active: 'Se ha activado correctamente el curso'

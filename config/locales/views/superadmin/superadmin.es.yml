@@ -5,17 +5,17 @@ es:
       hmwrks: Tareas
       hmwrks_delivery: Entregas de tareas
       exam: Exámenes
-      exam_delivery: Entregas de examenes
+      exam_delivery: Entregas de Exámenes
       courses: Cursos
       comments: Comentarios
-      avg: Promedio de calificación por tareas
-      avg2: Promedio de calificación por survey
-      avg3: Promedio de calificación por usuario
-      find: Buscar Actividades por usuario o titulo
+      avg: Promedio de Calificación por Tareas
+      avg2: Promedio de Calificación por Survey
+      avg3: Promedio de Calificación por Usuario
+      find: Buscar Actividades por Usuario o Título
       activities: Las actividades del sistema están geo localizadas
       title: Título
       type: Tipo de Actividad
-      no_act: sin actividades
+      no_act: Sin actividades
       avg4: Promedio
       place: Lugar
       long: Longitud
@@ -27,26 +27,26 @@ es:
       goto: Ir a la actividad
     courses_sintetic_view_and_edit:
       courses: Visor de cursos
-      show: 'Muestra los cursos de las redes, sus miembros y sus actividades'
-      show2: Mostrar tareas
-      show3: Mostrar cuestionarios
-      show4: Mostrar estadísticas del curso
+      show: 'Muestra los Cursos de las Redes, Miembros y Actividades'
+      show2: Mostrar Tareas
+      show3: Mostrar Cuestionarios
+      show4: Mostrar Estadísticas del Curso
       hmwrks: Tareas
-      hmwrks_delivery: Entregas de tarea
+      hmwrks_delivery: Entregas de Tarea
       show5: Ver entregas
       quest: Cuestionarios
       stat: Estadísticas
     create_super_admin:
-      superuser: Super administrador Cúrsame
-      img: Puedes ver las instrucciones de creación de super admin accediendo al código qr
+      superuser: Súper Administrador Cúrsame
+      img: Puedes ver las instrucciones de creación de Súper Administrador accediendo al código qr
       enroll: Registrar usuario
     instructions:
-      create: Instrucciones para creación de súper administradores
-      link: 'Crea coloca tu nombre, apellido, email y contraseña, da click en continuar y listo'
+      create: Instrucciones para creación de Súper Administradores
+      link: 'Crear coloca tu nombre, apellido, email y contraseña, da click en continuar y listo'
     networks:
-      admin: Administrar networks
+      admin: Administrar Networks
       create: Crear Red
-      create_net: Creando networks
+      create_net: Creando Networks
       net: Red
       subdomain: Subdominio
       edit: Editar
@@ -55,18 +55,18 @@ es:
       activities: Actividades
       hmwrks: Tareas
       hmwrks_delivery: Entrega de tareas
-      exam: Examenes
-      exam_delivery: Entrega de examenes
+      exam: Exámenes
+      exam_delivery: Entrega de Exámenes
       events: Eventos
     users:
-      usr: Manejador de datos de usuario
-      show1: Mostrar actividades
-      edit1: Editar usuario
+      usr: Manejador de datos de Usuario
+      show1: Mostrar Actividades
+      edit1: Editar Usuario
       statics: Estadísticas
-      activities: Manejador de actividades
+      activities: Manejador de Actividades
       hmwrks: Tareas
-      exam: Examenes
+      exam: Exámenes
       find_usr: Buscar Usuario
-      response: Respuestas de tareas
-      response2: Respuestas de examen
+      response: Respuestas de Tareas
+      response2: Respuestas de Examen
       discuss: Discusiones

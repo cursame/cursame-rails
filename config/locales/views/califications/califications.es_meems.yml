@@ -4,25 +4,25 @@ es_meems:
       califications_course_header:
         califications: Calificaciones
       califications_courses_list:
-        select_course: Selecciona un Centros Emprendedor
+        select_course: Selecciona un Centro Emprendedor
         member: Miembro
         members: Miembros
-        no_courses: No hay Centros de Emprendedores para ver calificaciones.
+        no_courses: No hay Centros Emprendedores para ver calificaciones.
       califications_header:
         califications: Calificaciones
-        active_courses: Centros de Emprendedores activos
-        closed_courses: Centros de Emprendedores finalizados
+        active_courses: Centros Emprendedores activos
+        closed_courses: Centros Emprendedores finalizados
         grades: "Calificaciones"
     course:
       calification: "Calificación:"
-      no_members: Este Centros Emprendedor no tiene miembros
+      no_members: Este Centro Emprendedor no tiene miembros
       final_score: Calificación final
       criterion: Criterio
       score: Calificación Obtenida
       percent: "Porcentaje:"
       no_score: Aún no tienes calificación final.
-      no_printable_score: Tu Líder multiplicador todavia no te ha dado calificación final.
-      active_courses: Centros de Emprendedores activos
+      no_printable_score: Tu Líder multiplicador todavía no te ha dado calificación final.
+      active_courses: Centros Emprendedores activos
     member:
       score: "Calificación Cúrsame:"
       final_score: "Calificación final:"

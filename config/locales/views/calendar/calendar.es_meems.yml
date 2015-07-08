@@ -1,6 +1,7 @@
-es_meems:
-  calendar:
-    index:
+es_meems: 
+  calendar: 
+    index: 
+      back_month: "← Mes anterior"
       day1: D
       day2: L
       day3: M
@@ -8,13 +9,12 @@ es_meems:
       day5: J
       day6: V
       day7: S
-      sunday: Domingo
-      monday: Lunes
-      tuesday: Martes
-      wednesday: Miercoles
-      thursday: Jueves
       friday: Viernes
-      saturday: Sabado
-      back_month: ← Mes anterior
-      next_month: Mes siguiente →
-
+      monday: Lunes
+      next_month: "Mes siguiente →"
+      saturday: Sábado
+      sunday: Domingo
+      thursday: Jueves
+      tuesday: Martes
+      wednesday: Miércoles
+      

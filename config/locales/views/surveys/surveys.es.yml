@@ -6,7 +6,7 @@ es:
         edit: Editar Cuestionario
         solve_time: Minutos
         no_limit_time: Sin límite de tiempo
-        notice_helper: Este cuestionario te dará
+        notice_helper: Este Cuestionario te dará
         notice_helper2: minutos para responderlo
       survey_modal:
         quest: Cuestionario en el curso
@@ -15,7 +15,7 @@ es:
         feedback: Retroalimentación
         fail_attemps: No tienes más intentos
       survey_questions_modal:
-        quest: Enviar cuestionario
+        quest: Enviar Cuestionario
       surveys_course_header:
         quest: Cuestionarios
         response: Responder
@@ -30,21 +30,21 @@ es:
       surveys_paginate_button:
         load: Cargar más...
     answer_fields:
-      response: Ingresar respuesta
+      response: Ingresar Respuesta
       correct: Correcta
       delete: Eliminar
     form:
-      title: Titulo del cuestionario
+      title: Título del cuestionario
       example: Ejemplo
       text1: Números primos
       dates: Fechas
-      timer: Tiempo para resolución del cuestionario
+      timer: Tiempo para resolución del Cuestionario
       attempts: Intentos
-      publish_date: Día de pubicación
+      publish_date: Día de publicación
       deliver_date: Fecha de entrega
       quest: Preguntas
       add_quest: Agregar Pregunta
-      support: Material de soporte
+      support: Material de Soporte
       cancel: Cancelar
       courses: Cursos
       evaluation_periods: Periodos de evaluación
@@ -61,25 +61,25 @@ es:
       today: Cuestionarios para responder Hoy
       tomorrow: Cuestionarios para responder Mañana
       more_days: Cuestionarios para responder en 3 días o más
-      no_quest: No tienes cuestionarios pendientes por contestar.
-      see: Puedes ver antiguos cuestionarios en la
-      section: sección de cuestionarios Pasados
+      no_quest: No tienes Cuestionarios pendientes por contestar.
+      see: Puedes ver antiguos Cuestionarios en la
+      section: sección de Cuestionarios Pasados
     lapsed:
-      no_quest: No se encontraron más cuestionarios pasados.
+      no_quest: No se encontraron más Cuestionarios pasados.
     my_surveys:
-      no_quest: No tienes cuestionarios por contestar.
+      no_quest: No tienes Cuestionarios por contestar.
     surveys_course:
       to_day: Cuestionarios para responder Hoy
       tomorrow: Cuestionarios para responder Mañana
       more_days: Cuestionarios para responder en 3 días o más
-      no_quest: No tienes cuestionarios pendientes por contestar en este curso.
-      see: Puedes ver antiguos cuestionarios en la
-      past: sección de cuestionarios Pasados
+      no_quest: No tienes Cuestionarios pendientes por contestar en este curso.
+      see: Puedes ver antiguos Cuestionarios en la
+      past: sección de Cuestionarios Pasados
     surveys_course_lapsed:
-      quest: No se encontraron más cuestionarios pasados.
+      quest: No se encontraron más Cuestionarios pasados.
     correct_edit: 'Cuestionario editado correctamente.'
     correct_create: 'Cuestionario creado correctamente.'
-    select_course: 'Selecciona un curso para publicar tu cuestionario.'
+    select_course: 'Selecciona un Curso para publicar tu Cuestionario.'
     ajax:
       surveys_paginate_ajax:
-        no_more_quest: 'No se encontraron más cuestionarios pasados.'
+        no_more_quest: 'No se encontraron más Cuestionarios pasados.'

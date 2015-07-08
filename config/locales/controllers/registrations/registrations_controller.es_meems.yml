@@ -1,5 +1,5 @@
 es_meems:
   registrations_controller:
-    update: "Se a actualizado correctamente tu perfil"
-    error: "El perfil no pudo actualizarce correctamente"
+    update: "Se ha actualizado correctamente tu perfil"
+    error: "El perfil no pudo actualizarse correctamente"
 

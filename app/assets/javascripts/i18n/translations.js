@@ -656,7 +656,7 @@ I18n.translations["en"] = {
       "upload": "Upload file"
     },
     "library_pagination": {
-      "no_more_records": "No more files left to display\""
+      "no_more_records": "No more files left to display"
     },
     "light_box_dashboard_delivery": {
       "criterium": "Grading criterion",
@@ -1704,7 +1704,7 @@ I18n.translations["en"] = {
     },
     "help": {
       "help2": "Ayuda",
-      "videos": "Video tutoriales en linea."
+      "videos": "Video tutoriales en línea."
     },
     "jobs": {
       "job_board": {
@@ -1799,7 +1799,7 @@ I18n.translations["en"] = {
     },
     "like": "Like",
     "load_more_notfications": {
-      "load_more_notifications": "display more notifications"
+      "load_more_notifications": "Ver más notificaciones"
     },
     "login_form": {
       "log_in": "Iniciar Sesión",
@@ -1820,7 +1820,7 @@ I18n.translations["en"] = {
         "thnks": "¡Gracias por contactarnos!"
       }
     },
-    "new_comment": "comment created",
+    "new_comment": "Se ha creado un comentario",
     "not_found": {
       "not_found2": "Lo sentimos, no encontramos la ruta",
       "return": "Regresar al inicio"
@@ -1836,9 +1836,9 @@ I18n.translations["en"] = {
       "description3_who_are_we": "Pomona 7, Roma Norte, in Mexico City. Zip. 06100, To access our website",
       "description4_who_are_we": " it is responsible for its own use and data protection, which is why we inform you:",
       "personal_data1": "¿Para qué fines utilizaremos sus datos personales?",
-      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que&nbsp;",
+      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que;",
       "personal_data3": "no son necesarias",
-      "personal_data4": "&nbsp;para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
+      "personal_data4": ";para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
       "personal_data5": "En caso de que no desee que sus datos personales sean tratados para estos fines secundarios, desde este momento usted nos puede comunicar lo anterior a través del siguiente mecanismo",
       "personal_data6": "Para conocer mayor información sobre los términos y condiciones en que serán tratados sus datos personales, como los terceros con quienes compartimos su información personal y la forma en que podrá ejercer sus derechos ARCO, puede consultar el aviso de privacidad integral en",
       "privacy": "¿Dónde puedo consultar el aviso de privacidad integral?",
@@ -1854,7 +1854,7 @@ I18n.translations["en"] = {
       "text4": "required fields.",
       "title": "Ask for a demo"
     },
-    "send": "Your message has been sent!",
+    "send": "¡Tu mensaje se ha enviado!",
     "server_error": {
       "conti": "Debido a una contingencia",
       "info": "no es posible mostrar esta información",
@@ -1888,17 +1888,17 @@ I18n.translations["en"] = {
     },
     "teacher_day": {
       "happy": "¡Feliz día del Maestro!",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     },
     "terms_and_conditions": {
       "terms": "Términos y condiciones del sitio",
-      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de la edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
+      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
       "terms10f": "Tipo de indemnización.",
       "terms10x": "Cúrsame solo indemnizara al usuario en especie, no en ninguna forma monetaria, solo mediante la extensión del tiempo que haya sido contratado el servicio, según el tiempo que haya fallado el mismo.",
       "terms1f": "Requerimientos para tener acceso a los Servicios de Cúrsame.",
-      "terms2": "Conforme a los términos y condiciones del presente Acuerdo, Cúrsame se compromete a brindar ciertos Servicios al Cliente. Para los efectos del presente Acuerdo: (a) \"Cliente\" (o \"usted\") se refiere al individuo o a la entidad comercial que utiliza o se registró para utilizar dichos Servicios, incluyendo a sus empleados y agentes; (b) \"Servicios\" de Cúrsame se refiere a todos los servicios interactivos o electrónicos ofrecidos por Cúrsame. Cúrsame Online se reserva el derecho de modificar o interrumpir la prestación de sus Servicios en cualquier momento.",
+      "terms2": "Conforme a los Términos y Condiciones del presente Acuerdo, Cúrsame se compromete a brindar ciertos Servicios al Cliente. Para los efectos del presente Acuerdo: (a) \"Cliente\" (o \"usted\") se refiere al individuo o a la entidad comercial que utiliza o se registró para utilizar dichos Servicios, incluyendo a sus empleados y agentes; (b) \"Servicios\" de Cúrsame se refiere a todos los servicios interactivos o electrónicos ofrecidos por Cúrsame. Cúrsame Online se reserva el derecho de modificar o interrumpir la prestación de sus Servicios en cualquier momento.",
       "terms2f": "Servicios de Cúrsame.",
       "terms3": "Reconoce que el contenido (excepto el que se carga en Cúrsame) de esta página Web, incluyendo pero no limitándose a información, documentos, productos, logotipos, elementos gráficos y sonidos, gui, software y servicios (llamados colectivamente \"Materiales\"), es provisto por Cúrsame o por sus respectivos autores, diseñadores y vendedores (llamados colectivamente \"Proveedores\") y que Cúrsame y/o sus Proveedores se reservan todos los derechos de propiedad inherentes al mismo. Los elementos de la página Web están protegidos por las leyes aplicables al secreto comercial (trade dress) y por otras leyes que no pueden copiarse ni imitarse en su totalidad o en parte. Cúrsame, el logotipo de Cúrsame y otros productos a los que se hace referencia en el presente son marcas de Cúrsame y pueden estar registradas en ciertas jurisdicciones. Cualquier otro nombre de producto, nombre de la empresa, marcas, logotipos y símbolos pueden ser las marcas comerciales de sus propietarios respectivos.",
       "terms3f": "Propiedad",
@@ -1926,7 +1926,7 @@ I18n.translations["en"] = {
       "terms73": "Se prohíben estrictamente las violaciones o intentos de violaciones de los sistemas de Cúrsame, o la interrupción de sus servicios. Dicha violación puede resultar en responsabilidad civil y penal. Sin limitación, los ejemplos de violaciones del sistema incluyen",
       "terms73f": "Acceso e interferencia",
       "terms73x": "Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame",
-      "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
+      "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada. Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
       "terms75": "Mal uso de los recursos del sistema",
       "terms75f": "El Cliente no deberá hacer mal uso de los recursos, que incluyan pero que no se limiten a, empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
       "terms76": "Otras actividades",
@@ -1953,7 +1953,7 @@ I18n.translations["en"] = {
       "terms8": "Limitación de la responsabilidad",
       "terms8x": "Usted usa Cúrsame bajo su propia responsabilidad. Si usted no está satisfecho con cualquier aspecto de nuestro servicio o con estos términos y condiciones, o algunas otras reglas o políticas, su única solución es finalizar el uso del servicio. Usted explícitamente entiende y acepta que Cúrsame no será responsable por cualquier daño directo, daños accidentales indirectos, fortuitos, especiales, consecuentes, incluyendo pero no limitados a, los daños por la pérdida de beneficios, buena voluntad, uso, datos u otras pérdidas intangibles (incluso si le hemos advertido sobre la posibilidad de tales daños), resultando de: (a) el uso o la incapacidad para utilizar el servicio; (b) el coste de obtención mercancías o servicios alternativos resultado de cualquier mercancía, dato, información comprados o obtenidos o mensajes recibidos o transacciones realizadas en o mediante este servicio; (c) acceso desautorizado a o alteración de sus transmisiones o datos; (d) declaraciones o actuaciones de cualquier tercer parte en el servicio; o (e) cualquier otra asunto relativo al servicio.",
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
-      "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
+      "terms9x": "Cúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, hackeo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le de a sus contenidos en la red."
     },
     "thnx": "Thank you for using Cúrsame",
     "unlike": "Unlike",
@@ -3881,11 +3881,11 @@ I18n.translations["es"] = {
     },
     "masive_mailer": {
       "forward": "Reenviar el mensaje a la siguiente cantidad de usuarios con la clave de mensaje",
-      "mail": "Se activará el formulario de reenvio cuando la cuenta de mailers masivos se mayor a 0",
+      "mail": "Se activará el formulario de reenvío cuando la cuenta de mailers masivos sea mayor a 0",
       "massive_email": "Enviar mensajes masivos a los siguientes usuarios",
       "send_msg": "Enviar mensajes",
       "text1": "title",
-      "text2": "titulo",
+      "text2": "título",
       "text3": "message",
       "text4": "number of users when yo want send",
       "text5": "number",
@@ -3898,7 +3898,7 @@ I18n.translations["es"] = {
     }
   },
   "ajax_controller": {
-    "error1": "Ocurrió un error, porfavor inténtalo de nuevo."
+    "error1": "Ocurrió un error, por favor inténtalo de nuevo."
   },
   "assets": {
     "asset_file": {
@@ -3966,11 +3966,11 @@ I18n.translations["es"] = {
       "friday": "Viernes",
       "monday": "Lunes",
       "next_month": "Mes siguiente →",
-      "saturday": "Sabado",
+      "saturday": "Sábado",
       "sunday": "Domingo",
       "thursday": "Jueves",
       "tuesday": "Martes",
-      "wednesday": "Miercoles"
+      "wednesday": "Miércoles"
     },
     "three_days": "en 3 días",
     "today": "hoy",
@@ -3984,7 +3984,7 @@ I18n.translations["es"] = {
       "criterion": "Criterio",
       "final_score": "Calificación final",
       "no_members": "Este curso no tiene miembros",
-      "no_printable_score": "Tu profesor todavia no te ha dado calificación final.",
+      "no_printable_score": "Tu profesor todavía no te ha dado calificación final.",
       "no_score": "Aún no tienes calificación final.",
       "percent": "Porcentaje:",
       "score": "Calificación Obtenida"
@@ -4017,7 +4017,7 @@ I18n.translations["es"] = {
     "no_exist": "El comentario que intentas ver no existe o ha sido borrado.",
     "shared": {
       "comment_admin_actions": {
-        "confirm": "¿Estas seguro de borrar este comentario?",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "delete": "Borrar"
       },
       "comment_card": {
@@ -4036,10 +4036,10 @@ I18n.translations["es"] = {
     },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
-      "no_usr": "No se encontraron usarios en tu red."
+      "no_usr": "No se encontraron usuarios en tu red."
     },
     "search": {
-      "no_usr": "No se encontraron usarios en tu red.",
+      "no_usr": "No se encontraron usuarios en tu red.",
       "search": "Búsqueda:"
     },
     "shared": {
@@ -4077,7 +4077,7 @@ I18n.translations["es"] = {
   },
   "course_files": {
     "library_item": {
-      "confirm": "¿Estas seguro de querer eliminar este archivo?",
+      "confirm": "¿Estás seguro de querer eliminar este archivo?",
       "delete": "Borrar"
     }
   },
@@ -4128,7 +4128,7 @@ I18n.translations["es"] = {
         "no_members": "No hay miembros en el curso.",
         "no_score": "Sin calificar",
         "score": "Calificación:",
-        "send_scores": "Envia la calificación final a los estudiantes del grupo."
+        "send_scores": "Envía la calificación final a los estudiantes del grupo."
       },
       "user_closure_overview": {
         "calif": "Calificación:",
@@ -4144,9 +4144,9 @@ I18n.translations["es"] = {
         "percent": "Porcentaje:",
         "quest": "Cuestionarios",
         "rate_student": "Calificar alumno",
-        "respond": "Contesto",
+        "respond": "Contestar",
         "score": "Calificación Obtenida",
-        "send": "Entrego"
+        "send": "Entrega"
       }
     },
     "correct_active": "Se ha activado correctamente el curso",
@@ -4171,11 +4171,11 @@ I18n.translations["es"] = {
     },
     "edit_delivery_access": {
       "courses": "Cursos",
-      "delivery_day": "Ultimo día de entrega",
+      "delivery_day": "Último día de entrega",
       "descrip": "Descripción",
-      "hmwrk_title": "Titulo de la tarea",
+      "hmwrk_title": "Título de la tarea",
       "publish": "Publicar",
-      "publish_date": "Día de pubicación"
+      "publish_date": "Día de publicación"
     },
     "evaluation": {
       "calif": "Calificación",
@@ -4187,13 +4187,13 @@ I18n.translations["es"] = {
       "hmwrk": "Tarea",
       "items": "Rubros",
       "no_deliver": "Sin entregar",
-      "no_group": "No eres parte del grupo!",
-      "no_member": "No has sido aceptado en el grupo!",
+      "no_group": "¡No eres parte del grupo!",
+      "no_member": "¡No has sido aceptado en el grupo!",
       "obtained": "Obtenido",
       "pdf": "Descargar (PDF)",
       "percent_obtain": "% obtenido",
       "percent_obtain1": "% Obtenido",
-      "score": "Calificacion",
+      "score": "Calificación",
       "student": "Alumno:",
       "total_score": "Calificación Total",
       "unresolved": "Sin resolver"
@@ -4206,11 +4206,11 @@ I18n.translations["es"] = {
       "exam": "Examen",
       "final": "Final",
       "hmwrk": "Tarea",
-      "no_accept": "No has sido aceptado en el grupo!",
-      "no_part": "No eres parte del grupo!",
+      "no_accept": "No has sido aceptado en el curso!",
+      "no_part": "¡No eres parte del cursoo!",
       "not_resolved": "Sin resolver",
       "obtain_percent": "Obtenido",
-      "obtain_percent2": "obtenido",
+      "obtain_percent2": "Obtenido",
       "ruber": "Rubros",
       "student": "Alumno",
       "total_score": "Calificación Total",
@@ -4233,13 +4233,13 @@ I18n.translations["es"] = {
     },
     "form": {
       "add_students": "Inscribe estudiantes a tu curso.",
-      "confirm": "¿Esta seguro que desea eliminar este curso?",
+      "confirm": "¿Estás seguro de eliminar este curso?",
       "create": "Crear",
       "delete": "Eliminar curso permanente.",
       "descrip": "Descripción del",
       "descrip2": "Descripción",
       "example": "Ejemplo: Matemáticas I",
-      "find_students": "Busca estudiantes para unirlos automaticamente al curso.",
+      "find_students": "Busca estudiantes para unirlos automáticamente al curso.",
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del",
@@ -4305,12 +4305,12 @@ I18n.translations["es"] = {
       "percent": "Por favor selecciona un porcentaje de 1 a 100 para calificar esta tarea",
       "score": "Calificación",
       "student": "Alumno",
-      "title": "Titulo de entrega"
+      "title": "Título de entrega"
     },
     "members": {
       "mem": "Miembros",
       "no_members": "Curso sin miembros.",
-      "no_records": "Este curso todavia no tiene miembros en el."
+      "no_records": "Este curso todavía no tiene miembros en él."
     },
     "members_in_courses": {
       "course_view_call": {
@@ -4344,8 +4344,8 @@ I18n.translations["es"] = {
     },
     "search": {
       "courses_search_results": {
-        "no_records": "No se encontraron cursos con el criterio de busqueda.",
-        "search": "Busqueda:"
+        "no_records": "No se encontraron cursos con el criterio de búsqueda.",
+        "search": "Búsqueda:"
       }
     },
     "shared": {
@@ -4357,7 +4357,7 @@ I18n.translations["es"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Esta seguro de querer abandonar este curso?",
+        "confirm": "¿Estás seguro de abandonar este curso?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
@@ -4371,7 +4371,7 @@ I18n.translations["es"] = {
         "new_course": "Nuevo curso público"
       },
       "course_evaluation_schema_fields": {
-        "criterium": "¿Que criterio se evaluará?",
+        "criterium": "¿Qué criterio se evaluará?",
         "discuss": "Discusiones",
         "hmwrks": "Tareas",
         "percent": "Porcentaje asignado",
@@ -4423,7 +4423,7 @@ I18n.translations["es"] = {
       "total": "totales"
     },
     "survey_results": {
-      "back": "Atras",
+      "back": "Atrás",
       "respose": "Respuesta",
       "result": "Resultado obtenido",
       "student": "Alumno"
@@ -4433,19 +4433,19 @@ I18n.translations["es"] = {
     }
   },
   "courses_controller": {
-    "active": "se activo correctamente.",
+    "active": "Se activó correctamente.",
     "clone_correct": "Curso clonado correctamente.",
-    "contact": "ha finalizado, contacta al profesor para más información.",
-    "create": "Se ha creado correctamente tu curso, edita tu forma de evaluación.",
+    "contact": "Ha finalizado, contacta al profesor para más información.",
+    "create": "Se ha creado correctamente el curso, edita la forma de evaluación.",
     "delete": "Curso eliminado correctamente.",
-    "ended": "se finalizo correctamente.",
-    "has_ended": "ha finalizado, lo puedes activar en el menu de opciones del curso.",
+    "ended": "Finalizó correctamente.",
+    "has_ended": "Ha finalizado, lo puedes activar en el menú de opciones del curso.",
     "no_accepted": "No has sido aceptado en este curso.",
     "no_access": "El curso al que intentas accesar, no existe o ha sido borrado.",
     "no_authorized": "Usted no está autorizado para editar este curso.",
     "no_exist": "El curso que intentas ver no existe o ha sido borrado",
     "save": "Se han guardado satisfactoriamente los cambios en el curso. ",
-    "search": "Escribe algo en el campo de busqueda.",
+    "search": "Escribe algo en el campo de búsqueda.",
     "success": "Se ha creado correctamente",
     "the_course": "El curso",
     "your_course": "Tu curso"
@@ -4455,10 +4455,10 @@ I18n.translations["es"] = {
       "dom",
       "lun",
       "mar",
-      "mié",
+      "mie",
       "jue",
       "vie",
-      "sáb"
+      "sb"
     ],
     "abbr_month_names": [
       null,
@@ -4597,7 +4597,7 @@ I18n.translations["es"] = {
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
       "hmwrk_theme": "Tema de la tarea",
-      "integrity": "Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.",
+      "integrity": "Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada. Sugerimos que si necesitas agregar alguno de éstos, elimines la actividad y vuelvas a cargarla.",
       "publish": "Publicar",
       "publish_date": "Día de publicación",
       "save": "Guardar Tarea",
@@ -4607,7 +4607,7 @@ I18n.translations["es"] = {
       "deliver_hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks": "Tareas para entregar Hoy",
       "no_deliver": "Has entregado todas las tareas, puedes ver las",
-      "no_hmwrks": "No tienes tarean pendientes por entregar.",
+      "no_hmwrks": "No tienes tareas pendientes por entregar.",
       "past_hmwrks": "tareas pasadas en la sección Pasadas",
       "tomorrow_hmwrks": "Tareas para entregar Mañana"
     },
@@ -4648,8 +4648,8 @@ I18n.translations["es"] = {
     }
   },
   "deliveries_controller": {
-    "access_denied": "Estas tratando de ver Tareas de un curso donde no has sido aceptado.",
-    "register": "Estas tratando de ver Tareas de un curso donde no estas inscrito."
+    "access_denied": "Estás tratando de ver Tareas de un curso donde no has sido aceptado.",
+    "register": "Estas tratando de ver Tareas de un curso donde no estás inscrito."
   },
   "devise": {
     "confirmations": {
@@ -4662,18 +4662,18 @@ I18n.translations["es"] = {
     },
     "mailer": {
       "confirmation_instructions": {
-        "push_here": "Si el boton superior no funciona, haz clic aquí",
+        "push_here": "Si el botón superior no funciona, haz clic aquí",
         "usage": "Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.",
         "welcome": "¡Bienvenido a Cúrsame!"
       },
       "reset_password_instructions": {
-        "button": "Si el boton superior no funciona, haz clic aquí",
-        "pwd": "En caso que no hayas solicitado la restauración de tu contraseña por favor comunicalo a",
+        "button": "Si el botón superior no funciona, haz clic aquí",
+        "pwd": "En caso de que no hayas solicitado la restauración de tu contraseña por favor comunícalo a",
         "reset_password": "Nos has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.",
         "reset_pwd": "Restaurar contraseña"
       },
       "unlock_instructions": {
-        "button": "Si el boton superior no funciona, haz clic aquí",
+        "button": "Si el botón superior no funciona, haz clic aquí",
         "hello": "¡Hola!"
       }
     },
@@ -4702,15 +4702,15 @@ I18n.translations["es"] = {
       },
       "new": {
         "accept": "Acepto los términos y condiciones",
-        "access": "Lo sentimos pero la red a la que estas intentado accesar no existe",
-        "confirm_pwd": "Confirmacion de contraseña",
+        "access": "Lo sentimos pero la red a la que estás intentado accesar no existe",
+        "confirm_pwd": "Confirmación de contraseña",
         "email": "Correo electrónico",
         "last_name": "Apellidos",
         "name": "Nombre(s)",
         "no_blocked": "¿No recibiste las instrucciones de desbloqueo?",
         "no_confirmation": "¿No recibiste las instrucciones de confirmación?",
         "pwd": "Contraseña",
-        "question": "pregunta a un encargado de tu escuela él sabrá ayudarte.",
+        "question": "pregunta a un encargado de tu escuela, él sabrá ayudarte.",
         "registry": "Registrarme",
         "sign_in": "¿Ya eres usuario? Ingresa",
         "thnx": "¡Gracias!"
@@ -4724,7 +4724,7 @@ I18n.translations["es"] = {
         "change_pwd": "te pedirá que cambies tu contraseña.",
         "close": "Cerrar",
         "confirm": "Esperando confirmación",
-        "confirm2": "No me ha llegado el mail de confirmación",
+        "confirm2": "No me ha llegado el mensaje de confirmación",
         "confirm3": "Confirmé mi email pero olvide cambiar mi contraseña",
         "email": "Correo electrónico",
         "forgot_pwd": "Olvidé mi contraseña",
@@ -4733,9 +4733,9 @@ I18n.translations["es"] = {
         "last_user": "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame.",
         "link": "Da click en el link",
         "log_in": "Iniciar Sesión",
-        "net": "La red a la que estas intentado accesar no existe",
-        "net2": "pregunta a un encargado de tu escuela él sabrá ayudarte.",
-        "new_pwd": "Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos",
+        "net": "La red a la que estás intentado accesar no existe",
+        "net2": "pregunta a un encargado de tu escuela, él sabrá ayudarte.",
+        "new_pwd": "Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mensaje que enviamos",
         "pwd": "Contraseña",
         "pwd_problem": "Cualquier problema con la contraseña puedes resolverlo dando click en",
         "remember": "Recordarme",
@@ -4744,7 +4744,7 @@ I18n.translations["es"] = {
         "s_net3": "permitiéndoles interactuar social y académicamente.",
         "s_netn": "Cúrsame conecta a directivos, profesores y alumnos permitiéndoles interactuar social y académicamente",
         "send": "Se ha enviado un correo a",
-        "send_pwd": "donde se te enviará un mail para que puedas cambiar tu contraseña.",
+        "send_pwd": "donde se te enviará un mensaje para que puedas cambiar tu contraseña.",
         "session": "Inicia sesión",
         "sign_in": "¿Eres nuevo? Regístrate",
         "sorry": "Lo sentimos",
@@ -4762,7 +4762,7 @@ I18n.translations["es"] = {
         "confirm": "¿No recibiste las instrucciones de confirmación?",
         "log_in": "¿Ya eres usuario? Ingresa",
         "pwd": "¿Olvidaste tu contraseña?",
-        "sign_in": "¿No estas registrado? Registrate"
+        "sign_in": "¿No estás registrado? Registrate"
       }
     },
     "unlocks": {
@@ -4794,12 +4794,12 @@ I18n.translations["es"] = {
       "dates": "Fechas",
       "deliver_date": "Fecha de entrega",
       "descrip": "Descripción",
-      "discuss": "Tema de la discusión",
+      "discuss": "Tema de la Discusión",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
       "public": "Público",
       "publish_date": "Día de publicación",
-      "save_discuss": "Guardar discusión",
+      "save_discuss": "Guardar Discusión",
       "support": "Material de soporte"
     },
     "index": {
@@ -4832,10 +4832,10 @@ I18n.translations["es"] = {
     }
   },
   "discussions_controller": {
-    "delete": "La discusión que intentas ver no existe o ah sido borrada.",
-    "no_accepted": "Estas tratando de ver Discusiones de un curso donde no has sido aceptado.",
+    "delete": "La discusión que intentas ver no existe o ha sido borrada.",
+    "no_accepted": "Estás tratando de ver Discusiones de un curso donde no has sido aceptado.",
     "no_discussion": "No se pudo crear la discusión.",
-    "no_register": "Estas tratando de ver Discusiones de un curso donde no estas inscrito."
+    "no_register": "Estás tratando de ver Discusiones de un curso donde no estás inscrito."
   },
   "errors": {
     "format": "%{attribute} %{message}",
@@ -4888,17 +4888,17 @@ I18n.translations["es"] = {
       "activity_for_tmrw": "Actividades para calificar mañana",
       "all": "Todas las actividades de tu curso estan calificadas, puedes ver",
       "no_activity": "No tienes actividades por calificar.",
-      "past_activity": "actividades pasas en la seccion de Pasadas"
+      "past_activity": "actividades pasadas en la seccion de Pasadas"
     },
     "course_inactive": {
-      "enrollment": "Necesitas estar inscrito en al menos un curso para tener calificaiones.",
+      "enrollment": "Necesitas estar inscrito en al menos un curso para tener calificaciones.",
       "no_score": "Aún no tienes calificaciones."
     },
     "deliveries": {
       "delivery_user_response": {
         "attachments": "Archivos adjuntos",
         "check_hmwrk": "Calificar tarea",
-        "comments": "Envia comentarios en base a los criterios de la actividad.",
+        "comments": "Envía comentarios en base a los criterios de la actividad.",
         "deliver": "Entrega",
         "deliveries": "Entregas",
         "delivery": "Entregado",
@@ -4909,12 +4909,12 @@ I18n.translations["es"] = {
         "score": "Calificación:",
         "scored": "Calificar",
         "student": "Alumno",
-        "title": "Titulo"
+        "title": "Título"
       },
       "evaluate_deliveries": {
         "deliveries": "Entregas",
         "no_deliveries": "Sin Entregas.",
-        "no_deliveries_record": "Todavia no hay ninguna entrega en esta tarea.",
+        "no_deliveries_record": "Todavía no hay ninguna entrega en esta tarea.",
         "no_score": "Sin calificar",
         "score": "Calificación:"
       }
@@ -4927,17 +4927,17 @@ I18n.translations["es"] = {
         "no_score": "Sin Calificar",
         "rate_student": "Calificar alumno",
         "score": "Calificación",
-        "send": "Envia comentarios en base a los criterios de la actividad."
+        "send": "Envía comentarios en base a los criterios de la actividad."
       },
       "evaluate_discussions": {
         "comment": "Comentario",
         "comments": "Comentarios",
         "discuss": "Discusión",
-        "nothing": "Nadie a participado en esta discusión."
+        "nothing": "Nadie ha participado en esta discusión."
       },
       "evaluate_discussions_header": {
         "course": "Curso",
-        "limit_publish_date": "Fecha limite para participar",
+        "limit_publish_date": "Fecha límite para participar",
         "members": "Participantes",
         "publish_date": "Fecha de publicación"
       }
@@ -5005,13 +5005,13 @@ I18n.translations["es"] = {
     "surveys": {
       "evaluate_surveys": {
         "delivery": "Entregas",
-        "no_answer": "Todavia ningún alumno ha contestado este cuestionario.",
+        "no_answer": "Todavía ningún alumno ha respondido este cuestionario.",
         "no_deliveries": "Sin Entregas.",
         "obtain": "Obtenido"
       },
       "survey_user_response": {
         "answers": "Respuestas",
-        "comments": "Envia comentarios al alumno.",
+        "comments": "Envía comentarios al alumno.",
         "delivery": "Entregas",
         "feedback": "Retroalimentación",
         "obtain": "Obtenido",
@@ -5023,16 +5023,16 @@ I18n.translations["es"] = {
   "evaluate_controller": {
     "correct": "Calificación asignada correctamente.",
     "error": "Ha ocurrido un error al calificar la discusión.",
-    "no_activity": "Estas tratando de ver una actividad que no te pertenece.",
+    "no_activity": "Estás tratando de ver una actividad que no te pertenece.",
     "no_calificable": "La discusión que intentas ver no es calificable.",
-    "no_evaluate": "Estas tratando de calificar un curso que no te pertenece.",
-    "no_exist": "La discusión que intentas ver no existe o ah sido borrada.",
-    "only_teachers": "Estas intentando entrar en una sección solo para profesores.",
+    "no_evaluate": "Estás tratando de calificar un curso que no te pertenece.",
+    "no_exist": "La discusión que intentas ver no existe o ha sido borrada.",
+    "only_teachers": "Estás intentando entrar en una sección solo para profesores.",
     "send_comment": "Comentario enviado correctamente."
   },
   "evaluation_criteria": {
     "form": {
-      "eval": "¿Que criterio se evaluará?"
+      "eval": "¿Qué criterio se evaluará?"
     },
     "form_course": {
       "eval": "¿Qué se va evaluar?"
@@ -5083,7 +5083,7 @@ I18n.translations["es"] = {
         "publish_date": "Día de publicación",
         "roles": "Roles: ",
         "title": "Título: ",
-        "title2": "Titulo del formulario"
+        "title2": "Título del formulario"
       },
       "google_form_modal": {
         "in_the_course": " en el curso",
@@ -5118,7 +5118,7 @@ I18n.translations["es"] = {
     "about_us": {
       "about_title": {
         "text1": "Cúrsame es una plataforma educativa  fundada en México a finales de 2011 por un grupo de estudiantes de diversas universidades del país con el objetivo de mejorar la calidad educativa y reducir la brecha digital a través de la tecnología. Durante este periodo hemos logrado beneficiar a más de 100 mil estudiantes, profesores y directivos tanto de escuelas públicas como privadas en México, con visión de impactar en toda la región y demás países emergentes.",
-        "text2": "Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.",
+        "text2": "Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos. Pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.",
         "title": "Acerca de Nosotros"
       },
       "description1_mission": "Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita  a la comunidad educativa redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.",
@@ -5185,7 +5185,7 @@ I18n.translations["es"] = {
         "chat": "Chat",
         "comments": "Comentarios",
         "description_chat": "Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada curso tiene una sala de chat grupal para compartir contenido en tiempo real.",
-        "description_comment": "Permite a todos los miembros de la comunidad comentarse de manera pública, grupal o personal para de esta forma interactuar social o académicamente.",
+        "description_comment": "Permite a todos los miembros de la comunidad comentar de manera pública, grupal o personal. De esta forma pueden interactuar social o académicamente.",
         "description_discussion": "Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la comunidad en el aprendizaje.",
         "description_homework": "Permite a los profesores crear actividades académicas y a los estudiantes responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.",
         "description_network": "Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.",
@@ -5196,7 +5196,7 @@ I18n.translations["es"] = {
         "feature1_chat": "Chat individual con amigos y compañeros",
         "feature1_comment": "Públicos o privados",
         "feature1_discussion": "Públicas o privadas",
-        "feature1_homework": "Creación a uno o varios cursos",
+        "feature1_homework": "Creación de uno o varios cursos",
         "feature1_network": "Encontrar amigos",
         "feature1_result": "Calificaciones por curso",
         "feature1_statisdic": "Uso de las herramientas de la plataforma",
@@ -5210,7 +5210,7 @@ I18n.translations["es"] = {
         "feature2_statisdic": "Ingreso al sistema",
         "feature2_survey": "Fecha y hora límite de entrega",
         "feature3_chat": "Compartir multimedia",
-        "feature3_comment": "Contenido enriquecido (multimedia)",
+        "feature3_comment": "Contenido enriquecido (Multimedia)",
         "feature3_discussion": "Contenido recomendado",
         "feature3_homework": "Archivos adjuntos",
         "feature3_network": "Solicitudes de amistad",
@@ -5238,7 +5238,7 @@ I18n.translations["es"] = {
         "homeworks": "Tareas",
         "network": "Comunidad",
         "results": "Calificaciones",
-        "statisdics": "Estadisticas",
+        "statisdics": "Estadísticas",
         "surveys": "Cuestionarios"
       },
       "features_title": {
@@ -5247,7 +5247,7 @@ I18n.translations["es"] = {
       },
       "our_methods": {
         "description_endless": "Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.",
-        "description_implement": "Tenemos un equipo especializado que está dedicado a visitar los planteles para enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que esta conlleva.",
+        "description_implement": "Tenemos un equipo especializado que está dedicado a enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que ésta conlleva.",
         "description_support": "En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.",
         "description_title": "Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de alumnos, profesores y directivos. Por esta razón trabajamos mano a mano con ellos para lograr los mejores resultados.",
         "description_training": "Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los profesores en la adopción de las TICs.",
@@ -5260,7 +5260,7 @@ I18n.translations["es"] = {
     },
     "help": {
       "help2": "Ayuda",
-      "videos": "Video tutoriales en linea."
+      "videos": "Video tutoriales en línea."
     },
     "jobs": {
       "job_board": {
@@ -5389,12 +5389,12 @@ I18n.translations["es"] = {
       "best_product": "Mejora del producto.",
       "description1_who_are_we": "Redes Sociales de Aprendizaje SAPI de CV, mejor conocido como Cúrsame",
       "description2_who_are_we": ", con domicilio en",
-      "description3_who_are_we": "calle Pomona 7, colonia Roma Norte, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06100, en la entidad de México DF, país México , y portal de internet",
+      "description3_who_are_we": "calle Versalles 94, colonia Juáreze, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06600, en la entidad de México DF, país México , y portal de internet",
       "description4_who_are_we": "es el responsable del uso y protección de sus datos personales, y al respecto le informamos lo siguiente:",
       "personal_data1": "¿Para qué fines utilizaremos sus datos personales?",
-      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que&nbsp;",
+      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que;",
       "personal_data3": "no son necesarias",
-      "personal_data4": "&nbsp;para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
+      "personal_data4": ";para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
       "personal_data5": "En caso de que no desee que sus datos personales sean tratados para estos fines secundarios, desde este momento usted nos puede comunicar lo anterior a través del siguiente mecanismo",
       "personal_data6": "Para conocer mayor información sobre los términos y condiciones en que serán tratados sus datos personales, como los terceros con quienes compartimos su información personal y la forma en que podrá ejercer sus derechos ARCO, puede consultar el aviso de privacidad integral en",
       "privacy": "¿Dónde puedo consultar el aviso de privacidad integral?",
@@ -5421,13 +5421,13 @@ I18n.translations["es"] = {
         "cobaem": "COBAEM",
         "description_cobaem": "Tras un piloto con 6 planteles del Colegio de Bachilleres de Estado de México, nos encontramos en etapa de expansión y serán 48 planteles en más de 40 municipios de la entidad y 50 mil usuarios los beneficiados por Cúrsame.",
         "description_emprendedores": "Proyecto en conjunto con la Subsecretaría de Educación Media Superior, Angel Ventures y Ashoka. A través de Cúrsame se imparte educación para emprendedores en 100 planteles de preparatoria de todo el país y actualmente en expansión para llegar a 1000 planteles en 2014.",
-        "description_pilot_tablets": "Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).",
+        "description_pilot_tablets": "Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para la educación con tabletas en escuelas primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).",
         "description_tecnica_df": "Trabajamos con un piloto de 6 planteles tras el cual estamos en proceso de expansión con un universo de 120 planteles  en todo el Distrito Federal.",
         "emprendedores": "Modelo de Emprendedores de Educación Media Superior",
         "pilot_tablets": "Piloto Federal educación con tabletas",
         "schools": "Planteles:",
         "students": "Alumnos:",
-        "teachers": "profesores:",
+        "teachers": "Profesores:",
         "tecnica_df": "Secundarias Técnicas del DF",
         "testimonial": "Testimonio",
         "testimonial_emprendedores": "“La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.”",
@@ -5444,17 +5444,17 @@ I18n.translations["es"] = {
     },
     "teacher_day": {
       "happy": "¡Feliz día del Maestro!",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     },
     "terms_and_conditions": {
       "terms": "Términos y condiciones del sitio",
-      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de la edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
+      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
       "terms10f": "Tipo de indemnización.",
       "terms10x": "Cúrsame solo indemnizara al usuario en especie, no en ninguna forma monetaria, solo mediante la extensión del tiempo que haya sido contratado el servicio, según el tiempo que haya fallado el mismo.",
       "terms1f": "Requerimientos para tener acceso a los Servicios de Cúrsame.",
-      "terms2": "Conforme a los términos y condiciones del presente Acuerdo, Cúrsame se compromete a brindar ciertos Servicios al Cliente. Para los efectos del presente Acuerdo: (a) \"Cliente\" (o \"usted\") se refiere al individuo o a la entidad comercial que utiliza o se registró para utilizar dichos Servicios, incluyendo a sus empleados y agentes; (b) \"Servicios\" de Cúrsame se refiere a todos los servicios interactivos o electrónicos ofrecidos por Cúrsame. Cúrsame Online se reserva el derecho de modificar o interrumpir la prestación de sus Servicios en cualquier momento.",
+      "terms2": "Conforme a los Términos y Condiciones del presente Acuerdo, Cúrsame se compromete a brindar ciertos Servicios al Cliente. Para los efectos del presente Acuerdo: (a) \"Cliente\" (o \"usted\") se refiere al individuo o a la entidad comercial que utiliza o se registró para utilizar dichos Servicios, incluyendo a sus empleados y agentes; (b) \"Servicios\" de Cúrsame se refiere a todos los servicios interactivos o electrónicos ofrecidos por Cúrsame. Cúrsame Online se reserva el derecho de modificar o interrumpir la prestación de sus Servicios en cualquier momento.",
       "terms2f": "Servicios de Cúrsame.",
       "terms3": "Reconoce que el contenido (excepto el que se carga en Cúrsame) de esta página Web, incluyendo pero no limitándose a información, documentos, productos, logotipos, elementos gráficos y sonidos, gui, software y servicios (llamados colectivamente \"Materiales\"), es provisto por Cúrsame o por sus respectivos autores, diseñadores y vendedores (llamados colectivamente \"Proveedores\") y que Cúrsame y/o sus Proveedores se reservan todos los derechos de propiedad inherentes al mismo. Los elementos de la página Web están protegidos por las leyes aplicables al secreto comercial (trade dress) y por otras leyes que no pueden copiarse ni imitarse en su totalidad o en parte. Cúrsame, el logotipo de Cúrsame y otros productos a los que se hace referencia en el presente son marcas de Cúrsame y pueden estar registradas en ciertas jurisdicciones. Cualquier otro nombre de producto, nombre de la empresa, marcas, logotipos y símbolos pueden ser las marcas comerciales de sus propietarios respectivos.",
       "terms3f": "Propiedad",
@@ -5482,7 +5482,7 @@ I18n.translations["es"] = {
       "terms73": "Se prohíben estrictamente las violaciones o intentos de violaciones de los sistemas de Cúrsame, o la interrupción de sus servicios. Dicha violación puede resultar en responsabilidad civil y penal. Sin limitación, los ejemplos de violaciones del sistema incluyen",
       "terms73f": "Acceso e interferencia",
       "terms73x": "Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame",
-      "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
+      "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada. Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
       "terms75": "Mal uso de los recursos del sistema",
       "terms75f": "El Cliente no deberá hacer mal uso de los recursos, que incluyan pero que no se limiten a, empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
       "terms76": "Otras actividades",
@@ -5509,7 +5509,7 @@ I18n.translations["es"] = {
       "terms8": "Limitación de la responsabilidad",
       "terms8x": "Usted usa Cúrsame bajo su propia responsabilidad. Si usted no está satisfecho con cualquier aspecto de nuestro servicio o con estos términos y condiciones, o algunas otras reglas o políticas, su única solución es finalizar el uso del servicio. Usted explícitamente entiende y acepta que Cúrsame no será responsable por cualquier daño directo, daños accidentales indirectos, fortuitos, especiales, consecuentes, incluyendo pero no limitados a, los daños por la pérdida de beneficios, buena voluntad, uso, datos u otras pérdidas intangibles (incluso si le hemos advertido sobre la posibilidad de tales daños), resultando de: (a) el uso o la incapacidad para utilizar el servicio; (b) el coste de obtención mercancías o servicios alternativos resultado de cualquier mercancía, dato, información comprados o obtenidos o mensajes recibidos o transacciones realizadas en o mediante este servicio; (c) acceso desautorizado a o alteración de sus transmisiones o datos; (d) declaraciones o actuaciones de cualquier tercer parte en el servicio; o (e) cualquier otra asunto relativo al servicio.",
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
-      "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
+      "terms9x": "Cúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, hackeo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le de a sus contenidos en la red."
     },
     "thnx": "Gracias por usar Cúrsame.",
     "unlike": "Ya no me gusta",
@@ -5535,8 +5535,8 @@ I18n.translations["es"] = {
         "title9": "Aplicaciones"
       },
       "fourth_column": {
-        "title1": "Derechos reservados © 2014 Cúrsame",
-        "title2": "Ver la página en ingles"
+        "title1": "Derechos reservados © 2015 Cúrsame",
+        "title2": "Ver la página en inglés"
       },
       "second_column": {
         "title1": "Ayuda",
@@ -5550,10 +5550,10 @@ I18n.translations["es"] = {
     },
     "super_admin": {
       "activities": "Actividades",
-      "admin": "administración",
+      "admin": "Administración",
       "admin_net": "Administrar redes",
       "course_admin": "Administrador de cursos",
-      "hello": "hola",
+      "hello": "Hola",
       "statics": "Estadísticas",
       "super_adm": "Super admins",
       "usr": "Usuarios"
@@ -5582,7 +5582,7 @@ I18n.translations["es"] = {
       "form": {
         "descrip": "Descripción: ",
         "lib_descrip": "Descripción de la biblioteca",
-        "lib_name": "Titulo de la biblioteca",
+        "lib_name": "Título de la biblioteca",
         "name": "Nombre: ",
         "send": "Enviar"
       },
@@ -5611,8 +5611,8 @@ I18n.translations["es"] = {
         "descrip": "Descripción: ",
         "descrip_file": "Descripción del Archivo",
         "file": "Archivo",
-        "file_name": "Titulo del Archivo: ",
-        "file_name2": "Titulo del Archivo",
+        "file_name": "Título del Archivo: ",
+        "file_name2": "Título del Archivo",
         "send": "Enviar"
       },
       "standalone_card": {
@@ -5652,7 +5652,7 @@ I18n.translations["es"] = {
         "comment": "Comentario",
         "comment_in": "Comentario en",
         "comments1": "Comentarios",
-        "confirm": "Estas seguro de borrar este comentario.",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "course": "Curso",
         "create_date": "Fecha de creación",
         "delete": "Borrar",
@@ -5660,7 +5660,7 @@ I18n.translations["es"] = {
         "hmwrk": "Tarea",
         "like": "Me gusta",
         "no_user": "No tiene usuario",
-        "public": "Publico",
+        "public": "Público",
         "quest": "Cuestionario",
         "user": "Usuario",
         "view": "Ver"
@@ -5670,14 +5670,14 @@ I18n.translations["es"] = {
         "back": "← Regresar",
         "comment": "Comentario",
         "comment_in": "Comentario en",
-        "confirm": "Estas seguro de borrar este comentario.",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "course": "Curso",
         "create_date": "Fecha de Creación",
         "delete": "Borrar",
         "discuss": "Discusión",
         "hmwrk": "Tarea",
         "like": "Me Gusta",
-        "public": "Publico",
+        "public": "Público",
         "quest": "Cuestionario",
         "user": "Usuario"
       }
@@ -5703,7 +5703,7 @@ I18n.translations["es"] = {
         "inte_date": "Fecha de creación",
         "name": "Nombre",
         "students": "Estudiantes",
-        "sure": "Estas seguro de borrar este curso.",
+        "sure": "¿Estás seguro de borrar este curso?",
         "teachers": "Profesores"
       },
       "new": {
@@ -5715,13 +5715,13 @@ I18n.translations["es"] = {
           "cancel": "Cancelar",
           "create": "Crear Curso",
           "descrip": "Descripción",
-          "enroll": "Inscribe estudiantes a tu curso.",
+          "enroll": "Inscribe estudiantes al curso.",
           "example": "Ejemplo",
           "example2": "Matemáticas I",
           "find": "Busca profesores para administrar el curso.",
-          "find2": "Busca estudiantes para unirlos automaticamente al curso.",
+          "find2": "Busca estudiantes para unirlos automáticamente al curso.",
           "init_date": "Fecha de Inicio",
-          "init_date2": "Fecha inicio",
+          "init_date2": "Fecha de inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
           "privacy": "Privacidad",
@@ -5747,7 +5747,7 @@ I18n.translations["es"] = {
         "quest": "Cuestionarios",
         "return": "← Regresar",
         "students": "Alumnos",
-        "sure": "Estas seguro de borrar este curso.",
+        "sure": "¿Estás seguro de borrar este curso?",
         "teachers": "Maestros"
       }
     },
@@ -5767,10 +5767,10 @@ I18n.translations["es"] = {
         "hmwrks": "Tareas",
         "init_date": "Fecha de creación",
         "name": "Nombre",
-        "no_user": "No tiene usuario",
+        "no_user": "No tiene usuarios",
         "published": "Publicada",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta tarea.",
+        "sure": "¿Estás seguro de borrar esta tarea?",
         "unpublished": "Sin Publicar",
         "user": "Usuario",
         "view": "Ver"
@@ -5779,12 +5779,12 @@ I18n.translations["es"] = {
         "course": "Curso",
         "delete": "Borrar",
         "descrip": "Descripción",
-        "end_date": "Fecha de finalización",
+        "end_date": "Fecha de Finalización",
         "init_date": "Fecha de Creación",
         "published": "Publicada",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar este cuestionario.",
+        "sure": "¿Estás seguro de borrar este cuestionario?",
         "teacher": "Maestro",
         "unpublished": "Sin Publicar"
       }
@@ -5801,7 +5801,7 @@ I18n.translations["es"] = {
         "non_eval": "No Evaluable",
         "published": "Publicada",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta discusión.",
+        "sure": "¿Estás seguro de borrar esta discusión?",
         "type": "Tipo",
         "unpublished": "Sin Publicar",
         "view": "Ver"
@@ -5813,11 +5813,11 @@ I18n.translations["es"] = {
         "eval": "Evaluable",
         "init_date": "Fecha de Creación",
         "non_eval": "No Evaluable",
-        "public": "Publica",
+        "public": "Publicar",
         "published": "Publicada",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta discusión.",
+        "sure": "¿Estás seguro de borrar esta discusión?",
         "teacher": "Maestro",
         "type": "Tipo",
         "unpublished": "Sin Publicar"
@@ -5830,16 +5830,16 @@ I18n.translations["es"] = {
     "file": "Tipo de archivo no soportado",
     "hmwrk_delete": "Tarea borrada correctamente.",
     "import_members": {
-      "course": "Course",
+      "course": "Curso",
       "download": "Descargar archivo de cursos",
       "import1": "Importar miembros",
       "import2": "Importa los miembros de los cursos desde una base de datos.",
       "import3": "Importar lista de usuarios",
       "import4": "¿Importar?",
       "list": "Lista donde se puede importar.",
-      "no_file": "NO SE ENCONTRO EL ARCHIVO",
+      "no_file": "NO SE ENCONTRÓ EL ARCHIVO",
       "text1": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los cursos.",
-      "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que solo es un miembro del curso nada más.",
+      "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que es un miembro del curso.",
       "text3": "El Email debe de ser el correo asociado al usuario."
     },
     "index": {
@@ -5847,17 +5847,17 @@ I18n.translations["es"] = {
       "comments": "Comentarios",
       "courses": "Cursos",
       "discuss": "Discusiones",
-      "exams": "Examenes",
+      "exams": "Exámenes",
       "hmwrks": "Tareas",
       "pop": "Población esperada",
-      "stat": "Estadisticas",
+      "stat": "Estadísticas",
       "usr": "Usuarios"
     },
     "mailer": {
       "example": "Ejemplo",
       "example2": "Ceremonia de clausura",
-      "masive": "Mail Masivo",
-      "masive2": "Envía un mail a todos los miembros de tu comunidad.",
+      "masive": "Mensaje Masivo",
+      "masive2": "Envía un mensaje de correo electrónico a todos los miembros de tu comunidad.",
       "msg": "Mensaje",
       "send": "Enviar",
       "subject": "Asunto"
@@ -5882,8 +5882,8 @@ I18n.translations["es"] = {
         "delete_report": "Borrar Reporte",
         "report_content": "Contenidos Reportados",
         "report_date": "Fecha de reporte",
-        "sure": "¿Está seguro de borrar este contenido?",
-        "sure2": "¿Está seguro de borrar este reporte?, el contenido no será borrado.",
+        "sure": "¿Estás seguro de borrar este contenido?",
+        "sure2": "¿Estás seguro de borrar este reporte?, el contenido no será borrado.",
         "usr": "Usuario",
         "view": "Ver"
       }
@@ -5901,13 +5901,13 @@ I18n.translations["es"] = {
         "masive": "Correo Masivo",
         "quest": "Cuestionarios",
         "report_content": "Contenido Reportado",
-        "stat": "Estadisticas",
+        "stat": "Estadísticas",
         "usr": "Usuarios"
       },
       "managers_user_header": {
         "admin": "Administrador",
         "edit": "Editar perfil",
-        "exit": "Salir del administrador",
+        "exit": "Salir del Administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -5921,11 +5921,11 @@ I18n.translations["es"] = {
         "end_date": "Fecha de finalización",
         "init_date": "Fecha de creación",
         "name": "Nombre",
-        "no_user": "No tiene usuario",
+        "no_user": "No tiene usuarios",
         "published": "Publicada",
         "quest": "Cuestionarios",
         "state": "Estado",
-        "sure": "Estas seguro de borrar este cuestionario.",
+        "sure": "¿Estás seguro de borrar este cuestionario?",
         "unpublished": "Sin Publicar",
         "user": "Usuario",
         "view": "Ver"
@@ -5937,7 +5937,7 @@ I18n.translations["es"] = {
         "init_date": "Fecha de creación",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta tarea.",
+        "sure": "¿Estás seguro de borrar esta tarea?",
         "teacher": "Maestro"
       }
     },
@@ -5951,9 +5951,9 @@ I18n.translations["es"] = {
         "import3": "Importa los usuarios de tu comunidad desde una base de datos.",
         "import4": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.",
         "import5": "Importar archivo de usuarios",
-        "no_find": "NO SE ENCONTRO UN ARCHIVO",
+        "no_find": "NO SE ENCONTRÓ UN ARCHIVO",
         "text1": "El role puede ser estudiante o maestro.",
-        "text2": "El email debe de ser el email del usuario."
+        "text2": "El email debe ser el email del usuario."
       },
       "index": {
         "actions": "Acciones",
@@ -5963,7 +5963,7 @@ I18n.translations["es"] = {
         "email": "Correo electrónico",
         "enroll": "Fecha de registro",
         "name": "Nombre",
-        "sure": "Estas seguro de borrar este usuario.",
+        "sure": "¿Estás seguro de borrar este usuario?",
         "type": "Tipo de usuario",
         "usr": "Usuarios",
         "view": "Ver"
@@ -5991,17 +5991,17 @@ I18n.translations["es"] = {
         }
       },
       "show": {
-        "bio": "Biografia",
+        "bio": "Biografía",
         "delete": "Borrar",
         "deliveries": "Tareas entregadas",
         "edit": "Editar",
         "email": "Correo electrónico",
-        "eval": "Participación en discusiones evaluables",
-        "info": "Si información",
-        "last": "Ultimo inicio de sesión",
-        "quest": "Cuestionarios contestados",
+        "eval": "Participación en Discusiones evaluables",
+        "info": "Sin información",
+        "last": "Último inicio de sesión",
+        "quest": "Cuestionarios Respondidos",
         "return": "← Regresar",
-        "sure": "Estas seguro de borrar este usuario.",
+        "sure": "¿Estás seguro de borrar este usuario?",
         "type": "Tipo de usuario"
       }
     }
@@ -6017,7 +6017,7 @@ I18n.translations["es"] = {
   },
   "messages": {
     "index": {
-      "no_member": "No eres parte del grupo!",
+      "no_member": "¡No eres parte del grupo!",
       "send": "Enviar Mensaje"
     }
   },
@@ -6044,7 +6044,7 @@ I18n.translations["es"] = {
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
-      "text1": "Se ha encontrado que usted no es miembro de la red a al que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá loguearse."
+      "text1": "Se ha encontrado que usted no es miembro de la red a la que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá ingresar."
     },
     "awaiting_confirmation": {
       "email": "Revisa tu correo electrónico",
@@ -6057,7 +6057,7 @@ I18n.translations["es"] = {
       "authorization_keyword": "Palabra clave",
       "example": "Ejemplo: ",
       "form": "Habilitar formulario de registro publico.",
-      "icon": "Imagen de inicio de sesión",
+      "icon": "Imagen de Inicio de sesión",
       "icon2": "Logo de la institución",
       "label": "Etiquetas",
       "msg": "Mensaje de bienvenida",
@@ -6088,14 +6088,14 @@ I18n.translations["es"] = {
   },
   "networks_users": {
     "index": {
-      "no_members": "no hay miembros en esta red",
+      "no_members": "No hay miembros en esta red",
       "records": "Usuarios registrados en el sistema"
     },
     "new": {
       "accept": "Acepto las normas y condiciones de esta plataforma",
       "select": "Selecciona un rol",
       "sign_in": "Ingresar a la plataforma",
-      "suscribe": "suscribirme a la red"
+      "suscribe": "Suscribirme a la red"
     }
   },
   "notifier": {
@@ -6108,7 +6108,7 @@ I18n.translations["es"] = {
       "error": "¡Error!",
       "hello": "¡Hola",
       "results": "Te anexamos los resultados de la importación de usuarios",
-      "success": "Exito"
+      "success": "Éxito"
     },
     "masive_mailer_for_super_admin": {
       "user": "Estimados usuarios de Cúrsame"
@@ -6143,12 +6143,12 @@ I18n.translations["es"] = {
       "msg": "Mensaje",
       "name": "Nombre",
       "other": "Otro",
-      "pos": "Posicion",
+      "pos": "Posición",
       "school": "Escuela",
-      "tel": "Telefono"
+      "tel": "Teléfono"
     },
     "send_email": {
-      "msg": "Mensaje del administrador de la red",
+      "msg": "Mensaje del Administrador de la red",
       "net": "Ir a la red"
     },
     "send_email_members_in_course": {
@@ -6157,29 +6157,29 @@ I18n.translations["es"] = {
     },
     "send_import_courses": {
       "error": "Error",
-      "line": "Linea",
+      "line": "Línea",
       "no_error": "No hubo errores"
     },
     "send_import_members": {
       "course": "Curso",
       "error": "Error",
-      "line": "Linea",
+      "line": "Línea",
       "no_error": "No hubo errores"
     },
     "send_import_users": {
       "error": "Error",
-      "line": "Linea"
+      "line": "Línea"
     },
     "user_mailer_with_password": {
-      "accept": "has sido aceptado aceptado en Cúrsame.",
+      "accept": "Has sido aceptadoo en Cúrsame.",
       "active": "Activado",
       "hello": "Hola",
       "net": "Ir a la red",
       "text1": "puedes cambiarla al iniciar sessión.",
-      "text2": "Si no puedes ver este mail,",
+      "text2": "Si no puedes ver este mensaje",
       "text3": "haz click aquí.",
       "text4": "¡Feliz día del Maestro!",
-      "text5": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text5": "En Cúrsame estamos muy orgullosos deti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text6": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text7": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!",
       "welcome": "Bienvenido",
@@ -6255,7 +6255,7 @@ I18n.translations["es"] = {
       "delete": "Eliminar"
     },
     "edit": {
-      "edit": "Editando Encuesta"
+      "edit": "Editar Encuesta"
     },
     "index": {
       "list": "Lista de Encuestas"
@@ -6268,7 +6268,7 @@ I18n.translations["es"] = {
   },
   "publications": {
     "discussion_template": {
-      "discuss": "ha inicidado una discusión",
+      "discuss": "Ha iniciado una discusión",
       "in_course": "en el curso"
     }
   },
@@ -6277,7 +6277,7 @@ I18n.translations["es"] = {
       "bios": "Biografía",
       "cancel": "Cancelar mi cuenta",
       "cancel2": "Cancelar",
-      "confirm": "¿Estas seguro de que quieres darte de baja de Cúrsame?",
+      "confirm": "¿Estás seguro de que quieres darte de baja de Cúrsame?",
       "dir": "Dirección",
       "down": "¿Quieres darte de baja?",
       "edit": "Editar Perfil",
@@ -6286,8 +6286,8 @@ I18n.translations["es"] = {
       "last_name": "Apellido",
       "name": "Nombre",
       "pwd": "Escribe tu contraseña para guardar",
-      "text1": "Recuerda no colocar espacios ni simbolos como",
-      "text2": "ya que no se aceptará tu url",
+      "text1": "Recuerda no colocar espacios ni símbolos como",
+      "text2": "ya que no se aceptará tu URL",
       "update": "Actualizar perfil"
     },
     "edit_user": {
@@ -6309,26 +6309,26 @@ I18n.translations["es"] = {
       "student": "Regístrate Alumno",
       "teacher": "Regístrate Profesor",
       "terms": "Términos y Condiciones",
-      "text1": "Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.",
+      "text1": "Lo sentimos pero la red a la que estás intentado ingresar no permite el registro público. Pregunta a un encargado de tu escuela, él sabrá ayudarte.",
       "text2": "Ir a la página principal",
       "type": "Tipo de usuario"
     },
     "send_confirmation": {
-      "send_confirmation": "Se envio la confirmacion"
+      "send_confirmation": "Se envió la confirmación"
     }
   },
   "registrations_controller": {
-    "error": "El perfil no pudo actualizarce correctamente",
-    "update": "Se a actualizado correctamente tu perfil"
+    "error": "El perfil no pudo actualizarse correctamente",
+    "update": "Se ha actualizado correctamente tu perfil"
   },
   "reported_contents": {
-    "denounce_fail": "Algo sucedió que no se pudo guardar tu denuncia.",
+    "denounce_fail": "Algo sucedió, no se pudo guardar tu denuncia.",
     "denounce_success": "Tu denuncia ha sido realizada con éxito.",
     "shared": {
       "reported_content_modal": {
         "comment": "Escribe un comentario",
         "help_us": "Ayúdanos a entender qué sucede",
-        "reported_content": "Ya has reportado este contenido, el administrador de la red tomará acciones.",
+        "reported_content": "Has reportado este contenido, el administrador de la red tomará acciones.",
         "send": "Enviar",
         "why_no_content": "¿Por qué no quieres ver este contenido?"
       }
@@ -6351,7 +6351,7 @@ I18n.translations["es"] = {
       },
       "chat": {
         "more_msg": "Cargar más mensajes...",
-        "select": "Selecciona a un amigo o curso para enviar mensaje."
+        "select": "Selecciona un amigo o curso para enviar mensaje."
       },
       "load_more_messages": {
         "more_msg": "Cargar más mensajes..."
@@ -6405,15 +6405,15 @@ I18n.translations["es"] = {
         "publications": "Publicaciones",
         "sub_profile": "Este es el perfil del curso.",
         "subtitle": "En este lugar podrás ver todo lo que pasa en el curso.",
-        "text_edit_course": "Aqui puedes editar el curso.",
+        "text_edit_course": "Aquí puedes editar el curso.",
         "welcome": "Bienvenido al perfil de curso"
       }
     },
     "delivery_publication_tpl": {
-      "category": "rubro",
+      "category": "Rubro",
       "edit_delivery": "Editar Entrega",
       "end_delivery": "Entregar antes de",
-      "evaluates": "Se evalua",
+      "evaluates": "Se evalúa",
       "files": "Archivos",
       "final_eval": "Evaluación final",
       "no_evaluation": "A esta tarea no se le han asignado áreas de evaluación",
@@ -6427,7 +6427,7 @@ I18n.translations["es"] = {
         "evaluation_periods": "Periodos de evaluación",
         "goto_section": "Únete a uno en la sección de",
         "new_course": "Crear curso ahora →",
-        "no_course": "No has creado ningún curso todavia.",
+        "no_course": "No has creado ningún curso todavía.",
         "no_member": "No eres miembro de ningún curso.",
         "public": "Público",
         "return": "Volver"
@@ -6447,8 +6447,8 @@ I18n.translations["es"] = {
     "network_joyride": {
       "joyride_tip_content": {
         "courses": "Creación de cursos",
-        "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.",
-        "description_courses": "Al dar click en el bootón Crear (+) aparecera el formulario de creación para los cursos que impartes.",
+        "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podrás utilizar dentro de nuestra plataforma.",
+        "description_courses": "Al dar click en el botón Crear (+) aparecerá el formulario de creación para los cursos que impartes.",
         "menu": "Menú de creación",
         "menu_description": "En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.",
         "text1": "Público o a tus cursos",
@@ -6456,14 +6456,14 @@ I18n.translations["es"] = {
         "text11": "Menú interactivo",
         "text12": "Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.",
         "text13": "Video tutoriales de ayuda",
-        "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click en el podras ver un video sobre como usar dicha función.",
+        "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click podrás ver un video sobre como usar dicha función.",
         "text2": "Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus cursos.",
         "text3": "Uno o varios cursos",
-        "text4": "!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .",
+        "text4": "¡Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .",
         "text5": "Muro principal",
         "text6": "En el muro principal aparecerán todas las publicaciones de tus cursos y amigos.",
-        "text7": "Filtrado de publiciones",
-        "text8": "Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
+        "text7": "Filtrado de publicaciones",
+        "text8": "Con el menú de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
         "text9": "Amigos",
         "welcome": "Bienvenido a Cúrsame"
       }
@@ -6473,19 +6473,19 @@ I18n.translations["es"] = {
         "accept_course": "Has sido aceptado en el curso",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al curso",
+        "add_to_course": "ha solicitado entrar al Curso",
         "comment_course": "comentó en el curso",
         "comment_net": "comentó en la red",
-        "comment_profile": "ha comentado en tu perfil.",
-        "comment_to_comment": "ha comentado en un comentario que hiciste.",
-        "comment_to_homework": "ha comentado en la tarea",
+        "comment_profile": "ha comentado en tu Perfil.",
+        "comment_to_comment": "ha comentado tu Publicación.",
+        "comment_to_homework": "ha comentado en la Tarea",
         "course_calif": "Se ha calificado el curso",
         "course_expired": "ha llegado a su fecha final. Por favor desactívalo.",
         "coursework": "del curso",
-        "discuss_comment": "comentó en tu discusión",
+        "discuss_comment": "comentó en tu Discusión",
         "ended": "finalizado",
         "friend_notif": "ha solicitado ser su amigo",
-        "friend_req": "ha aceptado su solicitud de amistad.",
+        "friend_req": "ha aceptado tu solicitud de amistad.",
         "homework_calif": "Han calificado tu tarea",
         "in_course": "en tu curso",
         "in_course1": "en tu curso",
@@ -6493,16 +6493,16 @@ I18n.translations["es"] = {
         "in_network": "en tu red",
         "lookup_usr": "Ver usuario",
         "new_course": "Nuevo curso",
-        "new_discus": "Nueva discusion",
-        "new_homework": "Nueva tarea",
-        "new_question": "Nuevo cuestionario",
+        "new_discus": "Nueva Discusión",
+        "new_homework": "Nueva Tarea",
+        "new_question": "Nuevo Cuestionario",
         "one_usr": "Un usuario",
-        "quest_feedback": "Has recibido retroalimentación en el cuestionario",
-        "quest_response": "ha respondido el cuestionario",
+        "quest_feedback": "Has recibido retroalimentación en el Cuestionario",
+        "quest_response": "ha respondido el Cuestionario",
         "response_homework": "ha respondido la tarea",
         "text15": "El curso",
         "text16": "ha sido",
-        "text17": "Han calificado tu participacion en la discusión",
+        "text17": "Han calificado tu participacion en la Discusión",
         "the_course": "El curso",
         "view_usr": "Ver usuario"
       }
@@ -6519,7 +6519,7 @@ I18n.translations["es"] = {
       "comment1": "Comentar",
       "delte": "Borrar",
       "last_comments": "Ver comentarios anteriores",
-      "like": "me gusta",
+      "like": "Me gusta",
       "write_comment": "Escribe un comentario"
     },
     "post_menu": {
@@ -6544,7 +6544,7 @@ I18n.translations["es"] = {
       "post_comments": {
         "comment": "Comentar",
         "delete": "Borrar",
-        "like": "me gusta",
+        "like": "Me gusta",
         "view_comments": "Ver comentarios anteriores",
         "write_comment": "Escribe un comentario"
       },
@@ -6580,7 +6580,7 @@ I18n.translations["es"] = {
       "discussion": {
         "in_course": "en el curso",
         "new": "Nueva discusión",
-        "open_discuss": "Abrir discusion"
+        "open_discuss": "Abrir discusión"
       },
       "meta_data": {
         "ago": "Hace",
@@ -6589,7 +6589,7 @@ I18n.translations["es"] = {
         "like": "Me gusta"
       },
       "owner_edit_publications": {
-        "confirm": "¿Estas seguro de borrar esto?",
+        "confirm": "¿Estás seguro de borrar esto?",
         "delete": "Borrar",
         "edit": "Editar"
       },
@@ -6622,8 +6622,8 @@ I18n.translations["es"] = {
         "sign_in": "Registrarme →"
       },
       "network_not_exist": {
-        "no_net_exists": "Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.",
-        "no_network": "No ingresaste el subdominio de la red a la que quieres acceder.",
+        "no_net_exists": "Parece que la red a la que quieres ingresar no existe. Pregunta a un encargado de tu escuela, él sabrá ayudarte.",
+        "no_network": "No ingresaste el subdominio de la red a la que quieres ingresar.",
         "ops": "¡Oops!",
         "search_school": "Busca tu escuela aquí →"
       }
@@ -6654,7 +6654,7 @@ I18n.translations["es"] = {
         "questionnaire": "Cuestionarios",
         "radar": "Radar",
         "ratings": "Calificaciones",
-        "return": "volver",
+        "return": "Volver",
         "vLex": "vLex"
       },
       "upcomming_deliveries_widget": {
@@ -6670,7 +6670,7 @@ I18n.translations["es"] = {
     },
     "static_pages": {
       "header": {
-        "notif": "Oops! al parecer tu correo no pertenece a niguna red.",
+        "notif": "¡Oops! al parecer tu correo electrónico no pertenece a ninguna red.",
         "search_network": "Busca tu red",
         "text1": "¿Ya eres usuario?",
         "text2": "Encuentra tu red",
@@ -6693,12 +6693,12 @@ I18n.translations["es"] = {
         "text5": "mejorar nuestro servicio, Revisa nuestro",
         "thnx": "Gracias.",
         "title": "Ayúdanos a mejorar",
-        "title2": "Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.",
-        "title3": "Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente."
+        "title2": "Para Cúrsame es muy importante su participación, a continuación presentamos algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.",
+        "title3": "Para Cúrsame es muy importante tu participación, a continuación presentamos algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se utilizarán con el fin de mejorar continuamente."
       },
       "video_tour_first_time": {
         "loading_tour": "Cargando tour...",
-        "wel_text": "Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.",
+        "wel_text": "Por favor revisa con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.",
         "wel_text1": "En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.",
         "wel_text2": "En este video de introducción te mostramos las principales secciones y características del curso.",
         "welcome": "Bienvenido al nuevo Cúrsame"
@@ -6716,21 +6716,21 @@ I18n.translations["es"] = {
       }
     },
     "user_joyride": {
-      "content": "Creación de contenido",
-      "content_area": "Esta es el area de creación de contenido.",
+      "content": "Creación de Contenido",
+      "content_area": "Esta es el área de Creación de Contenido.",
       "courses": "Cursos",
-      "courses_area": "Esta es el area de tus cursos.",
+      "courses_area": "Esta es el área de tus cursos.",
       "edit_prof": "Editar perfil",
       "friends": "Amigos",
-      "friends_list": "Aqui encontraras un listado de tus amigos",
+      "friends_list": "Aquí encontraras un listado de tus Amigos",
       "notif": "Notificaciones",
       "prof": "Perfil",
-      "prof_photo": "Aqui ver la foto de tu perfil.",
-      "publ": "Publiciones",
-      "publ_area": "Aqui encontraras todas las publicaciones de la red.",
-      "text_edit_prof": "Aqui puedes editar tu perfil.",
-      "text_notif": "Esta es el area de notificaciones.",
-      "text_prof": "En este lugar podrás ver todo lo que pasa en tu red cursame.",
+      "prof_photo": "Aquí puedes ver la foto de tu Perfil.",
+      "publ": "Publicaciones",
+      "publ_area": "Aquí encontraras todas las publicaciones de la red.",
+      "text_edit_prof": "Aquí puedes editar tu Perfil.",
+      "text_notif": "Esta es el área de Notificaciones.",
+      "text_prof": "En este lugar podrás ver todo lo que pasa en tu red Cúrsame.",
       "welcome_prof": "Bienvenido a tu perfil"
     },
     "wall_filters": {
@@ -6756,22 +6756,22 @@ I18n.translations["es"] = {
     "activities": {
       "activities": "Las actividades del sistema están geo localizadas",
       "activity": "Actividad por",
-      "avg": "Promedio de calificación por tareas",
-      "avg2": "Promedio de calificación por survey",
-      "avg3": "Promedio de calificación por usuario",
+      "avg": "Promedio de Calificación por Tareas",
+      "avg2": "Promedio de Calificación por Survey",
+      "avg3": "Promedio de Calificación por Usuario",
       "avg4": "Promedio",
       "comments": "Comentarios",
       "courses": "Cursos",
       "exam": "Exámenes",
-      "exam_delivery": "Entregas de examenes",
-      "find": "Buscar Actividades por usuario o titulo",
+      "exam_delivery": "Entregas de Exámenes",
+      "find": "Buscar Actividades por Usuario o Título",
       "goto": "Ir a la actividad",
       "hmwrks": "Tareas",
       "hmwrks_delivery": "Entregas de tareas",
       "lat": "Latitud",
       "long": "Longitud",
       "net": "Red",
-      "no_act": "sin actividades",
+      "no_act": "Sin actividades",
       "os": "Sistema operativo",
       "place": "Lugar",
       "sys": "Actividades del sistema",
@@ -6782,28 +6782,28 @@ I18n.translations["es"] = {
     "courses_sintetic_view_and_edit": {
       "courses": "Visor de cursos",
       "hmwrks": "Tareas",
-      "hmwrks_delivery": "Entregas de tarea",
+      "hmwrks_delivery": "Entregas de Tarea",
       "quest": "Cuestionarios",
-      "show": "Muestra los cursos de las redes, sus miembros y sus actividades",
-      "show2": "Mostrar tareas",
-      "show3": "Mostrar cuestionarios",
-      "show4": "Mostrar estadísticas del curso",
+      "show": "Muestra los Cursos de las Redes, Miembros y Actividades",
+      "show2": "Mostrar Tareas",
+      "show3": "Mostrar Cuestionarios",
+      "show4": "Mostrar Estadísticas del Curso",
       "show5": "Ver entregas",
       "stat": "Estadísticas"
     },
     "create_super_admin": {
       "enroll": "Registrar usuario",
-      "img": "Puedes ver las instrucciones de creación de super admin accediendo al código qr",
-      "superuser": "Super administrador Cúrsame"
+      "img": "Puedes ver las instrucciones de creación de Súper Administrador accediendo al código qr",
+      "superuser": "Súper Administrador Cúrsame"
     },
     "instructions": {
-      "create": "Instrucciones para creación de súper administradores",
-      "link": "Crea coloca tu nombre, apellido, email y contraseña, da click en continuar y listo"
+      "create": "Instrucciones para creación de Súper Administradores",
+      "link": "Crear coloca tu nombre, apellido, email y contraseña, da click en continuar y listo"
     },
     "networks": {
-      "admin": "Administrar networks",
+      "admin": "Administrar Networks",
       "create": "Crear Red",
-      "create_net": "Creando networks",
+      "create_net": "Creando Networks",
       "edit": "Editar",
       "net": "Red",
       "subdomain": "Subdominio"
@@ -6811,24 +6811,24 @@ I18n.translations["es"] = {
     "statics": {
       "activities": "Actividades",
       "events": "Eventos",
-      "exam": "Examenes",
-      "exam_delivery": "Entrega de examenes",
+      "exam": "Exámenes",
+      "exam_delivery": "Entrega de Exámenes",
       "hmwrks": "Tareas",
       "hmwrks_delivery": "Entrega de tareas",
       "statics1": "Estadísticas del sistema"
     },
     "users": {
-      "activities": "Manejador de actividades",
+      "activities": "Manejador de Actividades",
       "discuss": "Discusiones",
-      "edit1": "Editar usuario",
-      "exam": "Examenes",
+      "edit1": "Editar Usuario",
+      "exam": "Exámenes",
       "find_usr": "Buscar Usuario",
       "hmwrks": "Tareas",
-      "response": "Respuestas de tareas",
-      "response2": "Respuestas de examen",
-      "show1": "Mostrar actividades",
+      "response": "Respuestas de Tareas",
+      "response2": "Respuestas de Examen",
+      "show1": "Mostrar Actividades",
       "statics": "Estadísticas",
-      "usr": "Manejador de datos de usuario"
+      "usr": "Manejador de datos de Usuario"
     }
   },
   "support": {
@@ -6841,13 +6841,13 @@ I18n.translations["es"] = {
   "surveys": {
     "ajax": {
       "surveys_paginate_ajax": {
-        "no_more_quest": "No se encontraron más cuestionarios pasados."
+        "no_more_quest": "No se encontraron más Cuestionarios pasados."
       }
     },
     "answer_fields": {
       "correct": "Correcta",
       "delete": "Eliminar",
-      "response": "Ingresar respuesta"
+      "response": "Ingresar Respuesta"
     },
     "correct_create": "Cuestionario creado correctamente.",
     "correct_edit": "Cuestionario editado correctamente.",
@@ -6862,38 +6862,39 @@ I18n.translations["es"] = {
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
-      "publish_date": "Día de pubicación",
+      "publish_date": "Día de publicación",
       "quest": "Preguntas",
       "save": "Guardar Cuestionario",
-      "support": "Material de soporte",
+      "support": "Material de Soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuestionario",
-      "title": "Titulo del cuestionario"
+      "timer": "Tiempo para resolución del Cuestionario",
+      "title": "Título del cuestionario"
     },
     "index": {
       "more_days": "Cuestionarios para responder en 3 días o más",
-      "no_quest": "No tienes cuestionarios pendientes por contestar.",
-      "section": "sección de cuestionarios Pasados",
-      "see": "Puedes ver antiguos cuestionarios en la",
+      "no_quest": "No tienes Cuestionarios pendientes por contestar.",
+      "section": "sección de Cuestionarios Pasados",
+      "see": "Puedes ver antiguos Cuestionarios en la",
       "today": "Cuestionarios para responder Hoy",
       "tomorrow": "Cuestionarios para responder Mañana"
     },
     "lapsed": {
-      "no_quest": "No se encontraron más cuestionarios pasados."
+      "no_quest": "No se encontraron más Cuestionarios pasados."
     },
     "my_surveys": {
-      "no_quest": "No tienes cuestionarios por contestar."
+      "no_quest": "No tienes Cuestionarios por contestar."
     },
     "question_fields": {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
-    "select_course": "Selecciona un curso para publicar tu cuestionario.",
+    "select_course": "Selecciona un curso para publicar tu Cuestionario.",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
         "no_limit_time": "Sin límite de tiempo",
-        "notice_helper": "Este cuestionario te dará",
+        "notice_helper": "Este Cuestionario te dará",
         "notice_helper2": "minutos para responderlo",
         "quest": "Ver Cuestionario",
         "solve_time": "Minutos"
@@ -6906,7 +6907,7 @@ I18n.translations["es"] = {
         "response": "Responder antes del"
       },
       "survey_questions_modal": {
-        "quest": "Enviar cuestionario"
+        "quest": "Enviar Cuestionario"
       },
       "surveys_course_header": {
         "past": "Pasados",
@@ -6932,22 +6933,22 @@ I18n.translations["es"] = {
     },
     "surveys_course": {
       "more_days": "Cuestionarios para responder en 3 días o más",
-      "no_quest": "No tienes cuestionarios pendientes por contestar en este curso.",
-      "past": "sección de cuestionarios Pasados",
-      "see": "Puedes ver antiguos cuestionarios en la",
+      "no_quest": "No tienes Cuestionarios pendientes por contestar en este curso.",
+      "past": "sección de Cuestionarios Pasados",
+      "see": "Puedes ver antiguos Cuestionarios en la",
       "to_day": "Cuestionarios para responder Hoy",
       "tomorrow": "Cuestionarios para responder Mañana"
     },
     "surveys_course_lapsed": {
-      "quest": "No se encontraron más cuestionarios pasados."
+      "quest": "No se encontraron más Cuestionarios pasados."
     }
   },
   "surveys_controller": {
-    "no_accept": "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
-    "no_exist": "El cuestionario que intentas ver no existe o ha sido borrado.",
-    "no_quest_accept": "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
-    "no_quest_register": "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito.",
-    "no_register": "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."
+    "no_accept": "Estás tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
+    "no_exist": "El Cuestionario que intentas ver no existe o ha sido borrado.",
+    "no_quest_accept": "Estás tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
+    "no_quest_register": "Estás tratando de ver Cuestionarios de un curso donde no estás inscrito.",
+    "no_register": "Estás tratando de ver Cuestionarios de un curso donde no estás inscrito."
   },
   "time": {
     "am": "am",
@@ -6961,53 +6962,53 @@ I18n.translations["es"] = {
   "users": {
     "califications": {
       "deliveries_table": {
-        "avg": "Calificación promedio en tareas",
+        "avg": "Calificación promedio en Tareas",
         "hmwrk": "Tareas",
         "hmwrks": "Tarea",
         "no_deliver": "No entregada",
-        "no_hmwrks": "Aún no hay tareas en este curso.",
+        "no_hmwrks": "Aún no hay Tareas en este curso.",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
       "discussions_table": {
-        "avg_score": "Calificación promedio en discusiones",
+        "avg_score": "Calificación promedio en Discusiones",
         "discuss": "Discusiones",
         "discuss2": "Discusión",
-        "no_discuss": "Aún no hay discusiones evaluables en este curso.",
+        "no_discuss": "Aún no hay Discusiones evaluables en este curso.",
         "no_part": "Sin participación",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
-      "enroll": "Necesitas estar inscrito en al menos un curso para tener calificaciones.",
-      "no_score": "Aún no tienes calificaciones.",
+      "enroll": "Necesitas estar inscrito en al menos un curso para tener Calificaciones.",
+      "no_score": "Aún no tienes Calificaciones.",
       "ratings": "Calificaciones",
       "surveys_table": {
         "avg": "Porcentaje: %{number}%",
         "exam": "Examen",
         "no_answered": "No resuelto",
         "quest": "Cuestionarios",
-        "quest2": "Calificación promedio en cuestionarios",
-        "quest3": "Aún no hay cuestionarios en este curso.",
+        "quest2": "Calificación promedio en Cuestionarios",
+        "quest3": "Aún no hay Cuestionarios en este Curso.",
         "score": "Calificación"
       }
     },
     "courses": {
       "courses2": "Cursos",
-      "find": "Busca cursos en la sección de",
-      "no_members": "Este usuario no esta inscrito en ningún curso.",
+      "find": "Busca Cursos en la sección de",
+      "no_members": "Este usuario no esta inscrito en ningún Curso.",
       "no_registered": "Aún no estas inscrito en ningún curso."
     },
     "dashboard": {
-      "goto": "Ir al super administrador",
+      "goto": "Ir al Súper Administrador",
       "log_out": "Salir de mi sesión",
-      "select": "Seleccionador de redes",
-      "text1": "Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema"
+      "select": "Seleccionador de Redes",
+      "text1": "Cuando usted seleccione la Red deberá iniciar sesión en la Red a la que se le dirija ya que es una célula independiente del sistema"
     },
     "evaluation": {
       "no_members": "Este curso no tiene miembros",
-      "score": "Calificacion"
+      "score": "Calificación"
     },
     "form_course": {
       "cancel": "Cancel",
@@ -7041,23 +7042,23 @@ I18n.translations["es"] = {
       "all": "Todos los usuarios"
     },
     "info": {
-      "bio": "Biografia",
-      "email": "Correo Electronico",
+      "bio": "Biografía",
+      "email": "Correo Electrónico",
       "info2": "Información",
-      "no_bio": "Este usuario no cuenta con biografia."
+      "no_bio": "Este usuario no cuenta con biografía."
     },
     "menu_member": {
-      "enroll": "inscribirse a una red",
-      "friends": "mis amigos",
-      "net": "mis redes"
+      "enroll": "Inscribirse a una red",
+      "friends": "Mis amigos",
+      "net": "Mis redes"
     },
     "pendding_friends": {
       "no_request": "No hay solicitudes de amistad pendientes."
     },
     "set_password_form": {
-      "pwd": "Ingresa una contraseña.",
-      "save": "Guardar contraseña",
-      "set_pwd": "Establece tu contraseña",
+      "pwd": "Ingresa una Contraseña.",
+      "save": "Guardar Contraseña",
+      "set_pwd": "Establece tu Contraseña",
       "welcome": "Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro."
     },
     "shared": {
@@ -7099,21 +7100,21 @@ I18n.translations["es"] = {
     },
     "waiting_friends": {
       "friends": "Amigos en espera",
-      "request": "Este usuario te ha solicitado amistad",
+      "request": "Este usuario te ha enviado una solicitud de amistad",
       "waiting_friends": "Esperando aceptación de"
     }
   },
   "users_controller": {
-    "canot_delete": "No puedes borrar este usuario.",
-    "correct_delete": "Usuario fue borrado correctamente",
-    "deleted_usr": "El Usuario ya fue borrado",
-    "no_exist": "El usuario que intentas ver no existe o ha sido borrado.",
-    "no_register": "no estas inscrito en ninguna red",
+    "canot_delete": "No puedes eliminar este usuario.",
+    "correct_delete": "Usuario eliminado correctamente",
+    "deleted_usr": "El Usuario fue eliminado",
+    "no_exist": "El usuario que intentas ver no existe o ha sido eliminado.",
+    "no_register": "No estás inscrito en ninguna red",
     "save_pwd": "Se ha guardado tu contraseña correctamente."
   },
   "users_mailer": {
     "notice_to_user": {
-      "activity": "tiene 5 nuevas actividades en la plataforma.",
+      "activity": "Tiene 5 nuevas actividades en la plataforma.",
       "activitys": "Tiene 5 nuevas actividades en la plataforma.",
       "goto": "Ir a actividades",
       "hello": "Hola",
@@ -7124,9 +7125,9 @@ I18n.translations["es"] = {
       "click": "haz click aquí.",
       "happy": "¡Feliz día del Maestro!",
       "hello": "Hola",
-      "mail": "Si no puedes ver este mail",
+      "mail": "Si no puedes ver este mensaje",
       "teacher": "Profesor(a)",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     }
@@ -7134,7 +7135,7 @@ I18n.translations["es"] = {
   "usessions": {
     "new": {
       "confirm": "Esperando confirmación",
-      "email": "Correo electrónico",
+      "email": "Correo Electrónico",
       "init_session": "Iniciar sesión",
       "pwd": "Contraseña",
       "remember": "Recordarme",
@@ -7144,7 +7145,7 @@ I18n.translations["es"] = {
   "usessions_controller": {
     "hello": "Hola ",
     "invalid": "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos.",
-    "welcome": " bienvenido de nuevo."
+    "welcome": " Bienvenido de nuevo."
   },
   "views": {
     "pagination": {
@@ -7383,11 +7384,11 @@ I18n.translations["es_meems"] = {
     },
     "masive_mailer": {
       "forward": "Reenviar el mensaje a la siguiente cantidad de usuarios con la clave de mensaje",
-      "mail": "Se activará el formulario de reenvio cuando la cuenta de mailers masivos se mayor a 0",
+      "mail": "Se activará el formulario de reenvío cuando la cuenta de mailers masivos sea mayor a 0",
       "massive_email": "Enviar mensajes masivos a los siguientes usuarios",
       "send_msg": "Enviar mensajes",
       "text1": "title",
-      "text2": "titulo",
+      "text2": "título",
       "text3": "message",
       "text4": "number of users when yo want send",
       "text5": "number",
@@ -7400,7 +7401,7 @@ I18n.translations["es_meems"] = {
     }
   },
   "ajax_controller": {
-    "error1": "Ocurrió un error, porfavor inténtalo de nuevo."
+    "error1": "Ocurrió un error, por favor inténtalo de nuevo."
   },
   "assets": {
     "asset_file": {
@@ -7468,11 +7469,11 @@ I18n.translations["es_meems"] = {
       "friday": "Viernes",
       "monday": "Lunes",
       "next_month": "Mes siguiente →",
-      "saturday": "Sabado",
+      "saturday": "Sábado",
       "sunday": "Domingo",
       "thursday": "Jueves",
       "tuesday": "Martes",
-      "wednesday": "Miercoles"
+      "wednesday": "Miércoles"
     },
     "three_days": "en 3 días",
     "today": "hoy",
@@ -7485,8 +7486,8 @@ I18n.translations["es_meems"] = {
       "calification": "Calificación:",
       "criterion": "Criterio",
       "final_score": "Calificación final",
-      "no_members": "Este Centros Emprendedor no tiene miembros",
-      "no_printable_score": "Tu Líder multiplicador todavia no te ha dado calificación final.",
+      "no_members": "Este Centro Emprendedor no tiene miembros",
+      "no_printable_score": "Tu Líder multiplicador todavía no te ha dado calificación final.",
       "no_score": "Aún no tienes calificación final.",
       "percent": "Porcentaje:",
       "score": "Calificación Obtenida"
@@ -7505,7 +7506,8 @@ I18n.translations["es_meems"] = {
         "member": "Miembro",
         "members": "Miembros",
         "no_courses": "No hay Centros de Emprendedores para ver calificaciones.",
-        "select_course": "Selecciona un Centros Emprendedor"
+        "select_course": "Selecciona un Centro Emprendedor",
+        "select_evaluation_period": "Selecciona un periodo de evaluación"
       },
       "califications_header": {
         "active_courses": "Centros de Emprendedores activos",
@@ -7519,7 +7521,7 @@ I18n.translations["es_meems"] = {
     "no_exist": "El comentario que intentas ver no existe o ha sido borrado.",
     "shared": {
       "comment_admin_actions": {
-        "confirm": "¿Estas seguro de borrar este comentario?",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "delete": "Borrar"
       },
       "comment_card": {
@@ -7538,10 +7540,10 @@ I18n.translations["es_meems"] = {
     },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
-      "no_usr": "No se encontraron usarios en tu red."
+      "no_usr": "No se encontraron usuarios en tu red."
     },
     "search": {
-      "no_usr": "No se encontraron usarios en tu red.",
+      "no_usr": "No se encontraron usuarios en tu red.",
       "search": "Búsqueda:"
     },
     "shared": {
@@ -7579,20 +7581,20 @@ I18n.translations["es_meems"] = {
   },
   "course_files": {
     "library_item": {
-      "confirm": "¿Estas seguro de querer eliminar este archivo?",
+      "confirm": "¿Estás seguro de querer eliminar este archivo?",
       "delete": "Borrar"
     }
   },
   "courses": {
     "about": {
-      "admins": "MEEMS del Centros Emprendedor",
+      "admins": "Administradores del Centro Emprendedor",
       "course_info": "Información del Centro Emprendedor",
       "info": "Información.",
       "init_date": "Fecha de incio"
     },
     "activities_depot": {
       "act": "Actividades",
-      "back_to": "Regresar al Centros Emprendedor",
+      "back_to": "Regresar al Centro Emprendedor",
       "more_act": "Cargar más actividades",
       "select_act": "Selecciona una actividad."
     },
@@ -7605,17 +7607,17 @@ I18n.translations["es_meems"] = {
       "no_records": "No hay más Centros de Emprendedores para mostrar."
     },
     "clone_course_view": {
-      "clone": "Clonar Centros Emprendedor",
-      "clone2": "(clonado)",
-      "clone_hmwrks": "Selecciona las tareas que quieres clonar para el nuevo Centros Emprendedor.",
-      "data_course": "Datos del Centros Emprendedor",
+      "clone": "Clonar Centro Emprendedor",
+      "clone2": "(Clonado)",
+      "clone_hmwrks": "Selecciona las tareas que quieres clonar para el nuevo Centro Emprendedor.",
+      "data_course": "Datos del Centro Emprendedor",
       "dates": "Fechas",
       "delivery_date": "Fecha Entrega",
       "descrip": "Descripción",
       "example": "Emprendedores CBTA No. 72",
       "hmwrks": "Tareas",
-      "info_new_course": "Cambia la información para el nuevo Centros Emprendedor.",
-      "init_date": "Fecha en la que se recibió la transferencia",
+      "info_new_course": "Edita la información para el nuevo Centro Emprendedor.",
+      "init_date": "Fecha de inicio",
       "name": "Nombre del",
       "privacy": "Privacidad",
       "private": "Privado",
@@ -7625,12 +7627,12 @@ I18n.translations["es_meems"] = {
     "closure": {
       "closure_members": {
         "final_scores": "Calificaciones finales",
-        "invite": "Invita a tus emprendedores que se unan a tu Centros Emprendedor.",
+        "invite": "Invita a tus emprendedores a que se unan a tu Centro Emprendedor.",
         "members": "Miembros",
-        "no_members": "No hay miembros en el Centros Emprendedor.",
+        "no_members": "No hay miembros en el Centro Emprendedor.",
         "no_score": "Sin calificar",
         "score": "Calificación:",
-        "send_scores": "Envia la calificación final a los emprendedores del grupo."
+        "send_scores": "Envía la calificación final a los emprendedores de este Centro."
       },
       "user_closure_overview": {
         "calif": "Calificación:",
@@ -7642,46 +7644,46 @@ I18n.translations["es_meems"] = {
         "members": "Miembros",
         "no_rate": "Sin calificar",
         "of": "de",
-        "participate": "Participo en",
+        "participate": "Participó en",
         "percent": "Porcentaje:",
         "quest": "Cuestionarios",
-        "rate_student": "Calificar emprendedor",
-        "respond": "Contesto",
+        "rate_student": "Calificar Emprendedor",
+        "respond": "Respondió",
         "score": "Calificación Obtenida",
-        "send": "Entrego"
+        "send": "Entrega"
       }
     },
     "correct_active": "Se ha activado correctamente el curso",
     "correct_inactive": "Se ha desactivado correctamente el curso",
     "courses_search": {
-      "courses_search": "Buscar Centros Emprendedor...",
+      "courses_search": "Buscar Centro Emprendedor...",
       "search": "Buscar"
     },
     "dashboard_deliver": {
-      "access": "Acceso rápido de administración de Centros de Emprendedores",
-      "activate": "activar Centros Emprendedor",
+      "access": "Acceso rápido de administración de Centros Emprendedores",
+      "activate": "activar Centro Emprendedor",
       "calif": "Calificaciones",
-      "count_test": "Contador de examenes respondidos",
+      "count_test": "Contador de exámenes respondidos",
       "desactivate": "Desactivar",
-      "hmwrks_course": "Tareas en el Centros Emprendedor",
+      "hmwrks_course": "Tareas en el Centro Emprendedor",
       "inactive": "Inactivo",
       "monitor": "Monitor de actividades"
     },
     "deliver_hmwrk": "Se ha cargado una entrega de tarea",
     "edit": {
-      "edit": "Editar Centros Emprendedor"
+      "edit": "Editar Centro Emprendedor"
     },
     "edit_delivery_access": {
-      "courses": "Centros de Emprendedores",
-      "delivery_day": "Ultimo día de entrega",
+      "courses": "Centros Emprendedores",
+      "delivery_day": "Último día de entrega",
       "descrip": "Descripción",
-      "hmwrk_title": "Titulo de la tarea",
+      "hmwrk_title": "Título de la tarea",
       "publish": "Publicar",
-      "publish_date": "Día de pubicación"
+      "publish_date": "Día de publicación"
     },
     "evaluation": {
       "calif": "Calificación",
-      "course_score": "Calificación del Centros Emprendedor",
+      "course_score": "Calificación del Centro Emprendedor",
       "deliver": "Entrega",
       "eval": "% de la Evaluación",
       "exam": "Examen",
@@ -7689,13 +7691,13 @@ I18n.translations["es_meems"] = {
       "hmwrk": "Tarea",
       "items": "Rubros",
       "no_deliver": "Sin entregar",
-      "no_group": "No eres parte del grupo!",
-      "no_member": "No has sido aceptado en el grupo!",
+      "no_group": "¡No eres parte del curso!",
+      "no_member": "¡No has sido aceptado en el curso!",
       "obtained": "Obtenido",
       "pdf": "Descargar (PDF)",
-      "percent_obtain": "% obtenido",
+      "percent_obtain": "% Obtenido",
       "percent_obtain1": "% Obtenido",
-      "score": "Calificacion",
+      "score": "Calificación",
       "student": "Emprendedor:",
       "total_score": "Calificación Total",
       "unresolved": "Sin resolver"
@@ -7708,11 +7710,11 @@ I18n.translations["es_meems"] = {
       "exam": "Examen",
       "final": "Final",
       "hmwrk": "Tarea",
-      "no_accept": "No has sido aceptado en el grupo!",
-      "no_part": "No eres parte del grupo!",
+      "no_accept": "¡No has sido aceptado en el curso!",
+      "no_part": "¡No eres parte del curso!",
       "not_resolved": "Sin resolver",
-      "obtain_percent": "Obtenido",
-      "obtain_percent2": "obtenido",
+      "obtain_percent": "% Obtenido",
+      "obtain_percent2": "% Obtenido",
       "ruber": "Rubros",
       "student": "Emprendedor",
       "total_score": "Calificación Total",
@@ -7724,7 +7726,7 @@ I18n.translations["es_meems"] = {
       "criterium": "Criterio",
       "percent": "Porcentaje",
       "save": "Guardar",
-      "text1": "Especifica como quieres evaluar este Centros Emprendedor, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame."
+      "text1": "Especifica como quieres evaluar este Centro Emprendedor, puedes agregar nuevos criterios de evaluación o solo dejar los criterios de Cúrsame."
     },
     "evaluation_schema_periods": {
       "cancel": "Cancelar",
@@ -7734,10 +7736,10 @@ I18n.translations["es_meems"] = {
       "text1": "Especifica como quieres evaluar este curso."
     },
     "form": {
-      "add_students": "Inscribe emprendedores a tu Centros Emprendedor.",
-      "confirm": "¿Esta seguro que desea eliminar este Centros Emprendedor?",
+      "add_students": "Inscribe Emprendedores a tu Centro Emprendedor.",
+      "confirm": "¿Estás seguro de eliminar este Centro Emprendedor?",
       "create": "Crear",
-      "delete": "Eliminar Centros Emprendedor permanente.",
+      "delete": "Eliminar Centro Emprendedor.",
       "descrip": "Descripción del",
       "descrip2": "Descripción",
       "example": "Emprendedores CBTA No. 72",
@@ -7779,8 +7781,8 @@ I18n.translations["es_meems"] = {
       },
       "teacher_header": {
         "active": "Activos",
-        "courses": "Centros de Emprendedores",
-        "create_course": "Crear Centros Emprendedor nuevo",
+        "courses": "Centros Emprendedores",
+        "create_course": "Crear nuevo Centro Emprendedor",
         "finalize": "Finalizados",
         "new": "Nuevo"
       }
@@ -7790,16 +7792,16 @@ I18n.translations["es_meems"] = {
       "file": "Archivo",
       "files": "Archivos",
       "load": "Cargar más archivos",
-      "no_files": "Este Centros Emprendedor no tiene archivos en su librería.",
+      "no_files": "Este Centro Emprendedor no tiene archivos en su librería.",
       "text2": "Cúrsame no se hace responsable del contenido subido por los usuarios, ni de cualquier infracción a derechos de autor o de marca por los mismos.  El usuario que ha subido contenido es 100% responsable de él. Cualquier problema de este tipo favor de reportarlo",
       "upload": "Subir archivo"
     },
     "library_pagination": {
-      "no_more_records": "No hay más archivos que mostrar"
+      "no_more_records": "No hay más archivos para mostrar"
     },
     "light_box_dashboard_delivery": {
       "criterium": "Criterios de calificación",
-      "descrip": "Descripción de entrega",
+      "descrip": "Descripción de la entrega",
       "eval": "Seleccione un porcentaje de 1 a 100 para calificar esta tarea",
       "eval_hmwrk": "Calificar tarea",
       "files": "Archivos de la entrega",
@@ -7807,12 +7809,12 @@ I18n.translations["es_meems"] = {
       "percent": "Por favor selecciona un porcentaje de 1 a 100 para calificar esta tarea",
       "score": "Calificación",
       "student": "Emprendedor",
-      "title": "Titulo de entrega"
+      "title": "Título de la entrega"
     },
     "members": {
       "mem": "Miembros",
       "no_members": "Centro Emprendedor sin miembros.",
-      "no_records": "Este Centros Emprendedor todavia no tiene miembros en el."
+      "no_records": "Este Centro Emprendedor todavia no tiene miembros en el."
     },
     "members_in_courses": {
       "course_view_call": {
@@ -7824,20 +7826,21 @@ I18n.translations["es_meems"] = {
         "teacher": "Líder multiplicador"
       },
       "permissionings_edit": {
-        "confirm": "¿Estás seguro de querer eliminar este usuario del Centros Emprendedor?",
+        "confirm": "¿Estás seguro de eliminar este usuario del Centro Emprendedor?",
         "delete": "Eliminar",
         "delete_group": "Eliminar del grupo",
         "usr_accept": "Aceptar Usuario"
       }
     },
     "new": {
-      "new_course": "Centro Emprendedor nuevo"
+      "new_course": "Nuevo Centro Emprendedor"
     },
     "new_course": "Se ha creado un curso nuevo",
     "old_course": {
-      "activate": "activar Centros Emprendedor",
-      "antique": "Centros de Emprendedores antiguos",
-      "deactivate": "desactivar Centros Emprendedor"
+
+      "activate": "Activar Centro Emprendedor",
+      "antique": "Centros Emprendedores antiguos",
+      "deactivate": "Desactivar Centro Emprendedor"
     },
     "pending": {
       "pending": {
@@ -7846,8 +7849,8 @@ I18n.translations["es_meems"] = {
     },
     "search": {
       "courses_search_results": {
-        "no_records": "No se encontraron Centros de Emprendedores con el criterio de busqueda.",
-        "search": "Busqueda:"
+        "no_records": "No se encontraron Centros Emprendedores con el criterio de búsqueda.",
+        "search": "Búsqueda:"
       }
     },
     "shared": {
@@ -7859,21 +7862,21 @@ I18n.translations["es_meems"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Esta seguro de querer abandonar este Centros Emprendedor?",
+        "confirm": "¿Estás seguro de abandonar este Centro Emprendedor?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
         "finalize": "Finalizar",
-        "leave": "Abandonar Centros Emprendedor",
+        "leave": "Abandonar Centro Emprendedor",
         "request_send": "Solicitud enviada",
         "send_request": "Enviar solicitud"
       },
       "course_card_post": {
-        "new_course": "Nuevo Centros Emprendedor público"
+        "new_course": "Nuevo Centro Emprendedor público"
       },
       "course_evaluation_schema_fields": {
-        "criterium": "¿Que criterio se evaluará?",
+        "criterium": "¿Qué criterio se evaluará?",
         "discuss": "Discusiones",
         "hmwrks": "Tareas",
         "percent": "Porcentaje asignado",
@@ -7920,12 +7923,12 @@ I18n.translations["es_meems"] = {
       "activity": "ACTIVIDADES",
       "discuss": "DISCUSIONES",
       "generate": "Se han generado",
-      "in_course": "En el Centros Emprendedor",
+      "in_course": "En el Centro Emprendedor",
       "quest": "CUESTIONARIO",
-      "total": "totales"
+      "total": "TOTALESs"
     },
     "survey_results": {
-      "back": "Atras",
+      "back": "Atrás",
       "respose": "Respuesta",
       "result": "Resultado obtenido",
       "student": "Emprendedor"
@@ -7935,32 +7938,32 @@ I18n.translations["es_meems"] = {
     }
   },
   "courses_controller": {
-    "active": "se activo correctamente.",
+    "active": "Se activó correctamente.",
     "clone_correct": "Centro Emprendedor clonado correctamente.",
-    "contact": "ha finalizado, contacta al Líder multiplicador para más información.",
-    "create": "Se ha creado correctamente tu Centros Emprendedor, edita tu forma de evaluación.",
+    "contact": "Ha finalizado, contacta al Líder Multiplicador para más información.",
+    "create": "Se ha creado correctamente el Centro Emprendedor, edita la forma de evaluación.",
     "delete": "Centro Emprendedor eliminado correctamente.",
-    "ended": "se finalizo correctamente.",
-    "has_ended": "ha finalizado, lo puedes activar en el menu de opciones del Centros Emprendedor.",
-    "no_accepted": "No has sido aceptado en este Centros Emprendedor.",
-    "no_access": "El Centros Emprendedor al que intentas accesar, no existe o ha sido borrado.",
-    "no_authorized": "Usted no está autorizado para editar este Centros Emprendedor.",
-    "no_exist": "El Centros Emprendedor que intentas ver no existe o ha sido borrado",
+    "ended": "Finalizó correctamente.",
+    "has_ended": "Ha finalizado, lo puedes activar en el menú de opciones del Centro Emprendedor.",
+    "no_accepted": "No has sido aceptado en este Centro Emprendedor.",
+    "no_access": "El Centro Emprendedor al que intentas accesar, no existe o ha sido borrado.",
+    "no_authorized": "Usted no está autorizado para editar este Centro Emprendedor.",
+    "no_exist": "El Centro Emprendedor que intentas ver no existe o ha sido borrado",
     "save": "Se han guardado satisfactoriamente los cambios en el Centros Emprendedor. ",
-    "search": "Escribe algo en el campo de busqueda.",
+    "search": "Escribe algo en el campo de búsqueda.",
     "success": "Se ha creado correctamente",
-    "the_course": "El Centros Emprendedor",
-    "your_course": "Tu Centros Emprendedor"
+    "the_course": "El Centro Emprendedor",
+    "your_course": "Tu Centro Emprendedor"
   },
   "date": {
     "abbr_day_names": [
       "dom",
       "lun",
       "mar",
-      "mié",
+      "mie",
       "jue",
       "vie",
-      "sáb"
+      "sab"
     ],
     "abbr_month_names": [
       null,
@@ -8081,7 +8084,7 @@ I18n.translations["es_meems"] = {
       "hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks_last": "tareas pasadas en la sección Pasadas",
       "no_deliver": "Has entregado todas las tareas, puedes ver las",
-      "no_hmwrks": "No tienes tareas pendientes por entregar en este Centros Emprendedor.",
+      "no_hmwrks": "No tienes tareas pendientes por entregar en este Centro Emprendedor.",
       "today_hmwrk": "Tareas para entregar Hoy",
       "tomorrow_hmwrks": "Tareas para entregar Mañana"
     },
@@ -8099,7 +8102,7 @@ I18n.translations["es_meems"] = {
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
       "hmwrk_theme": "Tema de la tarea",
-      "integrity": "Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.",
+      "integrity": "Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada. Sugerimos que si necesitas agregar alguno de estos, elimines la actividad y vuelvas a cargarla.",
       "publish": "Publicar",
       "publish_date": "Día de publicación",
       "save": "Guardar Tarea",
@@ -8109,7 +8112,7 @@ I18n.translations["es_meems"] = {
       "deliver_hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks": "Tareas para entregar Hoy",
       "no_deliver": "Has entregado todas las tareas, puedes ver las",
-      "no_hmwrks": "No tienes tarean pendientes por entregar.",
+      "no_hmwrks": "No tienes tareas pendientes por entregar.",
       "past_hmwrks": "tareas pasadas en la sección Pasadas",
       "tomorrow_hmwrks": "Tareas para entregar Mañana"
     },
@@ -8125,7 +8128,7 @@ I18n.translations["es_meems"] = {
       },
       "deliveries_filter_course": {
         "filter": "Filtrar: ",
-        "select": "Selecciona un Centros Emprendedor"
+        "select": "Selecciona un Centro Emprendedor"
       },
       "deliveries_header": {
         "deliver": "Entregar",
@@ -8144,14 +8147,14 @@ I18n.translations["es_meems"] = {
         "deliver_hmwrk": "Entregar Tarea",
         "edit": "Editar Entrega",
         "final_score": "Calificación final obtenida",
-        "hmwrk": "Tarea en el Centros Emprendedor",
+        "hmwrk": "Tarea en el Centro Emprendedor",
         "rubre": "Rubro sin comentarios"
       }
     }
   },
   "deliveries_controller": {
-    "access_denied": "Estas tratando de ver Tareas de un Centros Emprendedor donde no has sido aceptado.",
-    "register": "Estas tratando de ver Tareas de un Centros Emprendedor donde no estas inscrito."
+    "access_denied": "Estás tratando de ver Tareas de un Centro Emprendedor donde no has sido aceptado.",
+    "register": "Estás tratando de ver Tareas de un Centro Emprendedor donde no estás inscrito."
   },
   "devise": {
     "confirmations": {
@@ -8164,18 +8167,18 @@ I18n.translations["es_meems"] = {
     },
     "mailer": {
       "confirmation_instructions": {
-        "push_here": "Si el boton superior no funciona, haz clic aquí",
+        "push_here": "Si el botón superior no funciona, haz clic aquí",
         "usage": "Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.",
         "welcome": "¡Bienvenido a Cúrsame!"
       },
       "reset_password_instructions": {
-        "button": "Si el boton superior no funciona, haz clic aquí",
-        "pwd": "En caso que no hayas solicitado la restauración de tu contraseña por favor comunicalo a",
-        "reset_password": "Nos has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.",
+        "button": "Si el botón superior no funciona, haz clic aquí",
+        "pwd": "En caso de que no hayas solicitado la restauración de tu contraseña por favor comunícalo a",
+        "reset_password": "Has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.",
         "reset_pwd": "Restaurar contraseña"
       },
       "unlock_instructions": {
-        "button": "Si el boton superior no funciona, haz clic aquí",
+        "button": "Si el botón superior no funciona, haz clic aquí",
         "hello": "¡Hola!"
       }
     },
@@ -8204,8 +8207,8 @@ I18n.translations["es_meems"] = {
       },
       "new": {
         "accept": "Acepto los términos y condiciones",
-        "access": "Lo sentimos pero la red a la que estas intentado accesar no existe",
-        "confirm_pwd": "Confirmacion de contraseña",
+        "access": "Lo sentimos pero la red a la que estás intentado accesar no existe",
+        "confirm_pwd": "Confirmación de contraseña",
         "email": "Correo electrónico",
         "last_name": "Apellidos",
         "name": "Nombre(s)",
@@ -8226,7 +8229,7 @@ I18n.translations["es_meems"] = {
         "change_pwd": "te pedirá que cambies tu contraseña.",
         "close": "Cerrar",
         "confirm": "Esperando confirmación",
-        "confirm2": "No me ha llegado el mail de confirmación",
+        "confirm2": "No me ha llegado el mensaje de confirmación",
         "confirm3": "Confirmé mi email pero olvide cambiar mi contraseña",
         "email": "Correo electrónico",
         "forgot_pwd": "Olvidé mi contraseña",
@@ -8235,9 +8238,9 @@ I18n.translations["es_meems"] = {
         "last_user": "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame.",
         "link": "Da click en el link",
         "log_in": "Iniciar Sesión",
-        "net": "La red a la que estas intentado accesar no existe",
+        "net": "La red a la que estás intentado accesar no existe",
         "net2": "pregunta a un encargado de tu escuela él sabrá ayudarte.",
-        "new_pwd": "Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos",
+        "new_pwd": "Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mensaje que enviamos",
         "pwd": "Contraseña",
         "pwd_problem": "Cualquier problema con la contraseña puedes resolverlo dando click en",
         "remember": "Recordarme",
@@ -8246,7 +8249,7 @@ I18n.translations["es_meems"] = {
         "s_net3": "permitiéndoles interactuar social y académicamente.",
         "s_netn": "Cúrsame conecta a directivos, Líderes multiplicadores y emprendedores permitiéndoles interactuar social y académicamente",
         "send": "Se ha enviado un correo a",
-        "send_pwd": "donde se te enviará un mail para que puedas cambiar tu contraseña.",
+        "send_pwd": "donde se te enviará un mensaje para que puedas cambiar tu contraseña.",
         "session": "Inicia sesión",
         "sign_in": "¿Eres nuevo? Regístrate",
         "sorry": "Lo sentimos",
@@ -8264,7 +8267,7 @@ I18n.translations["es_meems"] = {
         "confirm": "¿No recibiste las instrucciones de confirmación?",
         "log_in": "¿Ya eres usuario? Ingresa",
         "pwd": "¿Olvidaste tu contraseña?",
-        "sign_in": "¿No estas registrado? Registrate"
+        "sign_in": "¿No estás registrado? Registrate"
       }
     },
     "unlocks": {
@@ -8301,7 +8304,7 @@ I18n.translations["es_meems"] = {
       "example": "Ejemplo: Números primos",
       "public": "Público",
       "publish_date": "Día de publicación",
-      "save_discuss": "Guardar discusión",
+      "save_discuss": "Guardar Discusión",
       "support": "Material de soporte"
     },
     "index": {
@@ -8315,15 +8318,15 @@ I18n.translations["es_meems"] = {
       "discussion_modal": {
         "criterium": "Criterios a evaluar",
         "grade": "Calificación Obtenida",
-        "in_course": "en el Centros Emprendedor",
-        "init_discuss": "ha inicidado una discusión"
+        "in_course": "en el Centro Emprendedor",
+        "init_discuss": "ha iniciado una discusión"
       },
       "discussions_course_header": {
         "discuss": "Discusiones"
       },
       "discussions_filter_course": {
         "filter": "Filtrar:",
-        "select": "Selecciona un Centros Emprendedor"
+        "select": "Selecciona un Centro Emprendedor"
       },
       "discussions_header": {
         "discuss": "Discusiones"
@@ -8334,10 +8337,10 @@ I18n.translations["es_meems"] = {
     }
   },
   "discussions_controller": {
-    "delete": "La discusión que intentas ver no existe o ah sido borrada.",
-    "no_accepted": "Estas tratando de ver Discusiones de un Centros Emprendedor donde no has sido aceptado.",
+    "delete": "La discusión que intentas ver no existe o ha sido borrada.",
+    "no_accepted": "Estás tratando de ver Discusiones de un Centro Emprendedor donde no has sido aceptado.",
     "no_discussion": "No se pudo crear la discusión.",
-    "no_register": "Estas tratando de ver Discusiones de un Centros Emprendedor donde no estas inscrito."
+    "no_register": "Estás tratando de ver Discusiones de un Centro Emprendedor donde no estás inscrito."
   },
   "errors": {
     "format": "%{attribute} %{message}",
@@ -8388,19 +8391,19 @@ I18n.translations["es_meems"] = {
       "activity": "Actividades para calificar hoy",
       "activity_for_days": "Actividades para calificar en 3 dias o más",
       "activity_for_tmrw": "Actividades para calificar mañana",
-      "all": "Todas las actividades de tu Centros Emprendedor estan calificadas, puedes ver",
+      "all": "Todas las actividades de tu Centro Emprendedor están calificadas, puedes ver",
       "no_activity": "No tienes actividades por calificar.",
-      "past_activity": "actividades pasas en la seccion de Pasadas"
+      "past_activity": "actividades pasadas en la sección de Pasadas"
     },
     "course_inactive": {
-      "enrollment": "Necesitas estar inscrito en al menos un Centros Emprendedor para tener calificaiones.",
+      "enrollment": "Necesitas estar inscrito en al menos un Centro Emprendedor para tener calificaciones.",
       "no_score": "Aún no tienes calificaciones."
     },
     "deliveries": {
       "delivery_user_response": {
         "attachments": "Archivos adjuntos",
         "check_hmwrk": "Calificar tarea",
-        "comments": "Envia comentarios en base a los criterios de la actividad.",
+        "comments": "Envía comentarios en base a los criterios de la actividad.",
         "deliver": "Entrega",
         "deliveries": "Entregas",
         "delivery": "Entregado",
@@ -8411,12 +8414,12 @@ I18n.translations["es_meems"] = {
         "score": "Calificación:",
         "scored": "Calificar",
         "student": "Emprendedor",
-        "title": "Titulo"
+        "title": "Título"
       },
       "evaluate_deliveries": {
         "deliveries": "Entregas",
         "no_deliveries": "Sin Entregas.",
-        "no_deliveries_record": "Todavia no hay ninguna entrega en esta tarea.",
+        "no_deliveries_record": "Todavía no hay ninguna entrega en esta tarea.",
         "no_score": "Sin calificar",
         "score": "Calificación:"
       }
@@ -8429,17 +8432,17 @@ I18n.translations["es_meems"] = {
         "no_score": "Sin Calificar",
         "rate_student": "Calificar emprendedor",
         "score": "Calificación",
-        "send": "Envia comentarios en base a los criterios de la actividad."
+        "send": "Envía comentarios en base a los criterios de la actividad."
       },
       "evaluate_discussions": {
         "comment": "Comentario",
         "comments": "Comentarios",
         "discuss": "Discusión",
-        "nothing": "Nadie a participado en esta discusión."
+        "nothing": "Nadie ha participado en esta discusión."
       },
       "evaluate_discussions_header": {
         "course": "Centro Emprendedor",
-        "limit_publish_date": "Fecha limite para participar",
+        "limit_publish_date": "Fecha límite para participar",
         "members": "Participantes",
         "publish_date": "Fecha de publicación"
       }
@@ -8449,7 +8452,7 @@ I18n.translations["es_meems"] = {
       "no_activity": "No tienes actividades pasadas."
     },
     "index": {
-      "all": "Todas las actividades de tu Centros Emprendedor están calificadas, puedes ver",
+      "all": "Todas las actividades de tu Centro Emprendedor están calificadas, puedes ver",
       "no_score": "No tienes actividades por calificar.",
       "past": "actividades pasadas en la sección de Pasadas",
       "someday": "Actividades para calificar en 3 días o más",
@@ -8482,10 +8485,10 @@ I18n.translations["es_meems"] = {
         "publish_date_of": "Fecha para entrega"
       },
       "header_activity_survey": {
-        "answered": "Contestados",
+        "answered": "Respondidos",
         "attemps": "Ver los intentos",
         "course": "Centro Emprendedor",
-        "deliver_date": "Fecha para entrega",
+        "deliver_date": "Fecha de entrega",
         "of": "de",
         "publish_date": "Fecha de publicación",
         "the": "del"
@@ -8507,13 +8510,13 @@ I18n.translations["es_meems"] = {
     "surveys": {
       "evaluate_surveys": {
         "delivery": "Entregas",
-        "no_answer": "Todavia ningún emprendedor ha contestado este cuestionario.",
+        "no_answer": "Todavía ningún emprendedor ha respondido este cuestionario.",
         "no_deliveries": "Sin Entregas.",
         "obtain": "Obtenido"
       },
       "survey_user_response": {
         "answers": "Respuestas",
-        "comments": "Envia comentarios al emprendedor.",
+        "comments": "Envía comentarios al Emprendedor.",
         "delivery": "Entregas",
         "feedback": "Retroalimentación",
         "obtain": "Obtenido",
@@ -8525,16 +8528,16 @@ I18n.translations["es_meems"] = {
   "evaluate_controller": {
     "correct": "Calificación asignada correctamente.",
     "error": "Ha ocurrido un error al calificar la discusión.",
-    "no_activity": "Estas tratando de ver una actividad que no te pertenece.",
+    "no_activity": "Estás tratando de ver una actividad que no te pertenece.",
     "no_calificable": "La discusión que intentas ver no es calificable.",
-    "no_evaluate": "Estas tratando de calificar un Centros Emprendedor que no te pertenece.",
-    "no_exist": "La discusión que intentas ver no existe o ah sido borrada.",
-    "only_teachers": "Estas intentando entrar en una sección solo para Líderes multiplicadores.",
+    "no_evaluate": "Estás tratando de calificar un Centro Emprendedor que no te pertenece.",
+    "no_exist": "La discusión que intentas ver no existe o ha sido borrada.",
+    "only_teachers": "Estás intentando entrar en una sección solo para Líderes multiplicadores.",
     "send_comment": "Comentario enviado correctamente."
   },
   "evaluation_criteria": {
     "form": {
-      "eval": "¿Que criterio se evaluará?"
+      "eval": "¿Qué criterio se evaluará?"
     },
     "form_course": {
       "eval": "¿Qué se va evaluar?"
@@ -8585,7 +8588,7 @@ I18n.translations["es_meems"] = {
         "publish_date": "Día de publicación",
         "roles": "Roles: ",
         "title": "Título: ",
-        "title2": "Titulo del formulario"
+        "title2": "Título del formulario"
       },
       "google_form_modal": {
         "in_the_course": " en el curso",
@@ -8619,23 +8622,23 @@ I18n.translations["es_meems"] = {
   "home": {
     "about_us": {
       "about_title": {
-        "text1": "Cúrsame es una plataforma educativa  fundada en México a finales de 2011 por un grupo de emprendedores de diversas universidades del país con el objetivo de mejorar la calidad educativa y reducir la brecha digital a través de la tecnología. Durante este periodo hemos logrado beneficiar a más de 100 mil emprendedores, Líderes multiplicadores y directivos tanto de escuelas públicas como privadas en México, con visión de impactar en toda la región y demás países emergentes.",
+        "text1": "Cúrsame es una plataforma educativa fundada en México a finales de 2011 por un grupo de emprendedores de diversas Universidades del país con el objetivo de mejorar la calidad educativa y reducir la brecha digital a través de la tecnología. Durante este periodo hemos logrado beneficiar a más de 100 mil Emprendedores, Líderes Multiplicadores y Directivos tanto de escuelas públicas como privadas en México, con visión de impactar en toda la región y demás países emergentes.",
         "text2": "Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.",
         "title": "Acerca de Nosotros"
       },
-      "description1_mission": "Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita a los miembros redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.",
+      "description1_mission": "Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita  a la Red de Emprendedores Educativa redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.",
       "description1_objetives": "Contribuir a lograr mejores resultados en el aprendizaje de los emprendedores y en la inclusión digital de líderes multiplicadores, emprendedores y miembros de su familia en México.",
-      "description1_philosophy": "En Cúrsame partimos de la concepción de que el aprendizaje  no sólo es construido dentro y por la propia persona, sino que  tiene que ver con aspectos más sociales dentro de Redes de Emprendedores de enseñanza.",
-      "description2_mission": "Democratizar el acceso a tecnología educativa de calidad y generar un cambio en la vida diaria y profesional de emprendedores y Líderes multiplicadores al acercarlos a la tecnología y sus beneficios.",
+      "description1_philosophy": "En Cúrsame partimos de la concepción de que el aprendizaje  no sólo es construído dentro y por la propia persona, sino que  tiene que ver con aspectos más sociales dentro de Redes de Emprendedores de enseñanza.",
+      "description2_mission": "Democratizar el acceso a tecnología educativa de calidad y generar un cambio en la vida diaria y profesional de Emprendedores y Líderes Multiplicadores al acercarlos a la tecnología y sus beneficios.",
       "description2_objetives": "Promover intercambios de conocimiento  en Redes de Emprendedores de aprendizaje a través de la diversificación de canales de comunicación que facilitan el flujo de información desde el enfoque por competencias.",
       "description2_philosophy": "Para nosotros la posibilidad de interactuar con otros con un fin educativo a través de herramientas tecnológicas es una forma muy eficaz de favorecer los espacios de encuentro efectivo y positivo en el proceso de enseñanza-aprendizaje.",
       "description3_objetives": "Mejorar los tiempos efectivos de clase haciendo más eficiente la gestión  y el seguimiento de actividades educativas.",
-      "description4_objetives": "Permitir el acceso a educación de calidad y tecnología educativa a todos las instituciones educativas, sus Líderes multiplicadores y emprendedores sin importar su situación económica y social.",
+      "description4_objetives": "Permitir el acceso a educación de calidad y tecnología educativa a todos las instituciones educativas, sus Líderes Multiplicadores y Emprendedores sin importar su situación económica y social.",
       "description_vision": "Ser una plataforma líder en el ámbito educativo que  permita a la población mexicana insertarse con éxito en la sociedad de la información y el conocimiento.",
       "mission": "Misión:",
       "objectives": "Objetivos:",
       "our_team": {
-        "description": "Cúrsame está conformado por un grupo apasionado de emprendedores, tenemos como meta común generar un impacto positivo en la sociedad a través de la educación y la tecnología.",
+        "description": "Cúrsame está conformado por un grupo apasionado de Emprendedores, tenemos como meta común generar un impacto positivo en la sociedad a través de la educación y la tecnología.",
         "title": "Nuestro equipo"
       },
       "philosophy": "Filosofía:",
@@ -8649,14 +8652,14 @@ I18n.translations["es_meems"] = {
     "chat": {
       "Centros de Emprendedores": "Centros de Emprendedores",
       "add_friends": "Agrega a tus amigos en la sección de",
-      "community": "Miembros",
-      "courses": "Centros de Emprendedores",
-      "create": "Crear Centros Emprendedor ahora →",
+      "community": "Red de Emprendedores",
+      "courses": "Centros Emprendedores",
+      "create": "Crear Centro Emprendedor ahora →",
       "cursos": "Cursos",
       "friends": "Amigos",
-      "no_create": "No has creado ningún Centros Emprendedor todavia.",
+      "no_create": "No has creado ningún Centro Emprendedor todavía.",
       "no_friends": "No tienes amigos.",
-      "no_member": "No eres miembro de ningún Centros Emprendedor.",
+      "no_member": "No eres miembro de ningún Centro Emprendedor.",
       "offline_usr": "Usuario desconectado",
       "online_usr": "Usuario conectado",
       "section": "Únete a uno en la sección de"
@@ -8687,28 +8690,28 @@ I18n.translations["es_meems"] = {
         "characteristic_survey": "Algunas de sus características son:",
         "chat": "Chat",
         "comments": "Comentarios",
-        "description_chat": "Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada Centros Emprendedor tiene una sala de chat grupal para compartir contenido en tiempo real.",
-        "description_comment": "Permite a todos los miembros comentar de manera pública, grupal o personal para de esta forma interactuar social o académicamente.",
-        "description_discussion": "Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de todas los miembros en el aprendizaje.",
-        "description_homework": "Permite a los Líderes multiplicadores crear actividades académicas y a los emprendedores responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.",
+        "description_chat": "Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada Centro Emprendedor tiene una sala de chat grupal para compartir contenido en tiempo real.",
+        "description_comment": "Permite a todos los miembros de la red de emprendedores comentar de manera pública, grupal o personal para de esta forma interactuar social o académicamente.",
+        "description_discussion": "Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la red de emprendedores en el aprendizaje.",
+        "description_homework": "Permite a los Líderes Multiplicadores crear actividades académicas y a los Emprendedores responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.",
         "description_network": "Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.",
-        "description_result": "Cada usuario puede ver su avance educativo. Los Líderes multiplicadores visualizan los resultados de todos sus emprendedores de una manera muy sencilla y en tiempo real.",
-        "description_statisdic": "Los MEEMS de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.",
+        "description_result": "Cada usuario puede ver su avance educativo. Los Líderes Multiplicadores visualizan los resultados de todos sus emprendedores de una manera muy sencilla y en tiempo real.",
+        "description_statisdic": "Los Administradores de la institución tienen acceso a un panel de estadísticas que les permite conocer lo que está sucediendo dentro del plantel y con esto tomar decisiones importantes con conocimiento de causa.",
         "description_survey": "A través de los cuestionarios los Líderes multiplicadores pueden evaluar a sus emprendedores de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes.",
         "discussions": "Discusiones",
         "feature1_chat": "Chat individual con amigos y compañeros",
-        "feature1_comment": "Públicos o privados",
-        "feature1_discussion": "Públicas o privadas",
-        "feature1_homework": "Creación a uno o varios Centros de Emprendedores",
+        "feature1_comment": "Públicos o Privados",
+        "feature1_discussion": "Públicas o Privadas",
+        "feature1_homework": "Creación de uno o varios Centros Emprendedores",
         "feature1_network": "Encontrar amigos",
-        "feature1_result": "Calificaciones por Centros Emprendedor",
+        "feature1_result": "Calificaciones por Centro Emprendedor",
         "feature1_statisdic": "Uso de las herramientas de la plataforma",
-        "feature1_survey": "Creación en uno o varios Centros de Emprendedores",
-        "feature2_chat": "Salas de chat grupal por Centros Emprendedor",
-        "feature2_comment": "A uno o varios Centros de Emprendedores",
-        "feature2_discussion": "A uno o varios Centros de Emprendedores",
+        "feature1_survey": "Creación de uno o varios Centros Emprendedores",
+        "feature2_chat": "Salas de chat grupal por Centro Emprendedor",
+        "feature2_comment": "A uno o varios Centros Emprendedores",
+        "feature2_discussion": "A uno o varios Centros Emprendedores",
         "feature2_homework": "Fecha límite y hora de entrega",
-        "feature2_network": "Encontrar compañeros de clase y Líderes multiplicadores",
+        "feature2_network": "Encontrar compañeros de clase y Líderes Multiplicadores",
         "feature2_result": "Calificaciones individuales",
         "feature2_statisdic": "Ingreso al sistema",
         "feature2_survey": "Fecha y hora límite de entrega",
@@ -8724,10 +8727,10 @@ I18n.translations["es_meems"] = {
         "feature4_homework": "Contenido recomendado",
         "feature4_network": "Interacción en perfiles",
         "feature4_result": "Exportar a PDF",
-        "feature4_statisdic": "Por Centros Emprendedor",
+        "feature4_statisdic": "Por Centro Emprendedor",
         "feature4_survey": "Autoevaluación",
         "feature5_homework": "Rubros de evaluación",
-        "feature5_statisdic": "Por emprendedor",
+        "feature5_statisdic": "Por Emprendedor",
         "homeworks": "Tareas",
         "network": "Miembros",
         "results": "Calificaciones",
@@ -8741,7 +8744,7 @@ I18n.translations["es_meems"] = {
         "homeworks": "Tareas",
         "network": "Miembros",
         "results": "Calificaciones",
-        "statisdics": "Estadisticas",
+        "statisdics": "Estadísticas",
         "surveys": "Cuestionarios"
       },
       "features_title": {
@@ -8750,10 +8753,10 @@ I18n.translations["es_meems"] = {
       },
       "our_methods": {
         "description_endless": "Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.",
-        "description_implement": "Tenemos un equipo especializado que está dedicado a visitar los planteles para enseñar a los líderes multiplicadores y directivos toda la funcionalidad de la plataforma y los beneficios que esta conlleva.",
+        "description_implement": "Tenemos un equipo especializado que está dedicado a enseñar a los líderes multiplicadores y directivos toda la funcionalidad de la plataforma y los beneficios que ésta conlleva.",
         "description_support": "En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.",
-        "description_title": "Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de emprendedores, Líderes multiplicadores y directivos. Por esta razón trabajamos mano a mano con ellos para lograr los mejores resultados.",
-        "description_training": "Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los Líderes multiplicadores en la adopción de las TICs.",
+        "description_title": "Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de Emprendedores, Líderes Multiplicadores y Directivos. Por esta razón trabajamos mano a mano con ellos para lograr los mejores resultados.",
+        "description_training": "Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los Líderes Multiplicadores en la adopción de las TICs.",
         "endless": "Seguimiento",
         "implement": "Implementación",
         "support": "Soporte",
@@ -8763,7 +8766,7 @@ I18n.translations["es_meems"] = {
     },
     "help": {
       "help2": "Ayuda",
-      "videos": "Video tutoriales en linea."
+      "videos": "Video tutoriales en línea."
     },
     "jobs": {
       "job_board": {
@@ -8783,7 +8786,7 @@ I18n.translations["es_meems"] = {
         "responsabilities": "Responsabilidades:",
         "responsibility1_senior_developer": "+ Planeación y ejecución del Road Map de desarrollo de la plataforma y nuevos productos.",
         "responsibility2_senior_developer": "+ Establecer metodologías de trabajo ágiles para el equipo de desarrollo.",
-        "responsibility3_senior_developer": "+ Organización de los roles trabajo de los miembros del equipo para cubrir las áreas de necesidad.",
+        "responsibility3_senior_developer": "+ Organización de los roles de trabajo de los miembros del equipo para cubrir las áreas de necesidad.",
         "responsibility4_senior_developer": "+ Participar en la creación de código para el back end de la plataforma.",
         "vacancies": "Vacantes",
         "we_offer": "Ofrecemos:"
@@ -8804,7 +8807,7 @@ I18n.translations["es_meems"] = {
       "features_showcase": {
         "features_path": "Conoce nuestra metodología",
         "text1": "Es muy fácil y rápido aprender a utilizar Cúrsame. Gracias a su diseño y funciones fomenta la adopción por parte de los usuarios.",
-        "text2": "Nuestras Herramientas aumentan la productividad y reducen la carga de trabajo para Líderes multiplicadores, emprendedores y directivos.",
+        "text2": "Nuestras Herramientas aumentan la productividad y reducen la carga de trabajo para Líderes Multiplicadores, Emprendedores y Directivos.",
         "text3": "Cúrsame puede utilizarse desde cualquier computadora o dispositivo móvil, esto permite crear y consultar contenido a cualquier hora y lugar.",
         "title1": "Fácil de usar",
         "title2": "Funciones simples y poderosas",
@@ -8812,7 +8815,7 @@ I18n.translations["es_meems"] = {
       },
       "intro_homepage_hidden": {
         "request_demo": "¡Solicita un demo en tu plantel!",
-        "text1": "Cúrsame es una plataforma que conecta Líderes multiplicadores, emprendedores y directivos de una misma institución.",
+        "text1": "Cúrsame es una plataforma que conecta Líderes Multiplicadores, Emprendedores y Directivos de una misma institución.",
         "title1": "Interactúa social y académicamente mejorando los procesos de aprendizaje y la calidad educativa"
       },
       "social_impact": {
@@ -8822,7 +8825,7 @@ I18n.translations["es_meems"] = {
         "text1_2": "Con apoyo de nuestros aliados llevamos servidores y tabletas a las escuelas que más lo necesitan.",
         "text1_3": "A través de diversos indicadores apoyamos en la detección de: Riesgo de deserción escolar.",
         "text2_1": "Entrega contenido especializado de acuerdo a las necesidades individuales.",
-        "text2_2": "Apoyamos a los Líderes multiplicadores con capacitación y asesoría tecnológica.",
+        "text2_2": "Apoyamos a los Líderes Multiplicadores con capacitación y asesoría tecnológica.",
         "text2_3": "Consumo de sustancias.",
         "text3_1": "Aumenta la productividad y permite potenciar la enseñanza y mejorar el aprendizaje.",
         "text3_2": "La plataforma promueve el intercambio digital de contenido educativo.",
@@ -8833,7 +8836,7 @@ I18n.translations["es_meems"] = {
       },
       "testimonials": {
         "description1": "Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio.",
-        "description2": "He utilizado un sin número de LMS’s, y Cúrsame es la plataforma educativa que mejor se ha adaptado al entorno académico real. Su facilidad de uso y factor social ha provocado que nuestros líderes multiplicadores lo adopten y usen en su trabajo escolar diario beneﬁciando a miles de emprendedores.",
+        "description2": "He utilizado un sin número de LMS’s, y Cúrsame es la plataforma educativa que mejor se ha adaptado al entorno académico real. Su facilidad de uso y factor social ha provocado que nuestros Líderes Multiplicadores lo adopten y usen en su trabajo escolar diario beneﬁciando a miles de emprendedores.",
         "description3": "La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.",
         "header": "Testimoniales",
         "name1": "Lic. Francisco Fabián Brizuela",
@@ -8844,14 +8847,14 @@ I18n.translations["es_meems"] = {
         "title3": "Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior"
       },
       "user_roles_types": {
-        "description": "Pensamos y diseñamos herramientas para los líderes multiplicadores, emprendedores, directivos y padres de familia de tu red escolar.",
+        "description": "Pensamos y diseñamos herramientas para los Líderes Multiplicadores, Emprendedores, Directivos y padres de familia de tu red de emprendedores escolar.",
         "header": "Toda tu institución en un sólo lugar",
         "text1": "Toma el control de tu institución con estadísticas en tiempo real y sistemas de comunicación.",
-        "text2": "Convierte tus clases en una red de aprendizaje, ahorra tiempo y potencia tus capacidades de enseñanza de una forma social.",
-        "text3": "Interactúa con tus compañeros y Líderes multiplicadores. Resuelve tus dudas, aprende y haz tus entregas en cualquier hora y lugar.",
+        "text2": "Convierte tus clases en una red de emprendedores de aprendizaje, ahorra tiempo y potencia tus capacidades de enseñanza de una forma social.",
+        "text3": "Interactúa con tus compañeros y Líderes Multiplicadores. Resuelve tus dudas, aprende y haz tus entregas en cualquier hora y lugar.",
         "text4": "Mantente al día de las actividades y avances escolares de cada uno de tus hijos en tiempo real.",
         "title1": "Directivos",
-        "title2": "Líderes multiplicadores",
+        "title2": "Líderes Multiplicadores",
         "title3": "Emprendedores",
         "title4": "Padres"
       }
@@ -8892,12 +8895,12 @@ I18n.translations["es_meems"] = {
       "best_product": "Mejora del producto.",
       "description1_who_are_we": "Redes Sociales de Aprendizaje SAPI de CV, mejor conocido como Cúrsame",
       "description2_who_are_we": ", con domicilio en",
-      "description3_who_are_we": "calle Pomona 7, colonia Roma Norte, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06100, en la entidad de México DF, país México , y portal de internet",
+      "description3_who_are_we": "calle Versalles 94, colonia Juárez, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06600, en la entidad de México DF, país México, y portal de internet",
       "description4_who_are_we": "es el responsable del uso y protección de sus datos personales, y al respecto le informamos lo siguiente:",
       "personal_data1": "¿Para qué fines utilizaremos sus datos personales?",
-      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que&nbsp;",
+      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que;",
       "personal_data3": "no son necesarias",
-      "personal_data4": "&nbsp;para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
+      "personal_data4": ";para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
       "personal_data5": "En caso de que no desee que sus datos personales sean tratados para estos fines secundarios, desde este momento usted nos puede comunicar lo anterior a través del siguiente mecanismo",
       "personal_data6": "Para conocer mayor información sobre los términos y condiciones en que serán tratados sus datos personales, como los terceros con quienes compartimos su información personal y la forma en que podrá ejercer sus derechos ARCO, puede consultar el aviso de privacidad integral en",
       "privacy": "¿Dónde puedo consultar el aviso de privacidad integral?",
@@ -8924,16 +8927,16 @@ I18n.translations["es_meems"] = {
         "cobaem": "COBAEM",
         "description_cobaem": "Tras un piloto con 6 planteles del Colegio de Bachilleres de Estado de México, nos encontramos en etapa de expansión y serán 48 planteles en más de 40 municipios de la entidad y 50 mil usuarios los beneficiados por Cúrsame.",
         "description_emprendedores": "Proyecto en conjunto con la Subsecretaría de Educación Media Superior, Angel Ventures y Ashoka. A través de Cúrsame se imparte educación para emprendedores en 100 planteles de preparatoria de todo el país y actualmente en expansión para llegar a 1000 planteles en 2014.",
-        "description_pilot_tablets": "Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).",
+        "description_pilot_tablets": "Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en escuelas Primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).",
         "description_tecnica_df": "Trabajamos con un piloto de 6 planteles tras el cual estamos en proceso de expansión con un universo de 120 planteles  en todo el Distrito Federal.",
         "emprendedores": "Modelo de Emprendedores de Educación Media Superior",
         "pilot_tablets": "Piloto Federal educación con tabletas",
         "schools": "Planteles:",
         "students": "Emprendedores:",
-        "teachers": "Líderes multiplicadores:",
+        "teachers": "Líderes Multiplicadores:",
         "tecnica_df": "Secundarias Técnicas del DF",
         "testimonial": "Testimonio",
-        "testimonial_emprendedores": "“La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.”",
+        "testimonial_emprendedores": "“La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.”",
         "testimonial_emprendedores_name": "Lic. Katia Águila",
         "testimonial_emprendedores_title": "Asesora en Secretaría de Educación Pública - Subsecretaría de Educación Media Superior",
         "testimonial_tecnica_df": "\"Cúrsame ha sido una herramienta fundamental en el desarrollo y complemento del día a día en el salón de clases, aumenta el tiempo efectivo en el aula, además nos ayuda a montar programas de lectura y ahorro de papel, lo cual es un gran beneﬁcio.\"",
@@ -8946,14 +8949,14 @@ I18n.translations["es_meems"] = {
       }
     },
     "teacher_day": {
-      "happy": "¡Feliz día del Líder multiplicador!",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "happy": "¡Feliz día del Maestro!",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
-      "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Líder multiplicador ¡Te lo mereces!"
+      "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     },
     "terms_and_conditions": {
       "terms": "Términos y condiciones del sitio",
-      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de la edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
+      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
       "terms10f": "Tipo de indemnización.",
       "terms10x": "Cúrsame solo indemnizara al usuario en especie, no en ninguna forma monetaria, solo mediante la extensión del tiempo que haya sido contratado el servicio, según el tiempo que haya fallado el mismo.",
       "terms1f": "Requerimientos para tener acceso a los Servicios de Cúrsame.",
@@ -8986,8 +8989,8 @@ I18n.translations["es_meems"] = {
       "terms73f": "Acceso e interferencia",
       "terms73x": "Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame",
       "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
-      "terms75": "Mal uso de los Centros de Emprendedores del sistema",
-      "terms75f": "El Cliente no deberá hacer mal uso de los Centros de Emprendedores, que incluyan pero que no se limiten a, empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
+      "terms75": "Mal uso de los Centros Emprendedores del sistema",
+      "terms75f": "El Cliente no deberá hacer mal uso de los Centros Emprendedores, que incluyan pero que no se limiten a empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
       "terms76": "Otras actividades",
       "terms76f": "Ya sea lícito o ilícito, Cúrsame se reserva el derecho a determinar qué es perjudicial para sus Clientes, operaciones o reputación, incluyendo actividades que restrinjan o inhiban a algún otro usuario del uso o placer de disfrutar el Servicio o Internet.",
       "terms76x": "Por favor, sea consciente que Cúrsame se reserva el derecho de supervisar, suspender, restringir, suprimir, modificar, o terminar cualquier contenido o transmisión de la cuenta que se considere viola cualquiera de las políticas anteriormente dichas. Si se da el caso, Cúrsame formulará las denuncias pertinentes a las autoridades responsables de la aplicación de la ley, y en tal caso, Cúrsame ayudará activamente a las entidades responsables de aplicar la ley y con la investigación y el proceso de cualquier actividad, incluyendo la entrega de las cuentas de los clientes y de sus datos personales.",
@@ -8995,12 +8998,12 @@ I18n.translations["es_meems"] = {
       "terms7ax": "cargar, publicar, enviar por correo electrónico, transmitir u ofrecer de otra manera cualquier Contenido que propague mensajes de terror o describa tortura o muerte; si es un caso muy serio, se informará a la autoridad legal competente y/o se contactará al correspondiente proveedor de Internet;",
       "terms7bx": "perjudicar a menores, esto incluye cualquier forma de pornografía infantil; si es un caso muy serio, se informará del contenido a la autoridad legal competente y/o se contactará al correspondiente proveedor de Internet; se prohibe publicar cualquier tipo de pornografía.",
       "terms7cx": "cargar, publicar, enviar por correo electrónico u ofrecer de otra manera cualquier Contenido que viole la patente, marca registrada, secreto de fabricación, derecho de autor u otros derechos propietarios de cualquier parte.",
-      "terms7dx": "Envío masivo de correo no solicitado (\"Spam\"). Se prohíbe el envío de cualquier forma de Spam a través de los servidores de Cúrsame. Asimismo, también se prohíbe el uso de cualquier reCentros Emprendedor de el sitio web de Cúrsame para el envío de Spam de otro proveedor de servicio, anuncio de un sitio Web, o dirección de correo. Las cuentas o los servicios de Cúrsame no pueden ser usados para solicitar información/respuestas de los clientes, mediante mensajes enviados desde otro ISP (Proveedor de Servicios de Internet) donde esos mensajes puedan violar esta política de uso o la del otro proveedor.",
+      "terms7dx": "Envío masivo de correo no solicitado (\"Spam\"). Se prohíbe el envío de cualquier forma de Spam a través de los servidores de Cúrsame. Asimismo, también se prohíbe el uso de cualquier Centro Emprendedor del sitio web de Cúrsame para el envío de Spam de otro proveedor de servicio, anuncio de un sitio Web, o dirección de correo. Las cuentas o los servicios de Cúrsame no pueden ser usados para solicitar información/respuestas de los clientes, mediante mensajes enviados desde otro ISP (Proveedor de Servicios de Internet) donde esos mensajes puedan violar esta política de uso o la del otro proveedor.",
       "terms7ex": "El anuncio, transmisión, o cualquier otra manera de hacer accesible, o el uso de cualquier programa, producto o servicio que esté diseñado para violar los términos y las condiciones de este acuerdo o del uso aceptable de este u otro ISP, incluyendo, aunque de forma no limitada a, facilitar los medios de envío de Spam, iniciación de operaciones de ping, avalancha, bombardeo de correo, o negación de ataques al servicio;",
       "terms7fx": "Reenvío a usuarios de Internet de cualquier sitio web que, si ese sitio web contase con soporte de Cúrsame, supondría la violación de los términos de este acuerdo;",
       "terms7gx": "proveer anonimato a actividades ilegales, fraudulentas o que violen los derechos de propiedad intelectual de una tercera parte;",
-      "terms7hx": "conociendo o deliberadamente permitiendo a otros el uso de los servicios de Cúrsame: (i) para cualquier actividad ilegal, invasiva, fraudulenta, difamatoria, o con propósito fraudulento; (ii) para alterar, robar, corromper, inhabilitar, destruir, violar o penetrar en cualquier sistema de seguridad o cifrado de cualquier fichero electrónico, base de datos o red; (iii) para materialmente interferir el uso de la red de Cúrsame de otros clientes o usuarios autorizados; (iv) en violación de las políticas de uso aceptable aplicables al uso de los proveedores de servicios nucleares de Cúrsame, y considerando que usted está avisado de tales políticas o tales políticas está disponibles en lugares públicos de los sitios web de tales proveedores; o (v) de manera que, en opinión de Cúrsame, es contraria a las reglas generalmente aceptadas de etiqueta y de la buena conducta en Internet;",
-      "terms7ix": "intentar obtener acceso a otra cuenta o Centros Emprendedor de otro ordenador de propiedad ajena sin autorización del legítimo dueño (por ejemplo \"hacking\");",
+      "terms7hx": "conociendo o deliberadamente permitiendo a otros el uso de los servicios de Cúrsame: (i) para cualquier actividad ilegal, invasiva, fraudulenta, difamatoria, o con propósito fraudulento; (ii) para alterar, robar, corromper, inhabilitar, destruir, violar o penetrar en cualquier sistema de seguridad o cifrado de cualquier fichero electrónico, base de datos o red; (iii) para materialmente interferir el uso de la red de Cúrsame de otros clientes o usuarios autorizados; (iv) en violación de las políticas de uso aceptable aplicables al uso de los proveedores de servicios nucleares de Cúrsame, y considerando que usted está avisado de tales políticas o tales políticas están disponibles en lugares públicos de los sitios web de tales proveedores; o (v) de manera que, en opinión de Cúrsame, es contraria a las reglas generalmente aceptadas de etiqueta y de la buena conducta en Internet;",
+      "terms7ix": "intentar obtener acceso a otra cuenta o Centro Emprendedor de otro ordenador de propiedad ajena sin autorización del legítimo dueño (por ejemplo \"hacking\");",
       "terms7jx": "obtener o intentar servicios por otros medios o usando dispositivos con la intención de intentar no pagar;",
       "terms7kx": "participar en actividades diseñadas para molestar o que puedan suponer la negación del servicio (por ejemplo ataques sincronizados) a otros usuarios, ya sea en la red de Cúrsame o en la de cualquier otro ISP (Proveedor de Servicios de Internet);",
       "terms7lx": "interferir con el uso o disfrute de la red Cúrsame u otros servicios por parte de otros clientes o usuarios autorizados, incluyendo el uso excesivo de los servicios impidiendo el uso equitativo por parte de otros usuarios de Cúrsame.",
@@ -9010,9 +9013,9 @@ I18n.translations["es_meems"] = {
       "terms7px": "importar o poseer cualquier importación paralela de copias de obras con derechos de propiedad intelectual protegidas, tales como, películas, series de televisión o grabaciones musicales para su reproducción o visionado público, incluyendo, aunque sin limitación, locales de karaoke, restaurantes, tiendas, etc.",
       "terms7x": "Usted acuerda no utilizar los servicios de Cúrsame para",
       "terms8": "Limitación de la responsabilidad",
-      "terms8x": "Usted usa Cúrsame bajo su propia responsabilidad. Si usted no está satisfecho con cualquier aspecto de nuestro servicio o con estos términos y condiciones, o algunas otras reglas o políticas, su única solución es finalizar el uso del servicio. Usted explícitamente entiende y acepta que Cúrsame no será responsable por cualquier daño directo, daños accidentales indirectos, fortuitos, especiales, consecuentes, incluyendo pero no limitados a, los daños por la pérdida de beneficios, buena voluntad, uso, datos u otras pérdidas intangibles (incluso si le hemos advertido sobre la posibilidad de tales daños), resultando de: (a) el uso o la incapacidad para utilizar el servicio; (b) el coste de obtención mercancías o servicios alternativos resultado de cualquier mercancía, dato, información comprados o obtenidos o mensajes recibidos o transacciones realizadas en o mediante este servicio; (c) acceso desautorizado a o alteración de sus transmisiones o datos; (d) declaraciones o actuaciones de cualquier tercer parte en el servicio; o (e) cualquier otra asunto relativo al servicio.",
+      "terms8x": "Usted usa Cúrsame bajo su propia responsabilidad. Si usted no está satisfecho con cualquier aspecto de nuestro servicio o con estos términos y condiciones, o algunas otras reglas o políticas, su única solución es finalizar el uso del servicio. Usted explícitamente entiende y acepta que Cúrsame no será responsable por cualquier daño directo, daños accidentales indirectos, fortuitos, especiales, consecuentes, incluyendo pero no limitados a, los daños por la pérdida de beneficios, buena voluntad, uso, datos u otras pérdidas intangibles (incluso si le hemos advertido sobre la posibilidad de tales daños), resultando de: (a) el uso o la incapacidad para utilizar el servicio; (b) el coste de obtención mercancías o servicios alternativos resultado de cualquier mercancía, dato, información comprados u obtenidos o mensajes recibidos o transacciones realizadas en o mediante este servicio; (c) acceso desautorizado a o alteración de sus transmisiones o datos; (d) declaraciones o actuaciones de cualquier tercer parte en el servicio; o (e) cualquier otra asunto relativo al servicio.",
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
-      "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
+      "terms9x": "Cúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le de a sus contenidos en la red."
     },
     "thnx": "Gracias por usar Cúrsame.",
     "unlike": "Ya no me gusta",
@@ -9038,8 +9041,8 @@ I18n.translations["es_meems"] = {
         "title9": "Aplicaciones"
       },
       "fourth_column": {
-        "title1": "Derechos reservados © 2014 Cúrsame",
-        "title2": "Ver la página en ingles"
+        "title1": "Derechos reservados © 2015 Cúrsame",
+        "title2": "Ver la página en inglés"
       },
       "second_column": {
         "title1": "Ayuda",
@@ -9053,7 +9056,7 @@ I18n.translations["es_meems"] = {
     },
     "super_admin": {
       "activities": "Actividades",
-      "admin": "administración",
+      "admin": "Administración",
       "admin_net": "Administrar redes",
       "course_admin": "MEEMS de Centros de Emprendedores",
       "hello": "hola",
@@ -9085,7 +9088,7 @@ I18n.translations["es_meems"] = {
       "form": {
         "descrip": "Descripción: ",
         "lib_descrip": "Descripción de la biblioteca",
-        "lib_name": "Titulo de la biblioteca",
+        "lib_name": "Título de la biblioteca",
         "name": "Nombre: ",
         "send": "Enviar"
       },
@@ -9114,8 +9117,8 @@ I18n.translations["es_meems"] = {
         "descrip": "Descripción: ",
         "descrip_file": "Descripción del Archivo",
         "file": "Archivo",
-        "file_name": "Titulo del Archivo: ",
-        "file_name2": "Titulo del Archivo",
+        "file_name": "Título del Archivo: ",
+        "file_name2": "Título del Archivo",
         "send": "Enviar"
       },
       "standalone_card": {
@@ -9155,7 +9158,7 @@ I18n.translations["es_meems"] = {
         "comment": "Comentario",
         "comment_in": "Comentario en",
         "comments1": "Comentarios",
-        "confirm": "Estas seguro de borrar este comentario.",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "course": "Centro Emprendedor",
         "create_date": "Fecha de creación",
         "delete": "Borrar",
@@ -9163,7 +9166,7 @@ I18n.translations["es_meems"] = {
         "hmwrk": "Tarea",
         "like": "Me gusta",
         "no_user": "No tiene usuario",
-        "public": "Publico",
+        "public": "Público",
         "quest": "Cuestionario",
         "user": "Usuario",
         "view": "Ver"
@@ -9173,14 +9176,14 @@ I18n.translations["es_meems"] = {
         "back": "← Regresar",
         "comment": "Comentario",
         "comment_in": "Comentario en",
-        "confirm": "Estas seguro de borrar este comentario.",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "course": "Centro Emprendedor",
         "create_date": "Fecha de Creación",
         "delete": "Borrar",
         "discuss": "Discusión",
         "hmwrk": "Tarea",
         "like": "Me Gusta",
-        "public": "Publico",
+        "public": "Público",
         "quest": "Cuestionario",
         "user": "Usuario"
       }
@@ -9198,31 +9201,31 @@ I18n.translations["es_meems"] = {
       },
       "index": {
         "actions": "Acciones",
-        "courses": "Centros de Emprendedores",
-        "create": "Crear Centros Emprendedor",
+        "courses": "Centros Emprendedores",
+        "create": "Crear Centro Emprendedor",
         "delete": "Borrar",
         "edit": "Editar",
         "import_bit_courses": "Importar curso Bit",
         "inte_date": "Fecha de creación",
         "name": "Nombre",
         "students": "Emprendedores",
-        "sure": "Estas seguro de borrar este Centros Emprendedor.",
-        "teachers": "Líderes multiplicadores"
+        "sure": "¿Estás seguro de borrar este Centro Emprendedor?",
+        "teachers": "Líderes Multiplicadores"
       },
       "new": {
         "create_course": "Crear Centro Emprendedor"
       },
       "shared": {
         "form": {
-          "add": "Agrega Líderes multiplicadores al Centros Emprendedor.",
+          "add": "Agrega Líderes Multiplicadores al Centro Emprendedor.",
           "cancel": "Cancelar",
           "create": "Crear Centro Emprendedor",
           "descrip": "Descripción",
-          "enroll": "Inscribe emprendedores a tu Centros Emprendedor.",
+          "enroll": "Inscribe Emprendedores a tu Centro Emprendedor.",
           "example": "Ejemplo",
           "example2": "Matemáticas I",
-          "find": "Busca Líderes multiplicadores para administrar el Centros Emprendedor.",
-          "find2": "Busca emprendedores para unirlos automaticamente al Centros Emprendedor.",
+          "find": "Busca Líderes Multiplicadores para administrar el Centro Emprendedor.",
+          "find2": "Busca Emprendedores para unirlos automaticamente al Centro Emprendedor.",
           "init_date": "Fecha de Inicio",
           "init_date2": "Fecha inicio",
           "last_name": "Escribe un nombre o apellido.",
@@ -9232,7 +9235,7 @@ I18n.translations["es_meems"] = {
           "public": "Público",
           "save": "Guardar cambios",
           "students": "Emprendedores",
-          "teachers": "Líderes multiplicadores",
+          "teachers": "Líderes Multiplicadores",
           "write_name": "Escribe un nombre o apellido."
         },
         "managers_courses_subnav": {
@@ -9250,7 +9253,7 @@ I18n.translations["es_meems"] = {
         "quest": "Cuestionarios",
         "return": "← Regresar",
         "students": "Emprendedores",
-        "sure": "Estas seguro de borrar este Centros Emprendedor.",
+        "sure": "¿Estás seguro de borrar este Centro Emprendedor?",
         "teachers": "Líderes Multiplicadores"
       }
     },
@@ -9270,10 +9273,10 @@ I18n.translations["es_meems"] = {
         "hmwrks": "Tareas",
         "init_date": "Fecha de creación",
         "name": "Nombre",
-        "no_user": "No tiene usuario",
+        "no_user": "No tiene usuarios",
         "published": "Publicada",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta tarea.",
+        "sure": "¿Estás seguro de borrar esta tarea?",
         "unpublished": "Sin Publicar",
         "user": "Usuario",
         "view": "Ver"
@@ -9288,8 +9291,8 @@ I18n.translations["es_meems"] = {
         "published": "Publicada",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar este cuestionario.",
-        "teacher": "Líder multiplicador",
+        "sure": "¿Estás seguro de borrar este cuestionario?",
+        "teacher": "Líder Multiplicador",
         "unpublished": "Sin Publicar"
       }
     },
@@ -9305,7 +9308,7 @@ I18n.translations["es_meems"] = {
         "non_eval": "No Evaluable",
         "published": "Publicada",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta discusión.",
+        "sure": "¿Estás seguro de borrar esta discusión?",
         "type": "Tipo",
         "unpublished": "Sin Publicar",
         "view": "Ver"
@@ -9322,8 +9325,8 @@ I18n.translations["es_meems"] = {
         "published": "Publicada",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta discusión.",
-        "teacher": "Líder multiplicador",
+        "sure": "¿Estás seguro de borrar esta discusión?",
+        "teacher": "Líder Multiplicador",
         "type": "Tipo",
         "unpublished": "Sin Publicar"
       }
@@ -9335,34 +9338,34 @@ I18n.translations["es_meems"] = {
     "file": "Tipo de archivo no soportado",
     "hmwrk_delete": "Tarea borrada correctamente.",
     "import_members": {
-      "course": "Course",
-      "download": "Descargar archivo de Centros de Emprendedores",
+      "course": "Centro Emprendedor",
+      "download": "Descargar archivo de Centros Emprendedores",
       "import1": "Importar miembros",
       "import2": "Importa los miembros de los Centros de Emprendedores desde una base de datos.",
       "import3": "Importar lista de usuarios",
       "import4": "¿Importar?",
       "list": "Lista donde se puede importar.",
-      "no_file": "NO SE ENCONTRO EL ARCHIVO",
-      "text1": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros de Emprendedores.",
-      "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centros Emprendedor mientras que 1 es para especificar que solo es un miembro del Centros Emprendedor nada más.",
-      "text3": "El Email debe de ser el correo asociado al usuario."
+      "no_file": "NO SE ENCONTRÓ EL ARCHIVO",
+      "text1": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros Emprendedores.",
+      "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centro Emprendedor mientras que 1 es para especificar que es un miembro del Centro Emprendedor.",
+      "text3": "El Email debe ser el correo asociado al usuario."
     },
     "index": {
       "actual": "Actual",
       "comments": "Comentarios",
       "courses": "Centros de Emprendedores",
       "discuss": "Discusiones",
-      "exams": "Examenes",
+      "exams": "Exámenes",
       "hmwrks": "Tareas",
       "pop": "Población esperada",
-      "stat": "Estadisticas",
+      "stat": "Estadísticas",
       "usr": "Usuarios"
     },
     "mailer": {
       "example": "Ejemplo",
       "example2": "Ceremonia de clausura",
-      "masive": "Mail Masivo",
-      "masive2": "Envía un mail a todos los miembros.",
+      "masive": "Mensaje Masivo",
+      "masive2": "Envía un mensaje de correo electrónico a todos los miembros de tu Red de Emprendedores.",
       "msg": "Mensaje",
       "send": "Enviar",
       "subject": "Asunto"
@@ -9370,8 +9373,8 @@ I18n.translations["es_meems"] = {
     "menu": {
       "admin": "Administración",
       "config": "Configuración",
-      "import_cur": "Importar Centros de Emprendedores",
-      "import_std": "Importar emprendedores de Centros Emprendedor",
+      "import_cur": "Importar Centros Emprendedores",
+      "import_std": "Importar Emprendedores de Centros Emprendedores",
       "import_usr": "Importar usuarios",
       "masive": "Correo Masivo",
       "usr": "Usuarios"
@@ -9387,8 +9390,8 @@ I18n.translations["es_meems"] = {
         "delete_report": "Borrar Reporte",
         "report_content": "Contenidos Reportados",
         "report_date": "Fecha de reporte",
-        "sure": "¿Está seguro de borrar este contenido?",
-        "sure2": "¿Está seguro de borrar este reporte?, el contenido no será borrado.",
+        "sure": "¿Estás seguro de borrar este contenido?",
+        "sure2": "¿Estás seguro de borrar este reporte?, el contenido no será borrado.",
         "usr": "Usuario",
         "view": "Ver"
       }
@@ -9406,11 +9409,11 @@ I18n.translations["es_meems"] = {
         "masive": "Correo Masivo",
         "quest": "Cuestionarios",
         "report_content": "Contenido Reportado",
-        "stat": "Estadisticas",
+        "stat": "Estadísticas",
         "usr": "Usuarios"
       },
       "managers_user_header": {
-        "admin": "MEEMS",
+        "admin": "Administrador",
         "edit": "Editar perfil",
         "exit": "Salir del administrador",
         "help": "Ayuda",
@@ -9426,11 +9429,11 @@ I18n.translations["es_meems"] = {
         "end_date": "Fecha de finalización",
         "init_date": "Fecha de creación",
         "name": "Nombre",
-        "no_user": "No tiene usuario",
+        "no_user": "No tiene usuarios",
         "published": "Publicada",
         "quest": "Cuestionarios",
         "state": "Estado",
-        "sure": "Estas seguro de borrar este cuestionario.",
+        "sure": "¿Estás seguro de borrar este cuestionario?",
         "unpublished": "Sin Publicar",
         "user": "Usuario",
         "view": "Ver"
@@ -9443,8 +9446,8 @@ I18n.translations["es_meems"] = {
         "operador": "Operador",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta tarea.",
-        "teacher": "Líder multiplicador"
+        "sure": "¿Estás seguro de borrar esta tarea?",
+        "teacher": "Líder Multiplicador"
       }
     },
     "users": {
@@ -9457,8 +9460,8 @@ I18n.translations["es_meems"] = {
         "import3": "Importa los miembros desde una base de datos.",
         "import4": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.",
         "import5": "Importar archivo de usuarios",
-        "no_find": "NO SE ENCONTRO UN ARCHIVO",
-        "text1": "El role puede ser Emprendedor o Líder multiplicador.",
+        "no_find": "NO SE ENCONTRÓ UN ARCHIVO",
+        "text1": "El role puede ser Emprendedor o Líder Multiplicador.",
         "text2": "El email debe de ser el email del usuario."
       },
       "index": {
@@ -9469,7 +9472,7 @@ I18n.translations["es_meems"] = {
         "email": "Correo electrónico",
         "enroll": "Fecha de registro",
         "name": "Nombre",
-        "sure": "Estas seguro de borrar este usuario.",
+        "sure": "¿Estás seguro de borrar este usuario?",
         "type": "Tipo de usuario",
         "usr": "Usuarios",
         "view": "Ver"
@@ -9479,7 +9482,7 @@ I18n.translations["es_meems"] = {
       },
       "shared": {
         "form": {
-          "admin": "MEEMS",
+          "admin": "Administrador",
           "cancel": "Cancelar",
           "create": "Crear Usuario",
           "email": "Correo electrónico",
@@ -9489,8 +9492,8 @@ I18n.translations["es_meems"] = {
           "pwd": "Contraseña",
           "save": "Guardar cambios",
           "student": "Emprendedor",
-          "teacher": "Líder multiplicador",
-          "type": "Tipo de usuario"
+          "teacher": "Líder Multiplicador",
+          "type": "Tipo de Usuario"
         },
         "managers_users_subnav": {
           "import": "Importar",
@@ -9498,17 +9501,17 @@ I18n.translations["es_meems"] = {
         }
       },
       "show": {
-        "bio": "Biografia",
+        "bio": "Biografía",
         "delete": "Borrar",
         "deliveries": "Tareas entregadas",
         "edit": "Editar",
         "email": "Correo electrónico",
         "eval": "Participación en discusiones evaluables",
-        "info": "Si información",
-        "last": "Ultimo inicio de sesión",
-        "quest": "Cuestionarios contestados",
+        "info": "Sin información",
+        "last": "Último inicio de sesión",
+        "quest": "Cuestionarios respondidos",
         "return": "← Regresar",
-        "sure": "Estas seguro de borrar este usuario.",
+        "sure": "¿Estás seguro de borrar este usuario?",
         "type": "Tipo de usuario"
       }
     }
@@ -9524,12 +9527,12 @@ I18n.translations["es_meems"] = {
   },
   "messages": {
     "index": {
-      "no_member": "No eres parte del grupo!",
+      "no_member": "¡No eres parte del grupo!",
       "send": "Enviar Mensaje"
     }
   },
   "messages_controller": {
-    "no_send": "No puedes enviar correo a los emprendedores del Centros Emprendedor"
+    "no_send": "No puedes enviar correo a los Emprendedores del Centro Emprendedor"
   },
   "modal": {
     "delivery_modal": {
@@ -9551,7 +9554,7 @@ I18n.translations["es_meems"] = {
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
-      "text1": "Se ha encontrado que usted no es miembro de la red a al que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá loguearse."
+      "text1": "Se ha encontrado que usted no es miembro de la red a la que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá ingresar."
     },
     "awaiting_confirmation": {
       "email": "Revisa tu correo electrónico",
@@ -9595,19 +9598,19 @@ I18n.translations["es_meems"] = {
   },
   "networks_users": {
     "index": {
-      "no_members": "no hay miembros en esta red",
+      "no_members": "No hay miembros en esta red",
       "records": "Usuarios registrados en el sistema"
     },
     "new": {
       "accept": "Acepto las normas y condiciones de esta plataforma",
       "select": "Selecciona un rol",
       "sign_in": "Ingresar a la plataforma",
-      "suscribe": "suscribirme a la red"
+      "suscribe": "Suscribirme a la red"
     }
   },
   "notifier": {
     "accepted_message": {
-      "accept": "Has sido aceptado en el Centros Emprendedor",
+      "accept": "Has sido aceptado en el Centro Emprendedor",
       "button": "Si el botón superior no funciona, haz click aquí",
       "hello": "¡Hola"
     },
@@ -9615,33 +9618,33 @@ I18n.translations["es_meems"] = {
       "error": "¡Error!",
       "hello": "¡Hola",
       "results": "Te anexamos los resultados de la importación de usuarios",
-      "success": "Exito"
+      "success": "Éxito"
     },
     "masive_mailer_for_super_admin": {
       "user": "Estimados usuarios de Cúrsame"
     },
     "new_delivery_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "course_notif": "Tarea en el Centros Emprendedor",
+      "course_notif": "Tarea en el Centro Emprendedor",
       "deliver": "Entregar antes del"
     },
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "discuss": "Discusión en el Centros Emprendedor"
+      "discuss": "Discusión en el Centro Emprendedor"
     },
     "new_member_in_course": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tú Centros Emprendedor"
+      "course": "Desea formar parte de tu Centro Emprendedor"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "deliver": "Entregar antes del",
-      "hmwrk": "Tarea en el Centros Emprendedor"
+      "hmwrk": "Tarea en el Centro Emprendedor"
     },
     "send_comment_on_course": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "comment": "comentó en un comentario en el Centros Emprendedor",
-      "comment2": "comentó en el Centros Emprendedor"
+      "comment": "comentó una publicación en el Centro Emprendedor",
+      "comment2": "comentó en el Centro Emprendedor"
     },
     "send_contact_mail": {
       "contact": "Contacto Normal",
@@ -9650,12 +9653,12 @@ I18n.translations["es_meems"] = {
       "msg": "Mensaje",
       "name": "Nombre",
       "other": "Otro",
-      "pos": "Posicion",
+      "pos": "Posición",
       "school": "Escuela",
-      "tel": "Telefono"
+      "tel": "Teléfono"
     },
     "send_email": {
-      "msg": "Mensaje del MEEMS de la red",
+      "msg": "Mensaje del Administrador de la red",
       "net": "Ir a la red"
     },
     "send_email_members_in_course": {
@@ -9664,33 +9667,33 @@ I18n.translations["es_meems"] = {
     },
     "send_import_courses": {
       "error": "Error",
-      "line": "Linea",
+      "line": "Línea",
       "no_error": "No hubo errores"
     },
     "send_import_members": {
       "course": "Centro Emprendedor",
       "error": "Error",
-      "line": "Linea",
+      "line": "Línea",
       "no_error": "No hubo errores"
     },
     "send_import_users": {
       "error": "Error",
-      "line": "Linea"
+      "line": "Línea"
     },
     "user_mailer_with_password": {
-      "accept": "has sido aceptado aceptado en Cúrsame.",
+      "accept": "Has sido aceptado en Cúrsame.",
       "active": "Activado",
       "hello": "Hola",
       "net": "Ir a la red",
       "text1": "puedes cambiarla al iniciar sessión.",
-      "text2": "Si no puedes ver este mail,",
+      "text2": "Si no puedes ver este mensaje,",
       "text3": "haz click aquí.",
-      "text4": "¡Feliz día del Líder multiplicador!",
-      "text5": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text4": "¡Feliz día del Maestro!",
+      "text5": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text6": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
-      "text7": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Líder multiplicador ¡Te lo mereces!",
+      "text7": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!",
       "welcome": "Bienvenido",
-      "your_pwd": "Tu constraseña es"
+      "your_pwd": "Tu contraseña es"
     }
   },
   "number": {
@@ -9762,7 +9765,7 @@ I18n.translations["es_meems"] = {
       "delete": "Eliminar"
     },
     "edit": {
-      "edit": "Editando Encuesta"
+      "edit": "Editar Encuesta"
     },
     "index": {
       "list": "Lista de Encuestas"
@@ -9775,8 +9778,8 @@ I18n.translations["es_meems"] = {
   },
   "publications": {
     "discussion_template": {
-      "discuss": "ha inicidado una discusión",
-      "in_course": "en el Centros Emprendedor"
+      "discuss": "Ha iniciado una discusión",
+      "in_course": "en el Centro Emprendedor"
     }
   },
   "registrations": {
@@ -9784,7 +9787,7 @@ I18n.translations["es_meems"] = {
       "bios": "Biografía",
       "cancel": "Cancelar mi cuenta",
       "cancel2": "Cancelar",
-      "confirm": "¿Estas seguro de que quieres darte de baja de Cúrsame?",
+      "confirm": "¿Estás seguro de que quieres darte de baja de Cúrsame?",
       "dir": "Dirección",
       "down": "¿Quieres darte de baja?",
       "edit": "Editar Perfil",
@@ -9793,8 +9796,8 @@ I18n.translations["es_meems"] = {
       "last_name": "Apellido",
       "name": "Nombre",
       "pwd": "Escribe tu contraseña para guardar",
-      "text1": "Recuerda no colocar espacios ni simbolos como",
-      "text2": "ya que no se aceptará tu url",
+      "text1": "Recuerda no colocar espacios ni símbolos como",
+      "text2": "ya que no se aceptará tu URL",
       "update": "Actualizar perfil"
     },
     "edit_user": {
@@ -9807,35 +9810,35 @@ I18n.translations["es_meems"] = {
     "new": {
       "accept": "Acepto los",
       "confirm_pwd": "Confirmar contraseña",
-      "confirm_pwd2": "Confirmacion de contraseña",
+      "confirm_pwd2": "Confirmación de contraseña",
       "email": "Correo electrónico",
       "last_name": "Apellidos:",
       "name": "Nombre(s)",
       "pwd": "Contraseña",
       "sign_in": "Registrarme",
       "student": "Regístrate Emprendedor",
-      "teacher": "Regístrate Líder multiplicador",
+      "teacher": "Regístrate Líder Multiplicador",
       "terms": "Términos y Condiciones",
-      "text1": "Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.",
+      "text1": "Lo sentimos pero la red a la que estás intentado ingresar no permite el registro público. Pregunta a un encargado de tu escuela, él sabrá ayudarte.",
       "text2": "Ir a la página principal",
       "type": "Tipo de usuario"
     },
     "send_confirmation": {
-      "send_confirmation": "Se envio la confirmacion"
+      "send_confirmation": "Se envió la confirmación"
     }
   },
   "registrations_controller": {
-    "error": "El perfil no pudo actualizarce correctamente",
-    "update": "Se a actualizado correctamente tu perfil"
+    "error": "El perfil no pudo actualizarse correctamente",
+    "update": "Se ha actualizado correctamente tu perfil"
   },
   "reported_contents": {
-    "denounce_fail": "Algo sucedió que no se pudo guardar tu denuncia.",
+    "denounce_fail": "Algo sucedió, no se pudo guardar tu denuncia.",
     "denounce_success": "Tu denuncia ha sido realizada con éxito.",
     "shared": {
       "reported_content_modal": {
         "comment": "Escribe un comentario",
         "help_us": "Ayúdanos a entender qué sucede",
-        "reported_content": "Ya has reportado este contenido, el MEEMS de la red tomará acciones.",
+        "reported_content": "Has reportado este contenido, el Administrador de la red tomará acciones.",
         "send": "Enviar",
         "why_no_content": "¿Por qué no quieres ver este contenido?"
       }
@@ -9858,7 +9861,7 @@ I18n.translations["es_meems"] = {
       },
       "chat": {
         "more_msg": "Cargar más mensajes...",
-        "select": "Selecciona a un amigo o Centro Emprendedor para enviar mensaje."
+        "select": "Selecciona un amigo o Centro Emprendedor para enviar mensaje."
       },
       "load_more_messages": {
         "more_msg": "Cargar más mensajes..."
@@ -9912,15 +9915,15 @@ I18n.translations["es_meems"] = {
         "publications": "Publicaciones",
         "sub_profile": "Este es el perfil del Centro Emprendedor.",
         "subtitle": "En este lugar podrás ver todo lo que pasa en el Centro Emprendedor.",
-        "text_edit_course": "Aqui puedes editar el Centro Emprendedor.",
-        "welcome": "Bienvenido al perfil de Centro Emprendedor"
+        "text_edit_course": "Aquí puedes editar el Centro Emprendedor.",
+        "welcome": "Bienvenido al perfil del Centro Emprendedor"
       }
     },
     "delivery_publication_tpl": {
       "category": "rubro",
       "edit_delivery": "Editar Entrega",
       "end_delivery": "Entregar antes de",
-      "evaluates": "Se evalua",
+      "evaluates": "Se evalúa",
       "files": "Archivos",
       "final_eval": "Evaluación final",
       "no_evaluation": "A esta tarea no se le han asignado áreas de evaluación",
@@ -9934,7 +9937,7 @@ I18n.translations["es_meems"] = {
         "evaluation_periods": "Periodos de evaluación",
         "goto_section": "Únete a uno en la sección de",
         "new_course": "Crear Centro Emprendedor ahora →",
-        "no_course": "No has creado ningún Centro Emprendedor todavia.",
+        "no_course": "No has creado ningún Centro Emprendedor todavía.",
         "no_member": "No eres miembro de ningún Centro Emprendedor.",
         "public": "Público",
         "return": "Volver"
@@ -9953,9 +9956,9 @@ I18n.translations["es_meems"] = {
     },
     "network_joyride": {
       "joyride_tip_content": {
-        "courses": "Creación de Centros de Emprendedores",
-        "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.",
-        "description_courses": "Al dar click en el botón Crear (+) aparecera el formulario de creación para los Centros de Emprendedores que impartes.",
+        "courses": "Creación de Centros Emprendedores",
+        "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podrás utilizar dentro de nuestra plataforma.",
+        "description_courses": "Al dar click en el botón Crear (+) aparecerá el formulario de creación para los Centros Emprendedores que lideras.",
         "menu": "Menú de creación",
         "menu_description": "En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.",
         "text1": "Público o a tus Centros de Emprendedores",
@@ -9963,14 +9966,14 @@ I18n.translations["es_meems"] = {
         "text11": "Menú interactivo",
         "text12": "Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.",
         "text13": "Video tutoriales de ayuda",
-        "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click en el podras ver un video sobre como usar dicha función.",
-        "text2": "Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus Centros de Emprendedores.",
-        "text3": "Uno o varios Centros de Emprendedores",
-        "text4": "!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los Centros de Emprendedores! .",
+        "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click podrás ver un video sobre como usar dicha función.",
+        "text2": "Podrás elegir si tus publicaciones son para toda la red o para uno o varios de tus Centros Emprendedores.",
+        "text3": "Uno o varios Centros Emprendedores",
+        "text4": "¡Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o a todos los Centros Emprendedores! .",
         "text5": "Muro principal",
-        "text6": "En el muro principal aparecerán todas las publicaciones de tus Centros de Emprendedores y amigos.",
-        "text7": "Filtrado de publiciones",
-        "text8": "Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
+        "text6": "En el muro principal aparecerán todas las publicaciones de tus Centros Emprendedores y amigos.",
+        "text7": "Filtrado de publicaciones",
+        "text8": "Con el menú de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
         "text9": "Amigos",
         "welcome": "Bienvenido a Cúrsame"
       }
@@ -9983,8 +9986,8 @@ I18n.translations["es_meems"] = {
         "add_to_course": "ha solicitado entrar al Centro Emprendedor",
         "comment_course": "comentó en el Centro Emprendedor",
         "comment_net": "comentó en la red",
-        "comment_profile": "ha comentado en tu perfil.",
-        "comment_to_comment": "ha comentado en un comentario que hiciste.",
+        "comment_profile": "ha comentado en tu Perfil.",
+        "comment_to_comment": "ha comentado tu Publicación.",
         "comment_to_homework": "ha comentado en la tarea",
         "course_calif": "Se ha calificado el Centro Emprendedor",
         "course_expired": "ha llegado a su fecha final. Por favor desactívalo.",
@@ -10004,12 +10007,12 @@ I18n.translations["es_meems"] = {
         "new_homework": "Nueva tarea",
         "new_question": "Nuevo cuestionario",
         "one_usr": "Un usuario",
-        "quest_feedback": "Has recibido retroalimentación en el cuestionario",
+        "quest_feedback": "Has recibido retroalimentación en el Cuestionario",
         "quest_response": "ha respondido el cuestionario",
         "response_homework": "ha respondido la tarea",
         "text15": "El Centro Emprendedor",
         "text16": "ha sido",
-        "text17": "Han calificado tu participacion en la discusión",
+        "text17": "Han calificado tu participacion en la Discusión",
         "the_course": "El Centro Emprendedor",
         "view_usr": "Ver usuario"
       }
@@ -10026,7 +10029,7 @@ I18n.translations["es_meems"] = {
       "comment1": "Comentar",
       "delte": "Borrar",
       "last_comments": "Ver comentarios anteriores",
-      "like": "me gusta",
+      "like": "Me gusta",
       "write_comment": "Escribe un comentario"
     },
     "post_menu": {
@@ -10072,7 +10075,7 @@ I18n.translations["es_meems"] = {
     "publications": {
       "comment": {
         "course_comment": "comentó en el Centro Emprendedor",
-        "profile_comment": "comentó en el perfil de",
+        "profile_comment": "comentó en tu Perfil",
         "usr": "Usuario"
       },
       "course": {
@@ -10087,7 +10090,7 @@ I18n.translations["es_meems"] = {
       "discussion": {
         "in_course": "en el Centro Emprendedor",
         "new": "Nueva discusión",
-        "open_discuss": "Abrir discusion"
+        "open_discuss": "Abrir Discusión"
       },
       "meta_data": {
         "ago": "Hace",
@@ -10096,7 +10099,7 @@ I18n.translations["es_meems"] = {
         "like": "Me gusta"
       },
       "owner_edit_publications": {
-        "confirm": "¿Estas seguro de borrar esto?",
+        "confirm": "¿Estás seguro de borrar esto?",
         "delete": "Borrar",
         "edit": "Editar"
       },
@@ -10129,7 +10132,7 @@ I18n.translations["es_meems"] = {
         "sign_in": "Registrarme →"
       },
       "network_not_exist": {
-        "no_net_exists": "Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.",
+        "no_net_exists": "Parece que la red a la que quieres ingresar no existe. Pregunta a un encargado de tu escuela, él sabrá ayudarte.",
         "no_network": "No ingresaste el subdominio de la red a la que quieres acceder.",
         "ops": "¡Oops!",
         "search_school": "Busca tu escuela aquí →"
@@ -10177,7 +10180,7 @@ I18n.translations["es_meems"] = {
     },
     "static_pages": {
       "header": {
-        "notif": "Oops! al parecer tu correo no pertenece a niguna red.",
+        "notif": "¡Oops! al parecer tu correo electrónico no pertenece a niguna red.",
         "search_network": "Busca tu red",
         "text1": "¿Ya eres usuario?",
         "text2": "Encuentra tu red",
@@ -10200,8 +10203,8 @@ I18n.translations["es_meems"] = {
         "text5": "mejorar nuestro servicio, Revisa nuestro",
         "thnx": "Gracias.",
         "title": "Ayúdanos a mejorar",
-        "title2": "Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.",
-        "title3": "Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente."
+        "title2": "Para Cúrsame es muy importante tu participación, a continuación presentamos algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.",
+        "title3": "Para Cúrsame es muy importante tu participación, a continuación presentamos algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se utilizarán con el fin de mejorar continuamente."
       },
       "video_tour_first_time": {
         "loading_tour": "Cargando tour...",
@@ -10224,20 +10227,20 @@ I18n.translations["es_meems"] = {
     },
     "user_joyride": {
       "content": "Creación de contenido",
-      "content_area": "Esta es el area de creación de contenido.",
-      "courses": "Centros de Emprendedores",
-      "courses_area": "Esta es el area de tus Centros de Emprendedores.",
-      "edit_prof": "Editar perfil",
+      "content_area": "Esta es el área de Creación de Contenido.",
+      "courses": "Centros Emprendedores",
+      "courses_area": "Esta es el área de tus Centros Emprendedores.",
+      "edit_prof": "Editar Perfil",
       "friends": "Amigos",
-      "friends_list": "Aqui encontraras un listado de tus amigos",
+      "friends_list": "Aquí encontrarás un listado de tus Amigos",
       "notif": "Notificaciones",
       "prof": "Perfil",
-      "prof_photo": "Aqui ver la foto de tu perfil.",
+      "prof_photo": "Aquí puedes ver la foto de tu Perfil.",
       "publ": "Publiciones",
-      "publ_area": "Aqui encontraras todas las publicaciones de la red.",
-      "text_edit_prof": "Aqui puedes editar tu perfil.",
-      "text_notif": "Esta es el area de notificaciones.",
-      "text_prof": "En este lugar podrás ver todo lo que pasa en tu red cursame.",
+      "publ_area": "Aquí encontrarás todas las publicaciones de la red.",
+      "text_edit_prof": "Aquí puedes editar tu Perfil.",
+      "text_notif": "Esta es el área de Notificaciones.",
+      "text_prof": "En este lugar podrás ver todo lo que pasa en tu red Cúrsame.",
       "welcome_prof": "Bienvenido a tu perfil"
     },
     "wall_filters": {
@@ -10263,23 +10266,23 @@ I18n.translations["es_meems"] = {
     "activities": {
       "activities": "Las actividades del sistema están geo localizadas",
       "activity": "Actividad por",
-      "avg": "Promedio de calificación por tareas",
-      "avg2": "Promedio de calificación por survey",
-      "avg3": "Promedio de calificación por usuario",
+      "avg": "Promedio de calificación por Tareas",
+      "avg2": "Promedio de calificación por Survey",
+      "avg3": "Promedio de calificación por Usuario",
       "avg4": "Promedio",
       "comments": "Comentarios",
       "courses": "Centros de Emprendedores",
       "exam": "Exámenes",
-      "exam_delivery": "Entregas de examenes",
-      "find": "Buscar Actividades por usuario o titulo",
+      "exam_delivery": "Entregas de Exámenes",
+      "find": "Buscar Actividades por Usuario o Título",
       "goto": "Ir a la actividad",
       "hmwrks": "Tareas",
       "hmwrks_delivery": "Entregas de tareas",
       "lat": "Latitud",
       "long": "Longitud",
       "net": "Red",
-      "no_act": "sin actividades",
-      "os": "Sistema operativo",
+      "no_act": "sin Actividades",
+      "os": "Sistema Operativo",
       "place": "Lugar",
       "sys": "Actividades del sistema",
       "title": "Título",
@@ -10289,28 +10292,28 @@ I18n.translations["es_meems"] = {
     "courses_sintetic_view_and_edit": {
       "courses": "Visor de Centros de Emprendedores",
       "hmwrks": "Tareas",
-      "hmwrks_delivery": "Entregas de tarea",
+      "hmwrks_delivery": "Entregas de Tarea",
       "quest": "Cuestionarios",
-      "show": "Muestra los Centros de Emprendedores de las redes, sus miembros y sus actividades",
-      "show2": "Mostrar tareas",
-      "show3": "Mostrar cuestionarios",
-      "show4": "Mostrar estadísticas del Centros Emprendedor",
+      "show": "Muestra los Centros Emprendedores de las Redes, sus Miembros y sus Actividades",
+      "show2": "Mostrar Tareas",
+      "show3": "Mostrar Cuestionarios",
+      "show4": "Mostrar estadísticas del Centro Emprendedor",
       "show5": "Ver entregas",
       "stat": "Estadísticas"
     },
     "create_super_admin": {
       "enroll": "Registrar usuario",
-      "img": "Puedes ver las instrucciones de creación de super admin accediendo al código qr",
-      "superuser": "Super MEEMS Cúrsame"
+      "img": "Puedes ver las instrucciones de creación de Súper Administrador accediendo al código qr",
+      "superuser": "Súper Administrador Cúrsame"
     },
     "instructions": {
-      "create": "Instrucciones para creación de súper MEEMS",
-      "link": "Crea coloca tu nombre, apellido, email y contraseña, da click en continuar y listo"
+      "create": "Instrucciones para creación de Súper Administradores",
+      "link": "Crear coloca tu nombre, apellido, email y contraseña, da click en continuar y listo"
     },
     "networks": {
-      "admin": "Administrar networks",
+      "admin": "Administrar Networks",
       "create": "Crear Red",
-      "create_net": "Creando networks",
+      "create_net": "Creando Networks",
       "edit": "Editar",
       "net": "Red",
       "subdomain": "Subdominio"
@@ -10318,24 +10321,24 @@ I18n.translations["es_meems"] = {
     "statics": {
       "activities": "Actividades",
       "events": "Eventos",
-      "exam": "Examenes",
-      "exam_delivery": "Entrega de examenes",
+      "exam": "Exámenes",
+      "exam_delivery": "Entrega de Exámenes",
       "hmwrks": "Tareas",
-      "hmwrks_delivery": "Entrega de tareas",
-      "statics1": "Estadísticas del sistema"
+      "hmwrks_delivery": "Entrega de Tareas",
+      "statics1": "Estadísticas del Sistema"
     },
     "users": {
-      "activities": "Manejador de actividades",
+      "activities": "Manejador de Actividades",
       "discuss": "Discusiones",
-      "edit1": "Editar usuario",
-      "exam": "Examenes",
+      "edit1": "Editar Usuario",
+      "exam": "Exámenes",
       "find_usr": "Buscar Usuario",
       "hmwrks": "Tareas",
-      "response": "Respuestas de tareas",
-      "response2": "Respuestas de examen",
+      "response": "Respuestas de Áreas",
+      "response2": "Respuestas de Examen",
       "show1": "Mostrar actividades",
       "statics": "Estadísticas",
-      "usr": "Manejador de datos de usuario"
+      "usr": "Manejador de datos de Usuario"
     }
   },
   "support": {
@@ -10348,7 +10351,7 @@ I18n.translations["es_meems"] = {
   "surveys": {
     "ajax": {
       "surveys_paginate_ajax": {
-        "no_more_quest": "No se encontraron más cuestionarios pasados."
+        "no_more_quest": "No se encontraron más Cuestionarios pasados."
       }
     },
     "answer_fields": {
@@ -10369,38 +10372,39 @@ I18n.translations["es_meems"] = {
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
-      "publish_date": "Día de pubicación",
+      "publish_date": "Día de Publicación",
       "quest": "Preguntas",
       "save": "Guardar Cuestionario",
-      "support": "Material de soporte",
+      "support": "Material de Soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuesitonario",
-      "title": "Titulo del cuestionario"
+      "timer": "Tiempo para resolución del Cuesitonario",
+      "title": "Título del Cuestionario"
     },
     "index": {
       "more_days": "Cuestionarios para responder en 3 días o más",
-      "no_quest": "No tienes cuestionarios pendientes por contestar.",
-      "section": "sección de cuestionarios Pasados",
-      "see": "Puedes ver antiguos cuestionarios en la",
+      "no_quest": "No tienes Cuestionarios pendientes por responder.",
+      "section": "sección de Cuestionarios Pasados",
+      "see": "Puedes ver antiguos Cuestionarios en la",
       "today": "Cuestionarios para responder Hoy",
       "tomorrow": "Cuestionarios para responder Mañana"
     },
     "lapsed": {
-      "no_quest": "No se encontraron más cuestionarios pasados."
+      "no_quest": "No se encontraron más Cuestionarios pasados."
     },
     "my_surveys": {
-      "no_quest": "No tienes cuestionarios por contestar."
+      "no_quest": "No tienes Cuestionarios por responderr."
     },
     "question_fields": {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
-    "select_course": "Selecciona un Centro Emprendedor para publicar tu cuestionario.",
+    "select_course": "Selecciona un Centro Emprendedor para publicar tu Cuestionario.",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
         "no_limit_time": "Sin límite de tiempo",
-        "notice_helper": "Este cuestionario te dará",
+        "notice_helper": "Este Cuestionario te dará",
         "notice_helper2": "minutos para responderlo",
         "quest": "Ver Cuestionario",
         "solve_time": "Minutos"
@@ -10409,11 +10413,11 @@ I18n.translations["es_meems"] = {
         "calif": "Calificación Obtenida",
         "fail_attemps": "No tienes más intentos",
         "feedback": "Retroalimentación",
-        "quest": "Cuestionario en el Centros Emprendedor",
+        "quest": "Cuestionario en el Centro Emprendedor",
         "response": "Responder antes del"
       },
       "survey_questions_modal": {
-        "quest": "Enviar cuestionario"
+        "quest": "Enviar Cuestionario"
       },
       "surveys_course_header": {
         "past": "Pasados",
@@ -10422,7 +10426,7 @@ I18n.translations["es_meems"] = {
       },
       "surveys_courses_filter": {
         "filter": "Filtrar",
-        "select": "Selecciona un Centros Emprendedor"
+        "select": "Selecciona un Centro Emprendedor"
       },
       "surveys_header": {
         "past": "Pasados",
@@ -10439,22 +10443,22 @@ I18n.translations["es_meems"] = {
     },
     "surveys_course": {
       "more_days": "Cuestionarios para responder en 3 días o más",
-      "no_quest": "No tienes cuestionarios pendientes por contestar en este Centros Emprendedor.",
+      "no_quest": "No tienes Cuestionarios pendientes por responder en este Centro Emprendedor.",
       "past": "sección de cuestionarios Pasados",
-      "see": "Puedes ver antiguos cuestionarios en la",
+      "see": "Puedes ver antiguos Cuestionarios en la",
       "to_day": "Cuestionarios para responder Hoy",
       "tomorrow": "Cuestionarios para responder Mañana"
     },
     "surveys_course_lapsed": {
-      "quest": "No se encontraron más cuestionarios pasados."
+      "quest": "No se encontraron más Cuestionarios pasados."
     }
   },
   "surveys_controller": {
-    "no_accept": "Estas tratando de ver Cuestionarios de un Centros Emprendedor donde no has sido aceptado.",
+    "no_accept": "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no has sido aceptado.",
     "no_exist": "El cuestionario que intentas ver no existe o ha sido borrado.",
-    "no_quest_accept": "Estas tratando de ver Cuestionarios de un Centros Emprendedor donde no has sido aceptado.",
-    "no_quest_register": "Estas tratando de ver Cuestionarios de un Centros Emprendedor donde no estas inscrito.",
-    "no_register": "Estas tratando de ver Cuestionarios de un Centros Emprendedor donde no estas inscrito."
+    "no_quest_accept": "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no has sido aceptado.",
+    "no_quest_register": "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no estás inscrito.",
+    "no_register": "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no estás inscrito."
   },
   "time": {
     "am": "am",
@@ -10468,56 +10472,56 @@ I18n.translations["es_meems"] = {
   "users": {
     "califications": {
       "deliveries_table": {
-        "avg": "Calificación promedio en tareas",
+        "avg": "Calificación promedio en Tareas",
         "hmwrk": "Tareas",
         "hmwrks": "Tarea",
         "no_deliver": "No entregada",
-        "no_hmwrks": "Aún no hay tareas en este Centros Emprendedor.",
+        "no_hmwrks": "Aún no hay Tareas en este Centro Emprendedor.",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
       "discussions_table": {
-        "avg_score": "Calificación promedio en discusiones",
+        "avg_score": "Calificación promedio en Discusiones",
         "discuss": "Discusiones",
         "discuss2": "Discusión",
-        "no_discuss": "Aún no hay discusiones evaluables en este Centros Emprendedor.",
+        "no_discuss": "Aún no hay Discusiones evaluables en este Centro Emprendedor.",
         "no_part": "Sin participación",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
-      "enroll": "Necesitas estar inscrito en al menos un Centros Emprendedor para tener calificaciones.",
-      "no_score": "Aún no tienes calificaciones.",
+      "enroll": "Necesitas estar inscrito en al menos un Centro Emprendedor para tener Calificaciones.",
+      "no_score": "Aún no tienes Calificaciones.",
       "ratings": "Calificaciones",
       "surveys_table": {
         "avg": "Porcentaje: %{number}%",
         "exam": "Examen",
         "no_answered": "No resuelto",
         "quest": "Cuestionarios",
-        "quest2": "Calificación promedio en cuestionarios",
-        "quest3": "Aún no hay cuestionarios en este Centros Emprendedor.",
+        "quest2": "Calificación promedio en Cuestionarios",
+        "quest3": "Aún no hay Cuestionarios en este Centro Emprendedor.",
         "score": "Calificación"
       }
     },
     "courses": {
-      "courses2": "Centros de Emprendedores",
-      "find": "Busca Centros de Emprendedores en la sección de",
+      "courses2": "Centros Emprendedores",
+      "find": "Busca Centros Emprendedores en la sección de",
       "no_members": "Este usuario no esta inscrito en ningún Centro Emprendedor.",
       "no_registered": "Aún no estas inscrito en ningún Centro Emprendedor."
     },
     "dashboard": {
-      "goto": "Ir al super MEEMS",
+      "goto": "Ir al Súper Administrador",
       "log_out": "Salir de mi sesión",
       "select": "Seleccionador de redes",
-      "text1": "Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema"
+      "text1": "Cuando usted seleccione la Redk deberá iniciar sesión en la Red a la que se le dirija ya que es una célula independiente del sistema"
     },
     "evaluation": {
-      "no_members": "Este Centro Emprendedor no tiene miembros",
-      "score": "Calificacion"
+      "no_members": "Este Centro Emprendedor no tiene usuarios",
+      "score": "Calificación"
     },
     "form_course": {
-      "cancel": "Cancel",
+      "cancel": "Cancelar",
       "create": "Crear nuevo",
       "create2": "Crear",
       "descrip": "Descripción",
@@ -10548,29 +10552,29 @@ I18n.translations["es_meems"] = {
       "all": "Todos los usuarios"
     },
     "info": {
-      "bio": "Biografia",
-      "email": "Correo Electronico",
+      "bio": "Biografía",
+      "email": "Correo Electrónico",
       "info2": "Información",
-      "no_bio": "Este usuario no cuenta con biografia."
+      "no_bio": "Este usuario no cuenta con biografía."
     },
     "menu_member": {
-      "enroll": "inscribirse a una red",
-      "friends": "mis amigos",
-      "net": "mis redes"
+      "enroll": "Inscribirse a una red",
+      "friends": "Mis amigos",
+      "net": "Mis redes"
     },
     "pendding_friends": {
       "no_request": "No hay solicitudes de amistad pendientes."
     },
     "set_password_form": {
-      "pwd": "Ingresa una contraseña.",
-      "save": "Guardar contraseña",
-      "set_pwd": "Establece tu contraseña",
-      "welcome": "Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro."
+      "pwd": "Ingresa una Contraseña.",
+      "save": "Guardar Contraseña",
+      "set_pwd": "Establece tu Contraseña",
+      "welcome": "Bienvenido a Cúrsame, es necesario que establezcas una Contraseña para terminar con el proceso de registro."
     },
     "shared": {
       "user_card": {
         "add_friends": "Agregar a mis amigos",
-        "admin": "MEEMS",
+        "admin": "Administrador",
         "cancel": "Cancelar solicitud de amistad",
         "confirm": "Confirmar solicitud de amistad",
         "delete": "Eliminar de mis amigos",
@@ -10579,13 +10583,13 @@ I18n.translations["es_meems"] = {
         "respond": "Responder solicitud de amistad",
         "send_request": "Solicitud enviada",
         "student": "Emprendedor",
-        "teacher": "Líder multiplicador"
+        "teacher": "Líder Multiplicador"
       },
       "user_profile_header": {
-        "accept": "Aceptar solicitud de amistad",
+        "accept": "Aceptar Solicitud de Amistad",
         "add_friends": "Añadir a mis amigos",
-        "cancel": "Cancelar solictud de amistad",
-        "courses": "Centros de Emprendedores",
+        "cancel": "Cancelar Solictud de amistad",
+        "courses": "Centros Emprendedores",
         "edit": "Editar Perfil",
         "friends": "Amigos",
         "ignore": "Ignorar",
@@ -10606,21 +10610,21 @@ I18n.translations["es_meems"] = {
     },
     "waiting_friends": {
       "friends": "Amigos en espera",
-      "request": "Este usuario te ha solicitado amistad",
+      "request": "Este usuario te ha enviado una solicitud de amistad",
       "waiting_friends": "Esperando aceptación de"
     }
   },
   "users_controller": {
-    "canot_delete": "No puedes borrar este usuario.",
-    "correct_delete": "Usuario fue borrado correctamente",
-    "deleted_usr": "El Usuario ya fue borrado",
-    "no_exist": "El usuario que intentas ver no existe o ha sido borrado.",
-    "no_register": "no estas inscrito en ninguna red",
+    "canot_delete": "No puedes eliminar este Usuario.",
+    "correct_delete": "Usuario fue eliminado correctamente",
+    "deleted_usr": "El Usuario fue eliminado",
+    "no_exist": "El usuario que intentas ver no existe o ha sido eliminado.",
+    "no_register": "No estás inscrito en ninguna red",
     "save_pwd": "Se ha guardado tu contraseña correctamente."
   },
   "users_mailer": {
     "notice_to_user": {
-      "activity": "tiene 5 nuevas actividades en la plataforma.",
+      "activity": "Tiene 5 nuevas actividades en la plataforma.",
       "activitys": "Tiene 5 nuevas actividades en la plataforma.",
       "goto": "Ir a actividades",
       "hello": "Hola",
@@ -10629,19 +10633,19 @@ I18n.translations["es_meems"] = {
     },
     "teachers_day": {
       "click": "haz click aquí.",
-      "happy": "¡Feliz día del Líder multiplicador!",
+      "happy": "¡Feliz día del Maestro!",
       "hello": "Hola",
-      "mail": "Si no puedes ver este mail",
-      "teacher": "Líder multiplicador(a)",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "mail": "Si no puedes ver este mensaje",
+      "teacher": "Líder Multiplicador(a)",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
-      "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Líder multiplicador ¡Te lo mereces!"
+      "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     }
   },
   "usessions": {
     "new": {
       "confirm": "Esperando confirmación",
-      "email": "Correo electrónico",
+      "email": "Correo Electrónico",
       "init_session": "Iniciar sesión",
       "pwd": "Contraseña",
       "remember": "Recordarme",
@@ -10651,7 +10655,7 @@ I18n.translations["es_meems"] = {
   "usessions_controller": {
     "hello": "Hola ",
     "invalid": "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos.",
-    "welcome": " bienvenido de nuevo."
+    "welcome": " Bienvenido de nuevo."
   },
   "views": {
     "pagination": {
@@ -10890,11 +10894,11 @@ I18n.translations["devise"] = {
     },
     "masive_mailer": {
       "forward": "Reenviar el mensaje a la siguiente cantidad de usuarios con la clave de mensaje",
-      "mail": "Se activará el formulario de reenvio cuando la cuenta de mailers masivos se mayor a 0",
+      "mail": "Se activará el formulario de reenvío cuando la cuenta de mailers masivos sea mayor a 0",
       "massive_email": "Enviar mensajes masivos a los siguientes usuarios",
       "send_msg": "Enviar mensajes",
       "text1": "title",
-      "text2": "titulo",
+      "text2": "título",
       "text3": "message",
       "text4": "number of users when yo want send",
       "text5": "number",
@@ -10907,7 +10911,7 @@ I18n.translations["devise"] = {
     }
   },
   "ajax_controller": {
-    "error1": "Ocurrió un error, porfavor inténtalo de nuevo."
+    "error1": "Ocurrió un error, por favor inténtalo de nuevo."
   },
   "assets": {
     "asset_file": {
@@ -10975,11 +10979,11 @@ I18n.translations["devise"] = {
       "friday": "Viernes",
       "monday": "Lunes",
       "next_month": "Mes siguiente →",
-      "saturday": "Sabado",
+      "saturday": "Sábado",
       "sunday": "Domingo",
       "thursday": "Jueves",
       "tuesday": "Martes",
-      "wednesday": "Miercoles"
+      "wednesday": "Miércoles"
     },
     "three_days": "en 3 días",
     "today": "hoy",
@@ -10993,7 +10997,7 @@ I18n.translations["devise"] = {
       "criterion": "Criterio",
       "final_score": "Calificación final",
       "no_members": "Este curso no tiene miembros",
-      "no_printable_score": "Tu profesor todavia no te ha dado calificación final.",
+      "no_printable_score": "Tu profesor todavía no te ha dado calificación final.",
       "no_score": "Aún no tienes calificación final.",
       "percent": "Porcentaje:",
       "score": "Calificación Obtenida"
@@ -11026,7 +11030,7 @@ I18n.translations["devise"] = {
     "no_exist": "El comentario que intentas ver no existe o ha sido borrado.",
     "shared": {
       "comment_admin_actions": {
-        "confirm": "¿Estas seguro de borrar este comentario?",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "delete": "Borrar"
       },
       "comment_card": {
@@ -11045,10 +11049,10 @@ I18n.translations["devise"] = {
     },
     "all": {
       "no_records": "No hay más usuarios por mostrar...",
-      "no_usr": "No se encontraron usarios en tu red."
+      "no_usr": "No se encontraron usuarios en tu red."
     },
     "search": {
-      "no_usr": "No se encontraron usarios en tu red.",
+      "no_usr": "No se encontraron usuarios en tu red.",
       "search": "Búsqueda:"
     },
     "shared": {
@@ -11086,7 +11090,7 @@ I18n.translations["devise"] = {
   },
   "course_files": {
     "library_item": {
-      "confirm": "¿Estas seguro de querer eliminar este archivo?",
+      "confirm": "¿Estás seguro de querer eliminar este archivo?",
       "delete": "Borrar"
     }
   },
@@ -11137,7 +11141,7 @@ I18n.translations["devise"] = {
         "no_members": "No hay miembros en el curso.",
         "no_score": "Sin calificar",
         "score": "Calificación:",
-        "send_scores": "Envia la calificación final a los estudiantes del grupo."
+        "send_scores": "Envía la calificación final a los estudiantes del grupo."
       },
       "user_closure_overview": {
         "calif": "Calificación:",
@@ -11153,9 +11157,9 @@ I18n.translations["devise"] = {
         "percent": "Porcentaje:",
         "quest": "Cuestionarios",
         "rate_student": "Calificar alumno",
-        "respond": "Contesto",
+        "respond": "Contestar",
         "score": "Calificación Obtenida",
-        "send": "Entrego"
+        "send": "Entrega"
       }
     },
     "correct_active": "Se ha activado correctamente el curso",
@@ -11180,11 +11184,11 @@ I18n.translations["devise"] = {
     },
     "edit_delivery_access": {
       "courses": "Cursos",
-      "delivery_day": "Ultimo día de entrega",
+      "delivery_day": "Último día de entrega",
       "descrip": "Descripción",
-      "hmwrk_title": "Titulo de la tarea",
+      "hmwrk_title": "Título de la tarea",
       "publish": "Publicar",
-      "publish_date": "Día de pubicación"
+      "publish_date": "Día de publicación"
     },
     "evaluation": {
       "calif": "Calificación",
@@ -11196,13 +11200,13 @@ I18n.translations["devise"] = {
       "hmwrk": "Tarea",
       "items": "Rubros",
       "no_deliver": "Sin entregar",
-      "no_group": "No eres parte del grupo!",
-      "no_member": "No has sido aceptado en el grupo!",
+      "no_group": "¡No eres parte del grupo!",
+      "no_member": "¡No has sido aceptado en el grupo!",
       "obtained": "Obtenido",
       "pdf": "Descargar (PDF)",
       "percent_obtain": "% obtenido",
       "percent_obtain1": "% Obtenido",
-      "score": "Calificacion",
+      "score": "Calificación",
       "student": "Alumno:",
       "total_score": "Calificación Total",
       "unresolved": "Sin resolver"
@@ -11215,11 +11219,11 @@ I18n.translations["devise"] = {
       "exam": "Examen",
       "final": "Final",
       "hmwrk": "Tarea",
-      "no_accept": "No has sido aceptado en el grupo!",
-      "no_part": "No eres parte del grupo!",
+      "no_accept": "No has sido aceptado en el curso!",
+      "no_part": "¡No eres parte del cursoo!",
       "not_resolved": "Sin resolver",
       "obtain_percent": "Obtenido",
-      "obtain_percent2": "obtenido",
+      "obtain_percent2": "Obtenido",
       "ruber": "Rubros",
       "student": "Alumno",
       "total_score": "Calificación Total",
@@ -11242,13 +11246,13 @@ I18n.translations["devise"] = {
     },
     "form": {
       "add_students": "Inscribe estudiantes a tu curso.",
-      "confirm": "¿Esta seguro que desea eliminar este curso?",
+      "confirm": "¿Estás seguro de eliminar este curso?",
       "create": "Crear",
       "delete": "Eliminar curso permanente.",
       "descrip": "Descripción del",
       "descrip2": "Descripción",
       "example": "Ejemplo: Matemáticas I",
-      "find_students": "Busca estudiantes para unirlos automaticamente al curso.",
+      "find_students": "Busca estudiantes para unirlos automáticamente al curso.",
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del",
@@ -11314,12 +11318,12 @@ I18n.translations["devise"] = {
       "percent": "Por favor selecciona un porcentaje de 1 a 100 para calificar esta tarea",
       "score": "Calificación",
       "student": "Alumno",
-      "title": "Titulo de entrega"
+      "title": "Título de entrega"
     },
     "members": {
       "mem": "Miembros",
       "no_members": "Curso sin miembros.",
-      "no_records": "Este curso todavia no tiene miembros en el."
+      "no_records": "Este curso todavía no tiene miembros en él."
     },
     "members_in_courses": {
       "course_view_call": {
@@ -11353,8 +11357,8 @@ I18n.translations["devise"] = {
     },
     "search": {
       "courses_search_results": {
-        "no_records": "No se encontraron cursos con el criterio de busqueda.",
-        "search": "Busqueda:"
+        "no_records": "No se encontraron cursos con el criterio de búsqueda.",
+        "search": "Búsqueda:"
       }
     },
     "shared": {
@@ -11366,7 +11370,7 @@ I18n.translations["devise"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Esta seguro de querer abandonar este curso?",
+        "confirm": "¿Estás seguro de abandonar este curso?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
@@ -11380,7 +11384,7 @@ I18n.translations["devise"] = {
         "new_course": "Nuevo curso público"
       },
       "course_evaluation_schema_fields": {
-        "criterium": "¿Que criterio se evaluará?",
+        "criterium": "¿Qué criterio se evaluará?",
         "discuss": "Discusiones",
         "hmwrks": "Tareas",
         "percent": "Porcentaje asignado",
@@ -11432,7 +11436,7 @@ I18n.translations["devise"] = {
       "total": "totales"
     },
     "survey_results": {
-      "back": "Atras",
+      "back": "Atrás",
       "respose": "Respuesta",
       "result": "Resultado obtenido",
       "student": "Alumno"
@@ -11442,19 +11446,19 @@ I18n.translations["devise"] = {
     }
   },
   "courses_controller": {
-    "active": "se activo correctamente.",
+    "active": "Se activó correctamente.",
     "clone_correct": "Curso clonado correctamente.",
-    "contact": "ha finalizado, contacta al profesor para más información.",
-    "create": "Se ha creado correctamente tu curso, edita tu forma de evaluación.",
+    "contact": "Ha finalizado, contacta al profesor para más información.",
+    "create": "Se ha creado correctamente el curso, edita la forma de evaluación.",
     "delete": "Curso eliminado correctamente.",
-    "ended": "se finalizo correctamente.",
-    "has_ended": "ha finalizado, lo puedes activar en el menu de opciones del curso.",
+    "ended": "Finalizó correctamente.",
+    "has_ended": "Ha finalizado, lo puedes activar en el menú de opciones del curso.",
     "no_accepted": "No has sido aceptado en este curso.",
     "no_access": "El curso al que intentas accesar, no existe o ha sido borrado.",
     "no_authorized": "Usted no está autorizado para editar este curso.",
     "no_exist": "El curso que intentas ver no existe o ha sido borrado",
     "save": "Se han guardado satisfactoriamente los cambios en el curso. ",
-    "search": "Escribe algo en el campo de busqueda.",
+    "search": "Escribe algo en el campo de búsqueda.",
     "success": "Se ha creado correctamente",
     "the_course": "El curso",
     "your_course": "Tu curso"
@@ -11464,10 +11468,10 @@ I18n.translations["devise"] = {
       "dom",
       "lun",
       "mar",
-      "mié",
+      "mie",
       "jue",
       "vie",
-      "sáb"
+      "sb"
     ],
     "abbr_month_names": [
       null,
@@ -11606,7 +11610,7 @@ I18n.translations["devise"] = {
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
       "hmwrk_theme": "Tema de la tarea",
-      "integrity": "Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada le pedimos de la manera mas atenta si necesita agregar alguno de estos elimine la actividad y vuelva a cargarla.",
+      "integrity": "Por integridad de la actividad no se permiten modificar los archivos, contenidos y criterios después de ser creada. Sugerimos que si necesitas agregar alguno de éstos, elimines la actividad y vuelvas a cargarla.",
       "publish": "Publicar",
       "publish_date": "Día de publicación",
       "save": "Guardar Tarea",
@@ -11616,7 +11620,7 @@ I18n.translations["devise"] = {
       "deliver_hmwrks": "Tareas para entregar en 3 días o más",
       "hmwrks": "Tareas para entregar Hoy",
       "no_deliver": "Has entregado todas las tareas, puedes ver las",
-      "no_hmwrks": "No tienes tarean pendientes por entregar.",
+      "no_hmwrks": "No tienes tareas pendientes por entregar.",
       "past_hmwrks": "tareas pasadas en la sección Pasadas",
       "tomorrow_hmwrks": "Tareas para entregar Mañana"
     },
@@ -11657,8 +11661,8 @@ I18n.translations["devise"] = {
     }
   },
   "deliveries_controller": {
-    "access_denied": "Estas tratando de ver Tareas de un curso donde no has sido aceptado.",
-    "register": "Estas tratando de ver Tareas de un curso donde no estas inscrito."
+    "access_denied": "Estás tratando de ver Tareas de un curso donde no has sido aceptado.",
+    "register": "Estas tratando de ver Tareas de un curso donde no estás inscrito."
   },
   "devise": {
     "confirmations": {
@@ -11671,18 +11675,18 @@ I18n.translations["devise"] = {
     },
     "mailer": {
       "confirmation_instructions": {
-        "push_here": "Si el boton superior no funciona, haz clic aquí",
+        "push_here": "Si el botón superior no funciona, haz clic aquí",
         "usage": "Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.",
         "welcome": "¡Bienvenido a Cúrsame!"
       },
       "reset_password_instructions": {
-        "button": "Si el boton superior no funciona, haz clic aquí",
-        "pwd": "En caso que no hayas solicitado la restauración de tu contraseña por favor comunicalo a",
+        "button": "Si el botón superior no funciona, haz clic aquí",
+        "pwd": "En caso de que no hayas solicitado la restauración de tu contraseña por favor comunícalo a",
         "reset_password": "Nos has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.",
         "reset_pwd": "Restaurar contraseña"
       },
       "unlock_instructions": {
-        "button": "Si el boton superior no funciona, haz clic aquí",
+        "button": "Si el botón superior no funciona, haz clic aquí",
         "hello": "¡Hola!"
       }
     },
@@ -11711,15 +11715,15 @@ I18n.translations["devise"] = {
       },
       "new": {
         "accept": "Acepto los términos y condiciones",
-        "access": "Lo sentimos pero la red a la que estas intentado accesar no existe",
-        "confirm_pwd": "Confirmacion de contraseña",
+        "access": "Lo sentimos pero la red a la que estás intentado accesar no existe",
+        "confirm_pwd": "Confirmación de contraseña",
         "email": "Correo electrónico",
         "last_name": "Apellidos",
         "name": "Nombre(s)",
         "no_blocked": "¿No recibiste las instrucciones de desbloqueo?",
         "no_confirmation": "¿No recibiste las instrucciones de confirmación?",
         "pwd": "Contraseña",
-        "question": "pregunta a un encargado de tu escuela él sabrá ayudarte.",
+        "question": "pregunta a un encargado de tu escuela, él sabrá ayudarte.",
         "registry": "Registrarme",
         "sign_in": "¿Ya eres usuario? Ingresa",
         "thnx": "¡Gracias!"
@@ -11733,7 +11737,7 @@ I18n.translations["devise"] = {
         "change_pwd": "te pedirá que cambies tu contraseña.",
         "close": "Cerrar",
         "confirm": "Esperando confirmación",
-        "confirm2": "No me ha llegado el mail de confirmación",
+        "confirm2": "No me ha llegado el mensaje de confirmación",
         "confirm3": "Confirmé mi email pero olvide cambiar mi contraseña",
         "email": "Correo electrónico",
         "forgot_pwd": "Olvidé mi contraseña",
@@ -11742,9 +11746,9 @@ I18n.translations["devise"] = {
         "last_user": "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame.",
         "link": "Da click en el link",
         "log_in": "Iniciar Sesión",
-        "net": "La red a la que estas intentado accesar no existe",
-        "net2": "pregunta a un encargado de tu escuela él sabrá ayudarte.",
-        "new_pwd": "Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos",
+        "net": "La red a la que estás intentado accesar no existe",
+        "net2": "pregunta a un encargado de tu escuela, él sabrá ayudarte.",
+        "new_pwd": "Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mensaje que enviamos",
         "pwd": "Contraseña",
         "pwd_problem": "Cualquier problema con la contraseña puedes resolverlo dando click en",
         "remember": "Recordarme",
@@ -11753,7 +11757,7 @@ I18n.translations["devise"] = {
         "s_net3": "permitiéndoles interactuar social y académicamente.",
         "s_netn": "Cúrsame conecta a directivos, profesores y alumnos permitiéndoles interactuar social y académicamente",
         "send": "Se ha enviado un correo a",
-        "send_pwd": "donde se te enviará un mail para que puedas cambiar tu contraseña.",
+        "send_pwd": "donde se te enviará un mensaje para que puedas cambiar tu contraseña.",
         "session": "Inicia sesión",
         "sign_in": "¿Eres nuevo? Regístrate",
         "sorry": "Lo sentimos",
@@ -11771,7 +11775,7 @@ I18n.translations["devise"] = {
         "confirm": "¿No recibiste las instrucciones de confirmación?",
         "log_in": "¿Ya eres usuario? Ingresa",
         "pwd": "¿Olvidaste tu contraseña?",
-        "sign_in": "¿No estas registrado? Registrate"
+        "sign_in": "¿No estás registrado? Registrate"
       }
     },
     "unlocks": {
@@ -11803,12 +11807,12 @@ I18n.translations["devise"] = {
       "dates": "Fechas",
       "deliver_date": "Fecha de entrega",
       "descrip": "Descripción",
-      "discuss": "Tema de la discusión",
+      "discuss": "Tema de la Discusión",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
       "public": "Público",
       "publish_date": "Día de publicación",
-      "save_discuss": "Guardar discusión",
+      "save_discuss": "Guardar Discusión",
       "support": "Material de soporte"
     },
     "index": {
@@ -11841,10 +11845,10 @@ I18n.translations["devise"] = {
     }
   },
   "discussions_controller": {
-    "delete": "La discusión que intentas ver no existe o ah sido borrada.",
-    "no_accepted": "Estas tratando de ver Discusiones de un curso donde no has sido aceptado.",
+    "delete": "La discusión que intentas ver no existe o ha sido borrada.",
+    "no_accepted": "Estás tratando de ver Discusiones de un curso donde no has sido aceptado.",
     "no_discussion": "No se pudo crear la discusión.",
-    "no_register": "Estas tratando de ver Discusiones de un curso donde no estas inscrito."
+    "no_register": "Estás tratando de ver Discusiones de un curso donde no estás inscrito."
   },
   "errors": {
     "format": "%{attribute} %{message}",
@@ -11897,17 +11901,17 @@ I18n.translations["devise"] = {
       "activity_for_tmrw": "Actividades para calificar mañana",
       "all": "Todas las actividades de tu curso estan calificadas, puedes ver",
       "no_activity": "No tienes actividades por calificar.",
-      "past_activity": "actividades pasas en la seccion de Pasadas"
+      "past_activity": "actividades pasadas en la seccion de Pasadas"
     },
     "course_inactive": {
-      "enrollment": "Necesitas estar inscrito en al menos un curso para tener calificaiones.",
+      "enrollment": "Necesitas estar inscrito en al menos un curso para tener calificaciones.",
       "no_score": "Aún no tienes calificaciones."
     },
     "deliveries": {
       "delivery_user_response": {
         "attachments": "Archivos adjuntos",
         "check_hmwrk": "Calificar tarea",
-        "comments": "Envia comentarios en base a los criterios de la actividad.",
+        "comments": "Envía comentarios en base a los criterios de la actividad.",
         "deliver": "Entrega",
         "deliveries": "Entregas",
         "delivery": "Entregado",
@@ -11918,12 +11922,12 @@ I18n.translations["devise"] = {
         "score": "Calificación:",
         "scored": "Calificar",
         "student": "Alumno",
-        "title": "Titulo"
+        "title": "Título"
       },
       "evaluate_deliveries": {
         "deliveries": "Entregas",
         "no_deliveries": "Sin Entregas.",
-        "no_deliveries_record": "Todavia no hay ninguna entrega en esta tarea.",
+        "no_deliveries_record": "Todavía no hay ninguna entrega en esta tarea.",
         "no_score": "Sin calificar",
         "score": "Calificación:"
       }
@@ -11936,17 +11940,17 @@ I18n.translations["devise"] = {
         "no_score": "Sin Calificar",
         "rate_student": "Calificar alumno",
         "score": "Calificación",
-        "send": "Envia comentarios en base a los criterios de la actividad."
+        "send": "Envía comentarios en base a los criterios de la actividad."
       },
       "evaluate_discussions": {
         "comment": "Comentario",
         "comments": "Comentarios",
         "discuss": "Discusión",
-        "nothing": "Nadie a participado en esta discusión."
+        "nothing": "Nadie ha participado en esta discusión."
       },
       "evaluate_discussions_header": {
         "course": "Curso",
-        "limit_publish_date": "Fecha limite para participar",
+        "limit_publish_date": "Fecha límite para participar",
         "members": "Participantes",
         "publish_date": "Fecha de publicación"
       }
@@ -12014,13 +12018,13 @@ I18n.translations["devise"] = {
     "surveys": {
       "evaluate_surveys": {
         "delivery": "Entregas",
-        "no_answer": "Todavia ningún alumno ha contestado este cuestionario.",
+        "no_answer": "Todavía ningún alumno ha respondido este cuestionario.",
         "no_deliveries": "Sin Entregas.",
         "obtain": "Obtenido"
       },
       "survey_user_response": {
         "answers": "Respuestas",
-        "comments": "Envia comentarios al alumno.",
+        "comments": "Envía comentarios al alumno.",
         "delivery": "Entregas",
         "feedback": "Retroalimentación",
         "obtain": "Obtenido",
@@ -12032,16 +12036,16 @@ I18n.translations["devise"] = {
   "evaluate_controller": {
     "correct": "Calificación asignada correctamente.",
     "error": "Ha ocurrido un error al calificar la discusión.",
-    "no_activity": "Estas tratando de ver una actividad que no te pertenece.",
+    "no_activity": "Estás tratando de ver una actividad que no te pertenece.",
     "no_calificable": "La discusión que intentas ver no es calificable.",
-    "no_evaluate": "Estas tratando de calificar un curso que no te pertenece.",
-    "no_exist": "La discusión que intentas ver no existe o ah sido borrada.",
-    "only_teachers": "Estas intentando entrar en una sección solo para profesores.",
+    "no_evaluate": "Estás tratando de calificar un curso que no te pertenece.",
+    "no_exist": "La discusión que intentas ver no existe o ha sido borrada.",
+    "only_teachers": "Estás intentando entrar en una sección solo para profesores.",
     "send_comment": "Comentario enviado correctamente."
   },
   "evaluation_criteria": {
     "form": {
-      "eval": "¿Que criterio se evaluará?"
+      "eval": "¿Qué criterio se evaluará?"
     },
     "form_course": {
       "eval": "¿Qué se va evaluar?"
@@ -12092,7 +12096,7 @@ I18n.translations["devise"] = {
         "publish_date": "Día de publicación",
         "roles": "Roles: ",
         "title": "Título: ",
-        "title2": "Titulo del formulario"
+        "title2": "Título del formulario"
       },
       "google_form_modal": {
         "in_the_course": " en el curso",
@@ -12127,7 +12131,7 @@ I18n.translations["devise"] = {
     "about_us": {
       "about_title": {
         "text1": "Cúrsame es una plataforma educativa  fundada en México a finales de 2011 por un grupo de estudiantes de diversas universidades del país con el objetivo de mejorar la calidad educativa y reducir la brecha digital a través de la tecnología. Durante este periodo hemos logrado beneficiar a más de 100 mil estudiantes, profesores y directivos tanto de escuelas públicas como privadas en México, con visión de impactar en toda la región y demás países emergentes.",
-        "text2": "Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.",
+        "text2": "Hemos recibido 3 rondas de inversión privada por parte de reconocidos fondos, también nos han otorgado una gran cantidad de premios y reconocimientos. Pero más importante aún, hemos logrado vincularnos con autoridades gubernamentales en proyectos de alto impacto que nos han permitido crecer de una manera bastante acelerada e impactar socialmente.",
         "title": "Acerca de Nosotros"
       },
       "description1_mission": "Mejorar la calidad de la educación en México a través  de una herramienta tecnológica  eficiente que permita  a la comunidad educativa redefinir estrategias de mejora en los procesos de enseñanza-aprendizaje en las que se complementen y favorezcan las dinámicas del aula y puedan ampliarse fuera de la escuela.",
@@ -12194,7 +12198,7 @@ I18n.translations["devise"] = {
         "chat": "Chat",
         "comments": "Comentarios",
         "description_chat": "Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada curso tiene una sala de chat grupal para compartir contenido en tiempo real.",
-        "description_comment": "Permite a todos los miembros de la comunidad comentarse de manera pública, grupal o personal para de esta forma interactuar social o académicamente.",
+        "description_comment": "Permite a todos los miembros de la comunidad comentar de manera pública, grupal o personal. De esta forma pueden interactuar social o académicamente.",
         "description_discussion": "Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la comunidad en el aprendizaje.",
         "description_homework": "Permite a los profesores crear actividades académicas y a los estudiantes responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.",
         "description_network": "Todos los usuarios tienen un perfil y pueden ver e interactuar con los de sus amigos promoviendo la interacción social dentro de la institución.",
@@ -12205,7 +12209,7 @@ I18n.translations["devise"] = {
         "feature1_chat": "Chat individual con amigos y compañeros",
         "feature1_comment": "Públicos o privados",
         "feature1_discussion": "Públicas o privadas",
-        "feature1_homework": "Creación a uno o varios cursos",
+        "feature1_homework": "Creación de uno o varios cursos",
         "feature1_network": "Encontrar amigos",
         "feature1_result": "Calificaciones por curso",
         "feature1_statisdic": "Uso de las herramientas de la plataforma",
@@ -12219,7 +12223,7 @@ I18n.translations["devise"] = {
         "feature2_statisdic": "Ingreso al sistema",
         "feature2_survey": "Fecha y hora límite de entrega",
         "feature3_chat": "Compartir multimedia",
-        "feature3_comment": "Contenido enriquecido (multimedia)",
+        "feature3_comment": "Contenido enriquecido (Multimedia)",
         "feature3_discussion": "Contenido recomendado",
         "feature3_homework": "Archivos adjuntos",
         "feature3_network": "Solicitudes de amistad",
@@ -12247,7 +12251,7 @@ I18n.translations["devise"] = {
         "homeworks": "Tareas",
         "network": "Comunidad",
         "results": "Calificaciones",
-        "statisdics": "Estadisticas",
+        "statisdics": "Estadísticas",
         "surveys": "Cuestionarios"
       },
       "features_title": {
@@ -12256,7 +12260,7 @@ I18n.translations["devise"] = {
       },
       "our_methods": {
         "description_endless": "Buscamos siempre estar en contacto con nuestros usuarios para que juntos podamos mejorar la plataforma, conocer sus necesidades y enfocarnos en satisfacerlas para su mayor beneficio.",
-        "description_implement": "Tenemos un equipo especializado que está dedicado a visitar los planteles para enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que esta conlleva.",
+        "description_implement": "Tenemos un equipo especializado que está dedicado a enseñar a los maestros y directivos toda la funcionalidad de la plataforma y los beneficios que ésta conlleva.",
         "description_support": "En Cúrsame estamos cerca de los usuarios de la plataforma para orientarlos y auxiliarlos en caso de que sea necesario. Apoyamos con soporte vía chat, tickets y video tutoriales de uso en todo momento.",
         "description_title": "Nuestra metología toma en cuenta que una plataforma tecnológica por sí misma no es suficiente para satisfacer las necesidades de alumnos, profesores y directivos. Por esta razón trabajamos mano a mano con ellos para lograr los mejores resultados.",
         "description_training": "Antes de comenzar a usar Cúrsame capacitamos tecnológicamente a las instituciones que lo requieran. Combatimos así la Brecha Digital y apoyamos a los profesores en la adopción de las TICs.",
@@ -12269,7 +12273,7 @@ I18n.translations["devise"] = {
     },
     "help": {
       "help2": "Ayuda",
-      "videos": "Video tutoriales en linea."
+      "videos": "Video tutoriales en línea."
     },
     "jobs": {
       "job_board": {
@@ -12398,12 +12402,12 @@ I18n.translations["devise"] = {
       "best_product": "Mejora del producto.",
       "description1_who_are_we": "Redes Sociales de Aprendizaje SAPI de CV, mejor conocido como Cúrsame",
       "description2_who_are_we": ", con domicilio en",
-      "description3_who_are_we": "calle Pomona 7, colonia Roma Norte, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06100, en la entidad de México DF, país México , y portal de internet",
+      "description3_who_are_we": "calle Versalles 94, colonia Juáreze, ciudad DF, municipio o delegación Cuauhtémoc, c.p. 06600, en la entidad de México DF, país México , y portal de internet",
       "description4_who_are_we": "es el responsable del uso y protección de sus datos personales, y al respecto le informamos lo siguiente:",
       "personal_data1": "¿Para qué fines utilizaremos sus datos personales?",
-      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que&nbsp;",
+      "personal_data2": "De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que;",
       "personal_data3": "no son necesarias",
-      "personal_data4": "&nbsp;para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
+      "personal_data4": ";para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención",
       "personal_data5": "En caso de que no desee que sus datos personales sean tratados para estos fines secundarios, desde este momento usted nos puede comunicar lo anterior a través del siguiente mecanismo",
       "personal_data6": "Para conocer mayor información sobre los términos y condiciones en que serán tratados sus datos personales, como los terceros con quienes compartimos su información personal y la forma en que podrá ejercer sus derechos ARCO, puede consultar el aviso de privacidad integral en",
       "privacy": "¿Dónde puedo consultar el aviso de privacidad integral?",
@@ -12430,13 +12434,13 @@ I18n.translations["devise"] = {
         "cobaem": "COBAEM",
         "description_cobaem": "Tras un piloto con 6 planteles del Colegio de Bachilleres de Estado de México, nos encontramos en etapa de expansión y serán 48 planteles en más de 40 municipios de la entidad y 50 mil usuarios los beneficiados por Cúrsame.",
         "description_emprendedores": "Proyecto en conjunto con la Subsecretaría de Educación Media Superior, Angel Ventures y Ashoka. A través de Cúrsame se imparte educación para emprendedores en 100 planteles de preparatoria de todo el país y actualmente en expansión para llegar a 1000 planteles en 2014.",
-        "description_pilot_tablets": "Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para educación con tabletas en primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).",
+        "description_pilot_tablets": "Actualmente participamos en la licitación / piloto Federal que se realiza en Morelos, Guanajuato y Querétaro para la educación con tabletas en escuelas primarias del país. Somos parte de dos de las 5 propuestas finalistas (IUSA y HP).",
         "description_tecnica_df": "Trabajamos con un piloto de 6 planteles tras el cual estamos en proceso de expansión con un universo de 120 planteles  en todo el Distrito Federal.",
         "emprendedores": "Modelo de Emprendedores de Educación Media Superior",
         "pilot_tablets": "Piloto Federal educación con tabletas",
         "schools": "Planteles:",
         "students": "Alumnos:",
-        "teachers": "profesores:",
+        "teachers": "Profesores:",
         "tecnica_df": "Secundarias Técnicas del DF",
         "testimonial": "Testimonio",
         "testimonial_emprendedores": "“La mejor herramienta para la educación. En nuestra experiencia en Media Superior y Superior hemos tenido  el reto de implementar tecnología para la enseñanza sin haber tenido mucho éxito hasta que comenzamos a trabajar con Cúrsame, los resultados han sido bastante satisfactorios.”",
@@ -12453,17 +12457,17 @@ I18n.translations["devise"] = {
     },
     "teacher_day": {
       "happy": "¡Feliz día del Maestro!",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     },
     "terms_and_conditions": {
       "terms": "Términos y condiciones del sitio",
-      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de la edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
+      "terms1": "Nuestros servicios están disponibles solamente para los individuos y las empresas del marco educativo (que incluyen pero no restringidos a estos, a las de propietario único) en correcta situación legal que puede firmar contratos legalmente obligatorios y se den derecho a suscribir y tener acceso a nuestros servicios bajo la legislación aplicable. Por lo que el cliente garantiza que está bajo la jurisdicción legal del país al que pertenece y bajo la normatividad del mismo. En consecuencia, el cliente garantiza que está autorizado para hacer negocios y está en correcta situación legal en las jurisdicciones en las cuales hace el negocio (durante el término de este acuerdo), que no es un competidor de Cúrsame, y que la persona que acepta este acuerdo tiene por lo menos dieciocho años de edad y está capacitado y autorizado para asumir las obligaciones contractuales como cliente.",
       "terms10f": "Tipo de indemnización.",
       "terms10x": "Cúrsame solo indemnizara al usuario en especie, no en ninguna forma monetaria, solo mediante la extensión del tiempo que haya sido contratado el servicio, según el tiempo que haya fallado el mismo.",
       "terms1f": "Requerimientos para tener acceso a los Servicios de Cúrsame.",
-      "terms2": "Conforme a los términos y condiciones del presente Acuerdo, Cúrsame se compromete a brindar ciertos Servicios al Cliente. Para los efectos del presente Acuerdo: (a) \"Cliente\" (o \"usted\") se refiere al individuo o a la entidad comercial que utiliza o se registró para utilizar dichos Servicios, incluyendo a sus empleados y agentes; (b) \"Servicios\" de Cúrsame se refiere a todos los servicios interactivos o electrónicos ofrecidos por Cúrsame. Cúrsame Online se reserva el derecho de modificar o interrumpir la prestación de sus Servicios en cualquier momento.",
+      "terms2": "Conforme a los Términos y Condiciones del presente Acuerdo, Cúrsame se compromete a brindar ciertos Servicios al Cliente. Para los efectos del presente Acuerdo: (a) \"Cliente\" (o \"usted\") se refiere al individuo o a la entidad comercial que utiliza o se registró para utilizar dichos Servicios, incluyendo a sus empleados y agentes; (b) \"Servicios\" de Cúrsame se refiere a todos los servicios interactivos o electrónicos ofrecidos por Cúrsame. Cúrsame Online se reserva el derecho de modificar o interrumpir la prestación de sus Servicios en cualquier momento.",
       "terms2f": "Servicios de Cúrsame.",
       "terms3": "Reconoce que el contenido (excepto el que se carga en Cúrsame) de esta página Web, incluyendo pero no limitándose a información, documentos, productos, logotipos, elementos gráficos y sonidos, gui, software y servicios (llamados colectivamente \"Materiales\"), es provisto por Cúrsame o por sus respectivos autores, diseñadores y vendedores (llamados colectivamente \"Proveedores\") y que Cúrsame y/o sus Proveedores se reservan todos los derechos de propiedad inherentes al mismo. Los elementos de la página Web están protegidos por las leyes aplicables al secreto comercial (trade dress) y por otras leyes que no pueden copiarse ni imitarse en su totalidad o en parte. Cúrsame, el logotipo de Cúrsame y otros productos a los que se hace referencia en el presente son marcas de Cúrsame y pueden estar registradas en ciertas jurisdicciones. Cualquier otro nombre de producto, nombre de la empresa, marcas, logotipos y símbolos pueden ser las marcas comerciales de sus propietarios respectivos.",
       "terms3f": "Propiedad",
@@ -12491,7 +12495,7 @@ I18n.translations["devise"] = {
       "terms73": "Se prohíben estrictamente las violaciones o intentos de violaciones de los sistemas de Cúrsame, o la interrupción de sus servicios. Dicha violación puede resultar en responsabilidad civil y penal. Sin limitación, los ejemplos de violaciones del sistema incluyen",
       "terms73f": "Acceso e interferencia",
       "terms73x": "Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame",
-      "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
+      "terms73x1": "El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del \"software\" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada. Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.",
       "terms75": "Mal uso de los recursos del sistema",
       "terms75f": "El Cliente no deberá hacer mal uso de los recursos, que incluyan pero que no se limiten a, empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.",
       "terms76": "Otras actividades",
@@ -12518,7 +12522,7 @@ I18n.translations["devise"] = {
       "terms8": "Limitación de la responsabilidad",
       "terms8x": "Usted usa Cúrsame bajo su propia responsabilidad. Si usted no está satisfecho con cualquier aspecto de nuestro servicio o con estos términos y condiciones, o algunas otras reglas o políticas, su única solución es finalizar el uso del servicio. Usted explícitamente entiende y acepta que Cúrsame no será responsable por cualquier daño directo, daños accidentales indirectos, fortuitos, especiales, consecuentes, incluyendo pero no limitados a, los daños por la pérdida de beneficios, buena voluntad, uso, datos u otras pérdidas intangibles (incluso si le hemos advertido sobre la posibilidad de tales daños), resultando de: (a) el uso o la incapacidad para utilizar el servicio; (b) el coste de obtención mercancías o servicios alternativos resultado de cualquier mercancía, dato, información comprados o obtenidos o mensajes recibidos o transacciones realizadas en o mediante este servicio; (c) acceso desautorizado a o alteración de sus transmisiones o datos; (d) declaraciones o actuaciones de cualquier tercer parte en el servicio; o (e) cualquier otra asunto relativo al servicio.",
       "terms9f": "Limitación de la responsabilidad de protección a contenidos.",
-      "terms9x": "xCúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, jaqueo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le dé a sus contenidos en la red."
+      "terms9x": "Cúrsame no indemnizará al usuario en fallo del sistema, perdida de su información, hackeo, destrucción de su información voluntariamente, intento de daño de otro usuario, uso de su información para daño físico, uso de su información para daño moral, uso de su información para cualquier tipo de violación a la ley. No nos hacemos responsables del uso que se le de a sus contenidos en la red."
     },
     "thnx": "Gracias por usar Cúrsame.",
     "unlike": "Ya no me gusta",
@@ -12544,8 +12548,8 @@ I18n.translations["devise"] = {
         "title9": "Aplicaciones"
       },
       "fourth_column": {
-        "title1": "Derechos reservados © 2014 Cúrsame",
-        "title2": "Ver la página en ingles"
+        "title1": "Derechos reservados © 2015 Cúrsame",
+        "title2": "Ver la página en inglés"
       },
       "second_column": {
         "title1": "Ayuda",
@@ -12559,10 +12563,10 @@ I18n.translations["devise"] = {
     },
     "super_admin": {
       "activities": "Actividades",
-      "admin": "administración",
+      "admin": "Administración",
       "admin_net": "Administrar redes",
       "course_admin": "Administrador de cursos",
-      "hello": "hola",
+      "hello": "Hola",
       "statics": "Estadísticas",
       "super_adm": "Super admins",
       "usr": "Usuarios"
@@ -12591,7 +12595,7 @@ I18n.translations["devise"] = {
       "form": {
         "descrip": "Descripción: ",
         "lib_descrip": "Descripción de la biblioteca",
-        "lib_name": "Titulo de la biblioteca",
+        "lib_name": "Título de la biblioteca",
         "name": "Nombre: ",
         "send": "Enviar"
       },
@@ -12620,8 +12624,8 @@ I18n.translations["devise"] = {
         "descrip": "Descripción: ",
         "descrip_file": "Descripción del Archivo",
         "file": "Archivo",
-        "file_name": "Titulo del Archivo: ",
-        "file_name2": "Titulo del Archivo",
+        "file_name": "Título del Archivo: ",
+        "file_name2": "Título del Archivo",
         "send": "Enviar"
       },
       "standalone_card": {
@@ -12661,7 +12665,7 @@ I18n.translations["devise"] = {
         "comment": "Comentario",
         "comment_in": "Comentario en",
         "comments1": "Comentarios",
-        "confirm": "Estas seguro de borrar este comentario.",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "course": "Curso",
         "create_date": "Fecha de creación",
         "delete": "Borrar",
@@ -12669,7 +12673,7 @@ I18n.translations["devise"] = {
         "hmwrk": "Tarea",
         "like": "Me gusta",
         "no_user": "No tiene usuario",
-        "public": "Publico",
+        "public": "Público",
         "quest": "Cuestionario",
         "user": "Usuario",
         "view": "Ver"
@@ -12679,14 +12683,14 @@ I18n.translations["devise"] = {
         "back": "← Regresar",
         "comment": "Comentario",
         "comment_in": "Comentario en",
-        "confirm": "Estas seguro de borrar este comentario.",
+        "confirm": "¿Estás seguro de borrar este comentario?",
         "course": "Curso",
         "create_date": "Fecha de Creación",
         "delete": "Borrar",
         "discuss": "Discusión",
         "hmwrk": "Tarea",
         "like": "Me Gusta",
-        "public": "Publico",
+        "public": "Público",
         "quest": "Cuestionario",
         "user": "Usuario"
       }
@@ -12712,7 +12716,7 @@ I18n.translations["devise"] = {
         "inte_date": "Fecha de creación",
         "name": "Nombre",
         "students": "Estudiantes",
-        "sure": "Estas seguro de borrar este curso.",
+        "sure": "¿Estás seguro de borrar este curso?",
         "teachers": "Profesores"
       },
       "new": {
@@ -12724,13 +12728,13 @@ I18n.translations["devise"] = {
           "cancel": "Cancelar",
           "create": "Crear Curso",
           "descrip": "Descripción",
-          "enroll": "Inscribe estudiantes a tu curso.",
+          "enroll": "Inscribe estudiantes al curso.",
           "example": "Ejemplo",
           "example2": "Matemáticas I",
           "find": "Busca profesores para administrar el curso.",
-          "find2": "Busca estudiantes para unirlos automaticamente al curso.",
+          "find2": "Busca estudiantes para unirlos automáticamente al curso.",
           "init_date": "Fecha de Inicio",
-          "init_date2": "Fecha inicio",
+          "init_date2": "Fecha de inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
           "privacy": "Privacidad",
@@ -12756,7 +12760,7 @@ I18n.translations["devise"] = {
         "quest": "Cuestionarios",
         "return": "← Regresar",
         "students": "Alumnos",
-        "sure": "Estas seguro de borrar este curso.",
+        "sure": "¿Estás seguro de borrar este curso?",
         "teachers": "Maestros"
       }
     },
@@ -12776,10 +12780,10 @@ I18n.translations["devise"] = {
         "hmwrks": "Tareas",
         "init_date": "Fecha de creación",
         "name": "Nombre",
-        "no_user": "No tiene usuario",
+        "no_user": "No tiene usuarios",
         "published": "Publicada",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta tarea.",
+        "sure": "¿Estás seguro de borrar esta tarea?",
         "unpublished": "Sin Publicar",
         "user": "Usuario",
         "view": "Ver"
@@ -12788,12 +12792,12 @@ I18n.translations["devise"] = {
         "course": "Curso",
         "delete": "Borrar",
         "descrip": "Descripción",
-        "end_date": "Fecha de finalización",
+        "end_date": "Fecha de Finalización",
         "init_date": "Fecha de Creación",
         "published": "Publicada",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar este cuestionario.",
+        "sure": "¿Estás seguro de borrar este cuestionario?",
         "teacher": "Maestro",
         "unpublished": "Sin Publicar"
       }
@@ -12810,7 +12814,7 @@ I18n.translations["devise"] = {
         "non_eval": "No Evaluable",
         "published": "Publicada",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta discusión.",
+        "sure": "¿Estás seguro de borrar esta discusión?",
         "type": "Tipo",
         "unpublished": "Sin Publicar",
         "view": "Ver"
@@ -12822,11 +12826,11 @@ I18n.translations["devise"] = {
         "eval": "Evaluable",
         "init_date": "Fecha de Creación",
         "non_eval": "No Evaluable",
-        "public": "Publica",
+        "public": "Publicar",
         "published": "Publicada",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta discusión.",
+        "sure": "¿Estás seguro de borrar esta discusión?",
         "teacher": "Maestro",
         "type": "Tipo",
         "unpublished": "Sin Publicar"
@@ -12839,16 +12843,16 @@ I18n.translations["devise"] = {
     "file": "Tipo de archivo no soportado",
     "hmwrk_delete": "Tarea borrada correctamente.",
     "import_members": {
-      "course": "Course",
+      "course": "Curso",
       "download": "Descargar archivo de cursos",
       "import1": "Importar miembros",
       "import2": "Importa los miembros de los cursos desde una base de datos.",
       "import3": "Importar lista de usuarios",
       "import4": "¿Importar?",
       "list": "Lista donde se puede importar.",
-      "no_file": "NO SE ENCONTRO EL ARCHIVO",
+      "no_file": "NO SE ENCONTRÓ EL ARCHIVO",
       "text1": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los cursos.",
-      "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que solo es un miembro del curso nada más.",
+      "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que es un miembro del curso.",
       "text3": "El Email debe de ser el correo asociado al usuario."
     },
     "index": {
@@ -12856,17 +12860,17 @@ I18n.translations["devise"] = {
       "comments": "Comentarios",
       "courses": "Cursos",
       "discuss": "Discusiones",
-      "exams": "Examenes",
+      "exams": "Exámenes",
       "hmwrks": "Tareas",
       "pop": "Población esperada",
-      "stat": "Estadisticas",
+      "stat": "Estadísticas",
       "usr": "Usuarios"
     },
     "mailer": {
       "example": "Ejemplo",
       "example2": "Ceremonia de clausura",
-      "masive": "Mail Masivo",
-      "masive2": "Envía un mail a todos los miembros de tu comunidad.",
+      "masive": "Mensaje Masivo",
+      "masive2": "Envía un mensaje de correo electrónico a todos los miembros de tu comunidad.",
       "msg": "Mensaje",
       "send": "Enviar",
       "subject": "Asunto"
@@ -12891,8 +12895,8 @@ I18n.translations["devise"] = {
         "delete_report": "Borrar Reporte",
         "report_content": "Contenidos Reportados",
         "report_date": "Fecha de reporte",
-        "sure": "¿Está seguro de borrar este contenido?",
-        "sure2": "¿Está seguro de borrar este reporte?, el contenido no será borrado.",
+        "sure": "¿Estás seguro de borrar este contenido?",
+        "sure2": "¿Estás seguro de borrar este reporte?, el contenido no será borrado.",
         "usr": "Usuario",
         "view": "Ver"
       }
@@ -12910,13 +12914,13 @@ I18n.translations["devise"] = {
         "masive": "Correo Masivo",
         "quest": "Cuestionarios",
         "report_content": "Contenido Reportado",
-        "stat": "Estadisticas",
+        "stat": "Estadísticas",
         "usr": "Usuarios"
       },
       "managers_user_header": {
         "admin": "Administrador",
         "edit": "Editar perfil",
-        "exit": "Salir del administrador",
+        "exit": "Salir del Administrador",
         "help": "Ayuda",
         "log_out": "Cerrar sesión"
       }
@@ -12930,11 +12934,11 @@ I18n.translations["devise"] = {
         "end_date": "Fecha de finalización",
         "init_date": "Fecha de creación",
         "name": "Nombre",
-        "no_user": "No tiene usuario",
+        "no_user": "No tiene usuarios",
         "published": "Publicada",
         "quest": "Cuestionarios",
         "state": "Estado",
-        "sure": "Estas seguro de borrar este cuestionario.",
+        "sure": "¿Estás seguro de borrar este cuestionario?",
         "unpublished": "Sin Publicar",
         "user": "Usuario",
         "view": "Ver"
@@ -12946,7 +12950,7 @@ I18n.translations["devise"] = {
         "init_date": "Fecha de creación",
         "return": "← Regresar",
         "state": "Estado",
-        "sure": "Estas seguro de borrar esta tarea.",
+        "sure": "¿Estás seguro de borrar esta tarea?",
         "teacher": "Maestro"
       }
     },
@@ -12960,9 +12964,9 @@ I18n.translations["devise"] = {
         "import3": "Importa los usuarios de tu comunidad desde una base de datos.",
         "import4": "Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los usuarios.",
         "import5": "Importar archivo de usuarios",
-        "no_find": "NO SE ENCONTRO UN ARCHIVO",
+        "no_find": "NO SE ENCONTRÓ UN ARCHIVO",
         "text1": "El role puede ser estudiante o maestro.",
-        "text2": "El email debe de ser el email del usuario."
+        "text2": "El email debe ser el email del usuario."
       },
       "index": {
         "actions": "Acciones",
@@ -12972,7 +12976,7 @@ I18n.translations["devise"] = {
         "email": "Correo electrónico",
         "enroll": "Fecha de registro",
         "name": "Nombre",
-        "sure": "Estas seguro de borrar este usuario.",
+        "sure": "¿Estás seguro de borrar este usuario?",
         "type": "Tipo de usuario",
         "usr": "Usuarios",
         "view": "Ver"
@@ -13000,17 +13004,17 @@ I18n.translations["devise"] = {
         }
       },
       "show": {
-        "bio": "Biografia",
+        "bio": "Biografía",
         "delete": "Borrar",
         "deliveries": "Tareas entregadas",
         "edit": "Editar",
         "email": "Correo electrónico",
-        "eval": "Participación en discusiones evaluables",
-        "info": "Si información",
-        "last": "Ultimo inicio de sesión",
-        "quest": "Cuestionarios contestados",
+        "eval": "Participación en Discusiones evaluables",
+        "info": "Sin información",
+        "last": "Último inicio de sesión",
+        "quest": "Cuestionarios Respondidos",
         "return": "← Regresar",
-        "sure": "Estas seguro de borrar este usuario.",
+        "sure": "¿Estás seguro de borrar este usuario?",
         "type": "Tipo de usuario"
       }
     }
@@ -13026,7 +13030,7 @@ I18n.translations["devise"] = {
   },
   "messages": {
     "index": {
-      "no_member": "No eres parte del grupo!",
+      "no_member": "¡No eres parte del grupo!",
       "send": "Enviar Mensaje"
     }
   },
@@ -13053,7 +13057,7 @@ I18n.translations["devise"] = {
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
-      "text1": "Se ha encontrado que usted no es miembro de la red a al que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá loguearse."
+      "text1": "Se ha encontrado que usted no es miembro de la red a la que intenta acceder, lo redireccionaremos a una red de la cual usted sea miembro, después de esto usted deberá ingresar."
     },
     "awaiting_confirmation": {
       "email": "Revisa tu correo electrónico",
@@ -13066,7 +13070,7 @@ I18n.translations["devise"] = {
       "authorization_keyword": "Palabra clave",
       "example": "Ejemplo: ",
       "form": "Habilitar formulario de registro publico.",
-      "icon": "Imagen de inicio de sesión",
+      "icon": "Imagen de Inicio de sesión",
       "icon2": "Logo de la institución",
       "label": "Etiquetas",
       "msg": "Mensaje de bienvenida",
@@ -13097,14 +13101,14 @@ I18n.translations["devise"] = {
   },
   "networks_users": {
     "index": {
-      "no_members": "no hay miembros en esta red",
+      "no_members": "No hay miembros en esta red",
       "records": "Usuarios registrados en el sistema"
     },
     "new": {
       "accept": "Acepto las normas y condiciones de esta plataforma",
       "select": "Selecciona un rol",
       "sign_in": "Ingresar a la plataforma",
-      "suscribe": "suscribirme a la red"
+      "suscribe": "Suscribirme a la red"
     }
   },
   "notifier": {
@@ -13117,7 +13121,7 @@ I18n.translations["devise"] = {
       "error": "¡Error!",
       "hello": "¡Hola",
       "results": "Te anexamos los resultados de la importación de usuarios",
-      "success": "Exito"
+      "success": "Éxito"
     },
     "masive_mailer_for_super_admin": {
       "user": "Estimados usuarios de Cúrsame"
@@ -13152,12 +13156,12 @@ I18n.translations["devise"] = {
       "msg": "Mensaje",
       "name": "Nombre",
       "other": "Otro",
-      "pos": "Posicion",
+      "pos": "Posición",
       "school": "Escuela",
-      "tel": "Telefono"
+      "tel": "Teléfono"
     },
     "send_email": {
-      "msg": "Mensaje del administrador de la red",
+      "msg": "Mensaje del Administrador de la red",
       "net": "Ir a la red"
     },
     "send_email_members_in_course": {
@@ -13166,29 +13170,29 @@ I18n.translations["devise"] = {
     },
     "send_import_courses": {
       "error": "Error",
-      "line": "Linea",
+      "line": "Línea",
       "no_error": "No hubo errores"
     },
     "send_import_members": {
       "course": "Curso",
       "error": "Error",
-      "line": "Linea",
+      "line": "Línea",
       "no_error": "No hubo errores"
     },
     "send_import_users": {
       "error": "Error",
-      "line": "Linea"
+      "line": "Línea"
     },
     "user_mailer_with_password": {
-      "accept": "has sido aceptado aceptado en Cúrsame.",
+      "accept": "Has sido aceptadoo en Cúrsame.",
       "active": "Activado",
       "hello": "Hola",
       "net": "Ir a la red",
       "text1": "puedes cambiarla al iniciar sessión.",
-      "text2": "Si no puedes ver este mail,",
+      "text2": "Si no puedes ver este mensaje",
       "text3": "haz click aquí.",
       "text4": "¡Feliz día del Maestro!",
-      "text5": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text5": "En Cúrsame estamos muy orgullosos deti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text6": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text7": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!",
       "welcome": "Bienvenido",
@@ -13264,7 +13268,7 @@ I18n.translations["devise"] = {
       "delete": "Eliminar"
     },
     "edit": {
-      "edit": "Editando Encuesta"
+      "edit": "Editar Encuesta"
     },
     "index": {
       "list": "Lista de Encuestas"
@@ -13277,7 +13281,7 @@ I18n.translations["devise"] = {
   },
   "publications": {
     "discussion_template": {
-      "discuss": "ha inicidado una discusión",
+      "discuss": "Ha iniciado una discusión",
       "in_course": "en el curso"
     }
   },
@@ -13286,7 +13290,7 @@ I18n.translations["devise"] = {
       "bios": "Biografía",
       "cancel": "Cancelar mi cuenta",
       "cancel2": "Cancelar",
-      "confirm": "¿Estas seguro de que quieres darte de baja de Cúrsame?",
+      "confirm": "¿Estás seguro de que quieres darte de baja de Cúrsame?",
       "dir": "Dirección",
       "down": "¿Quieres darte de baja?",
       "edit": "Editar Perfil",
@@ -13295,8 +13299,8 @@ I18n.translations["devise"] = {
       "last_name": "Apellido",
       "name": "Nombre",
       "pwd": "Escribe tu contraseña para guardar",
-      "text1": "Recuerda no colocar espacios ni simbolos como",
-      "text2": "ya que no se aceptará tu url",
+      "text1": "Recuerda no colocar espacios ni símbolos como",
+      "text2": "ya que no se aceptará tu URL",
       "update": "Actualizar perfil"
     },
     "edit_user": {
@@ -13318,26 +13322,26 @@ I18n.translations["devise"] = {
       "student": "Regístrate Alumno",
       "teacher": "Regístrate Profesor",
       "terms": "Términos y Condiciones",
-      "text1": "Lo sentimos pero la red a la que estas intentado no permite el registro público. pregunta a un encargado de tu escuela él sabrá ayudarte.",
+      "text1": "Lo sentimos pero la red a la que estás intentado ingresar no permite el registro público. Pregunta a un encargado de tu escuela, él sabrá ayudarte.",
       "text2": "Ir a la página principal",
       "type": "Tipo de usuario"
     },
     "send_confirmation": {
-      "send_confirmation": "Se envio la confirmacion"
+      "send_confirmation": "Se envió la confirmación"
     }
   },
   "registrations_controller": {
-    "error": "El perfil no pudo actualizarce correctamente",
-    "update": "Se a actualizado correctamente tu perfil"
+    "error": "El perfil no pudo actualizarse correctamente",
+    "update": "Se ha actualizado correctamente tu perfil"
   },
   "reported_contents": {
-    "denounce_fail": "Algo sucedió que no se pudo guardar tu denuncia.",
+    "denounce_fail": "Algo sucedió, no se pudo guardar tu denuncia.",
     "denounce_success": "Tu denuncia ha sido realizada con éxito.",
     "shared": {
       "reported_content_modal": {
         "comment": "Escribe un comentario",
         "help_us": "Ayúdanos a entender qué sucede",
-        "reported_content": "Ya has reportado este contenido, el administrador de la red tomará acciones.",
+        "reported_content": "Has reportado este contenido, el administrador de la red tomará acciones.",
         "send": "Enviar",
         "why_no_content": "¿Por qué no quieres ver este contenido?"
       }
@@ -13360,7 +13364,7 @@ I18n.translations["devise"] = {
       },
       "chat": {
         "more_msg": "Cargar más mensajes...",
-        "select": "Selecciona a un amigo o curso para enviar mensaje."
+        "select": "Selecciona un amigo o curso para enviar mensaje."
       },
       "load_more_messages": {
         "more_msg": "Cargar más mensajes..."
@@ -13414,15 +13418,15 @@ I18n.translations["devise"] = {
         "publications": "Publicaciones",
         "sub_profile": "Este es el perfil del curso.",
         "subtitle": "En este lugar podrás ver todo lo que pasa en el curso.",
-        "text_edit_course": "Aqui puedes editar el curso.",
+        "text_edit_course": "Aquí puedes editar el curso.",
         "welcome": "Bienvenido al perfil de curso"
       }
     },
     "delivery_publication_tpl": {
-      "category": "rubro",
+      "category": "Rubro",
       "edit_delivery": "Editar Entrega",
       "end_delivery": "Entregar antes de",
-      "evaluates": "Se evalua",
+      "evaluates": "Se evalúa",
       "files": "Archivos",
       "final_eval": "Evaluación final",
       "no_evaluation": "A esta tarea no se le han asignado áreas de evaluación",
@@ -13436,7 +13440,7 @@ I18n.translations["devise"] = {
         "evaluation_periods": "Periodos de evaluación",
         "goto_section": "Únete a uno en la sección de",
         "new_course": "Crear curso ahora →",
-        "no_course": "No has creado ningún curso todavia.",
+        "no_course": "No has creado ningún curso todavía.",
         "no_member": "No eres miembro de ningún curso.",
         "public": "Público",
         "return": "Volver"
@@ -13456,8 +13460,8 @@ I18n.translations["devise"] = {
     "network_joyride": {
       "joyride_tip_content": {
         "courses": "Creación de cursos",
-        "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podras utilizar dentro de nuestra plataforma.",
-        "description_courses": "Al dar click en el bootón Crear (+) aparecera el formulario de creación para los cursos que impartes.",
+        "description": "En este tour te mostraremos el nuevo diseño y las herramientas que podrás utilizar dentro de nuestra plataforma.",
+        "description_courses": "Al dar click en el botón Crear (+) aparecerá el formulario de creación para los cursos que impartes.",
         "menu": "Menú de creación",
         "menu_description": "En un solo lugar puedes crear Comentarios, Tareas, Discusiones y Cuestionarios.",
         "text1": "Público o a tus cursos",
@@ -13465,14 +13469,14 @@ I18n.translations["devise"] = {
         "text11": "Menú interactivo",
         "text12": "Dependiendo la sección en la que te encuentres este menú mostrará herramientas de utilidad.",
         "text13": "Video tutoriales de ayuda",
-        "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click en el podras ver un video sobre como usar dicha función.",
+        "text14": "En cada sección donde veas un signo de interrogación \"?\", al dar click podrás ver un video sobre como usar dicha función.",
         "text2": "Podrás escoger si tus publicaciones son públicas para toda la red o para uno o varios de tus cursos.",
         "text3": "Uno o varios cursos",
-        "text4": "!Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .",
+        "text4": "¡Tendrás la posibilidad de escoger si lo que creas pertenece a uno, varios o todos los cursos! .",
         "text5": "Muro principal",
         "text6": "En el muro principal aparecerán todas las publicaciones de tus cursos y amigos.",
-        "text7": "Filtrado de publiciones",
-        "text8": "Con el menu de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
+        "text7": "Filtrado de publicaciones",
+        "text8": "Con el menú de filtrado podrás escoger que tipo de publicación quieres ver en el muro.",
         "text9": "Amigos",
         "welcome": "Bienvenido a Cúrsame"
       }
@@ -13482,19 +13486,19 @@ I18n.translations["devise"] = {
         "accept_course": "Has sido aceptado en el curso",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al curso",
+        "add_to_course": "ha solicitado entrar al Curso",
         "comment_course": "comentó en el curso",
         "comment_net": "comentó en la red",
-        "comment_profile": "ha comentado en tu perfil.",
-        "comment_to_comment": "ha comentado en un comentario que hiciste.",
-        "comment_to_homework": "ha comentado en la tarea",
+        "comment_profile": "ha comentado en tu Perfil.",
+        "comment_to_comment": "ha comentado tu Publicación.",
+        "comment_to_homework": "ha comentado en la Tarea",
         "course_calif": "Se ha calificado el curso",
         "course_expired": "ha llegado a su fecha final. Por favor desactívalo.",
         "coursework": "del curso",
-        "discuss_comment": "comentó en tu discusión",
+        "discuss_comment": "comentó en tu Discusión",
         "ended": "finalizado",
         "friend_notif": "ha solicitado ser su amigo",
-        "friend_req": "ha aceptado su solicitud de amistad.",
+        "friend_req": "ha aceptado tu solicitud de amistad.",
         "homework_calif": "Han calificado tu tarea",
         "in_course": "en tu curso",
         "in_course1": "en tu curso",
@@ -13502,16 +13506,16 @@ I18n.translations["devise"] = {
         "in_network": "en tu red",
         "lookup_usr": "Ver usuario",
         "new_course": "Nuevo curso",
-        "new_discus": "Nueva discusion",
-        "new_homework": "Nueva tarea",
-        "new_question": "Nuevo cuestionario",
+        "new_discus": "Nueva Discusión",
+        "new_homework": "Nueva Tarea",
+        "new_question": "Nuevo Cuestionario",
         "one_usr": "Un usuario",
-        "quest_feedback": "Has recibido retroalimentación en el cuestionario",
-        "quest_response": "ha respondido el cuestionario",
+        "quest_feedback": "Has recibido retroalimentación en el Cuestionario",
+        "quest_response": "ha respondido el Cuestionario",
         "response_homework": "ha respondido la tarea",
         "text15": "El curso",
         "text16": "ha sido",
-        "text17": "Han calificado tu participacion en la discusión",
+        "text17": "Han calificado tu participacion en la Discusión",
         "the_course": "El curso",
         "view_usr": "Ver usuario"
       }
@@ -13528,7 +13532,7 @@ I18n.translations["devise"] = {
       "comment1": "Comentar",
       "delte": "Borrar",
       "last_comments": "Ver comentarios anteriores",
-      "like": "me gusta",
+      "like": "Me gusta",
       "write_comment": "Escribe un comentario"
     },
     "post_menu": {
@@ -13553,7 +13557,7 @@ I18n.translations["devise"] = {
       "post_comments": {
         "comment": "Comentar",
         "delete": "Borrar",
-        "like": "me gusta",
+        "like": "Me gusta",
         "view_comments": "Ver comentarios anteriores",
         "write_comment": "Escribe un comentario"
       },
@@ -13589,7 +13593,7 @@ I18n.translations["devise"] = {
       "discussion": {
         "in_course": "en el curso",
         "new": "Nueva discusión",
-        "open_discuss": "Abrir discusion"
+        "open_discuss": "Abrir discusión"
       },
       "meta_data": {
         "ago": "Hace",
@@ -13598,7 +13602,7 @@ I18n.translations["devise"] = {
         "like": "Me gusta"
       },
       "owner_edit_publications": {
-        "confirm": "¿Estas seguro de borrar esto?",
+        "confirm": "¿Estás seguro de borrar esto?",
         "delete": "Borrar",
         "edit": "Editar"
       },
@@ -13631,8 +13635,8 @@ I18n.translations["devise"] = {
         "sign_in": "Registrarme →"
       },
       "network_not_exist": {
-        "no_net_exists": "Parece que la red a la que quieres accesar no existe. Pregunta a un encargado de tu escuela él sabrá ayudarte.",
-        "no_network": "No ingresaste el subdominio de la red a la que quieres acceder.",
+        "no_net_exists": "Parece que la red a la que quieres ingresar no existe. Pregunta a un encargado de tu escuela, él sabrá ayudarte.",
+        "no_network": "No ingresaste el subdominio de la red a la que quieres ingresar.",
         "ops": "¡Oops!",
         "search_school": "Busca tu escuela aquí →"
       }
@@ -13663,7 +13667,7 @@ I18n.translations["devise"] = {
         "questionnaire": "Cuestionarios",
         "radar": "Radar",
         "ratings": "Calificaciones",
-        "return": "volver",
+        "return": "Volver",
         "vLex": "vLex"
       },
       "upcomming_deliveries_widget": {
@@ -13679,7 +13683,7 @@ I18n.translations["devise"] = {
     },
     "static_pages": {
       "header": {
-        "notif": "Oops! al parecer tu correo no pertenece a niguna red.",
+        "notif": "¡Oops! al parecer tu correo electrónico no pertenece a ninguna red.",
         "search_network": "Busca tu red",
         "text1": "¿Ya eres usuario?",
         "text2": "Encuentra tu red",
@@ -13702,12 +13706,12 @@ I18n.translations["devise"] = {
         "text5": "mejorar nuestro servicio, Revisa nuestro",
         "thnx": "Gracias.",
         "title": "Ayúdanos a mejorar",
-        "title2": "Para Cúrsame es muy importante su participación, a continuación se le presentan algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.",
-        "title3": "Para Cúrsame es muy importante tu participación, a continuación se te presentan algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se usaran con el fin de mejorar continuamente."
+        "title2": "Para Cúrsame es muy importante su participación, a continuación presentamos algunas preguntas que nos permitirán mejorar continuamente y ofrecer una herramienta congruente con sus necesidades.",
+        "title3": "Para Cúrsame es muy importante tu participación, a continuación presentamos algunas preguntas que nos permitirán conocerte mejor. Tus respuestas son confidenciales y se utilizarán con el fin de mejorar continuamente."
       },
       "video_tour_first_time": {
         "loading_tour": "Cargando tour...",
-        "wel_text": "Por favor mira con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.",
+        "wel_text": "Por favor revisa con atención este tour inicial para que conozcas las principales secciones de la nueva plataforma.",
         "wel_text1": "En este pequeño video de introducción te mostramos las principales secciones de tu perfil y el de tus amigos.",
         "wel_text2": "En este video de introducción te mostramos las principales secciones y características del curso.",
         "welcome": "Bienvenido al nuevo Cúrsame"
@@ -13725,21 +13729,21 @@ I18n.translations["devise"] = {
       }
     },
     "user_joyride": {
-      "content": "Creación de contenido",
-      "content_area": "Esta es el area de creación de contenido.",
+      "content": "Creación de Contenido",
+      "content_area": "Esta es el área de Creación de Contenido.",
       "courses": "Cursos",
-      "courses_area": "Esta es el area de tus cursos.",
+      "courses_area": "Esta es el área de tus cursos.",
       "edit_prof": "Editar perfil",
       "friends": "Amigos",
-      "friends_list": "Aqui encontraras un listado de tus amigos",
+      "friends_list": "Aquí encontraras un listado de tus Amigos",
       "notif": "Notificaciones",
       "prof": "Perfil",
-      "prof_photo": "Aqui ver la foto de tu perfil.",
-      "publ": "Publiciones",
-      "publ_area": "Aqui encontraras todas las publicaciones de la red.",
-      "text_edit_prof": "Aqui puedes editar tu perfil.",
-      "text_notif": "Esta es el area de notificaciones.",
-      "text_prof": "En este lugar podrás ver todo lo que pasa en tu red cursame.",
+      "prof_photo": "Aquí puedes ver la foto de tu Perfil.",
+      "publ": "Publicaciones",
+      "publ_area": "Aquí encontraras todas las publicaciones de la red.",
+      "text_edit_prof": "Aquí puedes editar tu Perfil.",
+      "text_notif": "Esta es el área de Notificaciones.",
+      "text_prof": "En este lugar podrás ver todo lo que pasa en tu red Cúrsame.",
       "welcome_prof": "Bienvenido a tu perfil"
     },
     "wall_filters": {
@@ -13765,22 +13769,22 @@ I18n.translations["devise"] = {
     "activities": {
       "activities": "Las actividades del sistema están geo localizadas",
       "activity": "Actividad por",
-      "avg": "Promedio de calificación por tareas",
-      "avg2": "Promedio de calificación por survey",
-      "avg3": "Promedio de calificación por usuario",
+      "avg": "Promedio de Calificación por Tareas",
+      "avg2": "Promedio de Calificación por Survey",
+      "avg3": "Promedio de Calificación por Usuario",
       "avg4": "Promedio",
       "comments": "Comentarios",
       "courses": "Cursos",
       "exam": "Exámenes",
-      "exam_delivery": "Entregas de examenes",
-      "find": "Buscar Actividades por usuario o titulo",
+      "exam_delivery": "Entregas de Exámenes",
+      "find": "Buscar Actividades por Usuario o Título",
       "goto": "Ir a la actividad",
       "hmwrks": "Tareas",
       "hmwrks_delivery": "Entregas de tareas",
       "lat": "Latitud",
       "long": "Longitud",
       "net": "Red",
-      "no_act": "sin actividades",
+      "no_act": "Sin actividades",
       "os": "Sistema operativo",
       "place": "Lugar",
       "sys": "Actividades del sistema",
@@ -13791,28 +13795,28 @@ I18n.translations["devise"] = {
     "courses_sintetic_view_and_edit": {
       "courses": "Visor de cursos",
       "hmwrks": "Tareas",
-      "hmwrks_delivery": "Entregas de tarea",
+      "hmwrks_delivery": "Entregas de Tarea",
       "quest": "Cuestionarios",
-      "show": "Muestra los cursos de las redes, sus miembros y sus actividades",
-      "show2": "Mostrar tareas",
-      "show3": "Mostrar cuestionarios",
-      "show4": "Mostrar estadísticas del curso",
+      "show": "Muestra los Cursos de las Redes, Miembros y Actividades",
+      "show2": "Mostrar Tareas",
+      "show3": "Mostrar Cuestionarios",
+      "show4": "Mostrar Estadísticas del Curso",
       "show5": "Ver entregas",
       "stat": "Estadísticas"
     },
     "create_super_admin": {
       "enroll": "Registrar usuario",
-      "img": "Puedes ver las instrucciones de creación de super admin accediendo al código qr",
-      "superuser": "Super administrador Cúrsame"
+      "img": "Puedes ver las instrucciones de creación de Súper Administrador accediendo al código qr",
+      "superuser": "Súper Administrador Cúrsame"
     },
     "instructions": {
-      "create": "Instrucciones para creación de súper administradores",
-      "link": "Crea coloca tu nombre, apellido, email y contraseña, da click en continuar y listo"
+      "create": "Instrucciones para creación de Súper Administradores",
+      "link": "Crear coloca tu nombre, apellido, email y contraseña, da click en continuar y listo"
     },
     "networks": {
-      "admin": "Administrar networks",
+      "admin": "Administrar Networks",
       "create": "Crear Red",
-      "create_net": "Creando networks",
+      "create_net": "Creando Networks",
       "edit": "Editar",
       "net": "Red",
       "subdomain": "Subdominio"
@@ -13820,24 +13824,24 @@ I18n.translations["devise"] = {
     "statics": {
       "activities": "Actividades",
       "events": "Eventos",
-      "exam": "Examenes",
-      "exam_delivery": "Entrega de examenes",
+      "exam": "Exámenes",
+      "exam_delivery": "Entrega de Exámenes",
       "hmwrks": "Tareas",
       "hmwrks_delivery": "Entrega de tareas",
       "statics1": "Estadísticas del sistema"
     },
     "users": {
-      "activities": "Manejador de actividades",
+      "activities": "Manejador de Actividades",
       "discuss": "Discusiones",
-      "edit1": "Editar usuario",
-      "exam": "Examenes",
+      "edit1": "Editar Usuario",
+      "exam": "Exámenes",
       "find_usr": "Buscar Usuario",
       "hmwrks": "Tareas",
-      "response": "Respuestas de tareas",
-      "response2": "Respuestas de examen",
-      "show1": "Mostrar actividades",
+      "response": "Respuestas de Tareas",
+      "response2": "Respuestas de Examen",
+      "show1": "Mostrar Actividades",
       "statics": "Estadísticas",
-      "usr": "Manejador de datos de usuario"
+      "usr": "Manejador de datos de Usuario"
     }
   },
   "support": {
@@ -13850,13 +13854,13 @@ I18n.translations["devise"] = {
   "surveys": {
     "ajax": {
       "surveys_paginate_ajax": {
-        "no_more_quest": "No se encontraron más cuestionarios pasados."
+        "no_more_quest": "No se encontraron más Cuestionarios pasados."
       }
     },
     "answer_fields": {
       "correct": "Correcta",
       "delete": "Eliminar",
-      "response": "Ingresar respuesta"
+      "response": "Ingresar Respuesta"
     },
     "correct_create": "Cuestionario creado correctamente.",
     "correct_edit": "Cuestionario editado correctamente.",
@@ -13871,38 +13875,39 @@ I18n.translations["devise"] = {
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
-      "publish_date": "Día de pubicación",
+      "publish_date": "Día de publicación",
       "quest": "Preguntas",
       "save": "Guardar Cuestionario",
-      "support": "Material de soporte",
+      "support": "Material de Soporte",
       "text1": "Números primos",
-      "timer": "Tiempo para resolución del cuestionario",
-      "title": "Titulo del cuestionario"
+      "timer": "Tiempo para resolución del Cuestionario",
+      "title": "Título del cuestionario"
     },
     "index": {
       "more_days": "Cuestionarios para responder en 3 días o más",
-      "no_quest": "No tienes cuestionarios pendientes por contestar.",
-      "section": "sección de cuestionarios Pasados",
-      "see": "Puedes ver antiguos cuestionarios en la",
+      "no_quest": "No tienes Cuestionarios pendientes por contestar.",
+      "section": "sección de Cuestionarios Pasados",
+      "see": "Puedes ver antiguos Cuestionarios en la",
       "today": "Cuestionarios para responder Hoy",
       "tomorrow": "Cuestionarios para responder Mañana"
     },
     "lapsed": {
-      "no_quest": "No se encontraron más cuestionarios pasados."
+      "no_quest": "No se encontraron más Cuestionarios pasados."
     },
     "my_surveys": {
-      "no_quest": "No tienes cuestionarios por contestar."
+      "no_quest": "No tienes Cuestionarios por contestar."
     },
     "question_fields": {
       "add_answer": "Agregar Respuesta",
       "quest1": "Ingresar pregunta"
     },
-    "select_course": "Selecciona un curso para publicar tu cuestionario.",
+    "select_course": "Selecciona un Curso para publicar tu Cuestionario.",
+    "select_evaluation_period": "Selecciona un periodo de evaluación",
     "shared": {
       "survey_card": {
         "edit": "Editar Cuestionario",
         "no_limit_time": "Sin límite de tiempo",
-        "notice_helper": "Este cuestionario te dará",
+        "notice_helper": "Este Cuestionario te dará",
         "notice_helper2": "minutos para responderlo",
         "quest": "Ver Cuestionario",
         "solve_time": "Minutos"
@@ -13915,7 +13920,7 @@ I18n.translations["devise"] = {
         "response": "Responder antes del"
       },
       "survey_questions_modal": {
-        "quest": "Enviar cuestionario"
+        "quest": "Enviar Cuestionario"
       },
       "surveys_course_header": {
         "past": "Pasados",
@@ -13941,22 +13946,22 @@ I18n.translations["devise"] = {
     },
     "surveys_course": {
       "more_days": "Cuestionarios para responder en 3 días o más",
-      "no_quest": "No tienes cuestionarios pendientes por contestar en este curso.",
-      "past": "sección de cuestionarios Pasados",
-      "see": "Puedes ver antiguos cuestionarios en la",
+      "no_quest": "No tienes Cuestionarios pendientes por contestar en este curso.",
+      "past": "sección de Cuestionarios Pasados",
+      "see": "Puedes ver antiguos Cuestionarios en la",
       "to_day": "Cuestionarios para responder Hoy",
       "tomorrow": "Cuestionarios para responder Mañana"
     },
     "surveys_course_lapsed": {
-      "quest": "No se encontraron más cuestionarios pasados."
+      "quest": "No se encontraron más Cuestionarios pasados."
     }
   },
   "surveys_controller": {
-    "no_accept": "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
-    "no_exist": "El cuestionario que intentas ver no existe o ha sido borrado.",
-    "no_quest_accept": "Estas tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
-    "no_quest_register": "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito.",
-    "no_register": "Estas tratando de ver Cuestionarios de un curso donde no estas inscrito."
+    "no_accept": "Estás tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
+    "no_exist": "El Cuestionario que intentas ver no existe o ha sido borrado.",
+    "no_quest_accept": "Estás tratando de ver Cuestionarios de un curso donde no has sido aceptado.",
+    "no_quest_register": "Estás tratando de ver Cuestionarios de un curso donde no estás inscrito.",
+    "no_register": "Estás tratando de ver Cuestionarios de un curso donde no estás inscrito."
   },
   "time": {
     "am": "am",
@@ -13970,53 +13975,53 @@ I18n.translations["devise"] = {
   "users": {
     "califications": {
       "deliveries_table": {
-        "avg": "Calificación promedio en tareas",
+        "avg": "Calificación promedio en Tareas",
         "hmwrk": "Tareas",
         "hmwrks": "Tarea",
         "no_deliver": "No entregada",
-        "no_hmwrks": "Aún no hay tareas en este curso.",
+        "no_hmwrks": "Aún no hay Tareas en este curso.",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
       "discussions_table": {
-        "avg_score": "Calificación promedio en discusiones",
+        "avg_score": "Calificación promedio en Discusiones",
         "discuss": "Discusiones",
         "discuss2": "Discusión",
-        "no_discuss": "Aún no hay discusiones evaluables en este curso.",
+        "no_discuss": "Aún no hay Discusiones evaluables en este curso.",
         "no_part": "Sin participación",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
-      "enroll": "Necesitas estar inscrito en al menos un curso para tener calificaciones.",
-      "no_score": "Aún no tienes calificaciones.",
+      "enroll": "Necesitas estar inscrito en al menos un curso para tener Calificaciones.",
+      "no_score": "Aún no tienes Calificaciones.",
       "ratings": "Calificaciones",
       "surveys_table": {
         "avg": "Porcentaje: %{number}%",
         "exam": "Examen",
         "no_answered": "No resuelto",
         "quest": "Cuestionarios",
-        "quest2": "Calificación promedio en cuestionarios",
-        "quest3": "Aún no hay cuestionarios en este curso.",
+        "quest2": "Calificación promedio en Cuestionarios",
+        "quest3": "Aún no hay Cuestionarios en este Curso.",
         "score": "Calificación"
       }
     },
     "courses": {
       "courses2": "Cursos",
-      "find": "Busca cursos en la sección de",
-      "no_members": "Este usuario no esta inscrito en ningún curso.",
+      "find": "Busca Cursos en la sección de",
+      "no_members": "Este usuario no esta inscrito en ningún Curso.",
       "no_registered": "Aún no estas inscrito en ningún curso."
     },
     "dashboard": {
-      "goto": "Ir al super administrador",
+      "goto": "Ir al Súper Administrador",
       "log_out": "Salir de mi sesión",
-      "select": "Seleccionador de redes",
-      "text1": "Cuando usted seleccione la network debera iniciar sesión en la red a la que se le dirija ya que es una celula independiente del sistema"
+      "select": "Seleccionador de Redes",
+      "text1": "Cuando usted seleccione la Red deberá iniciar sesión en la Red a la que se le dirija ya que es una célula independiente del sistema"
     },
     "evaluation": {
       "no_members": "Este curso no tiene miembros",
-      "score": "Calificacion"
+      "score": "Calificación"
     },
     "form_course": {
       "cancel": "Cancel",
@@ -14050,23 +14055,23 @@ I18n.translations["devise"] = {
       "all": "Todos los usuarios"
     },
     "info": {
-      "bio": "Biografia",
-      "email": "Correo Electronico",
+      "bio": "Biografía",
+      "email": "Correo Electrónico",
       "info2": "Información",
-      "no_bio": "Este usuario no cuenta con biografia."
+      "no_bio": "Este usuario no cuenta con biografía."
     },
     "menu_member": {
-      "enroll": "inscribirse a una red",
-      "friends": "mis amigos",
-      "net": "mis redes"
+      "enroll": "Inscribirse a una red",
+      "friends": "Mis amigos",
+      "net": "Mis redes"
     },
     "pendding_friends": {
       "no_request": "No hay solicitudes de amistad pendientes."
     },
     "set_password_form": {
-      "pwd": "Ingresa una contraseña.",
-      "save": "Guardar contraseña",
-      "set_pwd": "Establece tu contraseña",
+      "pwd": "Ingresa una Contraseña.",
+      "save": "Guardar Contraseña",
+      "set_pwd": "Establece tu Contraseña",
       "welcome": "Bienvenido a Cúrsame, es necesario que establezcas una contraseña para terminar con el proceso de registro."
     },
     "shared": {
@@ -14108,21 +14113,21 @@ I18n.translations["devise"] = {
     },
     "waiting_friends": {
       "friends": "Amigos en espera",
-      "request": "Este usuario te ha solicitado amistad",
+      "request": "Este usuario te ha enviado una solicitud de amistad",
       "waiting_friends": "Esperando aceptación de"
     }
   },
   "users_controller": {
-    "canot_delete": "No puedes borrar este usuario.",
-    "correct_delete": "Usuario fue borrado correctamente",
-    "deleted_usr": "El Usuario ya fue borrado",
-    "no_exist": "El usuario que intentas ver no existe o ha sido borrado.",
-    "no_register": "no estas inscrito en ninguna red",
+    "canot_delete": "No puedes eliminar este usuario.",
+    "correct_delete": "Usuario eliminado correctamente",
+    "deleted_usr": "El Usuario fue eliminado",
+    "no_exist": "El usuario que intentas ver no existe o ha sido eliminado.",
+    "no_register": "No estás inscrito en ninguna red",
     "save_pwd": "Se ha guardado tu contraseña correctamente."
   },
   "users_mailer": {
     "notice_to_user": {
-      "activity": "tiene 5 nuevas actividades en la plataforma.",
+      "activity": "Tiene 5 nuevas actividades en la plataforma.",
       "activitys": "Tiene 5 nuevas actividades en la plataforma.",
       "goto": "Ir a actividades",
       "hello": "Hola",
@@ -14133,9 +14138,9 @@ I18n.translations["devise"] = {
       "click": "haz click aquí.",
       "happy": "¡Feliz día del Maestro!",
       "hello": "Hola",
-      "mail": "Si no puedes ver este mail",
+      "mail": "Si no puedes ver este mensaje",
       "teacher": "Profesor(a)",
-      "text1": "En Cúrsame estamos muy orgullosos de tí y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
+      "text1": "En Cúrsame estamos muy orgullosos de ti y de la labor tan importante que realizas por la educación en México, es una responsabilidad muy grande guiar a los futuros líderes y ciudadanos de nuestro País.",
       "text2": "Personalmente quiero felicitarte y reiterar el compromiso que tenemos contigo. El trabajo que realizamos está pensado en generarte valor, mejorar tu capacidad de enseñanza y ayudar a que tu labor como docente sea más satisfactoria, productiva y enriquecedora. Seguiremos mejorando nuestra plataforma con este fin porque eres la pieza clave para que Cúrsame cumpla su misión.",
       "text3": "Por tu dedicación permanente, por los esfuerzos que realizas, por no desistir en los tiempos difíciles y conservar la esperanza de educar para un mundo mejor: En nombre de todo nuestro equipo de trabajo te deseo un feliz día del Maestro ¡Te lo mereces!"
     }
@@ -14143,7 +14148,7 @@ I18n.translations["devise"] = {
   "usessions": {
     "new": {
       "confirm": "Esperando confirmación",
-      "email": "Correo electrónico",
+      "email": "Correo Electrónico",
       "init_session": "Iniciar sesión",
       "pwd": "Contraseña",
       "remember": "Recordarme",
@@ -14153,7 +14158,7 @@ I18n.translations["devise"] = {
   "usessions_controller": {
     "hello": "Hola ",
     "invalid": "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos.",
-    "welcome": " bienvenido de nuevo."
+    "welcome": " Bienvenido de nuevo."
   },
   "views": {
     "pagination": {

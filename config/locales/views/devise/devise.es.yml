@@ -10,15 +10,15 @@ es:
       confirmation_instructions:
         welcome: ¡Bienvenido a Cúrsame!
         usage: 'Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.'
-        push_here: 'Si el boton superior no funciona, haz clic aquí'
+        push_here: 'Si el botón superior no funciona, haz clic aquí'
       reset_password_instructions:
         reset_pwd: Restaurar contraseña
         reset_password: 'Nos has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.'
-        pwd: En caso que no hayas solicitado la restauración de tu contraseña por favor comunicalo a
-        button: 'Si el boton superior no funciona, haz clic aquí'
+        pwd: En caso de que no hayas solicitado la restauración de tu contraseña por favor comunícalo a
+        button: 'Si el botón superior no funciona, haz clic aquí'
       unlock_instructions:
         hello: ¡Hola!
-        button: 'Si el boton superior no funciona, haz clic aquí'
+        button: 'Si el botón superior no funciona, haz clic aquí'
     passwords:
       edit:
         change_pwd: Cambia tu contraseña
@@ -39,14 +39,14 @@ es:
         update: Actualizar
         back: Regresar
       new:
-        access: Lo sentimos pero la red a la que estas intentado accesar no existe
-        question: pregunta a un encargado de tu escuela él sabrá ayudarte.
+        access: Lo sentimos pero la red a la que estás intentado accesar no existe
+        question: pregunta a un encargado de tu escuela, él sabrá ayudarte.
         thnx: ¡Gracias!
         email: Correo electrónico
         name: Nombre(s)
         last_name: Apellidos
         pwd: Contraseña
-        confirm_pwd: Confirmacion de contraseña
+        confirm_pwd: Confirmación de contraseña
         accept: Acepto los términos y condiciones
         registry: Registrarme
         sign_in: ¿Ya eres usuario? Ingresa
@@ -55,8 +55,8 @@ es:
     sessions:
       new:
         sorry: Lo sentimos
-        net: La red a la que estas intentado accesar no existe
-        net2: pregunta a un encargado de tu escuela él sabrá ayudarte.
+        net: La red a la que estás intentado accesar no existe
+        net2: pregunta a un encargado de tu escuela, él sabrá ayudarte.
         init: Ir al inicio
         send: Se ha enviado un correo a
         confirm: Esperando confirmación
@@ -75,16 +75,16 @@ es:
         user: ¿Soy usuario?
         last_user: "Si eras usuario en la plataforma anterior aún sigues siendo usuario en Cúrsame."
         key: ¿Mi clave sigue siendo la misma?
-        new_pwd: Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mail que enviamos
+        new_pwd: Se han generado nuevas contraseñas cuando confirmes tu correo electrónico con el mensaje que enviamos
         change_pwd: te pedirá que cambies tu contraseña.
-        confirm2: No me ha llegado el mail de confirmación
+        confirm2: No me ha llegado el mensaje de confirmación
         link: Da click en el link
         acount: Confirma tu cuenta
         account_window: te enviará a una pantalla que te pedirá tu email para que te volvamos a enviar los datos de confirmación.
         confirm3: Confirmé mi email pero olvide cambiar mi contraseña
         pwd_problem: Cualquier problema con la contraseña puedes resolverlo dando click en
         forgot_pwd: Olvidé mi contraseña
-        send_pwd: donde se te enviará un mail para que puedas cambiar tu contraseña.
+        send_pwd: donde se te enviará un mensaje para que puedas cambiar tu contraseña.
     shared:
       footer-links:
         help: Centro de ayuda
@@ -92,7 +92,7 @@ es:
         privacy: Aviso de privacidad
       links:
         log_in: ¿Ya eres usuario? Ingresa
-        sign_in: ¿No estas registrado? Registrate
+        sign_in: ¿No estás registrado? Registrate
         pwd: ¿Olvidaste tu contraseña?
         confirm: ¿No recibiste las instrucciones de confirmación?
         blocked: ¿No recibiste las instrucciones de desbloqueo?

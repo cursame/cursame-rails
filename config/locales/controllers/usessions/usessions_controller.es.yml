@@ -2,5 +2,4 @@ es:
   usessions_controller:
     invalid: "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos."
     hello: "Hola "
-    welcome: " bienvenido de nuevo."
-    
+    welcome: " Bienvenido de nuevo."

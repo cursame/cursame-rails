@@ -6,7 +6,7 @@ es:
         edit_form: "Editar Formulario"
       form:
         title: "Título: "
-        title2: "Titulo del formulario"
+        title2: "Título del formulario"
         descrip: "Descripción: "
         form_descrip: "Descripción del formulario"
         form_url: "URL del formulario"

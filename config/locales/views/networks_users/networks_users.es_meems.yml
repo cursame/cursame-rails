@@ -2,10 +2,10 @@ es_meems:
   networks_users:
     index:
       records: Usuarios registrados en el sistema
-      no_members: no hay miembros en esta red
+      no_members: No hay miembros en esta red
     new:
       sign_in: Ingresar a la plataforma
       accept: Acepto las normas y condiciones de esta plataforma
       select: Selecciona un rol
-      suscribe: suscribirme a la red
+      suscribe: Suscribirme a la red
 

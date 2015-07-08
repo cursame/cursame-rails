@@ -20,16 +20,16 @@ es_meems:
       third_column:
         title1: Síguenos en
       fourth_column:
-        title1: Derechos reservados © 2014 Cúrsame
-        title2: Ver la página en ingles
+        title1: Derechos reservados © 2015 Cúrsame
+        title2: Ver la página en inglés
     sessions:
       help: Ayuda
     super_admin:
-      hello: hola
-      admin: administración
+      hello: Hola
+      admin: Administración
       activities: Actividades
       admin_net: Administrar redes
       super_adm: Super admins
-      course_admin: MEEMS de Centros de Emprendedores
+      course_admin: Administradores de Centros Emprendedores
       statics: Estadísticas
       usr: Usuarios

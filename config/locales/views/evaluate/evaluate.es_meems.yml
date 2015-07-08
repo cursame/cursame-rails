@@ -8,12 +8,12 @@ es_meems:
         deliver: Entrega
         scored: Calificar
         student: Emprendedor
-        title: Titulo
+        title: Título
         message: Mensaje
         attachments: Archivos adjuntos
         example: Ejemplo
         feedback: Retroalimentación
-        comments: Envia comentarios en base a los criterios de la actividad.
+        comments: Envía comentarios en base a los criterios de la actividad.
         check_hmwrk: Calificar tarea
         deliveries: Entregas
       evaluate_deliveries:
@@ -21,26 +21,26 @@ es_meems:
         score: "Calificación:"
         no_score: Sin calificar
         no_deliveries: Sin Entregas.
-        no_deliveries_record: Todavia no hay ninguna entrega en esta tarea.
+        no_deliveries_record: Todavía no hay ninguna entrega en esta tarea.
     discussions:
       evaluate_discussions_header:
         course: Centro Emprendedor
         members: Participantes
         publish_date: Fecha de publicación
-        limit_publish_date: Fecha limite para participar
+        limit_publish_date: Fecha límite para participar
       discussion_user_response:
         no_score: Sin Calificar
         comments: Comentarios
         score: Calificación
         example: Ejemplo
         feedback: Retroalimentación
-        send: Envia comentarios en base a los criterios de la actividad.
+        send: Envía comentarios en base a los criterios de la actividad.
         rate_student: Calificar emprendedor
       evaluate_discussions:
         discuss: Discusión
         comment: Comentario
         comments: Comentarios
-        nothing: Nadie a participado en esta discusión.
+        nothing: Nadie ha participado en esta discusión.
     shared:
       delivery_activity:
         of: de
@@ -52,7 +52,7 @@ es_meems:
         members: Participantes
         no_score: Sin Calificar
       evaluate_course_filter:
-        all: Todos los Centros de Emprendedores
+        all: Todos los Centros Emprendedores
       evaluation_criterium_feedback:
         feedback: Retroalimentación
       header_activity_delivery:
@@ -62,9 +62,9 @@ es_meems:
         publish_date_of: Fecha para entrega
       header_activity_survey:
         course: Centro Emprendedor
-        answered: Contestados
+        answered: Respondidos
         publish_date: Fecha de publicación
-        deliver_date: Fecha para entrega
+        deliver_date: Fecha de entrega
         of: de
         the: del
       header_evaluate:
@@ -78,14 +78,14 @@ es_meems:
         delivery: Entregas
         obtain: Obtenido
         no_deliveries: Sin Entregas.
-        no_answer: Todavia ningún emprendedor ha contestado este cuestionario.
+        no_answer: Todavía ningún emprendedor ha respondido este cuestionario.
       survey_user_response:
         obtain: Obtenido
         delivery: Entregado
         answers: Respuestas
         feedback: Retroalimentación
         reply: Respuesta
-        comments: Envia comentarios al emprendedor.
+        comments: Envía comentarios al Emprendedor.
         send: Enviar comentario
         delivery: Entregas
         obtain: Obtenido
@@ -94,11 +94,11 @@ es_meems:
       activity_for_tmrw: Actividades para calificar mañana
       activity_for_days: Actividades para calificar en 3 dias o más
       no_activity: No tienes actividades por calificar.
-      all: 'Todas las actividades de tu Centros Emprendedor estan calificadas, puedes ver'
-      past_activity: actividades pasas en la seccion de Pasadas
+      all: 'Todas las actividades de tu Centro Emprendedor están calificadas, puedes ver'
+      past_activity: actividades pasadas en la sección de Pasadas
     course_inactive:
       no_score: Aún no tienes calificaciones.
-      enrollment: Necesitas estar inscrito en al menos un Centros Emprendedor para tener calificaiones.
+      enrollment: Necesitas estar inscrito en al menos un Centro Emprendedor para tener calificaciones.
     inactive:
       no_activity: No tienes actividades pasadas.
       no_act: No has creado ninguna actividad.
@@ -107,6 +107,6 @@ es_meems:
       tomorrow: Actividades para calificar mañana
       someday: Actividades para calificar en 3 días o más
       no_score: No tienes actividades por calificar.
-      all: 'Todas las actividades de tu Centros Emprendedor están calificadas, puedes ver'
+      all: 'Todas las actividades de tu Centro Emprendedor están calificadas, puedes ver'
       past: actividades pasadas en la sección de Pasadas
 

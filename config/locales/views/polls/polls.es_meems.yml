@@ -9,7 +9,7 @@ es_meems:
       delete: Eliminar
       add: Agregar Respuesta
     edit:
-      edit: Editando Encuesta
+      edit: Editar Encuesta
     index:
       list: Lista de Encuestas
 
