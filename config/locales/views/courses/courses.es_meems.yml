@@ -28,25 +28,25 @@ es_meems:
         no_rate: Sin calificar
     index:
       student_courses_index:
-        no_courses: No hay Centros Emprendedores.
-        no_show: No hay más Centros Emprendedores para mostrar.
+        no_courses: No hay Centros de Emprendedores.
+        no_show: No hay más Centros de Emprendedores para mostrar.
       student_header:
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         course: Cursando
         regist: Inscríbete
         request: Solicitudes
       teacher_courses_index:
-        no_courses: No hay Centros Emprendedores.
-        no_show: No hay más Centros Emprendedores para mostrar.
+        no_courses: No hay Centros de Emprendedores.
+        no_show: No hay más Centros de Emprendedores para mostrar.
       teacher_header:
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         create_course: Crear nuevo Centro Emprendedor
         new: Nuevo
         active: Activos
         finalize: Finalizados
     members_in_courses:
       course_view_call:
-        no_courses: No hay Centros Emprendedores.
+        no_courses: No hay Centros de Emprendedores.
       owner_partial_for_member:
         teacher: Líder multiplicador
         student: Emprendedor
@@ -62,7 +62,7 @@ es_meems:
     search:
       courses_search_results:
         search: "Búsqueda:"
-        no_records: No se encontraron Centros Emprendedores con el criterio de búsqueda.
+        no_records: No se encontraron Centros de Emprendedores con el criterio de búsqueda.
     shared:
       course_card:
         member: Miembro
@@ -108,7 +108,7 @@ es_meems:
       courses_search: Buscar Centro Emprendedor...
       search: Buscar
     dashboard_deliver:
-      access: Acceso rápido de administración de Centros Emprendedores
+      access: Acceso rápido de administración de Centros de Emprendedores
       desactivate: Desactivar
       activate: activar Centro Emprendedor
       inactive: Inactivo
@@ -121,7 +121,7 @@ es_meems:
       descrip: Descripción
       publish_date: Día de publicación
       delivery_day: Último día de entrega
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       publish: Publicar
     evaluation:
       no_group: ¡No eres parte del curso!
@@ -184,7 +184,7 @@ es_meems:
       eval_hmwrk: Calificar tarea
       score: Calificación
     old_course:
-      antique: Centros Emprendedores antiguos
+      antique: Centros de Emprendedores antiguos
       deactivate: Desactivar Centro Emprendedor
       activate: Activar Centro Emprendedor
     survey_results:
@@ -203,7 +203,7 @@ es_meems:
       more_act: Cargar más actividades
       select_act: Selecciona una actividad.
     all_courses:
-      no_records: No hay más Centros Emprendedores para mostrar.
+      no_records: No hay más Centros de Emprendedores para mostrar.
     clone_course_view:
       clone: Clonar Centro Emprendedor
       data_course: Datos del Centro Emprendedor
@@ -266,7 +266,7 @@ es_meems:
       no_members: Centro Emprendedor sin miembros.
       no_records: Este Centro Emprendedor todavia no tiene miembros en el.
     new:
-      new_course: Nuevo Centro Emprendedor 
+      new_course: Nuevo Centro Emprendedor
     statics:
       activity: ACTIVIDADES
       generate: Se han generado
@@ -276,7 +276,7 @@ es_meems:
       quest: CUESTIONARIO
       in_course: En el Centro Emprendedor
     unpublished_courses:
-      no_courses: No hay más Centros Emprendedores para mostrar.
+      no_courses: No hay más Centros de Emprendedores para mostrar.
     show:
       course-header:
         update: "Actualizar portada"

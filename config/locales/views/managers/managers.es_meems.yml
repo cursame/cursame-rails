@@ -61,7 +61,7 @@ es_meems:
       edit:
         edit1: Editar Centro Emprendedor
       index:
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         create: Crear Centro Emprendedor
         name: Nombre
         teachers: Líderes Multiplicadores
@@ -152,7 +152,7 @@ es_meems:
       managers_sidebar:
         stat: Estadísticas
         usr: Usuarios
-        courses: Centros Emprendedores
+        courses: Centros de Emprendedores
         hmwrk: Tareas
         quest: Cuestionarios
         discuss: Discusiones
@@ -254,14 +254,14 @@ es_meems:
       config: Configuración
       masive: Correo Masivo
       import_usr: Importar usuarios
-      import_cur: Importar Centros Emprendedores
-      import_std: Importar Emprendedores de Centros Emprendedores
+      import_cur: Importar Centros de Emprendedores
+      import_std: Importar Emprendedores de Centros de Emprendedores
     import_members:
       import1: Importar miembros
-      import2: Importa los miembros de los Centros Emprendedores desde una base de datos.
-      download: Descargar archivo de Centros Emprendedores
+      import2: Importa los miembros de los Centros de Emprendedores desde una base de datos.
+      download: Descargar archivo de Centros de Emprendedores
       import3: Importar lista de usuarios
-      text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros Emprendedores.
+      text1: Es importante tomar en cuenta que el formato del archivo es fundamental para importar correctamente los Centros de Emprendedores.
       text2: 'Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centro Emprendedor mientras que 1 es para especificar que es un miembro del Centro Emprendedor.'
       text3: El Email debe ser el correo asociado al usuario.
       no_file: NO SE ENCONTRÓ EL ARCHIVO
@@ -273,7 +273,7 @@ es_meems:
       pop: Población esperada
       actual: Actual
       usr: Usuarios
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       hmwrks: Tareas
       comments: Comentarios
       exams: Exámenes

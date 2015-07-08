@@ -65,8 +65,8 @@ es_meems:
       terms73: 'Se prohíben estrictamente las violaciones o intentos de violaciones de los sistemas de Cúrsame, o la interrupción de sus servicios. Dicha violación puede resultar en responsabilidad civil y penal. Sin limitación, los ejemplos de violaciones del sistema incluyen'
       terms73x: 'Acceso sin autorización o uso de los Servicios de Cúrsame, incluyendo cualquier intento de sondeo, copia o prueba de vulnerabilidad de un sistema o la violación de medidas de seguridad o autenticación sin autorización expresa de Cúrsame; o b) Interferencia con el Servicio a cualquier cliente o sistema, incluyendo, sin limitación, congestión o intento deliberado de sobrecargar un sistema y ataques explícitos; o c) Utilización de cualquier dispositivo, software, o rutina que interfiera o intente interferir con el correcto funcionamiento de los Servicios; o d) Cualquier acción que imponga una carga desproporcionada o inmoderada para la infraestructura de Cúrsame'
       terms73x1: 'El Cliente no deberá desarmar, desmontar, decodificar, extraer, revertir la ingeniería o de otra forma intentar derivar el código fuente del "software" (incluyendo los dispositivos, métodos, procesos, e infraestructura) que sustentan los Servicios o cualquier otro software en el sitio Web de Cúrsame. 8.4 Violación de derecho de autor o marca registrada Los Servicios de Cúrsame se pueden utilizar únicamente con propósitos legales. Se prohíbe la transmisión, distribución o almacenamiento de cualquier material en violación a cualquier ley vigente o regulación, incluyendo la exportación de leyes de control. Esto incluye, sin limitación, material protegido por patente, derecho de autor, marca registrada, marca identificada de servicios, secreto de fabricación, u otros derechos de propiedad intelectual. Si utiliza material de terceros, deberá obtener autorización previa. Al utilizar los Servicios, usted representa y garantiza ser el autor y dueño de derechos de autor y/o titular de la licencia con respecto a cualquier contenido alojado y, asimismo, representa y garantiza que ningún contenido viola la marca registrada o los derechos de terceros. Cúrsame se reserva el derecho de suspender o rescindir la(s) transmisión(es) que, a su criterio, violan estas políticas o violan alguna ley o regulación.'
-      terms75: 'Mal uso de los Centros Emprendedores del sistema'
-      terms75f: 'El Cliente no deberá hacer mal uso de los Centros Emprendedores, que incluyan pero que no se limiten a empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.'
+      terms75: 'Mal uso de los Centros de Emprendedores del sistema'
+      terms75f: 'El Cliente no deberá hacer mal uso de los Centros de Emprendedores, que incluyan pero que no se limiten a empleo del contenido que consume excesivo tiempo en el CPU o espacio de almacenamiento; utilización excesiva de la banda ancha; o reventa del acceso al contenido alojado en los servidores de Cúrsame.'
       terms76: 'Otras actividades'
       terms76f: 'Ya sea lícito o ilícito, Cúrsame se reserva el derecho a determinar qué es perjudicial para sus Clientes, operaciones o reputación, incluyendo actividades que restrinjan o inhiban a algún otro usuario del uso o placer de disfrutar el Servicio o Internet.'
       terms76x: 'Por favor, sea consciente que Cúrsame se reserva el derecho de supervisar, suspender, restringir, suprimir, modificar, o terminar cualquier contenido o transmisión de la cuenta que se considere viola cualquiera de las políticas anteriormente dichas. Si se da el caso, Cúrsame formulará las denuncias pertinentes a las autoridades responsables de la aplicación de la ley, y en tal caso, Cúrsame ayudará activamente a las entidades responsables de aplicar la ley y con la investigación y el proceso de cualquier actividad, incluyendo la entrega de las cuentas de los clientes y de sus datos personales.'
@@ -81,7 +81,7 @@ es_meems:
       comment: Comentar
     chat:
       friends: Amigos
-      Centros Emprendedores: Centros Emprendedores
+      Centros Emprendedores: Centros de Emprendedores
       online_usr: Usuario conectado
       offline_usr: Usuario desconectado
       no_friends: No tienes amigos.
@@ -89,7 +89,7 @@ es_meems:
       community: Red de Emprendedores
       no_member: No eres miembro de ningún Centro Emprendedor.
       section: Únete a uno en la sección de
-      courses: Centros Emprendedores
+      courses: Centros de Emprendedores
       no_create: No has creado ningún Centro Emprendedor todavía.
       create: Crear Centro Emprendedor ahora →
     help:
@@ -168,7 +168,7 @@ es_meems:
         homeworks: Tareas
         description_homework: Permite a los Líderes Multiplicadores crear actividades académicas y a los Emprendedores responderlas desde cualquier lugar sin necesidad de utilizar papel y aumentando la productividad de ambos.
         characteristic_homework: 'Algunas de sus características son:'
-        feature1_homework: Creación de uno o varios Centros Emprendedores
+        feature1_homework: Creación de uno o varios Centros de Emprendedores
         feature2_homework: Fecha límite y hora de entrega
         feature3_homework: Archivos adjuntos
         feature4_homework: Contenido recomendado
@@ -176,7 +176,7 @@ es_meems:
         surveys: Cuestionarios
         description_survey: A través de los cuestionarios los Líderes multiplicadores pueden evaluar a sus emprendedores de manera fácil y automática sin tener que perder tiempo calificando reactivos o desperdiciando papel al imprimir los exámenes.
         characteristic_survey: 'Algunas de sus características son:'
-        feature1_survey: Creación de uno o varios Centros Emprendedores
+        feature1_survey: Creación de uno o varios Centros de Emprendedores
         feature2_survey: Fecha y hora límite de entrega
         feature3_survey: Preguntas y respuestas ilimitadas
         feature4_survey: Autoevaluación
@@ -184,13 +184,13 @@ es_meems:
         description_discussion: Los usuarios pueden crear foros de discusión con contenido recomendado y promover la participación de toda la red de emprendedores en el aprendizaje.
         characteristic_discussion: 'Algunas de sus características son:'
         feature1_discussion: Públicas o Privadas
-        feature2_discussion: A uno o varios Centros Emprendedores
+        feature2_discussion: A uno o varios Centros de Emprendedores
         feature3_discussion: Contenido recomendado
         comments: Comentarios
         description_comment: 'Permite a todos los miembros de la red de emprendedores comentar de manera pública, grupal o personal para de esta forma interactuar social o académicamente.'
         characteristic_comment: 'Algunas de sus características son:'
         feature1_comment: Públicos o Privados
-        feature2_comment: A uno o varios Centros Emprendedores
+        feature2_comment: A uno o varios Centros de Emprendedores
         feature3_comment: 'Contenido enriquecido (multimedia)'
         chat: Chat
         description_chat: Cada usuario puede utilizar un canal de chat con sus amigos y compañeros. Además cada Centro Emprendedor tiene una sala de chat grupal para compartir contenido en tiempo real.
