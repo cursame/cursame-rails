@@ -10,4 +10,5 @@ class Role < ActiveRecord::Base
   TEACHER = Role.find(3)
   SUPERADMIN = Role.find(4)
   OPERATOR = Role.find_by_title "operator"
+  MENTOR_LINK = Role.find_by_title "mentor_link"
 end

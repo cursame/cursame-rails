@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150704194852) do
+ActiveRecord::Schema.define(:version => 20150710052445) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -531,10 +531,12 @@ ActiveRecord::Schema.define(:version => 20150704194852) do
   create_table "permissionings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "network_id"
     t.boolean  "suspended"
+    t.integer  "entity_id"
+    t.string   "entity_name"
   end
 
   create_table "permissions", :force => true do |t|
@@ -614,6 +616,8 @@ ActiveRecord::Schema.define(:version => 20150704194852) do
     t.date     "created"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "entity_name"
+    t.integer  "entity_id"
   end
 
   create_table "schools", :force => true do |t|

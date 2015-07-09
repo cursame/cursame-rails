@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
     :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register
 
+  has_one :role_setting, dependent: :destroy
+
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
@@ -58,6 +60,7 @@ class User < ActiveRecord::Base
   has_many :wufoo_forms, dependent: :destroy
   has_many :library_directories, dependent: :destroy
   has_many :time_trying_surveys
+
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
