@@ -27,10 +27,19 @@ class Managers::UsersController < Managers::BaseController
   end
 
   def update
-    user = User.find_by_id params[:user][:permissionings_attributes][:'0'][:id]
+    permissionings_params = params[:user][:permissionings_attributes][:'0']
+
+    if Role::MENTOR_LINK.id != permissionings_params[:role_id].to_i
+      permissionings_params[:entity_id] = nil
+      permissionings_params[:entity_name] = nil
+    end
+
+    permissioning = Permissioning.find_by_id permissionings_params[:id]
     the_flash = { error: t('.managers.edit_error') }
-    if !user.nil? && user.permissionings.first.network == current_network
-      the_flash = { success: t('.managers.success_usr') } if user.update_attributes params[:user]
+    if permissioning && !permissioning.user.nil? && permissioning.network == current_network &&
+       permissioning.user.update_attributes(params[:user]) &&
+       permissioning.update_attributes(permissionings_params)
+      the_flash = { success: t('.managers.success_usr') }
     end
     redirect_to managers_users_path, flash: the_flash
   end
@@ -39,7 +48,7 @@ class Managers::UsersController < Managers::BaseController
     user = User.find_by_id params[:id]
     if current_user.superadmin? or (current_user.admin? and current_user.permissionings.first.network == user.networks.last)
       user.destroy if !user.nil? && user.permissionings.first.network == current_network && user != current_user
-      redirect_to managers_users_path, flash: User.exists?(user) ? { error: t('.managers.error_delete_user') } : { success: t('.managers.delete_success_usr') } and return    
+      redirect_to managers_users_path, flash: User.exists?(user) ? { error: t('.managers.error_delete_user') } : { success: t('.managers.delete_success_usr') } and return
     end
     redirect_to root_path, flash: { error: t('.managers.no_delete') }
   end

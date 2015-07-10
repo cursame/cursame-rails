@@ -204,6 +204,9 @@ es_meems:
           student: Emprendedor
           teacher: Líder multiplicador
           operator: Operador
+          mentor_link: Enlace Educativo
+          entity_name: Nombre de la entidad
+          entity_id: Id de la entidad
           cancel: Cancelar
           create: Crear Usuario
           save: Guardar cambios

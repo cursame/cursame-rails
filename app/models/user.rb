@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 class User < ActiveRecord::Base
   include TrackMixpanelEventModule
 
@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-
   # Setup accessible (or protected) attributes for your model
 
   attr_accessible :email, :password, :password_confirmation,:network,
@@ -24,8 +23,6 @@ class User < ActiveRecord::Base
     :friendships, :friends, :registerable, :image_avatarx,
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
     :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain, :domain, :permissioning_ids, :self_register
-
-  has_one :role_setting, dependent: :destroy
 
   # Agredas las relaciones de frienship
   has_many :friendships, :uniq => true, :dependent => :destroy
@@ -199,12 +196,19 @@ class User < ActiveRecord::Base
   def admin?
     self.roles.include?(Role.find_by_title 'admin') ||
       self.roles.include?(Role.find_by_title 'operator') ||
+      self.roles.include?(Role.find_by_title 'mentor_link') ||
       self.superadmin?
   end
 
-  def operator?
-    self.roles.include? Role.find_by_title 'operator'
+  def mentor_link?
+    self.roles.include? Role.find_by_title 'mentor_link'
   end
+
+  def operator?
+    self.roles.include?(Role.find_by_title 'operator') ||
+      self.roles.include?(Role.find_by_title 'mentor_link')
+  end
+
   def role_title
     self.roles.first.title
   end
