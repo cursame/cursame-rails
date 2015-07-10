@@ -39,7 +39,8 @@
               {label: "<%= current_network.professors_tag %>", value:<%= @counter_teachers %>},
               {label: "<%= current_network.admin_tag %>", value:<%= @counter_admins %> }
                 <% if current_network.subdomain == "meems" %>
-                , {label: "operador", value: <%= @counter_operators %> }
+                , { label: "Operador", value: <%= @counter_operators %> },
+                { label: "Enlace Educativo", value: <%= @counter_mentors_link %>}
                 <% end %>
             ]
           });
