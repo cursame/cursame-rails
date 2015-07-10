@@ -68,26 +68,32 @@
     </div>
   </div>
 
-  <div class="col col-4 omega">
-    <div class="col-inner">
-      <div class="admin-chart">
-        <h5><%=t('.hmwrks')%></h5>
-        <% @discussions = current_network.discussions.count %>
-        <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
+  <% return if current_network.nil? %>
+  <% case current_network.subdomain %>
+  <% when "meems" %>
+  <% else %>
+    <div class="col col-4 omega">
+      <div class="col-inner">
+        <div class="admin-chart">
 
-        <script class="text/javascript">
-          Morris.Donut({
-            element: 'deliveries_graph',
-            data: [
-             {label: "Tareas", value: <%=@total_deliveries %> },
-             {label: "En curso", value:<%= @published_deliveries_count  %>},
-             {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
-            ]
-          });
-        </script>
+          <h5><%=t('.hmwrks')%></h5>
+          <% @discussions = current_network.discussions.count %>
+          <div id="deliveries_graph" style="height:227px; weight:279px;" ></div>
+
+          <script class="text/javascript">
+            Morris.Donut({
+              element: 'deliveries_graph',
+              data: [
+               {label: "Tareas", value: <%=@total_deliveries %> },
+               {label: "En curso", value:<%= @published_deliveries_count  %>},
+               {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
+              ]
+            });
+          </script>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="col col-4 alpha">
     <div class="col-inner">
