@@ -3,6 +3,7 @@
 class DiscussionsController < ApplicationController
   include CoursesUtils
   include DiscussionsUtils
+  include FiltersUtils
   before_filter :validations, only: :show
 
   before_filter :only_students, only: [:index, :lapsed, :surveys_course, :surveys_course_lapsed]
