@@ -68,7 +68,7 @@
     </div>
   </div>
 
-  <% return if current_network.nil? %>
+  <% if !current_network.nil? %>
   <% case current_network.subdomain %>
   <% when "meems" %>
   <% else %>
