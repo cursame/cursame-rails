@@ -218,3 +218,6 @@ es_meems:
     bios: Biografía
     personal_url: Dirección de usuario personalizada
     confirmation_token: "El correo electrónico de confirmación"
+  shared:
+    comment_form:
+      phases: "Etapas"

@@ -95,7 +95,11 @@ class DiscussionsController < ApplicationController
           @typed = "Discussion"
           activation_activity
         else
-          @error_evaluation_period = true
+          if current_network.subdomain != "meems"
+            @error_evaluation_period = true
+          else
+            @error_phase = true
+          end
         end
       end
 
@@ -135,6 +139,10 @@ class DiscussionsController < ApplicationController
         end
       end
 
+      if params[:phase]
+        phase_id = params[:phase].first
+      end
+
       courses.uniq!
 
       courses.each do |courseId|
@@ -144,6 +152,8 @@ class DiscussionsController < ApplicationController
         @discussion.courses = [Course.find_by_id(courseId)]
 
         @discussion.evaluation_period_id = evaluation_period_by_course[courseId]
+
+        @discussion.phase_id = phase_id
 
         if params[:delivery][:evaluation_period_id]
           @discussion.evaluation_period_id = params[:delivery][:evaluation_period_id].first.to_i
@@ -156,7 +166,11 @@ class DiscussionsController < ApplicationController
           activation_activity
           link_discussion_to_bit(@discussion) if !@discussion.evaluation_period_id.nil? && @discussion.evaluable
         else
-          @error_evaluation_period = true
+          if current_network.subdomain != "meems"
+            @error_evaluation_period = true
+          else
+            @error_phase = true
+          end
         end
       end
 
@@ -165,17 +179,25 @@ class DiscussionsController < ApplicationController
       @discussion.user = current_user
       @discussion.network = current_network
 
+      if params[:phase]
+        @discussion.phase_id = params[:phase].first
+      end
+
       if @discussion.save
         @publication.push(Wall.find_by_publication_type_and_publication_id("Discussion",@discussion.id))
         @az = @discussion
         @typed = "Discussion"
         activation_activity
       else
-        @error_evaluation_period = true
+        if current_network.subdomain != "meems"
+          @error_evaluation_period = true
+        else
+          @error_phase = true
+        end
       end
     end
 
-    if params[:files] && !@error_evaluation_period
+    if params[:files] && @error_evaluation_period.nil? && @error_phase.nil?
       params[:files].each do |asset_id|
         @asset = Asset.find_by_id asset_id
         @discussion.assets.push @asset unless @asset.nil?

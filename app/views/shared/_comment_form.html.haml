@@ -18,6 +18,8 @@
       %ul.list-buttons.right.fr
         - unless in_form == 'user'
           %li
+            - if current_network.subdomain == "meems"
+              = render partial: "shared/dropdown_phases", locals: { defaultText: t('.phases'), default_icon: 'course-new-publication' }
             - if in_form != 'course' && comment_id == nil
               = render partial: "shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: t('.new_publication.public'), default_icon: 'public-new-publication', in_type: in_type }
             - else
