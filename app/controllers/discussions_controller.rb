@@ -154,7 +154,7 @@ class DiscussionsController < ApplicationController
           @az = @discussion
           @typed = "Discussion"
           activation_activity
-          link_discussion_to_bit(@discussion) unless @discussion.evaluation_period_id.nil?
+          link_discussion_to_bit(@discussion) if !@discussion.evaluation_period_id.nil? && @discussion.evaluable
         else
           @error_evaluation_period = true
         end
