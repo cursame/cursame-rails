@@ -3,7 +3,19 @@
 module CoursesUtils
 
   def published_courses
-    Course.where(:network_id => current_network.id, :active_status => true)
+    if current_user.mentor_link?
+
+      entity_id = current_user.permissionings.first.entity_id
+      entity_name = current_user.permissionings.first.entity_name
+      Course.includes(:school)
+        .where(
+          network_id: current_network.id,
+          active_status: true,
+          schools: { entity_id: entity_id, entity_name: entity_name }
+        )
+    else
+      Course.where(:network_id => current_network.id, :active_status => true)
+    end
   end
 
   def unpublished_courses
@@ -15,11 +27,11 @@ module CoursesUtils
   end
 
   def teacher_unpublished_courses
-    current_user.courses.keep_if do |course| 
+    current_user.courses.keep_if do |course|
       course.owner?(Role.find_by_title("teacher"), current_user) and not(course.active_status)
     end
   end
-  
+
   def student_subscribed_courses
     current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => true)
   end
@@ -27,10 +39,10 @@ module CoursesUtils
   def student_closed_courses
     current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => false)
   end
-  
+
   def student_pending_requests
     members_in_courses = MembersInCourse.where(user_id: current_user.id).where("members_in_courses.accepted != ?", true)
-    members_in_courses = members_in_courses.keep_if do |member| 
+    members_in_courses = members_in_courses.keep_if do |member|
       member.course.network_id == current_network.id
     end
     members_in_courses.map{ |member| member.course}
@@ -43,18 +55,18 @@ module CoursesUtils
   def operator_courses(typed = 'normal')
     ids = Array.new
 
-    case typed 
+    case typed
     when 'inverse'
       courses_ids = current_user.members_in_courses.map {|member| member.course_id}
       ids = current_network.courses.map{|course| course.id} - courses_ids
-      
+
     when 'normal'
       ids = current_user.courses.map {|course| course.id}
-      
+
     when 'student'
       members = current_user.members_in_courses.keep_if { |member| member.accepted }
       ids = members.map { |member| member.course_id }
-      
+
     when 'teacher'
       courses = current_user.courses.keep_if { |course| course.owner?(Role.find_by_title("teacher"), current_user) }
       ids = courses.map { |course| course.id }
@@ -66,7 +78,7 @@ module CoursesUtils
   def course_member?(user, course)
     member = MembersInCourse.find_by_user_id_and_course_id(user.id, course.id)
     unless member.nil?
-      unless member.accepted 
+      unless member.accepted
         redirect_to(root_path, flash: { error: "Necesitas ser aceptado en el curso para poder ver su contenido."}) and return
       end
     else

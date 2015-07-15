@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 class User < ActiveRecord::Base
   include TrackMixpanelEventModule
 
@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
     :confirmable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
-
 
   # Setup accessible (or protected) attributes for your model
 
@@ -58,6 +57,7 @@ class User < ActiveRecord::Base
   has_many :wufoo_forms, dependent: :destroy
   has_many :library_directories, dependent: :destroy
   has_many :time_trying_surveys
+
 
   validates_uniqueness_of :personal_url
   validates_presence_of :personal_url
@@ -196,12 +196,19 @@ class User < ActiveRecord::Base
   def admin?
     self.roles.include?(Role.find_by_title 'admin') ||
       self.roles.include?(Role.find_by_title 'operator') ||
+      self.roles.include?(Role.find_by_title 'mentor_link') ||
       self.superadmin?
   end
 
-  def operator?
-    self.roles.include? Role.find_by_title 'operator'
+  def mentor_link?
+    self.roles.include? Role.find_by_title 'mentor_link'
   end
+
+  def operator?
+    self.roles.include?(Role.find_by_title 'operator') ||
+      self.roles.include?(Role.find_by_title 'mentor_link')
+  end
+
   def role_title
     self.roles.first.title
   end

@@ -25,7 +25,10 @@ class ManagersController < ApplicationController
     @counter_admins = current_network.permissionings.where(:role_id => 1).count
 
     if current_network.subdomain == "meems"
-      @counter_operators = current_network.permissionings.where(:role_id => 6).count
+      operators = current_network.permissionings.where(:role_id => Role::OPERATOR.id)
+      @counter_operators = operators.count
+      mentors_link = current_network.permissionings.where(:role_id => Role::MENTOR_LINK.id)
+      @counter_mentors_link = mentors_link.count
     end
   end
 
