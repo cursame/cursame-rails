@@ -69,10 +69,7 @@
     </div>
   </div>
 
-  <% if !current_network.nil? %>
-  <% case current_network.subdomain %>
-  <% when "meems" %>
-  <% else %>
+  <% unless current_network.nil? || current_network.subdomain == 'meems' %>
     <div class="col col-4 omega">
       <div class="col-inner">
         <div class="admin-chart">
