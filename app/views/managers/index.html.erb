@@ -59,9 +59,11 @@
           Morris.Donut({
             element: 'courses_graph',
             data: [
-              {label: "<%= current_network.students_tag %>", value: <%= @courses.count %> },
-              {label: "Públicos", value:<%= @publico %>},
-              {label: "Privados", value:<%= @privado%> }
+              {label: "<%= current_network.students_tag %>", value: <%= @courses.count %> }
+                <% if current_network.subdomain != "meems" %>
+                , {label: "Públicos", value:<%= @publico %>},
+                {label: "Privados", value:<%= @privado%> }
+                <% end %>
             ]
           });
         </script>
