@@ -28,13 +28,18 @@
           - else
             = link_to discussion.user.name, show_user_path(discussion.user.personal_url), title: discussion.user.name
           %span.timestamp= time_ago_in_words discussion.created_at
+          - if !discussion.phase.nil?
+            %span.phase= "Etapa #{discussion.phase.order}: #{discussion.phase.name}"
     .post-box-content
       .icon-card
         = icon 'discussion-card'
-      = link_to discussion_modal_path(discussion.id), remote: true, class: 'activable' do 
+      = link_to discussion_modal_path(discussion.id), remote: true, class: 'activable' do
         %h3= discussion.title
       - if card_type == :standalone
         %span.timestamp= time_ago_in_words discussion.created_at
+        - if !discussion.phase.nil?
+          %span.phase= "Etapa #{discussion.phase.order}: #{discussion.phase.name}"
+
         - unless course.nil?
           %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
         - else

@@ -20,10 +20,12 @@ class Discussion < ActiveRecord::Base
   belongs_to :network
   belongs_to :user
   belongs_to :evaluation_period
+  belongs_to :phase
 
   validate :max_courses
   validates_presence_of :user
   validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.nil? || self.courses.first.evaluation_periods.empty? }
+  validates_presence_of :phase_id, :unless => lambda { self.network.subdomain != "meems" }
 
   accepts_nested_attributes_for :contents
   accepts_nested_attributes_for :evaluation_criteria

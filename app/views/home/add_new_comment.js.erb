@@ -1,4 +1,8 @@
-<% if !@editar %>
+<% if @failure %>
+
+  Notice('error', "Debes indicar una etapa");
+
+<% elsif !@editar %>
 
   <% if @comment.commentable_type == 'Network' || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User' %>
 

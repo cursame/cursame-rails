@@ -106,7 +106,7 @@
                   <div class="fields-wrap">
                     <div class="fields-group">
                       <%= f.fields_for :evaluation_criteria do | builder | %>
-                        <%= render partial: "shared/evaluation_criteria/evaluation_criteria_fields", locals: { f: builder, base_model: @discussion } %>
+                          <%= render partial: "shared/evaluation_criteria/evaluation_criteria_fields", locals: { f: builder, base_model: @discussion } %>
                       <% end %>
                     </div>
                     <%= link_to_add_evaluation_criteria t('.add_comment'), f, :evaluation_criteria %>
@@ -129,16 +129,22 @@
           <%= link_to t('.cancel'), "", class: "btn btn-secondary cancel-post-form_tab" %>
         </li>
         <li>
+            <% if current_network.subdomain == "meems" %>
+                <%= render partial: "shared/dropdown_phases",
+                           locals: { defaultText: t('.phases'), default_icon: 'course-new-publication', in_type: in_type }%>
+            <% end %>
+
           <% if in_form != 'course'%>
               <%= render :partial => "shared/dropdown", :locals => { :hasPublic => true, isActivity: true, :hasCourses => true,
                                                                     :defaultText => t('.public'), :default_icon => 'public-new-publication', :in_type => in_type } %>
           <% elsif !@course.evaluation_periods.empty? %>
               <%= render partial: "shared/dropdown_evaluation_periods",
-                         locals: { defaultText: t('.evaluation_periods'), default_icon: 'course-new-publication', in_type: in_type, course: @course } %>
+              locals: { defaultText: t('.evaluation_periods'), default_icon: 'course-new-publication', in_type: in_type, course: @course } %>
               <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
           <% else %>
             <%= hidden_field_tag "delivery[course_ids][]", @course.id %>
           <%end%>
+
         </li>
         <li>
           <span class="btn btn-primary input-btn activable">

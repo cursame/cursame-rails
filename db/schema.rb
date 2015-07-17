@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150710052445) do
+ActiveRecord::Schema.define(:version => 20150715150343) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20150710052445) do
     t.text     "comment_html"
     t.integer  "network_id"
     t.integer  "likes"
+    t.integer  "phase_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -305,6 +306,7 @@ ActiveRecord::Schema.define(:version => 20150710052445) do
     t.datetime "publish_date"
     t.datetime "end_date"
     t.integer  "evaluation_period_id"
+    t.integer  "phase_id"
   end
 
   create_table "evaluation_criteria", :force => true do |t|
@@ -380,6 +382,7 @@ ActiveRecord::Schema.define(:version => 20150710052445) do
     t.datetime "term_date"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "phase_id"
   end
 
   add_index "google_forms", ["pollable_id", "pollable_type"], :name => "index_google_forms_on_pollable_id_and_pollable_type"
@@ -546,6 +549,15 @@ ActiveRecord::Schema.define(:version => 20150710052445) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "phases", :force => true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "phases", ["order"], :name => "index_phases_on_order"
 
   create_table "polls", :force => true do |t|
     t.string   "title"

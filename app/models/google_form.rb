@@ -1,6 +1,8 @@
 class GoogleForm < ActiveRecord::Base
+
   belongs_to :pollable, polymorphic: true
   belongs_to :user
+  belongs_to :phase
 
   has_many :google_form_roles, dependent: :destroy
   has_many :roles, through: :google_form_roles
@@ -8,6 +10,8 @@ class GoogleForm < ActiveRecord::Base
   has_one :wall, as: :publication, dependent: :destroy
 
   attr_accessible :title, :description, :init_date, :term_date, :url, :role_ids
+
+  validates_presence_of :phase_id, :unless => lambda { self.validate_phase? }
 
   acts_as_commentable
   acts_as_votable
@@ -18,6 +22,16 @@ class GoogleForm < ActiveRecord::Base
       ScheduledJob::NotificationsWorker.perform_at(self.init_date, self.id, self.class.name, notification_type)
     else
       create_notifications
+    end
+  end
+
+  def validate_phase?
+    if self.pollable_type == 'Course'
+      self.pollable.network.subdomain != "meems"
+    elsif self.pollable_type == 'Network'
+      self.pollable.subdomain != "meems"
+    else
+      true
     end
   end
 

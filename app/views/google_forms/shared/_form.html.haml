@@ -45,6 +45,8 @@
       %li
         = link_to t('.cancel'), "", class: "btn btn-secondary cancel-post-form_tab", id: "cancel-post-form_tab"
       %li
+        - if current_network.subdomain == "meems"
+          = render partial: "shared/dropdown_phases", locals: { defaultText: t('.phases'), default_icon: 'course-new-publication' }
         = render partial: "/google_forms/shared/dropdown", locals: { hasPublic: true, hasCourses: true, defaultText: t('.public'), default_icon: 'public-new-publication' }
       %li
         %span.btn.btn-primary.input-btn.activable

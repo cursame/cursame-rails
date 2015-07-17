@@ -26,6 +26,9 @@
             - when 'Course'
               %span= link_to commentable.title, course_path(commentable), title: commentable.title
         %span.timestamp= time_ago_in_words post_comment.created_at
+        - if !post_comment.phase.nil?
+          %span.phase= "Etapa #{post_comment.phase.order}: #{post_comment.phase.name}"
+
     .post-box-content
       = post_comment.comment_html
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: post_comment }
@@ -38,4 +41,3 @@
       .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: post_comment, wall: wall }
       .comments-wrap.comment{ data: { comments_group_id: post_comment.id } }
         = render partial: 'shared/posts/post_comments_list', locals: { post: post_comment, new_comment: true }
-

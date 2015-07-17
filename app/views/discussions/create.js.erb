@@ -1,4 +1,4 @@
-<% if !@error_evaluation_period && !@error_link_to_bit%>
+<% if !@error_evaluation_period && !@error_link_to_bit && !@error_phase %>
 
 $('#timeline').prepend('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @publication, :visible_for => "network"} ))%>');
 Notice('success', I18n.t("discussions.create_discuss", {locale: "<%= I18n.locale %>"}));
@@ -8,5 +8,6 @@ newPublicationCleaner();
   Notice('error', I18n.t("discussions.select_evaluation_period", {locale: "<%= I18n.locale %>"}));
 <% elsif @error_link_to_bit %>
   Notice('error', 'Ocurrio un error, no se pudo enviar la información a Bit.');
+<% elsif @error_phase %>
+  Notice('error', 'Ocurrio un error, debes elegir una etapa');
 <% end %>
-

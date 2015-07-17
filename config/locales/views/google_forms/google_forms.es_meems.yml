@@ -15,6 +15,7 @@ es_meems:
         deliver_day: "Fecha de entrega"
         roles: "Roles: "
         cancel: "Cancelar"
+        phases: "Etapas"
         public: "Público"
         publish: "Publicar"
       dropdown:

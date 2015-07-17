@@ -31,6 +31,7 @@ es_meems:
       add_comment: Agregar criterio
       cancel: Cancelar
       evaluation_periods: Periodos de evaluación
+      phases: Etapas
       public: Público
       create_discuss: Crear Discusión
       save_discuss: Guardar Discusión

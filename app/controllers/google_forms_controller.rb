@@ -29,6 +29,9 @@ class GoogleFormsController < ApplicationController
     GoogleForm.create(params[:google_form].except(:course_ids)) do |f|
       f.pollable = pollable
       f.user = current_user
+      if params[:phase]
+        f.phase_id = params[:phase].first
+      end
     end
   end
 

@@ -1,3 +1,11 @@
+
+<% if !@publication.nil? && @publication.compact.length != 0 %>
+
 $('#timeline').prepend('<%= escape_javascript(render(:partial => "/shared/posts/posts_list", :locals => { :wall => @publication, :visible_for => "network" } ))%>');
 Notice('success', I18n.t("google_forms.success_form", {locale: "<%= I18n.locale %>"}));
 newPublicationCleaner();
+
+<% else%>
+Notice('error', "Debes indicar una etapa");
+
+<% end %>

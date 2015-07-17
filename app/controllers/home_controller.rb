@@ -180,6 +180,9 @@ class HomeController < ApplicationController
         save_comment
       end
 
+      if @failure
+        return
+      end
       if @comment.commentable_type == 'Network'   || (@comment.commentable_type == 'Course' && !@from_enter_key) || @comment.commentable_type == 'User'
         @publication = Wall.find_by_publication_type_and_publication_id("Comment", @comment.id)
       else
@@ -528,9 +531,20 @@ class HomeController < ApplicationController
 
   def save_comment
     commentable = Comment.get_commentable(params[:commentable_id], params[:commentable_type])
+    if params[:phase]
+      phase_id = params[:phase].first
+    end
     if params[:comment_id].blank? then
-      @comment = commentable.comments.create!(title: 'cursame', comment: params[:comment], user_id: current_user.id, network_id: current_network.id)
-
+      begin
+        @comment = commentable.comments.create!(title: 'cursame',
+                                                comment: params[:comment],
+                                                user_id: current_user.id,
+                                                network_id: current_network.id,
+                                                phase_id: phase_id)
+      rescue
+        @failure = true
+        return
+      end
       # activity
       @az = @comment
       @typed = @comment.class.to_s

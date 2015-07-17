@@ -11,6 +11,8 @@
         .post-box-main-author-content
           = link_to google_form.pollable.title, course_path(google_form.pollable), title: google_form.pollable.title
           %span.timestamp= time_ago_in_words google_form.init_date
+          - if !google_form.phase.nil?
+            %span.phase= "Etapa #{google_form.phase.order}: #{google_form.phase.name}"
       - when Network
         = link_to show_user_path(google_form.user.personal_url), title: google_form.user.name, class: 'post-box-avatar' do
           %span.avatar-holder
@@ -20,6 +22,8 @@
             %span
               = link_to google_form.user.name, show_user_path(google_form.user.personal_url), title: google_form.user.name
             %span.timestamp= time_ago_in_words google_form.init_date
+            - if !google_form.phase.nil?
+              %span.phase= "Etapa #{google_form.phase.order}: #{google_form.phase.name}"
     .post-box-content
       .icon-card
         = icon 'wufoo-post-card'
