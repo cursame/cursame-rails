@@ -83,10 +83,17 @@
         </div>
         <div class="user-info">
           <span class="user-role">
-            <% user_role = f.roles.first.title %>
-            <%= t('.teacher') if current_user.teacher? %>
-            <%= t('.student') if current_user.student? %>
-            <%= t('.admin') if current_user.admin? %>
+            <% if f.student? %>
+              <%= t('.student') %>
+            <% elsif f.teacher? %>
+              <%= t('.teacher') %>
+            <% elsif f.mentor_link? %>
+                Enlace Educativo
+            <% elsif f.operator? %>
+                Operador
+            <% elsif f.admin? %>
+              <%= t('.admin') %>
+            <% end %>
           </span>
         </div>
       </div>
