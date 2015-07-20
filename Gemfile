@@ -62,6 +62,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end
+
 group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -75,7 +79,4 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'rspec-sidekiq'
-  gem 'rspec-expectations'
-  gem 'rspec-rails', '~> 3.0'
 end
