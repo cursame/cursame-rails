@@ -73,13 +73,9 @@ group :development do
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'rspec-sidekiq'
   gem 'rspec-expectations'
   gem 'rspec-rails', '~> 3.0'
-  gem 'capybara'
-  gem 'selenium-webdriver', '~> 2.44.0'
-  gem 'capybara-webkit'
 end
