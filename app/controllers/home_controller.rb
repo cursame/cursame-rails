@@ -334,8 +334,6 @@ class HomeController < ApplicationController
       @commentable_type = @comment.commentable_type
     when 'Discussion'
       @discussion = Discussion.find(@id)
-    when 'WufooForm'
-      @wufoo_form = WufooForm.find_by_id @id
     end
 
     respond_to do |format|
@@ -494,28 +492,6 @@ class HomeController < ApplicationController
                           online: false
                           )
     sign_out(current_user)
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  def update_wufoo_form
-    wufoo = WuParty.new(ACCOUNT, API_KEY)
-    wufoo_form = wufoo.form( params[:wufoo_form_id] )
-
-    data = params.reject! do |k|
-      k == 'utf8' || k == 'commit' || k == 'controller' || k == 'action' || k == 'wufoo_form_id'
-    end
-
-    result = wufoo_form.submit(data)
-
-    if result['Success'] == 0
-      @error = result['ErrorText']
-    else
-      current_user.form_before_tour = true
-      current_user.save
-    end
-
     respond_to do |format|
       format.js
     end

@@ -53,8 +53,6 @@ class User < ActiveRecord::Base
   has_many :audiences, dependent: :destroy
   has_many :channels, through: :audiences
   has_many :grades, dependent: :destroy
-  has_many :wufoo_responses, dependent: :destroy
-  has_many :wufoo_forms, dependent: :destroy
   has_many :library_directories, dependent: :destroy
   has_many :time_trying_surveys
 

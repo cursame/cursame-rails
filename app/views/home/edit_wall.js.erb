@@ -12,8 +12,6 @@ console.log(postBox);
   postBoxEditForm.html('<%= escape_javascript(render(:partial => "shared/comment_form", :locals => {:commentable_id => @commentable_id, :commentable_type => @commentable_type, :comment_id => @comment.id, :comment => @comment.comment, :message => '', :active_edit => true, :in_form => "edit-comment"})) %>');
 <% when "Discussion" %>
    postBoxEditForm.html('<%= escape_javascript(render(:partial => "discussions/form_for_discussion", :locals => {:discussion => @discussion, :active_edit => true, :in_form => "edit-discussion" })) %>');
-<% when "WufooForm" %>
-  postBoxEditForm.html('<%= escape_javascript(render(partial: "wufoo_forms/compart_form", locals: { wufoo_form: @wufoo_form })) %>');
 <% end %>
 
 postBoxEditDiv.slideDown();

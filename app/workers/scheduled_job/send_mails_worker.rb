@@ -9,11 +9,7 @@ class ScheduledJob::SendMailsWorker
       send_mails_survey(notificator_id)
     when 'Discussion'
       send_mails_discussion(notificator_id)
-    # when 'wufoo_form'
-    # when 'Course'
-    else
     end
-        
   end
 
   private

@@ -106,7 +106,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @form = WufooForm.new
     @course = Course.find(params[:id])
     @member = obtainMember(@course.id, current_user.id)
 
