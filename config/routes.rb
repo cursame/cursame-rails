@@ -14,25 +14,34 @@ Cursame30Lb::Application.routes.draw do
   match '/managers/bit_courses/import/:folio', to: 'managers/bit_courses#import', as: :import_managers_bit_course
 
   match '/managers/reported_content/destroy_content/:id', to: 'managers/reported_contents#destroy_content', as: :managers_destroy_content
-  namespace :managers do
-    resources :reported_contents
+
+  scope '(:locale)' do
+    namespace :managers do
+      resources :reported_contents
+    end
   end
 
-  resources :usernotificationings
-  resources :libraries
-  resources :polls
-  resources :messages
-  resources :google_forms
-  resources :library_files
-
-  resources :libraries do
-    resources :library_directories
+  scope '(:locale)' do
+    resources :usernotificationings
+    resources :libraries
+    resources :polls
+    resources :messages
+    resources :google_forms
     resources :library_files
   end
 
-  resources :library_directories do
-    resources :library_directories
-    resources :library_files
+  scope '(:locale)' do
+    resources :libraries do
+      resources :library_directories
+      resources :library_files
+    end
+  end
+
+  scope '(:locale)' do
+    resources :library_directories do
+      resources :library_directories
+      resources :library_files
+    end
   end
 
   get "superadmnin/statistics"
@@ -45,10 +54,12 @@ Cursame30Lb::Application.routes.draw do
   get "superadmnin/publicity_modul_controller"
 
   ##### respuestas a la evaluaciones
-  resources :response_to_the_evaluations do
-    collection do
-      post :create
-      post :new
+  scope '(:locale)' do
+    resources :response_to_the_evaluations do
+      collection do
+        post :create
+        post :new
+      end
     end
   end
 
@@ -60,7 +71,9 @@ Cursame30Lb::Application.routes.draw do
   get 'ajax/network-students', to: 'ajax#network_students', as: :network_students
   get 'ajax/network-teachers', to: 'ajax#network_teachers', as: :network_teachers
 
-  resources :authentications
+  scope '(:locale)' do
+    resources :authentications
+  end
 
   ########## calendar
   get "calendar", :to => 'calendar#index', :as => :calendar
@@ -75,8 +88,10 @@ Cursame30Lb::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
 
   #recursos naturales de la aplicación
-  resources :notifications
-  resources :assets
+  scope '(:locale)' do
+    resources :notifications
+    resources :assets
+  end
 
   ### TODO:
   ### Por el momento no se utiliza ningún método del controlador de assignments
@@ -85,40 +100,47 @@ Cursame30Lb::Application.routes.draw do
   # resources :assignments
 
   # Members In Course
-  resources :members_in_courses
+  scope '(:locale)' do
+    resources :members_in_courses
+  end
   get '/update_mc', :to => 'members_in_courses#update'
   post '/courses/:course_id/closure/:member_id', :to => 'members_in_courses#rate_course_user', :as => :rate_course_user
 
 
   # colocando course files
-  resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
+  scope '(:locale)' do
+    resources :course_files, :as => :course_files, :defaults => { :format => 'js' }
+  end
 
   # Network Manager
-  namespace :managers do
-    resources :users do
-      collection do
-        get 'import'
-        post 'import_receiver'
+  scope '(:locale)' do
+    namespace :managers do
+      resources :users do
+        collection do
+          get 'import'
+          post 'import_receiver'
+        end
       end
+
+      resources :courses
+      resources :deliveries, only: [ :index, :show, :destroy ]
+      resources :surveys, only: [ :index, :show, :destroy ]
+      resources :discussions, only: [ :index, :show, :destroy ]
+      resources :comments, only: [ :index, :show, :destroy ]
+
+      get 'settings'
+      get 'mailer'
+      post "mailer_deliver"
     end
-
-    resources :courses
-    resources :deliveries, only: [ :index, :show, :destroy ]
-    resources :surveys, only: [ :index, :show, :destroy ]
-    resources :discussions, only: [ :index, :show, :destroy ]
-    resources :comments, only: [ :index, :show, :destroy ]
-
-    get 'settings'
-    get 'mailer'
-    post "mailer_deliver"
   end
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members
   post "managers/import_members", :to => "managers#upload_members", :as => :upload_members
 
-
-  resources :managers do
-    resources :roles
+  scope '(:locale)' do
+    resources :managers do
+      resources :roles
+    end
   end
 
   #Calificar Actividades
@@ -154,12 +176,18 @@ Cursame30Lb::Application.routes.draw do
   match "/surveys/survey_reply" => "surveys#survey_reply", :as => "add_survey_reply", :via => [:post]
   get '/surveys/paginate-ajax', to: "surveys#paginate_ajax", as: :surveys_paginate_ajax
   get '/surveys/survey_add_attemp', as: :survey_add_attemp, :via => [:post]
-  resources :surveys
+
+  scope '(:locale)' do
+    resources :surveys
+  end
 
   # Discusiones
   get '/courses/:id/discussions/', to: 'discussions#discussions_course', as: :discussions_course
   get '/discussions/paginate-ajax', to: "discussions#paginate_ajax", as: :discussions_paginate_ajax
-  resources :discussions
+
+  scope '(:locale)' do
+    resources :discussions
+  end
 
   # Cursos
   get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
@@ -177,16 +205,18 @@ Cursame30Lb::Application.routes.draw do
   get "courses/:id/clone_course_view", :to => "courses#clone_course_view", :as =>  :clone_course_view
   match "courses/:id/clone_course", :to => "courses#clone_course", :as =>  :clone_course, :via => [:post]
 
-  resources :courses do
-    resources :assignments
-    resources :messages do
-      collection do
-        post :active_create
+  scope '(:locale)' do
+    resources :courses do
+      resources :assignments
+      resources :messages do
+        collection do
+          post :active_create
+        end
       end
-    end
 
-    collection do
-      post :assigment
+      collection do
+        post :assigment
+      end
     end
   end
 
@@ -250,9 +280,11 @@ Cursame30Lb::Application.routes.draw do
 
   get "edit_delivery_access/:id", :to => "courses#edit_delivery_access", :as => :edit_delivery_access
 
-  resources :deliveries do
-    collection do
-      post :assigment
+  scope '(:locale)' do
+    resources :deliveries do
+      collection do
+        post :assigment
+      end
     end
   end
 
@@ -278,9 +310,10 @@ Cursame30Lb::Application.routes.draw do
   #resources :role_id_and_permission_ids
 
   #manejo de roles
-  resources :roles
-
-  resources :permissions
+  scope '(:locale)' do
+    resources :roles
+    resources :permissions
+  end
 
 
   #manejo de users
@@ -349,9 +382,11 @@ Cursame30Lb::Application.routes.draw do
 
   match "networks_users/index", :to => "networks#register", :at => :networks_user
 
-  resources :network_templates
+  scope '(:locale)' do
+    resources :network_templates
+    resources :networks
+  end
 
-  resources :networks
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
 
   # Comunidad
@@ -364,9 +399,11 @@ Cursame30Lb::Application.routes.draw do
   # filtro del wall
   get 'wall_filter', :to => 'networks#wall_filter', :as => :wall_filter
   #manejo de usuarios en las networks
-  resources :networks_users do
-    collection do
-      post :create_data
+  scope '(:locale)' do
+    resources :networks_users do
+      collection do
+        post :create_data
+      end
     end
   end
 
@@ -425,67 +462,69 @@ Cursame30Lb::Application.routes.draw do
   #resources :permissionings
 
   ####### subiendo validables with geocoder activities #########
-  resources :activities
-
-  resources :surveys do
+  scope '(:locale)' do
     resources :activities
-  end
 
-  resources :deliveries do
-    resources :activities
-  end
+    resources :surveys do
+      resources :activities
+    end
 
-  resources :assignments do
-    resources :activities
-  end
+    resources :deliveries do
+      resources :activities
+    end
 
-  resources :comments do
-    resources :activities
-  end
+    resources :assignments do
+      resources :activities
+    end
 
-  resources :discussions do
-    resources :activities
-  end
+    resources :comments do
+      resources :activities
+    end
 
-  resources :courses do
-    resources :activities
-  end
+    resources :discussions do
+      resources :activities
+    end
 
-  resources :user_surveys do
-    resources :activities
-  end
+    resources :courses do
+      resources :activities
+    end
+
+    resources :user_surveys do
+      resources :activities
+    end
 
 
-  ######## rutas para contents
+    ######## rutas para contents
 
-  resources :contents
-
-  resources :surveys do
     resources :contents
-  end
 
-  resources :deliveries do
-    resources :contents
-  end
+    resources :surveys do
+      resources :contents
+    end
 
-  resources :assignments do
-    resources :contents
-  end
+    resources :deliveries do
+      resources :contents
+    end
 
-  resources :comments do
-    resources :contents
-  end
+    resources :assignments do
+      resources :contents
+    end
 
-  resources :discussions do
-    resources :contents
-  end
+    resources :comments do
+      resources :contents
+    end
 
-  resources :courses do
-    resources :contents
-  end
+    resources :discussions do
+      resources :contents
+    end
 
-  resources :user_surveys do
-    resources :contents
+    resources :courses do
+      resources :contents
+    end
+
+    resources :user_surveys do
+      resources :contents
+    end
   end
   ####### rutas para like en web
 
@@ -566,10 +605,14 @@ Cursame30Lb::Application.routes.draw do
 
   match '/robots' => 'robots#robots'
 
-  root :to => 'home#index'
+  scope '(:locale)' do
+    root :to => 'home#index'
+  end
 
   #create reported_content
   # match "/reported_contents/create" => "reported_contents#create", :as => "reported_content_create", :via => [:post], :defaults => { :format => 'js' }
-  resources :reported_contents
+  scope '(:locale)' do
+    resources :reported_contents
+  end
 
 end
