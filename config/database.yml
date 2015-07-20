@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   database: cursame_development
   encoding: utf8
-  host: localhost
+  host:
   pool: 5
   timeout: 5000
 
