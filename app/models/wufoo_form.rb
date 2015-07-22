@@ -4,10 +4,10 @@ class WufooForm < ActiveRecord::Base
   has_many :roles, through: :wufoo_form_roles
 
   has_one :wall, as: :publication, dependent: :destroy
-  
+
   belongs_to :showable, polymorphic: true
   belongs_to :user
-  
+
   attr_accessible :identifier, :init_date, :term_date, :role_ids
 
   acts_as_commentable
@@ -28,11 +28,11 @@ class WufooForm < ActiveRecord::Base
 
   def for_user?(user)
     case user.role
-    when Role::TEACHER
+    when Role.teacher
       for_teachers?
-    when Role::STUDENT
+    when Role.student
       for_students?
-    when Role::ADMIN, Role::SUPERADMIN
+    when Role.admin, Role.superadmin
       true
     else
       false
@@ -44,11 +44,11 @@ class WufooForm < ActiveRecord::Base
   end
 
   def for_teachers?
-    roles.include? Role::TEACHER
+    roles.include? Role.teacher
   end
 
   def for_students?
-    roles.include? Role::STUDENT
+    roles.include? Role.student
   end
 
   private
