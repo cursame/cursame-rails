@@ -5,10 +5,29 @@ class Role < ActiveRecord::Base
 
   accepts_nested_attributes_for :permissionings
 
-  ADMIN   = Role.find(1)
-  STUDENT = Role.find(2)
-  TEACHER = Role.find(3)
-  SUPERADMIN = Role.find(4)
-  OPERATOR = Role.find_by_title "operator"
-  MENTOR_LINK = Role.find_by_title "mentor_link"
+  def self.superadmin
+    self.find_by_title "superadmin"
+  end
+
+  def self.admin
+    self.find_by_title "admin"
+  end
+
+  def self.operator
+    self.find_by_title "operator"
+  end
+
+  def self.mentor_link
+    self.find_by_title "mentor_link"
+  end
+
+  def self.teacher
+    self.find_by_title "teacher"
+  end
+
+  def self.student
+    self.find_by_title "student"
+  end
+
+
 end

@@ -36,20 +36,20 @@ class GoogleForm < ActiveRecord::Base
   end
 
   def for_teachers?
-    roles.include? Role::TEACHER
+    roles.include? Role.teacher
   end
 
   def for_students?
-    roles.include? Role::STUDENT
+    roles.include? Role.student
   end
 
   def for_user?(user)
     case user.role
-    when Role::TEACHER
+    when Role.teacher
       for_teachers?
-    when Role::STUDENT
+    when Role.student
       for_students?
-    when Role::ADMIN, Role::SUPERADMIN, Role::OPERATOR
+    when Role.admin, Role.superadmin, Role.operator
       true
     else
       false

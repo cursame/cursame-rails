@@ -29,7 +29,7 @@ class Managers::UsersController < Managers::BaseController
   def update
     permissionings_params = params[:user][:permissionings_attributes][:'0']
 
-    if Role::MENTOR_LINK.id != permissionings_params[:role_id].to_i
+    if Role.mentor_link.id != permissionings_params[:role_id].to_i
       permissionings_params[:entity_id] = nil
       permissionings_params[:entity_name] = nil
     end
