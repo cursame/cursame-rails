@@ -19,7 +19,6 @@ class Course < ActiveRecord::Base
   has_many :course_id_course_file_id
   has_many :course_files, through: :course_id_course_file_id
   has_many :evaluation_criteria, as: :evaluable, dependent: :destroy
-  has_many :wufoo_forms, as: :showable, dependent: :destroy
   has_many :files, class_name: 'LibraryFile', through: :library
   has_many :evaluation_periods, dependent: :destroy, order: "id ASC"
 

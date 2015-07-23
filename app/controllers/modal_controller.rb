@@ -53,10 +53,6 @@ class ModalController < ApplicationController
     end
   end
 
-  def wufoo_form_modal
-    @form = WufooForm.find_by_id(params[:id])
-  end
-
   def google_form_modal
     @form = GoogleForm.find_by_id(params[:id])
     respond_to do |format|
@@ -92,4 +88,3 @@ protected
   end
 
 end
-

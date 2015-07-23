@@ -805,49 +805,4 @@ ActiveRecord::Schema.define(:version => 20150715150343) do
     t.integer  "network_id"
     t.boolean  "public",           :default => false
   end
-
-  create_table "wufoo_form_roles", :force => true do |t|
-    t.integer  "wufoo_form_id"
-    t.integer  "role_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "wufoo_form_roles", ["role_id"], :name => "index_wufoo_form_roles_on_role_id"
-  add_index "wufoo_form_roles", ["wufoo_form_id"], :name => "index_wufoo_form_roles_on_wufoo_form_id"
-
-  create_table "wufoo_forms", :force => true do |t|
-    t.string   "identifier"
-    t.integer  "showable_id"
-    t.string   "showable_type"
-    t.integer  "user_id"
-    t.datetime "init_date"
-    t.datetime "term_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "wufoo_forms", ["showable_id", "showable_type"], :name => "index_wufoo_forms_on_showable_id_and_showable_type"
-  add_index "wufoo_forms", ["user_id"], :name => "index_wufoo_forms_on_user_id"
-
-  create_table "wufoo_responses", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "wufoo_form_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "wufoo_responses", ["user_id"], :name => "index_wufoo_responses_on_user_id"
-  add_index "wufoo_responses", ["wufoo_form_id"], :name => "index_wufoo_responses_on_wufoo_form_id"
-
-  create_table "wufoo_settings", :force => true do |t|
-    t.integer  "network_id"
-    t.string   "api_key"
-    t.string   "subdomain"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "wufoo_settings", ["network_id"], :name => "index_wufoo_settings_on_network_id"
-
 end

@@ -510,9 +510,6 @@ Cursame30Lb::Application.routes.draw do
   get "home/open_channel/:id", :to => 'home#open_channel', :as => :open_channel
   match "/home/add_new_mesage" => "home#add_new_mesage", :as => "add_new_mesage", :via => [:post]
 
-  get "/update_wufoo_form", :to => "home#update_wufoo_form", :as => :update_wufoo_form
-  get "/wufoo_forms/:id/entry", to: 'wufoo_forms#entry', :as => :wufoo_form_entry
-
   #--------------
   #NOTIFICATIONS
   #---------------

@@ -442,10 +442,6 @@ GEM
     watu_table_builder (0.3.0)
     websocket-driver (0.3.3)
     will_paginate (3.0.3)
-    wuparty (1.2.6)
-      httparty (>= 0.6.1)
-      mime-types (~> 1.16)
-      multipart-post (>= 1.0.1)
     xml-simple (1.1.3)
 
 PLATFORMS
@@ -519,7 +515,6 @@ DEPENDENCIES
   useragent
   watu_table_builder
   will_paginate (= 3.0.3)
-  wuparty (~> 1.2.6)
 
 BUNDLED WITH
    1.10.5

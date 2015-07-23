@@ -1,4 +1,0 @@
-var postBox = $('div[data-wall-id="<%= @wufoo_form.wall.id %>"]'),
-    newPostBoxContent = '<%= escape_javascript(render( partial: "wufoo_forms/shared/wufoo_form_card", locals: { wufoo_form: @wufoo_form, card_type: :post_publication, wall: @wufoo_form.wall } ))%>';
-postBox.replaceWith(newPostBoxContent);
-Notice('success', 'Formulario editado correctamente.');
