@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   #protect_from_forgery
   #skip_before_filter  :verify_authenticity_token
-  before_filter :set_locale
+  before_filter :set_i18n_locale_from_params
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
   helper_method :network_member
@@ -636,6 +636,35 @@ class ApplicationController < ActionController::Base
 
 
   protected
+
+  def set_i18n_locale_from_params
+    return if current_network.nil?
+    case current_network.subdomain
+    when "meems"
+      meems_locale
+    else
+      params_locale if params[:locale]
+    end
+  end
+
+  def params_locale
+    if I18n.available_locales.include?(params[:locale].to_sym) && params[:locale] != 'es_meems'
+      I18n.locale = params[:locale]
+    else
+      flash.now[:notice] = "#{params[:locale]} traducción no disponible"
+      I18n.locale = I18n.default_locale
+      logger.error flash.now[:notice]
+    end
+  end
+
+  def meems_locale
+    I18n.locale = :es_meems
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   #roles
   def permission_denied
     flash[:error] = "Sorry, you are not allowed to access that page."
@@ -680,33 +709,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_locale
-    return if current_network.nil?
-    case current_network.subdomain
-    when "meems"
-      meems_locale
-    else
-      default_locale
-    end
-  end
 
-  def default_locale
-    locale = (params[:locale].blank?) ? :es : params[:locale].to_sym
-    if I18n.available_locales.include? locale then
-      I18n.locale = locale
-    else
-      I18n.locale = :es
-    end
-  end
-
-  def meems_locale
-    I18n.locale = :es_meems
-  end
-
-  def default_url_options(options={})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    { locale: I18n.locale }
-  end
 
   # TODO: Es preferible utilizar este método en lugar de redirect_to :back,
   # podría ser buena idea cambar todos por este
@@ -716,5 +719,4 @@ class ApplicationController < ActionController::Base
     options.first.each { |k,v| tag_options[k] = v } unless options.empty?
     redirect_to (request.referer.present? ? :back : default), tag_options
   end
-
 end
