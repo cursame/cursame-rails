@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 1.9.3
+cache: bundler
+sudo: true
+env:
+  - DB=postgresql
+bundler_args: --without development
+script:
+  - export RAILS_ENV=test
+  - bundle exec rake db:create db:migrate
+  - bundle exec rspec spec
+before_install:
+  - sudo apt-get update && sudo apt-get install libicu-dev
+  - cp config/database.travis.yml config/database.yml
