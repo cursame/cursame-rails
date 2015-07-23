@@ -11,6 +11,8 @@ class Notifier < ActionMailer::Base
     users.each do |user|
       @user = user
       @delivery = delivery
+      set_logo(@user)
+
       mail to:  @user.email, subject: "Nueva tarea disponible"
     end
   end
@@ -19,14 +21,18 @@ class Notifier < ActionMailer::Base
     users.each do |user|
       @user = user
       @survey = survey
+      set_logo(@user)
+
       mail to: @user.email, subject: "Nuevo cuestionario disponible"
     end
-  end 
+  end
 
   def new_discussion_notification(users,discussion)
     users.each do |user|
       @user = user
       @discussion = discussion
+      set_logo(@user)
+
       mail to: @user.email, subject: "Nueva discusion disponible"
     end
   end
@@ -34,6 +40,8 @@ class Notifier < ActionMailer::Base
   def accepted_message(member_in_course,course)
     @user = member_in_course.user
     @course = course
+    set_logo(@user)
+
     mail to: @user.email, subject: "Has sido aceptado en el grupo #{@course.title}"
   end
 
@@ -48,6 +56,8 @@ class Notifier < ActionMailer::Base
   def send_email_members_in_course(member_in_course, subject, message)
     @user = member_in_course.user
     @content = message
+    set_logo(@user)
+
     mail to: @user.email, subject: subject
   end
 
@@ -56,6 +66,8 @@ class Notifier < ActionMailer::Base
     @subdomain = user.subdomain
     @domain = user.domain
     @content = message
+    set_logo(user)
+
     mail to: user_mail, subject: subject
   end
 
@@ -92,6 +104,8 @@ class Notifier < ActionMailer::Base
       @course = comment.commentable
     end
 
+    set_logo(@user)
+
     emails = users.map{|user| user.email}
     emails = emails.keep_if{ |email|  email != @user.email}
     subject = "#{@user.name} comento en el curso #{@course.title}"
@@ -101,6 +115,8 @@ class Notifier < ActionMailer::Base
   def new_member_in_course(course, user)
     @course = course
     @user = user
+    set_logo(@user)
+
     emails = @course.owners.map{|user| user.email}
     subject = "#{@user.name} desea ingresar al curso #{@course.title} del cual eres maestro"
     mail to: emails, subject: subject
@@ -109,14 +125,18 @@ class Notifier < ActionMailer::Base
   def user_mailer_with_password(user, password)
     @user = user
     @password = password
+    set_logo(@user)
+
     subject = "#{@user.name} has sido confirmado en la red"
     mail to:@user.email, subject: subject
   end
-  
+
 
   def masive_mailer_for_super_admin(user, message)
     @user = user
     @message = message
+    set_logo(@user)
+
     subject = " #{@user.name}"
     mail to:@user.email, subject: "#{@message.title}"
   end
@@ -142,4 +162,11 @@ class Notifier < ActionMailer::Base
     mail(to: email, subject: 'Alta de usuarios')
   end
 
+
+  private
+  def set_logo(user)
+    if @user.networks.last && @user.networks.last.logo?
+      @logo_url = @user.networks.last.logo
+    end
+  end
 end

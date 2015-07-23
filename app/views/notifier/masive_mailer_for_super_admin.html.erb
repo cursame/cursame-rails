@@ -15,7 +15,7 @@
           <td style="padding: 20px 0 12px 0;">
             <a href="http://www.cursa.me/" title="Cúrsame">
 
-              <img src="http://app.<%=@user.ubication %>/assets/logo_nuevo.png" alt="Cúrsame">
+              <img src="<%= @logo_url.nil? ? "http://app.cursa.me/assets/mails/logo.png" : @logo_url%>" alt="Cúrsame">
             </a>
           </td>
         </tr>
