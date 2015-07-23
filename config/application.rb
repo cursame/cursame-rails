@@ -29,17 +29,6 @@ module Cursame30Lb
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = "Mexico City"
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    #config.i18n.load_path += Dir[Rails.root.join('config', 'locales','**','*.{rb,yml}')]
-    I18n.enforce_available_locales = true
-    #I18n.load_path += Dir[Rails.root.join('config/locales/', '*.{rb,yml}').to_s]
-    I18n.available_locales = [:en, :es, :es_meems, :devise]
-    I18n.default_locale = 'es'
-
-    config.i18n.default_locale = :es
-
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
