@@ -59,7 +59,7 @@
           Morris.Donut({
             element: 'courses_graph',
             data: [
-              {label: "<%= current_network.students_tag %>", value: <%= @courses.count %> }
+              {label: I18n.t("managers.number_of_courses", {locale: "<%= I18n.locale %>"}), value: <%= @courses.count %> }
                 <% if current_network.subdomain != "meems" %>
                 , {label: "Públicos", value:<%= @publico %>},
                 {label: "Privados", value:<%= @privado%> }

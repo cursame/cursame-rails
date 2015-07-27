@@ -2317,6 +2317,7 @@ I18n.translations["en"] = {
     },
     "no_delete": "You can not delete this user.",
     "no_edit": "You can not edit that user.",
+    "number_of_courses": "Courses",
     "proc_file": "Your file is being processed, you will receive an email confirmation",
     "reported_contents": {
       "index": {
@@ -5873,6 +5874,7 @@ I18n.translations["es"] = {
     },
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
+    "number_of_courses": "Cursos",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
     "reported_contents": {
       "index": {
@@ -8299,6 +8301,7 @@ I18n.translations["es_meems"] = {
       "discuss": "Tema de la discusión",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
+      "phases": "Etapas",
       "public": "Público",
       "publish_date": "Día de publicación",
       "save_discuss": "Guardar Discusión",
@@ -8580,6 +8583,7 @@ I18n.translations["es_meems"] = {
         "descrip": "Descripción: ",
         "form_descrip": "Descripción del formulario",
         "form_url": "URL del formulario",
+        "phases": "Etapas",
         "public": "Público",
         "publish": "Publicar",
         "publish_date": "Día de publicación",
@@ -9378,6 +9382,7 @@ I18n.translations["es_meems"] = {
     },
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
+    "number_of_courses": "Centros de Emprendedores",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
     "reported_contents": {
       "index": {
@@ -9483,7 +9488,10 @@ I18n.translations["es_meems"] = {
           "cancel": "Cancelar",
           "create": "Crear Usuario",
           "email": "Correo electrónico",
+          "entity_id": "Id de la entidad",
+          "entity_name": "Nombre de la entidad",
           "last_names": "Apellidos",
+          "mentor_link": "Enlace Educativo",
           "name": "Nombre(s)",
           "operator": "Operador",
           "pwd": "Contraseña",
@@ -9890,7 +9898,8 @@ I18n.translations["es_meems"] = {
         "file": "Archivo",
         "public": "Público",
         "save": "Guardar"
-      }
+      },
+      "phases": "Etapas"
     },
     "comments": {
       "publication_box": {
@@ -12887,6 +12896,7 @@ I18n.translations["devise"] = {
     },
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
+    "number_of_courses": "Cursos",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
     "reported_contents": {
       "index": {
