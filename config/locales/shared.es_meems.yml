@@ -129,6 +129,8 @@ es_meems:
       post_people_who_liked:
         ed: A
         liked: les gusta esto
+      post_user_actions:
+        report_publication: 'Denunciar publicación'
     publications:
       comment:
         usr: Usuario
