@@ -129,6 +129,8 @@ en:
       post_people_who_liked:
         ed: A
         liked: like this
+        person: 'person'
+        people: 'people'
       post_user_actions:
         report_publication: 'Translation missing'
     publications:
