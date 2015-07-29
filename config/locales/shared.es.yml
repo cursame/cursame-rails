@@ -129,6 +129,8 @@ es:
       post_people_who_liked:
         ed: A
         liked: les gusta esto
+        person: 'persona'
+        people: 'personas'
       post_user_actions:
         report_publication: 'Denunciar publicación'
     publications:
