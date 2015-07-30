@@ -313,3 +313,13 @@ en:
         teachers: Teachers
         students: Students
     number_of_courses: Courses
+    public_courses: Public
+    private_courses: Private
+    in_courses: 'Active tasks'
+    final_courses: 'Queued and finished'
+    hmwrks: 'Homeworks'
+    comments_on_managers: 'Comments'
+    tests: 'Tests'
+    tests_in_course: 'Exams in Course'
+    tests_unpublished: 'Unpublished exams'
+    discussion: 'Discussions'
