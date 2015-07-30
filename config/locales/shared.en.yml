@@ -132,7 +132,7 @@ en:
         person: 'person'
         people: 'people'
       post_user_actions:
-        report_publication: 'Translation missing'
+        report_publication: 'Report Content'
     publications:
       comment:
         usr: User

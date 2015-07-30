@@ -320,3 +320,4 @@ es_meems:
         teachers: Profesores
         students: Alumnos
     number_of_courses: Centros de Emprendedores
+    comments_on_managers: 'Comentarios'

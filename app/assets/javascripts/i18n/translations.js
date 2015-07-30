@@ -2126,6 +2126,7 @@ I18n.translations["en"] = {
         "user": "User"
       }
     },
+    "comments_on_managers": "Comments",
     "correct_course": "Course created successfully",
     "correct_deleted": "Comment deleted successfully",
     "course_delete": "Course deleted successfully.",
@@ -2233,6 +2234,7 @@ I18n.translations["en"] = {
         "unpublished": "Unpublished"
       }
     },
+    "discussion": "Discussions",
     "discussions": {
       "index": {
         "actions": "Actions",
@@ -2272,7 +2274,9 @@ I18n.translations["en"] = {
     "error_delete_user": "Failed to delete user",
     "error_user": "An error occured when creating the user",
     "file": "File type not supported",
+    "final_courses": "Queued and finished",
     "hmwrk_delete": "Task deleted successfully.",
+    "hmwrks": "Homeworks",
     "import_members": {
       "course": "Course",
       "download": "Download course file",
@@ -2286,6 +2290,7 @@ I18n.translations["en"] = {
       "text2": "The owner may be o to 1, 0 for the owners of courses, and 1 to specify that he is just another member of the course. ",
       "text3": "The email must be associated to the user"
     },
+    "in_courses": "Active tasks",
     "index": {
       "actual": "Current",
       "comments": "Comment",
@@ -2318,7 +2323,9 @@ I18n.translations["en"] = {
     "no_delete": "You can not delete this user.",
     "no_edit": "You can not edit that user.",
     "number_of_courses": "Courses",
+    "private_courses": "Private",
     "proc_file": "Your file is being processed, you will receive an email confirmation",
+    "public_courses": "Public",
     "reported_contents": {
       "index": {
         "actions": "Actions",
@@ -2386,6 +2393,9 @@ I18n.translations["en"] = {
         "teacher": "Teacher"
       }
     },
+    "tests": "Tests",
+    "tests_in_course": "Exams in Course",
+    "tests_unpublished": "Unpublished exams",
     "users": {
       "edit": {
         "edit1": "Edit user"
@@ -3029,7 +3039,12 @@ I18n.translations["en"] = {
       },
       "post_people_who_liked": {
         "ed": "A",
-        "liked": "like this"
+        "liked": "like this",
+        "people": "people",
+        "person": "person"
+      },
+      "post_user_actions": {
+        "report_publication": "Report Content"
       }
     },
     "publications": {
@@ -5683,6 +5698,7 @@ I18n.translations["es"] = {
         "user": "Usuario"
       }
     },
+    "comments_on_managers": "Comentarios",
     "correct_course": "Curso creado correctamente",
     "correct_deleted": "Comentario borrado correctamente",
     "course_delete": "Curso borrado correctamente.",
@@ -5790,6 +5806,7 @@ I18n.translations["es"] = {
         "unpublished": "Sin Publicar"
       }
     },
+    "discussion": "Discusiones",
     "discussions": {
       "index": {
         "actions": "Acciones",
@@ -5829,7 +5846,9 @@ I18n.translations["es"] = {
     "error_delete_user": "Error al borrar el usuario",
     "error_user": "Ocurrio un error al crear el usuario",
     "file": "Tipo de archivo no soportado",
+    "final_courses": "En cola y finalizadas",
     "hmwrk_delete": "Tarea borrada correctamente.",
+    "hmwrks": "Tareas",
     "import_members": {
       "course": "Curso",
       "download": "Descargar archivo de cursos",
@@ -5843,6 +5862,7 @@ I18n.translations["es"] = {
       "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que es un miembro del curso.",
       "text3": "El Email debe de ser el correo asociado al usuario."
     },
+    "in_courses": "En curso",
     "index": {
       "actual": "Actual",
       "comments": "Comentarios",
@@ -5875,7 +5895,9 @@ I18n.translations["es"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Cursos",
+    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
+    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -5943,6 +5965,9 @@ I18n.translations["es"] = {
         "teacher": "Maestro"
       }
     },
+    "tests": "Exámenes",
+    "tests_in_course": "Exámenes en curso",
+    "tests_unpublished": "Exámenes sin publicar",
     "users": {
       "edit": {
         "edit1": "Editar Usuario"
@@ -6561,7 +6586,12 @@ I18n.translations["es"] = {
       },
       "post_people_who_liked": {
         "ed": "A",
-        "liked": "les gusta esto"
+        "liked": "les gusta esto",
+        "people": "personas",
+        "person": "persona"
+      },
+      "post_user_actions": {
+        "report_publication": "Denunciar publicación"
       }
     },
     "publications": {
@@ -9189,6 +9219,7 @@ I18n.translations["es_meems"] = {
         "user": "Usuario"
       }
     },
+    "comments_on_managers": "Comentarios",
     "correct_course": "Centro Emprendedor creado correctamente",
     "correct_deleted": "Comentario borrado correctamente",
     "course_delete": "Centro Emprendedor borrado correctamente.",
@@ -9297,6 +9328,7 @@ I18n.translations["es_meems"] = {
         "unpublished": "Sin Publicar"
       }
     },
+    "discussion": "Discusiones",
     "discussions": {
       "index": {
         "actions": "Acciones",
@@ -9337,7 +9369,9 @@ I18n.translations["es_meems"] = {
     "error_delete_user": "Error al borrar el usuario",
     "error_user": "Ocurrio un error al crear el usuario",
     "file": "Tipo de archivo no soportado",
+    "final_courses": "En cola y finalizadas",
     "hmwrk_delete": "Tarea borrada correctamente.",
+    "hmwrks": "Tareas",
     "import_members": {
       "course": "Centro Emprendedor",
       "download": "Descargar archivo de Centros de Emprendedores",
@@ -9351,6 +9385,7 @@ I18n.translations["es_meems"] = {
       "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del Centro Emprendedor mientras que 1 es para especificar que es un miembro del Centro Emprendedor.",
       "text3": "El Email debe ser el correo asociado al usuario."
     },
+    "in_courses": "En curso",
     "index": {
       "actual": "Actual",
       "comments": "Comentarios",
@@ -9383,7 +9418,9 @@ I18n.translations["es_meems"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Centros de Emprendedores",
+    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
+    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -9452,6 +9489,9 @@ I18n.translations["es_meems"] = {
         "teacher": "Líder multiplicador"
       }
     },
+    "tests": "Exámenes",
+    "tests_in_course": "Exámenes en curso",
+    "tests_unpublished": "Exámenes sin publicar",
     "users": {
       "edit": {
         "edit1": "Editar Usuario"
@@ -10080,7 +10120,12 @@ I18n.translations["es_meems"] = {
       },
       "post_people_who_liked": {
         "ed": "A",
-        "liked": "les gusta esto"
+        "liked": "les gusta esto",
+        "people": "personas",
+        "person": "persona"
+      },
+      "post_user_actions": {
+        "report_publication": "Denunciar publicación"
       }
     },
     "publications": {
@@ -12705,6 +12750,7 @@ I18n.translations["devise"] = {
         "user": "Usuario"
       }
     },
+    "comments_on_managers": "Comentarios",
     "correct_course": "Curso creado correctamente",
     "correct_deleted": "Comentario borrado correctamente",
     "course_delete": "Curso borrado correctamente.",
@@ -12812,6 +12858,7 @@ I18n.translations["devise"] = {
         "unpublished": "Sin Publicar"
       }
     },
+    "discussion": "Discusiones",
     "discussions": {
       "index": {
         "actions": "Acciones",
@@ -12851,7 +12898,9 @@ I18n.translations["devise"] = {
     "error_delete_user": "Error al borrar el usuario",
     "error_user": "Ocurrio un error al crear el usuario",
     "file": "Tipo de archivo no soportado",
+    "final_courses": "En cola y finalizadas",
     "hmwrk_delete": "Tarea borrada correctamente.",
+    "hmwrks": "Tareas",
     "import_members": {
       "course": "Curso",
       "download": "Descargar archivo de cursos",
@@ -12865,6 +12914,7 @@ I18n.translations["devise"] = {
       "text2": "Propietario solo puede ser 0 o 1, donde 0 es para referirse a que aquel usuario sera el dueño del curso mientras que 1 es para especificar que es un miembro del curso.",
       "text3": "El Email debe de ser el correo asociado al usuario."
     },
+    "in_courses": "En curso",
     "index": {
       "actual": "Actual",
       "comments": "Comentarios",
@@ -12897,7 +12947,9 @@ I18n.translations["devise"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Cursos",
+    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
+    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -12965,6 +13017,9 @@ I18n.translations["devise"] = {
         "teacher": "Maestro"
       }
     },
+    "tests": "Exámenes",
+    "tests_in_course": "Exámenes en curso",
+    "tests_unpublished": "Exámenes sin publicar",
     "users": {
       "edit": {
         "edit1": "Editar Usuario"
@@ -13583,7 +13638,12 @@ I18n.translations["devise"] = {
       },
       "post_people_who_liked": {
         "ed": "A",
-        "liked": "les gusta esto"
+        "liked": "les gusta esto",
+        "people": "personas",
+        "person": "persona"
+      },
+      "post_user_actions": {
+        "report_publication": "Denunciar publicación"
       }
     },
     "publications": {

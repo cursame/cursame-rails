@@ -313,3 +313,13 @@ es:
         teachers: Profesores
         students: Alumnos
     number_of_courses: Cursos
+    public_courses: Públicos
+    private_courses: Privados
+    in_courses: 'En curso'
+    final_courses: 'En cola y finalizadas'
+    hmwrks: 'Tareas'
+    comments_on_managers: 'Comentarios'
+    tests: 'Exámenes'
+    tests_in_course: 'Exámenes en curso'
+    tests_unpublished: 'Exámenes sin publicar'
+    discussion: 'Discusiones'

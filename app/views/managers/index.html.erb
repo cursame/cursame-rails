@@ -61,8 +61,8 @@
             data: [
               {label: I18n.t("managers.number_of_courses", {locale: "<%= I18n.locale %>"}), value: <%= @courses.count %> }
                 <% if current_network.subdomain != "meems" %>
-                , {label: "Públicos", value:<%= @publico %>},
-                {label: "Privados", value:<%= @privado%> }
+                , {label: I18n.t("managers.public_courses", {locale: "<%= I18n.locale %>"}), value:<%= @publico %>},
+                {label: I18n.t("managers.private_courses", {locale: "<%= I18n.locale %>"}), value:<%= @privado%> }
                 <% end %>
             ]
           });
@@ -84,9 +84,9 @@
             Morris.Donut({
               element: 'deliveries_graph',
               data: [
-               {label: "Tareas", value: <%=@total_deliveries %> },
-               {label: "En curso", value:<%= @published_deliveries_count  %>},
-               {label: "En cola y finalizadas ", value:<%= @unpublished_deliveries_count %> }
+               {label: I18n.t("managers.hmwrks", {locale: "<%= I18n.locale %>"}), value: <%=@total_deliveries %> },
+               {label: I18n.t("managers.in_courses", {locale: "<%= I18n.locale %>"}), value:<%= @published_deliveries_count  %>},
+               {label: I18n.t("managers.final_courses", {locale: "<%= I18n.locale %>"}), value:<%= @unpublished_deliveries_count %> }
               ]
             });
           </script>
@@ -106,8 +106,7 @@
           Morris.Donut({
             element: 'comments_graph',
             data: [
-            {label: "Comentarios", value: <%=@comment %> }
-
+             {label: I18n.t("managers.comments_on_managers", {locale: "<%= I18n.locale %>"}), value: <%=@comment %> }
             ]
           });
         </script>
@@ -130,9 +129,9 @@
             Morris.Donut({
                element: 'surveys_graph',
                data: [
-                 {label: "Examenes", value: <%=@surveys %> },
-                 {label: "Examenes en curso", value: <%=@surveys_publish %> },
-                 {label: "Examenes sin publicar", value: <%=@surveys_unpublished %> },
+                 {label: I18n.t("managers.tests", {locale: "<%= I18n.locale %>"}), value: <%=@surveys %> },
+                 {label: I18n.t("managers.tests_in_course", {locale: "<%= I18n.locale %>"}), value: <%=@surveys_publish %> },
+                 {label: I18n.t("managers.tests_unpublished", {locale: "<%= I18n.locale %>"}), value: <%=@surveys_unpublished %> },
                ]
              });
           </script>
@@ -151,7 +150,7 @@
             Morris.Donut({
               element: 'discussion_graph',
               data: [
-               {label: "Discusiones", value: <%=@discussions %> }
+               {label: I18n.t("managers.discussion", {locale: "<%= I18n.locale %>"}), value: <%=@discussions %> }
               ]
             });
           </script>
