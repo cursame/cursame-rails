@@ -48,7 +48,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6><%=t('.activity_feed.accept_course')%><span class="as-link"><%= notification.notificator.title %></span></h6>
+          <h6><%=t('.activity_feed.accept_course')%> <span class="as-link"><%= notification.notificator.title %></span></h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -62,7 +62,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6><%=t('.activity_feed.new_homework')%><span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.in_course')%><span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
+          <h6><%=t('.activity_feed.new_homework')%> <span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.in_course')%><span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -76,7 +76,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6><%=t('.activity_feed.new_discus')%><span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.in_course1')%><span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
+          <h6><%=t('.activity_feed.new_discus')%> <span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.in_course1')%><span class="as-link"><%= notification.notificator.courses[0].title %></span></h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -90,7 +90,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6><%=t('.activity_feed.new_question')%>Nuevo cuestionario <span class="as-link"><%= notification.notificator.name %></span> <%=t('.activity_feed.in_course2')%><span class="as-link"><%= notification.notificator.courses[0].title %></span> </h6>
+          <h6><%=t('.activity_feed.new_question')%> <span class="as-link"><%= notification.notificator.name %></span> <%=t('.activity_feed.in_course2')%><span class="as-link"><%= notification.notificator.courses[0].title %></span> </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -126,7 +126,7 @@
             <%else%>
               <%=t('.activity_feed.one_usr')%>
             <%end%>
-            <%=t('.activity_feed.response_homework')%><span class="as-link"><%= notification.notificator.delivery.title %></span>.
+            <%=t('.activity_feed.response_homework')%> <span class="as-link"><%= notification.notificator.delivery.title %></span>.
           </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
@@ -142,7 +142,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>
-            <%=t('.activity_feed.homework_calif')%><span class="as-link"><%= notification.notificator.delivery.title %></span> <%=t('.activity_feed.coursework')%><span class="as-link"><%= notification.notificator.delivery.courses.first.title %></span>
+            <%=t('.activity_feed.homework_calif')%> <span class="as-link"><%= notification.notificator.delivery.title %></span> <%=t('.activity_feed.coursework')%><span class="as-link"><%= notification.notificator.delivery.courses.first.title %></span>
           </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
@@ -195,7 +195,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6><span class="as-link"><%= user.name %></span><%=t('.activity_feed.discuss_comment')%><span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+          <h6><span class="as-link"><%= user.name %></span> <%=t('.activity_feed.discuss_comment')%><span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
@@ -211,7 +211,7 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6><span class="as-link"><%= user.name %></span><%=t('.activity_feed.comment_to_comment')%></h6>
+            <h6><span class="as-link"><%= user.name %></span> <%=t('.activity_feed.comment_to_comment')%></h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
@@ -228,7 +228,7 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6><span class="as-link"><%= user.name %></span><%=t('.activity_feed.comment_profile')%></h6>
+            <h6><span class="as-link"><%= user.name %></span> <%=t('.activity_feed.comment_profile')%></h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
@@ -245,7 +245,7 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6><span class="as-link"><%= user.name %></span><%=t('.activity_feed.comment_to_homework')%><span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
+            <h6><span class="as-link"><%= user.name %></span> <%=t('.activity_feed.comment_to_homework')%><span class="as-link"><%= notification.notificator.commentable.title %></span></h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>
@@ -305,7 +305,7 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6><%=t('.activity_feed.the_course')%><span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.course_expired')%></h6>
+            <h6><%=t('.activity_feed.the_course')%> <span class="as-link"><%= notification.notificator.title %></span> <%=t('.activity_feed.course_expired')%></h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
 
           </div>
@@ -326,7 +326,7 @@
             </div>
             <div class="activity-feed-main">
               <h6>
-                <%=t('.activity_feed.quest_feedback')%><span class="as-link"><span class="as-link"><%= notification.notificator.gradable.survey.name %></span>
+                <%=t('.activity_feed.quest_feedback')%> <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.survey.name %></span>
               </h6>
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
@@ -345,7 +345,7 @@
           </div>
           <div class="activity-feed-main">
             <h6>
-              <%=t('.activity_feed.text15')%><span class="as-link"><%= notification.notificator.title %></span><%=t('.activity_feed.text16')%>
+              <%=t('.activity_feed.text15')%> <span class="as-link"><%= notification.notificator.title %></span><%=t('.activity_feed.text16')%>
               <%= notification.notificator.active_status ? t('.activity_feed.active') : ('.activity_feed.ended') %>.
             </h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
@@ -366,7 +366,7 @@
             </div>
             <div class="activity-feed-main">
               <h6>
-                <%=t('.activity_feed.text17')%><span class="as-link"><span class="as-link"><%= notification.notificator.gradable.discussion.title %></span>
+                <%=t('.activity_feed.text17')%> <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.discussion.title %></span>
               </h6>
               <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
             </div>
@@ -385,7 +385,7 @@
           </div>
           <div class="activity-feed-main">
             <h6>
-              <%=t('.activity_feed.course_calif')%><span class="as-link"><span class="as-link"><%= notification.notificator.gradable.course.title %></span>
+              <%=t('.activity_feed.course_calif')%> <span class="as-link"><span class="as-link"><%= notification.notificator.gradable.course.title %></span>
             </h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
@@ -401,7 +401,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>
-            <span class="as-link"><%= notification.notificator.user.name %></span> ha compartido un formulario publico.
+            <span class="as-link"><%= notification.notificator.user.name %> </span> <%= t('.activity_feed.share_public_form') %>
           </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
@@ -415,7 +415,7 @@
         </div>
         <div class="activity-feed-main">
           <h6>
-            <span class="as-link"><%= notification.notificator.user.name %></span> ha compartido un formulario en el curso <span class="as-link"><%= notification.notificator.pollable.title %></span>.
+            <span class="as-link"><%= notification.notificator.user.name %></span> <%= t('.activity_feed.share_course_form') %> <span class="as-link"><%= notification.notificator.pollable.title %></span>.
           </h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
@@ -432,7 +432,7 @@
             </span>
           </div>
           <div class="activity-feed-main">
-            <h6><span class="as-link"><%= notification.notificator.user.name %></span> ha denunciado una publicación</h6>
+            <h6><span class="as-link"><%= notification.notificator.user.name %></span> <%= t('.activity_feed.denounce_publication') %> </h6>
             <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
           </div>
         <% end %>

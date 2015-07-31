@@ -272,6 +272,9 @@ en:
         text14: 'If you find a question mark in a section and click on it, you will be able to watch a video showing how to use that function.'
     notification_type:
       activity_feed:
+        denounce_publication: 'denounced a publication'
+        share_course_form: 'has shared a form on the course'
+        share_public_form: 'has shared a public form'
         lookup_usr: See user
         comment_net: comment in your network
         comment_course: comment in your course
