@@ -275,6 +275,9 @@ es:
         denounce_publication: 'ha denunciado una publicación'
         share_course_form: 'ha compartido un formulario en el curso'
         share_public_form: 'ha compartido un formulario público'
+        shared_file_in: 'ha compartido un archivo en'
+        public_library: 'Biblioteca Pública'
+        shared_file_in_the: 'ha compartido un archivo en la'
         lookup_usr: Ver usuario
         comment_net: comentó en la red
         comment_course: comentó en el curso
