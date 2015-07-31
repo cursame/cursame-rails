@@ -272,6 +272,9 @@ es:
         text14: 'En cada sección donde veas un signo de interrogación "?", al dar click podrás ver un video sobre como usar dicha función.'
     notification_type:
       activity_feed:
+        denounce_publication: 'ha denunciado una publicación'
+        share_course_form: 'ha compartido un formulario en el curso'
+        share_public_form: 'ha compartido un formulario público'
         lookup_usr: Ver usuario
         comment_net: comentó en la red
         comment_course: comentó en el curso
