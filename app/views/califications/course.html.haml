@@ -14,7 +14,8 @@
                         = avatar('user', '45', "no", member.user.id, "avatar", "no", "no")
                       .member-calification-main
                         %h5= member.user.name
-                        %span.member-score= t('.calification') + "#{evaluation_score (@course.cursame_criteria ? member.course_average : member.course_average_old)}"
+                        - if member.course.evaluation_periods.blank?
+                          %span.member-score= t('.calification') + "#{evaluation_score (@course.cursame_criteria ? member.course_average : member.course_average_old)}"
             - else
               .no-content-section
                 %h6= t('.no_members')
