@@ -13,6 +13,15 @@ es:
         no_score: No calificada
         avg: Calificación promedio en Tareas
         no_hmwrks: Aún no hay Tareas en este curso.
+      deliveries_table_period:
+        hmwrk: Tareas
+        percent: 'Porcentaje: %{number}%'
+        hmwrks: Tarea
+        score: Calificación
+        no_deliver: No entregada
+        no_score: No calificada
+        avg: Calificación promedio en Tareas
+        no_hmwrks: Aún no hay Tareas en este periodo.
       discussions_table:
         discuss: Discusiones
         discuss2: Discusión
@@ -22,6 +31,15 @@ es:
         avg_score: Calificación promedio en Discusiones
         no_discuss: Aún no hay Discusiones evaluables en este curso.
         percent: 'Porcentaje: %{number}%'
+      discussions_table_period:
+        discuss: Discusiones
+        discuss2: Discusión
+        score: Calificación
+        no_part: Sin participación
+        no_score: No calificada
+        avg_score: Calificación promedio en Discusiones
+        no_discuss: Aún no hay Discusiones evaluables en este periodo.
+        percent: 'Porcentaje: %{number}%'
       surveys_table:
         quest: Cuestionarios
         avg: 'Porcentaje: %{number}%'
@@ -30,6 +48,14 @@ es:
         no_answered: No resuelto
         quest2: Calificación promedio en Cuestionarios
         quest3: Aún no hay Cuestionarios en este Curso.
+      surveys_table_period:
+        quest: Cuestionarios
+        avg: 'Porcentaje: %{number}%'
+        exam: Examen
+        score: Calificación
+        no_answered: No resuelto
+        quest2: Calificación promedio en Cuestionarios
+        quest3: Aún no hay Cuestionarios en este periodo.
     shared:
       user_card:
         friends: Amigos

@@ -1,0 +1,47 @@
+<div class="course-califications-section">
+  <div class="course-califications-section-title">
+    <h4><%= icon 'activity-survey' %> <%=t('.quest')%> <%=period.name%></h4>
+    <span class="meta-info">
+      <%= t('.avg', number: period.surveys_percentage) %>
+    </span>
+  </div>
+  <% surveys_evaluation = period.surveys_evaluation(member.user.id)%>
+  <% unless surveys_evaluation.blank? %>
+    <table border="1" cellpadding="3" cellspacing="3">
+      <thead>
+        <tr>
+          <th colspan="2"><%=t('.exam')%></th>
+          <th><%=t('.score')%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% surveys_evaluation.each_with_index do |survey_evaluation, index| %>
+          <tr <%= "class='even'" if !index.odd? %>>
+            <td colspan="2">
+              <%= link_to survey_evaluation[:survey].name, survey_modal_path(survey_evaluation[:survey].id), remote: true %>
+            </td>
+            <td style="width: 120px;">
+              <% unless survey_evaluation[:user_survey].nil? || survey_evaluation[:user_survey].grade.nil? %>
+                <span class="number"><%= evaluation_score survey_evaluation[:user_survey].grade.score %> </span>
+              <% else %>
+                <%=t('.no_answered')%>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="course-califications-section-footer">
+      <div class="title">
+        <h5><%=t('.quest2')%>:</h5>
+      </div>
+      <span class="score">
+        <%= evaluation_score period.surveys_average(member.user.id) %>
+      </span>
+    </div>
+  <% else %>
+    <div class="no-califications">
+      <h6><%=t('.quest3')%></h6>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,49 @@
+<div class="course-califications-section">
+  <div class="course-califications-section-title">
+    <h4><%= icon 'activity-delivery' %> <%=t('.hmwrk')%> <%=period.name%></h4>
+    <span class="meta-info">
+      <%= t('.percent', number: period.deliveries_percentage) %>
+    </span>
+  </div>
+  <% deliveries_evaluation = period.deliveries_evaluation(member.user.id) %>
+  <% unless deliveries_evaluation.blank? %>
+    <table border="1" cellpadding="3" cellspacing="3">
+      <thead>
+        <tr>
+          <th colspan="2"><%=t('.hmwrks')%></th>
+          <th><%=t('.score')%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% deliveries_evaluation.each_with_index do |delivery_evaluation, index| %>
+          <tr <%= "class='even'" if !index.odd? %>>
+            <td colspan="2">
+              <%= link_to delivery_evaluation[:delivery].title, delivery_modal_path(delivery_evaluation[:delivery].id), remote: true %>
+            </td>
+            <td style="width: 120px;">
+              <% if delivery_evaluation[:assignment].nil? %>
+                <%=t('.no_deliver')%>
+              <% elsif delivery_evaluation[:assignment].grade.nil? %>
+                <%=t('.no_score')%>
+              <% else %>
+                <span class="number"><%= evaluation_score delivery_evaluation[:assignment].grade.score %></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="course-califications-section-footer">
+      <div class="title">
+        <h5><%=t('.avg')%>:</h5>
+      </div>
+      <span class="score">
+        <%= evaluation_score period.deliveries_average(member.user.id) %>
+      </span>
+    </div>
+  <% else %>
+    <div class="no-califications">
+      <h6><%=t('.no_hmwrks')%></h6>
+    </div>
+  <% end %>
+</div>
