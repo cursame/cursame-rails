@@ -13,6 +13,15 @@ en:
         no_score: Nor graded
         avg: Average grade for homework
         no_hmwrks: There is still no homework for this course.
+      deliveries_table_period:
+        hmwrk: Homework
+        percent: 'Percentage: %{number}%'
+        hmwrks: Homework
+        score: Grade
+        no_deliver: Not turned in
+        no_score: Nor graded
+        avg: Average grade for homework
+        no_hmwrks: There is still no homework for this period.
       discussions_table:
         discuss: Discussions
         discuss2: Discussions
@@ -22,6 +31,15 @@ en:
         avg_score: Average discussion grade
         no_discuss: There are still no gradable discussion in this course.
         percent: 'Percentage: %{number}%'
+      discussions_table_period:
+        discuss: Discussions
+        discuss2: Discussions
+        score: Grade
+        no_part: No participation
+        no_score: Not graded
+        avg_score: Average discussion grade
+        no_discuss: There are still no gradable discussion in this period.
+        percent: 'Percentage: %{number}%'
       surveys_table:
         quest: Tests
         avg: 'Percentage: %{number}%'
@@ -30,6 +48,14 @@ en:
         no_answered: Not answers
         quest2: Average percentage in grades
         quest3: There are still not tests for this course
+      surveys_table_period:
+        quest: Tests
+        avg: 'Percentage: %{number}%'
+        exam: Exams
+        score: Grade
+        no_answered: Not answers
+        quest2: Average percentage in grades
+        quest3: There are still not tests for this period.
     shared:
       user_card:
         friends: Friends
