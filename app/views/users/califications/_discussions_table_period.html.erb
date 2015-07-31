@@ -1,0 +1,51 @@
+<div class="course-califications-section">
+  <div class="course-califications-section-title">
+    <h4><%= icon 'activity-discussion' %> <%=t('.discuss')%> <%=period.name%></h4>
+    <span class="meta-info">
+      <%= t('.percent', number: period.discussions_percentage) %>
+    </span>
+  </div>
+  <% discussions_evaluation = period.discussions_evaluation(member.user.id) %>
+  <% unless discussions_evaluation.blank? %>
+    <table border="1" cellpadding="3" cellspacing="3">
+      <thead>
+        <tr>
+          <th colspan="2"><%=t('.discuss2')%></th>
+          <th><%=t('.score')%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% discussions_evaluation.each_with_index do |discussion_evaluation, index| %>
+          <tr <%= "class='even'" if !index.odd? %>>
+            <td colspan="2">
+              <%= link_to discussion_evaluation[:discussion].title, discussion_modal_path(discussion_evaluation[:discussion].id), remote: true %>
+            </td>
+            <td style="width: 120px;">
+              <% if discussion_evaluation[:discussion_response].nil? %>
+                <%=t('.no_part')%>
+              <% elsif discussion_evaluation[:discussion_response].grade.nil? %>
+                <%=t('.no_score')%>
+              <% else %>
+                <span class="number"><%= evaluation_score discussion_evaluation[:discussion_response].grade.score %></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="course-califications-section-footer">
+      <div class="cali-section">
+        <div class="title">
+          <h5><%=t('.avg_score')%>:</h5>
+        </div>
+        <span class="score">
+          <%= evaluation_score period.discussions_average(member.user.id) %>
+        </span>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-califications">
+      <h6><%=t('.no_discuss')%></h6>
+    </div>
+  <% end %>
+</div>

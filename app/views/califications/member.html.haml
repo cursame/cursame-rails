@@ -11,11 +11,18 @@
               .member-score-overview-user-main
                 = link_to show_user_path @member.user.personal_url do
                   %h5= @member.user.name
-                %p= t('.score') + " #{evaluation_score (@course.cursame_criteria ? @member.course_average : @member.course_average_old)} · " + t('.final_score') + "#{evaluation_score @member.grade.present? ? @member.grade.score : t('.no_score')}"
+                - if @course.evaluation_periods.blank?
+                  %p= t('.score') + " #{evaluation_score (@course.cursame_criteria ? @member.course_average : @member.course_average_old)} · " + t('.final_score') + "#{evaluation_score @member.grade.present? ? @member.grade.score : t('.no_score')}"
             .member-score-overview-main
-              = render partial: 'users/califications/deliveries_table',  locals: { member: @member }
-              = render partial: 'users/califications/surveys_table',     locals: { member: @member }
-              = render partial: 'users/califications/discussions_table', locals: { member: @member }
+              - if @course.evaluation_periods.blank?
+                = render partial: 'users/califications/deliveries_table',  locals: { member: @member }
+                = render partial: 'users/califications/surveys_table',     locals: { member: @member }
+                = render partial: 'users/califications/discussions_table', locals: { member: @member }
+              - else
+                - @course.evaluation_periods.each do |period|
+                  = render partial: 'users/califications/deliveries_table_period',  locals: { member: @member, period: period }
+                  = render partial: 'users/califications/surveys_table_period',     locals: { member: @member, period: period }
+                  = render partial: 'users/califications/discussions_table_period', locals: { member: @member, period: period }
       .col.col-4
         .col-inner
           .sidebar-responses
