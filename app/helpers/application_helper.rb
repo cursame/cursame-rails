@@ -3,7 +3,7 @@ module ApplicationHelper
   def link_to_remove_fields(name, f, options, toId)
     f.hidden_field(:_destroy, class: '_destroy') + link_to_function(name, "remove_fields(this, \""+toId+"\")", options)
   end
-  
+
   def link_to_add_fields(name, f, association, options, toId, id)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
@@ -41,14 +41,14 @@ module ApplicationHelper
     library_type = notification.notificator.location.storable
     case library_type
     when Network
-      "<span class='as-link'> #{notification.notificator.user.name}</span> 
-      ha compartido un archivo en la <span class='as-link'>Biblioteca Pública<span class='as-link'>".html_safe
+      "<span class='as-link'> #{notification.notificator.user.name}</span>
+      #{ t('.activity_feed.shared_file_in_the') } <span class='as-link'> #{ t('.activity_feed.public_library') }<span class='as-link'>".html_safe
     when Course
-      "<span class='as-link'> #{notification.notificator.user.name}</span> 
-      ha compartido un archivo en <span class='as-link'>#{library_type.title}<span class='as-link'>".html_safe
+      "<span class='as-link'> #{notification.notificator.user.name}</span>
+      #{ t('.activity_feed.shared_file_in') } <span class='as-link'>#{library_type.title}<span class='as-link'>".html_safe
     when Library
-      "<span class='as-link'> #{notification.notificator.user.name}</span> 
-      ha compartido un archivo en <span class='as-link'>#{notification.notificator.location.title}<span class='as-link'>".html_safe
+      "<span class='as-link'> #{notification.notificator.user.name}</span>
+      #{ t('.activity_feed.shared_file_in') } <span class='as-link'>#{notification.notificator.location.title}<span class='as-link'>".html_safe
     end
   end
 end

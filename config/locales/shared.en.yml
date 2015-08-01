@@ -275,6 +275,9 @@ en:
         denounce_publication: 'denounced a publication'
         share_course_form: 'has shared a form on the course'
         share_public_form: 'has shared a public form'
+        shared_file_in: 'shared a file in'
+        public_library: 'Public Library'
+        shared_file_in_the: 'shared a file in the'
         lookup_usr: See user
         comment_net: comment in your network
         comment_course: comment in your course
