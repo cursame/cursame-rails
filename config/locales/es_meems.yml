@@ -221,3 +221,10 @@ es_meems:
   shared:
     comment_form:
       phases: "Etapas"
+  network_tags:
+    course_tag: 'Centros de Emprendedores'
+    profesor_tag: 'Líder Multiplicador'
+    professors_tag: 'Líderes Multiplicadores'
+    student_tag: 'Emprendedor'
+    students_tag: 'Emprendedores'
+    admins_tag: 'Administradores'

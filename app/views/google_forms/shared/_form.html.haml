@@ -35,11 +35,11 @@
         .f-col.f-col-3
           .form-unit
             = check_box_tag "google_form[role_ids][]", Role.find_by_title('teacher').id
-            #{current_network.profesor_tag}
+            #{t('network_tags.profesor_tag')}
         .f-col.f-col-3
           .form-unit
             = check_box_tag "google_form[role_ids][]", Role.find_by_title('student').id
-            #{current_network.student_tag}
+            #{t('network_tags.student_tag')}
   .new-publication-footer
     %ul.list-buttons.right.fr
       %li
