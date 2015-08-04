@@ -10,5 +10,5 @@
           = link_to file.file.url, download: true, class: 'activable' do
             %h3= file.name
             %p= file.description
-          %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format file.created_at}".html_safe
-          = link_to t('.download_file'), file.file.url, download: true, class: "btn btn-small btn-transparent activable"            
+          %span.post-box-meta= "#{icon 'date-mini-w'} #{I18n.l file.created_at, format: :short}".html_safe
+          = link_to t('.download_file'), file.file.url, download: true, class: "btn btn-small btn-transparent activable"

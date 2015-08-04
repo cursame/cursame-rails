@@ -23,12 +23,12 @@
     .post-box-content
       .icon-card
         = icon 'delivery-card'
-      = link_to delivery_modal_path(delivery.id), remote: true, class: 'activable' do 
+      = link_to delivery_modal_path(delivery.id), remote: true, class: 'activable' do
         %h3= delivery.title
       - if card_type == :standalone
         %span.timestamp= time_ago_in_words delivery.created_at
         %span.post-box-meta= link_to "#{icon 'course-mini-w'} #{course.title}".html_safe, course_path(course), title: course.title
-      %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format delivery.end_date}".html_safe
+      %span.post-box-meta= "#{icon 'date-mini-w'} #{I18n.l delivery.end_date, format: :short}".html_safe
       - unless card_type == :standalone
         = link_to t('.hmwrk'), delivery_modal_path(delivery.id), remote: true, class: "btn btn-small btn-transparent activable"
         = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: delivery }

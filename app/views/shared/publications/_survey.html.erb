@@ -15,7 +15,7 @@
     <h3 class="title"><%= link_to survey_post[:name], survey_modal_path(publication.publication.id), :remote => true %></h3>
   </div>
   <div class="academic-desc">
-    <p><%=t('.response_before')%><%= pretty_date_format(publication.publication.end_date) %> &middot; <%= pluralize(publication.publication.questions.count, t('.question'), t('.questions')) %></p>
+    <p><%=t('.response_before')%><%= I18n.l publication.publication.end_date, format: :short %> &middot; <%= pluralize(publication.publication.questions.count, t('.question'), t('.questions')) %></p>
   </div>
   <div class="academic-button">
     <%= link_to t('.open_quest'), survey_modal_path(publication.publication.id), :remote => true, class: "btn btn-transparent uppercase" %>
