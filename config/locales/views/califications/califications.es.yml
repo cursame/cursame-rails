@@ -16,12 +16,6 @@ es:
     course:
       calification: "Calificación:"
       no_members: Este curso no tiene miembros
-      final_score: Calificación final
-      criterion: Criterio
-      score: Calificación Obtenida
-      percent: "Porcentaje:"
-      no_score: Aún no tienes calificación final.
-      no_printable_score: Tu profesor todavía no te ha dado calificación final.
       active_courses: Cursos activos
     member:
       score: "Calificación Cúrsame:"

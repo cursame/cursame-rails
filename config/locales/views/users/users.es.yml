@@ -56,6 +56,14 @@ es:
         no_answered: No resuelto
         quest2: Calificación promedio en Cuestionarios
         quest3: Aún no hay Cuestionarios en este periodo.
+      final_grade_course:
+        calification: "Calificación:"
+        final_score: Calificación final
+        criterion: Criterio
+        score: Calificación Obtenida
+        percent: "Porcentaje:"
+        no_score: Aún no tienes calificación final.
+        no_printable_score: Tu profesor todavía no te ha dado calificación final.
     shared:
       user_card:
         friends: Amigos

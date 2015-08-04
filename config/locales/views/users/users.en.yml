@@ -56,6 +56,14 @@ en:
         no_answered: Not answers
         quest2: Average percentage in grades
         quest3: There are still not tests for this period.
+      final_grade_course:
+        calification: "Grade:"
+        final_score: Final Grade
+        criterion: Criterion
+        score: Score
+        percent: "Percentage:"
+        no_score: "You still don't have a final grade."
+        no_printable_score: Your teacher has not yet given a final grade.
     shared:
       user_card:
         friends: Friends

@@ -16,12 +16,6 @@ en:
     course:
       calification: "Grade:"
       no_members: This course has no members
-      final_score: Final Grade
-      criterion: Criterion
-      score: Score
-      percent: "Percentage:"
-      no_score: "You still don't have a final grade."
-      no_printable_score: Your teacher has not yet given a final grade.
       active_courses: Active Courses
     member:
       score: "Cúrsame grade:"
