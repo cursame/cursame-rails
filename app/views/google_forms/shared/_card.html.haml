@@ -30,7 +30,7 @@
       = link_to google_form.url, class: 'activable', target: "_blank" do
         %h3= google_form.title
         %p= google_form.description
-      %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format google_form.term_date}".html_safe
+      %span.post-box-meta= "#{icon 'date-mini-w'} #{I18n.l google_form.term_date, format: :short}".html_safe
       = link_to t('.view_form'), google_form.url, target: "_blank", class: "btn btn-small btn-transparent activable"
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: google_form }
     - if card_type == :post_publication

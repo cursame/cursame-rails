@@ -15,7 +15,7 @@
       = link_to library_file.file.url, download: true, class: 'activable' do
         %h3= library_file.name
         %p= library_file.description
-      %span.post-box-meta= "#{icon 'date-mini-w'} #{pretty_date_format library_file.created_at}".html_safe
+      %span.post-box-meta= "#{icon 'date-mini-w'} #{I18n.l library_file.created_at, format: :short}".html_safe
       = link_to t('.download_file'), library_file.file.url, download: true, class: "btn btn-small btn-transparent activable"
       = render partial: 'shared/posts/post_meta_data', locals: { wall: wall, post: library_file }
     .post-box-under-container

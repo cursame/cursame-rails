@@ -15,7 +15,7 @@
     <h3 class="title"><%= link_to delivery_post[:name], delivery_modal_path(publication.publication.id), :remote => true %></h3>
   </div>
   <div class="academic-desc">
-    <p><%=t('.delivery_txt')%><%= pretty_date_format(publication.publication.end_date) %></p>
+    <p><%=t('.delivery_txt')%><%= I18n.l publication.publication.end_date, format: :short %></p>
   </div>
   <div class="academic-button">
     <%= link_to t('.open_hmwk'), delivery_modal_path(publication.publication.id), :remote => true, class: "btn btn-transparent uppercase"%>
