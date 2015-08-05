@@ -1,0 +1,41 @@
+.closure-course-members-list
+  .member-item
+    .member-item-header
+      %h6= t('.final_score')
+    .member-item-main
+      - if member.grade
+        - user = member.user
+        %table.member-evaluation-table
+          %thead
+            %tr
+              %th= t('.criterion')
+              %th= t('.score')
+          %tbody
+            %tr
+              %td
+                %h4 Cúrsame
+                %span.meta-info= t('.percent') + "#{@course.cursame_criteria ? cursame_percentage(member.course) : member.course.cursame_percentage_old }"
+              %td
+                %span.score.cursame-score-js= evaluation_score (@course.cursame_criteria ? member.course_average : (member.course_average_old * (member.course.cursame_percentage_old/100.0)))
+            - unless member.members_in_course_criteria.blank?
+              - criteria_course = member.members_in_course_criteria.reject {|criterium_course| ['cursame_deliveries', 'cursame_surveys', 'cursame_discussions'].include? criterium_course.evaluation_criterium.name }
+              - criteria_course.each do |criterium|
+                %tr
+                  %td
+                    %h4= criterium.evaluation_criterium.name
+                    %span.meta-info= t('.percent') + "#{criterium.evaluation_criterium.evaluation_percentage}" + ' · ' + t('.calification') + "#{evaluation_score criterium.grade.score}"
+                  %td
+                    %span.score= evaluation_score (criterium.grade.score * criterium.evaluation_criterium.evaluation_percentage/100.0)
+            %tr.final-score
+              %td
+                %h4= t('.final_score')
+              %td
+                %span.score= evaluation_score member.grade.score
+      - else
+        .no-content-section
+          %h5= t('.no_score')
+          %p= t('.no_printable_score')
+.standalone-member-calification
+  = render partial: 'users/califications/deliveries_table',  locals: { member: member }
+  = render partial: 'users/califications/surveys_table',     locals: { member: member }
+  = render partial: 'users/califications/discussions_table', locals: { member: member }
