@@ -146,8 +146,8 @@ en:
       percent_obtain1: "% Obtained"
       hmwrk: Homework
     form:
-      find_teachers_for_admin: 'Search Teachers to manage the Course'
-      add_teachers_into_course: 'Add Teachers to Course'
+      find_teachers_for_admin: 'Subscribe Teachers to this Course'
+      add_teachers_into_course: 'Find Teachers to admin the Course'
       name: 'Course name'
       example: "Example: Mathematics I"
       descrip: 'Course description'
