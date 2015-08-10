@@ -2521,6 +2521,14 @@ I18n.translations["en"] = {
       "no_modal_found": "The survey you are trying to view no longer exists"
     }
   },
+  "network_tags": {
+    "admins_tag": "Admins",
+    "course_tag": "Courses",
+    "profesor_tag": "Teacher",
+    "professors_tag": "Teachers",
+    "student_tag": "Student",
+    "students_tag": "Students"
+  },
   "networks": {
     "alertmethod": {
       "net": "Go to my network",
@@ -2962,6 +2970,7 @@ I18n.translations["en"] = {
         "course_calif": "The course has been graded",
         "course_expired": "The course has finished, please deactivate it.",
         "coursework": "from course",
+        "denounce_publication": "denounced a publication",
         "discuss_comment": "Comment in your discussion",
         "ended": "Ended",
         "friend_notif": "has sent you a friend request",
@@ -2977,9 +2986,14 @@ I18n.translations["en"] = {
         "new_homework": "New homework",
         "new_question": "New test",
         "one_usr": "a user",
+        "public_library": "Public Library",
         "quest_feedback": "You have received feedback from your test",
         "quest_response": "You have answered the test",
         "response_homework": "you have done your homework",
+        "share_course_form": "has shared a form on the course",
+        "share_public_form": "has shared a public form",
+        "shared_file_in": "shared a file in",
+        "shared_file_in_the": "shared a file in the",
         "text15": "The course",
         "text16": "has been",
         "text17": "Your participation in the discussion has been graded",
@@ -3455,11 +3469,31 @@ I18n.translations["en"] = {
         "percent": "Percentage: %{number}%",
         "score": "Grade"
       },
+      "deliveries_table_period": {
+        "avg": "Average grade for homework",
+        "hmwrk": "Homework",
+        "hmwrks": "Homework",
+        "no_deliver": "Not turned in",
+        "no_hmwrks": "There is still no homework for this period.",
+        "no_score": "Nor graded",
+        "percent": "Percentage: %{number}%",
+        "score": "Grade"
+      },
       "discussions_table": {
         "avg_score": "Average discussion grade",
         "discuss": "Discussions",
         "discuss2": "Discussions",
         "no_discuss": "There are still no gradable discussion in this course.",
+        "no_part": "No participation",
+        "no_score": "Not graded",
+        "percent": "Percentage: %{number}%",
+        "score": "Grade"
+      },
+      "discussions_table_period": {
+        "avg_score": "Average discussion grade",
+        "discuss": "Discussions",
+        "discuss2": "Discussions",
+        "no_discuss": "There are still no gradable discussion in this period.",
         "no_part": "No participation",
         "no_score": "Not graded",
         "percent": "Percentage: %{number}%",
@@ -3475,6 +3509,15 @@ I18n.translations["en"] = {
         "quest": "Tests",
         "quest2": "Average percentage in grades",
         "quest3": "There are still not tests for this course",
+        "score": "Grade"
+      },
+      "surveys_table_period": {
+        "avg": "Percentage: %{number}%",
+        "exam": "Exams",
+        "no_answered": "Not answers",
+        "quest": "Tests",
+        "quest2": "Average percentage in grades",
+        "quest3": "There are still not tests for this period.",
         "score": "Grade"
       }
     },
@@ -6068,6 +6111,14 @@ I18n.translations["es"] = {
       "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     }
   },
+  "network_tags": {
+    "admins_tag": "Administradores",
+    "course_tag": "Cursos",
+    "profesor_tag": "Profesor",
+    "professors_tag": "Profesores",
+    "student_tag": "Estudiante",
+    "students_tag": "Estudiantes"
+  },
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
@@ -6509,6 +6560,7 @@ I18n.translations["es"] = {
         "course_calif": "Se ha calificado el curso",
         "course_expired": "ha llegado a su fecha final. Por favor desactívalo.",
         "coursework": "del curso",
+        "denounce_publication": "ha denunciado una publicación",
         "discuss_comment": "comentó en tu Discusión",
         "ended": "finalizado",
         "friend_notif": "ha solicitado ser su amigo",
@@ -6524,9 +6576,14 @@ I18n.translations["es"] = {
         "new_homework": "Nueva Tarea",
         "new_question": "Nuevo Cuestionario",
         "one_usr": "Un usuario",
+        "public_library": "Biblioteca Pública",
         "quest_feedback": "Has recibido retroalimentación en el Cuestionario",
         "quest_response": "ha respondido el Cuestionario",
         "response_homework": "ha respondido la tarea",
+        "share_course_form": "ha compartido un formulario en el curso",
+        "share_public_form": "ha compartido un formulario público",
+        "shared_file_in": "ha compartido un archivo en",
+        "shared_file_in_the": "ha compartido un archivo en la",
         "text15": "El curso",
         "text16": "ha sido",
         "text17": "Han calificado tu participacion en la Discusión",
@@ -7002,11 +7059,31 @@ I18n.translations["es"] = {
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
+      "deliveries_table_period": {
+        "avg": "Calificación promedio en Tareas",
+        "hmwrk": "Tareas",
+        "hmwrks": "Tarea",
+        "no_deliver": "No entregada",
+        "no_hmwrks": "Aún no hay Tareas en este periodo.",
+        "no_score": "No calificada",
+        "percent": "Porcentaje: %{number}%",
+        "score": "Calificación"
+      },
       "discussions_table": {
         "avg_score": "Calificación promedio en Discusiones",
         "discuss": "Discusiones",
         "discuss2": "Discusión",
         "no_discuss": "Aún no hay Discusiones evaluables en este curso.",
+        "no_part": "Sin participación",
+        "no_score": "No calificada",
+        "percent": "Porcentaje: %{number}%",
+        "score": "Calificación"
+      },
+      "discussions_table_period": {
+        "avg_score": "Calificación promedio en Discusiones",
+        "discuss": "Discusiones",
+        "discuss2": "Discusión",
+        "no_discuss": "Aún no hay Discusiones evaluables en este periodo.",
         "no_part": "Sin participación",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
@@ -7022,6 +7099,15 @@ I18n.translations["es"] = {
         "quest": "Cuestionarios",
         "quest2": "Calificación promedio en Cuestionarios",
         "quest3": "Aún no hay Cuestionarios en este Curso.",
+        "score": "Calificación"
+      },
+      "surveys_table_period": {
+        "avg": "Porcentaje: %{number}%",
+        "exam": "Examen",
+        "no_answered": "No resuelto",
+        "quest": "Cuestionarios",
+        "quest2": "Calificación promedio en Cuestionarios",
+        "quest3": "Aún no hay Cuestionarios en este periodo.",
         "score": "Calificación"
       }
     },
@@ -9596,6 +9682,14 @@ I18n.translations["es_meems"] = {
       "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el Operador de los Centros de Emprendedores."
     }
   },
+  "network_tags": {
+    "admins_tag": "Administradores",
+    "course_tag": "Centros de Emprendedores",
+    "profesor_tag": "Líder Multiplicador",
+    "professors_tag": "Líderes Multiplicadores",
+    "student_tag": "Emprendedor",
+    "students_tag": "Emprendedores"
+  },
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
@@ -10043,6 +10137,7 @@ I18n.translations["es_meems"] = {
         "course_calif": "Se ha calificado el Centro Emprendedor",
         "course_expired": "ha llegado a su fecha final. Por favor desactívalo.",
         "coursework": "del Centro Emprendedor",
+        "denounce_publication": "ha denunciado una publicación",
         "discuss_comment": "comentó en tu discusión",
         "ended": "finalizado",
         "friend_notif": "ha solicitado ser su amigo",
@@ -10058,9 +10153,14 @@ I18n.translations["es_meems"] = {
         "new_homework": "Nueva tarea",
         "new_question": "Nuevo cuestionario",
         "one_usr": "Un usuario",
+        "public_library": "Biblioteca Pública",
         "quest_feedback": "Has recibido retroalimentación en el Cuestionario",
         "quest_response": "ha respondido el cuestionario",
         "response_homework": "ha respondido la tarea",
+        "share_course_form": "ha compartido un formulario en el curso",
+        "share_public_form": "ha compartido un formulario público",
+        "shared_file_in": "ha compartido un archivo en",
+        "shared_file_in_the": "ha compartido un archivo en la",
         "text15": "El Centro Emprendedor",
         "text16": "ha sido",
         "text17": "Han calificado tu participacion en la Discusión",
@@ -10536,11 +10636,31 @@ I18n.translations["es_meems"] = {
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
+      "deliveries_table_period": {
+        "avg": "Calificación promedio en Tareas",
+        "hmwrk": "Tareas",
+        "hmwrks": "Tarea",
+        "no_deliver": "No entregada",
+        "no_hmwrks": "Aún no hay Tareas en este periodo.",
+        "no_score": "No calificada",
+        "percent": "Porcentaje: %{number}%",
+        "score": "Calificación"
+      },
       "discussions_table": {
         "avg_score": "Calificación promedio en Discusiones",
         "discuss": "Discusiones",
         "discuss2": "Discusión",
         "no_discuss": "Aún no hay Discusiones evaluables en este Centro Emprendedor.",
+        "no_part": "Sin participación",
+        "no_score": "No calificada",
+        "percent": "Porcentaje: %{number}%",
+        "score": "Calificación"
+      },
+      "discussions_table_period": {
+        "avg_score": "Calificación promedio en Discusiones",
+        "discuss": "Discusiones",
+        "discuss2": "Discusión",
+        "no_discuss": "Aún no hay Discusiones evaluables en este periodo.",
         "no_part": "Sin participación",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
@@ -10556,6 +10676,15 @@ I18n.translations["es_meems"] = {
         "quest": "Cuestionarios",
         "quest2": "Calificación promedio en Cuestionarios",
         "quest3": "Aún no hay Cuestionarios en este Centro Emprendedor.",
+        "score": "Calificación"
+      },
+      "surveys_table_period": {
+        "avg": "Porcentaje: %{number}%",
+        "exam": "Examen",
+        "no_answered": "No resuelto",
+        "quest": "Cuestionarios",
+        "quest2": "Calificación promedio en Cuestionarios",
+        "quest3": "Aún no hay Cuestionarios en este periodo.",
         "score": "Calificación"
       }
     },
@@ -13120,6 +13249,14 @@ I18n.translations["devise"] = {
       "no_modal_found": "El cuestionario que tratas de ver ya no existe, ponte en contacto con el profesor del curso."
     }
   },
+  "network_tags": {
+    "admins_tag": "Administradores",
+    "course_tag": "Cursos",
+    "profesor_tag": "Profesor",
+    "professors_tag": "Profesores",
+    "student_tag": "Estudiante",
+    "students_tag": "Estudiantes"
+  },
   "networks": {
     "alertmethod": {
       "net": "Ir a la red a la que pertenezco",
@@ -13561,6 +13698,7 @@ I18n.translations["devise"] = {
         "course_calif": "Se ha calificado el curso",
         "course_expired": "ha llegado a su fecha final. Por favor desactívalo.",
         "coursework": "del curso",
+        "denounce_publication": "ha denunciado una publicación",
         "discuss_comment": "comentó en tu Discusión",
         "ended": "finalizado",
         "friend_notif": "ha solicitado ser su amigo",
@@ -13576,9 +13714,14 @@ I18n.translations["devise"] = {
         "new_homework": "Nueva Tarea",
         "new_question": "Nuevo Cuestionario",
         "one_usr": "Un usuario",
+        "public_library": "Biblioteca Pública",
         "quest_feedback": "Has recibido retroalimentación en el Cuestionario",
         "quest_response": "ha respondido el Cuestionario",
         "response_homework": "ha respondido la tarea",
+        "share_course_form": "ha compartido un formulario en el curso",
+        "share_public_form": "ha compartido un formulario público",
+        "shared_file_in": "ha compartido un archivo en",
+        "shared_file_in_the": "ha compartido un archivo en la",
         "text15": "El curso",
         "text16": "ha sido",
         "text17": "Han calificado tu participacion en la Discusión",
@@ -14054,11 +14197,31 @@ I18n.translations["devise"] = {
         "percent": "Porcentaje: %{number}%",
         "score": "Calificación"
       },
+      "deliveries_table_period": {
+        "avg": "Calificación promedio en Tareas",
+        "hmwrk": "Tareas",
+        "hmwrks": "Tarea",
+        "no_deliver": "No entregada",
+        "no_hmwrks": "Aún no hay Tareas en este periodo.",
+        "no_score": "No calificada",
+        "percent": "Porcentaje: %{number}%",
+        "score": "Calificación"
+      },
       "discussions_table": {
         "avg_score": "Calificación promedio en Discusiones",
         "discuss": "Discusiones",
         "discuss2": "Discusión",
         "no_discuss": "Aún no hay Discusiones evaluables en este curso.",
+        "no_part": "Sin participación",
+        "no_score": "No calificada",
+        "percent": "Porcentaje: %{number}%",
+        "score": "Calificación"
+      },
+      "discussions_table_period": {
+        "avg_score": "Calificación promedio en Discusiones",
+        "discuss": "Discusiones",
+        "discuss2": "Discusión",
+        "no_discuss": "Aún no hay Discusiones evaluables en este periodo.",
         "no_part": "Sin participación",
         "no_score": "No calificada",
         "percent": "Porcentaje: %{number}%",
@@ -14074,6 +14237,15 @@ I18n.translations["devise"] = {
         "quest": "Cuestionarios",
         "quest2": "Calificación promedio en Cuestionarios",
         "quest3": "Aún no hay Cuestionarios en este Curso.",
+        "score": "Calificación"
+      },
+      "surveys_table_period": {
+        "avg": "Porcentaje: %{number}%",
+        "exam": "Examen",
+        "no_answered": "No resuelto",
+        "quest": "Cuestionarios",
+        "quest2": "Calificación promedio en Cuestionarios",
+        "quest3": "Aún no hay Cuestionarios en este periodo.",
         "score": "Calificación"
       }
     },

@@ -18,3 +18,10 @@ en:
   attributes:
     email: "Email"
     confirmation_token: "Confirmation email"
+  network_tags:
+    course_tag: 'Courses'
+    profesor_tag: 'Teacher'
+    professors_tag: 'Teachers'
+    student_tag: 'Student'
+    students_tag: 'Students'
+    admins_tag: 'Admins'

@@ -35,7 +35,7 @@ background-white
 
 					<div class="form-group">
 		        <div class="form-group-label">
-              <%= f.label :title, t('.name') + "#{current_network.course_tag}: " %>
+              <%= f.label :title, t('.name') %>
               <label></label>
 		        </div>
 		        <div class="form-group-main">
@@ -83,7 +83,7 @@ background-white
 		          </div>
 		        </div>
 		      </div>
-				
+
 				</div>
 
         <% if current_network.evaluable? %>
@@ -91,7 +91,7 @@ background-white
   					<h3><%=t('.hmwrks')%></h3>
   					<p><%=t('.clone_hmwrks')%></p>
   					<br>
-  					
+
   					<% unless @course.deliveries.empty? %>
   						<% @course.deliveries.each_with_index do |delivery, index|%>
   							<% delivery_id = delivery.id.to_s %>
@@ -156,7 +156,7 @@ background-white
 							<h4>Este curso no tiene discusiones para clonar.</h4>
 						</div>
 					<% end %>
-					
+
 				</div>
 
 				<% if current_network.evaluable? %>
@@ -164,7 +164,7 @@ background-white
   					<h3>Cuestionarios</h3>
   					<p>Selecciona los cuestionarios que quieres clonar para el nuevo curso.</p>
   					<br>
-  					
+
   					<% unless @course.surveys.empty? %>
   						<% @course.surveys.each_with_index do |survey, index| %>
   							<% survey_id =  survey.id.to_s%>
@@ -218,7 +218,7 @@ background-white
 					<h3>Libreria</h3>
 					<p>Selecciona los archivos de la libreria que quieres clonar para el nuevo curso.</p>
 					<br>
-					
+
 					<% unless @course.course_files.empty? %>
 						<% @course.course_files.each do  |course_file|%>
 							<div class="single-form">
@@ -235,7 +235,7 @@ background-white
 					<% end %>
 
 				</div>
-					
+
 				<div class="fr clone-course-form-nav">
 					<ul class="list-buttons right">
 		        <li>

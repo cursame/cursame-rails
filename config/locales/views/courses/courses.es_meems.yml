@@ -146,9 +146,11 @@ es_meems:
       percent_obtain1: "% Obtenido"
       hmwrk: Tarea
     form:
-      name: Nombre del
+      find_teachers_for_admin: 'Busca Líderes Multiplicadores para administrar el Centro de Emprendedores'
+      add_teachers_into_course: 'Agrega Líderes Multiplicadores al Centro de Emprendedores'
+      name: 'Nombre del Centro de Emprendedores'
       example: "Ejemplo: Matemáticas I"
-      descrip: Descripción del
+      descrip: 'Descripción del Centro de Emprendedores'
       descrip2: Descripción
       privacy: Privacidad
       public: Público
@@ -159,7 +161,7 @@ es_meems:
       first_name: Escribe un nombre o apellido.
       add_students: Inscribe Emprendedores a tu Centro Emprendedor.
       find_students: Busca Emprendedores para unirlos automáticamente al Centro Emprendedor.
-      create: Crear
+      create: 'Crear Centro de Emprendedores'
       save: Guardar cambios
       delete: Eliminar Centro Emprendedor.
       confirm: ¿Estás seguro de eliminar este Centro Emprendedor?
@@ -208,7 +210,7 @@ es_meems:
       clone: Clonar Centro Emprendedor
       data_course: Datos del Centro Emprendedor
       info_new_course: Edita la información para el nuevo Centro Emprendedor.
-      name: Nombre del
+      name: 'Nombre del Centro Emprendedor'
       example: "Ejemplo: Matemáticas I"
       descrip: Descripción
       dates: Fechas

@@ -7,7 +7,7 @@
 
     .form-group
       .form-group-label
-        = f.label :title, t('.name') + "#{current_network.course_tag.downcase}"
+        = f.label :title, t('.name')
         %label
       .form-group-main
         .form-unit
@@ -15,7 +15,7 @@
 
     .form-group
       .form-group-label
-        = f.label :silabus, t('.descrip') + "#{current_network.course_tag.downcase}"
+        = f.label :silabus, t('.descrip')
       .form-group-main
         .form-unit
           = f.text_area :silabus, rows: 4, placeholder: t('.descrip2'), required: "required", autocomplete: "off"
@@ -60,8 +60,8 @@
                           = check_box_tag("teachers["+teacher.id.to_s+"]", value = member.nil? ? "0" : member.accepted ? "1" : "0", checked = member.nil? ? false : member.accepted)
                 - if @course.new_record? || @course.teachers.blank?
                   .inner-no-content
-                    %h5 Agrega #{ current_network.professors_tag } al #{ current_network.course_tag }.
-                    %p Busca #{ current_network.professors_tag } para administrar el #{ current_network.course_tag }.
+                    %h5= t('.add_teachers_into_course')
+                    %p= t('.find_teachers_for_admin')
     .form-group
       .form-group-label
         = f.label 'students-search', t('.students') + ":", for: 'students-search-input'
@@ -91,7 +91,7 @@
   .footer
     .fl
       %span.btn.btn-primary.input-btn.activable
-        = f.submit "#{ @course.new_record? ? "#{t('.create')} #{current_network.course_tag.downcase}" : "#{t('.save')}" }", class: "activable"
+        = f.submit "#{ @course.new_record? ? "#{t('.create')}" : "#{t('.save')}" }", class: "activable"
     .fr
       - unless @course.new_record?
         = link_to t('.delete'), @course, confirm: t('.confirm'), method: :delete, style: 'line-height: 32px;'

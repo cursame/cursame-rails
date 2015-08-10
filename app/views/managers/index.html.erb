@@ -35,9 +35,9 @@
           Morris.Donut({
             element: 'profiles_graph',
             data: [
-              {label: "<%= current_network.students_tag %>", value:<%= @counter_students %> },
-              {label: "<%= current_network.professors_tag %>", value:<%= @counter_teachers %>},
-              {label: "<%= current_network.admin_tag %>", value:<%= @counter_admins %> }
+              {label: I18n.t("network_tags.students_tag", {locale: "<%= I18n.locale %>"}), value:<%= @counter_students %> },
+              {label: I18n.t("network_tags.professors_tag", {locale: "<%= I18n.locale %>"}), value:<%= @counter_teachers %>},
+              {label: I18n.t("network_tags.admins_tag", {locale: "<%= I18n.locale %>"}), value:<%= @counter_admins %> }
                 <% if current_network.subdomain == "meems" %>
                 , { label: "Operador", value: <%= @counter_operators %> },
                 { label: "Enlace Educativo", value: <%= @counter_mentors_link %>}

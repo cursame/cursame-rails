@@ -218,3 +218,10 @@ es:
     bios: Biografía
     personal_url: Dirección de usuario personalizada
     confirmation_token: "El correo electrónico de confirmación"
+  network_tags:
+    course_tag: 'Cursos'
+    profesor_tag: 'Profesor'
+    professors_tag: 'Profesores'
+    student_tag: 'Estudiante'
+    students_tag: 'Estudiantes'
+    admins_tag: 'Administradores'
