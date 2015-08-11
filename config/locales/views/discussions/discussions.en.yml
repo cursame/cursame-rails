@@ -5,7 +5,7 @@ en:
         view_discuss: See Discussion
         edit_discuss: Edit Discussion
       discussion_modal:
-        init_discuss: You have began a discussion
+        init_discuss: You have started a discussion
         in_course: in the course
         criterium: Evaluation criterion
         grade: Grade
