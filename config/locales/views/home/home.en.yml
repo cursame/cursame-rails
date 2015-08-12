@@ -238,4 +238,6 @@ en:
       load_more_notifications: 'display more notifications'
     edit_comment: 'Comment edited.'
     new_comment: 'comment created'
-
+    chat:
+      friends: 'Friends'
+      courses: 'Courses'

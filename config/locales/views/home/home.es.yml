@@ -81,7 +81,7 @@ es:
       comment: Comentar
     chat:
       friends: Amigos
-      cursos: Cursos
+      courses: Cursos
       online_usr: Usuario conectado
       offline_usr: Usuario desconectado
       no_friends: No tienes amigos.
@@ -356,5 +356,3 @@ es:
       load_more_notifications: 'Ver más notificaciones'
     edit_comment: 'Comentario editado correctamente.'
     new_comment: 'Se ha creado un comentario'
-
-
