@@ -16,13 +16,13 @@ es_meems:
       dir: Dirección
       text1: Recuerda no colocar espacios ni símbolos como
       text2: ya que no se aceptará tu URL
-      pwd: Nueva contraseña
-      confirm: Confirmar nueva contraseña
+      new_pwd: Nueva contraseña
+      confirm_new_pwd: Confirmar nueva contraseña
       down: ¿Quieres darte de baja?
       cancel: Cancelar mi cuenta
-      confirm: ¿Estás seguro de que quieres darte de baja de Cúrsame?
+      confirm_delete: ¿Estás seguro de que quieres darte de baja de Cúrsame?
       cancel2: Cancelar
-      pwd: Escribe tu contraseña para guardar
+      current_pwd: Escribe tu contraseña para guardar
       update: Actualizar perfil
     new:
       text1: Lo sentimos pero la red a la que estás intentado ingresar no permite el registro público. Pregunta a un encargado de tu escuela, él sabrá ayudarte.
