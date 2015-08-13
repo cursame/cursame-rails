@@ -24,7 +24,7 @@ background-white
     <div class="cols-12">
       <div class="col col-12">
         <div class="col-inner">
-        
+
           <%= devise_error_messages! %>
 
           <div class="form-group">
@@ -102,7 +102,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :password, t('.pwd') + ':' %>
+              <%= f.label :password, t('.new_pwd') + ':' %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -113,7 +113,7 @@ background-white
 
           <div class="form-group">
             <div class="form-group-label">
-              <%= f.label :password_confirmation, t('.confirm') + ':' %>
+              <%= f.label :password_confirmation, t('.confirm_new_pwd') + ':' %>
             </div>
             <div class="form-group-main">
               <div class="form-unit">
@@ -127,11 +127,11 @@ background-white
             </div>
             <div class="form-group-main">
               <div class="form-unit">
-                <p><%=t('.down')%> <%= link_to t('.cancel'), destroy_user_with_parts_path(current_user.id), confirm: t('.confirm') %>.</p> 
+                <p><%=t('.down')%> <%= link_to t('.cancel'), destroy_user_with_parts_path(current_user.id), confirm: t('.confirm_delete') %>.</p>
               </div>
             </div>
           </div>
-        </div>      
+        </div>
       </div>
     </div>
   </div>
@@ -150,7 +150,7 @@ background-white
           <div class="fr">
             <ul class="list-buttons right">
               <li>
-                <%= f.password_field :current_password, placeholder: t('.pwd'), required: "required", minlength: 6 %>
+                <%= f.password_field :current_password, placeholder: t('.current_pwd'), required: "required", minlength: 6 %>
               </li>
               <li>
                 <span class="btn btn-primary input-btn">
@@ -173,7 +173,7 @@ background-white
           var width = $('.'+id).width();
           var height = $('.'+id).height();
 
-          
+
       reader.onload = function (e) {
         $('.'+id)
         .attr('src', e.target.result)
@@ -202,7 +202,7 @@ background-white
         "user[password_confirmation]": {
           equalTo: "#user_password"
         }
-      } 
+      }
     });
 
   });

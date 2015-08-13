@@ -16,14 +16,13 @@ en:
       dir: Address
       text1: Remember not to use symbols such as
       text2: these will not be accepted in your url
-      pwd: New Password
-      confirm: Confirm new password
+      new_pwd: New Password
+      confirm_new_pwd: Confirm new password
       down: Do you want to unsubscribe?
-
       cancel: Cancel your account
-      confirm: Do you want to unsubscribe Cœrsame?
+      confirm_delete: Do you want to unsubscribe Cúrsame?
       cancel2: Cancel
-      pwd: Type your password
+      current_pwd: Type your password
       update: Update profile
     new:
       text1: "We are sorry, the network you are trying does not allow public register. Ask the person in charge at your school to help you."
