@@ -90,6 +90,8 @@ GEM
     charlock_holmes (0.7.3)
     code_analyzer (0.4.5)
       sexp_processor
+    codeclimate-test-reporter (0.4.7)
+      simplecov (>= 0.7.1, < 1.0.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -112,6 +114,7 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dropbox-api (0.4.2)
       hashie
       multi_json
@@ -409,6 +412,11 @@ GEM
       faraday (>= 0.9.0.rc5)
       jwt (>= 0.1.5)
       multi_json (>= 1.0.0)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -459,6 +467,7 @@ DEPENDENCIES
   bourbon (~> 3.2.3)
   carrierwave
   charlock_holmes
+  codeclimate-test-reporter
   coffee-script
   daemons
   database_cleaner
@@ -517,4 +526,4 @@ DEPENDENCIES
   will_paginate (= 3.0.3)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
