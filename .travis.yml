@@ -13,3 +13,6 @@ script:
 before_install:
   - sudo apt-get update && sudo apt-get install libicu-dev
   - cp config/database.travis.yml config/database.yml
+addons:
+  code_climate:
+    repo_token: 4ca8c03b6990b507953a2b33a48b7a56b23ee7a3cadd3b29e90c664619f7a615
