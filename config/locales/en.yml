@@ -25,3 +25,6 @@ en:
     student_tag: 'Student'
     students_tag: 'Students'
     admins_tag: 'Admins'
+  errors:
+    messages:
+      access_denied: "Access denied"
