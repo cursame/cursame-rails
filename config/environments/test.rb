@@ -46,4 +46,5 @@ Cursame30Lb::Application.configure do
 
   config.action_mailer.delivery_method = :ses
 
+  config.i18n.enforce_available_locales = false
 end
