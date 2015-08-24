@@ -51,6 +51,7 @@ gem 'ruby_parser'
 gem 'rails_config'
 gem 'multi_logger'
 gem 'mail_view', '~> 2.0.4'
+gem 'cancan'
 
 group :assets do
   gem 'sass', '3.2.13'
@@ -79,4 +80,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'faker'
 end

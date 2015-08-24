@@ -6,6 +6,8 @@ sudo: true
 env:
   - DB=postgresql
 bundler_args: --without development
+services:
+  - redis-server
 script:
   - export RAILS_ENV=test
   - bundle exec rake db:create db:migrate

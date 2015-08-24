@@ -225,3 +225,6 @@ es:
     student_tag: 'Estudiante'
     students_tag: 'Estudiantes'
     admins_tag: 'Administradores'
+  errors:
+    messages:
+      access_denied: "Acceso denegado"

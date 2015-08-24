@@ -121,6 +121,10 @@ Cursame30Lb::Application.routes.draw do
     resources :roles
   end
 
+  namespace :superadmin_panel do
+    get '/networks', to: "networks#index"
+  end
+
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
   get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive

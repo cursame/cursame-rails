@@ -228,3 +228,6 @@ es_meems:
     student_tag: 'Emprendedor'
     students_tag: 'Emprendedores'
     admins_tag: 'Administradores'
+  errors:
+    messages:
+      access_denied: "Acceso denegado"

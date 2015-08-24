@@ -1,0 +1,29 @@
+.managers-header
+  = render partial: 'shared/flash', locals: { full: true }
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .managers-brand
+            = link_to superadmin_panel_networks_path do
+              = icon 'cursame-logo-white'
+          .manager-label
+            %span= t('.admin')
+          .manager-header-actions
+            %ul
+              %li
+                %a{:href => "http://myaccount.zendesk.com/account/dropboxes/2830039812", :onclick => "script: Zenbox.show(); return false;"}
+                  = t('.help')
+              %li
+                .dropdown-wrap
+                  .dropdown-pull
+                    = icon('settings')
+                  .dropdown-v.right{:style => "right: 13px;"}
+                    %i.tip
+                    %ul
+                      %li
+                        = link_to t('.exit'), show_user_path(current_user.personal_url)
+                      %li
+                        = link_to t('.edit'), edit_user_registration_path
+                      %li
+                        = link_to t('.log_out'), sign_out_path, method: :delete
