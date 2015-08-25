@@ -1,3 +1,5 @@
+require 'capybara/rspec'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     # It makes the `description` and `failure_message` of custom matchers
