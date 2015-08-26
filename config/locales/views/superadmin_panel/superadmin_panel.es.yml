@@ -1,0 +1,20 @@
+es:
+  superadmin_panel:
+    shared:
+      sidebar:
+        networks: Redes
+        users: Usuarios
+    users:
+      index:
+        users: Usuarios
+        name: Nombre
+        email: Email
+        enroll: Fecha de registro
+        type: Tipo
+        actions: Acciones
+        student: Estudiante
+        mentor_link: Enlace Educativo
+        operator: Operador
+        admin: Administrador
+        superadmin: Superadministrador
+        teacher: Maestro

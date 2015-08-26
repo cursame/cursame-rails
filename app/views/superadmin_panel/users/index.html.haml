@@ -1,0 +1,33 @@
+.cols-12
+  .col.col-12.omega.alpha
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.users')
+        .actions
+      %table.data-table
+        %thead
+          %tr
+            %th= t('.name')
+            %th= t('.email')
+            %th= t('.enroll')
+            %th= t('.type')
+            %th= t('.actions')
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = avatar('user', '30', "no", user.id, "avatar avatar-30", "no", "no")
+                = link_to user.name, root_path
+              %td= user.email
+              %td= user.created_at
+              %td= t(".#{user.permissionings.first.role.title}")
+              %td
+                .dropdown-wrap.actions
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+      .digg_pagination.paginator
+        = will_paginate @users
