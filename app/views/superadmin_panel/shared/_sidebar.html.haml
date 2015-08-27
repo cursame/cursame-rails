@@ -1,0 +1,7 @@
+.managers-sidebar
+  .shade
+  %ul.managers-nav
+    %li.networks
+      = link_to t('.networks'), superadmin_panel_networks_path, class: active_class(['index'], 'superadmin_panel/networks')
+    %li.users
+      = link_to t('.users'), superadmin_panel_users_path, class: active_class(['index'], 'superadmin_panel/users')

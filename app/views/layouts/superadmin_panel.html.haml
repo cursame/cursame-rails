@@ -1,5 +1,5 @@
 !!!
-%html.superadmin
+%html.managers
   %head
     %title Cúrsame
     %meta{:content => "2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM", :name => "google-site-verification"}/
@@ -26,6 +26,8 @@
             = yield
         .col.col-2
           .col-inner
+            = render partial: 'superadmin_panel/shared/sidebar'
+
     :javascript
       $(function() {
       <haml_silent>         if flash[:notice]
