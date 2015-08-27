@@ -3,7 +3,14 @@ en:
     shared:
       sidebar:
         networks: Redes
-        users: Usuarios
+        users: Usuario
+    networks:
+      index:
+        networks: Redes
+        name: Nombre
+        subdomain: Subdominio
+        created_at: Fecha de creación
+        actions: Acciones
     users:
       index:
         users: Users

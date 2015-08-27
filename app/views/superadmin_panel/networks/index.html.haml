@@ -1,1 +1,29 @@
-= current_user.role.title
+.cols-12
+  .col.col-12.omega.alpha
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.networks')
+        .actions
+      %table.data-table
+        %thead
+          %tr
+            %th= t('.name')
+            %th= t('.subdomain')
+            %th= t('.created_at')
+            %th= t('.actions')
+        %tbody
+          - @networks.each do |network|
+            %tr
+              %td= network.name
+              %td= network.subdomain
+              %td= network.created_at
+              %td
+                .dropdown-wrap.actions
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+      .digg_pagination.paginator
+        = will_paginate @networks
