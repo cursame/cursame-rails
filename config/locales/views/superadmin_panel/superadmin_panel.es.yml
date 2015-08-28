@@ -4,6 +4,13 @@ es:
       sidebar:
         networks: Redes
         users: Usuarios
+    networks:
+      index:
+        networks: Redes
+        name: Nombre
+        subdomain: Subdominio
+        created_at: Fecha de creación
+        actions: Acciones
     users:
       index:
         users: Usuarios
