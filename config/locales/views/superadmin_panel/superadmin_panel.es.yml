@@ -25,3 +25,15 @@ es:
         admin: Administrador
         superadmin: Superadministrador
         teacher: Maestro
+        view: Mostrar
+      show:
+        return: Regresar
+        email: Correo
+        type: Rol
+        entity_name: Nombre de la entidad
+        entity_id: Id de la entidad
+        bio: BIOGRAFÍA
+        info: Sin información
+        last: ÚLTIMO INICIO DE SESIÓN
+        deliveries: Tareas entregadas
+        surveys: Examenes resueltos

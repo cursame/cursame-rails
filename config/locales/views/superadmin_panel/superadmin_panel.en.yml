@@ -19,9 +19,15 @@ en:
         enroll: enroll
         type: type
         actions: actions
-        student: Student
-        mentor_link: Mentor link
-        operator: Operator
-        admin: Admin
-        superadmin: Superadmin
-        teacher: Teacher
+        view: View
+      show:
+        return: Return
+        email: Email
+        type: Type
+        entity_name: Entity Name
+        entity_id: Entity Id
+        bio: Bio
+        info: No information
+        last: Last sign in at
+        deliveries: Deliveries
+        surveys: Surveys

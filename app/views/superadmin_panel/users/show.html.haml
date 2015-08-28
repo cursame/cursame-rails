@@ -1,0 +1,57 @@
+.wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12.alpha.omega
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to t('.return').html_safe, superadmin_panel_users_path, class: 'btn btn-secondary'
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1
+              = avatar('user', '30', "no", @user.id, "avatar", "no", "no")
+              = @user.name
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        %span.meta-info= t('.email')
+        %p= @user.email
+        %br/
+        %span.meta-info= t('.type')
+        %p= t("roles.#{@user.permissionings.first.role.title}")
+        %br/
+        - if @user.mentor_link?
+          %span.meta-info= t('.entity_name')
+          %p= @user.permissionings.first.entity_name
+
+          %br/
+          %span.meta-info= t('.entity_id')
+          %p= @user.permissionings.first.entity_id
+
+        %br/
+        %span.meta-info= t('.bio')
+        %p= @user.description? ? @user.description : t('.info')
+
+        %br/
+        %span.meta-info Facebook
+        %p= @user.facebook_link? ? @user.facebook_link : t('.info')
+
+        %br/
+        %span.meta-info Twitter
+        %p= @user.twitter_link? ? @user.twitter_link : t('.info')
+
+        %br/
+        %span.meta-info= t('.last')
+        %p= @user.last_sign_in_at
+
+        %br/
+
+        - if @user.student?
+          %span.meta-info= t('.deliveries')
+          %p= @user.assignments.count
+
+          %br/
+          %span.meta-info= t('.surveys')
+          %p= @user.user_surveys.count

@@ -1,7 +1,13 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
+  roles:
+    student: Student
+    teacher: Teacher
+    operator: Operator
+    mentor_link: Mentor Link
+    admin: Administrator
+    superadmin: Superadmin
   hello: "Hello world"
   easy_to_use: Easy to use
   views:

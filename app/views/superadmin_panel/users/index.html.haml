@@ -21,13 +21,14 @@
                 = link_to user.name, root_path
               %td= user.email
               %td= user.created_at
-              %td= t(".#{user.permissionings.first.role.title}")
+              %td= t("roles.#{user.permissionings.first.role.title}")
               %td
-                .dropdown-wrap.actions
+                .dropdown-wrap.actions{class: "user-id-#{user.id}"}
                   .dropdown-pull.btn.btn-secondary.btn-small
                     = icon 'drop-arrow'
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
+                      %li= link_to t('.view'), superadmin_panel_user_path(user)
       .digg_pagination.paginator
         = will_paginate @users
