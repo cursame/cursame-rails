@@ -4,7 +4,7 @@ I18n.default_locale = :es
 
 LANGUAGES = [
   ['English', 'en'],
-  ["Espa&ntilde;ol".html_safe, 'es']
+  ['Español', 'es']
 ]
 
 I18n.load_path += Dir[Rails.root.join('config', 'locales','**','*.{rb,yml}')]
