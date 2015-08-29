@@ -4,5 +4,6 @@ FactoryGirl.define do
     subdomain 'testing'
     population { Faker::Number.number 3 }
     register_form true
+    welcom_message { Faker::Name.last_name }
   end
 end

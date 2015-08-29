@@ -11,6 +11,17 @@ es:
         subdomain: Subdominio
         created_at: Fecha de creación
         actions: Acciones
+        view: Mostrar
+      show:
+        return: Regresar
+        name: Nombre
+        subdomain: Subdominio
+        created_at: Fecha de creación
+        population: Población maxima
+        public_register: ¿Es publica?
+        welcome_message: Mensaje de bienvenida
+        "true": Si
+        "false": "No"
     users:
       index:
         users: Usuarios
