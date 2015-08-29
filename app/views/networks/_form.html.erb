@@ -127,6 +127,19 @@
     </div>
   </div>
 
+  <% if current_network.subdomain != "meems" %>
+  <div class="form-group label-on-top l-label">
+    <div class="form-group-label">
+      <%= f.label :select_locale, t('.change_locale') %>
+    </div>
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= f.select :language, options_for_select(LANGUAGES, @network.language) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
 <h2>Bit</h2>
 
   <%= f.fields_for :bit_setting do |setting| %>
