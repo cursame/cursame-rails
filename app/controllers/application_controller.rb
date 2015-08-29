@@ -634,7 +634,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   protected
 
   def set_i18n_locale_from_params
@@ -643,16 +642,7 @@ class ApplicationController < ActionController::Base
     when "meems"
       meems_locale
     else
-      params_locale if params[:locale]
-    end
-  end
-
-  def params_locale
-    if I18n.available_locales.include?(params[:locale].to_sym) && params[:locale] != 'es_meems'
-      I18n.locale = params[:locale]
-    else
-      flash.now[:notice] = "#{params[:locale]} traducción no disponible"
-      logger.error flash.now[:notice]
+      I18n.locale = current_network.language.to_sym
     end
   end
 
