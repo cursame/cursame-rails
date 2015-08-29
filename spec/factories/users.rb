@@ -10,6 +10,9 @@ FactoryGirl.define do
     subdomain 'testing'
     personal_url { Faker::Lorem.characters(30) }
     confirmed_at { Time.now }
+    facebook_link { Faker::Name.first_name }
+    twitter_link { Faker::Name.last_name }
+    description { Faker::Company.name }
 
     transient do
       role "student"
@@ -25,8 +28,8 @@ FactoryGirl.define do
       end
 
       role = Role.find_by_title(attributtes.role)
-      create :permissioning, role: role, network: network, user: user,
-             entity_id: entity_id, entity_name: entity_name
+      user.permissionings << create(:permissioning, role: role, network: network, user: user,
+                                    entity_id: entity_id, entity_name: entity_name)
     end
   end
 end

@@ -1,4 +1,11 @@
 es:
+  roles:
+    student: Estudiante
+    teacher: Maestro
+    operator: Operador
+    mentor_link: Enlace Educativo
+    admin: Administrador
+    superadmin: Superadmin
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"
