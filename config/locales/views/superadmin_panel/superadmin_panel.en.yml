@@ -2,15 +2,26 @@ en:
   superadmin_panel:
     shared:
       sidebar:
-        networks: Redes
-        users: Usuario
+        networks: Networks
+        users: Users
     networks:
       index:
-        networks: Redes
-        name: Nombre
-        subdomain: Subdominio
-        created_at: Fecha de creación
-        actions: Acciones
+        networks: Networks
+        name: Name
+        subdomain: Subdommain
+        created_at: Created at
+        actions: Actions
+        view: View
+      show:
+        return: Return
+        name: Name
+        subdomain: Subdomain
+        created_at: Created at
+        population: Population
+        public_register: Public Register
+        welcome_message: Welcome message
+        "true": "Yes"
+        "false": "No"
     users:
       index:
         users: Users

@@ -19,11 +19,12 @@
               %td= network.subdomain
               %td= network.created_at
               %td
-                .dropdown-wrap.actions
+                .dropdown-wrap.actions{class: "networks-id-#{network.id}"}
                   .dropdown-pull.btn.btn-secondary.btn-small
                     = icon 'drop-arrow'
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
+                      %li= link_to t('.view'), superadmin_panel_network_path(network)
       .digg_pagination.paginator
         = will_paginate @networks

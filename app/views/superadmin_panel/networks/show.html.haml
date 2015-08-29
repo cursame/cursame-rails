@@ -1,0 +1,39 @@
+.wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12.alpha.omega
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to t('.return').html_safe, superadmin_panel_networks_path, class: 'btn btn-secondary'
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1
+              = @network.name
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        %span.meta-info= t('.name')
+        %p= @network.name
+        %br/
+
+        %span.meta-info= t('.subdomain')
+        %p= @network.subdomain
+        %br/
+
+        %span.meta-info= t('.create_at')
+        %p= @network.created_at
+
+        %br/
+        %span.meta-info= t('.population')
+        %p= @network.population
+
+        %br/
+        %span.meta-info= t('.public_register')
+        %p= @network.public_register? ? t(".true") : t(".false")
+
+        %br/
+        %span.meta-info= t('.welcome_message')
+        %p= @network.welcom_message

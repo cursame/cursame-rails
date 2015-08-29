@@ -122,10 +122,10 @@ Cursame30Lb::Application.routes.draw do
   end
 
   namespace :superadmin_panel do
-    get '/networks', to: "networks#index"
-    get '/networks/:id', to: "networks#show", as: "network"
-    get '/users', to: "users#index"
-    get '/users/:id', to: "users#show", as: "user"
+    get '/networks', to: 'networks#index'
+    get '/networks/:id', to: 'networks#show', as: 'network'
+    get '/users', to: 'users#index'
+    get '/users/:id', to: 'users#show', as: 'user'
   end
 
   #Calificar Actividades
