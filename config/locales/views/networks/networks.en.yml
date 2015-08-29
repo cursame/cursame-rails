@@ -15,6 +15,7 @@ en:
       authorization_keyword: "Authorization Keyword"
       api_key: "API Key:"
       example: "Example: "
+      change_locale: 'Select language:'
     network_mask:
       enroll: Register user
     alertmethod:
