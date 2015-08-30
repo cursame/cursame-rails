@@ -5,6 +5,7 @@
         .title
           %h1= t('.networks')
         .actions
+          = link_to t('.create'), new_superadmin_panel_network_path, class: 'btn btn-complementary'
       %table.data-table
         %thead
           %tr
@@ -26,5 +27,6 @@
                     %i.tip
                     %ul
                       %li= link_to t('.view'), superadmin_panel_network_path(network)
+                      %li= link_to t('.edit'), edit_superadmin_panel_network_path(network)
       .digg_pagination.paginator
         = will_paginate @networks
