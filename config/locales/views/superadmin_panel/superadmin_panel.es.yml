@@ -41,6 +41,18 @@ es:
       edit:
         edit: Editar red
     users:
+      shared:
+        form:
+          email: Correo electrónico
+          first_name: Nombre
+          last_name: Apellidos
+          password: Contraseña
+          network_subdomain: Subdominio de la red
+          entity_name: Nombre de la entidad
+          entity_id: Id de la entidad
+          create: Crear usuario
+          save: Actualizar usuario
+          type: Rol
       index:
         users: Usuarios
         name: Nombre
@@ -48,13 +60,9 @@ es:
         enroll: Fecha de registro
         type: Tipo
         actions: Acciones
-        student: Estudiante
-        mentor_link: Enlace Educativo
-        operator: Operador
-        admin: Administrador
-        superadmin: Superadministrador
-        teacher: Maestro
         view: Mostrar
+        create: Nuevo usuario
+        edit: Editar
       show:
         return: Regresar
         email: Correo
@@ -66,3 +74,8 @@ es:
         last: ÚLTIMO INICIO DE SESIÓN
         deliveries: Tareas entregadas
         surveys: Examenes resueltos
+        subdomain: Subdominio
+      new:
+        create: Nuevo usuario
+      edit:
+        edit: Editar usuario
