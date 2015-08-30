@@ -1,0 +1,11 @@
+.wrapper
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1= t('.create')
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        = render partial: 'superadmin_panel/networks/shared/form', locals: { network: @network }

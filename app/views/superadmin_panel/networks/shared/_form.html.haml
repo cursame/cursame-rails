@@ -1,0 +1,39 @@
+= form_for [:superadmin_panel, network], html: { class: 'form-validate-js' } do |f|
+
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :name, t('.name') + ':'
+    .form-group-main
+      .form-unit
+        = f.text_field :name, placeholder: t('.name'), required: "required", autocomplete: "off", id: 'network_name'
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :subdomain, t('.subdomain') + ':'
+    .form-group-main
+      .form-unit
+        = f.text_field :subdomain, placeholder: t('.subdomain'), required: "required", autocomplete: "off", id: 'network_subdomain'
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :population, t('.population') + ':'
+    .form-group-main
+      .form-unit
+        = f.number_field :population, placeholder: t('.population'), required: "required", autocomplete: "off", id: 'network_population'
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :public_register, t('.public_register') + ':'
+    .form-group-main
+      .form-unit
+        = f.select :public_register, options_for_select([[t('.true'),'true'], [t('.false'), 'false']], network.public_register), required: "required", id: 'network_public_register'
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :welcom_message, t('.welcom_message') + ':'
+    .form-group-main
+      .form-unit
+        = f.text_field :welcom_message, placeholder: t('.welcom_message'), autocomplete: "off", id: 'network_welcom_message'
+  %br/
+  %br/
+  %ul.list-buttons.left
+    %li= link_to t('.cancel'), :back, class: 'btn btn-medium btn-secondary'
+    %li
+      %span.btn.btn-primary.input-btn.btn-medium.activable
+        = f.submit network.new_record? ? t('.create') : t('.save'), id: 'action-button'
