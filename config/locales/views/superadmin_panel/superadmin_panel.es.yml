@@ -5,6 +5,18 @@ es:
         networks: Redes
         users: Usuarios
     networks:
+      shared:
+        form:
+          name: Nombre
+          subdomain: Subdominio
+          population: Poblacion máxima
+          public_register: ¿Es pública?
+          welcom_message: Mensaje de bienvenida
+          cancel: Cancelar
+          create: Guardar red
+          save: Actualizar red
+          "true": Sí
+          "false": "No"
       index:
         networks: Redes
         name: Nombre
@@ -12,6 +24,8 @@ es:
         created_at: Fecha de creación
         actions: Acciones
         view: Mostrar
+        create: Crear red
+        edit: Editar
       show:
         return: Regresar
         name: Nombre
@@ -22,6 +36,10 @@ es:
         welcome_message: Mensaje de bienvenida
         "true": Si
         "false": "No"
+      new:
+        create: Nueva red
+      edit:
+        edit: Editar red
     users:
       index:
         users: Usuarios
