@@ -64,8 +64,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
-  gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -79,9 +80,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'codeclimate-test-reporter', require: nil
-  gem 'faker'
   gem 'capybara'
 end
