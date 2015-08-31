@@ -2,9 +2,6 @@
 
 Cursame30Lb::Application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
   if Rails.env.development?
     mount MailPreview => 'mail_view'
   end
@@ -292,7 +289,6 @@ Cursame30Lb::Application.routes.draw do
 
   #manejo de users
   devise_for :users, :controllers => { :registrations => "registrations", :sessions => "usessions", :omniauth_callbacks => "omniauth_callbacks" }
-  ActiveAdmin.routes(self)
 
   as :user do
     match 'users/sign_out', :to => 'usessions#destroy', :as => :sign_out
