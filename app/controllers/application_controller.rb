@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   #protect_from_forgery
   #skip_before_filter  :verify_authenticity_token
-  before_filter :set_i18n_locale_from_params
+  before_filter :set_i18n_locale
   before_filter :authenticate_user!#, :unless => :awaiting_confirmation
   helper_method :current_network
   helper_method :network_member
@@ -636,7 +636,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_i18n_locale_from_params
+  def set_i18n_locale
     return if current_network.nil?
     case current_network.subdomain
     when "meems"
