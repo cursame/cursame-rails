@@ -5,6 +5,18 @@ en:
         networks: Networks
         users: Users
     networks:
+      shared:
+        form:
+          name: Name
+          subdomain: Subdomain
+          population: Population
+          public_register: Is public?
+          welcom_message: Welcome message
+          cancel: Cancel
+          create: Create
+          save: Save
+          "true": "Yes"
+          "false": "No"
       index:
         networks: Networks
         name: Name
@@ -12,6 +24,8 @@ en:
         created_at: Created at
         actions: Actions
         view: View
+        create: Create network
+        edit: Edit
       show:
         return: Return
         name: Name
@@ -22,6 +36,10 @@ en:
         welcome_message: Welcome message
         "true": "Yes"
         "false": "No"
+      new:
+        create: Create network
+      edit:
+        edit: Edit network
     users:
       index:
         users: Users
