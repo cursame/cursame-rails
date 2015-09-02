@@ -19,6 +19,9 @@
         %span.meta-info= t('.email')
         %p= @user.email
         %br/
+        %span.meta-info= t('.subdomain')
+        %p= @user.subdomain
+        %br/
         %span.meta-info= t('.type')
         %p= t("roles.#{@user.permissionings.first.role.title}")
         %br/

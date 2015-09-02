@@ -41,6 +41,18 @@ en:
       edit:
         edit: Edit network
     users:
+      shared:
+        form:
+          email: Email
+          first_name: First Name
+          last_name: Last Name
+          password: Password
+          network_subdomain: Subdomain of the network
+          entity_name: Entity Name
+          entity_id: Entity Id
+          create: Create user
+          save: Update user
+          type: Role
       index:
         users: Users
         name: Name
@@ -49,6 +61,8 @@ en:
         type: type
         actions: actions
         view: View
+        create: New user
+        edit: Edit
       show:
         return: Return
         email: Email
@@ -60,3 +74,8 @@ en:
         last: Last sign in at
         deliveries: Deliveries
         surveys: Surveys
+        subdomain: Subdominio
+      new:
+        create: New user
+      edit:
+        edit: Edit user

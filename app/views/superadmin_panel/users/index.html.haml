@@ -5,6 +5,7 @@
         .title
           %h1= t('.users')
         .actions
+          = link_to t('.create'), new_superadmin_panel_user_path, class: 'btn btn-complementary'
       %table.data-table
         %thead
           %tr
@@ -30,5 +31,6 @@
                     %i.tip
                     %ul
                       %li= link_to t('.view'), superadmin_panel_user_path(user)
+                      %li= link_to t('.edit'), edit_superadmin_panel_user_path(user)
       .digg_pagination.paginator
         = will_paginate @users
