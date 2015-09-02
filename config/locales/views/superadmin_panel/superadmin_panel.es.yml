@@ -26,6 +26,8 @@ es:
         view: Mostrar
         create: Crear red
         edit: Editar
+        destroy: Borrar
+        destroy-confirmation: ¿Estás seguro de borrar esta red?
       show:
         return: Regresar
         name: Nombre
