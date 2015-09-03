@@ -23,6 +23,13 @@ class SuperadminPanel::NetworksController < SuperadminPanel::BaseController
     @network = Network.find_by_id params[:id]
   end
 
+  def destroy
+    network = Network.find_by_id params[:id]
+    network.destroy
+
+    redirect_to superadmin_panel_networks_path
+  end
+
   private
 
   def set_params(id)

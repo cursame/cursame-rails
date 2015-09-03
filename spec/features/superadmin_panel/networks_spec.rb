@@ -16,10 +16,15 @@ RSpec.feature 'Networks Views:' do
   end
 
   scenario "Get #show" do
-    locale_root = 'superadmin_panel.networks'
     find(".networks-id-#{@network_testing.id}").click_on I18n.t("#{locale_root}.index.view")
 
     expect_network_show_texts(@network_testing)
+  end
+
+  scenario "Delete #index" do
+    find(".networks-id-#{@network.id}").click_on I18n.t("#{locale_root}.index.destroy")
+
+    expect(page).to have_css("table.data-table tr", count: 2)
   end
 
   scenario "post #create" do
@@ -33,7 +38,6 @@ RSpec.feature 'Networks Views:' do
   end
 
   scenario "put #update" do
-    locale_root = 'superadmin_panel.networks'
     find(".networks-id-#{@network.id}").click_on I18n.t("#{locale_root}.index.edit")
 
     network = FactoryGirl.build(:network, subdomain: Faker::Internet.domain_word)
@@ -49,7 +53,6 @@ RSpec.feature 'Networks Views:' do
     expect(page).to have_text network.population
     expect(page).to have_text network.welcom_message if network.welcom_message
 
-    locale_root = 'superadmin_panel.networks'
     expect(page).to have_text I18n.t("#{locale_root}.show.#{network.public_register?}")
   end
 
@@ -63,4 +66,7 @@ RSpec.feature 'Networks Views:' do
     select(public_register, from: 'network_public_register')
   end
 
+  def locale_root
+    'superadmin_panel.networks'
+  end
 end

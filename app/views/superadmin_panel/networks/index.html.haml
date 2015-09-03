@@ -28,5 +28,7 @@
                     %ul
                       %li= link_to t('.view'), superadmin_panel_network_path(network)
                       %li= link_to t('.edit'), edit_superadmin_panel_network_path(network)
+                      - if current_network.id != network.id
+                        %li= link_to t('.destroy'), superadmin_panel_network_path(network), method: :delete, confirm: t('.destroy-confirmation')
       .digg_pagination.paginator
         = will_paginate @networks

@@ -26,6 +26,8 @@ en:
         view: View
         create: Create network
         edit: Edit
+        destroy: Delete
+        destroy-confirmation: Are you sure to delete this network?
       show:
         return: Return
         name: Name

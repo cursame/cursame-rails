@@ -121,7 +121,7 @@ Cursame30Lb::Application.routes.draw do
   end
 
   namespace :superadmin_panel do
-    resources :networks, except: :destroy
+    resources :networks
     resources :users, except: :destroy
   end
 
