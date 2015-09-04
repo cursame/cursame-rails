@@ -48,7 +48,7 @@ module Cursame30Lb
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.paths << Rails.root.join("app", "assets", "calendar_js")
-    #config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = false
     # Use to pass any html to a pdf version.
 
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
