@@ -32,5 +32,7 @@
                     %ul
                       %li= link_to t('.view'), superadmin_panel_user_path(user)
                       %li= link_to t('.edit'), edit_superadmin_panel_user_path(user)
+                      - if current_user.id != user.id
+                        %li= link_to t('.destroy'), superadmin_panel_user_path(user), method: :delete, confirm: t('.destroy-confirmation')
       .digg_pagination.paginator
         = will_paginate @users

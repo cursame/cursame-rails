@@ -65,6 +65,8 @@ es:
         view: Mostrar
         create: Nuevo usuario
         edit: Editar
+        destroy: Borrar
+        destroy-confirmation: ¿Estas seguro de borrar este usuario?
       show:
         return: Regresar
         email: Correo
