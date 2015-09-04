@@ -42,3 +42,5 @@ RUN bundle install --without development test
 # deploy app
 COPY . /home/app/cursame
 RUN chown app:app -R /home/app/cursame
+RUN bundle exec rake assets:precompile
+RUN bundle exec rake tmp:cache:clear
