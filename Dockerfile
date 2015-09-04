@@ -12,6 +12,12 @@ CMD ["/sbin/my_init"]
 RUN apt-get update && apt-get install -y \
     libicu-dev
 
+# install imagemagick
+RUN apt-get update && apt-get install -y \
+    imagemagick \
+    libmagick++-dev \
+    libmagic-dev
+
 # start nginx/passenger
 RUN rm -f /etc/service/nginx/down
 
