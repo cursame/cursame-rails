@@ -103,7 +103,7 @@ en:
       past_activity: the past activities section
     course_inactive:
       no_score: You still have no grade.
-      enrollment: "You must subscribe to at least one course to get graded,"
+      enrollment: "You must subscribe to at least one course to get graded."
     inactive:
       no_activity: No past activities.
       no_act: You have not created an activity.
