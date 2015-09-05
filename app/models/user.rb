@@ -53,6 +53,8 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :permissionings
   has_many :usernotificationings, :dependent => :destroy
 
+  has_one :user_language
+
 
   validates_presence_of :domain
   validates_presence_of :first_name
