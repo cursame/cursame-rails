@@ -117,11 +117,11 @@ en:
         view_comments: See previous comments
         like: like
         delete: delete
-        write_comment: Write comment
+        write_comment: Write a comment
         comment: Comentar
       post_comments_list:
         prev_comments: Precious comments
-        write_comment: Write comment
+        write_comment: Write a comment
         non_commentable: You can no longer comment on this publication.
       post_meta_data:
         like: Like
@@ -245,7 +245,7 @@ en:
       view_delivery: See homework
       no_reply: The answers for this homework have not been found
     form_commentable:
-      write_comment: Write comment
+      write_comment: Write a comment
       comment: Comment
       comment_2: Comment
     network_joyride:
@@ -322,7 +322,7 @@ en:
       last_comments: Read previous comments
       like: like
       delte: Delete
-      write_comment: Write comment
+      write_comment: Write a comment
       comment: Comment
       comment1: Comment
     survey_publication_tpl:
