@@ -10,7 +10,7 @@ en:
         more_msg: Upload more messages...
       message_notifications:
         msg: Messages
-        ago: Ago
+        ago: '%{time} Ago'
         all_msg: See all messages
       message_tpl:
         ago: ago

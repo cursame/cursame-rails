@@ -10,7 +10,7 @@ es_meems:
         more_msg: Cargar más mensajes...
       message_notifications:
         msg: Mensajes
-        ago: Hace
+        ago: 'Hace %{time}'
         all_msg: Ver todos los mensajes
       message_tpl:
         ago: hace
