@@ -122,7 +122,7 @@ Cursame30Lb::Application.routes.draw do
 
   namespace :superadmin_panel do
     resources :networks
-    resources :users, except: :destroy
+    resources :users
   end
 
   #Calificar Actividades

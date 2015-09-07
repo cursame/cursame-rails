@@ -65,6 +65,8 @@ en:
         view: View
         create: New user
         edit: Edit
+        destroy: Delete
+        destroy-confirmation: Are you sure you want to delete this user?
       show:
         return: Return
         email: Email

@@ -26,6 +26,13 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
     @user = User.includes(permissionings: [:network, :role]).find_by_id params[:id]
   end
 
+  def destroy
+    user = User.find_by_id params[:id]
+    user.destroy
+
+    redirect_to superadmin_panel_users_path
+  end
+
   private
 
   def set_params(id)

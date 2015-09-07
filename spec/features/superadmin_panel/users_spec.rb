@@ -26,6 +26,13 @@ RSpec.feature 'Users Views:' do
     expect(page).to have_text @mentor_link.permissionings.first.entity_name
   end
 
+  scenario "delete #index" do
+    find(".user-id-#{@user.id}").click_on I18n.t('superadmin_panel.users.index.destroy')
+
+    expect(page).to have_css("table.data-table tr", count: 3)
+  end
+
+
   scenario "post #create" do
     click_on I18n.t('superadmin_panel.users.index.create')
 
