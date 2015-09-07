@@ -52,6 +52,7 @@ gem 'rails_config'
 gem 'multi_logger'
 gem 'mail_view', '~> 2.0.4'
 gem 'cancan'
+gem 'strong_parameters'
 
 group :assets do
   gem 'sass', '3.2.13'
