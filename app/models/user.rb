@@ -55,6 +55,8 @@ class User < ActiveRecord::Base
 
   has_one :user_language
 
+  has_one :language, through: :user_language
+
 
   validates_presence_of :domain
   validates_presence_of :first_name
