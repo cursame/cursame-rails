@@ -2,7 +2,7 @@ en:
   shared:
     chat:
       add_message_form:
-        msg: Type message and press enter.
+        msg: Type a message and press enter.
       chat:
         more_msg: Upload more messages...
         select: Select a friend or course to send a message to.
