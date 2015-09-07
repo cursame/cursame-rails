@@ -23,9 +23,9 @@
               next
               end   %>
           <% channelType = channel.channel_name.split('course_channel_') %>
-		  
+
 		  <% user_channel = if (mesage.user == current_user && not(mesage.channel.nil?) && not(channel.users.index{|x| x.id != current_user.id}.nil?))
-			 channel.users[channel.users.index{|x| x.id != current_user.id}] 
+			 channel.users[channel.users.index{|x| x.id != current_user.id}]
 			 else
 			 mesage.user
 			 end %>
@@ -54,7 +54,7 @@
                     <% end %>
                   </span></h6>
                   <p><%= truncate(sanitize(last_message.mesage), :omission => "...", :length => 80) %></p>
-                  <span class="meta"><%= t('.ago')%><%= time_ago_in_words last_message.created_at %></span>
+                  <span class="meta"><%= t('.ago', time: time_ago_in_words(last_message.created_at)) %></span>
                 </div>
               <% end %>
             </div>
@@ -77,17 +77,17 @@
     $('.toggle_chat_image').toggleClass('toggle_chat_image_active');
     $('#users-and-groups-for-chat').toggleClass('users-and-groups-for-chat-active');
   });
-  
-  
+
+
   $('.collapse_title_courses').click ( function() {
     $('.collapse_courses').toggle();
     //$('.collapse_title_courses').text('Ocultar');
-  });   
+  });
   $(".collapse_title_courses").click(function() {
        var txt = $(".collapse_courses").is(':visible') ? 'Ocultar' : 'Mostrar';
        $(".collapse_title_courses").text(txt);
   });
-  
+
   $('.collapse_title_friends').click ( function() {
     $('.collapse_friends').toggle();
   });

@@ -9,8 +9,8 @@ en:
       load_more_messages:
         more_msg: Upload more messages...
       message_notifications:
-        msg: Menssages
-        ago: Ago
+        msg: Messages
+        ago: '%{time} Ago'
         all_msg: See all messages
       message_tpl:
         ago: ago

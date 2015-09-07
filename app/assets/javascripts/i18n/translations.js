@@ -2847,7 +2847,7 @@ I18n.translations["en"] = {
       "message_notifications": {
         "ago": "Ago",
         "all_msg": "See all messages",
-        "msg": "Menssages"
+        "msg": "Messages"
       },
       "message_tpl": {
         "ago": "ago"
