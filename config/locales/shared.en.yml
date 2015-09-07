@@ -127,7 +127,7 @@ en:
         like: Like
         not_like: Unlike
       post_people_who_liked:
-        ed: A
+        ed: ''
         liked: like this
         person: 'person'
         people: 'people'
