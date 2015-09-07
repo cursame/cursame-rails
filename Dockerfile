@@ -12,6 +12,12 @@ CMD ["/sbin/my_init"]
 RUN apt-get update && apt-get install -y \
     libicu-dev
 
+# install imagemagick
+RUN apt-get update && apt-get install -y \
+    imagemagick \
+    libmagick++-dev \
+    libmagic-dev
+
 # start nginx/passenger
 RUN rm -f /etc/service/nginx/down
 
@@ -36,3 +42,5 @@ RUN bundle install --without development test
 # deploy app
 COPY . /home/app/cursame
 RUN chown app:app -R /home/app/cursame
+RUN bundle exec rake assets:precompile
+RUN bundle exec rake tmp:cache:clear
