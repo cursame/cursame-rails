@@ -1,59 +1,83 @@
 = form_for [:superadmin_panel, user], html: { class: 'form-validate-js' } do |f|
   = f.hidden_field :self_register, value: false
+  = f.hidden_field :accepted_terms, value: true
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :first_name, "#{t('.first_name')} :"
+    .form-group-main
+      .form-unit
+        - first_name_error = user.errors.any? && user.errors.messages[:first_name].any?
+        - if first_name_error
+          = f.label :"first-name-error", user.errors.messages[:first_name].to_sentence.capitalize, class: 'error'
+        = f.text_field :first_name, placeholder: t('.first_name'), required: "required", autocomplete: "off", id: 'user_first_name',
+                       class: "#{first_name_error ? 'error' : ''}"
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :last_name, "#{t('.last_name')} :"
+    .form-group-main
+      .form-unit
+        - last_name_error = user.errors.any? && user.errors.messages[:last_name].any?
+        - if last_name_error
+          = f.label :"last-name-error", user.errors.messages[:last_name].to_sentence.capitalize, class: 'error'
+        = f.text_field :last_name, placeholder: t('.last_name'), required: "required", autocomplete: "off", id: 'user_last_name',
+                       class: "#{last_name_error ? 'error' : ''}"
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :email, t('.email') + ':'
+      = f.label :email, "#{t('.email')} :"
     .form-group-main
       .form-unit
-        = f.text_field :email, placeholder: t('.email'), required: "required", autocomplete: "off", id: 'user_email'
-  .form-group.label-on-top.l-label
-    .form-group-label
-      = f.label :first_name, t('.first_name') + ':'
-    .form-group-main
-      .form-unit
-        = f.text_field :first_name, placeholder: t('.first_name'), required: "required", autocomplete: "off", id: 'user_first_name'
-  .form-group.label-on-top.l-label
-    .form-group-label
-      = f.label :last_name, t('.last_name') + ':'
-    .form-group-main
-      .form-unit
-        = f.text_field :last_name, placeholder: t('.last_name'), required: "required", autocomplete: "off", id: 'user_last_name'
-  .form-group.label-on-top.l-label
-    .form-group-label
-      = f.label :password, t('.password') + ':'
-    .form-group-main
-      .form-unit
-        = f.password_field :password, placeholder: t('.password'), required: "required", autocomplete: "off", id: 'user_password'
+        - email_error = user.errors.any? && user.errors.messages[:email].any?
+        - if email_error
+          = f.label :"email-error", user.errors.messages[:email].to_sentence.capitalize, class: 'error'
+        = f.text_field :email, placeholder: t('.email'), required: "required", autocomplete: "off", id: 'user_email',
+                       class: "#{email_error ? 'error' : ''}"
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = label_tag t('.network_subdomain') + ':'
+      = f.label :password, "#{t('.password')} :"
     .form-group-main
       .form-unit
-        = text_field_tag 'user_network_subdomain', user.subdomain, placeholder: t('.network_subdomain'), required: "required", autocomplete: "off"
+        - password_error = user.errors.any? && user.errors.messages[:password].any?
+        - if password_error
+          = f.label :"password-error", user.errors.messages[:password].to_sentence.capitalize, class: 'error'
+        = f.password_field :password, placeholder: t('.password'), required: "required", autocomplete: "off", id: 'user_password',
+                           class: "#{password_error ? 'error' : ''}"
 
-  .form-group.label-on-top.l-label
-    .form-group-label
-      = f.label :role_id, t('.type') + ':'
-    .form-group-main
-      .form-unit
-        - role = user.permissionings.first.role_id if !user.new_record?
-        = select_tag 'user_role_id', options_for_select(@roles_options, role), required: "required"
-  .form-group.label-on-top.l-label
-    .form-group-label
-      = f.label :entity_name, t('.entity_name') + ':'
-    .form-group-main
-      .form-unit
-        - entity_name = user.permissionings.first.entity_name if !user.new_record? && user.mentor_link?
-        = text_field_tag 'user_entity_name', entity_name, placeholder: t('.entity_name'), autocomplete: "off"
-  .form-group.label-on-top.l-label
-    .form-group-label
-      = f.label :entity_id, t('.entity_id') + ':'
-    .form-group-main
-      .form-unit
-        - entity_id = user.permissionings.first.entity_id if !user.new_record? && user.mentor_link?
-        = text_field_tag  'user_entity_id', entity_id, placeholder: t('.entity_id'), autocomplete: "off"
+  = f.fields_for :permissionings do |permissioning|
+    .form-group.label-on-top.l-label
+      .form-group-label
+        = permissioning.label :network_id, "#{t('.network_subdomain')} :"
+      .form-group-main
+        .form-unit
+          = permissioning.number_field :network_id, placeholder: t('.network_subdomain'), required: "required", autocomplete: "off"
+
+    .form-group.label-on-top.l-label
+      .form-group-label
+        = permissioning.label :role_id, "#{t('.type')} :"
+      .form-group-main
+        .form-unit
+          = permissioning.select :role_id, options_for_select(@roles_options, user.permissionings.first.role_id), required: "required"
+
+    .form-group.label-on-top.l-label
+      .form-group-label
+        = permissioning.label :entity_name, "#{t('.entity_name')} :"
+      .form-group-main
+        .form-unit
+          - entity_name_error = user.permissionings.first.errors.any? && user.permissionings.first.errors.messages[:entity_name].any?
+          - if entity_name_error
+            = f.label :"entity-name-error", user.permissionings.first.errors.messages[:entity_name].to_sentence.capitalize, class: 'error'
+          = permissioning.text_field :entity_name, placeholder: t('.entity_name'), autocomplete: "off"
+
+    .form-group.label-on-top.l-label
+      .form-group-label
+        = permissioning.label :entity_id, "#{t('.entity_id')} :"
+      .form-group-main
+        .form-unit
+          - entity_id_error = user.permissionings.first.errors.any? && user.permissionings.first.errors.messages[:entity_id].any?
+          - if entity_id_error
+            = f.label :"entity-id-error", user.permissionings.first.errors.messages[:entity_id].to_sentence.capitalize, class: 'error'
+          = permissioning.text_field  :entity_id, placeholder: t('.entity_id'), autocomplete: "off"
 
   %br/
   %br/
