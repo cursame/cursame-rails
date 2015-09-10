@@ -19,10 +19,11 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
     @user.subdomain = Network.find_by_id(network_id).subdomain
     @user.personal_url = SecureRandom.uuid
     @user.domain = request.domain
+
+    @user.skip_confirmation!
     if @user.save
       redirect_to superadmin_panel_user_path(@user)
     else
-      Rails.logger.error @user.errors.inspect
       @roles_options = Role.all.map { |role| [ I18n.t("roles.#{role.title}"), role.id] }
       render action: :new
     end
@@ -35,6 +36,10 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
 
   def update
     @user = User.find_by_id(params[:id])
+
+    if @user.email != params[:user][:email]
+      @user.skip_reconfirmation!
+    end
 
     network_id = params[:user][:permissionings_attributes][:"0"][:network_id]
     @user.subdomain = Network.find_by_id(network_id).subdomain
