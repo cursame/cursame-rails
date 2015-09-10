@@ -1,0 +1,5 @@
+es:
+  activerecord:
+    errors:
+      messages:
+        taken: "Ya ha sido tomado"

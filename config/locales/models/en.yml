@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    errors:
+      messages:
+        taken: "It's already taken"

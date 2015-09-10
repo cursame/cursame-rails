@@ -1,4 +1,6 @@
 class SuperadminPanel::NetworksController < SuperadminPanel::BaseController
+  include ActiveModel::ForbiddenAttributesProtection
+
   def index
     @networks = Network.order(:subdomain).paginate(page: params[:page], per_page: 30)
   end
@@ -8,7 +10,12 @@ class SuperadminPanel::NetworksController < SuperadminPanel::BaseController
   end
 
   def create
-    set_params(nil)
+    @network = Network.new(network_params)
+    if @network.save
+      redirect_to superadmin_panel_network_path(@network)
+    else
+      render :action => :new
+    end
   end
 
   def edit
@@ -16,7 +23,12 @@ class SuperadminPanel::NetworksController < SuperadminPanel::BaseController
   end
 
   def update
-    set_params(params[:id])
+    @network = Network.find_by_id(params[:id])
+    if @network.update_attributes(network_params)
+      redirect_to superadmin_panel_network_path(@network)
+    else
+      render action: :edit
+    end
   end
 
   def show
@@ -32,23 +44,8 @@ class SuperadminPanel::NetworksController < SuperadminPanel::BaseController
 
   private
 
-  def set_params(id)
-    if id
-      network = Network.find_by_id(id)
-    else
-      network = Network.new params[:network]
-    end
-
-    if !id && !network.save
-      redirect_to superadmin_panel_networks_path, flash: { error: 'error' }
-      return
-    end
-
-    if id && !network.update_attributes(params[:network])
-      redirect_to superadmin_panel_networks_path, flash: { error: 'error' }
-      return
-    end
-
-    redirect_to superadmin_panel_network_path(network), flash: { success: 'success' }
+  def network_params
+    params.require(:network).permit(:name, :subdomain, :population, :public_register,
+                                    :welcom_message)
   end
 end

@@ -37,6 +37,14 @@ RSpec.feature 'Networks Views:' do
     expect_network_show_texts(network)
   end
 
+  scenario "post #create with invalid subdomain" do
+    click_on I18n.t('superadmin_panel.networks.index.create')
+    fill_network_form(FactoryGirl.build(:network))
+
+    click_on 'action-button'
+    expect(page).to have_text(I18n.t('activerecord.errors.messages.taken'))
+  end
+
   scenario "put #update" do
     find(".networks-id-#{@network.id}").click_on I18n.t("#{locale_root}.index.edit")
 
