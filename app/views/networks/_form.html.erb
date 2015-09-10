@@ -128,6 +128,17 @@
   </div>
 
   <% if current_network.subdomain != "meems" %>
+  <div class="form-group label-on-top no-label">
+    <div class="form-group-main">
+      <div class="form-unit">
+        <%= f.label :multilanguage do %>
+          <%= f.check_box :multilanguage %>
+          <%=t('.enable_multilanguage')%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <div class="form-group label-on-top l-label">
     <div class="form-group-label">
       <%= f.label :select_locale, t('.change_locale') %>
