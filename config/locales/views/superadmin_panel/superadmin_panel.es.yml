@@ -55,6 +55,7 @@ es:
           create: Crear usuario
           save: Actualizar usuario
           type: Rol
+          confirm-button: Confirmar
       index:
         users: Usuarios
         name: Nombre
@@ -62,8 +63,11 @@ es:
         enroll: Fecha de registro
         type: Tipo
         actions: Acciones
+        confirm: ¿Confirmado?
         view: Mostrar
         create: Nuevo usuario
+        "true": Sí
+        "false": "No"
         edit: Editar
         destroy: Borrar
         destroy-confirmation: ¿Estas seguro de borrar este usuario?
@@ -79,6 +83,12 @@ es:
         deliveries: Tareas entregadas
         surveys: Examenes resueltos
         subdomain: Subdominio
+        create: Nuevo usuario
+        confirm: ¿Confirmado?
+        "true": Sí
+        "false": "No"
+        confirm-button: Confirmar
+        edit: Editar
       new:
         create: Nuevo usuario
       edit:

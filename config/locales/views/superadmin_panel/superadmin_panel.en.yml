@@ -55,6 +55,7 @@ en:
           create: Create user
           save: Update user
           type: Role
+          confirm-button: Confirm
       index:
         users: Users
         name: Name
@@ -62,8 +63,11 @@ en:
         enroll: enroll
         type: type
         actions: actions
+        confirm: Confirmed?
         view: View
         create: New user
+        "true": "yes"
+        "false": "false"
         edit: Edit
         destroy: Delete
         destroy-confirmation: Are you sure you want to delete this user?
@@ -78,7 +82,12 @@ en:
         last: Last sign in at
         deliveries: Deliveries
         surveys: Surveys
-        subdomain: Subdominio
+        subdomain: Subdomain
+        confirm: Confirmed?
+        "true": "yes"
+        "false": "false"
+        confirm-button: Confirm
+        edit: Edit
       new:
         create: New user
       edit:

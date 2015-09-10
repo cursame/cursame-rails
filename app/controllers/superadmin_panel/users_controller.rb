@@ -60,6 +60,12 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
     redirect_to superadmin_panel_users_path
   end
 
+  def confirm
+    user = User.find_by_id(params[:id])
+    user.confirm!
+    redirect_to superadmin_panel_user_path(user)
+  end
+
   private
 
   def users_params
