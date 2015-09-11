@@ -123,6 +123,7 @@ Cursame30Lb::Application.routes.draw do
   namespace :superadmin_panel do
     resources :networks
     resources :users
+    get '/users/:id/confirm', to: 'users#confirm', as: :user_confirm
   end
 
   #Calificar Actividades

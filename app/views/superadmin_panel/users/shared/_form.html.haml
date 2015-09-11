@@ -86,3 +86,5 @@
     %li
       %span.btn.btn-primary.input-btn.btn-medium.activable
         = f.submit user.new_record? ? t('.create') : t('.save'), id: 'action-button'
+      - unless user.confirmed? || user.new_record?
+        %li= link_to t('.confirm-button'), superadmin_panel_user_confirm_path(user), class: 'btn btn-medium btn-secondary'

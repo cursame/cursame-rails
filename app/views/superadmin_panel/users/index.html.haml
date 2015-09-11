@@ -13,6 +13,7 @@
             %th= t('.email')
             %th= t('.enroll')
             %th= t('.type')
+            %th= t('.confirm')
             %th= t('.actions')
         %tbody
           - @users.each do |user|
@@ -23,6 +24,7 @@
               %td= user.email
               %td= user.created_at
               %td= t("roles.#{user.permissionings.first.role.title}")
+              %td= t(".#{user.confirmed?}")
               %td
                 .dropdown-wrap.actions{class: "user-id-#{user.id}"}
                   .dropdown-pull.btn.btn-secondary.btn-small

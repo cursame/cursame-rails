@@ -50,6 +50,11 @@
         %p= @user.last_sign_in_at
 
         %br/
+        %span.meta-info= t('.confirm')
+        %p= t(".#{@user.confirmed?}")
+
+
+        %br/
 
         - if @user.student?
           %span.meta-info= t('.deliveries')
@@ -58,3 +63,12 @@
           %br/
           %span.meta-info= t('.surveys')
           %p= @user.user_surveys.count
+
+  .managers-top-actions
+    .cols-12
+      .col.col-12.alpha.omega
+        .col-inner
+          %ul.list-buttons.left
+            - unless @user.confirmed?
+              %li= link_to t('.confirm-button'), superadmin_panel_user_confirm_path(@user), class: 'btn btn-medium btn-secondary'
+            %li= link_to t('.edit'), edit_superadmin_panel_user_path(@user), class: 'btn btn-medium btn-secondary'
