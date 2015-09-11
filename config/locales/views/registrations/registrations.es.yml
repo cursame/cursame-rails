@@ -24,6 +24,7 @@ es:
       cancel2: Cancelar
       current_pwd: Escribe tu contraseña para guardar
       update: Actualizar perfil
+      change_lang_user: 'Idioma :'
     new:
       text1: Lo sentimos pero la red a la que estás intentado ingresar no permite el registro público. Pregunta a un encargado de tu escuela, él sabrá ayudarte.
       text2: Ir a la página principal
