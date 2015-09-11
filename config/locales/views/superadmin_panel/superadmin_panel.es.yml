@@ -72,6 +72,9 @@ es:
         edit: Editar
         destroy: Borrar
         destroy-confirmation: ¿Estas seguro de borrar este usuario?
+        search: Buscar
+        first_name: Nombre
+        last_name: Apellidos
       show:
         return: Regresar
         email: Correo

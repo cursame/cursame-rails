@@ -2,8 +2,23 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
   include ActiveModel::ForbiddenAttributesProtection
 
   def index
-    @users = User.includes(permissionings: [:network, :role])
-             .order(:email).paginate(page: params[:page], per_page: 30)
+    @users = User.includes(permissionings: [:network, :role]).order(:email)
+
+    search = params[:search] ? params[:search].strip.squeeze(' ').downcase : ''
+
+    if params[:email]
+      @users = @users.where('LOWER(email) LIKE ?', "%#{search.split("@").first}%")
+     end
+
+     if params[:first_name]
+       @users = @users.where('LOWER(first_name) LIKE ?', "%#{search}%")
+     end
+
+     if params[:last_name]
+       @users = @users.where('LOWER(last_name) LIKE ?', "%#{search}%")
+     end
+
+    @users = @users.paginate(page: params[:page], per_page: 30)
   end
 
   def new
