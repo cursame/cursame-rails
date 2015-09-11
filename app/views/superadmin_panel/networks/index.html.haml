@@ -6,6 +6,21 @@
           %h1= t('.networks')
         .actions
           = link_to t('.create'), new_superadmin_panel_network_path, class: 'btn btn-complementary'
+          %br/
+          %br/
+          = form_tag superadmin_panel_networks_path, method: 'get' do
+            = hidden_field_tag 'page', params[:page] || 1
+            = content_tag :label do
+
+              = text_field_tag :search, params[:search]
+
+              = label_tag 'subdomain', t('.subdomain')
+              = check_box_tag 'subdomain', params[:subdomain], params[:subdomain]
+
+              = label_tag 'name', t('.name')
+              = check_box_tag 'name', params[:name], params[:name]
+
+              = submit_tag t('.search')
       %table.data-table
         %thead
           %tr

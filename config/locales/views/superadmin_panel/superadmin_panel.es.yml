@@ -28,6 +28,7 @@ es:
         edit: Editar
         destroy: Borrar
         destroy-confirmation: ¿Estás seguro de borrar esta red?
+        search: Buscar
       show:
         return: Regresar
         name: Nombre

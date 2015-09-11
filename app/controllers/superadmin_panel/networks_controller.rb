@@ -2,7 +2,16 @@ class SuperadminPanel::NetworksController < SuperadminPanel::BaseController
   include ActiveModel::ForbiddenAttributesProtection
 
   def index
-    @networks = Network.order(:subdomain).paginate(page: params[:page], per_page: 30)
+    @networks = Network.order(:subdomain)
+    search = params[:search] ? params[:search].strip.squeeze(' ').downcase : ''
+    if params[:subdomain]
+      @networks = @networks.where('LOWER(subdomain) LIKE ?', "%#{search}%")
+    end
+
+    if params[:name]
+      @networks = @networks.where('LOWER(name) LIKE ?', "%#{search}%")
+    end
+    @networks = @networks.paginate(page: params[:page], per_page: 30)
   end
 
   def new

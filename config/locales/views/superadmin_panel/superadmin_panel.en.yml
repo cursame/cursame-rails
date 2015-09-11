@@ -28,6 +28,7 @@ en:
         edit: Edit
         destroy: Delete
         destroy-confirmation: Are you sure to delete this network?
+        search: Search
       show:
         return: Return
         name: Name

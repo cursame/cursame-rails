@@ -15,6 +15,22 @@ RSpec.feature 'Networks Views:' do
     expect(page).to have_css("table.data-table tr", count: 3)
   end
 
+  scenario "Get #index with search on subdomain" do
+    fill_in('search', with: 'testing')
+    check('subdomain')
+
+    click_on I18n.t('superadmin_panel.networks.index.search')
+    expect(page).to have_css("table.data-table tr", count: 2)
+  end
+
+  scenario "Get #index with search on name" do
+    fill_in('search', with: @network.name)
+    check('name')
+
+    click_on I18n.t('superadmin_panel.networks.index.search')
+    expect(page).to have_css("table.data-table tr", count: 2)
+  end
+
   scenario "Get #show" do
     find(".networks-id-#{@network_testing.id}").click_on I18n.t("#{locale_root}.index.view")
 
