@@ -100,6 +100,23 @@ background-white
             </div>
           </div>
 
+          <% if current_network.multilanguage? %>
+          <div class="form-group">
+            <div class="form-group-label">
+              <%= f.label :language, t('.change_lang_user') %>
+            </div>
+            <div class="form-group-main">
+              <div class="form-unit">
+                <%= f.fields_for :user_language do |lang| %>
+                  <%= lang.hidden_field :user_id, value: current_user.id %>
+                  <% lang_array = Language.all.map { |e| [e.name, e.id] } %>
+                  <%= lang.select :language_id, options_for_select(lang_array) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
           <div class="form-group">
             <div class="form-group-label">
               <%= f.label :password, t('.new_pwd') + ':' %>

@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
       user = User.find(current_user.id)
       params[:user].delete("user_id")
 
-      
+
 
       if @user.update_attributes(params[:user])
         flash[:notice] = t('.registrations_controller.update')
@@ -24,11 +24,15 @@ class RegistrationsController < Devise::RegistrationsController
         flash[:notice] = t('.registrations_controller.error')
         render "edit"
       end
-      
+
     else
       super
     end
 
+  end
+
+  def edit
+    @user.build_user_language if @user.user_language.nil?
   end
 
   protected
@@ -40,4 +44,5 @@ class RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
       show_user_path(resource.personal_url)
   end
+
 end

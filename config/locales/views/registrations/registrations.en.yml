@@ -24,6 +24,7 @@ en:
       cancel2: Cancel
       current_pwd: Type your password
       update: Update profile
+      change_lang_user: 'Platform language :'
     new:
       text1: "We are sorry, the network you are trying does not allow public register. Ask the person in charge at your school to help you."
       text2: Home

@@ -642,6 +642,14 @@ class ApplicationController < ActionController::Base
     when "meems"
       meems_locale
     else
+      set_locale
+    end
+  end
+
+  def set_locale
+    if !current_user.nil? && !current_user.language.nil? && current_network.multilanguage
+      I18n.locale = current_user.language.code.to_sym
+    else
       I18n.locale = current_network.language.to_sym
     end
   end

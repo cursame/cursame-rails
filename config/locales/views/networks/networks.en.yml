@@ -16,6 +16,7 @@ en:
       api_key: "API Key:"
       example: "Example: "
       change_locale: 'Select language:'
+      enable_multilanguage: "Customization of the platform's language by user"
     network_mask:
       enroll: Register user
     alertmethod:

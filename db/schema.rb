@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150715150343) do
+ActiveRecord::Schema.define(:version => 20150903193002) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -401,6 +401,13 @@ ActiveRecord::Schema.define(:version => 20150715150343) do
   add_index "grades", ["gradable_id", "gradable_type"], :name => "index_grades_on_gradable_id_and_gradable_type"
   add_index "grades", ["user_id"], :name => "index_grades_on_user_id"
 
+  create_table "languages", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "libraries", :force => true do |t|
     t.integer  "storable_id"
     t.string   "storable_type"
@@ -505,6 +512,7 @@ ActiveRecord::Schema.define(:version => 20150715150343) do
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
     t.boolean  "evaluable",            :default => true
+    t.string   "language"
   end
 
   create_table "networks_users", :force => true do |t|
@@ -698,6 +706,16 @@ ActiveRecord::Schema.define(:version => 20150715150343) do
     t.integer  "status_friendship", :default => 0
   end
 
+  create_table "user_languages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "language_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "user_languages", ["language_id"], :name => "index_user_languages_on_language_id"
+  add_index "user_languages", ["user_id"], :name => "index_user_languages_on_user_id"
+
   create_table "user_roles", :force => true do |t|
     t.integer  "network_id"
     t.integer  "user_id"
@@ -805,4 +823,5 @@ ActiveRecord::Schema.define(:version => 20150715150343) do
     t.integer  "network_id"
     t.boolean  "public",           :default => false
   end
+
 end

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     :friendships, :friends, :registerable, :image_avatarx,
     :image_avatarxx, :cover_photox, :confirmation_token, :locked_at,
     :tour_info,:activities, :accepted_terms, :confirmed_at, :subdomain,
-    :domain, :permissioning_ids, :self_register
+    :domain, :permissioning_ids, :self_register, :user_language_attributes
 
   has_many :friendships, :uniq => true, :dependent => :destroy
   has_many :inverse_friendships, :class_name => "Friendship",
@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :permissionings
   has_many :usernotificationings, :dependent => :destroy
 
+  has_one :user_language
+
+  has_one :language, through: :user_language
+
 
   validates_presence_of :domain
   validates_presence_of :first_name
@@ -65,6 +69,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :permissionings
   accepts_nested_attributes_for :networks
+  accepts_nested_attributes_for :user_language
 
   #comentarios para usuarios
   acts_as_commentable
