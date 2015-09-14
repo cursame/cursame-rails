@@ -79,6 +79,7 @@ es:
         confirm: ¿Estás seguro de abandonar este curso?
         leave: Abandonar curso
         request_send: Solicitud enviada
+        registering: Unirme a este curso
         send_request: Enviar solicitud
       course_card_post:
         new_course: Nuevo curso público
