@@ -72,6 +72,10 @@ es:
         evaluate: Calificar Actividades
         active: Activas
         past: Pasadas
+      header_evaluate_course:
+        past: Activas
+        active: Pasadas
+        evaluate: Calificar Actividades
       survey_activity:
         answered: Contestados
     surveys:

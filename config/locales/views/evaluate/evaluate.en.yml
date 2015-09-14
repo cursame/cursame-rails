@@ -72,6 +72,10 @@ en:
         evaluate: Grade activities
         active: Active
         past: Previous
+      header_evaluate_course:
+        past: Active
+        active: Previous
+        evaluate: Grade activities
       survey_activity:
         answered: Answered
     surveys:
