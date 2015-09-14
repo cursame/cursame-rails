@@ -16,6 +16,34 @@ RSpec.feature 'Users Views:' do
     expect(page).to have_css("table.data-table tr", count: 4)
   end
 
+  scenario "get #index with search on first name" do
+    fill_in('search', with: @user.first_name)
+    check('first_name')
+
+    click_on I18n.t('superadmin_panel.users.index.search')
+
+    expect(page).to have_css("table.data-table tr", count: 2)
+  end
+
+  scenario "get #index with search on email" do
+    fill_in('search', with: @user.email)
+    check('email')
+
+    click_on I18n.t('superadmin_panel.users.index.search')
+
+    expect(page).to have_css("table.data-table tr", count: 2)
+  end
+
+  scenario "get #index with search on last name" do
+    fill_in('search', with: @user.last_name)
+    check('last_name')
+
+    click_on I18n.t('superadmin_panel.users.index.search')
+
+    expect(page).to have_css("table.data-table tr", count: 2)
+  end
+
+
   scenario "get #show" do
     find(".user-id-#{@user.id}").click_on I18n.t('superadmin_panel.users.index.view')
     expect_user_show_texts(@user, @user.roles.first.title)

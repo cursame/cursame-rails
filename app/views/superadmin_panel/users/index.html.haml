@@ -6,6 +6,24 @@
           %h1= t('.users')
         .actions
           = link_to t('.create'), new_superadmin_panel_user_path, class: 'btn btn-complementary'
+          %br/
+          %br/
+          = form_tag superadmin_panel_users_path, method: 'get' do
+            = hidden_field_tag 'page', 1
+            = content_tag :label do
+
+              = text_field_tag :search, params[:search]
+
+              = label_tag 'email', t('.email')
+              = check_box_tag 'email', params[:email], params[:email]
+
+              = label_tag 'first_name', t('.first_name')
+              = check_box_tag 'first_name', params[:first_name], params[:first_name]
+
+              = label_tag 'last_name', t('.last_name')
+              = check_box_tag 'last_name', params[:last_name], params[:last_name]
+
+              = submit_tag t('.search')
       %table.data-table
         %thead
           %tr
@@ -16,7 +34,7 @@
             %th= t('.confirm')
             %th= t('.actions')
         %tbody
-          - @users.each do |user|
+          - @users.all.each do |user|
             %tr
               %td
                 = avatar('user', '30', "no", user.id, "avatar avatar-30", "no", "no")
