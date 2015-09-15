@@ -1,5 +1,5 @@
 es:
   assignments:
-    correct: "Se ha calificado correctamente la tarea."
-    error: "Ha ocurrido un error al calificar la tarea."
-    
+    correct: "Se ha calificado correctamente la tarea"
+    error: "Ha ocurrido un error al calificar la tarea"
+
