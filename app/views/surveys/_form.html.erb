@@ -129,7 +129,7 @@ end
     <li>
       <span class="btn btn-primary input-btn activable">
         <%= f.submit t('.create_test'), id: 'comment-post-form', class: "activable" unless active_edit %>
-        <%= f.submit "Guardar Cuestionario", id: 'comment-post-form', class: "activable", confirm: "Estás seguro de editar este cuestionario?\nLas entregas de tus alumnos serán eliminadas." if active_edit %>
+        <%= f.submit t('.save'), id: 'comment-post-form', class: "activable", confirm: "Estás seguro de editar este cuestionario?\nLas entregas de tus alumnos serán eliminadas." if active_edit %>
       </span>
     </li>
   </ul>
