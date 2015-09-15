@@ -9,6 +9,7 @@ bundler_args: --without development
 script:
   - export RAILS_ENV=test
   - bundle exec rake db:create db:migrate
+  - RAILS_ENV=test bundle exec rackup private_pub.ru -s thin -E test -D
   - bundle exec rspec spec
 before_install:
   - sudo apt-get update && sudo apt-get install libicu-dev
