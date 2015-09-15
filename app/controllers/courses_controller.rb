@@ -74,6 +74,9 @@ class CoursesController < ApplicationController
       end
     end
 
+    @state = params[:state]
+    @user_role = current_user.permissionings.last.role.title
+
     respond_to do |format|
       format.js { render 'courses/ajax/courses_paginate_ajax' }
     end

@@ -40,7 +40,7 @@
         <i class="tip"></i>
         <ul>
           <li>
-            <div id="uik_<%= @correspond.id %>"> 
+            <div id="uik_<%= @correspond.id %>">
               <%= link_to @correspond , confirm: t('.confirm'), method: :delete, :remote => true do %>
                 <%=t('.leave')%>
               <% end %>
@@ -58,10 +58,10 @@
   <%= form_for( member, :remote => true ) do |f| %>
     <%= f.hidden_field :user_id,:value => current_user.id %>
     <%= f.hidden_field :course_id, :value => course.id %>
-    <%= f.hidden_field :accepted, :value => 0 %> 
+    <%= f.hidden_field :accepted, value: course.public_status == 'public' ? true : false %>
     <% unless current_user.admin? %>
       <span class="btn btn-primary input-btn btn-small">
-        <%= f.submit t('.send_request') %>
+        <%= f.submit course.public_status == 'public' ? t('.registering'): t('.send_request') %>
       </span>
     <% end %>
   <% end %>

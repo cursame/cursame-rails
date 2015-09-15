@@ -79,6 +79,7 @@ en:
         confirm: Are you sure you want to leave this course?
         leave: Leave course
         request_send: Request sent
+        registering: Registering
         send_request: Send Request
       course_card_post:
         new_course: New course
