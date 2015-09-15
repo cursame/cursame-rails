@@ -51,6 +51,7 @@ es:
       save: Guardar Cuestionario
       create: Crear Cuestionario
       non_mins: Sin límite de tiempo
+      create_test: 'Crear Cuestionario'
     question_fields:
       quest1: Ingresar pregunta
       add_answer: Agregar Respuesta
