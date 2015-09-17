@@ -229,6 +229,10 @@ es:
         edit: Editar
         delete: Borrar
         sure: ¿Estás seguro de borrar este usuario?
+        student: 'Estudiante'
+        teacher: 'Profesor'
+        admin: 'Administrador'
+        superadmin: 'Super Administrador'
       new:
         create: Crear Usuario
       show:
