@@ -229,6 +229,10 @@ en:
         edit: Edit
         delete:  Delete
         sure: Are you sure you want to delete this user?.
+        student: 'Student'
+        teacher: 'Teacher'
+        admin: 'Admin'
+        superadmin: 'Superadmin'
       new:
         create: Create user
       show:

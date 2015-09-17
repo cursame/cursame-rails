@@ -20,10 +20,10 @@
             - permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
             - role = Role.find(permissioning.role_id)
             - case role.title
-            - when 'student' then role_name = 'Estudiante'
-            - when 'teacher' then role_name = 'Profesor'
-            - when 'admin' then role_name = 'Administrador'
-            - when 'superadmin' then role_name = 'Super Administrador'
+            - when 'student' then role_name = t('.student')
+            - when 'teacher' then role_name = t('.teacher')
+            - when 'admin' then role_name = t('.admin')
+            - when 'superadmin' then role_name = t('.superadmin')
             - when 'supervisor' then role_name = 'Supervisor'
             - when 'operator' then  role_name = 'Operador'
             - when 'mentor_link' then role_name = 'Enlace Educativo'
