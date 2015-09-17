@@ -24,11 +24,11 @@
                 </li>
                 <li>
                   <span class="meta-info"><%=t('.publish_date')%></span>
-                  <p><%= I18n.localize(survey.publish_date, format: "%e t('.of')de %B t('.the') %Y") %></p>
+                  <p><%= I18n.localize(survey.publish_date, format: "%e  %B  %Y") %></p>
                 </li>
                 <li>
                   <span class="meta-info"><%=t('.deliver_date')%></span>
-                  <p><%= I18n.localize(survey.end_date, format: "%e t('.of') %B t('.the') %Y") %></p>
+                  <p><%= I18n.localize(survey.end_date, format: "%e %B %Y") %></p>
                 </li>
                 <li>
                  <%= link_to t('.attemps'), evaluate_survey_attemps_path(survey.id), class: 'btn'%>
