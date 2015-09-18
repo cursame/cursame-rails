@@ -313,6 +313,9 @@ en:
         course_calif: The course has been graded
         activities_p_user: An activity for
         view_usr: View user
+        the_test: 'The test'
+        of_the_course: 'of the Course'
+        has_edited: 'has been edited'
     notifications:
       box_notifications:
         notif: Notifications

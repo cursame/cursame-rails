@@ -104,7 +104,7 @@
           </span>
         </div>
         <div class="activity-feed-main">
-          <h6>El cuestionario <span class="as-link"><%= notification.notificator.name %></span> de tu curso <span class="as-link"><%= notification.notificator.courses[0].title %></span> ha sido editado </h6>
+          <h6><%=t('.activity_feed.the_test')%> <span class="as-link"><%= notification.notificator.name %></span> <%=t('.activity_feed.of_the_course')%> <span class="as-link"><%= notification.notificator.courses[0].title %></span> <%=t('.activity_feed.has_edited')%></h6>
           <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
         </div>
       <% end %>
