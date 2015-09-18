@@ -317,7 +317,7 @@ en:
       box_notifications:
         notif: Notifications
         no_notif: No more modifications to show.
-        more_notif: See more modifications
+        more_notif: See more notifications
       notification_meta_data:
         at: 'at'
     post_comments:
