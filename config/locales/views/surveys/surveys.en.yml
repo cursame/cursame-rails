@@ -51,6 +51,8 @@ en:
       save: Save test
       create: Create test
       non_mins: No time
+      create_test: 'Create Test'
+      confirm_update_test: 'Do you want to edit this questionnaire? Students Tasks will be deleted'
     question_fields:
       quest1: Add question
       add_answer: Add anwser

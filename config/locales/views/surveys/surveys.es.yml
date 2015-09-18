@@ -51,6 +51,8 @@ es:
       save: Guardar Cuestionario
       create: Crear Cuestionario
       non_mins: Sin límite de tiempo
+      create_test: 'Crear Cuestionario'
+      confirm_update_test: '¿Estás seguro de editar este cuestionario? Las entregas de tus alumnos serán eliminadas.'
     question_fields:
       quest1: Ingresar pregunta
       add_answer: Agregar Respuesta
