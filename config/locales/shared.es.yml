@@ -318,6 +318,8 @@ es:
         notif: Notificaciones
         no_notif: No hay notificaciones para mostrar.
         more_notif: Ver más notificaciones
+      notification_meta_data:
+        at: 'a las'
     post_comments:
       last_comments: Ver comentarios anteriores
       like: Me gusta

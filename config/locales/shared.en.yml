@@ -318,6 +318,8 @@ en:
         notif: Notifications
         no_notif: No more modifications to show.
         more_notif: See more modifications
+      notification_meta_data:
+        at: 'at'
     post_comments:
       last_comments: Read previous comments
       like: like
