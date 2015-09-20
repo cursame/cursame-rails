@@ -62,18 +62,6 @@ class EvaluateController < ApplicationController
     @course = Course.find_by_id(params[:id])
     redirect_to root_path, flash: { error: t('.evaluate_controller.no_evaluate')} unless @course.owner?(current_role, current_user)
 
-    if @course.nil?
-    end
-
-    permissioning = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
-
-    if permissioning.nil?
-    end
-
-
-    if not(@course.owner?(permissioning.role.title, current_user))
-    end
-
     discussions = @course.discussions.select do
       |discussion| discussion.evaluable?
     end
@@ -139,18 +127,6 @@ class EvaluateController < ApplicationController
   def course_inactive
     @course = Course.find_by_id(params[:id])
     redirect_to root_path, flash: { error: t('.evaluate_controller.no_evaluate')} unless @course.owner?(current_role, current_user)
-
-    if @course.nil?
-    end
-
-    permissioning = Permissioning.find_by_user_id_and_network_id(current_user.id, current_network.id)
-
-    if permissioning.nil?
-    end
-
-
-    if not(@course.owner?(permissioning.role.title, current_user))
-    end
 
     discussions = @course.discussions.select do
       |discussion| discussion.evaluable?
