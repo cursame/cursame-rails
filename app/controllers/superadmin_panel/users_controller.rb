@@ -2,7 +2,7 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
   include ActiveModel::ForbiddenAttributesProtection
 
   def index
-    @users = User.includes(permissionings: [:network, :role]).order(:email)
+    @users = User.includes(permissionings: [:network, :role])
 
     search = params[:search] ? params[:search].strip.squeeze(' ').downcase : ''
 

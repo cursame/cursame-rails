@@ -141,7 +141,7 @@ RSpec.feature 'Users Views:' do
     select(I18n.t("roles.#{role_title}"), from: 'user_permissionings_attributes_0_role_id')
 
     if (role_title == "mentor_link")
-      entity = { id: Faker::Number.number(2), name: Faker::Lorem.word }
+      entity = { id: Faker::Number.number(2).to_i.to_s, name: Faker::Lorem.word }
 
       fill_in('user_permissionings_attributes_0_entity_id', with: entity[:id])
       fill_in('user_permissionings_attributes_0_entity_name', with: entity[:name])
