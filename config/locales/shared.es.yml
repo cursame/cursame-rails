@@ -313,11 +313,16 @@ es:
         course_calif: Se ha calificado el curso
         activities_p_user: Una actividad por
         view_usr: Ver usuario
+        the_test: 'El cuestionario'
+        of_the_course: 'de tu Curso'
+        has_edited: 'ha sido editado'
     notifications:
       box_notifications:
         notif: Notificaciones
         no_notif: No hay notificaciones para mostrar.
         more_notif: Ver más notificaciones
+      notification_meta_data:
+        at: 'a las'
     post_comments:
       last_comments: Ver comentarios anteriores
       like: Me gusta

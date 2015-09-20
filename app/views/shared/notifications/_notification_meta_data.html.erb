@@ -1,1 +1,1 @@
-<span class="meta"><%= time_ago_in_words notification.created_at %> a las <%= notification.created_at.strftime('%l:%M %P') %></span>
+<span class="meta"><%= time_ago_in_words notification.created_at %> <%= t('.at') + notification.created_at.strftime('%l:%M %P') %></span>
