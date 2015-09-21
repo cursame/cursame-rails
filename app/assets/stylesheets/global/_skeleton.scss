@@ -60,7 +60,7 @@ body {
     height: 44px;
     margin-top: 3px;
     @include clearfix;
-    
+
     > a {
       float: left;
     }
@@ -69,7 +69,7 @@ body {
       display: block;
       margin-top: 11px;
     }
-    
+
     .menu-sidebar {
       float: left;
       padding: 16px 15px;
@@ -86,7 +86,7 @@ body {
 
       .activity-dropdown-pull {
         padding: 15px 15px 11px 15px;
-        
+
         .activity-counter {
           position: absolute;
           padding: 3px 5px;
@@ -239,7 +239,7 @@ body {
 .avatar-holder {
   position: relative;
   @include inline-block;
-  
+
   img {
     display: block;
   }
@@ -299,7 +299,7 @@ body {
 /* Sidebar Global
 ----------------------------------*/
 .global-sidebar {
-  width: 200px;
+  width: 215px;
   position: fixed;
   z-index: 105;
   left: 0;
@@ -309,7 +309,7 @@ body {
   .user {
     position: relative;
     @include clearfix;
-    
+
     img {
       margin-right: 5px;
     }
@@ -380,7 +380,7 @@ body {
 }
 
 .scroller {
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 /* Content Sidebar
@@ -447,7 +447,7 @@ body {
       display: none;
     }
 
-    &:hover span { 
+    &:hover span {
       display: inline;
     }
   }
@@ -459,12 +459,12 @@ body {
   position: relative;
   padding: 8px 10px 5px 10px;
   @include clearfix;
-  
+
   .footer-logo {
     display: block;
     width: 62px;
     height: 20px;
-  }  
+  }
 
   .cursame-brand {
     float: left;
@@ -521,7 +521,7 @@ body {
       vertical-align: middle;
     }
   }
-  
+
   .section-header-actions {
     float: right;
     margin-top: 5px;
@@ -577,13 +577,13 @@ body {
   width: 320px;
   float: right;
   margin-top: 10px;
-  
+
   & .logout{
     margin-top: 5px;
     float: right;
     padding-left: 6px;
   }
-  
+
   & .avatar {
     float: right;
     text-align: center;
@@ -600,7 +600,7 @@ body {
   border: 1px solid #006696;
   transition: 0.3s;
   }
-  
+
   & span{
     margin-top: 11px;
     float: right;
@@ -623,7 +623,7 @@ body {
   top: -51px;
   z-index: 15;
   @include transition (top .3s ease-in-out);
-  
+
   .notice-spacer {
     padding-left: 230px;
   }
@@ -639,7 +639,7 @@ body {
 
 .expires .uninstal_exit{
   width:200px;
-  height:40px;        
+  height:40px;
 
   &:hover{
     width:200px;
@@ -671,7 +671,7 @@ body {
 
 .search-wrap {
   position: relative;
-  
+
   .search-input {
     padding-right: 70px;
   }
