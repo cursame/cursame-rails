@@ -13,7 +13,7 @@ en:
       last_name: Sur name
       email: Email
       example: Example
-      dir: Network
+      dir: Custom URL
       text1: Remember not to use symbols such as
       text2: these will not be accepted in your url
       new_pwd: New Password

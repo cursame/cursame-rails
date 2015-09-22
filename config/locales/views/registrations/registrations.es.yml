@@ -13,7 +13,7 @@ es:
       last_name: Apellido
       email: Correo electrónico
       example: Ejemplo
-      dir: Dirección
+      dir: URL Personalizada
       text1: Recuerda no colocar espacios ni símbolos como
       text2: ya que no se aceptará tu URL
       new_pwd: Nueva contraseña
