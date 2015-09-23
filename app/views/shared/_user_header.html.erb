@@ -39,7 +39,11 @@
                   <div class="dropdown-v right">
                     <i class="tip"></i>
                     <ul>
-                      <% if current_user.admin? && !current_user.operator? %>
+                      <% if current_user.superadmin? %>
+                        <li>
+                          <%= link_to(t('.activity_block.superadmin_href'), superadmin_panel_networks_path) %>
+                        </li>
+                      <% elsif current_user.admin? && !current_user.operator? %>
                         <li>
                           <%= link_to(t('.activity_block.admin_href'), managers_path) %>
                         </li>

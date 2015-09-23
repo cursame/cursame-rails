@@ -93,6 +93,7 @@ es:
       activity_notifications:
         help: Ayuda
       activity_block:
+        superadmin_href: Superadmin panel
         admin_href: Administración
         profile_href: Ir a mi perfil
         edit_profile_href: Editar perfil
