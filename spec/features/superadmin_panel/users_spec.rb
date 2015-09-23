@@ -16,6 +16,17 @@ RSpec.feature 'Users Views:' do
     expect(page).to have_css("table.data-table tr", count: 4)
   end
 
+  scenario "get #confirm" do
+    @user.update_attributes(confirmed_at: nil)
+    find(".user-id-#{@user.id}").click_on I18n.t('superadmin_panel.users.index.view')
+
+    expect(page).to have_text(I18n.t('superadmin_panel.users.show.confirm-button'))
+
+    click_on I18n.t('superadmin_panel.users.show.confirm-button')
+    has_confirm_button = has_no_text?(I18n.t('superadmin_panel.users.show.confirm-button'))
+    expect(has_confirm_button).to be_truthy
+  end
+
   scenario "get #index with search on first name" do
     fill_in('search', with: @user.first_name)
     check('first_name')
