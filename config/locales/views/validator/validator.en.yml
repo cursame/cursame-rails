@@ -1,0 +1,13 @@
+en:
+  validator:
+    required: 'This field is required'
+    remote: 'Please fill in this field'
+    email: 'Please enter a valid email'
+    url: 'Please enter a valid URL'
+    date: 'Please enter a valid date'
+    dateISO: 'Please enter a valid ISO date'
+    number: 'Please enter a valid integer'
+    digits: 'Please enter only digits'
+    creditcard: 'Please enter a valid card'
+    equalTo: 'Please enter the same value again'
+    accept: 'Please enter a value with an accepted extension'

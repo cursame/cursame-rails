@@ -10010,11 +10010,11 @@ I18n.translations["en"] = {
     },
     "user_header": {
       "activity_block": {
-        "superadmin_href": "Superadmin panel",
         "admin_href": "Admin",
         "edit_profile_href": "Edit profile",
         "profile_href": "Go to profile",
-        "sign_out_href": "Log out"
+        "sign_out_href": "Log out",
+        "superadmin_href": "Superadmin panel"
       },
       "activity_notifications": {
         "help": "Help"
@@ -10196,6 +10196,8 @@ I18n.translations["en"] = {
       "index": {
         "actions": "actions",
         "confirm": "Confirmed?",
+        "confirm-confirmation": "Are you sure you want to confirm this user?",
+        "confirm-user": "Confirm",
         "create": "New user",
         "destroy": "Delete",
         "destroy-confirmation": "Are you sure you want to delete this user?",
@@ -10606,6 +10608,19 @@ I18n.translations["en"] = {
     "hello": "Hello ",
     "invalid": "The session has not been successfully created due to a wrong email or password.",
     "welcome": " welcome again."
+  },
+  "validator": {
+    "accept": "Please enter a value with an accepted extension",
+    "creditcard": "Please enter a valid card",
+    "date": "Please enter a valid date",
+    "dateISO": "Please enter a valid ISO date",
+    "digits": "Please enter only digits",
+    "email": "Please enter a valid email",
+    "equalTo": "Please enter the same value again",
+    "number": "Please enter a valid integer",
+    "remote": "Please fill in this field",
+    "required": "This field is required",
+    "url": "Please enter a valid URL"
   },
   "views": {
     "home": {
@@ -15649,11 +15664,11 @@ I18n.translations["es"] = {
     },
     "user_header": {
       "activity_block": {
-        "superadmin_href": "Superadmin panel",
         "admin_href": "Administración",
         "edit_profile_href": "Editar perfil",
         "profile_href": "Ir a mi perfil",
-        "sign_out_href": "Cerrar sesión"
+        "sign_out_href": "Cerrar sesión",
+        "superadmin_href": "Superadmin panel"
       },
       "activity_notifications": {
         "help": "Ayuda"
@@ -15835,6 +15850,8 @@ I18n.translations["es"] = {
       "index": {
         "actions": "Acciones",
         "confirm": "¿Confirmado?",
+        "confirm-confirmation": "¿Estas seguro de confirmar este usuario?",
+        "confirm-user": "Confirmar",
         "create": "Nuevo usuario",
         "destroy": "Borrar",
         "destroy-confirmation": "¿Estas seguro de borrar este usuario?",
@@ -16244,6 +16261,19 @@ I18n.translations["es"] = {
     "hello": "Hola ",
     "invalid": "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos.",
     "welcome": " Bienvenido de nuevo."
+  },
+  "validator": {
+    "accept": "Por favor, escribe un valor con una extensión aceptada",
+    "creditcard": "Por favor, escribe un número de tarjeta válido",
+    "date": "Por favor, escribe una fecha válida",
+    "dateISO": "Por favor, escribe una fecha ISO válida",
+    "digits": "Por favor, escribe sólo dígitos",
+    "email": "Por favor, escribe una dirección de correo válida",
+    "equalTo": "Por favor, escribe el mismo valor de nuevo",
+    "number": "Por favor, escribe un número entero válido",
+    "remote": "Por favor, rellena este campo",
+    "required": "Este campo es obligatorio",
+    "url": "Por favor, escribe una URL válida"
   },
   "views": {
     "pagination": {
@@ -21284,7 +21314,8 @@ I18n.translations["es_meems"] = {
         "admin_href": "Administración",
         "edit_profile_href": "Editar perfil",
         "profile_href": "Ir a mi perfil",
-        "sign_out_href": "Cerrar sesión"
+        "sign_out_href": "Cerrar sesión",
+        "superadmin_href": "Superadmin panel"
       },
       "activity_notifications": {
         "help": "Ayuda"
@@ -21466,6 +21497,8 @@ I18n.translations["es_meems"] = {
       "index": {
         "actions": "Acciones",
         "confirm": "¿Confirmado?",
+        "confirm-confirmation": "¿Estas seguro de confirmar este usuario?",
+        "confirm-user": "Confirmar",
         "create": "Nuevo usuario",
         "destroy": "Borrar",
         "destroy-confirmation": "¿Estas seguro de borrar este usuario?",
@@ -21875,6 +21908,19 @@ I18n.translations["es_meems"] = {
     "hello": "Hola ",
     "invalid": "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos.",
     "welcome": " Bienvenido de nuevo."
+  },
+  "validator": {
+    "accept": "Por favor, escribe un valor con una extensión aceptada",
+    "creditcard": "Por favor, escribe un número de tarjeta válido",
+    "date": "Por favor, escribe una fecha válida",
+    "dateISO": "Por favor, escribe una fecha ISO válida",
+    "digits": "Por favor, escribe sólo dígitos",
+    "email": "Por favor, escribe una dirección de correo válida",
+    "equalTo": "Por favor, escribe el mismo valor de nuevo",
+    "number": "Por favor, escribe un número entero válido",
+    "remote": "Por favor, rellena este campo",
+    "required": "Este campo es obligatorio",
+    "url": "Por favor, escribe una URL válida"
   },
   "views": {
     "pagination": {
@@ -26893,7 +26939,8 @@ I18n.translations["devise"] = {
         "admin_href": "Administración",
         "edit_profile_href": "Editar perfil",
         "profile_href": "Ir a mi perfil",
-        "sign_out_href": "Cerrar sesión"
+        "sign_out_href": "Cerrar sesión",
+        "superadmin_href": "Superadmin panel"
       },
       "activity_notifications": {
         "help": "Ayuda"
@@ -27075,6 +27122,8 @@ I18n.translations["devise"] = {
       "index": {
         "actions": "Acciones",
         "confirm": "¿Confirmado?",
+        "confirm-confirmation": "¿Estas seguro de confirmar este usuario?",
+        "confirm-user": "Confirmar",
         "create": "Nuevo usuario",
         "destroy": "Borrar",
         "destroy-confirmation": "¿Estas seguro de borrar este usuario?",
@@ -27484,6 +27533,19 @@ I18n.translations["devise"] = {
     "hello": "Hola ",
     "invalid": "No se ha creado correctamente la sesión ya que la contraseña o el email son inválidos.",
     "welcome": " Bienvenido de nuevo."
+  },
+  "validator": {
+    "accept": "Por favor, escribe un valor con una extensión aceptada",
+    "creditcard": "Por favor, escribe un número de tarjeta válido",
+    "date": "Por favor, escribe una fecha válida",
+    "dateISO": "Por favor, escribe una fecha ISO válida",
+    "digits": "Por favor, escribe sólo dígitos",
+    "email": "Por favor, escribe una dirección de correo válida",
+    "equalTo": "Por favor, escribe el mismo valor de nuevo",
+    "number": "Por favor, escribe un número entero válido",
+    "remote": "Por favor, rellena este campo",
+    "required": "Este campo es obligatorio",
+    "url": "Por favor, escribe una URL válida"
   },
   "views": {
     "pagination": {
