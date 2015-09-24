@@ -1,0 +1,23 @@
+es_meems:
+  date:
+    month:
+      jan: Enero
+      feb: Febrero
+      mar: Marzo
+      apr: Abril
+      may: Mayo
+      jun: Junio
+      jul: Julio
+      aug: Agosto
+      sept: Septiembre
+      oct: Octubre
+      nov: Noviembre
+      dec: Diciembre
+    day:
+      mon: Lun
+      tu: Mar
+      we: Mie
+      th: Jue
+      fri: Vie
+      sat: Sab
+      sun: Dom
