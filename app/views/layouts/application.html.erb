@@ -12,10 +12,7 @@
     <script>
       window.Cursame = { userId: <%= current_user.id %> };
     </script>
-    <script type="text/javascript">
-      I18n.defaultLocale = "<%= I18n.default_locale %>";
-      I18n.locale = "<%= I18n.locale %>";
-    </script>
+
     <%= javascript_include_tag 'private_pub' %>
     <%= javascript_include_tag 'https://www.dropbox.com/static/api/1/dropins.js', id: 'dropboxjs', data: { app_key: 'ee2yf464dnk2rf1' } %>
     <%= javascript_include_tag '//assets.zendesk.com/external/zenbox/v2.6/zenbox.js' %>
@@ -86,5 +83,9 @@
     </script>
 
     <%= yield :javascripts %>
+    <script>
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
   </body>
 </html>

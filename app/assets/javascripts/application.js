@@ -9,6 +9,9 @@
 //= require ./vendor/jquery.validate.min
 //= require_tree ./vendor
 
+//= require handlebars.runtime
+//= require ./template_helpers
+
 //= require_tree ./templates
 //= require_tree ./global
 
