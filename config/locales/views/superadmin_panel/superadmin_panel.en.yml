@@ -75,6 +75,8 @@ en:
         search: Search
         first_name: First name
         last_name: Last name
+        confirm-user: Confirm
+        confirm-confirmation: Are you sure you want to confirm this user?
       show:
         return: Return
         email: Email
