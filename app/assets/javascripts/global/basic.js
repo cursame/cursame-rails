@@ -114,14 +114,14 @@ var Sounds = {
 function truncate(text, maxLength, ellipseText){
   ellipseText = ellipseText || '&hellip;';
 
-  if (text.length < maxLength) 
+  if (text.length < maxLength)
     return text;
 
   var m = text.substr(0, maxLength).match(/([^A-Za-z0-9_]*)[A-Za-z0-9_]*$/);
   if(!m) return ellipseText;
-  
+
   var lastCharPosition = maxLength-m[0].length;
-  if(/[\s\(\[\{]/.test(text[lastCharPosition])) lastCharPosition--;  
+  if(/[\s\(\[\{]/.test(text[lastCharPosition])) lastCharPosition--;
   return (lastCharPosition ? text.substr(0, lastCharPosition+1) : '') + ellipseText;
 };
 
@@ -148,7 +148,7 @@ function getChildrensHeight(obj) {
   var holder = obj.parent(),
       childrens = holder.children(),
       totalHeight = 0;
-  
+
   $.each(childrens, function(index, val) {
     totalHeight += $(val).outerHeight();
   });
@@ -161,7 +161,7 @@ function scrollToBottom(obj) {
       parent = obj.parent();
 
   parent.scrollTop( h );
-  
+
   if ( parent.hasClass('scrollbar') ) {
     parent.perfectScrollbar('update');
   };
@@ -224,8 +224,25 @@ $(function() {
     minDate: 0,
     showOtherMonths: true,
     dateFormat: 'dd/mm/yy',
-    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+    monthNames: [I18n.t("date.month.jan"),
+                 I18n.t("date.month.feb"),
+                 I18n.t("date.month.mar"),
+                 I18n.t("date.month.apr"),
+                 I18n.t("date.month.may"),
+                 I18n.t("date.month.jun"),
+                 I18n.t("date.month.jul"),
+                 I18n.t("date.month.aug"),
+                 I18n.t("date.month.sept"),
+                 I18n.t("date.month.oct"),
+                 I18n.t("date.month.nov"),
+                 I18n.t("date.month.dec")],
+    dayNamesMin: [I18n.t("date.day.sun"),
+                  I18n.t("date.day.mon"),
+                  I18n.t("date.day.tu"),
+                  I18n.t("date.day.we"),
+                  I18n.t("date.day.th"),
+                  I18n.t("date.day.fri"),
+                  I18n.t("date.day.sat")]
   });
 
   $(".datetime-picker").live('focus', function(event) {
@@ -237,8 +254,25 @@ $(function() {
       controlType: 'select',
       showOtherMonths: true,
       dateFormat: 'dd/mm/yy',
-      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+      monthNames: [I18n.t("date.month.jan"),
+                 I18n.t("date.month.feb"),
+                 I18n.t("date.month.mar"),
+                 I18n.t("date.month.apr"),
+                 I18n.t("date.month.may"),
+                 I18n.t("date.month.jun"),
+                 I18n.t("date.month.jul"),
+                 I18n.t("date.month.aug"),
+                 I18n.t("date.month.sept"),
+                 I18n.t("date.month.oct"),
+                 I18n.t("date.month.nov"),
+                 I18n.t("date.month.dec")],
+      dayNamesMin: [I18n.t("date.day.sun"),
+                  I18n.t("date.day.mon"),
+                  I18n.t("date.day.tu"),
+                  I18n.t("date.day.we"),
+                  I18n.t("date.day.th"),
+                  I18n.t("date.day.fri"),
+                  I18n.t("date.day.sat")],
       beforeShow: function(input, inst) {
         var cal = inst.dpDiv;
         var top  = $(this).offset().top + $(this).outerHeight();
@@ -285,7 +319,7 @@ $(function() {
   }
 
   $('.autogrow').expanding();
-   
+
    $(window).scroll(function() {
      if ( $(window).scrollTop() + $(window).height() == $(document).height() ) {
       if ( $("#paginate_wall" ).length == 1 ) {
@@ -311,21 +345,21 @@ $(function() {
     } else {
      var url, notification, numNotifications;
      var channelType = data.channel.channel_name.split('course_channel_');
-     url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;    
+     url = channelType[1] ? '/home/open_channel/' + channelType[1] + '?course=true' : '/home/open_channel/' + data.sender.id;
      if (data.sender.avatar.modern.url != null){
         var avatar_modern = data.sender.avatar.modern.url;
-       
+
         $.get(data.sender.avatar.modern.url)
-         .done(function() { 
+         .done(function() {
           avatar_modern;
-         }).fail(function() { 
+         }).fail(function() {
          var avatar_modern = "/assets/imagexxx.png";
         });
 
      } else {
         var avatar_modern = "/assets/imagexxx.png";
      };
-      
+
       notification = [
           '<li class="unread" id="li_channel_' + data.channel.id + '">',
           '<div class="activity-feed">',
@@ -352,11 +386,11 @@ $(function() {
         $('#messages-notifications-count').html(numNotifications + 1);
         $('#messages-notifications-count').show();
       }
-      
+
       $('#li_channel_' + data.channel.id).replaceWith(notification.join(''));
     };
   });
-    
+
   PrivatePub.subscribe("/messages/chat_notifications", function(data, channel) {
     if ( data && data.online ) {
       $('#chat-list-user-' + data.userId).removeClass('user-offline').addClass('user-online');
@@ -457,5 +491,5 @@ function PaginateINwall(url_paginate, page, total_page, other_params){
         $("#paginate_wall").html("<div class='no-more-publicaitons-message'><h5>No hay más publicaciones por cargar.</h5></div>");
     }
   };
-}   
+}
 
