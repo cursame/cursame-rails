@@ -1,0 +1,4 @@
+es:
+  hbs:
+    no_test_three_days: 'No hay cuestionarios en los siguientes 3 días'
+    no_homeworks_three_days: 'No hay tareas en los siguientes 3 días.'

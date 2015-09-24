@@ -1,0 +1,4 @@
+en:
+  hbs:
+    no_test_three_days: 'No tests in the next 3 days'
+    no_homeworks_three_days: 'No homeworks in the next 3 days'
