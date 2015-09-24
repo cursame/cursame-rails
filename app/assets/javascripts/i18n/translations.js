@@ -10010,6 +10010,7 @@ I18n.translations["en"] = {
     },
     "user_header": {
       "activity_block": {
+        "superadmin_href": "Superadmin panel",
         "admin_href": "Admin",
         "edit_profile_href": "Edit profile",
         "profile_href": "Go to profile",
@@ -15648,6 +15649,7 @@ I18n.translations["es"] = {
     },
     "user_header": {
       "activity_block": {
+        "superadmin_href": "Superadmin panel",
         "admin_href": "Administración",
         "edit_profile_href": "Editar perfil",
         "profile_href": "Ir a mi perfil",
