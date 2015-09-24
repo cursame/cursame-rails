@@ -136,7 +136,7 @@ RSpec.feature 'Users Views:' do
     fill_in('user_first_name', with: user.first_name)
     fill_in('user_last_name', with: user.last_name)
     fill_in('user_password', with: 'password')
-    fill_in('user_permissionings_attributes_0_network_id', with: network.id)
+    fill_in('user_subdomain', with: network.subdomain)
 
     select(I18n.t("roles.#{role_title}"), from: 'user_permissionings_attributes_0_role_id')
 

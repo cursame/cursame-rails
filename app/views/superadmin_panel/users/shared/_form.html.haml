@@ -44,14 +44,19 @@
         = f.password_field :password, placeholder: t('.password'), required: "required", autocomplete: "off", id: 'user_password',
                            class: "#{password_error ? 'error' : ''}"
 
-  = f.fields_for :permissionings do |permissioning|
-    .form-group.label-on-top.l-label
-      .form-group-label
-        = permissioning.label :network_id, "#{t('.network_subdomain')} :"
-      .form-group-main
-        .form-unit
-          = permissioning.number_field :network_id, placeholder: t('.network_subdomain'), required: "required", autocomplete: "off"
+  .form-group.label-on-top.l-label
+    .form-group-label
+      = f.label :subdomain, "#{t('.network_subdomain')} :"
+    .form-group-main
+      .form-unit
+        - subdomain_error = user.errors.any? && user.errors.messages[:subdomain].any?
+        - if subdomain_error
+          = f.label :"network-id-error", user.errors.messages[:subdomain].to_sentence.capitalize, class: 'error'
+        = f.text_field :subdomain, placeholder: t('.network_subdomain'), required: "required", autocomplete: "off"
 
+  = f.fields_for :permissionings do |permissioning|
+
+    - errors_permissioning = user.permissionings.first.errors
     .form-group.label-on-top.l-label
       .form-group-label
         = permissioning.label :role_id, "#{t('.type')} :"
@@ -64,9 +69,9 @@
         = permissioning.label :entity_name, "#{t('.entity_name')} :"
       .form-group-main
         .form-unit
-          - entity_name_error = user.permissionings.first.errors.any? && user.permissionings.first.errors.messages[:entity_name].any?
+          - entity_name_error = errors_permissioning.any? && errors_permissioning.messages[:entity_name].any?
           - if entity_name_error
-            = f.label :"entity-name-error", user.permissionings.first.errors.messages[:entity_name].to_sentence.capitalize, class: 'error'
+            = f.label :"entity-name-error", errors_permissioning.messages[:entity_name].to_sentence.capitalize, class: 'error'
           = permissioning.text_field :entity_name, placeholder: t('.entity_name'), autocomplete: "off"
 
     .form-group.label-on-top.l-label
@@ -74,9 +79,9 @@
         = permissioning.label :entity_id, "#{t('.entity_id')} :"
       .form-group-main
         .form-unit
-          - entity_id_error = user.permissionings.first.errors.any? && user.permissionings.first.errors.messages[:entity_id].any?
+          - entity_id_error = errors_permissioning.any? && errors_permissioning.messages[:entity_id].any?
           - if entity_id_error
-            = f.label :"entity-id-error", user.permissionings.first.errors.messages[:entity_id].to_sentence.capitalize, class: 'error'
+            = f.label :"entity-id-error", errors_permissioning.messages[:entity_id].to_sentence.capitalize, class: 'error'
           = permissioning.text_field  :entity_id, placeholder: t('.entity_id'), autocomplete: "off"
 
   %br/

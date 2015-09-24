@@ -3,3 +3,5 @@ es:
     errors:
       messages:
         taken: "Ya ha sido tomado"
+        subdomain:
+          invalid_network: "La red no existe"

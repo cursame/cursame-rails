@@ -3,3 +3,5 @@ en:
     errors:
       messages:
         taken: "It's already taken"
+        subdomain:
+          invalid_network: "The network doesn't exists"
