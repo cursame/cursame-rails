@@ -2,11 +2,11 @@
 	function readURL(input,id,width) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
-			
+
 			reader.onload = function (e) {
 				$('#'+id)
 				.attr('src', e.target.result)
-				
+
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -16,7 +16,7 @@
 	<%= form_for(@course, :html => { :class => "default-form edit-course "}) do |f| %>
 
 <div class="form-course" style="width: 855px; margin-top: 39px; background: transparent;"><!-- estilo en courses.scss -->
- 
+
 <div class="" style="position: absolute; display: block; width: 630px; background: #F6F7F9; padding: 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border: 1px solid #eee; position: relative; height: 36px; display: block;">
 	<div class="UpdateSubmit" style="float: left;"><%= f.submit "#{ t('.update') current_network.course_tag}" %> </div>
 	<div style="margin-top:5px; float:right; margin-right:15px;"><%= link_to "#{ t('.return') current_network.course_tag}", course_path(@course.id)%></div>
@@ -24,7 +24,7 @@
 
 
 	<div style="width: 465px; float:left; margin-top: 30px;">
-	
+
 		<p><%=t('.name')%> <%= current_network.course_tag %></p>
 	    <%= f.text_field :title, :class=>"input-style fixFormUser" %>
 	    <p><%=t('.name')%> <%= current_network.course_tag %></p>
@@ -39,7 +39,7 @@
 	<p><%= f.label :fecha_de_inicio %></p>
 	 <%= f.text_field :init_date, :placeholder=>t('.init_date'), :class=>"date-input fixLabeluser", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
 	</div>
-	
+
 	<div style="display: block; position: relative; height: 62px; clear: both;">
 	<p><%= f.label :public_status, t('.privacy') %></p>
 	<% if @course.public_status == 'public' %>
@@ -56,26 +56,26 @@
 
 
 	<div class="" style="float: right; background: #F6F7F9; height: 443px; width: 220px; margin-top: 52px; padding-bottom: 0px; border: 1px solid #eee; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-	
+
 	<div style="margin-top: -80px; text-align: center;">
 	<div style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; background: #00B4C4; border: 2px solid #FFF; overflow: hidden; position: relative;">
 		<%= image_tag(@course.avatar.blank? ? '/assets/'+ @course.course_avatarx  :  @course.avatar.profile, :width =>"150px", :height =>"150px",:style =>"padding-top:-50%",:class => "coverphoto-label AvatarLabelText", :id =>"img_prev_course_avatar" )%>
 	</div>
-	
+
 	<p style="clear: both; text-align: center;"><%= f.label :avatar, :style => "float: none;" %></p>
 	<div style="width: 100%; margin: 0 auto; height: 50px;">
 		<%= f.file_field :avatar, :class=>"stylizeForm" , :style => "margin: 0 auto; float: none;", :onchange => "readURL(this,'img_prev_course_avatar',64);"%>
 	</div>
-	
-	
+
+
 	<div style="height: 80px;"><%= image_tag(@course.coverphoto.blank? ? '/assets/'+ @course.image_coursex  :  @course.coverphoto, :width =>"168", :height =>"68",:class => "avatar-mini avatar", :id =>"img_prev_course_header")%>
 	</div>
 	<p style="clear: both; text-align: center;"><%= f.label :imagen_de_cabecera, :style => "float: none;" %></p>
-	
+
 	<%= f.file_field :coverphoto, :class=>"stylizeForm" , :style => "margin: 0 auto; float: none;", :onchange => "readURL(this,'img_prev_course_header',168);"%>
 	</div>
 	</div>
-	
+
 </div>
 
 <% end %>
@@ -86,8 +86,25 @@
 	        minDate: 0,
 	        showOtherMonths: true,
 	        dateFormat: 'dd/mm/yy',
-	        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-	        dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+	        monthNames: [I18n.t("date.month.jan"),
+                 I18n.t("date.month.feb"),
+                 I18n.t("date.month.mar"),
+                 I18n.t("date.month.apr"),
+                 I18n.t("date.month.may"),
+                 I18n.t("date.month.jun"),
+                 I18n.t("date.month.jul"),
+                 I18n.t("date.month.aug"),
+                 I18n.t("date.month.sept"),
+                 I18n.t("date.month.oct"),
+                 I18n.t("date.month.nov"),
+                 I18n.t("date.month.dec")],
+	        dayNamesMin: [I18n.t("date.day.sun"),
+                  I18n.t("date.day.mon"),
+                  I18n.t("date.day.tu"),
+                  I18n.t("date.day.we"),
+                  I18n.t("date.day.th"),
+                  I18n.t("date.day.fri"),
+                  I18n.t("date.day.sat")]
 	    });
     });
 </script>

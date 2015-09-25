@@ -4,8 +4,25 @@ $(function () {
     minDate: 0,
     showOtherMonths: true,
     dateFormat: 'dd/mm/yy',
-    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+    monthNames: [I18n.t("date.month.jan"),
+                 I18n.t("date.month.feb"),
+                 I18n.t("date.month.mar"),
+                 I18n.t("date.month.apr"),
+                 I18n.t("date.month.may"),
+                 I18n.t("date.month.jun"),
+                 I18n.t("date.month.jul"),
+                 I18n.t("date.month.aug"),
+                 I18n.t("date.month.sept"),
+                 I18n.t("date.month.oct"),
+                 I18n.t("date.month.nov"),
+                 I18n.t("date.month.dec")],
+    dayNamesMin: [I18n.t("date.day.sun"),
+                  I18n.t("date.day.mon"),
+                  I18n.t("date.day.tu"),
+                  I18n.t("date.day.we"),
+                  I18n.t("date.day.th"),
+                  I18n.t("date.day.fri"),
+                  I18n.t("date.day.sat")]
   }).on('change', function () {
     $(this).valid();
   });
@@ -32,7 +49,7 @@ $(function () {
       }
     },
     focusFirstInput : true,
-    disableUIStyles : true  
+    disableUIStyles : true
   });
 
   jQuery.validator.addMethod("equalTo", function(value, element, params){

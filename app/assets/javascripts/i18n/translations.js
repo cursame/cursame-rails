@@ -834,6 +834,15 @@ I18n.translations["en"] = {
       "Nov",
       "Dec"
     ],
+    "day": {
+      "fri": "Fri",
+      "mon": "Mon",
+      "sat": "Sat",
+      "sun": "Sun",
+      "th": "Th",
+      "tu": "Tu",
+      "we": "We"
+    },
     "day_names": [
       "Sunday",
       "Monday",
@@ -847,6 +856,20 @@ I18n.translations["en"] = {
       "default": "%Y-%m-%d",
       "long": "%B %d, %Y",
       "short": "%b %d"
+    },
+    "month": {
+      "apr": "April",
+      "aug": "August",
+      "dec": "December",
+      "feb": "February",
+      "jan": "January",
+      "jul": "July",
+      "jun": "June",
+      "mar": "March",
+      "may": "May",
+      "nov": "November",
+      "oct": "October",
+      "sept": "September"
     },
     "month_names": [
       null,
@@ -11477,6 +11500,15 @@ I18n.translations["es"] = {
       "nov",
       "dic"
     ],
+    "day": {
+      "fri": "Vie",
+      "mon": "Lun",
+      "sat": "Sab",
+      "sun": "Dom",
+      "th": "Jue",
+      "tu": "Mar",
+      "we": "Mie"
+    },
     "day_names": [
       "domingo",
       "lunes",
@@ -11490,6 +11522,20 @@ I18n.translations["es"] = {
       "default": "%d/%m/%Y",
       "long": "%A, %d de %B de %Y",
       "short": "%d de %b"
+    },
+    "month": {
+      "apr": "Abril",
+      "aug": "Agosto",
+      "dec": "Diciembre",
+      "feb": "Febrero",
+      "jan": "Enero",
+      "jul": "Julio",
+      "jun": "Junio",
+      "mar": "Marzo",
+      "may": "Mayo",
+      "nov": "Noviembre",
+      "oct": "Octubre",
+      "sept": "Septiembre"
     },
     "month_names": [
       null,
@@ -17108,6 +17154,15 @@ I18n.translations["es_meems"] = {
       "nov",
       "dic"
     ],
+    "day": {
+      "fri": "Vie",
+      "mon": "Lun",
+      "sat": "Sab",
+      "sun": "Dom",
+      "th": "Jue",
+      "tu": "Mar",
+      "we": "Mie"
+    },
     "day_names": [
       "domingo",
       "lunes",
@@ -17121,6 +17176,20 @@ I18n.translations["es_meems"] = {
       "default": "%d/%m/%Y",
       "long": "%A, %d de %B de %Y",
       "short": "%d de %b"
+    },
+    "month": {
+      "apr": "Abril",
+      "aug": "Agosto",
+      "dec": "Diciembre",
+      "feb": "Febrero",
+      "jan": "Enero",
+      "jul": "Julio",
+      "jun": "Junio",
+      "mar": "Marzo",
+      "may": "Mayo",
+      "nov": "Noviembre",
+      "oct": "Octubre",
+      "sept": "Septiembre"
     },
     "month_names": [
       null,
@@ -22749,6 +22818,15 @@ I18n.translations["devise"] = {
       "nov",
       "dic"
     ],
+    "day": {
+      "fri": "Vie",
+      "mon": "Lun",
+      "sat": "Sab",
+      "sun": "Dom",
+      "th": "Jue",
+      "tu": "Mar",
+      "we": "Mie"
+    },
     "day_names": [
       "domingo",
       "lunes",
@@ -22762,6 +22840,20 @@ I18n.translations["devise"] = {
       "default": "%d/%m/%Y",
       "long": "%A, %d de %B de %Y",
       "short": "%d de %b"
+    },
+    "month": {
+      "apr": "Abril",
+      "aug": "Agosto",
+      "dec": "Diciembre",
+      "feb": "Febrero",
+      "jan": "Enero",
+      "jul": "Julio",
+      "jun": "Junio",
+      "mar": "Marzo",
+      "may": "Mayo",
+      "nov": "Noviembre",
+      "oct": "Octubre",
+      "sept": "Septiembre"
     },
     "month_names": [
       null,

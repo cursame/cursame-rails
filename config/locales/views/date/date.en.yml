@@ -1,0 +1,23 @@
+en:
+  date:
+    month:
+      jan: January
+      feb: February
+      mar: March
+      apr: April
+      may: May
+      jun: June
+      jul: July
+      aug: August
+      sept: September
+      oct: October
+      nov: November
+      dec: December
+    day:
+      mon: Mon
+      tu: Tu
+      we: We
+      th: Th
+      fri: Fri
+      sat: Sat
+      sun: Sun
