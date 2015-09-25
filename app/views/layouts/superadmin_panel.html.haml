@@ -30,14 +30,6 @@
 
     :javascript
       $(function() {
-      <haml_silent>         if flash[:notice]
-      </haml_silent><haml_block>          Notice('notice', '#{flash[:notice]}');
-      </haml_block><haml_silent>         elsif flash[:error]
-      </haml_silent><haml_block>          Notice('error', '#{flash[:error]}');
-      </haml_block><haml_silent>         elsif flash[:success]
-      </haml_silent><haml_block>          Notice('success', '#{flash[:success]}');
-      </haml_block>      });
-
             window.clearTimeout(expireSession);
             var expireSession = setTimeout(function() {
               $.get('#{expire_session_path}');
