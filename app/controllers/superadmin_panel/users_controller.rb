@@ -6,17 +6,9 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
 
     search = params[:search] ? params[:search].strip.squeeze(' ').downcase : ''
 
-    if params[:email]
-      @users = @users.where('LOWER(email) LIKE ?', "%#{search.split("@").first}%")
-     end
-
-     if params[:first_name]
-       @users = @users.where('LOWER(first_name) LIKE ?', "%#{search}%")
-     end
-
-     if params[:last_name]
-       @users = @users.where('LOWER(last_name) LIKE ?', "%#{search}%")
-     end
+    search_by_field(:email, search)
+    search_by_field(:first_name, search)
+    search_by_field(:last_name, search)
 
     @users = @users.paginate(page: params[:page], per_page: 30)
   end
@@ -29,13 +21,8 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
 
   def create
     @user = User.new(users_params)
-
-    network_id = params[:user][:permissionings_attributes][:"0"][:network_id]
-    @user.subdomain = Network.find_by_id(network_id).subdomain
-    @user.personal_url = SecureRandom.uuid
-    @user.domain = request.domain
-
     @user.skip_confirmation!
+    @user.domain = request.domain
     if @user.save
       redirect_to superadmin_panel_user_path(@user)
     else
@@ -56,12 +43,7 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
       @user.skip_reconfirmation!
     end
 
-    network_id = params[:user][:permissionings_attributes][:"0"][:network_id]
-    @user.subdomain = Network.find_by_id(network_id).subdomain
-    @user.domain = request.domain
-
     if @user.update_attributes(users_params)
-      @user.permissionings.first.destroy
       redirect_to superadmin_panel_user_path(@user)
     else
       @roles_options = Role.all.map { |role| [ I18n.t("roles.#{role.title}"), role.id] }
@@ -90,8 +72,15 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
 
   def users_params
     params.require(:user).permit(:self_register, :accepted_terms, :first_name,
-                                 :last_name, :email, :password,
-                                 permissionings_attributes: [:network_id, :role_id,
-                                                             :entity_name, :entity_id])
+                                 :last_name, :email, :password, :subdomain,
+                                 permissionings_attributes: [:role_id, :entity_name, :user_id,
+                                                             :entity_id, :id])
   end
+
+  def search_by_field(field, search)
+    if params[field]
+      @users = @users.where("LOWER(#{field.to_s}) LIKE ?", "%#{search}%")
+    end
+  end
+
 end

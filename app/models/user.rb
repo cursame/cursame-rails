@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship",
            :foreign_key => "friend_id", :uniq => true, :dependent => :destroy
 
-  has_many :permissionings, dependent: :destroy
+  has_many :permissionings, dependent: :destroy, before_add: :set_user
   has_many :networks, through: :permissionings
   has_many :members_in_courses, dependent: :destroy
   has_many :events, dependent: :destroy
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   has_many :grades, dependent: :destroy
   has_many :library_directories, dependent: :destroy
   has_many :time_trying_surveys
-    has_many :notifications, :through => :usernotificationings
+  has_many :notifications, :through => :usernotificationings
   has_many :roles, :through => :permissionings
   has_many :usernotificationings, :dependent => :destroy
 
@@ -62,12 +62,13 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :personal_url
-  validates_presence_of :subdomain
+  validates :subdomain, presence: true, subdomain: true
 
   validates_uniqueness_of :personal_url
 
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :permissionings
+  validates_associated :permissionings
   accepts_nested_attributes_for :networks
   accepts_nested_attributes_for :user_language
 
@@ -78,6 +79,10 @@ class User < ActiveRecord::Base
   #avatar
   mount_uploader :avatar, AvatarUploader
   mount_uploader :coverphoto, CoverphotoUploader
+
+  before_validation do |user|
+    user.personal_url ||= SecureRandom.uuid
+  end
 
   def inverse_friendships
     Friendship.where(:friend_id => id)
@@ -540,20 +545,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def subdomain=(value)
-    network = Network.find_by_subdomain(value)
-
-    unless network == nil
-      write_attribute(:subdomain, value)
-      permissionings = Permissioning.find_all_by_user_id(self.id)
-      permissionings.each do |permissioning|
-        permissioning.update_attributes :network_id => network.id
-      end
-    else
-      puts "No existe la red con ese subdominio"
-    end
-  end
-
   def role
     roles.first
   end
@@ -582,4 +573,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_user(permissioning)
+    permissioning.user ||= self
+  end
 end
