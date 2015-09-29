@@ -21,7 +21,7 @@
                     de #{course.members_in_courses.count - 1}
                 %li
                   %span.meta-info= t('.publish_date')
-                  %p= I18n.localize(discussion.created_at, format: "%e de %B del %Y")
+                  %p= I18n.localize(discussion.created_at, format: "%e %B %Y")
                 %li
                   %span.meta-info= t('.limit_publish_date')
-                  %p= I18n.localize(discussion.end_date, format: "%e de %B del %Y")
+                  %p= I18n.localize(discussion.end_date, format: "%e %B %Y")
