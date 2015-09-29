@@ -14,14 +14,14 @@
             %th= t('.init_date')
             %th= t('.actions')
         %tbody
-          - @discussions.each do |discussion| 
+          - @discussions.each do |discussion|
             %tr
               %td= link_to discussion.title, managers_discussion_path(discussion)
               %td
                 - unless discussion.courses.empty?
                   = link_to discussion.courses.first.title, managers_course_path(discussion.courses.first)
                 - else
-                  Publica
+                  = t('.public_discussion')
               %td= discussion.state == "published" ? t('.published') : t('.unpublished')
               %td= discussion.evaluable ? t('.eval') : t('.non_eval')
               %td= discussion.created_at
@@ -34,6 +34,6 @@
                     %ul
                       %li= link_to t('.view'), managers_discussion_path(discussion)
                       %li= link_to t('.delete'), managers_discussion_path(discussion), class: 'btn btn-small btn-secondary', method: :delete, confirm: t('.sure')
-                      
+
       .digg_pagination.paginator
         = will_paginate @discussions
