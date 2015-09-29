@@ -13,6 +13,15 @@ test:
   pool: 5
   timeout: 5000
 
+staging:
+  adapter: postgresql
+  encoding: utf8
+  pool: 10
+  database: <%= ENV['CURSAME_DATABASE_NAME'] %>
+  username: <%= ENV['CURSAME_DATABASE_USERNAME'] %>
+  password: <%= ENV['CURSAME_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CURSAME_DATABASE_HOST'] %>
+
 production:
   adapter: postgresql
   encoding: utf8
