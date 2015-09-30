@@ -93,7 +93,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def state
-    if self.publish_date <= DateTime.now and self.end_date > DateTime.now
+    if self.evaluable? && self.publish_date <= DateTime.now && self.end_date > DateTime.now
       @state = "published"
     else
       @state = "unpublish"

@@ -132,6 +132,7 @@ es_meems:
         view: Ver
         delete: Borrar
         sure: ¿Estás seguro de borrar esta discusión?
+        public_discussion: 'Discusión pública'
       show:
         return: ← Regresar
         delete: Borrar
