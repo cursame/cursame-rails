@@ -14,7 +14,7 @@ module ApplicationHelper
 
   def date_format(date, format)
     case format
-    when 'normal' then localize(date, format: '%e de %B del %Y')
+    when 'normal' then localize(date, format: '%e %B %Y')
     end
   end
 
