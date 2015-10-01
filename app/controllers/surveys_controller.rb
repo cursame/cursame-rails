@@ -53,7 +53,7 @@ class SurveysController < ApplicationController
 
     @course = Course.find_by_id(params[:id])
 
-    surveys = @course.surveys
+    surveys = @course.surveys.keep_if {|x| x.state == 'published'}
 
     surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
