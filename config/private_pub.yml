@@ -6,7 +6,7 @@ test:
   secret_token: "secret"
   daemonize: true
 staging:
-  server: "http://staging-privatepub:9292/faye"
+  server: "http://faye.cursalab.com:9292/faye"
   secret_token: "75a7485aeed08961e249a3db5e03fb6f60364eec013d99a8e0d9f457b661f8c9"
   signature_expiration: 3600 # one hour
 production:
