@@ -53,7 +53,7 @@ class SurveysController < ApplicationController
 
     @course = Course.find_by_id(params[:id])
 
-    surveys = @course.surveys.each {|x| x.expired?}
+    surveys = @course.surveys.each(&:expired?)
 
     surveys.keep_if {|x| x.state == 'published'}
 
