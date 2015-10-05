@@ -6,5 +6,7 @@ class Catalog < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :catalog_errors
+
   mount_uploader :csv_file, FileUploader
 end
