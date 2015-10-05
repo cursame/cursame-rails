@@ -53,7 +53,9 @@ class SurveysController < ApplicationController
 
     @course = Course.find_by_id(params[:id])
 
-    surveys = @course.surveys.keep_if {|x| x.state == 'published'}
+    surveys = @course.surveys.each(&:expired?)
+
+    surveys.keep_if {|x| x.state == 'published'}
 
     surveys = surveys.sort do
       |x,y| y.end_date <=> x.end_date
@@ -206,6 +208,7 @@ class SurveysController < ApplicationController
       ids.each do |id|
         @survey.courses.push(Course.find_by_id(id))
       end
+      @survey.expired?
       @survey.save
 
       if params[:files]
