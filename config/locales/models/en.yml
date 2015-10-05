@@ -5,3 +5,7 @@ en:
         taken: "It's already taken"
         subdomain:
           invalid_network: "The network doesn't exists"
+        csv_file:
+          malformed: "The file is an invalid CSV"
+          unknown_encoding: "The file doesn't have a valid encode"
+          empty: "The file must contain at least one user"

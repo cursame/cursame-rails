@@ -5,3 +5,7 @@ es:
         taken: "Ya ha sido tomado"
         subdomain:
           invalid_network: "La red no existe"
+        csv_file:
+          malformed: "El archivo no es un CSV válido"
+          unknown_encoding: "El archivo no tiene un encoding válido"
+          empty: "El archivo debe tener al menos un usuario"
