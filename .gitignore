@@ -32,3 +32,8 @@ Thumbs.db
 .env
 .ruby-version
 dump.rdb
+
+
+#Ignore tmp files
+spec/fixtures/tmps/
+!spec/fixtures/tmps/README.md
