@@ -6,8 +6,9 @@ class Permissioning < ActiveRecord::Base
   validates_associated :role
   validates_associated :network
 
-  validates_presence_of :entity_id, :unless => lambda { self.role.title != "mentor_link" }
-  validates_presence_of :entity_name, :unless => lambda { self.role.title != "mentor_link" }
+  validates_presence_of :role
+  validates :entity_id, entity: true
+  validates :entity_name, entity: true
 
   before_validation do |permissioning|
     network = Network.find_by_subdomain(permissioning.user.subdomain)

@@ -9,13 +9,20 @@ require 'capybara/rspec'
 require 'support/features_helper_methods'
 require 'sidekiq/testing'
 
+require 'helpers/catalog_helpers'
+
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
-  config.include Features::HelperMethods, :type => :feature
+  config.include Features::HelperMethods, type: :feature
   config.infer_spec_type_from_file_location!
+
+  config.include CatalogHelpers, type: :catalog_model
+  config.extend CatalogHelpers, type: :catalog_model
+
+
 
   Sidekiq::Testing.fake!
   Capybara.default_host = 'http://testing.lvh.me:3001'

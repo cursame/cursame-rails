@@ -14,7 +14,6 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
   end
 
   def new
-    @roles_options = Role.all.map { |role| [ I18n.t("roles.#{role.title}"), role.id] }
     @user = User.new
     @user.permissionings.build
   end
@@ -26,13 +25,11 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
     if @user.save
       redirect_to superadmin_panel_user_path(@user)
     else
-      @roles_options = Role.all.map { |role| [ I18n.t("roles.#{role.title}"), role.id] }
       render action: :new
     end
   end
 
   def edit
-    @roles_options = Role.all.map { |role| [ I18n.t("roles.#{role.title}"), role.id] }
     @user = User.includes(permissionings: [:network, :role]).find_by_id params[:id]
   end
 
@@ -46,7 +43,6 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
     if @user.update_attributes(users_params)
       redirect_to superadmin_panel_user_path(@user)
     else
-      @roles_options = Role.all.map { |role| [ I18n.t("roles.#{role.title}"), role.id] }
       render action: :edit
     end
   end
@@ -82,5 +78,4 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
       @users = @users.where("LOWER(#{field.to_s}) LIKE ?", "%#{search}%")
     end
   end
-
 end

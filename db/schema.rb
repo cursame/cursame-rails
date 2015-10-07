@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150903193002) do
+ActiveRecord::Schema.define(:version => 20150930195356) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -54,25 +54,6 @@ ActiveRecord::Schema.define(:version => 20150903193002) do
     t.datetime "updated_at", :null => false
     t.string   "position"
   end
-
-  create_table "admin_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "online"
-  end
-
-  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
-  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "answer_files", :force => true do |t|
     t.integer  "answer_id"
@@ -141,6 +122,26 @@ ActiveRecord::Schema.define(:version => 20150903193002) do
   end
 
   add_index "bit_settings", ["network_id"], :name => "index_bit_settings_on_network_id"
+
+  create_table "catalog_errors", :force => true do |t|
+    t.integer  "catalog_id"
+    t.integer  "row"
+    t.string   "email"
+    t.string   "errors_message", :limit => 400
+    t.string   "field"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "catalog_errors", ["catalog_id"], :name => "index_catalog_errors_on_catalog_id"
+
+  create_table "catalogs", :force => true do |t|
+    t.string   "csv_file",   :limit => 500
+    t.string   "status",     :limit => 10,  :default => "pending"
+    t.string   "domain"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
 
   create_table "channels", :force => true do |t|
     t.string   "channel_type"
@@ -512,7 +513,8 @@ ActiveRecord::Schema.define(:version => 20150903193002) do
     t.string   "personalize_domain"
     t.boolean  "authenticate_teacher"
     t.boolean  "evaluable",            :default => true
-    t.string   "language"
+    t.string   "language",             :default => "es"
+    t.boolean  "multilanguage",        :default => false
   end
 
   create_table "networks_users", :force => true do |t|
@@ -823,5 +825,49 @@ ActiveRecord::Schema.define(:version => 20150903193002) do
     t.integer  "network_id"
     t.boolean  "public",           :default => false
   end
+
+  create_table "wufoo_form_roles", :force => true do |t|
+    t.integer  "wufoo_form_id"
+    t.integer  "role_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "wufoo_form_roles", ["role_id"], :name => "index_wufoo_form_roles_on_role_id"
+  add_index "wufoo_form_roles", ["wufoo_form_id"], :name => "index_wufoo_form_roles_on_wufoo_form_id"
+
+  create_table "wufoo_forms", :force => true do |t|
+    t.string   "identifier"
+    t.integer  "showable_id"
+    t.string   "showable_type"
+    t.integer  "user_id"
+    t.datetime "init_date"
+    t.datetime "term_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "wufoo_forms", ["showable_id", "showable_type"], :name => "index_wufoo_forms_on_showable_id_and_showable_type"
+  add_index "wufoo_forms", ["user_id"], :name => "index_wufoo_forms_on_user_id"
+
+  create_table "wufoo_responses", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "wufoo_form_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "wufoo_responses", ["user_id"], :name => "index_wufoo_responses_on_user_id"
+  add_index "wufoo_responses", ["wufoo_form_id"], :name => "index_wufoo_responses_on_wufoo_form_id"
+
+  create_table "wufoo_settings", :force => true do |t|
+    t.integer  "network_id"
+    t.string   "api_key"
+    t.string   "subdomain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "wufoo_settings", ["network_id"], :name => "index_wufoo_settings_on_network_id"
 
 end
