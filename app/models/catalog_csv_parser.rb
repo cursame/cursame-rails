@@ -1,6 +1,7 @@
 require 'charlock_holmes'
 
 class CatalogCSVParser
+
   attr_reader :catalog
 
   def initialize(catalog)
@@ -9,8 +10,9 @@ class CatalogCSVParser
   end
 
   def parse
-    path = csv_file_path
-    CSV.foreach(path, headers: true, header_converters: :symbol) do |row|
+    file = open_csv
+    csv = CSV.new(file, headers: true, header_converters: :symbol)
+    csv.each do |row|
       create_user(row)
     end
     update_catalog_status
@@ -20,24 +22,26 @@ class CatalogCSVParser
 
   def update_catalog_status
     if @catalog.catalog_errors.any?
-      @catalog.status = 'rejected'
+      @catalog.update_attributes(status: 'rejected')
     else
-      @catalog.status = 'accepted'
+      @catalog.update_attributes(status: 'accepted')
     end
     @catalog.save
   end
 
   def create_catalog_errors(user)
     user.errors.messages.each do |field, messages|
-      catalog_error = CatalogError.new
-      catalog_error.row = @line
-      catalog_error.email = user.email
-      catalog_error.field = field.to_s
-      catalog_error.catalog = @catalog
+      if !(/permissionings./ =~ field.to_s)
+        catalog_error = CatalogError.new
+        catalog_error.row = @line
+        catalog_error.email = user.email
+        catalog_error.field = field.to_s
+        catalog_error.catalog = @catalog
 
-      catalog_error.errors_message = messages.to_sentence.capitalize
+        catalog_error.errors_message = messages.to_sentence.capitalize
 
-      catalog_error.save
+        catalog_error.save
+      end
     end
   end
 
@@ -66,8 +70,13 @@ class CatalogCSVParser
     }
   end
 
-  def csv_file_path
-    Rails.env.production? ? @catalog.csv_file.url : @catalog.csv_file.file.path
+  def open_csv
+    if Rails.env.production? || Rails.env.development?
+      file = open(@catalog.csv_file.url)
+    else
+      file = open(@catalog.csv_file.file.path)
+    end
+    file
   end
 
   def sanitaize_row!(row)
