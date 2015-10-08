@@ -22,6 +22,9 @@ RSpec.configure do |config|
   config.include CatalogHelpers, type: :catalog_model
   config.extend CatalogHelpers, type: :catalog_model
 
+  config.include CatalogHelpers, type: :feature
+
+
 
 
   Sidekiq::Testing.fake!

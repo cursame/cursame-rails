@@ -124,6 +124,8 @@ Cursame30Lb::Application.routes.draw do
     resources :networks
     resources :users
     get '/users/:id/confirm', to: 'users#confirm', as: :user_confirm
+
+    resources :catalogs, except: [:update, :edit]
   end
 
   #Calificar Actividades

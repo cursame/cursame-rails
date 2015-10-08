@@ -1,0 +1,31 @@
+.cols-12
+  .col.col-12.omega.alpha
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.imports_logs')
+        .actions
+          = link_to t('.create'), new_superadmin_panel_catalog_path, class: 'btn btn-complementary'
+      %table.data-table
+        %thead
+          %tr
+            %th= t('.status_field')
+            %th= t('.domain')
+            %th= t('.csv_file')
+            %th= t('.actions')
+        %tbody
+          - @catalogs.each do |catalog|
+            %tr
+              %td= t(".status.#{catalog.status}")
+              %td= catalog.domain
+              %td= catalog.csv_file.file.filename
+              %td
+                .dropdown-wrap.actions{class: "catalog-id-#{catalog.id}"}
+                  .dropdown-pull.btn.btn-secondary.btn-small
+                    = icon 'drop-arrow'
+                  .dropdown-v.right{:style => "right: -8px;"}
+                    %i.tip
+                    %ul
+                      %li= link_to t('.destroy'), superadmin_panel_catalog_path(catalog), method: :delete, confirm: t('.destroy-confirmation')
+      .digg_pagination.paginator
+        = will_paginate @catalogs

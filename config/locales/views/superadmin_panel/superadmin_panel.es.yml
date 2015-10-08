@@ -4,6 +4,22 @@ es:
       sidebar:
         networks: Redes
         users: Usuarios
+        import_users: Importar usuarios
+    catalogs:
+      index:
+        imports_logs: Registro de importaciones
+        create: Crear importación
+        domain: Dominio
+        status_field: Estado
+        status:
+          pending: Pendiente
+          accepted: Aceptado
+          rejected: Rechazado
+        csv_file: Archivo CSV
+        actions: Acciones
+        view: Ver
+        destroy: Destruir
+        "destroy-confirmation": ¿Estás seguro que deseas eliminiar este registro?
     networks:
       shared:
         form:

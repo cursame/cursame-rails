@@ -4,6 +4,22 @@ en:
       sidebar:
         networks: Networks
         users: Users
+        import_users: Import Users
+    catalogs:
+      index:
+        imports_logs: Imports logs
+        create: Create importation
+        domain: Domain
+        status_field: Status
+        status:
+          pending: Pending
+          accepted: Accepted
+          rejected: Rejected
+        csv_file: CSV File
+        actions: Actions
+        view: View
+        destroy: Destroy
+        "destroy-confirmation": Are you sure you want to destroy this log?
     networks:
       shared:
         form:
