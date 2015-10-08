@@ -20,6 +20,33 @@ es:
         view: Ver
         destroy: Destruir
         "destroy-confirmation": ¿Estás seguro que deseas eliminiar este registro?
+      new:
+        import_users: Subir archivo e importar usuarios
+        csv_file: Archivo CSV
+        text_template: Todos los campos son obligatorios. El campo rol solo tiene como opciones, "estudiante" y "maestro".
+        download: Descargar plantilla
+        domain: Dominio
+        cancel: Cancelar
+      show:
+        return: Regresar
+        import_log: Log de importación
+        domain: Dominio
+        status_field: Estado
+        status:
+          pending: Pendiente
+          accepted: Aceptado
+          rejected: Rechazado
+        csv_file: Archivo CSV
+        row: Renglón
+        email: Email del usuario
+        field: Campo
+        errors_message: Mensaje de error
+        error_field:
+          email: Correo
+          first_name: Nombre
+          last_name: Apellidos
+          permissionings: Rol
+          subdomain: Subdominio
     networks:
       shared:
         form:

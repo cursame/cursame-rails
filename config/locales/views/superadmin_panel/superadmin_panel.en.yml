@@ -20,6 +20,33 @@ en:
         view: View
         destroy: Destroy
         "destroy-confirmation": Are you sure you want to destroy this log?
+      new:
+        import_users: Upload file and import users
+        text_template: All the field are required. The field role only has two options, "student" and "teacher".
+        download: Download template
+        csv_file: CSV File
+        domain: Domain
+        cancel: Cancel
+      show:
+        return: Return
+        import_log: Import log
+        domain: Domain
+        status_field: Status
+        status:
+          pending: Pending
+          accepted: Accepted
+          rejected: Rejected
+        csv_file: CSV File
+        row: Row
+        email: Email of the user
+        field: Field
+        errors_message: Errors message
+        error_field:
+          email: Email
+          first_name: First name
+          last_name: Last name
+          permissionings: Role
+          subdomain: Subdomain
     networks:
       shared:
         form:

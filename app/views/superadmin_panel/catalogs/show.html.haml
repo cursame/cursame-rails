@@ -1,0 +1,46 @@
+.wrapper
+  .managers-top-actions
+    .cols-12
+      .col.col-12.alpha.omega
+        .col-inner
+          %ul.list-buttons.left
+            %li= link_to t('.return').html_safe, superadmin_panel_catalogs_path, class: 'btn btn-secondary'
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1
+              = t('.import_log')
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        %span.meta-info= t('.domain')
+        %p= @catalog.domain
+        %br/
+        %span.meta-info= t('.status_field')
+        %p= t(".status.#{@catalog.status}")
+        %br/
+        %span.meta-info= t('.csv_file')
+        %a.button_button{:href => "/plantillas/import_users.csv"}
+          %p= @catalog.csv_file.file.filename
+        %br/
+        %br/
+        %br/
+
+        %table.data-table
+          %thead
+            %tr
+              %th= t('.row')
+              %th= t('.email')
+              %th= t('.field')
+              %th= t('.errors_message')
+          %tbody
+            - @catalog_errors.each do |catalog_error|
+              %tr
+                %td= catalog_error.row
+                %td= catalog_error.email
+                %td= t(".error_field.#{catalog_error.field}")
+                %td= catalog_error.errors_message
+        .digg_pagination.paginator
+          = will_paginate @catalog_errors

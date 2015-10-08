@@ -26,6 +26,7 @@
                   .dropdown-v.right{:style => "right: -8px;"}
                     %i.tip
                     %ul
+                      %li= link_to t('.view'), superadmin_panel_catalog_path(catalog)
                       %li= link_to t('.destroy'), superadmin_panel_catalog_path(catalog), method: :delete, confirm: t('.destroy-confirmation')
       .digg_pagination.paginator
         = will_paginate @catalogs

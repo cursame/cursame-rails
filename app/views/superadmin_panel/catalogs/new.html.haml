@@ -1,0 +1,45 @@
+.wrapper
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1= t('.import_users')
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        = t('.text_template')
+        %br/
+        %br/
+        %a.button_button{:href => "/plantillas/import_users.csv"}
+          = t('.download')
+        %br/
+        %br/
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        = form_for [:superadmin_panel, @catalog], html: { class: 'form-validate-js' } do |f|
+          .form-group.label-on-top.l-label
+            .form-group-label
+              = f.label :csv_file, "#{t('.csv_file')} :"
+              .form-group-main
+                .form-unit
+                  - csv_file_error =  @catalog.errors.any? && @catalog.errors.messages[:csv_file].any?
+                  - if csv_file_error
+                    = f.label :"csv-file-error", @catalog.errors.messages[:csv_file].to_sentence.capitalize, class: 'error'
+                  = f.file_field :csv_file
+
+          .form-group.label-on-top.l-label
+            .form-group-label
+              = f.label :domain, "#{t('.domain')} :"
+            .form-group-main
+              .form-unit
+                = f.select :domain, select_domain(@catalog), required: "required"
+
+          %br/
+          %br/
+          %ul.list-buttons.left
+            %li= link_to t('.cancel'), :back, class: 'btn btn-medium btn-secondary'
+            %li
+              %span.btn.btn-primary.input-btn.btn-medium.activable
+                = f.submit t('.import_users'), id: 'action-button'
