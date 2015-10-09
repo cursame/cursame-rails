@@ -3,10 +3,13 @@ class Permissioning < ActiveRecord::Base
   belongs_to :role
   belongs_to :network
 
+  validates_presence_of :user
+  validates_presence_of :network
+  validates_presence_of :role
+
   validates_associated :role
   validates_associated :network
 
-  validates_presence_of :role
   validates :entity_id, entity: true
   validates :entity_name, entity: true
 
