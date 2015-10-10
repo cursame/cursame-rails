@@ -53,6 +53,7 @@ gem 'multi_logger'
 gem 'mail_view', '~> 2.0.4'
 gem 'cancan'
 gem 'strong_parameters'
+gem 'validates_email_format_of'
 
 group :assets do
   gem 'sass', '3.2.13'

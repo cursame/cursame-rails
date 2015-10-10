@@ -470,6 +470,8 @@ GEM
       raindrops (~> 0.7)
     useragent (0.10.0)
     uuidtools (2.1.4)
+    validates_email_format_of (1.6.3)
+      i18n
     warden (1.2.3)
       rack (>= 1.0)
     watu_table_builder (0.3.0)
@@ -556,8 +558,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   useragent
+  validates_email_format_of
   watu_table_builder
   will_paginate (= 3.0.3)
-
-BUNDLED WITH
-   1.10.3
