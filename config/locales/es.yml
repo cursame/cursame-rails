@@ -234,3 +234,4 @@ es:
   errors:
     messages:
       access_denied: "Acceso denegado"
+      email_invalid: "Email inválido"
