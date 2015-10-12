@@ -64,6 +64,8 @@ class User < ActiveRecord::Base
   validates_presence_of :personal_url
   validates :subdomain, presence: true, subdomain: true
 
+  validates_email_format_of :email, message: I18n.t('.errors.messages.email_invalid')
+
   validates_uniqueness_of :personal_url
 
   accepts_nested_attributes_for :assets

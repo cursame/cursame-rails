@@ -34,3 +34,4 @@ en:
   errors:
     messages:
       access_denied: "Access denied"
+      email_invalid: 'Invalid email'
