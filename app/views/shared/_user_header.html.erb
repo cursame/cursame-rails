@@ -43,6 +43,9 @@
                         <li>
                           <%= link_to(t('.activity_block.superadmin_href'), superadmin_panel_networks_path) %>
                         </li>
+                        <li>
+                          <%= link_to(t('.activity_block.admin_href'), managers_path) %>
+                        </li>
                       <% elsif current_user.admin? && !current_user.operator? %>
                         <li>
                           <%= link_to(t('.activity_block.admin_href'), managers_path) %>
