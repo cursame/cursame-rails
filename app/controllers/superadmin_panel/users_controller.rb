@@ -20,7 +20,6 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
 
   def create
     @user = User.new(users_params)
-    @user.skip_confirmation!
     @user.domain = request.domain
     if @user.save
       redirect_to superadmin_panel_user_path(@user)
@@ -35,10 +34,6 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
 
   def update
     @user = User.find_by_id(params[:id])
-
-    if @user.email != params[:user][:email]
-      @user.skip_reconfirmation!
-    end
 
     if @user.update_attributes(users_params)
       redirect_to superadmin_panel_user_path(@user)
@@ -67,10 +62,17 @@ class SuperadminPanel::UsersController < SuperadminPanel::BaseController
   private
 
   def users_params
-    params.require(:user).permit(:self_register, :accepted_terms, :first_name,
-                                 :last_name, :email, :password, :subdomain,
-                                 permissionings_attributes: [:role_id, :entity_name, :user_id,
-                                                             :entity_id, :id])
+    params_required = params.require(:user)
+    sanitaized_params = params_required.permit(:self_register, :accepted_terms, :first_name,
+                                               :last_name, :email, :password, :subdomain,
+                                               permissionings_attributes: [:role_id, :entity_name,
+                                                                           :user_id,
+                                                                           :entity_id, :id])
+
+    if sanitaized_params[:password] && sanitaized_params[:password].empty?
+      sanitaized_params.delete :password
+    end
+    sanitaized_params
   end
 
   def search_by_field(field, search)

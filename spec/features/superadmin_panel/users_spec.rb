@@ -79,6 +79,7 @@ RSpec.feature 'Users Views:' do
     user = FactoryGirl.build(:user)
     role_title = %w(superadmin admin teacher student).sample
     fill_user_form(user, role_title, @network)
+    fill_user_password
 
     click_on 'action-button'
     expect_user_show_texts(user, role_title)
@@ -103,10 +104,23 @@ RSpec.feature 'Users Views:' do
     meems = FactoryGirl.create(:network, subdomain: 'meems')
     user = FactoryGirl.build(:user)
     entity = fill_user_form(user, "mentor_link", meems)
+    fill_user_password
 
     click_on 'action-button'
     expect(page).to have_text entity[:id]
     expect(page).to have_text entity[:name]
+  end
+
+  scenario "put #update without password" do
+    find(".user-id-#{@user.id}").click_on I18n.t('superadmin_panel.users.index.edit')
+
+    user = FactoryGirl.build(:user)
+    user.email = @user.email
+    role_title = %w(superadmin admin teacher student).sample
+    fill_user_form(user, role_title, @network)
+
+    click_on 'action-button'
+    expect_user_show_texts(user, role_title)
   end
 
   scenario "put #update" do
@@ -116,6 +130,7 @@ RSpec.feature 'Users Views:' do
     user.email = @user.email
     role_title = %w(superadmin admin teacher student).sample
     fill_user_form(user, role_title, @network)
+    fill_user_password
 
     click_on 'action-button'
     expect_user_show_texts(user, role_title)
@@ -128,6 +143,7 @@ RSpec.feature 'Users Views:' do
     user = FactoryGirl.build(:user)
     user.email = @user.email
     entity = fill_user_form(user, 'mentor_link', meems)
+    fill_user_password
 
     click_on 'action-button'
     expect(page).to have_text entity[:id].to_i
@@ -142,11 +158,14 @@ RSpec.feature 'Users Views:' do
     expect(page).to have_text user.subdomain
   end
 
+  def fill_user_password
+    fill_in('user_password', with: 'password')
+  end
+
   def fill_user_form(user, role_title, network)
     fill_in('user_email', with: user.email)
     fill_in('user_first_name', with: user.first_name)
     fill_in('user_last_name', with: user.last_name)
-    fill_in('user_password', with: 'password')
     fill_in('user_subdomain', with: network.subdomain)
 
     select(I18n.t("roles.#{role_title}"), from: 'user_permissionings_attributes_0_role_id')

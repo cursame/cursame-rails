@@ -41,8 +41,8 @@
         - password_error = user.errors.any? && user.errors.messages[:password].any?
         - if password_error
           = f.label :"password-error", user.errors.messages[:password].to_sentence.capitalize, class: 'error'
-        = f.password_field :password, placeholder: t('.password'), required: "required", autocomplete: "off", id: 'user_password',
-                           class: "#{password_error ? 'error' : ''}"
+        = f.password_field :password, placeholder: t('.password'), autocomplete: "off", id: 'user_password',
+                           class: "#{password_error ? 'error' : ''}", required: user.new_record?
 
   .form-group.label-on-top.l-label
     .form-group-label
