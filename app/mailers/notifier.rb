@@ -62,11 +62,12 @@ class Notifier < ActionMailer::Base
   end
 
   def send_email(user,subject,message)
+    @user = user
     user_mail = user.email
     @subdomain = user.subdomain
     @domain = user.domain
     @content = message
-    set_logo(user)
+    set_logo(@user)
 
     mail to: user_mail, subject: subject
   end

@@ -76,8 +76,6 @@ class Network < ActiveRecord::Base
     end
   end
 
-  handle_asynchronously :send_email, priority: 20, run_at: Proc.new{Time.zone.now}
-
   def averageCalificationSurvey
     surveys = self.surveys
     if surveys.size == 0 then
