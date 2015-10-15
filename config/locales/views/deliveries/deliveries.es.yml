@@ -24,6 +24,8 @@ es:
         final_score: Calificación final obtenida
         rubre: Rubro sin comentarios
         edit: Editar Entrega
+        delivery_end_date_finished: Esta tarea ya no se puede entregar
+        time_to_edit_assignment_finished: Ya no puedes editar la entrega de tu tarea
     delivery_compart_form:
       hmwrk_theme: Tema de la tarea
       example: "Ejemplo: Números primos"
