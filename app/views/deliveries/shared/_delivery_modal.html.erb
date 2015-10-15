@@ -131,11 +131,17 @@
     <% @if_im_member = MembersInCourse.find_by_course_id_and_user_id(course.id, current_user.id) %>
     <% if @if_im_member != nil && @if_im_member.owner != true%>
       <div class="overlay-footer">
-        <% if delivery.state == "published" && current_user.assignments.where(:delivery_id => delivery.id).empty? %>
-          <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>"><%=t('.deliver_hmwrk')%></a>
+        <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
+        <% if assignment.nil? %>
+          <% if delivery.end_date < DateTime.now %>
+            <div class="delivery-results">
+              <h4><%=t('.delivery_time_finished')%></h4>
+            </div>
+          <% else %>
+            <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>"><%=t('.deliver_hmwrk')%></a>
+          <% end %>
         <% else %>
-          <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
-          <% if !assignment.nil? && !assignment.grade.nil? %>
+          <% if !assignment.grade.nil? %>
             <div class="delivery-results">
               <div class="delivery-overall-result">
                 <div class="result"><%= assignment.grade.score %></div>
@@ -154,7 +160,13 @@
               <% end %>
             </div>
           <% else %>
-            <a href="#" class="show-delivery-form btn btn-medium btn-primary"><%=t('.edit')%></a>
+            <% if delivery.end_date < DateTime.now %>
+              <div class="delivery-results">
+                <h4><%=t('.time_to_edit_assignment_finished')%></h4>
+              </div>
+            <% else %>
+              <a href="#" class="show-delivery-form btn btn-medium btn-primary"><%=t('.edit')%></a>
+            <% end %>
           <%end%>
         <%end%>
       </div>
