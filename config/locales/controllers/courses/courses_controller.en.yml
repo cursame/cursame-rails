@@ -16,3 +16,4 @@ en:
     has_ended: "has ended, you can enable it again in the options menu of the course."
     contact: "has ended, contact the teacher for more information."
     clone_correct: "Course cloned successfully."
+    delivery_end_date_finished_message: This homework cannot longer deliver or edit your delivery

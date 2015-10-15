@@ -24,6 +24,8 @@ en:
         final_score: Final grade
         rubre: No comments on this item
         edit: Edit
+        delivery_end_date_finished: This homework cannot be delivered anymore
+        time_to_edit_assignment_finished: You cannot longer edit the delivery of your homework
     delivery_compart_form:
       hmwrk_theme: Subject
       example: "Example: Prime numbers"

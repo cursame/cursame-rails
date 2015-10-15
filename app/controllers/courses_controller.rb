@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   before_filter :filter_protection, only: [:show, :edit, :destroy, :members]
   before_filter :course_activated, only: [:show, :about, :members, :library, :closure, :evaluation_schema]
   before_filter :validations, only: :evaluation_schema
+  before_filter :delivery_end_date_finished, only: :assigment
   filter_access_to :show
 
   rescue_from Errors::ErrorResponseAppBit, with: :error_connection
@@ -1111,5 +1112,12 @@ class CoursesController < ApplicationController
   def error_connection
     info_flash = { error: "Ocurrio un error, no se pudo enviar la información a Bit" }
     redirect_to :back, flash: info_flash
+  end
+
+  def delivery_end_date_finished
+    delivery = Delivery.find_by_id params[:assignment][:delivery_id]
+    if delivery.end_date < DateTime.now
+      redirect_to(root_path, flash: { error: t('.courses_controller.delivery_end_date_finished_message') }) && return
+    end
   end
 end
