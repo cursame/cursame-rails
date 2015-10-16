@@ -68,8 +68,7 @@ class Network < ActiveRecord::Base
     users.each do |user|
       if (admin != user) then
         begin
-          mail = Notifier.send_email(user,subject,message)
-          mail.deliver
+          mail = Notifier.delay.send_email(user.id,subject,message)
         rescue
         end
       end

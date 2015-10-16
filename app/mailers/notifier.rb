@@ -61,15 +61,14 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: subject
   end
 
-  def send_email(user,subject,message)
-    @user = user
-    user_mail = user.email
-    @subdomain = user.subdomain
-    @domain = user.domain
+  def send_email(usr_id,subject,message)
+    @user = User.find_by_id(usr_id)
+    @subdomain = @user.subdomain
+    @domain = @user.domain
     @content = message
     set_logo(@user)
 
-    mail to: user_mail, subject: subject
+    mail to: @user.email, subject: subject
   end
 
   def send_import_users(user,arrayErrores)

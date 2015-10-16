@@ -19,7 +19,7 @@ RSpec.describe Network, type: :model do
       subject = 'RSpec'
       message = 'The queue must change in one job'
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
-      Notifier.delay.send_email(user.email,subject,message)
+      Notifier.delay.send_email(user.id,subject,message)
       assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size
     end
   end

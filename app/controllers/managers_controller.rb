@@ -44,7 +44,7 @@ class ManagersController < ApplicationController
 
   def mailer_deliver
     confirmed_users = current_network.users.keep_if { |user| user.confirmed?}
-    current_network.delay.send_email(current_user,confirmed_users,params[:subject],params[:message]) if confirmed_users.size > 0
+    current_network.send_email(current_user,confirmed_users,params[:subject],params[:message]) if confirmed_users.size > 0
     redirect_to managers_mailer_path, flash: { success: t('.managers_controller.in_stack') }
   end
 
