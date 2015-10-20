@@ -28,6 +28,7 @@ es:
         members: Participantes
         publish_date: Fecha de publicación
         limit_publish_date: Fecha límite para participar
+        of: de
       discussion_user_response:
         no_score: Sin Calificar
         comments: Comentarios
