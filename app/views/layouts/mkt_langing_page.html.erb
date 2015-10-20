@@ -11,7 +11,7 @@
           }
     %>
     <meta name="google-site-verification" content="2iDsswfLsUTCsZEFQ5vlpW4OUwsVwWsqwF5WHqAHuUM" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <%= favicon_link_tag '/favicon.ico' %>
     <%= stylesheet_link_tag 'application', :media => 'all', :debug => true %>
     <%= javascript_include_tag 'application.js' %>
@@ -22,7 +22,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= yield :body_classes %>">
-  
+
     <% cache_expire %>
     <%= yield %>
 
@@ -31,11 +31,11 @@
         <div class="col-col-12">
           <div class="col-inner">
             <h6>Cúrsame ® <%= Time.now.year %></h6>
-            <p>Pomona #7, Roma Norte, Delegación Cuauhtémoc, Ciudad de México.</p>
+            <p>Versalles #94, Colonia Juárez, Delegación Cuauhtémoc, Ciudad de México.</p>
             <a href="mailto:hola@cursa.me" title="hola@cursa.me">hola@cursa.me</a>
           </div>
         </div>
       </div>
-    </div>    
+    </div>
   </body>
 </html>
