@@ -9,8 +9,8 @@ es_meems:
     mailer:
       confirmation_instructions:
         welcome: ¡Bienvenido a Cúrsame!
-        usage: 'Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma de estudio.'
-        push_here: 'Si el botón superior no funciona, haz clic aquí'
+        usage: 'Para poder utilizar tu cuenta necesitamos que confirmes tu correo electrónico, es muy sencillo: haz click en el siguiente botón y estarás listo para utilizar tu nueva plataforma.'
+        push_here: 'Es muy importante que solo utilices este enlace la primera vez que inicies sesión, ya que si lo haces después, no va a funcionar y ocasionarás un error en tu acceso. La siguiente vez que quieras ingresar ve directamente a'
       reset_password_instructions:
         reset_pwd: Restaurar contraseña
         reset_password: 'Has indicado que deseas restaurar tu contraseña, para hacerlo solo debes dar click en el botón inferior y seguir las instrucciones.'
