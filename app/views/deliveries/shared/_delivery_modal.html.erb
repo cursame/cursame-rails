@@ -135,7 +135,7 @@
         <% if assignment.nil? %>
           <% if delivery.end_date < DateTime.now %>
             <div class="delivery-results">
-              <h4><%=t('.delivery_time_finished')%></h4>
+              <h4><%=t('.delivery_end_date_finished')%></h4>
             </div>
           <% else %>
             <a href="#" class="show-delivery-form btn btn-medium btn-primary" data-target-id="<%= delivery.id %>"><%=t('.deliver_hmwrk')%></a>
