@@ -18,7 +18,7 @@
 	        <br>
 	        <br>
 	        <p style="font-size: 11px; color: #404040;"><%=t('.push_here')%>	: <br>
-						<%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.subdomain, :domain => @resource.domain), style: "color: #0071a2;" %></p>
+						<%= link_to new_user_session_url(:subdomain => @resource.subdomain, :domain => @resource.domain), new_user_session_url(:subdomain => @resource.subdomain, :domain => @resource.domain), style: "color: #0071a2;" %></p>
 
 	        <br>
 	        <br>
