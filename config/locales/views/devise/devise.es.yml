@@ -30,6 +30,8 @@ es:
         email: Ingresa el correo electrónico con el cual te diste de alta y presiona el botón de "reactivar contraseña".
         email_field: Correo electrónico
         res_pwd: Recuperar contraseña
+      user:
+        send_instructions: 'Te enviamos un mensaje para restablecer tu contraseña, por favor revisa la bandeja de entrada de tu correo electrónico'
     registrations:
       edit:
         edit_usr: Editar Usuario
