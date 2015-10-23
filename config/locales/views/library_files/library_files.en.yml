@@ -12,5 +12,7 @@ en:
         send: "Send"
       standalone_card:
         download_file: "Download file"
+        delete_file: 'Delete File'
+        confirm_delete: 'You are sure to delete this file?'
     new:
       upload_file: "Upload file"
