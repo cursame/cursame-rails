@@ -43,7 +43,7 @@ class EvaluateController < ApplicationController
 
     @today_activities = activities.clone.keep_if do
       |activity|
-      p activity
+      #p activity
       Date.today <= activity.end_date.to_datetime and activity.end_date.to_datetime <= Date.tomorrow
     end
 
