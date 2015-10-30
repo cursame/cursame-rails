@@ -15,19 +15,19 @@
 						<div class="activity-view-data">
 							<ul>
 								<li>
-									<span class="meta-info"><%t('.course')%></span>
+									<span class="meta-info"><%= t('.course') %></span>
 									<p><%= link_to truncate(course.title, :omission => "...", :length => 25), course_path(course) %></p>
 								</li>
 								<li>
-									<span class="meta-info"><%t('.delivery')%></span>
+									<span class="meta-info"><%= t('.delivery') %></span>
 									<p><%= delivery.responses.count %> de <%= course.members_in_courses.count - 1 %></p>
 								</li>
 								<li>
-									<span class="meta-info"><%t('.publish_date')%></span>
+									<span class="meta-info"><%= t('.publish_date') %></span>
 									<p><%= I18n.localize(delivery.publish_date, format: "%e %B %Y") %></p>
 								</li>
 								<li>
-									<span class="meta-info"><%t('.publish_date_of')%></span>
+									<span class="meta-info"><%= t('.publish_date_of') %></span>
 									<p><%= I18n.localize(delivery.end_date, format: "%e %B %Y") %></p>
 								</li>
 							</ul>
