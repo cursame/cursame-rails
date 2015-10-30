@@ -43,3 +43,16 @@ es:
     ajax:
       discussions_paginate_ajax:
         no_more_records_found: 'No se encontraron más discusiones'
+    edit:
+      edit_discussion: 'Edición de Discusión'
+      discussion_title: 'Título'
+      title: 'Título de la Discusión'
+      discussion_description: 'Descripción'
+      description: 'Descripción de la Discusión'
+      discussion_publish_date: 'Fecha de Publicación'
+      discussion_end_date: 'Fecha de Entrega'
+      evaluation_criteria: 'Criterios de Evaluación'
+      add_criterium: 'Agregar Criterio'
+      back: 'Atrás'
+      cancel: 'Cancelar'
+      save_discussion: 'Guardar'

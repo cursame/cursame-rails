@@ -29,6 +29,7 @@ en:
         publish_date: "Published on:"
         limit_publish_date: Deadline to participate
         of: of
+        edit_discussion: 'Edit'
       discussion_user_response:
         no_score: Ungraded
         comments: Comments
