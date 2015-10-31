@@ -66,3 +66,16 @@ es:
     ajax:
       deliveries_paginate_ajax:
         no_more_records_found: 'No se encontraron tareas pasadas'
+    edit:
+      edit_homework: 'Editar Tarea'
+      homework_title: 'Título'
+      title: 'Título de la Tarea'
+      homework_description: 'Descripción'
+      description: 'Descripción de la Tarea'
+      homework_publish_date: 'Fecha de Publicación'
+      homework_end_date: 'Fecha de Entrega'
+      evaluation_criteria: 'Criterios de Evaluación'
+      add_criterium: 'Añadir Criterio'
+      cancel: 'Cancelar'
+      back: 'Atrás'
+      save: 'Guardar'
