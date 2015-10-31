@@ -28,7 +28,7 @@ class Delivery < ActiveRecord::Base
 
   validate :max_courses
 
-  accepts_nested_attributes_for :evaluation_criteria
+  accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
   accepts_nested_attributes_for :assets
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :contents
