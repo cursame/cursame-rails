@@ -1,0 +1,61 @@
+.wrapper
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1= t('.edit_homework')
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        = form_for(@delivery, remote: true, html: { class: 'new-delivery-form delivery-form-js'}) do |f|
+
+          .form-group
+            .form-group-label
+              = f.label :title, t('.homework_title')
+            .form-group-main
+              .form-unit
+                = f.text_field :title, placeholder: t('.title'), required: true
+
+          .form-group
+            .form-group-label
+              = f.label :description, t('.homework_description')
+            .form-group-main
+              .form-unit
+                = f.text_area :description, placeholder: t('.description'), rows: 3, required: true, class: 'autogrow'
+
+          .form-group
+            .form-group-label
+              = f.label :publish_date, t('.homework_publish_date')
+            .form-group-main
+              .form-unit
+                = f.text_field :publish_date, placeholder: t('.homework_publish_date'), class: "datetime-picker"
+          .form-group
+            .form-group-label
+              = f.label :end_date, t('.homework_end_date')
+            .form-group-main
+              .form-unit
+                = f.text_field :end_date, placeholder: t('.homework_end_date'), class: "datetime-picker"
+
+          .form-group
+            .form-group-label.label-no-p
+              = f.label "", t('.evaluation_criteria')
+
+          .form-group-main
+            .areas-of-evaluation
+              .form-unit
+                .fields-wrap
+                  .fields-group
+                    = f.fields_for :evaluation_criteria do |evaluation_criteria|
+                      = render partial: "shared/evaluation_criteria/evaluation_criteria_fields", locals: { f: evaluation_criteria, base_model: @delivery }
+                  = link_to_add_evaluation_criteria t('.add_criterium'), f, :evaluation_criteria
+
+          %ul.list-buttons.left
+            %li= link_to t('.back'), :back, class: 'btn btn-medium btn-secondary'
+            %li= link_to t('.cancel'), :back, class: 'btn btn-medium btn-secondary'
+            %li
+              %span.btn.btn-primary.input-btn.btn-medium.activable
+                = f.submit t('.save'), class: 'activable'
+
+
+

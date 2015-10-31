@@ -66,3 +66,16 @@ en:
     ajax:
       deliveries_paginate_ajax:
         no_more_records_found: 'No tasks found'
+    edit:
+      edit_homework: 'Edit Homework'
+      homework_title: 'Title'
+      title: 'Example: Prime numbers'
+      homework_description: 'Description'
+      description: 'Homework Description'
+      homework_publish_date: 'Publish Date'
+      homework_end_date: 'Due Date'
+      evaluation_criteria: 'Evaluation Criteria'
+      add_criterium: 'Add Criterium'
+      cancel: 'Cancel'
+      back: 'Back'
+      save: 'Save'
