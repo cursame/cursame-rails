@@ -68,6 +68,7 @@ en:
         attemps: Attemps
         of: of
         the: the
+        edit: 'Edit'
       header_evaluate:
         evaluate: Grade activities
         active: Active

@@ -68,6 +68,7 @@ es:
         attemps: Ver los intentos
         of: de
         the: del
+        edit: 'Editar'
       header_evaluate:
         evaluate: Calificar Actividades
         active: Activas
