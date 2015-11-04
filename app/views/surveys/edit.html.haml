@@ -1,0 +1,69 @@
+.wrapper
+  .cols-12
+    .col.col-12.alpha.omega
+      .col-inner
+        .managers-section-header
+          .title
+            %h1= t('.edit_survey')
+  .cols-12
+    .col.col-8.alpha.omega
+      .col-inner
+        = form_for(@survey, remote: true, html: { class: 'new-survey-form survey-form-js'}) do |f|
+
+          .form-group
+            .form-group-label
+              = f.label :name, t('.survey_title')
+            .form-group-main
+              .form-unit
+                = f.text_field :name, placeholder: t('.title'), required: true
+
+          .form-group
+            .form-group-label
+              = f.label :publish_date, t('.survey_publish_date')
+            .form-group-main
+              .form-unit
+                = f.text_field :publish_date, placeholder: t('.survey_publish_date'), class: "datetime-picker"
+          .form-group
+            .form-group-label
+              = f.label :end_date, t('.survey_end_date')
+            .form-group-main
+              .form-unit
+                = f.text_field :end_date, placeholder: t('.survey_end_date'), class: "datetime-picker"
+
+          .form-group
+            .form-group-label
+              = f.label "", 'Timer'
+            .form-group-main
+              .f-col.f-col-5
+                .form-unit
+                  = f.select :timer, options_for_select([[t('.non_mins'), 0],["180 min", 180],["120 min", 120],["80 min", 80], ["60 min", 60], ["50 min", 50], ["40 min", 40], ["30 min", 30], ["20 min", 20], ["10 min", 10], ["5 min", 5], ["1 min", 1]])
+
+          .form-group
+            .form-group-label
+              = f.label "", t('.questions')
+            .form-group-main
+              .form-unit
+                .new-survey-questions
+                  .box-question
+                    .box-question{id: "box-question-#{@survey.id}"}
+                      = f.fields_for :questions do |builder|
+                        = render "/surveys/question_fields", f: builder
+                  .add-question
+                    .question-field
+                      = link_to_add_fields t('.add_question'), f, :questions, {class: 'btn btn-secondary'}, '#box-question', "#{@survey.id}"
+
+          %ul.list-buttons.left
+            %li= link_to t('.back'), :back, class: 'btn btn-medium btn-secondary'
+            %li= link_to t('.cancel'), :back, class: 'btn btn-medium btn-secondary'
+            %li
+              %span.btn.btn-primary.input-btn.btn-medium.activable
+                = f.submit t('.save'), class: 'activable'
+
+:javascript
+  $(function() {
+    $("#box-question-#{@survey.id}").find(".question-field").each(function(index, value){
+    $(value).find('#question-num').html(index+1+'. ');
+    })
+  })
+
+
