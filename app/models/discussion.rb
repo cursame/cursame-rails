@@ -28,7 +28,7 @@ class Discussion < ActiveRecord::Base
   validates_presence_of :phase_id, :unless => lambda { self.network.subdomain != "meems" }
 
   accepts_nested_attributes_for :contents
-  accepts_nested_attributes_for :evaluation_criteria, :allow_destroy => true
+  accepts_nested_attributes_for :evaluation_criteria, allow_destroy: true
 
   acts_as_commentable
   acts_as_votable
