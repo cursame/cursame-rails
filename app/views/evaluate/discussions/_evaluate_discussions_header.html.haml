@@ -18,10 +18,13 @@
                   %span.meta-info= t('.members')
                   %p
                     = discussion.responses.count
-                    de #{course.members_in_courses.count - 1}
+                    #{t('.of')} #{course.members_in_courses.count - 1}
                 %li
                   %span.meta-info= t('.publish_date')
-                  %p= I18n.localize(discussion.created_at, format: "%e %B %Y")
+                  %p= I18n.localize(discussion.publish_date, format: "%e %B %Y")
                 %li
                   %span.meta-info= t('.limit_publish_date')
                   %p= I18n.localize(discussion.end_date, format: "%e %B %Y")
+                %li
+                  %span.meta-info
+                  %p= link_to t('.edit_discussion'), edit_discussion_path(discussion), class: 'btn btn btn-secondary'

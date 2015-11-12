@@ -43,3 +43,16 @@ en:
     ajax:
       discussions_paginate_ajax:
         no_more_records_found: 'No discussions found'
+    edit:
+      edit_discussion: 'Edit Discussion'
+      discussion_title: 'Title'
+      title: 'Discussion Title'
+      discussion_description: 'Description'
+      description: 'Discussion Description'
+      discussion_publish_date: 'Publish Date'
+      discussion_end_date: 'Due Date'
+      evaluation_criteria: 'Evaluation Criteria'
+      add_criterium: 'Add Criterion'
+      back: 'Back'
+      cancel: 'Cancel'
+      save_discussion: 'Save'
