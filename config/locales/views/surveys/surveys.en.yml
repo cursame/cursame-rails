@@ -85,3 +85,14 @@ en:
     ajax:
       surveys_paginate_ajax:
         no_more_quest: 'No more past surveys were found.'
+    edit:
+      edit_survey: 'Edit Test'
+      survey_title: 'Title'
+      title: 'Test title'
+      questions: 'Questions'
+      survey_publish_date: 'Publish Date'
+      survey_end_date: 'Deliver Date'
+      add_question: 'Add Question'
+      back: 'Back'
+      cancel: 'Cancel'
+      save: 'Save'

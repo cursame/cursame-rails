@@ -33,6 +33,11 @@
                 <li>
                  <%= link_to t('.attemps'), evaluate_survey_attemps_path(survey.id), class: 'btn'%>
                 </li>
+                <li>
+                 <%= link_to t('.edit'),
+                     edit_survey_path(survey),
+                     class: 'btn btn btn-secondary'%>
+                </li>
               </ul>
             </div>
           </div>

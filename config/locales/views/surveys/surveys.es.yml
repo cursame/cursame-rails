@@ -85,3 +85,14 @@ es:
     ajax:
       surveys_paginate_ajax:
         no_more_quest: 'No se encontraron más Cuestionarios pasados.'
+    edit:
+      edit_survey: 'Editar Cuestionario'
+      survey_title: 'Título'
+      title: 'Título del Cuestionario'
+      questions: 'Preguntas'
+      survey_publish_date: 'Fecha de Publicación'
+      survey_end_date: 'Fecha de Entrega'
+      add_question: 'Añadir Pregunta'
+      back: 'Atrás'
+      cancel: 'Cancelar'
+      save: 'Guardar'
