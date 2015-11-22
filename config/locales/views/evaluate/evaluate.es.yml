@@ -62,6 +62,7 @@ es:
         delivery: Entregas
         publish_date: Fecha de publicación
         publish_date_of: Fecha para entrega
+        edit_delivery: 'Editar'
       header_activity_survey:
         course: Curso
         answered: Contestados

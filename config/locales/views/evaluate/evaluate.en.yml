@@ -62,6 +62,7 @@ en:
         delivery: Deadline
         publish_date: Published on
         publish_date_of: Deadline
+        edit_delivery:  'Edit'
       header_activity_survey:
         course: Course
         answered: Answered
