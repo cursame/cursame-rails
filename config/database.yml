@@ -25,7 +25,7 @@ staging:
 production:
   adapter: postgresql
   encoding: utf8
-  pool: 10
+  pool: 18
   database: <%= ENV['CURSAME_DATABASE_NAME'] %>
   username: <%= ENV['CURSAME_DATABASE_USERNAME'] %>
   password: <%= ENV['CURSAME_DATABASE_PASSWORD'] %>
