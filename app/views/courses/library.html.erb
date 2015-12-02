@@ -6,46 +6,31 @@
 <div class="wrapper">
   <div class="cols-12">
     <div class="col col-12">
+      <%= render template: 'libraries/show' %>
       <div class="col-inner">
-
         <div class="library-wrap container">
           <div class="header">
             <div class="left">
-              <h3><%=t('.biblio')%></h3>
               <span class="library-count">
                 <% if @course.course_files.any? %>
                   <%= pluralize(@course.course_files.count, t('.file'), t('.files')) %>
                 <% end %>
-              </span>  
-            </div>
-            <div class="right">
-              <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
-                <%= form_for CourseFile.new, :html => { :multipart => true } do |f| %>
-                  <label class="btn btn-primary activable">
-                    <%=t('.upload')%>
-                    <span class="hide-input-file">
-                      <input id="upload-files-to-course" name="course_file[file]" type="file" multiple="multiple"/>
-                      <%= hidden_field_tag :course_id, @course.id %> 
-                      <%= f.hidden_field :published, :value => true %>
-                    </span>
-                  </label>
-                <% end %>
-              <% end %>
+              </span>
             </div>
           </div>
           <div class="body">
             <% if @course.course_files.any? %>
               <div class="library-items-list">
-                <% @files.reverse.each do |cf|%>
+                <% @course_files.reverse.each do |cf|%>
                   <% @name =  "#{cf.file}" %>
                   <% @sintetic_name = @name.split('/').last%>
                   <% @termination = @name.split('.').last %>
                   <%= render :partial => "course_files/library_item", :locals => {:cf => cf, :name => @name, :sintetic_name => @sintetic_name, :termination => @termination, :course => @course }%>
                 <% end %>
               </div>
-              <% if @files.num_pages > @files.current_page %>
+              <% if @course_files.num_pages > @course_files.current_page %>
                 <div class="library-paginator">
-                  <%= link_to t('.load'), library_in_course_pagination_path(page: @files.next_page), id: "paginador", remote: true %>
+                  <%= link_to t('.load'), library_in_course_pagination_path(page: @course_files.next_page), id: "paginador", remote: true %>
                 </div>
               <% end %>
             <% else %>
