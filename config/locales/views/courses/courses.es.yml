@@ -294,7 +294,7 @@ es:
         publ: "Publicaciones"
         info: "Información"
         members: "Miembros"
-        library: "Biblioteca"
+        library: "Biblioteca del Curso"
     library_pagination:
       no_more_records: 'No hay más archivos que mostrar'
     new_course: 'Se ha creado un curso nuevo'

@@ -3,15 +3,15 @@ es_meems:
     shared:
       form:
         name: "Nombre: "
-        lib_name: "Título de la biblioteca"
+        lib_name: "Título de la Carpeta"
         descrip: "Descripción: "
-        lib_descrip: "Descripción de la biblioteca"
-        send: "Enviar"
+        lib_descrip: "Descripción de la Carpeta"
+        send: "Crear Carpeta"
       header:
         library: "Biblioteca"
         create_folder: "Crear Carpeta"
         upload_file: "Subir Archivo"
       list:
-        no_documents: "No hay documentos."
+        no_documents: "No hay documentos"
       standalone_card:
         open_folder: "Abrir Carpeta"

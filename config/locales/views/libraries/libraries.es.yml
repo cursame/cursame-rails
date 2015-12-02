@@ -8,6 +8,6 @@ es:
         upload_file: "Subir Archivo"
         library: "Biblioteca"
       library_files:
-        no_documents: "No hay documentos."
+        no_documents: "No hay documentos"
     new:
       new_library: "Nueva Biblioteca"

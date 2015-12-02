@@ -294,7 +294,7 @@ en:
         publ: "Publications"
         info: "Information"
         members: "Members"
-        library: "Library"
+        library: "Course Library"
     library_pagination:
       no_more_records: 'No more files left to display"'
     new_course: 'New Course created'

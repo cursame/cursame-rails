@@ -3,15 +3,15 @@ en:
     shared:
       form:
         name: "Name: "
-        lib_name: "Title of the library"
+        lib_name: "Title of the Folder"
         descrip: "Description: "
-        lib_descrip: "Description of the library"
-        send: "Send"
+        lib_descrip: "Description of the Folder"
+        send: "Create Folder"
       header:
         library: "Library"
         create_folder: "Create folder"
         upload_file: "Upload file"
       list:
-        no_documents: "There are no documents."
+        no_documents: "There are no documents"
       standalone_card:
         open_folder: "Open Folder"
