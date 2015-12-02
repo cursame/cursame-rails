@@ -8,6 +8,6 @@ en:
         upload_file: "Upload file"
         library: "Library"
       library_files:
-        no_documents: "There are no documents."
+        no_documents: "There are no documents"
     new:
       new_library: "New library"
