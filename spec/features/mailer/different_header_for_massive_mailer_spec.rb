@@ -4,13 +4,14 @@ RSpec.feature 'Send diferent header in massive mail' do
   background do
     create(:network)
     @user = create(:user)
+    @admin = create(:user, role: 'admin')
   end
 
   before(:each) do
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
-    @email = Notifier.send_email('cosme', 'fulanito', 'admin@email.me', @user.id, 'subject', 'message').deliver
+    @email = Notifier.send_email(@admin.id, @user.id, 'subject', 'message').deliver
   end
 
   after(:each) do
@@ -26,10 +27,10 @@ RSpec.feature 'Send diferent header in massive mail' do
   end
 
   it 'Display the sender name' do
-    expect(@email[:from].display_names).to eq(['cosme fulanito'])
+    expect(@email[:from].display_names).to eq(["#{@admin.first_name} #{@admin.last_name}"])
   end
 
   it 'Receive the sender email' do
-    expect(@email.from).to eq(['admin@email.me'])
+    expect(@email.from).to eq(["#{@admin.email}"])
   end
 end
