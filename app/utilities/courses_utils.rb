@@ -12,32 +12,50 @@ module CoursesUtils
           network_id: current_network.id,
           active_status: true,
           schools: { entity_id: entity_id, entity_name: entity_name }
-        )
+        ).order(:title)
     else
-      Course.where(:network_id => current_network.id, :active_status => true)
+      current_network.courses.where(active_status: true).order(:title)
     end
   end
 
   def unpublished_courses
-    Course.where(:network_id => current_network.id, :active_status => false)
+    current_network.courses.where(active_status: false).order(:title)
   end
 
   def teacher_published_courses
-    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('teacher') ,:active_status => true)
+    current_user.courses
+      .where(
+        :network_id => current_network.id,
+        :id => operator_courses('teacher'),
+        :active_status => true
+      ).order(:title)
   end
 
   def teacher_unpublished_courses
-    current_user.courses.keep_if do |course|
-      course.owner?(Role.find_by_title("teacher"), current_user) and not(course.active_status)
-    end
+    current_user.courses
+      .where(
+        :network_id => current_network.id,
+        :id => operator_courses('teacher'),
+        :active_status => false
+      ).order(:title)
   end
 
   def student_subscribed_courses
-    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => true)
+    current_user.courses
+      .where(
+        :network_id => current_network.id,
+        :id => operator_courses('student'),
+        :active_status => true
+      ).order(:title)
   end
 
   def student_closed_courses
-    current_user.courses.where(:network_id => current_network.id, :id => operator_courses('student') , :active_status => false)
+    current_user.courses
+      .where(
+        :network_id => current_network.id,
+        :id => operator_courses('student'),
+        :active_status => false
+      ).order(:title)
   end
 
   def student_pending_requests
@@ -49,7 +67,11 @@ module CoursesUtils
   end
 
   def network_courses_not_subscribed
-    Course.where(:network_id => current_network.id, :id => operator_courses('inverse') ,:active_status => true)
+    current_network.courses
+      .where(
+        :id => operator_courses('inverse'),
+        :active_status => true
+      ).order(:title)
   end
 
   def operator_courses(typed = 'normal')
