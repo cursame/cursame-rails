@@ -66,10 +66,12 @@ class Network < ActiveRecord::Base
 
   def send_email(admin, users, subject, message)
     admin_email = admin.email
+    admin_fname = admin.first_name
+    admin_lname = admin.last_name
     users.each do |user|
       if (admin != user) then
         begin
-          mail = Notifier.delay.send_email(admin_email,user.id,subject,message)
+          mail = Notifier.delay.send_email(admin_fname, admin_lname, admin_email, user.id, subject, message)
         rescue
         end
       end
