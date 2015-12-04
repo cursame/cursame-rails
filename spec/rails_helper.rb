@@ -42,9 +42,11 @@ RSpec.configure do |config|
     if @request
       @request.host = 'testing.lvh.me'
     end
+    Sidekiq::Extensions::DelayedMailer.jobs.clear
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Sidekiq::Extensions::DelayedMailer.jobs.clear
   end
 end
