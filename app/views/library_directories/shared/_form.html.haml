@@ -11,7 +11,7 @@
         = form.label :description, t('.descrip')
       .form-group-main
         .form-unit
-          = form.text_field :description, placeholder: t('.lib_descrip'), required: "required"
+          = form.text_area :description, placeholder: t('.lib_descrip'), rows: 1, required: "required"
   .footer
     .fr
       %span.btn.btn-primary.input-btn.activable
