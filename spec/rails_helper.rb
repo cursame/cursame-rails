@@ -29,16 +29,25 @@ RSpec.configure do |config|
 
   Sidekiq::Testing.fake!
   Capybara.default_host = 'http://testing.lvh.me:3001'
+  Capybara.app_host = 'http://testing.lvh.me'
   Capybara.always_include_port = true
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
     load "#{Rails.root}/db/seeds.rb"
   end
 
   config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
     DatabaseCleaner.start
+    load "#{Rails.root}/db/seeds.rb" if Role.count == 0
     if @request
       @request.host = 'testing.lvh.me'
     end
