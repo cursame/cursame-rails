@@ -12,5 +12,9 @@ module Features
       create(:members_in_course, user_id: teacher.id, course_id: course.id, accepted: true, owner: true, network_id: network.id)
       course
     end
+
+    def assign_member_in_course(course, member, network)
+      create(:members_in_course, user_id: member.id, course_id: course.id, accepted: true, network_id: network.id)
+    end
   end
 end
