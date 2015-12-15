@@ -48,6 +48,14 @@ authorization do
       :upload_members,
       :mailer,
       :mailer_deliver,
+      :network_mailer_user_list,
+      :network_mailer_student_list,
+      :network_mailer_teacher_list,
+      :network_mailer_list_deliver,
+      :course_mailer,
+      :course_mailer_deliver,
+      :course_mailer_list,
+      :course_mailer_list_deliver
     ]
     has_permission_on [:managers_users], to: [:manage, :new, :import, :import_receiver]
     has_permission_on [:managers_courses], to: [:manage, :new, :import, :import_receiver]
