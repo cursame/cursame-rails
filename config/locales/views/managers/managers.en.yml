@@ -72,6 +72,7 @@ en:
         delete: Delete
         sure: Are you sure you want to delete this course.
         import_bit_courses: Import Bit course
+        send_massive_mail: Send massive mail
       new:
         create_course: Create course
       show:
@@ -165,6 +166,10 @@ en:
         exit: Log out of admin page
         edit: Edit profile
         log_out: Log out
+      managers_massive_mailer_form:
+        subject: Subject
+        example: 'Example: Farewell party'
+        message: Mensaje
     surveys:
       index:
         quest: Tests
@@ -282,11 +287,11 @@ en:
     mailer:
       masive: Massive mail
       masive2: Send an email to the members of your community
-      subject: Subject
-      example: Example
-      example2: Farewell party
       msg: Message
       send: Send
+      message_for_all_users: 'If you do not select an option, send mail all members of your community'
+      only_teachers: Only Teachers
+      only_students: Only Students
     settings:
       config: Configuration
     reported_contents:
@@ -328,3 +333,19 @@ en:
     tests_in_course: 'Exams in Course'
     tests_unpublished: 'Unpublished exams'
     discussion: 'Discussions'
+    course_mailer:
+      massive_mailer_title: 'Massive Mail'
+      massive_mailer_subtitle: 'Send an email to course members %{course_title}'
+      users_list: 'Send a user list'
+      select_all_course_users: 'Send to all members of course'
+      select_only_teachers: 'Send only teachers'
+      select_only_students: 'Send only students'
+      subject: 'Subject'
+      example: 'Example: Farewell party'
+      message: 'Message'
+      send: 'Send'
+    course_mailer_list:
+      massive_mailer_title: 'Massive Mail'
+      massive_mailer_subtitle: 'Send an email to a list of course members %{course_title}'
+      course_members: 'Course members %{course_title}:'
+      send: 'Send'
