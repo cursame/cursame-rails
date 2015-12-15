@@ -1,0 +1,24 @@
+- content_for :javascripts do
+  = javascript_include_tag 'mailer/form'
+
+
+.cols-12
+  .col.col-10.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.massive_mailer_title')
+          %p= t('.massive_mailer_subtitle', course_title: @course.title)
+      = form_tag managers_course_mailer_list_deliver_path, class: 'form-validate-js', id: 'form-mailer-list-js' do
+        = render partial: 'managers/shared/managers_massive_mailer_form'
+        .form-group.label-on-top.l-label
+          .form-group-label
+            = label :members, t('.course_members', course_title: @course_title)
+        - @course.users.each do |course_user|
+          .ul
+            .li
+              = check_box_tag "users[]", course_user.id
+              = course_user.first_name + ' ' + course_user.last_name
+
+        %span.btn.btn-primary.input-btn.btn-medium.activable
+          = submit_tag t('.send')

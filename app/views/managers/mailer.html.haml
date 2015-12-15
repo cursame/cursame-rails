@@ -1,3 +1,6 @@
+- content_for :javascripts do
+  = javascript_include_tag 'mailer/checkbox'
+
 .cols-12
   .col.col-10.alpha.omega
     .col-inner
@@ -6,19 +9,17 @@
           %h1= t('.masive')
           %p= t('.masive2')
       = form_tag managers_mailer_deliver_path, class: 'form-validate-js' do
-        .form-group.label-on-top.l-label
-          .form-group-label
-            = label :subject, t('.subject') + ':'
-          .form-group-main
-            .form-unit
-              = text_field_tag :subject, '', placeholder: t('.example') + ': ' + t('.example2'), required: true
+        - if current_network.subdomain != 'meems'
+          .ul
+            = t('.message_for_all_users')
+            .li
+              = check_box_tag 'users', 'only_teachers'
+              = t('.only_teachers')
+            .li
+              = check_box_tag 'users', 'only_students'
+              = t('.only_students')
 
-        .form-group.label-on-top.l-label
-          .form-group-label
-            = label :message, t('.msg') + ':'
-          .form-group-main
-            .form-unit
-              = text_area_tag :message, '', placeholder: t('.msg'), rows: 8, required: true
+        = render partial: 'managers/shared/managers_massive_mailer_form'
 
         %span.btn.btn-primary.input-btn.btn-medium.activable
           = submit_tag t('.send')
