@@ -1,0 +1,82 @@
+function renderListItem ( ul, item ) {
+  var avatarURL;
+
+  if ( item.avatar.head.url ) {
+    avatarURL = item.avatar.head.url;
+  } else {
+    avatarURL = "/assets/imagexxxx.png"
+  };
+
+  return $( "<li>" ).append( "<a> <img class='avatar' src='" + avatarURL + "' alt=''/>" + item.last_name + " "+ item.first_name + "</a>" ).appendTo( ul );
+};
+
+function renderSelectedTeacher (event, user) {
+  var inputOrigin = $(event.target),
+      userRole = inputOrigin.data('role'),
+      usersList = inputOrigin.closest('div.table-box'),
+      userContainer = usersList.find('div.users-list'),
+      noContent = usersList.find('div.inner-no-content'),
+      users = userContainer.find('div.table-box-unit'),
+      already = false;
+
+  if ( noContent.length ) {
+    noContent.remove();
+  };
+
+  if ( users.length ) {
+    $.each(users, function(index, member) {
+      if ( $(member).data('user-id') == user.item.id ) {
+        already = true;
+        return false;
+      };
+    });
+  };
+
+  if ( already ) {
+    Notice('error', 'El profesor que seleccionaste ya esta en la lista.');
+  } else {
+    userContainer.append( HandlebarsTemplates['users/autocomplete-user-unit']( { user: user, role: userRole } ) );
+  };
+}
+
+function showLoadingSpinner (event, ui) {
+  var inputOrigin = $(event.target);
+  inputOrigin.siblings('.spinner-dark').show();
+}
+
+function hideLoadingSpinner (event, ui) {
+  var inputOrigin = $(event.target);
+  inputOrigin.siblings('.spinner-dark').hide();
+}
+
+$(function() {
+
+  $('.table-box-unit .delete').live('click', function(event) {
+    var $self = $(this),
+        userUnit = $self.closest('.table-box-unit'),
+        usersList = userUnit.closest('.users-list'),
+        messages = {
+          title: 'Agrega Profesores',
+          message: 'Elige los profesores a los que les deseas enviar el correo'
+        };
+
+    userUnit.remove();
+
+    var usersRemain = usersList.find('.table-box-unit');
+
+    if ( ! usersRemain.length ) {
+      usersList.html( HandlebarsTemplates['users/autocomplete-no-users']( messages ) );
+    };
+  });
+
+  var messages = { noResults: 'No se encontro nigun usuario.', results: function() { return ""; } }
+
+  $( "#teachers-search-input" ).autocomplete({
+    source: '<%= Rails.application.routes.url_helpers.network_teachers_path %>',
+    messages: messages,
+    select: renderSelectedTeacher,
+    search: showLoadingSpinner,
+    response: hideLoadingSpinner
+  }).data( "autocomplete" )._renderItem = renderListItem;
+
+});
