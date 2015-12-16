@@ -7,6 +7,6 @@
             = icon 'library-card'
           = link_to library_directory_path(directory), class: 'activable' do
             %h3= directory.name
-            %p= directory.description
+            %p= simple_format directory.description.truncate(200)
             .btn.btn-small.btn-transparent.activable
               = t('.open_folder')
