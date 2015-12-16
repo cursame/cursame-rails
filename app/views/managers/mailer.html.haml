@@ -2,12 +2,17 @@
   = javascript_include_tag 'mailer/checkbox'
 
 .cols-12
-  .col.col-10.alpha.omega
+  .col.col-11.alpha.omega
     .col-inner
       .managers-section-header
         .title
           %h1= t('.masive')
           %p= t('.masive2')
+        - if current_network.subdomain != 'meems'
+          .actions
+            = link_to t('.select_users'), managers_network_mailer_user_list_path, class: 'btn btn-complementary'
+            = link_to t('.select_teachers'), managers_network_mailer_teacher_list_path, class: 'btn btn-complementary'
+            = link_to t('.select_students'), managers_network_mailer_student_list_path, class: 'btn btn-complementary'
       = form_tag managers_mailer_deliver_path, class: 'form-validate-js' do
         - if current_network.subdomain != 'meems'
           .ul

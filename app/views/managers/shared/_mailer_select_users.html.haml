@@ -1,0 +1,11 @@
+.form-group
+  .form-group-label
+    = label 'admins', t('.users')
+  .form-group-main
+    .form-unit
+      .table-box#network-users-list
+        .table-box-header
+          = text_field_tag 'users-search', '', id: id, placeholder: t('.user_search'), data: { role: 'users' }
+          .spinner-dark
+        .table-box-body.scrollbar
+          .users-list
