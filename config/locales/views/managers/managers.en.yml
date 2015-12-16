@@ -170,6 +170,9 @@ en:
         subject: Subject
         example: 'Example: Farewell party'
         message: Mensaje
+      mailer_select_users:
+        users: Users
+        user_search: First or last name
     surveys:
       index:
         quest: Tests
@@ -287,11 +290,26 @@ en:
     mailer:
       masive: Massive mail
       masive2: Send an email to the members of your community
+      select_users: Select Users
+      select_teachers: Select Teachers
+      select_students: Select Students
       msg: Message
       send: Send
       message_for_all_users: 'If you do not select an option, send mail all members of your community'
       only_teachers: Only Teachers
       only_students: Only Students
+    network_mailer_user_list:
+      massive: Massive mail
+      message: 'Select the users (Admins, teachers, students) you want to send the email'
+      send: Send
+    network_mailer_teacher_list:
+      massive: Massive Mail Teachers
+      message: 'Select the teachers you want to send the email'
+      send: Send
+    network_mailer_student_list:
+      massive: Massive Mail Students
+      message: 'Select the Students you want to send the email'
+      send: Send
     settings:
       config: Configuration
     reported_contents:

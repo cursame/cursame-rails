@@ -170,6 +170,9 @@ es:
         subject: Asunto
         example: 'Ejemplo: Ceremonia de clausura'
         message: Mensaje
+      mailer_select_users:
+        users: Usuarios
+        user_search: Nombre o Apellido
     surveys:
       index:
         quest: Cuestionarios
@@ -287,11 +290,26 @@ es:
     mailer:
       masive: Mensaje Masivo
       masive2: 'Envía un mensaje de correo electrónico a los miembros de tu comunidad'
+      select_users: Elige Usuarios
+      select_teachers: Elige Profesores
+      select_students: Elige Estudiantes
       msg: Mensaje
       send: Enviar
       message_for_all_users: 'Si no seleccionas una opción se enviarán a todos los usuarios de la red'
       only_teachers: 'Sólo Profesores'
       only_students: 'Sólo Alumnos'
+    network_mailer_user_list:
+      massive: Mensaje Masivo
+      message: Elige los usuarios a los que deseas enviar el correo electrónico.
+      send: Enviar
+    network_mailer_teacher_list:
+      massive: Mensaje Masivo Profesores
+      message: 'Elige los profesores a los que deseas enviar el correo electrónico'
+      send: Enviar
+    network_mailer_student_list:
+      massive: Mensaje Masivo Alumnos
+      message: 'Elige los alumnos a los que deseas enviar el correo electrónico'
+      send: Enviar
     settings:
       config: Configuración
     reported_contents:
