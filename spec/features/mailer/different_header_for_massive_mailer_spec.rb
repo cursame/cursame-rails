@@ -28,7 +28,7 @@ RSpec.feature 'Send diferent header in massive mail' do
 
   it 'Display the sender name' do
     sender_name = Mail::Encodings.unquote_and_convert_to(@email[:from].display_names.first, 'utf-8')
-    expect(sender_name).to include("#{@admin.first_name + ' ' + @admin.last_name}")
+    expect(sender_name).to include("#{@admin.first_name} #{@admin.last_name}")
   end
 
   it 'Receive the sender email' do
