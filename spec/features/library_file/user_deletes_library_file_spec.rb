@@ -8,22 +8,13 @@ RSpec.feature 'Delete a library file'  do
   end
 
   scenario 'When the user upload a file, then deleted succesfully' do
-    upload_library_file
+    upload_library_file(@network, @user)
     delete_library_file
   end
 
   scenario 'If the user dont upload the file, then do not delete them' do
-    upload_library_file
+    upload_library_file(@network, @user)
     user_doesnt_delete_file
-  end
-
-  def upload_library_file
-    @library = @network.library
-    @library_file = create(:library_file)
-    @library_file.user_id = @user.id
-    @library_file.location_id = @library.id
-    @library_file.location_type = 'Library'
-    @library_file.save!
   end
 
   def delete_library_file
