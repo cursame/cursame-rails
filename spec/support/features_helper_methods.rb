@@ -16,5 +16,14 @@ module Features
     def assign_member_in_course(course, member, network)
       create(:members_in_course, user_id: member.id, course_id: course.id, accepted: true, network_id: network.id)
     end
+
+    def upload_library_file(network, uploader_user)
+      library = network.library
+      library_file = create(:library_file)
+      library_file.user_id = uploader_user.id
+      library_file.location_id = library.id
+      library_file.location_type = 'Library'
+      library_file.save!
+    end
   end
 end

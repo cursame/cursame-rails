@@ -17,6 +17,10 @@ class LibraryFile < ActiveRecord::Base
     end
   end
 
+  def owner
+    self.user
+  end
+
   private
   def create_notification
     case location

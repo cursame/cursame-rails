@@ -15,7 +15,23 @@ class LibraryFilesController < ApplicationController
     end
   end
 
+  def destroy
+    if params[:id]
+      delete_file_for_library
+    end
+  end
+
   private
+
+  def delete_file_for_library
+    file = LibraryFile.find(params[:id])
+    if current_user.admin? || (file.owner == current_user)
+      file.destroy
+      flash[:success] = t('.library_files_controller.file_deleted')
+      redirect_to library_path(current_network.library)
+    end
+  end
+
   def new_file_for_library
     @parent_model = Library.find(params[:library_id])
     @file = @parent_model.library_files.build

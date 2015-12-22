@@ -7,7 +7,9 @@ require "codeclimate-test-reporter"
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'support/features_helper_methods'
+require 'support/controller_helper_methods'
 require 'sidekiq/testing'
+require 'declarative_authorization/maintenance'
 
 require 'helpers/catalog_helpers'
 
@@ -17,6 +19,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.include Features::HelperMethods, type: :feature
+  config.include Controller::HelperMethods, type: :controller
+  config.include Authorization::TestHelper
+
   config.infer_spec_type_from_file_location!
 
   config.include CatalogHelpers, type: :catalog_model
