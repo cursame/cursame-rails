@@ -9,6 +9,7 @@ bundler_args: --without development
 script:
   - export RAILS_ENV=test
   - bundle exec rake db:create db:migrate
+  - psql -d cursame_test -c "create extension unaccent"
   - RAILS_ENV=test bundle exec rackup private_pub.ru -s thin -E test -D
   - bundle exec rspec spec
 before_install:

@@ -59,6 +59,7 @@ Cursame30Lb::Application.routes.draw do
   post 'ajax/update-course-cover-pic', to: 'ajax#update_course_cover_pic', as: :update_course_cover_pic
   get 'ajax/network-students', to: 'ajax#network_students', as: :network_students
   get 'ajax/network-teachers', to: 'ajax#network_teachers', as: :network_teachers
+  get 'ajax/network-users', to: 'ajax#network_users', as: :network_users
 
   resources :authentications
 
@@ -111,6 +112,15 @@ Cursame30Lb::Application.routes.draw do
     get 'settings'
     get 'mailer'
     post "mailer_deliver"
+    get 'network_mailer_user_list'
+    get 'network_mailer_student_list'
+    get 'network_mailer_teacher_list'
+    post 'network_mailer_list_deliver'
+
+    get 'course_mailer'
+    post 'course_mailer_deliver'
+    get 'course_mailer_list'
+    post 'course_mailer_list_deliver'
   end
 
   get "managers/import_members", :to => "managers#import_members", :as => :managers_import_members

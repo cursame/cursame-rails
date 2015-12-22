@@ -1,0 +1,33 @@
+- content_for :javascripts do
+  = javascript_include_tag 'mailer/checkbox'
+
+.cols-12
+  .col.col-10.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.massive_mailer_title')
+          %p= t('.massive_mailer_subtitle', course_title: @course.title)
+        - if current_network.subdomain != 'meems'
+          .actions
+            = link_to t('.users_list'), managers_course_mailer_list_path(course_id: @course.id), class: 'btn btn-complementary'
+      = form_tag managers_course_mailer_deliver_path, class: 'form-validate-js' do
+        - if current_network.subdomain != 'meems'
+          .ul
+            .li
+              = check_box_tag 'users', 'all', true
+              = t('.select_all_course_users')
+          .ul
+            .li
+              = check_box_tag 'users', 'only_teachers'
+              = t('.select_only_teachers')
+          .ul
+            .li
+              = check_box_tag 'users', 'only_students'
+              = t('.select_only_students')
+
+        = render partial: 'managers/shared/managers_massive_mailer_form'
+        = hidden_field_tag :course_id, @course.id
+
+        %span.btn.btn-primary.input-btn.btn-medium.activable
+          = submit_tag t('.send')

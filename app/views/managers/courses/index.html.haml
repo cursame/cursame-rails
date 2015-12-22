@@ -35,5 +35,6 @@
                     %ul
                       %li= link_to t('.edit'), edit_managers_course_path(course)
                       %li= link_to t('.delete'), managers_course_path(course), method: :delete, confirm: t('.sure')
+                      %li= link_to t('.send_massive_mail'), managers_course_mailer_path(course: course.id)
       .digg_pagination.paginator
         = will_paginate @courses

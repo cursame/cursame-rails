@@ -72,6 +72,7 @@ es_meems:
         delete: Borrar
         sure: Estas seguro de borrar este Centros Emprendedor.
         import_bit_courses: Importar curso Bit
+        send_massive_mail: 'Enviar Correo Masivo'
       new:
         create_course: Crear Centro Emprendedor
       show:
@@ -167,6 +168,10 @@ es_meems:
         exit: Salir del administrador
         edit: Editar perfil
         log_out: Cerrar sesión
+      managers_massive_mailer_form:
+        subject: Asunto
+        example: 'Ejemplo: Ceremonia de clausura'
+        message: Mensaje
     surveys:
       index:
         quest: Cuestionarios
@@ -322,3 +327,10 @@ es_meems:
         students: Alumnos
     number_of_courses: Centros de Emprendedores
     comments_on_managers: 'Comentarios'
+    course_mailer:
+      massive_mailer_title: 'Mensaje Masivo'
+      massive_mailer_subtitle: 'Envía un mensaje de correo electrónico a los miembros de tu Centro Emprendedor %{course_title}'
+      subject: 'Asunto'
+      example: 'Ejemplo: Ceremonia de clausura'
+      message: 'Mensaje'
+      send: 'Enviar'

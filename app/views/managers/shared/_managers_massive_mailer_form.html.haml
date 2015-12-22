@@ -1,0 +1,13 @@
+.form-group.label-on-top.l-label
+  .form-group-label
+    = label :subject, t('.subject') + ':'
+  .form-group-main
+    .form-unit
+      = text_field_tag :subject, '', placeholder: t('.example'), required: true
+
+.form-group.label-on-top.l-label
+  .form-group-label
+    = label :message, t('.message') + ':'
+  .form-group-main
+    .form-unit
+      = text_area_tag :message, '', placeholder: t('.message'), rows: 8, required: true

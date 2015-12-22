@@ -72,6 +72,7 @@ es:
         delete: Borrar
         sure: ¿Estás seguro de borrar este curso?
         import_bit_courses: Importar curso Bit
+        send_massive_mail: 'Enviar Correo Masivo'
       new:
         create_course: Crear Curso
       show:
@@ -165,6 +166,13 @@ es:
         exit: Salir del Administrador
         edit: Editar perfil
         log_out: Cerrar sesión
+      managers_massive_mailer_form:
+        subject: Asunto
+        example: 'Ejemplo: Ceremonia de clausura'
+        message: Mensaje
+      mailer_select_users:
+        users: Usuarios
+        user_search: Nombre o Apellido
     surveys:
       index:
         quest: Cuestionarios
@@ -281,11 +289,26 @@ es:
       discuss: Discusiones
     mailer:
       masive: Mensaje Masivo
-      masive2: Envía un mensaje de correo electrónico a todos los miembros de tu comunidad.
-      subject: Asunto
-      example: Ejemplo
-      example2: Ceremonia de clausura
+      masive2: 'Envía un mensaje de correo electrónico a los miembros de tu comunidad'
+      select_users: Elige Usuarios
+      select_teachers: Elige Profesores
+      select_students: Elige Estudiantes
       msg: Mensaje
+      send: Enviar
+      message_for_all_users: 'Si no seleccionas una opción se enviarán a todos los usuarios de la red'
+      only_teachers: 'Sólo Profesores'
+      only_students: 'Sólo Alumnos'
+    network_mailer_user_list:
+      massive: Mensaje Masivo
+      message: Elige los usuarios a los que deseas enviar el correo electrónico.
+      send: Enviar
+    network_mailer_teacher_list:
+      massive: Mensaje Masivo Profesores
+      message: 'Elige los profesores a los que deseas enviar el correo electrónico'
+      send: Enviar
+    network_mailer_student_list:
+      massive: Mensaje Masivo Alumnos
+      message: 'Elige los alumnos a los que deseas enviar el correo electrónico'
       send: Enviar
     settings:
       config: Configuración
@@ -328,3 +351,19 @@ es:
     tests_in_course: 'Exámenes en curso'
     tests_unpublished: 'Exámenes sin publicar'
     discussion: 'Discusiones'
+    course_mailer:
+      massive_mailer_title: 'Mensaje Masivo'
+      massive_mailer_subtitle: 'Envía un mensaje de correo electrónico a los miembros del curso %{course_title}'
+      users_list: 'Enviar a Lista de Usuarios'
+      select_all_course_users: 'Enviar a todos los miembros del Curso'
+      select_only_teachers: 'Enviar a todos los Maestros del Curso'
+      select_only_students: 'Enviar a todos los Estudiantes del Curso'
+      subject: 'Asunto'
+      example: 'Ejemplo: Ceremonia de clausura'
+      message: 'Mensaje'
+      send: 'Enviar'
+    course_mailer_list:
+      massive_mailer_title: 'Mensaje Masivo'
+      massive_mailer_subtitle: 'Envía un mensaje de correo electrónico a una lista de miembros del curso %{course_title}'
+      course_members: 'Miembros del Curso %{course_title}:'
+      send: 'Enviar'

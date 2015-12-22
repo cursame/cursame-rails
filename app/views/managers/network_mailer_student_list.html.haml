@@ -1,0 +1,16 @@
+- content_for :javascripts do
+  = javascript_include_tag 'mailer/form'
+  = javascript_include_tag 'mailer/network-students-autocomplete'
+
+.cols-12
+  .col.col-10.alpha.omega
+    .col-inner
+      .managers-section-header
+        .title
+          %h1= t('.massive')
+          %p= t('.message')
+      = form_tag managers_network_mailer_list_deliver_path, class: 'form-validate-js', id: 'form-mailer-list-js' do
+        = render partial: 'managers/shared/managers_massive_mailer_form'
+        = render partial: 'managers/shared/mailer_select_users', locals: { id: @id }
+        %span.btn.btn-primary.input-btn.btn-medium.activable
+          = submit_tag t('.send')

@@ -85,4 +85,13 @@ class AjaxController < ApplicationController
     end
   end
 
+  def network_users
+    down = I18n.transliterate(params[:term].downcase.to_s)
+    users =  current_network.users.search(down)
+
+    respond_to do |format|
+      format.json { render json: users }
+    end
+  end
+
 end
