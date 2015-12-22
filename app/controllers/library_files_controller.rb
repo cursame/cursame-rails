@@ -25,9 +25,11 @@ class LibraryFilesController < ApplicationController
 
   def delete_file_for_library
     file = LibraryFile.find(params[:id])
-    file.destroy
-    flash[:success] = t('.library_files_controller.file_deleted')
-    redirect_to library_path(current_network.library)
+    if current_user.admin? || (file.owner == current_user)
+      file.destroy
+      flash[:success] = t('.library_files_controller.file_deleted')
+      redirect_to library_path(current_network.library)
+    end
   end
 
   def new_file_for_library
