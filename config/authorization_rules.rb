@@ -28,6 +28,8 @@ authorization do
 
     has_permission_on [:forms], to: [:create]
     has_permission_on [:surveys], to: [:manage, :survey_add_attemp]
+
+    has_permission_on [:library_files], to: [:delete]
   end
 
   role :operator do
@@ -66,6 +68,8 @@ authorization do
 
     has_permission_on [:managers_reported_contents], to: [:read, :delete, :destroy_content]
     has_permission_on [:managers_bit_courses], :to => [:read, :import]
+
+    has_permission_on [:library_files], to: [:delete]
   end
 
   role :superadmin do
