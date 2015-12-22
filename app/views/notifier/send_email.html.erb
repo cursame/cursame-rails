@@ -14,7 +14,11 @@
 
           <br/> <br/>
 
-          <%= link_to image_tag("http://app.cursa.me/assets/mails/logo.png"), "http://#{@subdomain}.#{@domain}" %>
+          <% if @network.logo? %>
+            <%= link_to image_tag(@network.logo), "http://#{@subdomain}.#{@domain}" %>
+          <% else %>
+            <%= link_to image_tag("http://app.cursa.me/assets/mails/logo.png"), "http://#{@subdomain}.#{@domain}" %>
+          <% end %>
 
           <br>
           <br>

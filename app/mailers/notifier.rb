@@ -65,6 +65,7 @@ class Notifier < ActionMailer::Base
     admin = User.find_by_id(sender_id)
     @user = User.find_by_id(recipient_id)
     @subdomain = @user.subdomain
+    @network = Network.find_by_subdomain(@subdomain)
     @domain = @user.domain
     @content = message
     set_logo(@user)
