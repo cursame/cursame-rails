@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150930195356) do
+ActiveRecord::Schema.define(:version => 20160112183030) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -796,6 +796,7 @@ ActiveRecord::Schema.define(:version => 20150930195356) do
     t.boolean  "tour_course",            :default => false
     t.boolean  "form_before_tour",       :default => false
     t.boolean  "self_register",          :default => false
+    t.boolean  "onboarding",             :default => false
   end
 
   add_index "users", ["email", "subdomain"], :name => "index_users_on_email_and_subdomain", :unique => true
