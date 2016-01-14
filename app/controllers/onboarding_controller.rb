@@ -6,16 +6,18 @@ class OnboardingController < ApplicationController
   end
 
   def update_user_profile
-    @user =  User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      redirect_to (current_user.teacher? ? onboarding_new_course_path : onboarding_select_courses_path)
       redirect_to root_path
     else
-      format.html { render action: "edit" }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+      flash[:alert] = t('.onboarding.user_profile.cannot_update_profile')
+      render :user_profile
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :bios,
                                  :twitter_link, :personal_url, :avatar, :coverphoto)
