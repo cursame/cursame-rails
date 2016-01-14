@@ -13,4 +13,6 @@ es:
       personal_url: 'URL:'
       avatar: 'Avatar:'
       coverphoto: 'Foto de Portada:'
+      continue: 'Continuar'
+      cannot_update_profile: 'No se puede actualizar Perfil'
 

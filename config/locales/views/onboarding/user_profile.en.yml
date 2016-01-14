@@ -13,4 +13,6 @@ en:
       personal_url: 'Custom URL:'
       avatar: 'Avatar:'
       coverphoto: 'Cover photo:'
+      continue: 'Continue'
+      cannot_update_profile: 'Cannot update profile'
 

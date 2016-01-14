@@ -3,20 +3,20 @@
 %h3= t('.personalize_your_profile')
 
 = form_for(@user, :url => url_for(:controller => 'onboarding', :action => 'update_user_profile', :id => @user.id)) do |f|
-  = f.label :first_name, 'Nombres:'
+  = f.label :first_name, t('.name')
   = f.text_field :first_name, required: 'required'
-  = f.label :last_name, 'Apellidos:'
+  = f.label :last_name, t('.sur_name')
   = f.text_field :last_name, required: 'required'
-  = f.label :bios, 'Biografía:'
+  = f.label :bios, t('.biography')
   = f.text_area :bios, required: 'required'
-  = f.label :email, 'Email:'
+  = f.label :email, t('.email')
   = f.text_field :email, required: 'required'
-  = f.label :twitter_link, 'Twitter:'
+  = f.label :twitter_link, t('.twitter')
   = f.text_field :twitter_link
-  = f.label :personal_url, 'URL:'
+  = f.label :personal_url, t('.personal_url')
   = f.text_field :personal_url
-  = f.label :avatar, 'Avatar:'
+  = f.label :avatar, t('.avatar')
   = f.file_field :avatar
-  = f.label :coverphoto, 'Foto de Portada:'
+  = f.label :coverphoto, t('.coverphoto')
   = f.file_field :coverphoto
-  = f.submit 'Continuar'
+  = f.submit t('.continue')
