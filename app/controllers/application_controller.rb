@@ -57,6 +57,14 @@ class ApplicationController < ActionController::Base
 
   include CoursesUtils
 
+  def after_sign_in_path_for(resource)
+    if (current_user.teacher? || current_user.student?) && !current_user.onboarding?
+      onboarding_profile_path
+    else
+      root_path
+    end
+  end
+
   def cache_expire
     cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 10.minutes)
   end
