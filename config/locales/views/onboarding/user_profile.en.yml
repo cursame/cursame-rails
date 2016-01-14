@@ -1,0 +1,16 @@
+en:
+  onboarding:
+    user_profile:
+      welcome_to_cursame: 'Welcome to Cúrsame'
+      onboarding_intructions: 'A continuación te guiaremos en la creación de tu cuenta
+        y los primeros pasos para que puedas sacar todo el provecho de la plataforma'
+      personalize_your_profile: 'Custom your profile'
+      name: 'Names:'
+      sur_name: 'Last name:'
+      biography: 'Biography:'
+      email: 'Email:'
+      twitter: 'Twitter:'
+      personal_url: 'Custom URL:'
+      avatar: 'Avatar:'
+      coverphoto: 'Cover photo:'
+

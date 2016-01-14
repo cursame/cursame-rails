@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Course library directories' do
   background do
     @network = create(:network)
-    @teacher = create(:user, role: 'teacher')
+    @teacher = create(:user, :completed_onboarding, role: 'teacher')
     @course = create_course(@teacher, @network)
   end
 

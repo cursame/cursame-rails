@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Edit questionnaire' do
   background do
     @network = create(:network)
-    @user = create(:user, role: 'teacher')
+    @user = create(:user, :completed_onboarding, role: 'teacher')
   end
 
   scenario 'Success edit' do

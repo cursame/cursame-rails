@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Select language for User platform' do
   background do
     FactoryGirl.create(:network, multilanguage: true)
-    @user = FactoryGirl.create(:user, role: 'student')
+    @user = FactoryGirl.create(:user, :completed_onboarding, role: 'student')
     @lang = FactoryGirl.create(:language)
     given_logged_in_as(@user)
     visit '/users/edit'
