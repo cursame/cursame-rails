@@ -8,7 +8,6 @@ RSpec.feature 'Personalize profile' do
   end
 
   scenario 'render Onboarding profile page when logged first time with Teacher' do
-    pending("need to add onboarding routes")
     given_logged_in_as(@teacher)
     render_onboarding_user_profile
     fill_user_form
@@ -18,7 +17,6 @@ RSpec.feature 'Personalize profile' do
   end
 
   scenario 'render Onboarding profile page when logged first time with Student' do
-    pending("need to add onboarding routes")
     given_logged_in_as(@student)
     render_onboarding_user_profile
     fill_user_form
@@ -37,7 +35,6 @@ RSpec.feature 'Personalize profile' do
   def fill_user_form
     fill_in('user_first_name', with: 'first_name')
     fill_in('user_last_name', with: 'last_name')
-    fill_in('user_email', with: 'cof@fe.tea')
     fill_in('user_bios', with: 'My Bio')
     fill_in('user_twitter_link', with: '@twitter_account')
     fill_in('user_personal_url', with: 'user_url')

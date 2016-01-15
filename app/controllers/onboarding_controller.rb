@@ -9,7 +9,6 @@ class OnboardingController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       redirect_to (current_user.teacher? ? onboarding_new_course_path : onboarding_select_courses_path)
-      redirect_to root_path
     else
       flash[:alert] = t('.onboarding.user_profile.cannot_update_profile')
       render :user_profile
