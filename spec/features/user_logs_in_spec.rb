@@ -20,7 +20,6 @@ RSpec.feature 'Logs in:' do
   end
 
   scenario "succeed to log in with a teacher user uncompleted onboarding" do
-    pending("need to add onboarding routes")
     @teacher = create(:user, role: 'teacher')
     given_logged_in_as(@teacher)
     expect(page).to have_content(I18n.t('.onboarding.user_profile.welcome_to_cursame'))
@@ -33,7 +32,6 @@ RSpec.feature 'Logs in:' do
   end
 
   scenario "succeed to log in with a student user uncompleted onboarding" do
-    pending("need to add onboarding routes")
     @student = create(:user, role: 'teacher')
     given_logged_in_as(@student)
     expect(page).to have_content(I18n.t('.onboarding.user_profile.welcome_to_cursame'))

@@ -138,6 +138,9 @@ Cursame30Lb::Application.routes.draw do
     resources :catalogs, except: [:update, :edit]
   end
 
+  get '/onboarding/user_profile', to: 'onboarding#user_profile', as: :onboarding_profile
+  put '/onboarding/update_user_profile', to: 'onboarding#update_user_profile', as: :onboarding_update_profile
+
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
   get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
