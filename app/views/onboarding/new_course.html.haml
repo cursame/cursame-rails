@@ -1,0 +1,22 @@
+%h1= t('.step')
+
+= form_for(@course, :url => url_for(:controller => 'onboarding', :action => 'create_course')) do |f|
+  = f.label :title, t('.title')
+  = f.text_field :title, placeholder: t('.placeholder_title'), required: "required", autocomplete: "off"
+
+  = f.label :silabus, t('.silabus')
+  = f.text_area :silabus, rows: 4, placeholder: t('.placeholder_silabus'), required: "required", autocomplete: "off"
+
+  = f.label :public_status, t('.privacy')
+  = f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']], @course.public_status)
+
+  = f.label :avatar, t('.avatar')
+  = f.file_field :avatar
+
+  = f.label :coverphoto, t('.coverphoto')
+  = f.file_field :coverphoto
+
+  = f.label :init_date, t('.init_date')
+  = f.text_field :init_date, placeholder: t('.placeholder_init_date'), required: "required", autocomplete: "off"
+
+  = f.submit t('.continue')

@@ -140,6 +140,10 @@ Cursame30Lb::Application.routes.draw do
 
   get '/onboarding/user_profile', to: 'onboarding#user_profile', as: :onboarding_profile
   put '/onboarding/update_user_profile', to: 'onboarding#update_user_profile', as: :onboarding_update_profile
+  get '/onboarding/select_courses', to: 'onboarding#select_courses', as: :onboarding_select_courses
+  get '/onboarding/new_course', to: 'onboarding#new_course', as: :onboarding_new_course
+  post '/onboarding/create_course', to: 'onboarding#create_course', as: :onboarding_create_course
+  get '/onboarding/select_users/:id', to: 'onboarding#select_users', as: :onboarding_select_users
 
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
