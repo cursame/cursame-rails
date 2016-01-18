@@ -1,0 +1,15 @@
+es:
+  onboarding:
+    new_course:
+      step: 2.- Crea tu Primer Curso
+      title: Titulo
+      placeholder_title: Matemáticas
+      silabus: Descripción
+      placeholder_silabus: Curso de Matemáticas
+      privacy: Privacidad
+      init_date: Fecha de Inicio
+      placeholder_init_date: Fecha de Inicio
+      avatar: 'Avatar:'
+      coverphoto: 'Foto de Portada:'
+      continue: 'Continuar'
+      cannot_create_course: 'No se puede crear el curso'

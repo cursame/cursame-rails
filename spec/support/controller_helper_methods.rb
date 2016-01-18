@@ -9,5 +9,11 @@ module Controller
       library_file.save!
       library_file
     end
+
+    def create_course(teacher, network)
+      course = create(:course, network_id: network.id)
+      create(:members_in_course, user_id: teacher.id, course_id: course.id, accepted: true, owner: true, network_id: network.id)
+      course
+    end
   end
 end
