@@ -103,4 +103,87 @@ RSpec.describe OnboardingController, type: :controller do
       expect(response).to redirect_to(onboarding_select_users_path(@course.id))
     end
   end
+
+  describe 'GET #select_users' do
+    before :each do
+      @course = create_course(@teacher, @network)
+      get :select_users, id: @course.id
+    end
+
+    it 'has 200 status' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'renders the select_users template' do
+      expect(response).to render_template('select_users')
+    end
+  end
+
+  describe 'PUT #add_users' do
+    before :each do
+      @course = create_course(@teacher, @network)
+      @student2 = create(:user, role: 'student')
+      put :add_users, id: @course.id, students: {
+        @student => 0,
+        @student2 => 0
+      }
+    end
+
+    it 'has 302 status' do
+      expect(response.status).to eq(302)
+    end
+
+    it 'redirects to onboarding_evaluation_schema_path' do
+      expect(response).to redirect_to(onboarding_evaluation_schema_path(@course.id))
+    end
+  end
+
+  describe 'GET #evaluation_schema' do
+    before :each do
+      @course = create_course(@teacher, @network)
+      get :evaluation_schema, id: @course.id
+    end
+
+    it 'has 200 status' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'renders the evaluation_schema template' do
+      expect(response).to render_template('evaluation_schema')
+    end
+  end
+
+  describe 'PUT #add_evaluation_schema' do
+    before :each do
+      @course = create_course(@teacher, @network)
+      put :add_evaluation_schema, id: @course.id, course: {
+        evaluation_criteria_attributes: [
+          { evaluation_percentage: 60,
+            evaluable_id: @course.id,
+            evaluable_type: 'Course',
+            _destroy: false
+          },
+          { evaluation_percentage: 20,
+            evaluable_id: @course.id,
+            evaluable_type: 'Course',
+            _destroy: false
+          },
+          { evaluation_percentage: 20,
+            evaluable_id: @course.id,
+            evaluable_type: 'Course',
+            _destroy: false
+          }
+        ]
+      }
+    end
+
+    it 'has 302 status' do
+      expect(response.status).to eq(302)
+    end
+
+    it 'redirects to onboarding_show_course_library_path' do
+      pending('need to add route onboarding_show_course_library')
+      expect(response).to redirect_to(onboarding_show_course_library_path(@course.id))
+    end
+  end
 end

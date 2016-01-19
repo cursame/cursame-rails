@@ -1,1 +1,6 @@
+%h1= t('.select_users_step')
 
+= form_tag onboarding_add_users_path, class: 'form-validate-js', id: 'create-course-form' do
+  = label 'users', "Usuarios"
+  = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: "Nombre", data: { role: 'students' }
+  = submit_tag "Continuar"
