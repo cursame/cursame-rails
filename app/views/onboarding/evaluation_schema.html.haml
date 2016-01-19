@@ -1,0 +1,5 @@
+%h1= t('.evaluation_criteria_step')
+= form_for(@course, :url => url_for(controller: 'onboarding', action: 'add_evaluation_schema', :id => @course.id), method: :put) do |f|
+  = f.fields_for :evaluation_criteria do |builder|
+    = render 'courses/shared/course_evaluation_schema_fields', f: builder
+  = submit_tag 'continuar'
