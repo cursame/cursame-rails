@@ -596,4 +596,6 @@ Cursame30Lb::Application.routes.draw do
   # match "/reported_contents/create" => "reported_contents#create", :as => "reported_content_create", :via => [:post], :defaults => { :format => 'js' }
   resources :reported_contents
 
+  # TODO: delete this routes
+  get 'mocks/', to: 'mocks#index'
 end
