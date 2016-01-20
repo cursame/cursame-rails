@@ -1,0 +1,16 @@
+Bibioteca del Curso
+
+= button_to 'Subir Archivo', onboarding_new_library_file_path(library_id: @course_library.id, course_id: @course.id)
+= button_to 'Crear Carpeta', onboarding_new_library_folder_path(@course_library.id, course_id: @course.id)
+
+%h2 Archivos
+- @course_library.library_files.each do |file|
+  %li= "Nombre: #{file.name}"
+  %li= "Descripción: #{file.description}"
+
+%h2 Directorios
+- @course_library.library_directories.each do |directory|
+  %li=  "Nombre: #{directory.name}"
+  %li=  "Descripción: #{directory.description}"
+= button_to 'Crea otro Curso', onboarding_create_course_path
+= button_to 'Finalizar', onboarding_tour_video_path

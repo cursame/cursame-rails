@@ -1,0 +1,8 @@
+Subir Archivo a la Biblioteca
+
+= form_for(@file, :url => url_for(:controller => 'onboarding', :action => 'create_library_file', :id => @library.id, course_id: params[:course_id])) do |f|
+  = f.text_field :name
+  = f.text_field :description
+  = f.file_field :file
+  = f.submit 'Subir Archivo'
+

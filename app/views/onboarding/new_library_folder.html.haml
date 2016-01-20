@@ -1,0 +1,6 @@
+Crea una Carpeta en la Biblioteca del Curso
+
+= form_for(@folder, :url => url_for(:controller => 'onboarding', :action => 'create_library_folder', :id => @library.id, course_id: params[:course_id])) do |f|
+  = f.text_field :name, required: true
+  = f.text_field :description, required: true
+  = f.submit 'Crear Carpeta'

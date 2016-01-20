@@ -57,10 +57,37 @@ class OnboardingController < ApplicationController
   def add_evaluation_schema
     @course = Course.find params[:id]
     if @course.update_attributes(params[:course]) and valid_evaluation
-      redirect_to root_path
+      redirect_to onboarding_show_course_library_path(@course.id)
     else
       redirect_to onboarding_evaluation_schema_path(@course.id)
     end
+  end
+
+  def show_course_library
+    @course = Course.find(params[:id])
+    @course_library = @course.library
+  end
+
+  def new_library_folder
+    new_folder_for_library if params[:id]
+  end
+
+  def create_library_folder
+    create_folder_for_library if params[:library_directory]
+    redirect_to onboarding_show_course_library_path(params[:course_id])
+  end
+
+  def new_library_file
+    new_file_for_library if params[:library_id]
+  end
+
+  def create_library_file
+    create_file_for_library if params[:library_file]
+    redirect_to onboarding_show_course_library_path(params[:course_id])
+  end
+
+  def show_tour_video
+    complete_onboarding
   end
 
   private
@@ -92,5 +119,35 @@ class OnboardingController < ApplicationController
       total += criterion[1][:evaluation_percentage].to_i if criterion[1][:_destroy] == 'false'
     end
     total == 100
+  end
+
+  def new_folder_for_library
+    @library = Library.find(params[:id])
+    @folder = @library.library_directories.build
+  end
+
+  def create_folder_for_library
+    library = Library.find(params[:id])
+    folder = library.library_directories.build(params[:library_directory])
+    folder.user = current_user
+    folder.save
+  end
+
+  def new_file_for_library
+    @library = Library.find(params[:library_id])
+    @file = @library.library_files.build
+  end
+
+  def create_file_for_library
+    library = Library.find(params[:id])
+    file = library.library_files.build(params[:library_file])
+    file.user = current_user
+    file.save
+  end
+
+  def complete_onboarding
+    user = User.find(current_user.id)
+    user.onboarding = true
+    user.save
   end
 end
