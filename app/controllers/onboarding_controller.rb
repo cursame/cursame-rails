@@ -1,6 +1,4 @@
 class OnboardingController < ApplicationController
-  layout false
-
   def user_profile
     @user = User.find(current_user.id)
   end
@@ -38,7 +36,7 @@ class OnboardingController < ApplicationController
 
   def add_users
     @course = Course.find params[:id]
-    students = params[:students] || {}
+    students = params[:users] || {}
     user_ids = students.map{|key, value| key}
     users = []
 
@@ -65,7 +63,7 @@ class OnboardingController < ApplicationController
 
   def show_course_library
     @course = Course.find(params[:id])
-    @course_library = @course.library
+    @library = @course.library
   end
 
   def new_library_folder

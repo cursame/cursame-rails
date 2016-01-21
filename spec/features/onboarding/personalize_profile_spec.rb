@@ -28,8 +28,8 @@ RSpec.feature 'Personalize profile' do
   def render_onboarding_user_profile
     visit onboarding_profile_path
     expect(page).to have_content(I18n.t('.onboarding.user_profile.welcome_to_cursame'))
-    expect(page).to have_content(I18n.t('.onboarding.user_profile.onboarding_intructions'))
-    expect(page).to have_content(I18n.t('.onboarding.user_profile.personalize_your_profile'))
+    expect(page).to have_content(I18n.t('.onboarding.user_profile.user_profile_step'))
+    expect(page).to have_content(I18n.t('.onboarding.user_profile.user_profile_step_description'))
   end
 
   def fill_user_form

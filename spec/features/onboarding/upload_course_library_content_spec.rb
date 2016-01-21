@@ -4,7 +4,7 @@ RSpec.feature 'Upload content to Course Library' do
   background do
     @network = create(:network)
     @teacher = create(:user, role: 'teacher')
-    @course = create_course(@network, @teacher)
+    @course = create_course(@teacher, @network)
   end
 
   describe 'Upload file to Course Library' do
@@ -15,7 +15,7 @@ RSpec.feature 'Upload content to Course Library' do
       expect(page).to have_content('Subir Archivo a la Biblioteca')
       fill_upload_file_form
       attach_files
-      click_button('Subir Archivo')
+      click_button(I18n.t('.onboarding.new_library_file.upload_file'))
       expect(page).to have_content('file_name')
     end
   end
@@ -36,7 +36,7 @@ RSpec.feature 'Upload content to Course Library' do
     scenario 'click Button to redirect new course template' do
       given_logged_in_as(@teacher)
       visit onboarding_show_course_library_path(@course)
-      click_button('Crea otro Curso')
+      click_button(I18n.t('.onboarding.show_course_library.create_course'))
       expect(page).to have_content('Crea tu Primer Curso')
     end
   end
@@ -46,7 +46,7 @@ RSpec.feature 'Upload content to Course Library' do
       given_logged_in_as(@teacher)
       visit onboarding_show_course_library_path(@course)
       click_button('Finalizar')
-      expect(page).to have_content('Tour por la Plataforma')
+      expect(page).to have_content(I18n.t('.onboarding.show_tour_video.show_tour_video_step'))
     end
   end
 

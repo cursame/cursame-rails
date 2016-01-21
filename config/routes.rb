@@ -144,7 +144,7 @@ Cursame30Lb::Application.routes.draw do
   get '/onboarding/new_course', to: 'onboarding#new_course', as: :onboarding_new_course
   post '/onboarding/create_course', to: 'onboarding#create_course', as: :onboarding_create_course
   get '/onboarding/select_users/:id', to: 'onboarding#select_users', as: :onboarding_select_users
-  post '/onboarding/add_users/:id', to: 'onboarding#add_users', as: :onboarding_add_users
+  put '/onboarding/add_users/:id', to: 'onboarding#add_users', as: :onboarding_add_users
   get '/onboarding/evaluation_schema/:id', to: 'onboarding#evaluation_schema', as: :onboarding_evaluation_schema
   put 'onboarding/add_evaluation_schema/:id', to: 'onboarding#add_evaluation_schema', as: :onboarding_add_evaluation_schema
 
