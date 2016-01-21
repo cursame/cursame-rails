@@ -14,6 +14,10 @@ FactoryGirl.define do
     twitter_link { Faker::Name.last_name }
     description { Faker::Company.name }
 
+    trait :completed_onboarding do
+      onboarding true
+    end
+
     transient do
       role "student"
     end

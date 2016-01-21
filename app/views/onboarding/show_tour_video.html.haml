@@ -1,0 +1,22 @@
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.show_tour_video_step')
+            .description
+              = t('.show_tour_video_step_description')
+    .section-header-wrap
+      .wrapper
+        .cols-12
+          .col.col-12
+            %iframe{width: 560, height: 315, src: "https://www.youtube.com/embed/OG_IYAngraw", frameborder: 0, allowfullscreen: true, aling: "center"}
+        .cols-12
+          .col.col-12
+            .onboarding-actions
+              = button_to t('.skip'), root_path, class:  'left btn btn-complementary'

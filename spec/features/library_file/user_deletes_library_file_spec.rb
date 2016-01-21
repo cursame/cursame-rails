@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Delete a library file'  do
   background do
     @network = create(:network)
-    @user = create(:user, role: 'teacher')
+    @user = create(:user, :completed_onboarding, role: 'teacher')
     @not_owner_user = create(:user)
   end
 

@@ -1,0 +1,17 @@
+en:
+  onboarding:
+    new_course:
+      step: 2.- Crea tu Primer Curso
+      title: 'Title:'
+      placeholder_title: Math
+      silabus:  'Description:'
+      placeholder_silabus: description
+      privacy: 'Privacy:'
+      public: Public
+      private: Private
+      init_date: Init date
+      placeholder_init_date: init date
+      avatar: 'Avatar:'
+      coverphoto: 'Cover photo:'
+      continue: 'Continue'
+      cannot_create_course: 'Cannot create course'

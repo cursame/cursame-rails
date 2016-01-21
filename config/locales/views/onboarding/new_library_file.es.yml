@@ -1,0 +1,10 @@
+es:
+  onboarding:
+    new_library_file:
+      welcome_to_cursame: 'Bienvenido a Cúrsame'
+      new_library_file_step: 5.- Integra documentos a tu curso
+      new_library_file_step_description: Subir Archivo a la Biblioteca
+      name: 'Nombre:'
+      description: 'Descripción:'
+      file: 'Archivo:'
+      upload_file: 'Continuar'

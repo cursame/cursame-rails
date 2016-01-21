@@ -1,0 +1,14 @@
+- @courses.each do |course|
+  - member = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id)
+  .ol
+    .li
+      = course.title
+    .li
+      -if !member.nil? && member.accepted
+        = link_to "Abandonar curso", onboarding_delete_member_path(course_id: course.id)
+      -else
+        - if course.public_status == 'public'
+          = link_to "Unirme a este curso", onboarding_create_accepted_member_path(course_id: course.id)
+        - else
+          = link_to "Enviar solicitud", onboarding_create_member_path(course_id: course.id)
+

@@ -1,0 +1,41 @@
+.white-container
+  .header
+    Bienvenido a Cúrsame
+  .description
+    %p A continuación te guiaremos en la presonalización de tu cuenta,
+    %p este proceso te tomará alrededor de 3 minutos.
+.onboarding-wrapper
+  .header
+    1.- Personaliza tu Perfil de Usuario
+  .description
+    Personaliza como te verán los demas usuarios de la red
+  .cols-12
+    .col.col-2
+    .col.col-4
+      .form-group.label-on-top.l-label
+        .form-group-label
+          %label Nombre Completo:
+        .form-group-main
+          .form-unit
+            %input.valid{ 'type' => 'text', 'aria-invalid' => 'false', 'aria-required' => 'true', 'required' => 'required', 'placeholder' => 'Ejemplo: José León Rangel Reyes' }
+      .form-group.label-on-top.l-label
+        .form-group-label
+          %label Acerca de mi:
+        .form-group-main
+          .form-unit
+            %textarea.valid{ 'type' => 'text', 'aria-invalid' => 'false', 'aria-required' => 'true', 'required' => 'required', 'placeholder' => 'Ejemplo: Soy alumno del grupo M4, me encanta el fútbol y estudiar.', 'rows' => '5' }
+      .form-group.label-on-top.l-label
+        .form-group-label
+          %label Fecha de Nacimiento:
+        .form-group-main
+          .form-unit
+            %input.date-picker.hasDatepicker{ 'type' => 'text', 'aria-invalid' => 'false', 'aria-required' => 'true', 'required' => 'required', 'placeholder' => 'Ejemplo: José León Rangel Reyes' }
+  .cols-12
+    .col.col-10
+      .onboarding-actions
+        %a.left.btn.btn-complementary{ href: '#' } Continuar
+.white-container
+  %span.step.active &#10122
+  %span.step &#10113
+  %span.step &#10114
+  %span.step &#10115

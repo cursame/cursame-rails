@@ -1,0 +1,55 @@
+.onboarding body {
+  padding-top: 51px;
+}
+
+.white-container {
+  left: 0px;
+  width: 100%;
+  background: #fff;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  color: #3D3D3D;
+
+  span.step {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 80px;
+
+    &.active {
+      color: rgb(150, 220, 67);
+    }
+  }
+
+  .header {
+    padding-top: 20px;
+    font-size: 36px;
+    color: #5380A4;
+  }
+
+  .description {
+    padding: 10px 0px 15px;
+    font-size: 16px;
+  }
+}
+
+.onboarding-wrapper {
+  padding-top: 40px;
+  text-align: center;
+
+  .header {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .description {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    color: #7B8490;
+  }
+}
+
+.onboarding-actions {
+  padding: 30px 30px;
+  float: right;
+}

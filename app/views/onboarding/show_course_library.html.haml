@@ -1,0 +1,33 @@
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.show_course_library_step')
+            .description
+              = t('.show_course_library_step_description')
+    .section-header-wrap
+      .wrapper
+        .cols-12
+          .col.col-12
+            .col-inner
+              = render template: 'onboarding/library_header'
+
+    = render partial: 'libraries/shared/library_files', locals: { libraries: @library.libraries, files: @library.library_files, directories: @library.library_directories }
+    .cols-12
+      .col.col-12
+        .onboarding-actions
+          %ul.list-buttons.right
+            %li= button_to t('.create_course'), onboarding_create_course_path, class:  'left btn btn-complementary'
+            %li= link_to t('.finish_tour'), onboarding_tour_video_path, class:  'left btn btn-complementary'
+.white-container
+  %span.step &#10112
+  %span.step &#10113
+  %span.step &#10114
+  %span.step &#10115
+  %span.step.active &#10126
