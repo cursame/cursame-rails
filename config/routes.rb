@@ -153,7 +153,7 @@ Cursame30Lb::Application.routes.draw do
   post '/onboarding/create_library_folder', to: 'onboarding#create_library_folder'
   post '/onboarding/new_library_file/:id', to: 'onboarding#new_library_file', as: :onboarding_new_library_file
   post '/onboarding/create_library_file', to: 'onboarding#create_library_file'
-  post '/onboarding/tour_video', to: 'onboarding#show_tour_video', as: :onboarding_tour_video
+  get '/onboarding/tour_video', to: 'onboarding#show_tour_video', as: :onboarding_tour_video
 
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities

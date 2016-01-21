@@ -3,7 +3,7 @@ es:
     user_profile:
       welcome_to_cursame: 'Bienvenido a Cúrsame'
       onboarding_intructions: 'A continuación te guiaremos en la personalización de tu cuenta,
-        este proceso te tomará alrededor de 3 minutos por curso que impartas'
+        este proceso te tomará alrededor de 3 minutos'
       personalize_your_profile: 'Personaliza tu perfil'
       name: 'Nombres:'
       sur_name: 'Apellidos:'

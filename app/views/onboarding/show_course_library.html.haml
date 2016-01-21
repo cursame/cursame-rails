@@ -24,7 +24,7 @@
         .onboarding-actions
           %ul.list-buttons.right
             %li= button_to t('.create_course'), onboarding_create_course_path, class:  'left btn btn-complementary'
-            %li= button_to t('.finish_tour'), onboarding_tour_video_path, class:  'left btn btn-complementary'
+            %li= link_to t('.finish_tour'), onboarding_tour_video_path, class:  'left btn btn-complementary'
 .white-container
   %span.step &#10112
   %span.step &#10113

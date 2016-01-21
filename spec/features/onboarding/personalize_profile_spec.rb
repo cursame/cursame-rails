@@ -17,6 +17,7 @@ RSpec.feature 'Personalize profile' do
   end
 
   scenario 'render Onboarding profile page when logged first time with Student' do
+    pending('need to add steps for student onboarding')
     given_logged_in_as(@student)
     render_onboarding_user_profile
     fill_user_form

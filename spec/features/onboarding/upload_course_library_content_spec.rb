@@ -45,7 +45,7 @@ RSpec.feature 'Upload content to Course Library' do
     scenario 'click Button to finish onboarding and render intro video template' do
       given_logged_in_as(@teacher)
       visit onboarding_show_course_library_path(@course)
-      click_button('Finalizar')
+      click_on(I18n.t('.onboarding.show_course_library.finish_tour'))
       expect(page).to have_content(I18n.t('.onboarding.show_tour_video.show_tour_video_step'))
     end
   end
