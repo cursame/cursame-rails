@@ -6,7 +6,7 @@ function renderListItem ( ul, item ) {
   } else {
     avatarURL = "/assets/imagexxxx.png"
   };
-  
+
   return $( "<li>" ).append( "<a> <img class='avatar' src='" + avatarURL + "' alt=''/>" + item.last_name + " "+ item.first_name + "</a>" ).appendTo( ul );
 };
 
@@ -57,7 +57,7 @@ $(function() {
         usersList = userUnit.closest('.users-list'),
         messages = {
           title: 'Agrega Alumnos',
-          message: 'Elige los alumnos a los que les deseas enviar el correo' 
+          message: 'Elige los alumnos que deseas agregar'
         };
 
     userUnit.remove();
