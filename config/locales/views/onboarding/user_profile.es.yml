@@ -2,12 +2,12 @@ es:
   onboarding:
     user_profile:
       welcome_to_cursame: 'Bienvenido a Cúrsame'
-      onboarding_intructions: 'A continuación te guiaremos en la creación de tu cuenta
-        y los primeros pasos para que puedas sacar todo el provecho de la plataforma'
+      onboarding_intructions: 'A continuación te guiaremos en la personalización de tu cuenta,
+        este proceso te tomará alrededor de 3 minutos por curso que impartas'
       personalize_your_profile: 'Personaliza tu perfil'
       name: 'Nombres:'
       sur_name: 'Apellidos:'
-      biography: 'Biografía:'
+      biography: 'Acerca de mi:'
       email: 'Email:'
       twitter: 'Twitter:'
       personal_url: 'URL:'
@@ -15,4 +15,6 @@ es:
       coverphoto: 'Foto de Portada:'
       continue: 'Continuar'
       cannot_update_profile: 'No se puede actualizar Perfil'
+      user_profile_step: "1.- Personaliza tu Perfil de Usuario"
+      user_profile_step_description: Personaliza como te verán los demás usuarios de la red
 

@@ -2,11 +2,13 @@ en:
   onboarding:
     new_course:
       step: 2.- Crea tu Primer Curso
-      title: Title
+      title: 'Title:'
       placeholder_title: Math
-      silabus: Description
+      silabus:  'Description:'
       placeholder_silabus: description
-      privacy: Privacy
+      privacy: 'Privacy:'
+      public: Public
+      private: Private
       init_date: Init date
       placeholder_init_date: init date
       avatar: 'Avatar:'

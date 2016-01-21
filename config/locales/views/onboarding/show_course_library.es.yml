@@ -1,0 +1,12 @@
+es:
+  onboarding:
+    show_course_library:
+      welcome_to_cursame: 'Bienvenido a Cúrsame'
+      show_course_library_step: 5.- Integra documentos a tu curso
+      show_course_library_step_description: Estos documentos formarán parte de la Bibliotea del curso
+      create_course: Crea otro curso
+      finish_tour: Finalizar
+      continue: 'Continuar'
+    library_header:
+      library: Biblioteca
+

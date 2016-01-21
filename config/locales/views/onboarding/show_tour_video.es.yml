@@ -1,0 +1,7 @@
+es:
+  onboarding:
+    show_tour_video:
+      welcome_to_cursame: 'Bienvenido a Cúrsame'
+      show_tour_video_step: Tour por la plataforma
+      show_tour_video_step_description: Por favor toma 3 minutos para conocer como Cúrsame puede ayudarte a mejorar tu labor académico y mejorar el desempeño de tus alumnos
+      skip: Saltar
