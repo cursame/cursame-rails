@@ -1,0 +1,22 @@
+.managers-header
+  = render partial: 'shared/flash', locals: { full: true }
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .managers-brand
+            = link_to managers_path do
+              = icon 'cursame-logo-white'
+          .manager-header-actions
+            %ul
+              %li
+                %a{ href: 'http://myaccount.zendesk.com/account/dropboxes/2830039812', onclick: 'script: Zenbox.show(); return false;' }
+                  = t('.help')
+              %li
+                .dropdown-wrap
+                  .dropdown-pull
+                    = icon('settings')
+                  .dropdown-v.right
+                    %i.tip
+                    %ul
+                      %li= link_to t('.log_out'), sign_out_path, method: :delete
