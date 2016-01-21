@@ -1,22 +1,63 @@
-%h1= t('.step')
-
-= form_for(@course, :url => url_for(:controller => 'onboarding', :action => 'create_course')) do |f|
-  = f.label :title, t('.title')
-  = f.text_field :title, placeholder: t('.placeholder_title'), required: "required", autocomplete: "off"
-
-  = f.label :silabus, t('.silabus')
-  = f.text_area :silabus, rows: 4, placeholder: t('.placeholder_silabus'), required: "required", autocomplete: "off"
-
-  = f.label :public_status, t('.privacy')
-  = f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']], @course.public_status)
-
-  = f.label :avatar, t('.avatar')
-  = f.file_field :avatar
-
-  = f.label :coverphoto, t('.coverphoto')
-  = f.file_field :coverphoto
-
-  = f.label :init_date, t('.init_date')
-  = f.text_field :init_date, placeholder: t('.placeholder_init_date'), required: "required", autocomplete: "off"
-
-  = f.submit t('.continue')
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.create_course_step')
+            .description
+              = t('.create_course_step_description')
+    = form_for(@course, :url => url_for(:controller => 'onboarding', :action => 'create_course')) do |f|
+      .cols-12
+        .col.col-6
+          .col-inner
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :title, t('.title')
+              .form-group-main
+                .form-unit
+                  = f.text_field :title, placeholder: t('.placeholder_title'), required: "required", autocomplete: "off"
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :silabus, t('.silabus')
+              .form-group-main
+                .form-unit
+                  = f.text_area :silabus, rows: 3, placeholder: t('.placeholder_silabus'), required: "required", autocomplete: "off"
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :public_status, t('.privacy')
+              .form-group-main
+                .form-unit
+                  = f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']], @course.public_status)
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :avatar, t('.avatar')
+              .form-group-main
+                .form-unit
+                  = f.file_field :avatar
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :coverphoto, t('.coverphoto')
+              .form-group-main
+                .form-unit
+                  = f.file_field :coverphoto
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :init_date, t('.init_date')
+              .form-group-main
+                .form-unit
+                  = f.text_field :init_date, placeholder: t('.placeholder_init_date'), required: "required", autocomplete: "off"
+      .cols-12
+        .col.col-12
+          .onboarding-actions
+            = f.submit t('.continue'), class:  'left btn btn-complementary'
+.white-container
+  %span.step &#10112
+  %span.step.active &#10123
+  %span.step &#10114
+  %span.step &#10115
+  %span.step &#10116

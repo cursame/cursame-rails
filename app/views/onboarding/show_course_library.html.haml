@@ -1,16 +1,33 @@
-Bibioteca del Curso
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.show_course_library_step')
+            .description
+              = t('.show_course_library_step_description')
+    .section-header-wrap
+      .wrapper
+        .cols-12
+          .col.col-12
+            .col-inner
+              = render template: 'onboarding/library_header'
 
-= button_to 'Subir Archivo', onboarding_new_library_file_path(library_id: @course_library.id, course_id: @course.id)
-= button_to 'Crear Carpeta', onboarding_new_library_folder_path(@course_library.id, course_id: @course.id)
-
-%h2 Archivos
-- @course_library.library_files.each do |file|
-  %li= "Nombre: #{file.name}"
-  %li= "Descripción: #{file.description}"
-
-%h2 Directorios
-- @course_library.library_directories.each do |directory|
-  %li=  "Nombre: #{directory.name}"
-  %li=  "Descripción: #{directory.description}"
-= button_to 'Crea otro Curso', onboarding_create_course_path
-= button_to 'Finalizar', onboarding_tour_video_path
+    = render partial: 'libraries/shared/library_files', locals: { libraries: @library.libraries, files: @library.library_files, directories: @library.library_directories }
+    .cols-12
+      .col.col-12
+        .onboarding-actions
+          %ul.list-buttons.right
+            %li= button_to t('.create_course'), onboarding_create_course_path, class:  'left btn btn-complementary'
+            %li= button_to t('.finish_tour'), onboarding_tour_video_path, class:  'left btn btn-complementary'
+.white-container
+  %span.step &#10112
+  %span.step &#10113
+  %span.step &#10114
+  %span.step &#10115
+  %span.step.active &#10126

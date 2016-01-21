@@ -1,20 +1,71 @@
-%h1= t('.welcome_to_cursame')
-%h2= t('.onboarding_intructions')
-%h3= t('.personalize_your_profile')
-
-= form_for(@user, :url => url_for(:controller => 'onboarding', :action => 'update_user_profile', :id => @user.id)) do |f|
-  = f.label :first_name, t('.name')
-  = f.text_field :first_name, required: 'required'
-  = f.label :last_name, t('.sur_name')
-  = f.text_field :last_name, required: 'required'
-  = f.label :bios, t('.biography')
-  = f.text_area :bios, required: 'required'
-  = f.label :twitter_link, t('.twitter')
-  = f.text_field :twitter_link
-  = f.label :personal_url, t('.personal_url')
-  = f.text_field :personal_url
-  = f.label :avatar, t('.avatar')
-  = f.file_field :avatar
-  = f.label :coverphoto, t('.coverphoto')
-  = f.file_field :coverphoto
-  = f.submit t('.continue')
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+  .description
+    = t('.onboarding_intructions')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.user_profile_step')
+            .description
+              = t('.user_profile_step_description')
+    = form_for(@user, :url => url_for(:controller => 'onboarding', :action => 'update_user_profile', :id => @user.id)) do |f|
+      .cols-12
+        .col.col-6
+          .col-inner
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :first_name, t('.name')
+              .form-group-main
+                .form-unit
+                  = f.text_field :first_name, required: 'required'
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :last_name, t('.sur_name')
+              .form-group-main
+                .form-unit
+                  = f.text_field :last_name, required: 'required'
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :bios, t('.biography')
+              .form-group-main
+                .form-unit
+                  = f.text_area :bios, required: 'required', rows: 3
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :twitter_link, t('.twitter')
+              .form-group-main
+                .form-unit
+                  = f.text_field :twitter_link
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :personal_url, t('.personal_url')
+              .form-group-main
+                .form-unit
+                  = f.text_field :personal_url
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :avatar, t('.avatar')
+              .form-group-main
+                .form-unit
+                  = f.file_field :avatar
+            .form-group.label-on-top.l-label
+              .form-group-label
+                = f.label :coverphoto, t('.coverphoto')
+              .form-group-main
+                .form-unit
+                  = f.file_field :coverphoto
+      .cols-12
+        .col.col-12
+          .onboarding-actions
+            = f.submit t('.continue'), class:  'left btn btn-complementary'
+.white-container
+  %span.step.active &#10122
+  %span.step &#10113
+  %span.step &#10114
+  %span.step &#10115
+  %span.step &#10116

@@ -1,6 +1,37 @@
-%h1= t('.select_users_step')
+- content_for :javascripts do
+  = javascript_include_tag 'mailer/form'
+  = javascript_include_tag 'mailer/network-students-autocomplete'
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.select_users_step')
+            .description
+              = t('.select_users_step_description')
+    = form_tag onboarding_add_users_path, class: 'form-validate-js', id: 'form-mailer-list-js', method: :put do
+      .cols-4
+        .form-group-main
+          .form-unit
+            .table-box#network-users-list
+              .table-box-header
+                = text_field_tag 'users-search', '', id: 'students-search-input', placeholder: t('.search_users_placeholder'), data: { role: 'users' }
+                .spinner-dark
+              .table-box-body.scrollbar
+                .users-list
+      .cols-12
+        .col.col-12
+          .onboarding-actions
+            = submit_tag t('.continue'), class:  'left btn btn-complementary'
 
-= form_tag onboarding_add_users_path, class: 'form-validate-js', id: 'create-course-form' do
-  = label 'users', "Usuarios"
-  = text_field_tag 'students-search', '', id: 'students-search-input', placeholder: "Nombre", data: { role: 'students' }
-  = submit_tag "Continuar"
+.white-container
+  %span.step &#10112
+  %span.step &#10113
+  %span.step.active &#10124
+  %span.step &#10115
+  %span.step &#10116
