@@ -1,0 +1,5 @@
+es:
+  onboarding:
+    show_network_users:
+      user_profile_step: '3.- Agrega a tus compañeros como amigos'
+      user_profile_step_description: 'Podrás interactuar con ellos, comentar, dar like, chatear, etc.'

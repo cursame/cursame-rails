@@ -88,7 +88,15 @@ class OnboardingController < ApplicationController
     complete_onboarding
   end
 
+  def show_network_users
+    @network_users = network_users
+  end
+
   private
+
+  def network_users(page = 1)
+    current_network.users.where('users.confirmed_at IS NOT NULL').paginate(per_page: CARDS_PER_PAGE, page: page)
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :bios,
