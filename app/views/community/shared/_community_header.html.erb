@@ -11,12 +11,15 @@
                   <h1><%=t('.community')%></h1>
                 <% end %>
               </div>
+              <% if current_user.onboarding? %>
               <div class="section-header-actions">
                 <%= render partial: "/community/shared/users_search" %>
               </div>
+              <% end %>
             </div>
             <div class="page-sub-navigation">
               <% action = params[:action] %>
+              <% if current_user.onboarding? %>
               <ul>
                 <li>
                   <%= link_to t('.all'), network_comunity_path, class: (action == 'all' ? "active" : " ") %>
@@ -28,6 +31,7 @@
                   <%= link_to t('.teacher'), community_teachers_path, class: (action == 'teachers' ? "active" : " ") %>
                 </li>
               </ul>
+              <% end %>
             </div>
           </div>
         </div>
