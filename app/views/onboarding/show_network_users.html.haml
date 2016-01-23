@@ -1,0 +1,31 @@
+.white-container
+  .header
+    = t('onboarding.user_profile.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.user_profile_step')
+            .description
+              = t('.user_profile_step_description')
+    .section-header-wrap
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+            = render template: '/community/all'
+      .cols-12
+        .col.col-12
+          .onboarding-actions
+            = link_to t('onboarding.user_profile.continue'), onboarding_tour_video_path, class: 'left btn btn-complementary'
+.white-container
+  %span.step &#10112
+  %span.step &#10113
+  %span.step.active &#10114
+  %span.step &#10115
+
+
+

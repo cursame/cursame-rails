@@ -155,6 +155,8 @@ Cursame30Lb::Application.routes.draw do
   post '/onboarding/create_library_file', to: 'onboarding#create_library_file'
   get '/onboarding/tour_video', to: 'onboarding#show_tour_video', as: :onboarding_tour_video
 
+  get '/onboarding/select_friends',to: 'onboarding#show_network_users', as: :onboarding_friendship
+
   #Calificar Actividades
   get '/evaluate', :to => 'evaluate#index', :as => :evaluate_activities
   get '/evaluate/inactive', :to => 'evaluate#inactive', :as => :evaluate_activities_inactive
