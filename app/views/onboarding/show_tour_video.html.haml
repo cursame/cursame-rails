@@ -21,3 +21,16 @@
           .col.col-12
             .onboarding-actions
               = button_to t('.skip'), root_path, class:  'left btn btn-complementary'
+.white-container
+  - if current_user.teacher?
+    %span.step &#10112
+    %span.step &#10113
+    %span.step &#10114
+    %span.step &#10115
+    %span.step &#10116
+    %span.step.active &#10127
+  - else
+    %span.step &#10112
+    %span.step &#10113
+    %span.step &#10114
+    %span.step.active &#10125
