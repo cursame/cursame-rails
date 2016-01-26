@@ -154,6 +154,7 @@ Cursame30Lb::Application.routes.draw do
   post '/onboarding/new_library_file/:id', to: 'onboarding#new_library_file', as: :onboarding_new_library_file
   post '/onboarding/create_library_file', to: 'onboarding#create_library_file'
   get '/onboarding/tour_video', to: 'onboarding#show_tour_video', as: :onboarding_tour_video
+  post '/onboarding/search_courses', to: 'onboarding#search_courses', as: :onboarding_search_courses
 
   get '/onboarding/select_friends',to: 'onboarding#show_network_users', as: :onboarding_friendship
 

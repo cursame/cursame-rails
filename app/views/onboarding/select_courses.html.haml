@@ -1,14 +1,47 @@
-- @courses.each do |course|
-  - member = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id)
-  .ol
-    .li
-      = course.title
-    .li
-      -if !member.nil? && member.accepted
-        = link_to "Abandonar curso", onboarding_delete_member_path(course_id: course.id)
-      -else
-        - if course.public_status == 'public'
-          = link_to "Unirme a este curso", onboarding_create_accepted_member_path(course_id: course.id)
-        - else
-          = link_to "Enviar solicitud", onboarding_create_member_path(course_id: course.id)
+- content_for :javascripts do
+  = javascript_include_tag 'publications/paginator'
+
+.white-container
+  .header
+    = t('.welcome_to_cursame')
+.onboarding-container
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .onboarding-wrapper
+            .header
+              = t('.select_courses_step')
+            .description
+              = t('.select_courses_step_description')
+
+  .section-header-wrap
+    .wrapper
+      .cols-12
+        .col.col-12
+          .col-inner
+            .section-header
+              = form_tag(onboarding_search_courses_path, class: 'onboarding-search-courses') do
+                .search-wrap
+                  = text_field_tag 'query', '', placeholder: t('.courses_search'), class: 'search-input', id: 'search-courses'
+                  .search-button
+                    %span.btn.btn-secondary.input-btn
+                      = submit_tag t('.search')
+  .wrapper
+    .cols-12.courses-list
+      = render partial: 'courses/index/courses_cards_list', locals: { courses: @courses, member: @member }
+    - if @courses.total_entries > COURSES_PER_PAGE
+      = render partial: 'courses/shared/courses_paginate_button', locals: { page: 2, role: 'student', state: 'not_subscribed' }
+    - else
+      = render partial: "shared/no_more_records_found", locals: { message: t('.no_records') }
+
+    .cols-12
+      .col.col-12
+        .onboarding-actions
+          = link_to t('.continue'), onboarding_friendship_path, class:  'left btn btn-complementary'
+.white-container
+  %span.step &#10112
+  %span.step.active &#10123
+  %span.step &#10114
+  %span.step &#10115
 
