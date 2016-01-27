@@ -1,3 +1,5 @@
+- content_for :javascripts do
+  = javascript_include_tag('users/preview-images')
 .white-container
   .header
     = t('.welcome_to_cursame')
@@ -47,20 +49,31 @@
               .form-group-main
                 .form-unit
                   = f.text_field :personal_url
-            .form-group.label-on-top.l-label
-              .form-group-label
-                = f.label :avatar, t('.avatar')
-              .form-group-main
-                .form-unit
+        .col.col-4
+          .content-sidebar{style: "float: right"}
+            .form-group
+              .avatar-holder
+                - avatar_src = @user.coverphoto.blank? ? "/assets/imagex.png" : @user.avatar.to_s
+                = image_tag(avatar_src, size: "150x150", class: "avatar avatar-150", id: "avatar")
+              .profile-avatar-upload
+                = f.label :avatar do
+                  = icon 'white-cam'
+                  %span= t('.avatar')
+                .hide-input-file
                   = f.file_field :avatar
-            .form-group.label-on-top.l-label
-              .form-group-label
-                = f.label :coverphoto, t('.coverphoto')
-              .form-group-main
-                .form-unit
+            .form-group
+              .avatar-holder
+                - coverphoto_src = @user.coverphoto.blank? ? "/assets/portada.png" : @user.coverphoto.to_s
+                = image_tag(coverphoto_src, size: "150x150", class: "avatar avatar-150", id: "coverphoto")
+              .profile-avatar-upload
+                = f.label :coverphoto do
+                  = icon 'white-cam'
+                  %span= t('.coverphoto')
+                .hide-input-file
                   = f.file_field :coverphoto
-      .cols-12
-        .col.col-12
+
+      .cols-10
+        .col.col-10
           .onboarding-actions
             = f.submit t('.continue'), class:  'left btn btn-complementary'
 .white-container
