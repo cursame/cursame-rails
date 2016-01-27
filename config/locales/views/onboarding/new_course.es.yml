@@ -13,7 +13,7 @@ es:
       private: Privado
       init_date: Fecha de Inicio
       placeholder_init_date: "Ejemplo: 21/01/2016"
-      avatar: 'Avatar:'
-      coverphoto: 'Foto de Portada:'
+      avatar: 'Subir Imagen del Curso'
+      coverphoto: 'Subir Portada'
       continue: 'Continuar'
       cannot_create_course: 'No se puede crear el curso'

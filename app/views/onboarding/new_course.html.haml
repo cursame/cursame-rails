@@ -1,3 +1,5 @@
+- content_for :javascripts do
+  = javascript_include_tag('courses/preview-images')
 .white-container
   .header
     = t('.welcome_to_cursame')
@@ -35,24 +37,32 @@
                   = f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']], @course.public_status)
             .form-group.label-on-top.l-label
               .form-group-label
-                = f.label :avatar, t('.avatar')
-              .form-group-main
-                .form-unit
-                  = f.file_field :avatar
-            .form-group.label-on-top.l-label
-              .form-group-label
-                = f.label :coverphoto, t('.coverphoto')
-              .form-group-main
-                .form-unit
-                  = f.file_field :coverphoto
-            .form-group.label-on-top.l-label
-              .form-group-label
                 = f.label :init_date, t('.init_date')
               .form-group-main
                 .form-unit
                   = f.text_field :init_date, placeholder: t('.placeholder_init_date'), required: "required", autocomplete: "off", class: "date-picker"
-      .cols-12
-        .col.col-12
+        .col.col-4
+          .content-sidebar{style: "float: right"}
+            .form-group
+              .avatar-holder
+                = image_tag("/assets/course-avatarx.png", size: "150x150", class: "avatar avatar-150", id: "avatar")
+              .profile-avatar-upload
+                = f.label :avatar do
+                  = icon 'white-cam'
+                  %span= t('.avatar')
+                .hide-input-file
+                  = f.file_field :avatar
+            .form-group
+              .avatar-holder
+                = image_tag("/assets/#{@course.image_coursex}", size: "150x150", class: "avatar avatar-150", id: "coverphoto")
+              .profile-avatar-upload
+                = f.label :coverphoto do
+                  = icon 'white-cam'
+                  %span= t('.coverphoto')
+                .hide-input-file
+                  = f.file_field :coverphoto
+      .cols-10
+        .col.col-10
           .onboarding-actions
             = f.submit t('.continue'), class:  'left btn btn-complementary'
 .white-container
