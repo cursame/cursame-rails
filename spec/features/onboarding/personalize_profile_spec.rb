@@ -41,7 +41,7 @@ RSpec.feature 'Personalize profile' do
   end
 
   def attach_files
-    attach_file('Avatar', Rails.root + "spec/fixtures/files/images/palm.png")
-    attach_file('Foto de Portada', Rails.root + "spec/fixtures/files/images/palm.png")
+    attach_file(I18n.t('.onboarding.user_profile.avatar'), Rails.root + "spec/fixtures/files/images/palm.png")
+    attach_file(I18n.t('.onboarding.user_profile.coverphoto'), Rails.root + "spec/fixtures/files/images/palm.png")
   end
 end

@@ -11,8 +11,8 @@ es:
       email: 'Email:'
       twitter: 'Twitter:'
       personal_url: 'URL:'
-      avatar: 'Avatar:'
-      coverphoto: 'Foto de Portada:'
+      avatar: 'Subir Avatar'
+      coverphoto: 'Subir Portada'
       continue: 'Continuar'
       cannot_update_profile: 'No se puede actualizar Perfil'
       user_profile_step: "1.- Personaliza tu Perfil de Usuario"
