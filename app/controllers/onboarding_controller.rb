@@ -1,4 +1,6 @@
 class OnboardingController < ApplicationController
+  filter_access_to :all
+
   def user_profile
     @user = User.find(current_user.id)
   end

@@ -17,6 +17,15 @@ authorization do
     has_permission_on [:delivery], to: [:read]
     has_permission_on [:assigments], to: [:manage]
     has_permission_on [:events], to: [:manage]
+
+    has_permission_on [:onboarding], to: [
+      :user_profile,
+      :update_user_profile,
+      :select_courses,
+      :search_courses,
+      :show_network_users,
+      :show_tour_video
+    ]
   end
 
   role :teacher do
@@ -30,6 +39,22 @@ authorization do
     has_permission_on [:surveys], to: [:manage, :survey_add_attemp]
 
     has_permission_on [:library_files], to: [:delete]
+
+    has_permission_on [:onboarding], to: [
+      :user_profile,
+      :update_user_profile,
+      :new_course,
+      :create_course,
+      :select_users,
+      :add_users,
+      :evaluation_schema,
+      :add_evaluation_schema,
+      :show_course_library,
+      :new_library_folder,
+      :create_library_folder,
+      :new_library_file,
+      :create_library_file,
+      :show_tour_video]
   end
 
   role :operator do
