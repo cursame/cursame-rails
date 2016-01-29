@@ -7,10 +7,10 @@ RSpec.describe OnboardingController, type: :controller do
     @network = create(:network)
     @teacher = create(:user, role: 'teacher')
     @student = create(:user, role: 'student')
-    sign_in @student
+    sign_in @teacher
   end
 
-  describe 'GET onboardingProfile' do
+  describe 'GET #user_profile' do
     before :each do
       get :user_profile
     end
@@ -72,6 +72,18 @@ RSpec.describe OnboardingController, type: :controller do
     it 'renders the new_course template' do
       expect(response).to render_template('new_course')
     end
+
+    it 'teacher should have authorization to new course' do
+      with_user(@teacher) do
+        should_be_allowed_to :new_course, :onboarding
+      end
+    end
+
+    it "student shouldn't have authorization to new course" do
+      with_user(@student) do
+        should_not_be_allowed_to :new_course, :onboarding
+      end
+    end
   end
 
   describe 'POST #create_course' do
@@ -102,6 +114,18 @@ RSpec.describe OnboardingController, type: :controller do
     it 'redirects to onboarding_select_users_path' do
       expect(response).to redirect_to(onboarding_select_users_path(@course.id))
     end
+
+    it 'teacher should have authorization to create course' do
+      with_user(@teacher) do
+        should_be_allowed_to :create_course, :onboarding
+      end
+    end
+
+    it "student shouldn't have authorization to create course" do
+      with_user(@student) do
+        should_not_be_allowed_to :create_course, :onboarding
+      end
+    end
   end
 
   describe 'GET #select_users' do
@@ -116,6 +140,18 @@ RSpec.describe OnboardingController, type: :controller do
 
     it 'renders the select_users template' do
       expect(response).to render_template('select_users')
+    end
+
+    it 'teacher should have authorization to select users' do
+      with_user(@teacher) do
+        should_be_allowed_to :select_users, :onboarding
+      end
+    end
+
+    it "student shouldn't have authorization to select users" do
+      with_user(@student) do
+        should_not_be_allowed_to :select_users, :onboarding
+      end
     end
   end
 
@@ -136,6 +172,18 @@ RSpec.describe OnboardingController, type: :controller do
     it 'redirects to onboarding_evaluation_schema_path' do
       expect(response).to redirect_to(onboarding_evaluation_schema_path(@course.id))
     end
+
+    it 'teacher should have authorization to add users to course' do
+      with_user(@teacher) do
+        should_be_allowed_to :add_users, :onboarding
+      end
+    end
+
+    it "student shouldn't have authorization to add users to course" do
+      with_user(@student) do
+        should_not_be_allowed_to :add_users, :onboarding
+      end
+    end
   end
 
   describe 'GET #evaluation_schema' do
@@ -150,6 +198,18 @@ RSpec.describe OnboardingController, type: :controller do
 
     it 'renders the evaluation_schema template' do
       expect(response).to render_template('evaluation_schema')
+    end
+
+    it 'teacher should have authorization to evaluation schema' do
+      with_user(@teacher) do
+        should_be_allowed_to :evaluation_schema, :onboarding
+      end
+    end
+
+    it "student shouldn't have authorization to evaluation schema" do
+      with_user(@student) do
+        should_not_be_allowed_to :evaluation_schema, :onboarding
+      end
     end
   end
 
@@ -181,9 +241,16 @@ RSpec.describe OnboardingController, type: :controller do
       expect(response.status).to eq(302)
     end
 
-    it 'redirects to onboarding_show_course_library_path' do
-      pending('need to add route onboarding_show_course_library')
-      expect(response).to redirect_to(onboarding_show_course_library_path(@course.id))
+    it 'teacher should have authorization to add evaluation schema' do
+      with_user(@teacher) do
+        should_be_allowed_to :add_evaluation_schema, :onboarding
+      end
+    end
+
+    it "student shouldn't have authorization to add evaluation schema" do
+      with_user(@student) do
+        should_not_be_allowed_to :add_evaluation_schema, :onboarding
+      end
     end
   end
 end
