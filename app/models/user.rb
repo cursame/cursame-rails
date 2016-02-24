@@ -120,6 +120,7 @@ class User < ActiveRecord::Base
 
   after_save do
     gospel_add_user unless self.sign_in_count?
+      self.update_column(:onboarding, true) if admin?
   end
 
   after_create do
