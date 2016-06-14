@@ -141,18 +141,7 @@ Cursame30Lb::Application.routes.draw do
   get '/onboarding/user_profile', to: 'onboarding#user_profile', as: :onboarding_profile
   put '/onboarding/update_user_profile', to: 'onboarding#update_user_profile', as: :onboarding_update_profile
   get '/onboarding/select_courses', to: 'onboarding#select_courses', as: :onboarding_select_courses
-  get '/onboarding/new_course', to: 'onboarding#new_course', as: :onboarding_new_course
-  post '/onboarding/create_course', to: 'onboarding#create_course', as: :onboarding_create_course
-  get '/onboarding/select_users/:id', to: 'onboarding#select_users', as: :onboarding_select_users
-  put '/onboarding/add_users/:id', to: 'onboarding#add_users', as: :onboarding_add_users
-  get '/onboarding/evaluation_schema/:id', to: 'onboarding#evaluation_schema', as: :onboarding_evaluation_schema
-  put 'onboarding/add_evaluation_schema/:id', to: 'onboarding#add_evaluation_schema', as: :onboarding_add_evaluation_schema
 
-  get '/onboarding/show_course_library/:id', to: 'onboarding#show_course_library', as: :onboarding_show_course_library
-  post '/onboarding/new_library_folder/:id', to: 'onboarding#new_library_folder', as: :onboarding_new_library_folder
-  post '/onboarding/create_library_folder', to: 'onboarding#create_library_folder'
-  post '/onboarding/new_library_file/:id', to: 'onboarding#new_library_file', as: :onboarding_new_library_file
-  post '/onboarding/create_library_file', to: 'onboarding#create_library_file'
   get '/onboarding/tour_video', to: 'onboarding#show_tour_video', as: :onboarding_tour_video
   post '/onboarding/search_courses', to: 'onboarding#search_courses', as: :onboarding_search_courses
 
