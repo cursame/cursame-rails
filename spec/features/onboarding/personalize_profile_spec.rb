@@ -22,7 +22,7 @@ RSpec.feature 'Personalize profile' do
     fill_user_form
     attach_files
     click_on I18n.t('.onboarding.user_profile.continue')
-    expect(page.current_path).to eq(onboarding_select_courses_path)
+    expect(page.current_path).to eq(onboarding_friendship_path)
   end
 
   def render_onboarding_user_profile

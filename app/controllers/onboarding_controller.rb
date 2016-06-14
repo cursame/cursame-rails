@@ -8,7 +8,7 @@ class OnboardingController < ApplicationController
   def update_user_profile
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to (current_user.teacher? ? onboarding_tour_video_path : onboarding_select_courses_path)
+      redirect_to (current_user.teacher? ? onboarding_tour_video_path : onboarding_friendship_path)
     else
       flash[:alert] = t('.onboarding.user_profile.cannot_update_profile')
       render :user_profile
@@ -21,18 +21,6 @@ class OnboardingController < ApplicationController
 
   def show_network_users
     @network_users = network_users
-  end
-
-  def select_courses
-    @member = MembersInCourse.new
-    @courses = network_courses_not_subscribed.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-  end
-
-  def search_courses
-    raw_query = params[:query]
-    query = I18n.transliterate(raw_query.downcase.to_s)
-    @member = MembersInCourse.new
-    @courses = current_network.courses.search(query)
   end
 
   private

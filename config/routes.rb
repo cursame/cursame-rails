@@ -140,10 +140,7 @@ Cursame30Lb::Application.routes.draw do
 
   get '/onboarding/user_profile', to: 'onboarding#user_profile', as: :onboarding_profile
   put '/onboarding/update_user_profile', to: 'onboarding#update_user_profile', as: :onboarding_update_profile
-  get '/onboarding/select_courses', to: 'onboarding#select_courses', as: :onboarding_select_courses
-
   get '/onboarding/tour_video', to: 'onboarding#show_tour_video', as: :onboarding_tour_video
-  post '/onboarding/search_courses', to: 'onboarding#search_courses', as: :onboarding_search_courses
 
   get '/onboarding/select_friends',to: 'onboarding#show_network_users', as: :onboarding_friendship
 

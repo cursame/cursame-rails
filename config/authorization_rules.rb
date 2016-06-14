@@ -21,8 +21,6 @@ authorization do
     has_permission_on [:onboarding], to: [
       :user_profile,
       :update_user_profile,
-      :select_courses,
-      :search_courses,
       :show_network_users,
       :show_tour_video
     ]
