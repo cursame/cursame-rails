@@ -241,3 +241,4 @@ en:
     chat:
       friends: 'Friends'
       courses: 'Courses'
+      no_create: You do not have assigned any course yet

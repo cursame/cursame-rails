@@ -40,8 +40,6 @@ es:
         no_show: No hay más cursos para mostrar.
       teacher_header:
         courses: Cursos
-        create_course: Crear curso nuevo
-        new: Nuevo
         active: Activos
         finalize: Finalizados
     members_in_courses:
@@ -268,8 +266,6 @@ es:
       mem: Miembros
       no_members: Curso sin miembros.
       no_records: Este curso todavía no tiene miembros en él.
-    new:
-      new_course: Curso nuevo
     statics:
       activity: ACTIVIDADES
       generate: Se han generado

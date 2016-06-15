@@ -8292,9 +8292,8 @@ I18n.translations["en"] = {
       },
       "dropdown": {
         "courses": "Courses",
-        "create_course": "Create course",
         "dropdown_v": {
-          "no_course": "You have not created a course yet"
+          "no_course": "You do not have assigned any course yet"
         },
         "public": "Public",
         "return": "Return"
@@ -9736,8 +9735,7 @@ I18n.translations["en"] = {
         "courses": "Courses",
         "evaluation_periods": "Evaluation periods",
         "goto_section": "Become a part of the",
-        "new_course": "Create a course now",
-        "no_course": "You have not created a course yet.",
+        "no_course": "You do not have assigned any course yet.",
         "no_member": "You are not a member of any course.",
         "public": "Public",
         "return": "Back"
@@ -14012,9 +14010,8 @@ I18n.translations["es"] = {
       },
       "dropdown": {
         "courses": "Cursos",
-        "create_course": "Crear curso",
         "dropdown_v": {
-          "no_course": "No has creado ningún curso"
+          "no_course": "No tienes asignado ningún curso todavía"
         },
         "public": "Público",
         "return": "Regresar"
@@ -15413,8 +15410,7 @@ I18n.translations["es"] = {
         "courses": "Cursos",
         "evaluation_periods": "Periodos de evaluación",
         "goto_section": "Únete a uno en la sección de",
-        "new_course": "Crear curso ahora →",
-        "no_course": "No has creado ningún curso todavía.",
+        "no_course": "No tienes asignado ningún curso todavía.",
         "no_member": "No eres miembro de ningún curso.",
         "public": "Público",
         "return": "Volver"
@@ -19669,7 +19665,7 @@ I18n.translations["es_meems"] = {
         "courses": "Centros de Emprendedores",
         "create_course": "Crear Centro de Emprendedores",
         "dropdown_v": {
-          "no_course": "No has creado ningún Centro de Emprendedores"
+          "no_course": "No tienes asignado ningún Centro de Emprendedores"
         },
         "public": "Público",
         "return": "Regresar"
@@ -21083,8 +21079,7 @@ I18n.translations["es_meems"] = {
         "courses": "Centros de Emprendedores",
         "evaluation_periods": "Periodos de evaluación",
         "goto_section": "Únete a uno en la sección de",
-        "new_course": "Crear Centro Emprendedor ahora →",
-        "no_course": "No has creado ningún Centro Emprendedor todavía.",
+        "no_course": "No tienes asignado ningún Centro Emprendedor todavía.",
         "no_member": "No eres miembro de ningún Centro Emprendedor.",
         "public": "Público",
         "return": "Volver"
@@ -25332,7 +25327,7 @@ I18n.translations["devise"] = {
         "courses": "Cursos",
         "create_course": "Crear curso",
         "dropdown_v": {
-          "no_course": "No has creado ningún curso"
+          "no_course": "No tienes asignado ningún curso"
         },
         "public": "Público",
         "return": "Regresar"
@@ -26731,8 +26726,7 @@ I18n.translations["devise"] = {
         "courses": "Cursos",
         "evaluation_periods": "Periodos de evaluación",
         "goto_section": "Únete a uno en la sección de",
-        "new_course": "Crear curso ahora →",
-        "no_course": "No has creado ningún curso todavía.",
+        "no_course": "No tienes asignado ningún curso todavía.",
         "no_member": "No eres miembro de ningún curso.",
         "public": "Público",
         "return": "Volver"

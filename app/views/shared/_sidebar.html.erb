@@ -120,7 +120,6 @@
               <p><%= t('.sidebar_section.course_message', locale: locale) %> <%= link_to(t('.sidebar_section.course_href', locale: locale), courses_path, class: 'underline') %></p>
             <% else %>
               <h5><%= t('.sidebar_section.no_course', locale: locale)%></h5>
-              <p><%= link_to(t('.sidebar_section.no_course_href', locale: locale), new_course_path, class: 'underline') %></p>
             <% end %>
           </div>
         <% end %>
@@ -194,7 +193,6 @@
                   <p><%= t('.sidebar_section.course_message', locale: locale) %> <%= link_to(t('.sidebar_section.course_href', locale: locale), courses_path, class: 'underline') %></p>
                 <% else %>
                   <h5><%= t('.sidebar_section.no_course', locale: locale)%></h5>
-                  <p><%= link_to(t('.sidebar_section.no', locale: locale), new_course_path, class: 'underline') %></p>
                 <% end %>
               </div>
             <% end %>

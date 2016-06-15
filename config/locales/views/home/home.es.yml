@@ -90,7 +90,7 @@ es:
       no_member: No eres miembro de ningún curso.
       section: Únete a uno en la sección de
       courses: Cursos
-      no_create: No has creado ningún curso todavia.
+      no_create: No tienes asignado ningún curso todavía.
       create: Crear curso ahora →
     help:
       help2: Ayuda

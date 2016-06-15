@@ -30,7 +30,7 @@ authorization do
     includes :shared
 
     has_permission_on [:roles], to: [:manage]
-    has_permission_on [:courses], to: [:manage, :members]
+    has_permission_on [:courses], to: [:read, :update, :members]
     has_permission_on [:deliveries], to: [:manage]
 
     has_permission_on [:forms], to: [:create]

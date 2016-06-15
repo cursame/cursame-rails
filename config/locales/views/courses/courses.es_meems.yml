@@ -40,8 +40,6 @@ es_meems:
         no_show: No hay más Centros de Emprendedores para mostrar.
       teacher_header:
         courses: Centros de Emprendedores
-        create_course: Crear nuevo Centro Emprendedor
-        new: Nuevo
         active: Activos
         finalize: Finalizados
     members_in_courses:
@@ -267,8 +265,6 @@ es_meems:
       mem: Miembros
       no_members: Centro Emprendedor sin miembros.
       no_records: Este Centro Emprendedor todavia no tiene miembros en el.
-    new:
-      new_course: Nuevo Centro Emprendedor
     statics:
       activity: ACTIVIDADES
       generate: Se han generado

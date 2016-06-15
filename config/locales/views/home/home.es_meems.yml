@@ -90,7 +90,7 @@ es_meems:
       no_member: No eres miembro de ningún Centro Emprendedor.
       section: Únete a uno en la sección de
       courses: Centros de Emprendedores
-      no_create: No has creado ningún Centro Emprendedor todavía.
+      no_create: No tienes asignado ningún Centro Emprendedor todavía.
       create: Crear Centro Emprendedor ahora →
     help:
       help2: Ayuda
@@ -356,5 +356,3 @@ es_meems:
       load_more_notifications: 'Ver más notificaciones'
     edit_comment: 'Comentario editado correctamente'
     new_comment: 'Se ha creado un comentario'
-
-
