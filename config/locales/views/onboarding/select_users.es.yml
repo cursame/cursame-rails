@@ -1,8 +1,0 @@
-es:
-  onboarding:
-    select_users:
-      welcome_to_cursame: 'Bienvenido a Cúrsame'
-      select_users_step: 3.- Agrega alumnos al grupo
-      select_users_step_description: Ingresa los alumnos a los que impartes clase
-      search_users_placeholder: 'Escribe un nombre o apellido'
-      continue: 'Continuar'

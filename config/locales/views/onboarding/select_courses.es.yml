@@ -1,9 +1,0 @@
-es:
-  onboarding:
-    select_courses:
-      welcome_to_cursame: 'Bienvenido a Cúrsame'
-      select_courses_step: 2.- Inscríbete en tus cursos
-      select_courses_step_description: Busca todos tus cursos e inscríbete en ellos para poder participar.
-      courses_search: 'Puedes buscar por nombre del Curso'
-      search: Buscar
-      continue: 'Continuar'

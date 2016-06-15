@@ -1,9 +1,0 @@
-es:
-  onboarding:
-    new_library_folder:
-      welcome_to_cursame: 'Bienvenido a Cúrsame'
-      new_library_folder_step: 5.- Integra documentos a tu curso
-      new_library_folder_step_description: Crea una Carpeta en la Biblioteca del Curso
-      name: 'Nombre:'
-      description: 'Descripción:'
-      create_folder: Crear Carpeta
