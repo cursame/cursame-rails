@@ -92,6 +92,3 @@
     .fl
       %span.btn.btn-primary.input-btn.activable
         = f.submit "#{ @course.new_record? ? "#{t('.create')}" : "#{t('.save')}" }", class: "activable"
-    .fr
-      - unless @course.new_record?
-        = link_to t('.delete'), @course, confirm: t('.confirm'), method: :delete, style: 'line-height: 32px;'

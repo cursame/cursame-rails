@@ -164,8 +164,6 @@ en:
       find_students: Find students to automatically join course
       create: 'Create Course'
       save: Save changes
-      delete: Delete permanent course.
-      confirm: Are you sure you want to delete this course?
     form_course:
       update: Update
       return: Go back to

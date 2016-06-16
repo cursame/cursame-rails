@@ -164,8 +164,6 @@ es:
       find_students: Busca estudiantes para unirlos automáticamente al curso.
       create: 'Crear Curso'
       save: Guardar cambios
-      delete: Eliminar curso permanente.
-      confirm: ¿Estás seguro de eliminar este curso?
     form_course:
       update: Actualizar
       return: Regresar al

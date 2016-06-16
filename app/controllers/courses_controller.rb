@@ -300,13 +300,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def destroy
-    @course = Course.find_by_id(params[:id])
-    @course.destroy
-
-    redirect_to courses_path, flash: { notice: t('.courses_controller.delete') }
-  end
-
   def members
     @course = Course.find(params[:id])
     @course_member = MembersInCourse.find_by_course_id(@course.id)
