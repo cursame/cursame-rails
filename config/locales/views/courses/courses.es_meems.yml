@@ -163,8 +163,6 @@ es_meems:
       find_students: Busca Emprendedores para unirlos automáticamente al Centro Emprendedor.
       create: 'Crear Centro de Emprendedores'
       save: Guardar cambios
-      delete: Eliminar Centro Emprendedor.
-      confirm: ¿Estás seguro de eliminar este Centro Emprendedor?
     form_course:
       update: Actualizar
       return: Regresar al
