@@ -19,13 +19,6 @@
 
   .form-group.label-on-top.l-label
     .form-group-label
-      = f.label :public_status, t('.privacy')
-    .form-group-main
-      .form-unit
-        = f.select :public_status, options_for_select([[t('.public'),'public'],[t('.private'),'Private']], course.public_status)
-
-  .form-group.label-on-top.l-label
-    .form-group-label
       = f.label :init_date, t('.init_date')
     .form-group-main
       .form-unit

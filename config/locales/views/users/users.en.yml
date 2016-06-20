@@ -99,8 +99,6 @@ en:
       name: Name
       descrip: Description
       init_date: Start date
-      private: Private
-      public: Public
       create2: Create
       cancel: Cancel
     friends_first_user:

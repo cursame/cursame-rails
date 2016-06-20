@@ -100,7 +100,7 @@ class MembersInCoursesController < ApplicationController
         'Network' => @members_in_course.course.network.name.capitalize,
         'Subdomain' => @members_in_course.course.network.subdomain,
         'Title'   => @members_in_course.course.title.capitalize,
-        'Type'    => @members_in_course.course.public_status.capitalize
+        'Type'    => 'private'
       }
       track_event current_user.id, 'Members in Courses', mixpanel_properties
     end

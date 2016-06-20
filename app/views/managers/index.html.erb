@@ -60,10 +60,6 @@
             element: 'courses_graph',
             data: [
               {label: I18n.t("managers.number_of_courses", {locale: "<%= I18n.locale %>"}), value: <%= @courses.count %> }
-                <% if current_network.subdomain != "meems" %>
-                , {label: I18n.t("managers.public_courses", {locale: "<%= I18n.locale %>"}), value:<%= @publico %>},
-                {label: I18n.t("managers.private_courses", {locale: "<%= I18n.locale %>"}), value:<%= @privado%> }
-                <% end %>
             ]
           });
         </script>

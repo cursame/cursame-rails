@@ -149,9 +149,6 @@ es_meems:
       name: Nombre del
       descrip: Descripción
       init_date: Fecha inicio
-      privacy: Privacidad
-      public: Público
-      private: Privado
     light_box_dashboard_delivery:
       student: Emprendedor
       title: Título de la entrega
@@ -193,9 +190,6 @@ es_meems:
       descrip: Descripción
       dates: Fechas
       init_date: Fecha de inicio
-      privacy: Privacidad
-      public: Público
-      private: Privado
       hmwrks: Tareas
       clone_hmwrks: Selecciona las tareas que quieres clonar para el nuevo Centro Emprendedor.
       publish_date: Fecha de publicación

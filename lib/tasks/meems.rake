@@ -65,7 +65,6 @@ namespace :meems do
         :title         => "#{row['subsystem']} #{row['locality']}",
         :silabus       => "CCT: #{row['cct']}",
         :init_date     => Date.today,
-        :public_status => 'Private',
         :network_id    => Network.find_by_subdomain('meems').id,
       )
     end

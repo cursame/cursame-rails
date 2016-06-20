@@ -39,17 +39,6 @@
 	<p><%= f.label :fecha_de_inicio %></p>
 	 <%= f.text_field :init_date, :placeholder=>t('.init_date'), :class=>"date-input fixLabeluser", :value => (f.object.init_date)? f.object.init_date.strftime('%m/%d/%Y'):f.object.init_date  %>
 	</div>
-
-	<div style="display: block; position: relative; height: 62px; clear: both;">
-	<p><%= f.label :public_status, t('.privacy') %></p>
-	<% if @course.public_status == 'public' %>
-      <%= f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']])%>
-      <%else%>
-      <%= f.select :public_status, options_for_select([[t('.private'), 'Private'],[t('.public'), 'public']])%>
-    <%end%>
-	</div>
-
-	</div>
 </div>
 
 <div class="" style="width: 200px; position: absolute; display: inline; margin-top: -110px;">
@@ -110,4 +99,3 @@
 </script>
 </div>
 </div>
-

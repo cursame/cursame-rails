@@ -65,8 +65,6 @@ es_meems:
       name: Nombre
       descrip: Descripción
       init_date: Fecha inicio
-      private: Privado
-      public: Público
       create2: Crear
       cancel: Cancelar
     friends_first_user:

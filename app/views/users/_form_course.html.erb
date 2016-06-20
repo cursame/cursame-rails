@@ -8,7 +8,6 @@
     <%= f.text_field :title, :placeholder=>t('.name') %>
     <%= f.text_area :silabus, :rows => 3, :cols => 27 , :placeholder=>t('.descrip'), :class => 'border_for_text' %>
     <%= f.text_field :init_date, :placeholder=>t('.init_date'), :class=>"date-input" %>
-    <%= f.select :public_status, options_for_select([[t('.private'), 'Private'],[t('.public'), 'public']])%>
     <%= f.submit t('.create2') , :class=>'input-button active', :id => 'create_course_form'%>
     <%= button_tag t('.cancel'), :type => 'button', :class=>'input-button', :id => 'cancel-course-form' %>
     <div style="clear: both"></div>

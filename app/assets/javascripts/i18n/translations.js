@@ -471,9 +471,6 @@ I18n.translations["en"] = {
       "info_new_course": "Change information for new course.",
       "init_date": "Start",
       "name": "Course name",
-      "privacy": "Privacy",
-      "private": "Private",
-      "public": "Public",
       "publish_date": "Published on"
     },
     "closure": {
@@ -601,9 +598,6 @@ I18n.translations["en"] = {
       "first_name": "Write your name or last name.",
       "init_date": "Start Date",
       "name": "Course name",
-      "privacy": "Privacy",
-      "private": "Private",
-      "public": "Public",
       "save": "Save changes",
       "students": "Students",
       "teachers": "Teachers"
@@ -612,9 +606,6 @@ I18n.translations["en"] = {
       "descrip": "Description",
       "init_date": "Start date",
       "name": "Name of",
-      "privacy": "Privacy",
-      "private": "Private",
-      "public": "Public",
       "return": "Go back to",
       "update": "Update"
     },
@@ -8973,9 +8964,6 @@ I18n.translations["en"] = {
           "init_date2": "Start date",
           "last_name": "Write down your name or last name.",
           "name": "Name",
-          "privacy": "Privacy",
-          "private": "Private",
-          "public": "Public",
           "save": "Save changes",
           "students": "Students",
           "teachers": "Teachers",
@@ -9127,9 +9115,7 @@ I18n.translations["en"] = {
     "no_delete": "You can not delete this user.",
     "no_edit": "You can not edit that user.",
     "number_of_courses": "Courses",
-    "private_courses": "Private",
     "proc_file": "Your file is being processed, you will receive an email confirmation",
-    "public_courses": "Public",
     "reported_contents": {
       "index": {
         "actions": "Actions",
@@ -10499,9 +10485,7 @@ I18n.translations["en"] = {
       "descrip": "Description",
       "init_date": "Start date",
       "load": "Loading",
-      "name": "Name",
-      "private": "Private",
-      "public": "Public"
+      "name": "Name"
     },
     "friends": {
       "all": "All users",
@@ -11135,9 +11119,6 @@ I18n.translations["es"] = {
       "info_new_course": "Cambia la información para el nuevo curso.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "publish_date": "Fecha de publicación"
     },
     "closure": {
@@ -11265,9 +11246,6 @@ I18n.translations["es"] = {
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "save": "Guardar cambios",
       "students": "Estudiantes",
       "teachers": "Profesor"
@@ -11276,9 +11254,6 @@ I18n.translations["es"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "name": "Nombre del",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "return": "Regresar al",
       "update": "Actualizar"
     },
@@ -14673,9 +14648,6 @@ I18n.translations["es"] = {
           "init_date2": "Fecha de inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
-          "privacy": "Privacidad",
-          "private": "Privado",
-          "public": "Público",
           "save": "Guardar cambios",
           "students": "Alumnos",
           "teachers": "Profesores",
@@ -14827,9 +14799,7 @@ I18n.translations["es"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Cursos",
-    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
-    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -16174,9 +16144,7 @@ I18n.translations["es"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "load": "Cargando ...",
-      "name": "Nombre",
-      "private": "Privado",
-      "public": "Público"
+      "name": "Nombre"
     },
     "friends": {
       "comunity": "Comunidad",
@@ -16787,9 +16755,6 @@ I18n.translations["es_meems"] = {
       "info_new_course": "Edita la información para el nuevo Centro Emprendedor.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Centro Emprendedor",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "publish_date": "Fecha de publicación"
     },
     "closure": {
@@ -16917,9 +16882,6 @@ I18n.translations["es_meems"] = {
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Centro de Emprendedores",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "save": "Guardar cambios",
       "students": "Emprendedores",
       "teachers": "Líderes Multiplicadores"
@@ -16928,9 +16890,6 @@ I18n.translations["es_meems"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "name": "Nombre del",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "return": "Regresar al",
       "update": "Actualizar"
     },
@@ -20329,9 +20288,6 @@ I18n.translations["es_meems"] = {
           "init_date2": "Fecha inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
-          "privacy": "Privacidad",
-          "private": "Privado",
-          "public": "Público",
           "save": "Guardar cambios",
           "students": "Emprendedores",
           "teachers": "Líderes Multiplicadores",
@@ -20485,9 +20441,7 @@ I18n.translations["es_meems"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Centros de Emprendedores",
-    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
-    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -21843,9 +21797,7 @@ I18n.translations["es_meems"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "load": "Cargando ...",
-      "name": "Nombre",
-      "private": "Privado",
-      "public": "Público"
+      "name": "Nombre"
     },
     "friends": {
       "comunity": "Red de Emprendedores",
@@ -22450,9 +22402,6 @@ I18n.translations["devise"] = {
       "info_new_course": "Cambia la información para el nuevo curso.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "publish_date": "Fecha de publicación"
     },
     "closure": {
@@ -22580,9 +22529,6 @@ I18n.translations["devise"] = {
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "save": "Guardar cambios",
       "students": "Estudiantes",
       "teachers": "Profesor"
@@ -22591,9 +22537,6 @@ I18n.translations["devise"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "name": "Nombre del",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "return": "Regresar al",
       "update": "Actualizar"
     },
@@ -25989,9 +25932,6 @@ I18n.translations["devise"] = {
           "init_date2": "Fecha de inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
-          "privacy": "Privacidad",
-          "private": "Privado",
-          "public": "Público",
           "save": "Guardar cambios",
           "students": "Alumnos",
           "teachers": "Profesores",
@@ -26143,9 +26083,7 @@ I18n.translations["devise"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Cursos",
-    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
-    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -27490,9 +27428,7 @@ I18n.translations["devise"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "load": "Cargando ...",
-      "name": "Nombre",
-      "private": "Privado",
-      "public": "Público"
+      "name": "Nombre"
     },
     "friends": {
       "comunity": "Comunidad",

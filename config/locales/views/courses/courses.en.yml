@@ -150,9 +150,6 @@ en:
       name: Name of
       descrip: Description
       init_date: Start date
-      privacy: Privacy
-      public: Public
-      private: Private
     light_box_dashboard_delivery:
       student: Student
       title: Title
@@ -194,9 +191,6 @@ en:
       descrip: Description
       dates: Dates
       init_date: Start
-      privacy: Privacy
-      public: Public
-      private: Private
       hmwrks: Homework
       clone_hmwrks: Select the homework you want to clone for the new course.
       publish_date: Published on
