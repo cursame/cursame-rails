@@ -23,8 +23,7 @@ en:
         return: 'Return'
         create_course: 'Create course'
         dropdown_v:
-          no_course: 'You have not created a
-                  course yet'
+          no_course: 'You do not have assigned any course yet'
       google_form_modal:
         the_form: 'The form '
         was_created: ' was created by'

@@ -24,7 +24,7 @@ es_meems:
         return: 'Regresar'
         create_course: 'Crear Centro de Emprendedores'
         dropdown_v:
-          no_course: 'No has creado ningún Centro de
+          no_course: 'No tienes asignado ningún Centro de
                   Emprendedores'
       google_form_modal:
         the_form: 'El formulario '

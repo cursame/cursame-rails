@@ -23,7 +23,7 @@ es:
         return: 'Regresar'
         create_course: 'Crear curso'
         dropdown_v:
-          no_course: 'No has creado ningún curso'
+          no_course: 'No tienes asignado ningún curso todavía'
       google_form_modal:
         the_form: 'El formulario '
         was_created: ' fue creado por'

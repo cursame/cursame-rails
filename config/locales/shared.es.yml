@@ -51,7 +51,7 @@ es:
         evaluation_periods: Periodos de evaluación
         no_member: No eres miembro de ningún curso.
         goto_section: Únete a uno en la sección de
-        no_course: No has creado ningún curso todavía.
+        no_course: No tienes asignado ningún curso todavía.
         new_course: Crear curso ahora →
         return: Volver
       return: Volver
@@ -75,7 +75,7 @@ es:
         goto_section: Únete a uno en la sección de
         course_message: Únete a uno en la sección de
         course_href: Cursos
-        no_course: No has creado ningún curso.
+        no_course: No tienes asignado ningún curso todavía.
         no_course_href: Crear curso ahora →
         no_friends: No tienes amigos.
         add_friends: Agrega a tus amigos en la sección de

@@ -182,82 +182,12 @@ class CoursesController < ApplicationController
     end
   end
 
-  # GET /courses/new
-  # GET /courses/new.json
-  def new
-    @course = Course.new
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @course }
-    end
-  end
-
   # GET /courses/1/edit
   def edit
     @course = Course.find(params[:id])
     @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
     unless current_user.admin?
       (@member.nil? || !@member.owner?) ? (redirect_to course_path(@course), flash: { error: t('.courses_controller.no_authorized')}) : nil
-    end
-  end
-
-  # POST /courses
-  # POST /courses.json
-  def create
-    @course = Course.new(params[:course])
-    @course.network = current_network
-    respond_to do |format|
-      if @course.save
-        @member = MembersInCourse.new
-        @member.user_id    = current_user.id
-        @member.course_id  =  @course.id
-        @member.accepted   = true
-        @member.owner      = true
-        @member.network_id = current_network.id
-        @member.title      = @course.title
-        @member.save
-
-        students = params[:students] || {}
-        teachers = params[:teachers] || {}
-        user_ids = students.merge(teachers).map{|key, value| key}
-
-        users = []
-        user_ids.each do |user_id|
-          users.push User.find_by_id user_id
-        end
-        @course.update_members(users, current_user) unless params["check_members"].nil?
-
-
-        @publication = Wall.find_by_publication_type_and_publication_id("Course",@course.id)
-        @az =  @course
-        @typed = "Course"
-        activation_activity
-        @courses = current_user.members_in_courses.limit(7)
-        @course_count = Course.count
-        @ccc = current_user.courses.where(:network_id => current_network.id)
-        @count_course_iam_member = @ccc.where(:active_status => true).count
-        @count_course_iam_member_and_owner = MembersInCourse.where(:user_id => current_user.id, :accepted => true, :owner => true).count
-
-        if @count_course_iam_member_and_owner == 0
-          @miembro = MembersInCourse.where("course_id = ?", @course.id).first
-          @miembro.owner == true
-          @miembro.save
-        end
-
-        EvaluationCriterium.create(name: 'cursame_deliveries', evaluable: @course)
-        EvaluationCriterium.create(name: 'cursame_surveys', evaluable: @course)
-        EvaluationCriterium.create(name: 'cursame_discussions', evaluable: @course)
-
-        if current_network.evaluable?
-          redirect_to course_evaluation_schema_path(@course.id), flash: { success: t('.courses_controller.create')} and return
-        else
-          redirect_to course_path(@course), flash: { success: t('.courses_controller.success')} and return
-        end
-
-      else
-        format.html { redirect_to :back }
-      end
     end
   end
 

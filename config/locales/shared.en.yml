@@ -51,7 +51,7 @@ en:
         evaluation_periods: Evaluation periods
         no_member: You are not a member of any course.
         goto_section: Become a part of the
-        no_course: You have not created a course yet.
+        no_course: You do not have assigned any course yet
         new_course: Create a course now
         return: Back
       return: Back
@@ -75,7 +75,7 @@ en:
         goto_section: Become a part of the
         course_message: Become a part of the
         course_href: Courses
-        no_course: You have not created a course
+        no_course: You do not have assigned any course yet
         no_course_href: Create a course now
         no_friends: You have no friends.
         add_friends: Add friends to the

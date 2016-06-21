@@ -63,7 +63,7 @@
                   <h1><%= @course.title %></h1>
                 <% end %>
 
-                <% permitted_to? :create, :courses do %>
+                <% permitted_to? :update, :courses do %>
                   <% if current_user.admin? || !@member.nil? && !@member.owner.nil? && @member.owner %>
                     <div class="admin-buttons">
                       <div class="dropdown-wrap">
