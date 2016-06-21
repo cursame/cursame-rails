@@ -3,10 +3,8 @@ es_meems:
     create: "Se ha creado correctamente el Centro Emprendedor, edita la forma de evaluación."
     search: "Escribe algo en el campo de búsqueda."
     no_exist: "El Centro Emprendedor que intentas ver no existe o ha sido borrado"
-    no_authorized: "Usted no está autorizado para editar este Centro Emprendedor."
     success: "Se ha creado correctamente"
     save: "Se han guardado satisfactoriamente los cambios en el Centros Emprendedor. "
-    delete: "Centro Emprendedor eliminado correctamente."
     no_accepted: "No has sido aceptado en este Centro Emprendedor."
     the_course: "El Centro Emprendedor"
     active: "Se activó correctamente."
@@ -16,4 +14,3 @@ es_meems:
     has_ended: "Ha finalizado, lo puedes activar en el menú de opciones del Centro Emprendedor."
     contact: "Ha finalizado, contacta al Líder Multiplicador para más información."
     clone_correct: "Centro Emprendedor clonado correctamente."
-

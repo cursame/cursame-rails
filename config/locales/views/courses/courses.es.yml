@@ -69,7 +69,6 @@ es:
         final_score: Calificaciones finales
         activities_score: Calificar actividades
         eval_form: Forma de evaluación
-        edit: Editar
         clone: Clonar
         finalize: Finalizar
         active: Activar
@@ -144,26 +143,6 @@ es:
       percent_obtain: "% obtenido"
       percent_obtain1: "% Obtenido"
       hmwrk: Tarea
-    form:
-      find_teachers_for_admin: 'Busca Profesores para administrar el Curso'
-      add_teachers_into_course: 'Agrega Profesores al Curso'
-      name: 'Nombre del Curso'
-      example: "Ejemplo: Matemáticas I"
-      descrip: Descripción del Curso
-      descrip2: Descripción
-      privacy: Privacidad
-      public: Público
-      private: Privado
-      init_date: Fecha de inicio
-      teachers: Profesor
-      students: Estudiantes
-      first_name: Escribe un nombre o apellido.
-      add_students: Inscribe estudiantes a tu curso.
-      find_students: Busca estudiantes para unirlos automáticamente al curso.
-      create: 'Crear Curso'
-      save: Guardar cambios
-      delete: Eliminar curso permanente.
-      confirm: ¿Estás seguro de eliminar este curso?
     form_course:
       update: Actualizar
       return: Regresar al
@@ -222,8 +201,6 @@ es:
       publish_date: Fecha de publicación
       delivery_date: Fecha Entrega
       clone2: "(clonado)"
-    edit:
-      edit: Editar curso
     evaluation_download:
       no_part: ¡No eres parte del cursoo!
       no_accept: No has sido aceptado en el curso!
@@ -283,7 +260,6 @@ es:
         final_score: "Calificaciones finales"
         activities_score: "Calificar actividades"
         eval_form: "Forma de evaluación"
-        edit: "Editar"
         clone: "Clonar"
         final: "Finalizar"
         active: "Activar"

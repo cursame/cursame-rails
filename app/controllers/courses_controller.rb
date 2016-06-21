@@ -182,44 +182,12 @@ class CoursesController < ApplicationController
     end
   end
 
-  # GET /courses/1/edit
-  def edit
-    @course = Course.find(params[:id])
-    @member = MembersInCourse.find_by_course_id_and_user_id(@course.id, current_user.id)
-    unless current_user.admin?
-      (@member.nil? || !@member.owner?) ? (redirect_to course_path(@course), flash: { error: t('.courses_controller.no_authorized')}) : nil
-    end
-  end
-
   # PUT /courses/1
   # PUT /courses/1.json
   def update
     @course = Course.find(params[:id])
-    if @course.init_date != nil
-      @idate = @course.init_date.strftime('%Y-%m-%d')
-    end
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        students = params[:students] || {}
-        teachers = params[:teachers] || {}
-        user_ids = students.merge(teachers).map{|key, value| key}
-
-        users = []
-        user_ids.each do |user_id|
-          users.push User.find_by_id user_id
-        end
-        @course.update_members(users, current_user) unless params["check_members"].nil?
-
-
-        @last_date = @course.init_date
-        if @last_date  == nil
-          @last_date =  @idate
-        end
-        if @last_end_date == nil
-          @last_end_date = @fdate
-        end
-        @course.init_date = @last_date
-        @course.save
         flash[:notice] = t('.courses_controller.save')
         format.html {redirect_to course_path(@course)}
         format.json { head :no_content }
@@ -228,13 +196,6 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def destroy
-    @course = Course.find_by_id(params[:id])
-    @course.destroy
-
-    redirect_to courses_path, flash: { notice: t('.courses_controller.delete') }
   end
 
   def members
