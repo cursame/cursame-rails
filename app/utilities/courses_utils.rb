@@ -58,14 +58,6 @@ module CoursesUtils
       ).order(:title)
   end
 
-  def student_pending_requests
-    members_in_courses = MembersInCourse.where(user_id: current_user.id).where("members_in_courses.accepted != ?", true)
-    members_in_courses = members_in_courses.keep_if do |member|
-      member.course.network_id == current_network.id
-    end
-    members_in_courses.map{ |member| member.course}
-  end
-
   def operator_courses(typed = 'normal')
     ids = Array.new
 

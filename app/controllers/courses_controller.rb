@@ -29,15 +29,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def pending
-    @member = MembersInCourse.new
-    @courses = student_pending_requests.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-
-    respond_to do |format|
-      format.html { render 'courses/pending/pending' }
-    end
-  end
-
   def unpublished
     @member = MembersInCourse.new
     @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
