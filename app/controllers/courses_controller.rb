@@ -38,15 +38,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def all
-    @member = MembersInCourse.new
-    @courses = network_courses_not_subscribed.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
-
-    respond_to do |format|
-      format.html { render 'courses/all_courses' }
-    end
-  end
-
   def unpublished
     @member = MembersInCourse.new
     @courses = teacher_unpublished_courses.paginate(:per_page => COURSES_PER_PAGE, :page => 1)
@@ -68,11 +59,7 @@ class CoursesController < ApplicationController
     elsif current_user.teacher?
       @courses = teacher_published_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
     elsif current_user.student?
-      if params[:state] == 'not_subscribed'
-        @courses = network_courses_not_subscribed.paginate(per_page: COURSES_PER_PAGE, page: page)
-      elsif params[:state] == 'subscribed'
-        @courses = student_subscribed_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
-      end
+      @courses = student_subscribed_courses.paginate(per_page: COURSES_PER_PAGE, page: page)
     end
 
     @state = params[:state]
@@ -997,7 +984,7 @@ class CoursesController < ApplicationController
       if ! @course.active_status && @course.owner?(current_role, current_user)
         redirect_to(courses_unpublished_path, flash: { notice: "#{@course.title}" + t('.courses_controller.has_ended') }) and return
       elsif ! @course.active_status && current_user.student?
-        redirect_to(courses_all_path, flash: { notice: t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.contact') }) and return
+        redirect_to(courses_path, flash: { notice: t('.courses_controller.the_course') + "#{@course.title}" + t('.courses_controller.contact') }) and return
       end
     end
   end

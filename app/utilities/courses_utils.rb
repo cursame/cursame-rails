@@ -66,14 +66,6 @@ module CoursesUtils
     members_in_courses.map{ |member| member.course}
   end
 
-  def network_courses_not_subscribed
-    current_network.courses
-      .where(
-        :id => operator_courses('inverse'),
-        :active_status => true
-      ).order(:title)
-  end
-
   def operator_courses(typed = 'normal')
     ids = Array.new
 
