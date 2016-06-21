@@ -5,11 +5,11 @@ class Notification < ActiveRecord::Base
   has_many :users, :through => :usernotificationings
 
   belongs_to  :notificator, :polymorphic => true
- 
+
   validates_presence_of :notificator_id
   validates_presence_of :notificator_type
-  
-  
+
+
   after_create do
 
     owner = nil
@@ -24,12 +24,10 @@ class Notification < ActiveRecord::Base
       creator = self.notificator.user
     when "new_public_course_on_network" #esta ya no sucede
       owner = self.notificator.network
-    when "user_accepted_in_course" #funcionando
-      owner = self.notificator
     when "new_delivery_on_course" #funcionando
       owner = self.notificator.courses[0]
     when "new_discussion_on_course" #funcionando
-      owner = self.notificator    
+      owner = self.notificator
     when "new_survey_on_course" #funcionando
       owner = self.notificator.courses[0]
     when "new_assignment_on_delivery" #funcionando
@@ -45,23 +43,22 @@ class Notification < ActiveRecord::Base
     when "user_comment_on_discussion" #funcionando
     when "user_comment_on_comment" #
       owner = self.notificator.user
-      creator = self.notificator.user 
+      creator = self.notificator.user
     when "user_comment_on_user" #funcionando
     when "user_comment_on_delivery" #funcionando  
-    when "user_request_membership_in_course"
     when "new_assignment_on_survey"
     when "course_expired"
     when "course_deactivated"
     end
     self.users.each do |user|
       count = user.notifications.where(:active => true).count
-      notificator = self.notificator     
+      notificator = self.notificator
         Thread.new {
           begin
             PrivatePub.publish_to("/notifications/"+user.id.to_s,
                notification: self,
                num: count,
-               notificator:notificator,             
+               notificator:notificator,
                creator: creator,
                reciever: user,
                owner: owner
@@ -70,7 +67,7 @@ class Notification < ActiveRecord::Base
           ensure
             ActiveRecord::Base.connection.close
           end
-        }      
+        }
     end
   end
 

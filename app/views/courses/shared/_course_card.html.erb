@@ -21,8 +21,7 @@
             <%= render partial: 'courses/shared/course_card_actions', locals: { course: course, member: member } %>
           </div>
           <div class="course-footer-info">
-            <%= '<i class="i i-lock" title="Curso Privado"></i>'.html_safe if course.public_status === 'Private' %>
-            <%= '<i class="i i-public" title="Curso Publico"></i>'.html_safe if course.public_status === 'public' %>
+            <%= '<i class="i i-lock" title="Curso Privado"></i>'.html_safe %>
           </div>
         </div>
       <% end %>

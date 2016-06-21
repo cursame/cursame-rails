@@ -1,9 +1,5 @@
 en:
   notifier:
-    accepted_message:
-      hello: ¬Hello
-      accept: You have been accepted to the course
-      button: "If the button below doesn’t work click here"
     csv_import_email:
       hello: Hello
       results: We have annexed the results of the users import
@@ -17,9 +13,6 @@ en:
       button: "If the button below doesn’t work click here"
     new_discussion_notification:
       discuss: Course discussion
-      button: "If the button above doesn’t work click here"
-    new_member_in_course:
-      course: Wants to be part of your course
       button: "If the button above doesn’t work click here"
     new_survey_notification:
       hmwrk: Current homework

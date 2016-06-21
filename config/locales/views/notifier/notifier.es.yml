@@ -1,9 +1,5 @@
 es:
   notifier:
-    accepted_message:
-      hello: ¡Hola
-      accept: Has sido aceptado en el curso
-      button: 'Si el botón superior no funciona, haz click aquí'
     csv_import_email:
       hello: ¡Hola
       results: Te anexamos los resultados de la importación de usuarios
@@ -17,9 +13,6 @@ es:
       button: 'Si el botón superior no funciona, haz click aquí'
     new_discussion_notification:
       discuss: Discusión en el curso
-      button: 'Si el botón superior no funciona, haz click aquí'
-    new_member_in_course:
-      course: Desea formar parte de tú curso
       button: 'Si el botón superior no funciona, haz click aquí'
     new_survey_notification:
       hmwrk: Tarea en el curso

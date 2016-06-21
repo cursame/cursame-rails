@@ -74,10 +74,6 @@ es_meems:
         finalize: Finalizar
         active: Activar
         enroll: Estás inscrito
-        confirm: ¿Estás seguro de abandonar este Centro Emprendedor?
-        leave: Abandonar Centro Emprendedor
-        request_send: Solicitud enviada
-        send_request: Enviar solicitud
       course_card_post:
         new_course: Nuevo Centro Emprendedor público
       course_evaluation_schema_fields:

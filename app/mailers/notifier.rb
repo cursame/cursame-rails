@@ -37,22 +37,6 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  def accepted_message(member_in_course,course)
-    @user = member_in_course.user
-    @course = course
-    set_logo(@user)
-
-    mail to: @user.email, subject: "Has sido aceptado en el grupo #{@course.title}"
-  end
-
-  def new_member_in_course(member_in_course,course)
-    owners = course.members_in_courses.keep_if{ |member| member.owner == true }
-    emails = owners.map{ |owner| owner.user.email }
-    @member = member_in_course.user
-    @course = course
-    mail to: emails, subject: "Un nuevo usuario esta esperando para ser aceptado en el curso #{@course.title}"
-  end
-
   def send_email_members_in_course(member_in_course, subject, message)
     @user = member_in_course.user
     @content = message
@@ -112,16 +96,6 @@ class Notifier < ActionMailer::Base
     emails = users.map{|user| user.email}
     emails = emails.keep_if{ |email|  email != @user.email}
     subject = "#{@user.name} comento en el curso #{@course.title}"
-    mail to: emails, subject: subject
-  end
-
-  def new_member_in_course(course, user)
-    @course = course
-    @user = user
-    set_logo(@user)
-
-    emails = @course.owners.map{|user| user.email}
-    subject = "#{@user.name} desea ingresar al curso #{@course.title} del cual eres maestro"
     mail to: emails, subject: subject
   end
 

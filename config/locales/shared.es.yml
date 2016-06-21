@@ -284,7 +284,6 @@ es:
         comment_course: comentó en el curso
         new_course: Nuevo curso
         in_network: en tu red
-        accept_course: Has sido aceptado en el curso
         new_homework: Nueva Tarea
         in_course: en tu curso
         new_discus: Nueva Discusión
@@ -301,7 +300,6 @@ es:
         comment_to_comment: ha comentado tu Publicación.
         comment_profile: ha comentado en tu Perfil.
         comment_to_homework: ha comentado en la Tarea
-        add_to_course: ha solicitado entrar al Curso
         quest_response: ha respondido el Cuestionario
         the_course: El curso
         course_expired: ha llegado a su fecha final. Por favor desactívalo.

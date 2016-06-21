@@ -284,7 +284,6 @@ en:
         comment_course: comment in your course
         new_course: New course
         in_network: in your network
-        accept_course: You have been accepted to the course
         new_homework: New homework
         in_course: in your course
         new_discus: New discussion
@@ -301,7 +300,6 @@ en:
         comment_to_comment: You have commented on what you have done.
         comment_profile: You have commented on your profile.
         comment_to_homework: You have commented on the homework
-        add_to_course: You have requested to enter the course
         quest_response: You have answered the test
         the_course: The course
         course_expired: "The course has finished, please deactivate it."

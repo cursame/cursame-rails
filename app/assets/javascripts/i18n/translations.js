@@ -706,16 +706,11 @@ I18n.translations["en"] = {
         "active": "Activate",
         "activities_score": "Grade activities",
         "clone": "Clone",
-        "confirm": "Are you sure you want to leave this course?",
         "edit": "Edit",
         "enroll": "You are now enrolled",
         "eval_form": "Evaluation form",
         "final_score": "Final grades",
-        "finalize": "Finish",
-        "leave": "Leave course",
-        "registering": "Registering",
-        "request_send": "Request sent",
-        "send_request": "Send Request"
+        "finalize": "Finish"
       },
       "course_card_post": {
         "new_course": "New course"
@@ -9383,11 +9378,6 @@ I18n.translations["en"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "You have been accepted to the course",
-      "button": "If the button below doesn’t work click here",
-      "hello": "¬Hello"
-    },
     "csv_import_email": {
       "error": "Erros",
       "hello": "Hello",
@@ -9405,10 +9395,6 @@ I18n.translations["en"] = {
     "new_discussion_notification": {
       "button": "If the button above doesn’t work click here",
       "discuss": "Course discussion"
-    },
-    "new_member_in_course": {
-      "button": "If the button above doesn’t work click here",
-      "course": "Wants to be part of your course"
     },
     "new_survey_notification": {
       "button": "If the button above doesn’t work click here",
@@ -9764,10 +9750,8 @@ I18n.translations["en"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "You have been accepted to the course",
         "active": "active",
         "activities_p_user": "An activity for",
-        "add_to_course": "You have requested to enter the course",
         "comment_course": "comment in your course",
         "comment_net": "comment in your network",
         "comment_profile": "You have commented on your profile.",
@@ -11354,16 +11338,11 @@ I18n.translations["es"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Estás seguro de abandonar este curso?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
-        "finalize": "Finalizar",
-        "leave": "Abandonar curso",
-        "registering": "Unirme a este curso",
-        "request_send": "Solicitud enviada",
-        "send_request": "Enviar solicitud"
+        "finalize": "Finalizar"
       },
       "course_card_post": {
         "new_course": "Nuevo curso público"
@@ -15042,11 +15021,6 @@ I18n.translations["es"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "Has sido aceptado en el curso",
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "hello": "¡Hola"
-    },
     "csv_import_email": {
       "error": "¡Error!",
       "hello": "¡Hola",
@@ -15064,10 +15038,6 @@ I18n.translations["es"] = {
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "discuss": "Discusión en el curso"
-    },
-    "new_member_in_course": {
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tú curso"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -15423,10 +15393,8 @@ I18n.translations["es"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "Has sido aceptado en el curso",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al Curso",
         "comment_course": "comentó en el curso",
         "comment_net": "comentó en la red",
         "comment_profile": "ha comentado en tu Perfil.",
@@ -16990,16 +16958,11 @@ I18n.translations["es_meems"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Estás seguro de abandonar este Centro Emprendedor?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
-        "finalize": "Finalizar",
-        "leave": "Abandonar Centro Emprendedor",
-        "registering": "Unirme a este curso",
-        "request_send": "Solicitud enviada",
-        "send_request": "Enviar solicitud"
+        "finalize": "Finalizar"
       },
       "course_card_post": {
         "new_course": "Nuevo Centro Emprendedor público"
@@ -20689,11 +20652,6 @@ I18n.translations["es_meems"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "Has sido aceptado en el Centro Emprendedor",
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "hello": "¡Hola"
-    },
     "csv_import_email": {
       "error": "¡Error!",
       "hello": "¡Hola",
@@ -20716,10 +20674,6 @@ I18n.translations["es_meems"] = {
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "discuss": "Discusión en el Centro Emprendedor"
-    },
-    "new_member_in_course": {
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tu Centro Emprendedor"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -21076,10 +21030,8 @@ I18n.translations["es_meems"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "Has sido aceptado en el Centro Emprendedor",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al Centro Emprendedor",
         "comment_course": "comentó en el Centro Emprendedor",
         "comment_net": "comentó en la red",
         "comment_profile": "ha comentado en tu Perfil.",
@@ -22637,16 +22589,11 @@ I18n.translations["devise"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Estás seguro de abandonar este curso?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
-        "finalize": "Finalizar",
-        "leave": "Abandonar curso",
-        "registering": "Unirme a este curso",
-        "request_send": "Solicitud enviada",
-        "send_request": "Enviar solicitud"
+        "finalize": "Finalizar"
       },
       "course_card_post": {
         "new_course": "Nuevo curso público"
@@ -26326,11 +26273,6 @@ I18n.translations["devise"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "Has sido aceptado en el curso",
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "hello": "¡Hola"
-    },
     "csv_import_email": {
       "error": "¡Error!",
       "hello": "¡Hola",
@@ -26348,10 +26290,6 @@ I18n.translations["devise"] = {
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "discuss": "Discusión en el curso"
-    },
-    "new_member_in_course": {
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tú curso"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -26707,10 +26645,8 @@ I18n.translations["devise"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "Has sido aceptado en el curso",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al Curso",
         "comment_course": "comentó en el curso",
         "comment_net": "comentó en la red",
         "comment_profile": "ha comentado en tu Perfil.",
