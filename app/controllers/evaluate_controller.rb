@@ -82,13 +82,10 @@ class EvaluateController < ApplicationController
   end
 
   def inactive
-
     if current_user.teacher?
       courses = teacher_published_courses
-    elsif current_user.admin?
-      courses = current_network.courses
     else
-      redirect_to root_path, flash: { notice: t('.evaluate_controller.only_teachers') } and return
+      courses = current_network.courses
     end
 
     deliveries = courses.inject([]) do
@@ -109,13 +106,12 @@ class EvaluateController < ApplicationController
       accu + tmp_array_discussions
     end
 
-    activities = (deliveries + surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+    activities = (deliveries + surveys + discussions).keep_if do |activity|
+      !activity.end_date.nil? && activity.end_date < DateTime.now
     end
 
-    @activities = activities.keep_if do
-      |activity|
-      activity.end_date.to_datetime < Date.today
+    @activities = activities.sort do |x,y|
+      y.end_date <=> x.end_date
     end
   end
 
