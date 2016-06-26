@@ -8,7 +8,7 @@ module DeliveriesUtils
     end
 
     deliveries = deliveries.keep_if do |delivery|
-      delivery.end_date.to_datetime < Time.now.to_datetime 
+      !delivery.end_date.nil? && delivery.end_date < DateTime.now
     end
 
     deliveries.sort do |x,y|
@@ -20,7 +20,7 @@ module DeliveriesUtils
     deliveries = course.deliveries
 
     deliveries = deliveries.keep_if do |delivery|
-      delivery.end_date.to_datetime < Time.now.to_datetime 
+      delivery.end_date.to_datetime < Time.now.to_datetime
     end
 
     deliveries.sort do
