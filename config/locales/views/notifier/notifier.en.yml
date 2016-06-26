@@ -9,7 +9,6 @@ en:
       user: Dear Cursame Users
     new_delivery_notification:
       course_notif: Current homework
-      deliver: Deadline
       button: "If the button below doesn’t work click here"
     new_discussion_notification:
       discuss: Course discussion

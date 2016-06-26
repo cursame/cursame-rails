@@ -9,7 +9,6 @@ es_meems:
       user: Estimados usuarios de Cúrsame
     new_delivey_notification:
       course_notif: Tarea en el Centro Emprendedor
-      deliver: Entregar antes del
       button: 'Si el botón superior no funciona, haz click aquí'
     new_discussion_notification:
       discuss: Discusión en el Centro Emprendedor

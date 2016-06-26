@@ -9,3 +9,6 @@ es:
           malformed: "El archivo no es un CSV válido"
           unknown_encoding: "El archivo no tiene un encoding válido"
           empty: "El archivo debe tener al menos un usuario"
+  delivery:
+    nil_end_date: Sin fecha de entrega
+    deadline: Entregar antes del

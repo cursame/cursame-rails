@@ -33,7 +33,6 @@ class Delivery < ActiveRecord::Base
   accepts_nested_attributes_for :assignments
   accepts_nested_attributes_for :contents
 
-  validates_presence_of :end_date
   validates_presence_of :publish_date
   validates_presence_of :title
   validates_presence_of :courses
@@ -196,5 +195,13 @@ class Delivery < ActiveRecord::Base
 
   def responses
     assignments
+  end
+
+  def deadline
+    if end_date.nil?
+      I18n.t('delivery.nil_end_date')
+    else
+      "#{I18n.t('delivery.deadline')} #{I18n.l(end_date, format: :short)}"
+    end
   end
 end

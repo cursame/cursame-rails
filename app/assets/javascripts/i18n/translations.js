@@ -960,7 +960,7 @@ I18n.translations["en"] = {
       "courses": "Courses",
       "criterium": "Evaluation Criterion",
       "dates": "Dates",
-      "deliver_date": "Due date",
+      "deliver_date": "Due date (optional)",
       "descrip": "Description",
       "evaluation_periods": "Evaluation periods",
       "example": "Example: Prime numbers",
@@ -1010,7 +1010,6 @@ I18n.translations["en"] = {
         "hmwrk": "See homework"
       },
       "delivery_modal": {
-        "deliver": "deadline",
         "deliver_hmwrk": "Turn in homework",
         "edit": "Edit",
         "final_score": "Final grade",
@@ -9389,8 +9388,7 @@ I18n.translations["en"] = {
     },
     "new_delivery_notification": {
       "button": "If the button below doesn’t work click here",
-      "course_notif": "Current homework",
-      "deliver": "Deadline"
+      "course_notif": "Current homework"
     },
     "new_discussion_notification": {
       "button": "If the button above doesn’t work click here",
@@ -11592,7 +11590,7 @@ I18n.translations["es"] = {
       "courses": "Cursos",
       "criterium": "Criterios a evaluar",
       "dates": "Fechas",
-      "deliver_date": "Fecha de entrega",
+      "deliver_date": "Fecha de entrega (opcional)",
       "descrip": "Descripción",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
@@ -11638,7 +11636,6 @@ I18n.translations["es"] = {
         "hmwrk": "Ver Tarea"
       },
       "delivery_modal": {
-        "deliver": "Entregar antes del",
         "deliver_hmwrk": "Entregar Tarea",
         "edit": "Editar Entrega",
         "final_score": "Calificación final obtenida",
@@ -15032,8 +15029,7 @@ I18n.translations["es"] = {
     },
     "new_delivery_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "course_notif": "Tarea en el curso",
-      "deliver": "Entregar antes del"
+      "course_notif": "Tarea en el curso"
     },
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -17212,7 +17208,7 @@ I18n.translations["es_meems"] = {
       "courses": "Centros de Emprendedores",
       "criterium": "Criterios a evaluar",
       "dates": "Fechas",
-      "deliver_date": "Fecha de entrega",
+      "deliver_date": "Fecha de entrega (opcional)",
       "descrip": "Descripción",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
@@ -17258,7 +17254,6 @@ I18n.translations["es_meems"] = {
         "hmwrk": "Ver Tarea"
       },
       "delivery_modal": {
-        "deliver": "Entregar antes del",
         "deliver_hmwrk": "Entregar Tarea",
         "edit": "Editar Entrega",
         "final_score": "Calificación final obtenida",
@@ -20663,13 +20658,11 @@ I18n.translations["es_meems"] = {
     },
     "new_delivery_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "course_notif": "Tarea en el curso",
-      "deliver": "Entregar antes del"
+      "course_notif": "Tarea en el curso"
     },
     "new_delivey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "course_notif": "Tarea en el Centro Emprendedor",
-      "deliver": "Entregar antes del"
+      "course_notif": "Tarea en el Centro Emprendedor"
     },
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -22843,7 +22836,7 @@ I18n.translations["devise"] = {
       "courses": "Cursos",
       "criterium": "Criterios a evaluar",
       "dates": "Fechas",
-      "deliver_date": "Fecha de entrega",
+      "deliver_date": "Fecha de entrega (opcional)",
       "descrip": "Descripción",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo: Números primos",
@@ -22889,7 +22882,6 @@ I18n.translations["devise"] = {
         "hmwrk": "Ver Tarea"
       },
       "delivery_modal": {
-        "deliver": "Entregar antes del",
         "deliver_hmwrk": "Entregar Tarea",
         "edit": "Editar Entrega",
         "final_score": "Calificación final obtenida",
@@ -26284,8 +26276,7 @@ I18n.translations["devise"] = {
     },
     "new_delivery_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "course_notif": "Tarea en el curso",
-      "deliver": "Entregar antes del"
+      "course_notif": "Tarea en el curso"
     },
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",

@@ -9,7 +9,6 @@ es:
       user: Estimados usuarios de Cúrsame
     new_delivery_notification:
       course_notif: Tarea en el curso
-      deliver: Entregar antes del
       button: 'Si el botón superior no funciona, haz click aquí'
     new_discussion_notification:
       discuss: Discusión en el curso
