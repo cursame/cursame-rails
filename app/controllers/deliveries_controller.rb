@@ -17,25 +17,23 @@ class DeliveriesController < ApplicationController
       accu + course.deliveries
     end
 
-    deliveries = deliveries.reject {|delivery| delivery.unpublish? }
-
     deliveries = deliveries.sort do
-      |x,y| y.end_date <=> x.end_date
+      |x,y| y.publish_date <=> x.publish_date
     end
 
-    @today_deliveries = deliveries.clone.keep_if do
-      |delivery|
-      Time.now.to_datetime <= delivery.end_date.to_datetime and delivery.end_date.to_datetime <= Date.tomorrow
-    end
+    @today_deliveries = []
+    @tomorrow_deliveries = []
+    @rest_of_deliveries = []
 
-    @tomorrow_deliveries = deliveries.clone.keep_if do
-      |delivery|
-      Date.tomorrow <= delivery.end_date.to_datetime and delivery.end_date.to_datetime <= (Date.tomorrow + 1.day)
-    end
-
-    @rest_of_deliveries = deliveries.clone.keep_if do
-      |delivery|
-      delivery.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    deliveries.each do |delivery|
+      next if DateTime.now < delivery.publish_date
+      if delivery.end_date.nil? || Date.tomorrow < delivery.end_date.to_date
+        @rest_of_deliveries << delivery
+      elsif Date.tomorrow == delivery.end_date.to_date
+        @tomorrow_deliveries << delivery
+      elsif DateTime.now < delivery.end_date
+        @today_deliveries << delivery
+      end
     end
   end
 
