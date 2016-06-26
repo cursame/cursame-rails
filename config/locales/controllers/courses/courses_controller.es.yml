@@ -15,3 +15,4 @@ es:
     contact: "Ha finalizado, contacta al profesor para más información."
     clone_correct: "Curso clonado correctamente."
     delivery_end_date_finished_message: Esta tarea ya no se puede entregar o editar su entrega
+    no_register: Estas tratando de ver actividades de un curso donde no estás inscrito.
