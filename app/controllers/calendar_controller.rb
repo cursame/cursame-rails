@@ -28,10 +28,11 @@ class CalendarController < ApplicationController
       time_for_expire = date.strftime('%d/%m/%Y')
 
       c.deliveries.each do |d|
+        next if d.end_date.nil? || d.publish_date >= DateTime.now
         @assignment = d.assignments.where(user_id: current_user.id, delivery_id: d.id ).count
         if @assignment == 0
           case
-          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -39,7 +40,7 @@ class CalendarController < ApplicationController
                               type: "Delivery",
                               expira: t('.calendar.three_days', locale: locale)
             })
-          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -47,7 +48,7 @@ class CalendarController < ApplicationController
                               type: "Delivery",
                               expira: t('.calendar.two_days', locale: locale)
             })
-          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -55,7 +56,7 @@ class CalendarController < ApplicationController
                               type: "Delivery",
                               expira: t('.calendar.tomorrow', locale: locale)
             })
-          when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
