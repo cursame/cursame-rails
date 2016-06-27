@@ -29,11 +29,10 @@ class Course < ActiveRecord::Base
 
   validates :title, presence: true
   validates :silabus, presence: true, allow_blank: true
-  validates :public_status, inclusion: { in: %w(Private public) }
   validates :active_status, inclusion: { in: [true, false] }
 
   attr_accessible :id, :title, :silabus, :init_date,
-    :created_at, :updated_at, :public_status,
+    :created_at, :updated_at,
     :avatar, :coverphoto, :delivery_id,
     :network_id, :active_status, :course_files, :school_id
 
@@ -56,13 +55,6 @@ class Course < ActiveRecord::Base
   after_create do
     create_library
     mixpanel_track_event
-    if self.public_status == 'public'
-      users  = self.network.users
-      owners = self.members_in_courses
-      owners = owners.reject { |member| member.owner != true }
-      users  = users - owners
-      Wall.create users: self.users, publication: self, network: self.network, courses: [self], public: true
-    end
   end
 
   after_update do
@@ -119,21 +111,6 @@ class Course < ActiveRecord::Base
       title = hash.delete("Nombre")
       silabus = hash.delete("Descripcion")
       init_date = hash.delete("Fecha de Inicio")
-      public_status = hash.delete("Estatus")
-
-      if public_status.nil? then
-        arrayErrores.push({:line => count, :message => "No se especifico un estatus del curso" })
-        errors = true
-      else
-        public_status = public_status.downcase.strip
-        public_status = "public" if public_status == "publico"
-        public_status = "Private" if public_status == "privado"
-
-        if public_status != "public" and public_status != "Private" then
-          arrayErrores.push({:line => count, :message => "No se especifico un estatus correcto en el curso" })
-          errors = true
-        end
-      end
 
       course.network_id = network.id
       course.active_status = true
@@ -143,7 +120,6 @@ class Course < ActiveRecord::Base
           course.title = title
           course.silabus = silabus
           course.init_date = init_date
-          course.public_status = public_status
           course.save!
         rescue ActiveRecord::RecordInvalid => invalid
           invalid.record.errors.each do |error|
@@ -330,7 +306,7 @@ class Course < ActiveRecord::Base
   private
   def mixpanel_track_event
     event_data = {
-      'Type'    => self.public_status.capitalize,
+      'Type'    => 'private',
       'Network' => self.network.name.capitalize,
       'Subdomain' => self.network.subdomain
     }

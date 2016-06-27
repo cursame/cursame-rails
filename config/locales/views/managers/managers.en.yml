@@ -41,8 +41,6 @@ en:
           example2: Mathematics I
           descrip: Description
           privacy: Privacy
-          public: Public
-          private: Private
           init_date: Start date
           init_date2: Start date
           teachers: Teachers
@@ -341,8 +339,6 @@ en:
         teachers: Teachers
         students: Students
     number_of_courses: Courses
-    public_courses: Public
-    private_courses: Private
     in_courses: 'Active tasks'
     final_courses: 'Queued and finished'
     hmwrks: 'Homeworks'

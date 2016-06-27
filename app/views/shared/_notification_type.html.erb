@@ -39,20 +39,6 @@
       <b><%= link_to "#{notification.notificator.title}", course_path(notification.notificator.id) %></b><%=t('.activity_feed.in_network')%><b> <%= notification.notificator.network.name %></b>
       <!-- #notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses") -->
 
-    <!-- Notificacion: 4 - Usuario aceptado en un curso -->
-    <% when 'user_accepted_in_course'%>
-      <%= link_to course_path(notification.notificator.id) do %>
-        <div class="activity-feed-author">
-          <span class="avatar-holder">
-            <%= avatar('course', '45', "no", notification.notificator.id, "avatar", "no", "no") %>
-          </span>
-        </div>
-        <div class="activity-feed-main">
-          <h6><%=t('.activity_feed.accept_course')%> <span class="as-link"><%= notification.notificator.title %></span></h6>
-          <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
-        </div>
-      <% end %>
-
     <!-- Notificacion: 5 - Nueva tarea en un curso -->
     <% when 'new_delivery_on_course'%>
       <%= link_to delivery_modal_path(notification.notificator.id), remote: true do %>
@@ -250,27 +236,6 @@
           </div>
         <% end %>
       <% end %>
-
-      <!-- "#notification-<%=notification.id.to_s%>").attr("redirect_to", "/courses/<%=%>" -->
-
-    <!-- Notificacion: 16 - Solicitud de membresia en un curso -->
-    <% when 'user_request_membership_in_course' %>
-      <% if notification.notificator != nil %>
-        <% user = notification.notificator.user %>
-
-        <%= link_to course_members_path(notification.notificator.course.id) do %>
-          <div class="activity-feed-author">
-            <span class="avatar-holder">
-              <%= avatar('user', '45', "no", user.id, "avatar", "no", "no") %>
-            </span>
-          </div>
-          <div class="activity-feed-main">
-            <h6><span class="as-link"><%= user.name %></span> <%=t('.activity_feed.add_to_course')%><span class="as-link"> <%= notification.notificator.course.title %></span></h6>
-            <%= render partial: '/shared/notifications/notification_meta_data', locals: { notification: notification } %>
-          </div>
-        <% end %>
-
-      <%end%>
 
     <!-- Notificacion: 17 - Respuesta de cuestionario -->
     <% when 'new_assignment_on_survey' %>

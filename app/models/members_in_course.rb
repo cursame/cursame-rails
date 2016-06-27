@@ -12,55 +12,7 @@ class MembersInCourse < ActiveRecord::Base
   accepts_nested_attributes_for :grade
   accepts_nested_attributes_for :members_in_course_criteria
 
-  after_create do
-    unless self.owner? or self.accepted?
-      Notification.create notificator: self, users: self.course.owners, kind: "user_request_membership_in_course", active: true
-    end
-  end
-
-  after_update do
-    accepted = self.changes[:accepted]
-    if (!accepted.nil?) then
-      if (!accepted[0] and accepted[1]) then
-        begin
-          mail = Notifier.accepted_message(self,self.course)
-          mail.deliver
-        rescue
-        end
-        Notification.create(:users => [self.user], :notificator => self.course, :kind => 'user_accepted_in_course')
-      end
-    end
-
-
-    if not(accepted.nil?)
-
-      course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}")
-      if not(course_channel.nil?)
-        audiences = course_channel.audiences
-        if (accepted)
-          index = audiences.index{|x| x.user_id == user_id}
-          if (index.nil?)
-            Audience.create(user_id: user_id, channel_id: course_channel.id)
-          end
-        else
-          if not(index.nil?)
-            audiences[index].destroy
-          end
-        end
-      end
-    end
-  end
-
   before_destroy do
-    notifications = Notification.where(:notificator_id => self.course_id,:notificator_type => "Course",:kind => 'user_accepted_in_course')
-
-    notifications.each do
-      |notification|
-      if notification.users.include?(self.user) then
-        notification.destroy
-      end
-    end
-
     course_channel = Channel.find_by_channel_name("/messages/course_channel_#{course.id}")
     if not(course_channel.nil?)
       audiences = course_channel.audiences
@@ -174,17 +126,17 @@ class MembersInCourse < ActiveRecord::Base
 
   def cursame_deliveries_percentage
     cursame_deliveries_criterium = self.course.evaluation_criteria.find_by_name('cursame_deliveries')
-    cursame_deliveries_criterium.nil? ? 0 : cursame_deliveries_criterium.evaluation_percentage 
+    cursame_deliveries_criterium.nil? ? 0 : cursame_deliveries_criterium.evaluation_percentage
   end
 
   def cursame_surveys_percentage
     cursame_surveys_criterium = self.course.evaluation_criteria.find_by_name('cursame_surveys')
-    cursame_surveys_criterium.nil? ? 0 : cursame_surveys_criterium.evaluation_percentage 
+    cursame_surveys_criterium.nil? ? 0 : cursame_surveys_criterium.evaluation_percentage
   end
 
   def cursame_discussions_percentage
     cursame_discussions_criterium = self.course.evaluation_criteria.find_by_name('cursame_discussions')
-    cursame_discussions_criterium.nil? ? 0 : cursame_discussions_criterium.evaluation_percentage 
+    cursame_discussions_criterium.nil? ? 0 : cursame_discussions_criterium.evaluation_percentage
   end
 
   def import(path,network,course,user_admin)
@@ -283,7 +235,7 @@ class MembersInCourse < ActiveRecord::Base
 
   # Returns the cursame final score.
   def cursame_final_score
-    self.course_average_old * (self.members_in_course_criteria.inject(100) { |score, criteria| score - criteria.evaluation_criterium.evaluation_percentage } / 100.0) 
+    self.course_average_old * (self.members_in_course_criteria.inject(100) { |score, criteria| score - criteria.evaluation_criterium.evaluation_percentage } / 100.0)
   end
 
   # Returns the criteria final score.

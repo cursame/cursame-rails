@@ -10,10 +10,6 @@ class ManagersController < ApplicationController
     @diision =  @member.count
     @porcent_of_students =   ((@diision* 100)/ @network_population).to_i
     @courses = current_network.courses
-    @public_courses = @courses.where(:public_status => 'public')
-    @publico = @public_courses.count
-    @private_courses = @courses.where(:public_status => 'Private')
-    @privado =  @private_courses.count
     @deliveries = current_network.deliveries
     @total_deliveries =  @deliveries.count
     @open_deliveries =  @deliveries.where(:state => 'published')

@@ -471,9 +471,6 @@ I18n.translations["en"] = {
       "info_new_course": "Change information for new course.",
       "init_date": "Start",
       "name": "Course name",
-      "privacy": "Privacy",
-      "private": "Private",
-      "public": "Public",
       "publish_date": "Published on"
     },
     "closure": {
@@ -601,9 +598,6 @@ I18n.translations["en"] = {
       "first_name": "Write your name or last name.",
       "init_date": "Start Date",
       "name": "Course name",
-      "privacy": "Privacy",
-      "private": "Private",
-      "public": "Public",
       "save": "Save changes",
       "students": "Students",
       "teachers": "Teachers"
@@ -612,9 +606,6 @@ I18n.translations["en"] = {
       "descrip": "Description",
       "init_date": "Start date",
       "name": "Name of",
-      "privacy": "Privacy",
-      "private": "Private",
-      "public": "Public",
       "return": "Go back to",
       "update": "Update"
     },
@@ -715,16 +706,11 @@ I18n.translations["en"] = {
         "active": "Activate",
         "activities_score": "Grade activities",
         "clone": "Clone",
-        "confirm": "Are you sure you want to leave this course?",
         "edit": "Edit",
         "enroll": "You are now enrolled",
         "eval_form": "Evaluation form",
         "final_score": "Final grades",
-        "finalize": "Finish",
-        "leave": "Leave course",
-        "registering": "Registering",
-        "request_send": "Request sent",
-        "send_request": "Send Request"
+        "finalize": "Finish"
       },
       "course_card_post": {
         "new_course": "New course"
@@ -8973,9 +8959,6 @@ I18n.translations["en"] = {
           "init_date2": "Start date",
           "last_name": "Write down your name or last name.",
           "name": "Name",
-          "privacy": "Privacy",
-          "private": "Private",
-          "public": "Public",
           "save": "Save changes",
           "students": "Students",
           "teachers": "Teachers",
@@ -9127,9 +9110,7 @@ I18n.translations["en"] = {
     "no_delete": "You can not delete this user.",
     "no_edit": "You can not edit that user.",
     "number_of_courses": "Courses",
-    "private_courses": "Private",
     "proc_file": "Your file is being processed, you will receive an email confirmation",
-    "public_courses": "Public",
     "reported_contents": {
       "index": {
         "actions": "Actions",
@@ -9397,11 +9378,6 @@ I18n.translations["en"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "You have been accepted to the course",
-      "button": "If the button below doesn’t work click here",
-      "hello": "¬Hello"
-    },
     "csv_import_email": {
       "error": "Erros",
       "hello": "Hello",
@@ -9419,10 +9395,6 @@ I18n.translations["en"] = {
     "new_discussion_notification": {
       "button": "If the button above doesn’t work click here",
       "discuss": "Course discussion"
-    },
-    "new_member_in_course": {
-      "button": "If the button above doesn’t work click here",
-      "course": "Wants to be part of your course"
     },
     "new_survey_notification": {
       "button": "If the button above doesn’t work click here",
@@ -9778,10 +9750,8 @@ I18n.translations["en"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "You have been accepted to the course",
         "active": "active",
         "activities_p_user": "An activity for",
-        "add_to_course": "You have requested to enter the course",
         "comment_course": "comment in your course",
         "comment_net": "comment in your network",
         "comment_profile": "You have commented on your profile.",
@@ -10499,9 +10469,7 @@ I18n.translations["en"] = {
       "descrip": "Description",
       "init_date": "Start date",
       "load": "Loading",
-      "name": "Name",
-      "private": "Private",
-      "public": "Public"
+      "name": "Name"
     },
     "friends": {
       "all": "All users",
@@ -11135,9 +11103,6 @@ I18n.translations["es"] = {
       "info_new_course": "Cambia la información para el nuevo curso.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "publish_date": "Fecha de publicación"
     },
     "closure": {
@@ -11265,9 +11230,6 @@ I18n.translations["es"] = {
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "save": "Guardar cambios",
       "students": "Estudiantes",
       "teachers": "Profesor"
@@ -11276,9 +11238,6 @@ I18n.translations["es"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "name": "Nombre del",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "return": "Regresar al",
       "update": "Actualizar"
     },
@@ -11379,16 +11338,11 @@ I18n.translations["es"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Estás seguro de abandonar este curso?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
-        "finalize": "Finalizar",
-        "leave": "Abandonar curso",
-        "registering": "Unirme a este curso",
-        "request_send": "Solicitud enviada",
-        "send_request": "Enviar solicitud"
+        "finalize": "Finalizar"
       },
       "course_card_post": {
         "new_course": "Nuevo curso público"
@@ -14673,9 +14627,6 @@ I18n.translations["es"] = {
           "init_date2": "Fecha de inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
-          "privacy": "Privacidad",
-          "private": "Privado",
-          "public": "Público",
           "save": "Guardar cambios",
           "students": "Alumnos",
           "teachers": "Profesores",
@@ -14827,9 +14778,7 @@ I18n.translations["es"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Cursos",
-    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
-    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -15072,11 +15021,6 @@ I18n.translations["es"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "Has sido aceptado en el curso",
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "hello": "¡Hola"
-    },
     "csv_import_email": {
       "error": "¡Error!",
       "hello": "¡Hola",
@@ -15094,10 +15038,6 @@ I18n.translations["es"] = {
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "discuss": "Discusión en el curso"
-    },
-    "new_member_in_course": {
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tú curso"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -15453,10 +15393,8 @@ I18n.translations["es"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "Has sido aceptado en el curso",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al Curso",
         "comment_course": "comentó en el curso",
         "comment_net": "comentó en la red",
         "comment_profile": "ha comentado en tu Perfil.",
@@ -16174,9 +16112,7 @@ I18n.translations["es"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "load": "Cargando ...",
-      "name": "Nombre",
-      "private": "Privado",
-      "public": "Público"
+      "name": "Nombre"
     },
     "friends": {
       "comunity": "Comunidad",
@@ -16787,9 +16723,6 @@ I18n.translations["es_meems"] = {
       "info_new_course": "Edita la información para el nuevo Centro Emprendedor.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Centro Emprendedor",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "publish_date": "Fecha de publicación"
     },
     "closure": {
@@ -16917,9 +16850,6 @@ I18n.translations["es_meems"] = {
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Centro de Emprendedores",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "save": "Guardar cambios",
       "students": "Emprendedores",
       "teachers": "Líderes Multiplicadores"
@@ -16928,9 +16858,6 @@ I18n.translations["es_meems"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "name": "Nombre del",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "return": "Regresar al",
       "update": "Actualizar"
     },
@@ -17031,16 +16958,11 @@ I18n.translations["es_meems"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Estás seguro de abandonar este Centro Emprendedor?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
-        "finalize": "Finalizar",
-        "leave": "Abandonar Centro Emprendedor",
-        "registering": "Unirme a este curso",
-        "request_send": "Solicitud enviada",
-        "send_request": "Enviar solicitud"
+        "finalize": "Finalizar"
       },
       "course_card_post": {
         "new_course": "Nuevo Centro Emprendedor público"
@@ -20329,9 +20251,6 @@ I18n.translations["es_meems"] = {
           "init_date2": "Fecha inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
-          "privacy": "Privacidad",
-          "private": "Privado",
-          "public": "Público",
           "save": "Guardar cambios",
           "students": "Emprendedores",
           "teachers": "Líderes Multiplicadores",
@@ -20485,9 +20404,7 @@ I18n.translations["es_meems"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Centros de Emprendedores",
-    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
-    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -20735,11 +20652,6 @@ I18n.translations["es_meems"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "Has sido aceptado en el Centro Emprendedor",
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "hello": "¡Hola"
-    },
     "csv_import_email": {
       "error": "¡Error!",
       "hello": "¡Hola",
@@ -20762,10 +20674,6 @@ I18n.translations["es_meems"] = {
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "discuss": "Discusión en el Centro Emprendedor"
-    },
-    "new_member_in_course": {
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tu Centro Emprendedor"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -21122,10 +21030,8 @@ I18n.translations["es_meems"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "Has sido aceptado en el Centro Emprendedor",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al Centro Emprendedor",
         "comment_course": "comentó en el Centro Emprendedor",
         "comment_net": "comentó en la red",
         "comment_profile": "ha comentado en tu Perfil.",
@@ -21843,9 +21749,7 @@ I18n.translations["es_meems"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "load": "Cargando ...",
-      "name": "Nombre",
-      "private": "Privado",
-      "public": "Público"
+      "name": "Nombre"
     },
     "friends": {
       "comunity": "Red de Emprendedores",
@@ -22450,9 +22354,6 @@ I18n.translations["devise"] = {
       "info_new_course": "Cambia la información para el nuevo curso.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "publish_date": "Fecha de publicación"
     },
     "closure": {
@@ -22580,9 +22481,6 @@ I18n.translations["devise"] = {
       "first_name": "Escribe un nombre o apellido.",
       "init_date": "Fecha de inicio",
       "name": "Nombre del Curso",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "save": "Guardar cambios",
       "students": "Estudiantes",
       "teachers": "Profesor"
@@ -22591,9 +22489,6 @@ I18n.translations["devise"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "name": "Nombre del",
-      "privacy": "Privacidad",
-      "private": "Privado",
-      "public": "Público",
       "return": "Regresar al",
       "update": "Actualizar"
     },
@@ -22694,16 +22589,11 @@ I18n.translations["devise"] = {
         "active": "Activar",
         "activities_score": "Calificar actividades",
         "clone": "Clonar",
-        "confirm": "¿Estás seguro de abandonar este curso?",
         "edit": "Editar",
         "enroll": "Estás inscrito",
         "eval_form": "Forma de evaluación",
         "final_score": "Calificaciones finales",
-        "finalize": "Finalizar",
-        "leave": "Abandonar curso",
-        "registering": "Unirme a este curso",
-        "request_send": "Solicitud enviada",
-        "send_request": "Enviar solicitud"
+        "finalize": "Finalizar"
       },
       "course_card_post": {
         "new_course": "Nuevo curso público"
@@ -25989,9 +25879,6 @@ I18n.translations["devise"] = {
           "init_date2": "Fecha de inicio",
           "last_name": "Escribe un nombre o apellido.",
           "name": "Nombre",
-          "privacy": "Privacidad",
-          "private": "Privado",
-          "public": "Público",
           "save": "Guardar cambios",
           "students": "Alumnos",
           "teachers": "Profesores",
@@ -26143,9 +26030,7 @@ I18n.translations["devise"] = {
     "no_delete": "No puedes borrar este usuario.",
     "no_edit": "No puedes editar ese usuario.",
     "number_of_courses": "Cursos",
-    "private_courses": "Privados",
     "proc_file": "Tu archivo esta siendo procesado, recibiras un correo electrónico de confirmación",
-    "public_courses": "Públicos",
     "reported_contents": {
       "index": {
         "actions": "Acciones",
@@ -26388,11 +26273,6 @@ I18n.translations["devise"] = {
     }
   },
   "notifier": {
-    "accepted_message": {
-      "accept": "Has sido aceptado en el curso",
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "hello": "¡Hola"
-    },
     "csv_import_email": {
       "error": "¡Error!",
       "hello": "¡Hola",
@@ -26410,10 +26290,6 @@ I18n.translations["devise"] = {
     "new_discussion_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
       "discuss": "Discusión en el curso"
-    },
-    "new_member_in_course": {
-      "button": "Si el botón superior no funciona, haz click aquí",
-      "course": "Desea formar parte de tú curso"
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -26769,10 +26645,8 @@ I18n.translations["devise"] = {
     },
     "notification_type": {
       "activity_feed": {
-        "accept_course": "Has sido aceptado en el curso",
         "active": "activado",
         "activities_p_user": "Una actividad por",
-        "add_to_course": "ha solicitado entrar al Curso",
         "comment_course": "comentó en el curso",
         "comment_net": "comentó en la red",
         "comment_profile": "ha comentado en tu Perfil.",
@@ -27490,9 +27364,7 @@ I18n.translations["devise"] = {
       "descrip": "Descripción",
       "init_date": "Fecha inicio",
       "load": "Cargando ...",
-      "name": "Nombre",
-      "private": "Privado",
-      "public": "Público"
+      "name": "Nombre"
     },
     "friends": {
       "comunity": "Comunidad",

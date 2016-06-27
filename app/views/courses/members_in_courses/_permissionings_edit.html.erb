@@ -1,34 +1,19 @@
 <% @member_it = member_it %>
 <% @member =  member %>
-
-<% case @member.accepted %>
-  <% when true %>
-    <% if current_user.id != @member_it.id %>
-      <div id="options_to_<%@member_it.id%>" style="display:block;"> 
-        <div class="dropdown-wrap">
-          <div class="dropdown-pull btn btn-small btn-secondary">
-            <%= icon 'drop-arrow' %>
-          </div>
-          <div class="dropdown-v left" style="left: -9px;">
-            <i class="tip"></i>
-            <ul>
-              <li>
-                <%= link_to t('.delete_group'), @member, confirm: t('.confirm'), method: :delete, :remote => true %>
-              </li>
-            </ul>
-          </div>
-        </div>
+<% if current_user.id != @member_it.id && @member.accepted %>
+  <div id="options_to_<%@member_it.id%>" style="display:block;">
+    <div class="dropdown-wrap">
+      <div class="dropdown-pull btn btn-small btn-secondary">
+        <%= icon 'drop-arrow' %>
       </div>
-    <%end%>
-  
-  <% when false %>
-    <%= form_for @member, :remote => true do |fcm| %>                           
-      <%= link_to t('.delete'), @member, confirm: t('.confirm'), class: 'btn btn-small btn-secondary', method: :delete, :remote => true %>
-
-      <label class="btn btn-small btn-primary activable ff">
-        <%=t('.usr_accept')%>
-          <%=  fcm.check_box :accepted, :onclick => "ValidateMemberInCourse("+"'"+"members_in_course_accepted_#{@member_it.id}"+"'"+","+"'"+"#{@member.id}"+"'"+","+"'"+"acceptin"+"'"+","+"'"+"#{@member_it.id}"+"'"+");", :class=> "members_in_course_accepted_#{@member_it.id} tobe-t", :style => "display:none;"  %>
-      </label>
-    <%end%>
-<%end%> 
-
+      <div class="dropdown-v left" style="left: -9px;">
+        <i class="tip"></i>
+        <ul>
+          <li>
+            <%= link_to t('.delete_group'), @member, confirm: t('.confirm'), method: :delete, :remote => true %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<%end%>

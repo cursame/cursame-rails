@@ -284,7 +284,6 @@ es_meems:
         comment_course: comentó en el Centro Emprendedor
         new_course: Nuevo Centro Emprendedor
         in_network: en tu red
-        accept_course: Has sido aceptado en el Centro Emprendedor
         new_homework: Nueva tarea
         in_course: en tu Centro Emprendedor
         new_discus: Nueva discusion
@@ -301,7 +300,6 @@ es_meems:
         comment_to_comment: ha comentado tu Publicación.
         comment_profile: ha comentado en tu Perfil.
         comment_to_homework: ha comentado en la tarea
-        add_to_course: ha solicitado entrar al Centro Emprendedor
         quest_response: ha respondido el cuestionario
         the_course: El Centro Emprendedor
         course_expired: ha llegado a su fecha final. Por favor desactívalo.

@@ -1,65 +1,30 @@
 <% @correspond = MembersInCourse.find_by_user_id_and_course_id(current_user, course.id) %>
-<% if current_user.admin? || @correspond %>
-  <% if current_user.admin? || (@correspond.accepted && @correspond.owner) %>
-    <div class="dropdown-wrap">
-      <div class="dropdown-pull btn btn-secondary btn-small">
-        <%= icon 'drop-arrow' %>
-      </div>
-      <div class="dropdown-v left" style="left: -8px;">
-        <i class="tip"></i>
-        <ul>
-          <% if course.active_status and current_network.evaluable? %>
-            <li>
-              <%= link_to t('.final_score'), course_closure_path(course) %>
-            </li>
-            <li>
-              <%= link_to t('.activities_score'), evaluate_course_path(course) %>
-            </li>
-            <li>
-              <%= link_to t('.eval_form'), course_evaluation_schema_path( course ) %>
-            </li>
-          <% end %>
+<% if current_user.admin? || (@correspond.accepted && @correspond.owner) %>
+  <div class="dropdown-wrap">
+    <div class="dropdown-pull btn btn-secondary btn-small">
+      <%= icon 'drop-arrow' %>
+    </div>
+    <div class="dropdown-v left" style="left: -8px;">
+      <i class="tip"></i>
+      <ul>
+        <% if course.active_status and current_network.evaluable? %>
           <li>
-            <%= link_to t('.clone'), clone_course_view_path(course) %>
+            <%= link_to t('.final_score'), course_closure_path(course) %>
           </li>
           <li>
-            <%= link_to course.active_status? ? t('.finalize') : t('.active'),  active_status_path(course) %>
+            <%= link_to t('.activities_score'), evaluate_course_path(course) %>
           </li>
-        </ul>
-      </div>
-    </div>
-  <% elsif @correspond.accepted && ! @correspond.owner and course.public_status === 'public'%>
-    <div class="dropdown-wrap">
-      <div class="dropdown-pull btn btn-secondary btn-small">
-        <%=t('.enroll')%> <%= icon 'drop-arrow' %>
-      </div>
-      <div class="dropdown-v left">
-        <i class="tip"></i>
-        <ul>
           <li>
-            <div id="uik_<%= @correspond.id %>">
-              <%= link_to @correspond , confirm: t('.confirm'), method: :delete, :remote => true do %>
-                <%=t('.leave')%>
-              <% end %>
-            </div>
+            <%= link_to t('.eval_form'), course_evaluation_schema_path( course ) %>
           </li>
-        </ul>
-      </div>
+        <% end %>
+        <li>
+          <%= link_to t('.clone'), clone_course_view_path(course) %>
+        </li>
+        <li>
+          <%= link_to course.active_status? ? t('.finalize') : t('.active'),  active_status_path(course) %>
+        </li>
+      </ul>
     </div>
-  <% elsif ! @correspond.accepted %>
-    <div class="btn btn-disabled btn-small">
-      <%=t('.request_send')%>
-    </div>
-  <% end %>
-<% else %>
-  <%= form_for( member, :remote => true ) do |f| %>
-    <%= f.hidden_field :user_id,:value => current_user.id %>
-    <%= f.hidden_field :course_id, :value => course.id %>
-    <%= f.hidden_field :accepted, value: course.public_status == 'public' ? true : false %>
-    <% unless current_user.admin? %>
-      <span class="btn btn-primary input-btn btn-small">
-        <%= f.submit course.public_status == 'public' ? t('.registering'): t('.send_request') %>
-      </span>
-    <% end %>
-  <% end %>
+  </div>
 <% end %>

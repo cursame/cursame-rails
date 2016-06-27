@@ -41,8 +41,6 @@ es_meems:
           example2: Matemáticas I
           descrip: Descripción
           privacy: Privacidad
-          public: Público
-          private: Privado
           init_date: Fecha de Inicio
           init_date2: Fecha inicio
           teachers: Líderes Multiplicadores

@@ -178,7 +178,6 @@ class Managers::BitCoursesController < Managers::BaseController
       title: group['asignatura'],
       silabus: group['nombreCompletoGrupo'],
       init_date: group['fechaInicialCiclo'].to_datetime,
-      public_status: 'Private',
       network_id: current_network.id
     )
   end

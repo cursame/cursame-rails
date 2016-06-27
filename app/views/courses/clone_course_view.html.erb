@@ -68,24 +68,7 @@ background-white
 		          </div>
 		        </div>
 		      </div>
-
-		      <div class="form-group">
-		        <div class="form-group-label">
-		          <%= f.label :public_status, t('.privacy') + ':' %>
-		        </div>
-		        <div class="form-group-main">
-		          <div class="form-unit">
-		            <% if @course.public_status == 'public' %>
-						      <%= f.select :public_status, options_for_select([[t('.public'), 'public'],[t('.private'), 'Private']])%>
-						     <%else%>
-						      <%= f.select :public_status, options_for_select([[t('.private'), 'Private'],[t('.public'), 'public']])%>
-						     <%end%>
-		          </div>
-		        </div>
-		      </div>
-
 				</div>
-
         <% if current_network.evaluable? %>
   				<div id="clone-course-deliveries" class="step">
   					<h3><%=t('.hmwrks')%></h3>

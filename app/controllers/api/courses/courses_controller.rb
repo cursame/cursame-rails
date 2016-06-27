@@ -15,7 +15,7 @@ class Api::Courses::CoursesController < ApplicationController
         }, discussions: {
           only: [ :id, :title, :created_at, :evaluable ]
         }
-      }, only: [ :id, :title, :created_at, :public_status ]
+      }, only: [ :id, :title, :created_at ]
     )
     render json: { pages: courses.total_pages, courses: courses_json }, status: 200
   end

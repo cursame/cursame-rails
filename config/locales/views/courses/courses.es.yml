@@ -73,11 +73,6 @@ es:
         finalize: Finalizar
         active: Activar
         enroll: Estás inscrito
-        confirm: ¿Estás seguro de abandonar este curso?
-        leave: Abandonar curso
-        request_send: Solicitud enviada
-        registering: Unirme a este curso
-        send_request: Enviar solicitud
       course_card_post:
         new_course: Nuevo curso público
       course_evaluation_schema_fields:
@@ -149,9 +144,6 @@ es:
       name: Nombre del
       descrip: Descripción
       init_date: Fecha inicio
-      privacy: Privacidad
-      public: Público
-      private: Privado
     light_box_dashboard_delivery:
       student: Alumno
       title: Título de entrega
@@ -193,9 +185,6 @@ es:
       descrip: Descripción
       dates: Fechas
       init_date: Fecha de inicio
-      privacy: Privacidad
-      public: Público
-      private: Privado
       hmwrks: Tareas
       clone_hmwrks: Selecciona las tareas que quieres clonar para el nuevo curso.
       publish_date: Fecha de publicación

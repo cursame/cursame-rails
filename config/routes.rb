@@ -185,8 +185,6 @@ Cursame30Lb::Application.routes.draw do
   resources :discussions
 
   # Cursos
-  get '/courses/pending', :to => 'courses#pending', :as => :courses_pending
-  get '/courses/all', :to => 'courses#all', :as => :courses_all
   get '/courses/unpublished', :to => 'courses#unpublished', :as => :courses_unpublished
   get '/courses/paginate-ajax', to: "courses#paginate_ajax", as: :courses_paginate_ajax
   match '/courses/search', :to => "courses#search", :as => :search_courses
