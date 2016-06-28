@@ -25,7 +25,6 @@ class Survey < ActiveRecord::Base
   validates_presence_of :questions
   validates_presence_of :user
   validates_presence_of :publish_date
-  validates_presence_of :end_date
   validates_presence_of :evaluation_period, :unless => lambda { self.courses.first.evaluation_periods.empty? }
 
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
@@ -54,9 +53,6 @@ class Survey < ActiveRecord::Base
   end
 
   after_create do
-
-    self.expired?
-
     Wall.create(:publication => self, :network => self.network, :courses => self.courses, :users => self.users)
     Event.create title: self.name, starts_at: self.publish_date, ends_at: self.end_date, schedule_id: self.id, schedule_type: "Survey", network_id: self.network_id
 
@@ -153,5 +149,13 @@ class Survey < ActiveRecord::Base
       end
     end
     return users
+  end
+
+  def deadline
+    if end_date.nil?
+      I18n.t('survey.nil_end_date')
+    else
+      "#{I18n.t('survey.deadline')} #{I18n.l(end_date, format: :short)}"
+    end
   end
 end

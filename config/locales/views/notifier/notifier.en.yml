@@ -14,8 +14,7 @@ en:
       discuss: Course discussion
       button: "If the button above doesn’t work click here"
     new_survey_notification:
-      hmwrk: Current homework
-      deliver: Deadline
+      hmwrk: Current survey
       button: "If the button above doesn’t work click here"
     send_comment_on_course:
       comment: Comment

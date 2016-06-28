@@ -14,8 +14,7 @@ es_meems:
       discuss: Discusión en el Centro Emprendedor
       button: 'Si el botón superior no funciona, haz click aquí'
     new_survey_notification:
-      hmwrk: Tarea en el Centro Emprendedor
-      deliver: Entregar antes del
+      hmwrk: Cuestionario en el Centro Emprendedor
       button: 'Si el botón superior no funciona, haz click aquí'
     send_comment_on_course:
       comment: comentó una publicación en el Centro Emprendedor

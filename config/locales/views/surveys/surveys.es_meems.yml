@@ -10,7 +10,6 @@ es_meems:
         notice_helper2: minutos para responderlo
       survey_modal:
         quest: Cuestionario en el Centro Emprendedor
-        response: Responder antes del
         calif: Calificación Obtenida
         feedback: Retroalimentación
         fail_attemps: No tienes más intentos
@@ -41,7 +40,7 @@ es_meems:
       timer: Tiempo para resolución del Cuesitonario
       attempts: Intentos
       publish_date: Día de Publicación
-      deliver_date: Fecha de Entrega
+      deliver_date: Fecha de Entrega (opcional)
       quest: Preguntas
       add_quest: Agregar Pregunta
       support: Material de Soporte

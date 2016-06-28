@@ -12,3 +12,6 @@ es:
   delivery:
     nil_end_date: Sin fecha de entrega
     deadline: Entregar antes del
+  survey:
+    nil_end_date: Sin fecha de entrega
+    deadline: Responder antes del

@@ -12,3 +12,6 @@ en:
   delivery:
     nil_end_date: No end date
     deadline: Deadline
+  survey:
+    nil_end_date: No end date
+    deadline: Answer before

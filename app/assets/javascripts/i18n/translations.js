@@ -9396,8 +9396,7 @@ I18n.translations["en"] = {
     },
     "new_survey_notification": {
       "button": "If the button above doesn’t work click here",
-      "deliver": "Deadline",
-      "hmwrk": "Current homework"
+      "hmwrk": "Current survey"
     },
     "send_comment_on_course": {
       "button": "If the button above doesn’t work click here",
@@ -10271,7 +10270,7 @@ I18n.translations["en"] = {
       "create": "Create test",
       "create_test": "Create Test",
       "dates": "Dates",
-      "deliver_date": "Deadline",
+      "deliver_date": "Deadline (optional)",
       "evaluation_periods": "Evaluation periods",
       "example": "Example",
       "non_mins": "No time",
@@ -10315,8 +10314,7 @@ I18n.translations["en"] = {
         "calif": "Grade",
         "fail_attemps": "You don´t have more attemps",
         "feedback": "Feedback",
-        "quest": "Course test",
-        "response": "Answer before"
+        "quest": "Course test"
       },
       "survey_questions_modal": {
         "quest": "Send test"
@@ -15037,8 +15035,7 @@ I18n.translations["es"] = {
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "deliver": "Entregar antes del",
-      "hmwrk": "Tarea en el curso"
+      "hmwrk": "Cuestionario en el curso"
     },
     "send_comment_on_course": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -15912,7 +15909,7 @@ I18n.translations["es"] = {
       "create": "Crear Cuestionario",
       "create_test": "Crear Cuestionario",
       "dates": "Fechas",
-      "deliver_date": "Fecha de entrega",
+      "deliver_date": "Fecha de entrega (opcional)",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
@@ -15956,8 +15953,7 @@ I18n.translations["es"] = {
         "calif": "Calificación Obtenida",
         "fail_attemps": "No tienes más intentos",
         "feedback": "Retroalimentación",
-        "quest": "Cuestionario en el curso",
-        "response": "Responder antes del"
+        "quest": "Cuestionario en el curso"
       },
       "survey_questions_modal": {
         "quest": "Enviar Cuestionario"
@@ -20670,8 +20666,7 @@ I18n.translations["es_meems"] = {
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "deliver": "Entregar antes del",
-      "hmwrk": "Tarea en el Centro Emprendedor"
+      "hmwrk": "Cuestionario en el Centro Emprendedor"
     },
     "send_comment_on_course": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -21546,7 +21541,7 @@ I18n.translations["es_meems"] = {
       "create": "Crear Cuestionario",
       "create_test": "Crear Cuestionario",
       "dates": "Fechas",
-      "deliver_date": "Fecha de Entrega",
+      "deliver_date": "Fecha de Entrega (opcional)",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
@@ -21590,8 +21585,7 @@ I18n.translations["es_meems"] = {
         "calif": "Calificación Obtenida",
         "fail_attemps": "No tienes más intentos",
         "feedback": "Retroalimentación",
-        "quest": "Cuestionario en el Centro Emprendedor",
-        "response": "Responder antes del"
+        "quest": "Cuestionario en el Centro Emprendedor"
       },
       "survey_questions_modal": {
         "quest": "Enviar Cuestionario"
@@ -26284,8 +26278,7 @@ I18n.translations["devise"] = {
     },
     "new_survey_notification": {
       "button": "Si el botón superior no funciona, haz click aquí",
-      "deliver": "Entregar antes del",
-      "hmwrk": "Tarea en el curso"
+      "hmwrk": "Cuestionario en el curso"
     },
     "send_comment_on_course": {
       "button": "Si el botón superior no funciona, haz click aquí",
@@ -27159,7 +27152,7 @@ I18n.translations["devise"] = {
       "create": "Crear Cuestionario",
       "create_test": "Crear Cuestionario",
       "dates": "Fechas",
-      "deliver_date": "Fecha de entrega",
+      "deliver_date": "Fecha de entrega (opcional)",
       "evaluation_periods": "Periodos de evaluación",
       "example": "Ejemplo",
       "non_mins": "Sin límite de tiempo",
@@ -27203,8 +27196,7 @@ I18n.translations["devise"] = {
         "calif": "Calificación Obtenida",
         "fail_attemps": "No tienes más intentos",
         "feedback": "Retroalimentación",
-        "quest": "Cuestionario en el curso",
-        "response": "Responder antes del"
+        "quest": "Cuestionario en el curso"
       },
       "survey_questions_modal": {
         "quest": "Enviar Cuestionario"

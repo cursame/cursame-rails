@@ -14,8 +14,7 @@ es:
       discuss: Discusión en el curso
       button: 'Si el botón superior no funciona, haz click aquí'
     new_survey_notification:
-      hmwrk: Tarea en el curso
-      deliver: Entregar antes del
+      hmwrk: Cuestionario en el curso
       button: 'Si el botón superior no funciona, haz click aquí'
     send_comment_on_course:
       comment: comentó en un comentario en el curso
