@@ -62,22 +62,21 @@ class EvaluateController < ApplicationController
     end
 
     activities = (@course.deliveries + @course.surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+      |x,y| x.publish_date <=> y.publish_date
     end
 
-    @today_activities = activities.clone.keep_if do
-      |activity|
-      Date.today <= activity.end_date.to_datetime and activity.end_date.to_datetime <= Date.tomorrow.to_date
-    end
+    @today_activities = []
+    @tomorrow_activities = []
+    @rest_of_activities = []
 
-    @tomorrow_activities = activities.clone.keep_if do
-      |activity|
-      Date.tomorrow <= activity.end_date.to_datetime and activity.end_date.to_datetime <= (Date.tomorrow + 1.day)
-    end
-
-    @rest_of_activities = activities.clone.keep_if do
-      |activity|
-      activity.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    activities.each do |activity|
+      if activity.end_date.nil? || Date.tomorrow < activity.end_date.to_date
+        @rest_of_activities << activity
+      elsif Date.tomorrow == activity.end_date.to_date
+        @tomorrow_activities << activity
+      elsif DateTime.now < activity.end_date
+        @today_activities << activity
+      end
     end
   end
 
