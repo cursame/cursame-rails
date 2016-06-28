@@ -71,11 +71,11 @@ class CalendarController < ApplicationController
       end
 
       c.surveys.each do |s|
-
+        next if s.end_date.nil? || s.publish_date >= DateTime.now
         @surveys = s.user_surveys.where(user_id: current_user.id, survey_id: s.id ).count
         if @surveys == 0
           case
-          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
@@ -83,7 +83,7 @@ class CalendarController < ApplicationController
                               type: "Survey",
                               expira: t('.calendar.three_days', locale: locale)
             })
-          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
@@ -91,7 +91,7 @@ class CalendarController < ApplicationController
                               type: "Survey",
                               expira: t('.calendar.two_days', locale: locale)
             })
-          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
@@ -99,7 +99,7 @@ class CalendarController < ApplicationController
                               type: "Survey",
                               expira: t('.calendar.tomorrow', locale: locale)
             })
-          when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
