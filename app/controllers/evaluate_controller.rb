@@ -122,13 +122,12 @@ class EvaluateController < ApplicationController
       |discussion| discussion.evaluable?
     end
 
-    activities = (@course.deliveries + @course.surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+    activities = (@course.deliveries + @course.surveys + discussions).keep_if do |activity|
+      !activity.end_date.nil? && activity.end_date < DateTime.now
     end
 
-    @activities = activities.clone.keep_if do
-      |activity|
-      activity.end_date.to_datetime < Date.today
+    @activities = activities.sort do |x,y|
+      y.end_date <=> x.end_date
     end
   end
 
