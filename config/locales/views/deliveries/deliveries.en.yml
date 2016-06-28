@@ -72,7 +72,7 @@ en:
       homework_description: 'Description'
       description: 'Homework Description'
       homework_publish_date: 'Publish Date'
-      homework_end_date: 'Due Date'
+      homework_end_date: 'Due Date (optional)'
       evaluation_criteria: 'Evaluation Criteria'
       add_criterium: 'Add Criterium'
       cancel: 'Cancel'

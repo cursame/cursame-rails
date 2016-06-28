@@ -29,7 +29,7 @@
               = f.label :publish_date, t('.homework_publish_date')
             .form-group-main
               .form-unit
-                = f.text_field :publish_date, placeholder: t('.homework_publish_date'), class: "datetime-picker", value: f.object.publish_date
+                = f.text_field :publish_date, placeholder: t('.homework_publish_date'), class: "datetime-picker", value: f.object.publish_date, required: true
           .form-group
             .form-group-label
               = f.label :end_date, t('.homework_end_date')
@@ -56,6 +56,3 @@
             %li
               %span.btn.btn-primary.input-btn.btn-medium.activable
                 = f.submit t('.save'), class: 'activable'
-
-
-
