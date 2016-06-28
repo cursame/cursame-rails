@@ -13,10 +13,11 @@ class CalendarController < ApplicationController
   def index
     # TODO: agregar caso de maestro y admin
     if current_user.student? || current_user.teacher?
-      @tasks = current_user.courses.map { |course| course.course_events }.flatten
+      tasks = current_user.courses.map { |course| course.course_events }.flatten
     else
-      @tasks = current_network.courses.map { |course| course.course_events }.flatten
+      tasks = current_network.courses.map { |course| course.course_events }.flatten
     end
+    @tasks = tasks.keep_if { |task| !task.ends_at.nil? }
     @date  = params[:month] ? Date.parse(params[:month]) : Date.today
     @today = Time.now
   end
