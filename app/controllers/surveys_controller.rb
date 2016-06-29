@@ -208,7 +208,6 @@ class SurveysController < ApplicationController
       ids.each do |id|
         @survey.courses.push(Course.find_by_id(id))
       end
-      @survey.expired?
       @survey.save
 
       if params[:files]

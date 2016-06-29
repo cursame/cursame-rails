@@ -90,7 +90,7 @@ es:
       title: 'Título del Cuestionario'
       questions: 'Preguntas'
       survey_publish_date: 'Fecha de Publicación'
-      survey_end_date: 'Fecha de Entrega'
+      survey_end_date: 'Fecha de Entrega (opcional)'
       add_question: 'Añadir Pregunta'
       back: 'Atrás'
       cancel: 'Cancelar'

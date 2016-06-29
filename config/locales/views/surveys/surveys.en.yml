@@ -90,7 +90,7 @@ en:
       title: 'Test title'
       questions: 'Questions'
       survey_publish_date: 'Publish Date'
-      survey_end_date: 'Deliver Date'
+      survey_end_date: 'Answer before (optional)'
       add_question: 'Add Question'
       back: 'Back'
       cancel: 'Cancel'
