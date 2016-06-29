@@ -67,14 +67,8 @@ class SurveysController < ApplicationController
   end
 
   def surveys_course_lapsed
-    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
-    unless member.nil?
-      redirect_to root_path, flash: { error: t('.surveys_controller.no_quest_accept')} unless member.accepted
-    else
-      redirect_to root_path, flash: { error: t('.surveys_controller.no_quest_register')}
-    end
-
     @course = Course.find_by_id(params[:id])
+    course_member?(current_user, @course)
     @surveys = course_lapsed_surveys(@course).paginate(per_page: CARDS_PER_PAGE, page: 1)
   end
 
