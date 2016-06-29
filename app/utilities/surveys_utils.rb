@@ -7,12 +7,12 @@ module SurveysUtils
     end
 
     surveys = surveys.keep_if do |survey|
-      survey.end_date.to_datetime < Time.now.to_datetime 
+      !survey.end_date.nil? && survey.end_date < DateTime.now
     end
 
     surveys.sort do |x,y|
     	y.end_date <=> x.end_date
-    end    
+    end
 	end
 
   def course_lapsed_surveys(course)
