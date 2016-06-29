@@ -1,8 +1,5 @@
 en:
   surveys_controller:
-    no_accept: "You are attempting to view a quiz from a course you have not yet been accepted."
-    no_register: "You are attempting to view a quiz from a course you have not yet been enrolled."
     no_quest_accept: "You are attempting to view a quiz from a course you have not yet been accepted."
     no_quest_register: "You are attempting to view a quiz from a course you have not yet been enrolled."
     no_exist: "The quiz you are trying to view does not exist or has been deleted."
-    

@@ -1,8 +1,5 @@
 es_meems:
   surveys_controller:
-    no_accept: "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no has sido aceptado."
-    no_register: "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no estás inscrito."
     no_quest_accept: "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no has sido aceptado."
     no_quest_register: "Estás tratando de ver Cuestionarios de un Centro Emprendedor donde no estás inscrito."
     no_exist: "El cuestionario que intentas ver no existe o ha sido borrado."
-

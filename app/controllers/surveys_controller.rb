@@ -41,37 +41,28 @@ class SurveysController < ApplicationController
   end
 
   def surveys_course
-    member = MembersInCourse.find_by_user_id_and_course_id(current_user.id,params[:id])
-
-    unless member.nil?
-      redirect_to root_path, flash: { error: t('.surveys_controller.no_accept')} unless member.accepted
-    else
-      redirect_to root_path, flash: { error: t('.surveys_controller.no_register')}
-    end
-
     @course = Course.find_by_id(params[:id])
+    course_member?(current_user, @course)
 
-    surveys = @course.surveys.each(&:expired?)
-
-    surveys.keep_if {|x| x.state == 'published'}
+    surveys = @course.surveys
 
     surveys = surveys.sort do
-      |x,y| y.end_date <=> x.end_date
+      |x,y| x.publish_date <=> y.publish_date
     end
 
-    @today_surveys = surveys.clone.keep_if do
-      |survey|
-      Time.now.to_datetime <= survey.end_date.to_datetime and survey.end_date.to_datetime <= Date.tomorrow
-    end
+    @today_surveys = []
+    @tomorrow_surveys = []
+    @rest_of_surveys = []
 
-    @tomorrow_surveys = surveys.clone.keep_if do
-      |survey|
-      Date.tomorrow <= survey.end_date.to_datetime and survey.end_date.to_datetime <= (Date.tomorrow + 1.day)
-    end
-
-    @rest_of_surveys = surveys.clone.keep_if do
-      |survey|
-      survey.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    surveys.each do |survey|
+      next if DateTime.now < survey.publish_date
+      if survey.end_date.nil? || Date.tomorrow < survey.end_date.to_date
+        @rest_of_surveys << survey
+      elsif Date.tomorrow == survey.end_date.to_date
+        @tomorrow_surveys << survey
+      elsif DateTime.now < survey.end_date
+        @today_surveys << survey
+      end
     end
   end
 
