@@ -15,3 +15,6 @@ en:
   survey:
     nil_end_date: No end date
     deadline: Answer before
+  discussion:
+    nil_end_date: No end date
+    deadline: Deadline

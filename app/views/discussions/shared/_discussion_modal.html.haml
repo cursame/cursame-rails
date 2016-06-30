@@ -27,15 +27,15 @@
   .model-comments
     .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
       - if discussion.evaluable?
-        - past_discussion = !(Time.now > discussion.end_date)
+        - past_discussion = discussion.end_date.nil? || DateTime.now < discussion.end_date
       - else
         - past_discussion = true
       = render partial: 'shared/posts/post_comments_list', locals: { post: discussion, new_comment: past_discussion }
 - else
   .model-comments
     - grade_score = response.grade.score
-    %p 
-      = t('.grade') + ":" 
+    %p
+      = t('.grade') + ":"
       %span= number_with_precision(grade_score.to_s, :precision => 1)
     - if response.grade
       - response_evaluations = response.response_to_the_evaluations

@@ -177,19 +177,16 @@
 
       var checked = $this.prop('checked');
 
-      var publish_date = form.find('#discussion_publish_date')[0],
-          end_date = form.find('#discussion_end_date')[0];
+      var publish_date = form.find('#discussion_publish_date')[0];
 
       if ( !checked ) {
         $this.removeClass('active');
         containerFields.hide();
         publish_date.required = false;
-        end_date.required = false;
       } else {
         $this.addClass('active');
         containerFields.show();
         publish_date.required = true;
-        end_date.required = true;
       };
     });
 

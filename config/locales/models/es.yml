@@ -15,3 +15,6 @@ es:
   survey:
     nil_end_date: Sin fecha de entrega
     deadline: Responder antes del
+  discussion:
+    nil_end_date: Sin fecha de entrega
+    deadline: Participar antes del
