@@ -36,6 +36,13 @@
             .form-group-main
               .form-unit
                 = f.text_field :end_date, placeholder: t('.homework_end_date'), class: "datetime-picker", value: f.object.end_date
+          .form-group
+            .form-group-main
+              .form-unit
+                .label
+                = f.check_box :final_grade
+                = t('.final_grade')
+
 
           .form-group
             .form-group-label.label-no-p

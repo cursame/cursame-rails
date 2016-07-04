@@ -41,6 +41,7 @@ en:
       evaluation_periods: Evaluation periods
       publish: Create Homework
       save: Save Homework
+      final_grade: Consider this activity for the final grade?
     deliveries_course:
       today_hmwrk: Homework that must be turned in today
       tomorrow_hmwrks: Homework that must be turned in tomorrow
@@ -78,3 +79,4 @@ en:
       cancel: 'Cancel'
       back: 'Back'
       save: 'Save'
+      final_grade: Consider this activity for the final grade?

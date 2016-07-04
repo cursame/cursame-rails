@@ -41,6 +41,7 @@ es:
       evaluation_periods: Periodos de evaluación
       publish: Crear Tarea
       save: Guardar Tarea
+      final_grade: Considerar esta actividad para la calificación final del curso?
     deliveries_course:
       today_hmwrk: Tareas para entregar Hoy
       tomorrow_hmwrks: Tareas para entregar Mañana
@@ -78,3 +79,4 @@ es:
       cancel: 'Cancelar'
       back: 'Atrás'
       save: 'Guardar'
+      final_grade: Considerar esta actividad para la calificación final del curso?
