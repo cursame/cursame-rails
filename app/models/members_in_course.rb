@@ -35,7 +35,8 @@ class MembersInCourse < ActiveRecord::Base
   # Returns an array of hashes, containing all deliveries of the course and the assignments.
   # ie: [{ delivery: ..., assignment: ... }]
   def deliveries_evaluation
-    self.course.deliveries.map do |delivery|
+    final_grade_deliveries = course.deliveries.keep_if { |delivery| delivery.final_grade }
+    final_grade_deliveries.map do |delivery|
       { delivery: delivery, assignment: Assignment.find_by_delivery_id_and_user_id(delivery.id, self.user.id) }
     end
   end
