@@ -52,6 +52,7 @@ en:
       non_mins: No time
       create_test: 'Create Test'
       confirm_update_test: 'Do you want to edit this questionnaire? Students Tasks will be deleted'
+      final_grade: Consider this activity for the final grade?
     question_fields:
       quest1: Add question
       add_answer: Add anwser
@@ -95,3 +96,4 @@ en:
       back: 'Back'
       cancel: 'Cancel'
       save: 'Save'
+      final_grade: Consider this activity for the final grade?
