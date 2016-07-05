@@ -27,7 +27,8 @@ class MembersInCourse < ActiveRecord::Base
   # Returns an array of hashes, containing all surveys of the course and the surveys responses.
   # ie: [{ survey: ..., survey_response: ... }]
   def surveys_evaluation
-    self.course.surveys.map do |survey|
+    final_grade_surveys = course.surveys.keep_if { |survey| survey.final_grade }
+    final_grade_surveys.map do |survey|
       { survey: survey, user_survey: UserSurvey.find_by_survey_id_and_user_id(survey.id, self.user.id) }
     end
   end
