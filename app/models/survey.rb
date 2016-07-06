@@ -1,7 +1,7 @@
 class Survey < ActiveRecord::Base
 
   attr_accessible :evaluation_period, :evaluation_period_id, :name, :publish_date, :end_date,
-                  :questions_attributes, :timer
+                  :questions_attributes, :timer, :final_grade
 
   has_many :activities, as: :activitye, dependent: :destroy
   has_many :assets, through: :survey_assets

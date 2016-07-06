@@ -52,6 +52,7 @@ es:
       non_mins: Sin límite de tiempo
       create_test: 'Crear Cuestionario'
       confirm_update_test: '¿Estás seguro de editar este cuestionario? Las entregas de tus alumnos serán eliminadas.'
+      final_grade: Considerar esta actividad para la calificación final del curso?
     question_fields:
       quest1: Ingresar pregunta
       add_answer: Agregar Respuesta
@@ -95,3 +96,4 @@ es:
       back: 'Atrás'
       cancel: 'Cancelar'
       save: 'Guardar'
+      final_grade: Considerar esta actividad para la calificación final del curso?
