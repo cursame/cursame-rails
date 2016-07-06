@@ -3,7 +3,7 @@ module FiltersUtils
 
 	def only_teachers
 		if current_role == "student"
-			redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para profesores." }
+			redirect_to root_path, flash: { notice: t('.evaluate_controller.only_teachers') }
 		end
 	end
 
@@ -12,5 +12,5 @@ module FiltersUtils
 			redirect_to root_path, flash: { notice: "Estas intentando entrar en una sección solo para estudiantes." }
 		end
 	end
-	
+
 end

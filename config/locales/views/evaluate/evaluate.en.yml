@@ -77,8 +77,8 @@ en:
         active: Active
         past: Previous
       header_evaluate_course:
-        past: Active
-        active: Previous
+        past: Past
+        active: Active
         evaluate: Grade activities
       survey_activity:
         answered: Answered

@@ -10,7 +10,6 @@ es:
         notice_helper2: minutos para responderlo
       survey_modal:
         quest: Cuestionario en el curso
-        response: Responder antes del
         calif: Calificación Obtenida
         feedback: Retroalimentación
         fail_attemps: No tienes más intentos
@@ -41,7 +40,7 @@ es:
       timer: Tiempo para resolución del Cuestionario
       attempts: Intentos
       publish_date: Día de publicación
-      deliver_date: Fecha de entrega
+      deliver_date: Fecha de entrega (opcional)
       quest: Preguntas
       add_quest: Agregar Pregunta
       support: Material de Soporte
@@ -91,7 +90,7 @@ es:
       title: 'Título del Cuestionario'
       questions: 'Preguntas'
       survey_publish_date: 'Fecha de Publicación'
-      survey_end_date: 'Fecha de Entrega'
+      survey_end_date: 'Fecha de Entrega (opcional)'
       add_question: 'Añadir Pregunta'
       back: 'Atrás'
       cancel: 'Cancelar'

@@ -26,7 +26,7 @@ en:
       calif: Grade
       dates: Date
       publish_date: "Published on:"
-      deliver_date: Due date
+      deliver_date: Due date (optional)
       criterium: Evaluation criterion
       add_comment: Add criterion
       cancel: Cancel

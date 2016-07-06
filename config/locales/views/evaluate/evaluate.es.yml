@@ -77,8 +77,8 @@ es:
         active: Activas
         past: Pasadas
       header_evaluate_course:
-        past: Activas
-        active: Pasadas
+        past: Pasadas
+        active: Activas
         evaluate: Calificar Actividades
       survey_activity:
         answered: Contestados
@@ -122,4 +122,3 @@ es:
       no_score: No tienes actividades por calificar.
       all: 'Todas las actividades de tu curso están calificadas, puedes ver'
       past: actividades pasadas en la sección de Pasadas
-

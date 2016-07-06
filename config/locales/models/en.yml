@@ -9,3 +9,12 @@ en:
           malformed: "The file is an invalid CSV"
           unknown_encoding: "The file doesn't have a valid encode"
           empty: "The file must contain at least one user"
+  delivery:
+    nil_end_date: No end date
+    deadline: Deadline
+  survey:
+    nil_end_date: No end date
+    deadline: Answer before
+  discussion:
+    nil_end_date: No end date
+    deadline: Deadline

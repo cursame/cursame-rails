@@ -8,14 +8,14 @@
     <h6>
       <%=t('.quest')%> <%= link_to survey.courses[0].title, course_path(survey.courses[0].id) %>
     </h6>
-    <span><%=t('.response')%> <%= es_current_date("#{survey.end_date.strftime('%B')}", "#{survey.end_date.strftime('%d')}", "#{survey.end_date.strftime('%Y')}" , "#{survey.end_date.strftime('%l:%M%P')}", format = 'latin_string') %></span>
+    <%= survey.deadline %>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
 
 <% if response.blank?  %>
   <% if count_tryings == 1 %>
-    <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %> 
+    <%= render :partial => "surveys/shared/survey_questions_modal", :locals => { survey: survey} %>
     <% else %>
     <div class="no_attemps"><%= t('.fail_attemps')%> </div>
   <%end%>

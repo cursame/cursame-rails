@@ -12,12 +12,9 @@ class EvaluateController < ApplicationController
 
     if current_user.teacher?
       courses = teacher_published_courses
-    elsif current_user.admin?
-      courses = current_network.courses
     else
-      redirect_to root_path, flash: { notice: t('.evaluate_controller.only_teachers') } and return
+      courses = current_network.courses
     end
-
 
     deliveries = courses.inject([]) do
       |accu, course|
@@ -38,22 +35,21 @@ class EvaluateController < ApplicationController
     end
 
     activities = (deliveries + surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+      |x,y| x.publish_date <=> y.publish_date
     end
 
-    @today_activities = activities.clone.keep_if do
-      |activity|
-      Date.today <= activity.end_date.to_datetime and activity.end_date.to_datetime <= Date.tomorrow
-    end
+    @today_activities = []
+    @tomorrow_activities = []
+    @rest_of_activities = []
 
-    @tomorrow_activities = activities.clone.keep_if do
-      |activity|
-      Date.tomorrow <= activity.end_date.to_datetime and activity.end_date.to_datetime <= (Date.tomorrow + 1.day)
-    end
-
-    @rest_of_activities = activities.clone.keep_if do
-      |activity|
-      activity.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    activities.each do |activity|
+      if activity.end_date.nil? || Date.tomorrow < activity.end_date.to_date
+        @rest_of_activities << activity
+      elsif Date.tomorrow == activity.end_date.to_date
+        @tomorrow_activities << activity
+      elsif DateTime.now < activity.end_date
+        @today_activities << activity
+      end
     end
   end
 
@@ -66,33 +62,29 @@ class EvaluateController < ApplicationController
     end
 
     activities = (@course.deliveries + @course.surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+      |x,y| x.publish_date <=> y.publish_date
     end
 
-    @today_activities = activities.clone.keep_if do
-      |activity|
-      Date.today <= activity.end_date.to_datetime and activity.end_date.to_datetime <= Date.tomorrow.to_date
-    end
+    @today_activities = []
+    @tomorrow_activities = []
+    @rest_of_activities = []
 
-    @tomorrow_activities = activities.clone.keep_if do
-      |activity|
-      Date.tomorrow <= activity.end_date.to_datetime and activity.end_date.to_datetime <= (Date.tomorrow + 1.day)
-    end
-
-    @rest_of_activities = activities.clone.keep_if do
-      |activity|
-      activity.end_date.to_datetime >= (Date.tomorrow + 1.day)
+    activities.each do |activity|
+      if activity.end_date.nil? || Date.tomorrow < activity.end_date.to_date
+        @rest_of_activities << activity
+      elsif Date.tomorrow == activity.end_date.to_date
+        @tomorrow_activities << activity
+      elsif DateTime.now < activity.end_date
+        @today_activities << activity
+      end
     end
   end
 
   def inactive
-
     if current_user.teacher?
       courses = teacher_published_courses
-    elsif current_user.admin?
-      courses = current_network.courses
     else
-      redirect_to root_path, flash: { notice: t('.evaluate_controller.only_teachers') } and return
+      courses = current_network.courses
     end
 
     deliveries = courses.inject([]) do
@@ -113,13 +105,12 @@ class EvaluateController < ApplicationController
       accu + tmp_array_discussions
     end
 
-    activities = (deliveries + surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+    activities = (deliveries + surveys + discussions).keep_if do |activity|
+      !activity.end_date.nil? && activity.end_date < DateTime.now
     end
 
-    @activities = activities.keep_if do
-      |activity|
-      activity.end_date.to_datetime < Date.today
+    @activities = activities.sort do |x,y|
+      y.end_date <=> x.end_date
     end
   end
 
@@ -131,13 +122,12 @@ class EvaluateController < ApplicationController
       |discussion| discussion.evaluable?
     end
 
-    activities = (@course.deliveries + @course.surveys + discussions).sort do
-      |x,y| y.end_date <=> x.end_date
+    activities = (@course.deliveries + @course.surveys + discussions).keep_if do |activity|
+      !activity.end_date.nil? && activity.end_date < DateTime.now
     end
 
-    @activities = activities.clone.keep_if do
-      |activity|
-      activity.end_date.to_datetime < Date.today
+    @activities = activities.sort do |x,y|
+      y.end_date <=> x.end_date
     end
   end
 

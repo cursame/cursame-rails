@@ -987,7 +987,7 @@ class CoursesController < ApplicationController
 
   def delivery_end_date_finished
     delivery = Delivery.find_by_id params[:assignment][:delivery_id]
-    if delivery.end_date < DateTime.now
+    if !delivery.end_date.nil? && delivery.end_date < DateTime.now
       redirect_to(root_path, flash: { error: t('.courses_controller.delivery_end_date_finished_message') }) && return
     end
   end

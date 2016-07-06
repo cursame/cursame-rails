@@ -19,7 +19,6 @@ en:
         edit_hmwrk: Edit homework
       delivery_modal:
         hmwrk: Homework
-        deliver: deadline
         deliver_hmwrk: Turn in homework
         final_score: Final grade
         rubre: No comments on this item
@@ -31,7 +30,7 @@ en:
       example: "Example: Prime numbers"
       dates: Dates
       publish_date: Date
-      deliver_date: Due date
+      deliver_date: Due date (optional)
       descrip: Description
       criterium: Evaluation Criterion
       add_criterium: Add criterion
@@ -40,7 +39,7 @@ en:
       cancel: Cancel
       courses: Courses
       evaluation_periods: Evaluation periods
-      publish: Publish
+      publish: Create Homework
       save: Save Homework
     deliveries_course:
       today_hmwrk: Homework that must be turned in today
@@ -73,7 +72,7 @@ en:
       homework_description: 'Description'
       description: 'Homework Description'
       homework_publish_date: 'Publish Date'
-      homework_end_date: 'Due Date'
+      homework_end_date: 'Due Date (optional)'
       evaluation_criteria: 'Evaluation Criteria'
       add_criterium: 'Add Criterium'
       cancel: 'Cancel'

@@ -13,10 +13,11 @@ class CalendarController < ApplicationController
   def index
     # TODO: agregar caso de maestro y admin
     if current_user.student? || current_user.teacher?
-      @tasks = current_user.courses.map { |course| course.course_events }.flatten
+      tasks = current_user.courses.map { |course| course.course_events }.flatten
     else
-      @tasks = current_network.courses.map { |course| course.course_events }.flatten
+      tasks = current_network.courses.map { |course| course.course_events }.flatten
     end
+    @tasks = tasks.keep_if { |task| !task.ends_at.nil? }
     @date  = params[:month] ? Date.parse(params[:month]) : Date.today
     @today = Time.now
   end
@@ -28,10 +29,11 @@ class CalendarController < ApplicationController
       time_for_expire = date.strftime('%d/%m/%Y')
 
       c.deliveries.each do |d|
+        next if d.end_date.nil? || d.publish_date >= DateTime.now
         @assignment = d.assignments.where(user_id: current_user.id, delivery_id: d.id ).count
         if @assignment == 0
           case
-          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -39,7 +41,7 @@ class CalendarController < ApplicationController
                               type: "Delivery",
                               expira: t('.calendar.three_days', locale: locale)
             })
-          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -47,7 +49,7 @@ class CalendarController < ApplicationController
                               type: "Delivery",
                               expira: t('.calendar.two_days', locale: locale)
             })
-          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -55,7 +57,7 @@ class CalendarController < ApplicationController
                               type: "Delivery",
                               expira: t('.calendar.tomorrow', locale: locale)
             })
-          when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && d.state == 'published'
+          when d.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
             activities.push({
                               title: d.title,
                               id: d.id,
@@ -69,11 +71,11 @@ class CalendarController < ApplicationController
       end
 
       c.surveys.each do |s|
-
+        next if s.end_date.nil? || s.publish_date >= DateTime.now
         @surveys = s.user_surveys.where(user_id: current_user.id, survey_id: s.id ).count
         if @surveys == 0
           case
-          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 3.days).strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
@@ -81,7 +83,7 @@ class CalendarController < ApplicationController
                               type: "Survey",
                               expira: t('.calendar.three_days', locale: locale)
             })
-          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 2.days).strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
@@ -89,7 +91,7 @@ class CalendarController < ApplicationController
                               type: "Survey",
                               expira: t('.calendar.two_days', locale: locale)
             })
-          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == (Time.now + 1.days).strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,
@@ -97,7 +99,7 @@ class CalendarController < ApplicationController
                               type: "Survey",
                               expira: t('.calendar.tomorrow', locale: locale)
             })
-          when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y') && s.state == 'published'
+          when s.end_date.strftime('%d/%m/%Y') == Time.now.strftime('%d/%m/%Y')
             activities.push({
                               title: s.title,
                               id: s.id,

@@ -1,5 +1,0 @@
-en:
-  deliveries_controller:
-    access_denied: "You are trying to view Tasks of a course where you have not been accepted."
-    register: "You are trying to see Tasks of a course where you are not enrroled."
-    

@@ -26,7 +26,7 @@ es_meems:
       calif: Calificable
       dates: Fechas
       publish_date: Día de publicación
-      deliver_date: Fecha de entrega
+      deliver_date: Fecha de entrega (opcional)
       criterium: Criterios a evaluar
       add_comment: Agregar criterio
       cancel: Cancelar

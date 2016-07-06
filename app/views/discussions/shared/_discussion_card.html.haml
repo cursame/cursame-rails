@@ -61,7 +61,7 @@
         .post-box-likes= render partial: 'shared/posts/post_people_who_liked', locals: { post: discussion, wall: wall }
         .comments-wrap.discussion{ data: { comments_group_id: discussion.id } }
           - if discussion.evaluable?
-            - past_discussion = !(Time.now > discussion.end_date)
+            - past_discussion = discussion.end_date.nil? || DateTime.now < discussion.end_date
           - else
             - past_discussion = true
           = render partial: 'shared/posts/post_comments_list', locals: { post: discussion, new_comment: past_discussion }

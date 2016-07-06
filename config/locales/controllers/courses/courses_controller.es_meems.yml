@@ -14,3 +14,4 @@ es_meems:
     has_ended: "Ha finalizado, lo puedes activar en el menú de opciones del Centro Emprendedor."
     contact: "Ha finalizado, contacta al Líder Multiplicador para más información."
     clone_correct: "Centro Emprendedor clonado correctamente."
+    no_register: Estas tratando de ver actividades de un Centro Emprendedor donde no estás inscrito.

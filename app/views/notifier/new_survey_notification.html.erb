@@ -27,13 +27,13 @@
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;"><%=t('.deliver')%> <%= @survey.end_date %></p>
+                <p style="color: #ffffff; font-size: 14px; font-weight: normal; margin: 0;"><%= @survey.deadline %></p>
                 <br>
               </td>
             </tr>
             <tr>
               <td style="text-align: center; padding: 0 15px;">
-                <%= link_to "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" do %> 
+                <%= link_to "http://#{@user.devise_mailer_subdomain}.#{@user.ubication}" do %>
                   <img src="http://app.cursa.me/assets/mails/new_survey_in_course/survey-view-button.png" alt="Ver cuestionario">
                 <% end %>
               </td>

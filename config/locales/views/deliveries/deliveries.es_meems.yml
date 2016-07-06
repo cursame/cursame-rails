@@ -19,7 +19,6 @@ es_meems:
         edit_hmwrk: Editar Tarea
       delivery_modal:
         hmwrk: Tarea en el Centro Emprendedor
-        deliver: Entregar antes del
         deliver_hmwrk: Entregar Tarea
         final_score: Calificación final obtenida
         rubre: Rubro sin comentarios
@@ -29,7 +28,7 @@ es_meems:
       example: "Ejemplo: Números primos"
       dates: Fechas
       publish_date: Día de publicación
-      deliver_date: Fecha de entrega
+      deliver_date: Fecha de entrega (opcional)
       descrip: Descripción
       criterium: Criterios a evaluar
       add_criterium: Agregar criterio
@@ -38,7 +37,7 @@ es_meems:
       cancel: Cancelar
       courses: Centros de Emprendedores
       evaluation_periods: Periodos de evaluación
-      publish: Publicar
+      publish: Crear Tarea
       save: Guardar Tarea
     deliveries_course:
       today_hmwrk: Tareas para entregar Hoy

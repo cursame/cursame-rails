@@ -22,7 +22,7 @@
               = f.label :publish_date, t('.survey_publish_date')
             .form-group-main
               .form-unit
-                = f.text_field :publish_date, placeholder: t('.survey_publish_date'), class: "datetime-picker"
+                = f.text_field :publish_date, placeholder: t('.survey_publish_date'), class: "datetime-picker", required: true
           .form-group
             .form-group-label
               = f.label :end_date, t('.survey_end_date')
@@ -65,5 +65,3 @@
     $(value).find('#question-num').html(index+1+'. ');
     })
   })
-
-

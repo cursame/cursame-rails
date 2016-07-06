@@ -6,7 +6,7 @@
     <h6>
       <%=t('.hmwrk')%> <%= link_to delivery.courses.first.title, course_path(delivery.courses.first) %>
     </h6>
-    <span><%=t('.deliver')%> <%= I18n.l delivery.end_date, format: :short %></span>
+    <%= delivery.deadline %>
   </div>
   <div class="close-overlay"><%= icon('x-close') %></div>
 </div>
@@ -133,7 +133,7 @@
       <div class="overlay-footer">
         <% assignment = current_user.assignments.where(:delivery_id => delivery.id)[0] %>
         <% if assignment.nil? %>
-          <% if delivery.end_date < DateTime.now %>
+          <% if !delivery.end_date.nil? && delivery.end_date < DateTime.now %>
             <div class="delivery-results">
               <h4><%=t('.delivery_end_date_finished')%></h4>
             </div>

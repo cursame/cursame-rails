@@ -156,6 +156,14 @@ class Discussion < ActiveRecord::Base
     return users
   end
 
+  def deadline
+    if end_date.nil?
+      I18n.t('discussion.nil_end_date')
+    else
+      "#{I18n.t('discussion.deadline')} #{I18n.l(end_date, format: :short)}"
+    end
+  end
+
   private
   def track_mixpanel_discussion
     public_discussion = self.courses.blank?
