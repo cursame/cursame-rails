@@ -54,9 +54,8 @@ class User < ActiveRecord::Base
   has_many :usernotificationings, :dependent => :destroy
 
   has_one :user_language
-
   has_one :language, through: :user_language
-
+  has_one :library, as: :storable, dependent: :destroy
 
   validates_presence_of :domain
   validates_presence_of :first_name
