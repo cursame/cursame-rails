@@ -38,7 +38,7 @@ module ApplicationHelper
   end
 
   def library_file_notification_message(notification)
-    library_type = notification.notificator.location.storable
+    library_type = notification.notificator.library.storable
     case library_type
     when Network
       "<span class='as-link'> #{notification.notificator.user.name}</span>

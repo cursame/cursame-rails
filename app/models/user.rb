@@ -124,6 +124,7 @@ class User < ActiveRecord::Base
 
   after_create do
     track_mixpanel_user
+    create_library if teacher?
   end
 
   def name
@@ -577,5 +578,10 @@ class User < ActiveRecord::Base
 
   def set_user(permissioning)
     permissioning.user ||= self
+  end
+
+  def create_library
+    description = "#{I18n.t('user.library.description')} #{name}"
+    Library.create(title: name, description: description, storable: self, network: networks.last)
   end
 end

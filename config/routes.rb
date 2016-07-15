@@ -330,6 +330,7 @@ Cursame30Lb::Application.routes.draw do
   get '/users/:personal_url/friends', :to => 'users#friends', :as => :user_friends
   get '/users/:personal_url/courses', :to => 'users#courses', :as => :user_courses
   get '/users/:personal_url/pendding_friends', :to => 'users#pendding_friends', :as => :pendding_friends
+  get '/users/:personal_url/library', to: 'users#library', as: :user_library
 
   post "/user/upload_users_a" => "users#upload_users_a", :as => :upload_users_a
 

@@ -18,3 +18,6 @@ es:
   discussion:
     nil_end_date: Sin fecha de entrega
     deadline: Participar antes del
+  user:
+    library:
+      description: 'Biblioteca Personal de '

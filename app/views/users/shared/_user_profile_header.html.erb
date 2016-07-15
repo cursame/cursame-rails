@@ -94,6 +94,11 @@
                 <li>
                   <%= link_to t('.info'), user_info_path(@user_l.personal_url), class: (action == 'info' ? "active" : " ") %>
                 </li>
+                <% unless @user_l.library.nil? %>
+                  <li>
+                    <%= link_to t('.library'), user_library_path(@user_l.personal_url), class: (action == 'library' ? "active" : " ") %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>

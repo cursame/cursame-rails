@@ -34,6 +34,9 @@ FactoryGirl.define do
       role = Role.find_by_title(attributtes.role)
       user.permissionings << create(:permissioning, role: role, network: network, user: user,
                                     entity_id: entity_id, entity_name: entity_name)
+      if attributtes.role == 'teacher'
+        user.library = create(:library)
+      end
     end
   end
 end
