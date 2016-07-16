@@ -48,19 +48,6 @@ class FriendshipsController < ApplicationController
       format.js
       format.json
     end
-
-    begin
-      permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
-      mixpanel_properties = { 
-        'Network'   => current_network.name.capitalize,
-        'Subdomain' => current_network.subdomain,
-        'Role'      => permissioning.role.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async user.id, 'Friend Requests', mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
   end
 
   def update_friend
@@ -70,24 +57,11 @@ class FriendshipsController < ApplicationController
     @friendship.save
     @user = User.find(params[:id])
     @f = params[:id]
-    
+
     respond_to do |format|
       format.js
       format.json
     end
-    
-    begin
-      permissioning = Permissioning.find_by_user_id_and_network_id(user.id, current_network.id)
-      mixpanel_properties = { 
-        'Network'   => current_network.name.capitalize,
-        'Subdomain' => current_network.subdomain,
-        'Role'      => permissioning.role.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async user.id, 'Accepted Friend Requests', mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
   end
 
 

@@ -106,20 +106,6 @@ class Delivery < ActiveRecord::Base
       Notification.create(users: self.accepted_users, notificator: self, kind: 'new_delivery_on_course')
       self.send_mail(self.accepted_users)
     end
-
-    begin
-      self.courses.each do |course|
-        mixpanel_properties = {
-          'Network'   => self.network.name.capitalize,
-          'Subdomain' => self.network.subdomain,
-          'Course'    => course.title.capitalize
-        }
-        MixpanelTrackerWorker.perform_async self.user_id, 'Deliveries', mixpanel_properties
-      end
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
   end
 
   after_update do

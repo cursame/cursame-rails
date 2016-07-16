@@ -706,16 +706,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def track_event(user_id, event_name, event_data)
-    begin
-      MixpanelTrackerWorker.perform_async user_id, event_name, event_data
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error tracking mixpanel event: { user_id: #{user_id}, event_name: #{event_name}, event_data: #{event_data} }"
-    end
-  end
-
-
-
   # TODO: Es preferible utilizar este método en lugar de redirect_to :back,
   # podría ser buena idea cambar todos por este
   # Metodo auxiliar para utilizar redirect_to :back de una manera más segura

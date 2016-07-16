@@ -249,30 +249,6 @@ class DiscussionsController < ApplicationController
   end
 
   private
-  def track_discussion(discussion)
-    permissioning = Permissioning.find_by_user_id_and_network_id current_user.id, current_network.id
-    unless discussion.courses.nil? || discussion.courses.empty?
-      discussion.courses.each do |course|
-        mixpanel_properties = {
-          'Network' => current_network.name.capitalize,
-          'Subdomain' => current_network.subdomain,
-          'Course' => course.title.capitalize,
-          'Role' => permissioning.role.title.capitalize,
-          'Evaluable' => discussion.evaluable?
-        }
-      end
-    else
-      mixpanel_properties = {
-        'Network' => current_network.name.capitalize,
-        'Subdomain' => current_network.subdomain,
-        'Course'  => 'Public',
-        'Role'    => permissioning.role.title.capitalize,
-        'Evaluable' => @discussion.evaluable?
-      }
-    end
-    track_event current_user.id, 'Discussions', mixpanel_properties
-  end
-
   def error_connection
     @error_link_to_bit = true
     respond_to do |format|

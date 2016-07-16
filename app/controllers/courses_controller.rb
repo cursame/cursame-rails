@@ -287,12 +287,6 @@ class CoursesController < ApplicationController
     if params[:assignment][:id].blank?
       assignment = Assignment.create params[:assignment]
       flash[:success] = assignment.valid? ? t(".assignments.messages.create.success") : t(".assignments.messages.create.error")
-      mixpanel_properties = {
-        'Network'   => assignment.course.network.name.capitalize,
-        'Subdomain' => assignment.course.network.subdomain,
-        'Course'    => assignment.course.title.capitalize
-      }
-      track_event current_user.id, 'Assignments', mixpanel_properties
     else
       assignment = Assignment.find_by_id params[:assignment][:id]
       assignment.update_attributes params[:assignment]

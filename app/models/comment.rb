@@ -89,18 +89,6 @@ class Comment < ActiveRecord::Base
     network = Network.find_by_id(self.network_id)
     permissioning = Permissioning.find_by_user_id_and_network_id(self.user_id, network.id)
 
-    begin
-      mixpanel_properties = {
-        'Network'   => network.name.capitalize,
-        'Subdomain' => network.subdomain,
-        'Type'      => self.commentable_type.capitalize,
-        'Role'      => permissioning.role.title.capitalize
-      }
-      MixpanelTrackerWorker.perform_async self.user_id, 'Comments', mixpanel_properties
-    rescue
-      puts "\e[1;31m[ERROR]\e[0m error sending data to mixpanel"
-    end
-
     if notification_kind["network"]
       Wall.create!( users: [self.user], publication: self, network: self.network, public: true)
       users = users.reject{ |user| user.id == self.user_id }
