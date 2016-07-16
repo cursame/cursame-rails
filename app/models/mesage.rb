@@ -1,6 +1,4 @@
 class Mesage < ActiveRecord::Base
-  include TrackMixpanelEventModule
-  
   belongs_to :user
   belongs_to :channel
 
@@ -76,22 +74,9 @@ class Mesage < ActiveRecord::Base
 
 
     end
-    track_mixpanel_message
   end
 
   def title
     return ""
   end
-
-  private
-  def track_mixpanel_message
-    event_data = {
-      'Network'   => self.user.networks.first.name.capitalize,
-      'Subdomain' => self.user.networks.first.subdomain,
-      'Role'      => self.user.role_title.capitalize,
-      'Type'      => self.channel.channel_type
-    }
-    track_event self.user.id, 'Message', event_data
-  end
-
 end

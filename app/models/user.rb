@@ -1,7 +1,5 @@
 # coding: utf-8
 class User < ActiveRecord::Base
-  include TrackMixpanelEventModule
-
   # Include default devise modules. Others available are:
   # :token_authenticatable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -123,7 +121,6 @@ class User < ActiveRecord::Base
   end
 
   after_create do
-    track_mixpanel_user
     create_library if teacher?
   end
 
@@ -557,18 +554,6 @@ class User < ActiveRecord::Base
   end
 
   private
-  def track_mixpanel_user
-    unless self.permissionings.blank?
-      permissioning = self.permissionings.first
-      event_data = {
-        'Network' => permissioning.network.name.capitalize,
-        'Subdomain' => permissioning.network.subdomain,
-        'Role' => permissioning.role.title.capitalize
-      }
-      track_event(self.id, 'User', event_data)
-    end
-  end
-
   def gospel_add_user
     unless self.permissionings.blank?
       permissioning = self.permissionings.first

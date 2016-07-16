@@ -1,6 +1,4 @@
 class Discussion < ActiveRecord::Base
-  include TrackMixpanelEventModule
-
   has_many :activities, as: :activitye
   has_many :assets, through: :discussion_assets
   has_many :contents, as: :contentye
@@ -71,7 +69,6 @@ class Discussion < ActiveRecord::Base
         self.send_mail(self.accepted_users)
       end
     end
-    track_mixpanel_discussion
   end
 
   after_destroy do
@@ -163,18 +160,4 @@ class Discussion < ActiveRecord::Base
       "#{I18n.t('discussion.deadline')} #{I18n.l(end_date, format: :short)}"
     end
   end
-
-  private
-  def track_mixpanel_discussion
-    public_discussion = self.courses.blank?
-    event_data = {
-      'Network'   => self.network.name.capitalize,
-      'Subdomain' => self.network.subdomain,
-      'Role'      => self.user.role_title.capitalize,
-      'Course'    => public_discussion ? 'Public' : self.courses.first.title.capitalize,
-      'Evaluable' => self.evaluable? ? 'Evaluable' : 'Non-evaluable'
-    }
-    track_event self.user.id, 'Discussion', event_data
-  end
-
 end

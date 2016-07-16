@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 class Course < ActiveRecord::Base
-  include TrackMixpanelEventModule
-
   has_one :library, as: :storable, dependent: :destroy
 
   has_many :members_in_courses, dependent: :destroy
@@ -54,7 +52,6 @@ class Course < ActiveRecord::Base
 
   after_create do
     create_library
-    mixpanel_track_event
   end
 
   after_update do
@@ -304,15 +301,6 @@ class Course < ActiveRecord::Base
   end
 
   private
-  def mixpanel_track_event
-    event_data = {
-      'Type'    => 'private',
-      'Network' => self.network.name.capitalize,
-      'Subdomain' => self.network.subdomain
-    }
-    track_event self.id, 'Courses', event_data
-  end
-
   def create_library
     Library.create(title: title, description: silabus, storable: self, network: network)
   end
