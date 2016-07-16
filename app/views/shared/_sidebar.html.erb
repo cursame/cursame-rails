@@ -212,17 +212,3 @@
   </div>
 
 </div>
-<% content_for :javascripts do %>
-  <script type="text/javascript">
-    $(function() {
-      mixpanel.identify("<%= current_user.id %>");
-      $("#radar_link").click(function() {
-        mixpanel.track("Radar", {
-          "Network": "<%= current_network.name %>",
-          "Subdomain": "<%= current_network.subdomain %>",
-          "Role": "<%= current_user.role_title %>"
-        });
-      });
-    });
-  </script>
-<% end %>
