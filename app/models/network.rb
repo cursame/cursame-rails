@@ -185,10 +185,6 @@ class Network < ActiveRecord::Base
     @self_defter = @defter.split(':').last
   end
 
-  def mixpanel_token?
-    !self.find_setting(:mixpanel_token).nil?
-  end
-
   private
   def gospel_add_network
     Gospel::NetworksWorker.perform_async(self.name, self.subdomain)
