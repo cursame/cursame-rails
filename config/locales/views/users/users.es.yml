@@ -90,6 +90,7 @@ es:
         courses: Cursos
         friends: Amigos
         info: Información
+        library: Biblioteca Personal
     evaluation:
       score: Calificación
       no_members: Este curso no tiene miembros

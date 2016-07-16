@@ -122,10 +122,10 @@ class UsersController < ApplicationController
     else
       the_flash = { error: t('.users_controller.deleted_usr') }
     end
-    
+
     redirect_to root_path, flash: the_flash
   end
-  
+
   def old_courses
     @old_course_for_user = current_user.courses.where(:active_status => false)
     respond_to do |format|
@@ -214,7 +214,7 @@ class UsersController < ApplicationController
     else
       text = f
     end
-    
+
     path = "public/imports/" + name
     f = File.open(path,'w+')
     f.write(text)
@@ -258,6 +258,12 @@ class UsersController < ApplicationController
     respond_to do |f|
       f.js
     end
+  end
+
+  def library
+    @library = User.find_by_personal_url(params[:personal_url]).library
+    @files = @library.library_files
+    render 'libraries/show'
   end
 
 end

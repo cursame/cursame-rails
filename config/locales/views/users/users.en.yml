@@ -90,6 +90,7 @@ en:
         courses: Course
         friends: Friends
         info: Information
+        library: Personal Library
     evaluation:
       score: Grade
       no_members: This course has no members
