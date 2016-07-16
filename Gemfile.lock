@@ -285,7 +285,6 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    mixpanel-ruby (1.4.0)
     multi_json (1.10.1)
     multi_logger (0.1.0)
       railties
@@ -530,7 +529,6 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   mime-types
   mini_magick
-  mixpanel-ruby
   multi_logger
   nifty-generators
   omniauth
@@ -563,4 +561,4 @@ DEPENDENCIES
   will_paginate (= 3.0.3)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
