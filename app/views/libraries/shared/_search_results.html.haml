@@ -1,0 +1,20 @@
+.section-header-wrap
+  .wrapper
+    .cols-12
+      .col.col-12
+        .col-inner
+          .section-header
+            .section-header-main
+              .section-title
+                = link_to icon('section-library'), library_path(@library)
+                = link_to library_path(@library) do
+                  %h1= t('.library')
+              .section-header-actions
+                %ul.list-buttons.right
+                  %li= render partial: "/libraries/shared/search"
+          .section-sub-header-wrap
+            .sub-header
+              %h4
+                = t('.search')
+                = params[:query]
+= render partial: 'libraries/shared/library_files', locals: { libraries: @library.libraries, files: @library_files, directories: @library_directories }

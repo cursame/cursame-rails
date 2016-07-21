@@ -9,5 +9,11 @@ es:
         library: "Biblioteca"
       library_files:
         no_documents: "No hay documentos"
+      search:
+        query: Buscar en biblioteca
+        search: Buscar
+      search_results:
+        library: Biblioteca
+        search: 'Búsqueda: '
     new:
       new_library: "Nueva Biblioteca"
