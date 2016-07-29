@@ -291,4 +291,39 @@ class NetworksController < ApplicationController
       format.json
     end
   end
+
+  def filter_deliveries
+    respond_to do |format|
+      @wall = current_network.walls.where(publication_type: 'Delivery').order('walls.created_at DESC')
+      format.js { render file: '/networks/filter.js.erb' }
+    end
+  end
+
+  def filter_surveys
+    respond_to do |format|
+      @wall = current_network.walls.where(publication_type: 'Survey').order('walls.created_at DESC')
+      format.js { render file: '/networks/filter.js.erb' }
+    end
+  end
+
+  def filter_comments
+    respond_to do |format|
+      @wall = current_network.walls.where(publication_type: 'Comment').order('walls.created_at DESC')
+      format.js { render file: '/networks/filter.js.erb' }
+    end
+  end
+
+  def filter_discussions
+    respond_to do |format|
+      @wall = current_network.walls.where(publication_type: 'Discussion').order('walls.created_at DESC')
+      format.js { render file: '/networks/filter.js.erb' }
+    end
+  end
+
+  def filter_google_forms
+    respond_to do |format|
+      @wall = current_network.walls.where(publication_type: 'GoogleForm').order('walls.created_at DESC')
+      format.js { render file: '/networks/filter.js.erb' }
+    end
+  end
 end

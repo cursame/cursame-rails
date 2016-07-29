@@ -1,0 +1,8 @@
+$('#timeline').empty();
+<%if @wall.blank?%>
+  $('#timeline').append("<div class='no-more-publicaitons-message'><h5>No hay publicaciones</h5></div>");
+<%else%>
+  $('#timeline').append('<%= escape_javascript(render( :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "network"} ))%>');
+<%end%>
+$('#paginate_wall').remove();
+$('.autogrow').expanding();

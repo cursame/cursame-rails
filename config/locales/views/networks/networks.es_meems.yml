@@ -29,3 +29,11 @@ es_meems:
       update:
         success: "Configuración guardada correctamente."
     create: 'Se ha creado una red.'
+    show:
+      filter:
+        all: Ver Todo
+        deliveries: Tareas
+        surveys: Cuestionarios
+        comments: Comentarios
+        discussions: Discusiones
+        google_forms: Formularios
