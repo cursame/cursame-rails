@@ -26,6 +26,7 @@ Cursame30Lb::Application.routes.draw do
   resources :library_files
 
   resources :libraries do
+    get 'search', on: :member
     resources :library_directories
     resources :library_files
   end

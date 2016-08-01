@@ -1,0 +1,8 @@
+- content_for :javascripts do
+  = javascript_include_tag 'libraries/search'
+= form_tag(search_library_path(@library), method: :get, class: 'search') do
+  .search-wrap
+    = text_field_tag 'query', '', placeholder: t('.query'), class: 'search-input', id: 'search-query'
+    .search-button
+      %span.btn.btn-secondary.input-btn
+        = submit_tag t('.search')

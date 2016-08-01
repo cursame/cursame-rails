@@ -1,8 +1,8 @@
 .section-header
   .section-header-main
     .section-title
-      = link_to icon('section-library'), library_path(current_network.library)
-      = link_to library_path(current_network.library) do
+      = link_to icon('section-library'), library_path(@directory.library)
+      = link_to library_path(@directory.library) do
         %h1= t('.library')
     .section-header-actions
       %ul.list-buttons.right
