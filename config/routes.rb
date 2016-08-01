@@ -373,7 +373,15 @@ Cursame30Lb::Application.routes.draw do
 
   resources :network_templates
 
-  resources :networks
+  resources :networks do
+    collection do
+      get :filter_deliveries
+      get :filter_surveys
+      get :filter_discussions
+      get :filter_comments
+      get :filter_google_forms
+    end
+  end
   match '/' => 'networks#show', :constraints => { :subdomain => /.+/ },  :as =>  :wall
 
   # Comunidad

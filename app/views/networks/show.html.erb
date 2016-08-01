@@ -6,6 +6,42 @@
         <div id="pk_menu">
           <%=render :partial => 'shared/post_menu', :locals => { :in_form => 'network' } %>
         </div>
+        <div class="section-header">
+          <div id="filter" class="page-sub-navigation">
+            <ul>
+              <li>
+                <%= link_to '/', class: 'active' do %>
+                  <%= t('.filter.all')%>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to filter_deliveries_networks_path, remote: true, id: 'filter_deliveries' do %>
+                  <%= t('.filter.deliveries')%>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to filter_surveys_networks_path, remote: true, id: 'filter_surveys' do %>
+                  <%= t('.filter.surveys')%>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to filter_comments_networks_path, remote: true, id: 'filter_comments' do %>
+                  <%= t('.filter.comments')%>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to filter_discussions_networks_path, remote: true, id: 'filter_discussions' do %>
+                  <%= t('.filter.discussions')%>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to filter_google_forms_networks_path, remote: true, id: 'filter_google_forms' do %>
+                  <%= t('.filter.google_forms')%>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div id="timeline" class="tim">
           <%= render :partial => "/shared/posts/posts_list", :locals => {:wall => @wall, :visible_for => "network"} %>
         </div>
@@ -13,13 +49,13 @@
       </div>
     </div>
   </div>
-  
+
   <%= render partial: 'shared/sidebar/sidebar', locals: { sidebar_sections: [ 'upcomming_deliveryes', 'upcomming_surveys' ] } %>
 </div>
 
 <script type="text/javascript">
   $(function() {
-    <% if !current_user.self_register && show_joyride(3) != "1" %>    
+    <% if !current_user.self_register && show_joyride(3) != "1" %>
       $.ajax({
         type: "GET",
         url: '<%= set_password_modal_path %>'

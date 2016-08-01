@@ -34,3 +34,12 @@ en:
       update:
         success: "Settings successfully saved"
     create: 'A network has been created'
+    show:
+      filter:
+        all: All
+        deliveries: Homeworks
+        surveys: Tests
+        comments: Comments
+        discussions: Discussions
+        google_forms: Forms
+        not_publications: No Publications
